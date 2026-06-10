@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import { useLang } from "./LanguageProvider";
 import { LANGS } from "../lib/i18n";
 
-// Caminhadas já tem página; os demais ainda são âncoras na home (/#...).
-const HREFS = ["/caminhadas", "/#bike", "/navegacao", "/refugios", "/grupos"];
+// Caminhadas, Navegação, Refúgios e Grupos têm página; Bike ainda é âncora na home.
+const HREFS = ["/caminhadas", "/#bike", "/navegacao", "/refugios", "/grupos", "/jornada"];
 
 export default function Nav() {
   const { lang, setLang, t } = useLang();

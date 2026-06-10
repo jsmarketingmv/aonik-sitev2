@@ -6,7 +6,7 @@ export const LANGS: Lang[] = ["pt", "es", "en"];
 
 export interface Dict {
   nav: {
-    links: string[]; // Caminhadas, Bike, Navegação, Refúgios, Grupos
+    links: string[]; // Caminhadas, Bike, Navegação, Refúgios, Grupos, Jornada
     login: string;
     loginTitle: string;
     loginAgente: string;
@@ -79,7 +79,7 @@ export interface Dict {
 export const translations: Record<Lang, Dict> = {
   pt: {
     nav: {
-      links: ["Caminhadas", "Bike", "Navegação", "Refúgios", "Grupos"],
+      links: ["Caminhadas", "Bike", "Navegação", "Refúgios", "Grupos", "Jornada"],
       login: "Login",
       loginTitle: "Acessar o sistema AONIK",
       loginAgente: "Sou agente / operador",
@@ -220,7 +220,7 @@ export const translations: Record<Lang, Dict> = {
 
   es: {
     nav: {
-      links: ["Caminatas", "Bici", "Navegación", "Refugios", "Grupos"],
+      links: ["Caminatas", "Bici", "Navegación", "Refugios", "Grupos", "Jornada"],
       login: "Acceso",
       loginTitle: "Acceder al sistema AONIK",
       loginAgente: "Soy agente / operador",
@@ -360,7 +360,7 @@ export const translations: Record<Lang, Dict> = {
 
   en: {
     nav: {
-      links: ["Hiking", "Bike", "Sailing", "Lodges", "Groups"],
+      links: ["Hiking", "Bike", "Sailing", "Lodges", "Groups", "Journey"],
       login: "Login",
       loginTitle: "Access the AONIK system",
       loginAgente: "I'm an agent / operator",
