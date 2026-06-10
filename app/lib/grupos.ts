@@ -45,7 +45,7 @@ export const GRUPOS: Grupo[] = [
     duration: "10 dias",
     priceFrom: "a partir de € 5.450",
     status: "confirmada",
-    href: "#contato",
+    href: "/destinos/dolomitas-alta-via",
     img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop",
   },
   {
