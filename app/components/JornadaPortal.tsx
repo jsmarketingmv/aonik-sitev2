@@ -4,14 +4,15 @@ import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/* ── Paleta Jornada (compartilhada com /jornada page) ─────── */
+/* ── Paleta Jornada — azul/amarelo do totem de sinalização ── */
 const J = {
-  pedra:    "#0e0a05",
-  ambar:    "#c07a2e",
-  ocre:     "#d4954a",
+  pedra:    "#13100c",
+  azul:     "#003d7a",
+  amar:     "#d9a800",
+  amarVivo: "#f0be00",
   concha:   "#f0e6cc",
   textSoft: "rgba(240,230,204,0.60)",
-  line:     "rgba(192,122,46,0.18)",
+  line:     "rgba(217,168,0,0.18)",
 };
 
 /* ── Concha da Vieira — versao decorativa (menor) ─────────── */
@@ -39,25 +40,25 @@ for (let i = 0; i < CPS.length; i++) {
 function ConchaSmall() {
   return (
     <svg viewBox="0 20 260 190" className="h-full w-full" style={{ overflow: "visible" }}>
-      <motion.path d={SHELL_PATH} fill={J.ambar} fillOpacity={0.07}
+      <motion.path d={SHELL_PATH} fill={J.azul} fillOpacity={0.07}
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.6, ease: EASE, delay: 0.4 }} />
       {TIPS.map(([tx, ty], i) => (
         <motion.line key={i}
           x1={HX} y1={HY} x2={tx} y2={ty}
-          stroke={J.ambar} strokeWidth="0.8" strokeOpacity="0.28"
+          stroke={J.azul} strokeWidth="0.8" strokeOpacity="0.32"
           initial={{ pathLength: 0, opacity: 0 }}
           whileInView={{ pathLength: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.1, ease: EASE, delay: 0.6 + i * 0.06 }} />
       ))}
-      <motion.path d={ARC_PATH} fill="none" stroke={J.ocre} strokeWidth="1.5" strokeOpacity="0.75"
+      <motion.path d={ARC_PATH} fill="none" stroke={J.amarVivo} strokeWidth="1.6" strokeOpacity="0.85"
         initial={{ pathLength: 0, opacity: 0 }}
         whileInView={{ pathLength: 1, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 2.0, ease: EASE, delay: 0.8 }} />
-      <motion.circle cx={HX} cy={HY} r="4" fill={J.ambar} fillOpacity="0.5"
+      <motion.circle cx={HX} cy={HY} r="4" fill={J.azul} fillOpacity="0.5"
         initial={{ scale: 0 }} whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, ease: EASE, delay: 0.5 }} />
@@ -100,13 +101,13 @@ export default function JornadaPortal() {
           <div>
             <motion.p
               className="mb-5 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.32em]"
-              style={{ color: J.ocre }}
+              style={{ color: J.amar }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.8, ease: EASE }}
             >
-              <span className="h-px w-8" style={{ backgroundColor: `${J.ocre}60` }} />
+              <span className="h-px w-8" style={{ backgroundColor: `${J.amar}60` }} />
               Peregrinacao · Autoconhecimento
             </motion.p>
 
@@ -119,7 +120,7 @@ export default function JornadaPortal() {
               transition={{ duration: 1, ease: EASE, delay: 0.1 }}
             >
               Caminhos de{" "}
-              <span className="italic" style={{ color: J.ocre }}>
+              <span className="italic" style={{ color: J.amar }}>
                 Santiago
               </span>
               <br />
@@ -161,7 +162,7 @@ export default function JornadaPortal() {
                   </div>
                   <div
                     className="mt-1 text-[9px] font-medium uppercase tracking-[0.22em]"
-                    style={{ color: `${J.ocre}90` }}
+                    style={{ color: `${J.amar}90` }}
                   >
                     {l}
                   </div>
@@ -180,7 +181,7 @@ export default function JornadaPortal() {
               <a
                 href="/jornada"
                 className="group/btn inline-flex items-center gap-2 rounded-full px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] transition-opacity duration-300 hover:opacity-80"
-                style={{ backgroundColor: J.ambar, color: J.pedra }}
+                style={{ backgroundColor: J.amar, color: J.pedra }}
               >
                 Ver Roteiros
                 <span className="transition-transform duration-300 group-hover/btn:translate-x-0.5">
@@ -190,7 +191,7 @@ export default function JornadaPortal() {
               <a
                 href="#contato"
                 className="rounded-full border px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-300"
-                style={{ borderColor: `${J.ambar}45`, color: J.concha }}
+                style={{ borderColor: `${J.amar}45`, color: J.concha }}
               >
                 Falar com especialista
               </a>
