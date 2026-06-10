@@ -520,16 +520,16 @@ export default function DolomitasAltaViaPage() {
       </section>
 
       {/* ===== PERFIL DE ELEVAÇÃO ===== */}
-      <section className="w-full overflow-hidden pb-0 pt-16" style={{ background: "#ffffff" }}>
+      <section className="w-full overflow-hidden pb-0 pt-16" style={{ background: D.rossoDeep }}>
         <div className="mx-auto px-4 md:px-8">
           <Reveal>
             <p className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.4em]"
-              style={{ color: D.rosso }}>
+              style={{ color: D.calcare, opacity: 0.7 }}>
               Perfil da travessia · 10 dias · +5.116 m
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <ElevationProfile labelColor={D.notte} gridColor="rgba(0,0,0,0.1)" />
+            <ElevationProfile />
           </Reveal>
         </div>
       </section>
