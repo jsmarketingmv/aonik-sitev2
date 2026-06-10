@@ -131,7 +131,7 @@ const LEGS = [
   { x1: 768, x2: 960, label: "Dias 9-10 · retorno" },
 ];
 
-function ElevationProfile({ labelColor = D.calcare, gridColor = D.line }: { labelColor?: string; gridColor?: string }) {
+function ElevationProfile({ labelColor = D.calcare, gridColor = D.line, legColor = D.rosso }: { labelColor?: string; gridColor?: string; legColor?: string }) {
   return (
     <svg viewBox="0 0 960 260" className="w-full" style={{ overflow: "visible" }}>
       <defs>
@@ -150,8 +150,8 @@ function ElevationProfile({ labelColor = D.calcare, gridColor = D.line }: { labe
         whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
         transition={{ duration: 4, ease: EASE, delay: 0.2 }} />
       {LEGS.map((l) => (
-        <text key={l.x1} x={(l.x1 + l.x2) / 2} y={245} fill={D.rosso} fontSize="9"
-          textAnchor="middle" letterSpacing="0.8" opacity="0.7"
+        <text key={l.x1} x={(l.x1 + l.x2) / 2} y={245} fill={legColor} fontSize="9"
+          textAnchor="middle" letterSpacing="0.8" opacity="0.65"
           style={{ fontFamily: "sans-serif", textTransform: "uppercase" }}>{l.label}</text>
       ))}
       {PERFIL_WAYPOINTS.map((w) => (
@@ -520,7 +520,7 @@ export default function DolomitasAltaViaPage() {
       </section>
 
       {/* ===== PERFIL DE ELEVAÇÃO ===== */}
-      <section className="w-full overflow-hidden pb-0 pt-16" style={{ background: D.rossoDeep }}>
+      <section className="w-full overflow-hidden pb-0 pt-16" style={{ background: "#5b0a13" }}>
         <div className="mx-auto px-4 md:px-8">
           <Reveal>
             <p className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.4em]"
@@ -529,7 +529,7 @@ export default function DolomitasAltaViaPage() {
             </p>
           </Reveal>
           <Reveal delay={0.05}>
-            <ElevationProfile />
+            <ElevationProfile legColor={D.calcare} />
           </Reveal>
         </div>
       </section>
