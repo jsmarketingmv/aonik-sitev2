@@ -131,7 +131,7 @@ const LEGS = [
   { x1: 768, x2: 960, label: "Dias 9-10 · retorno" },
 ];
 
-function ElevationProfile() {
+function ElevationProfile({ labelColor = D.calcare, gridColor = D.line }: { labelColor?: string; gridColor?: string }) {
   return (
     <svg viewBox="0 0 960 260" className="w-full" style={{ overflow: "visible" }}>
       <defs>
@@ -141,7 +141,7 @@ function ElevationProfile() {
         </linearGradient>
       </defs>
       {[60, 100, 140, 180].map((y) => (
-        <line key={y} x1={0} y1={y} x2={960} y2={y} stroke={D.line} strokeWidth="0.6" />
+        <line key={y} x1={0} y1={y} x2={960} y2={y} stroke={gridColor} strokeWidth="0.6" />
       ))}
       <path d={HILL_FILL} fill="url(#dolFill)" />
       <motion.path d={HILL_PATH} fill="none" stroke={D.rosso} strokeWidth="2.2"
@@ -158,8 +158,8 @@ function ElevationProfile() {
         <g key={w.label + w.x}>
           <line x1={w.x} y1={w.y} x2={w.x} y2={218} stroke={D.rosso} strokeWidth="1"
             strokeDasharray="2 3" strokeOpacity="0.5" />
-          <circle cx={w.x} cy={w.y} r="4.5" fill={D.notte} stroke={D.rosso} strokeWidth="1.8" />
-          <text x={w.x} y={w.y - 10} fill={D.calcare} fontSize="10" textAnchor={w.anchor}
+          <circle cx={w.x} cy={w.y} r="4.5" fill={labelColor === D.calcare ? D.notte : "#ffffff"} stroke={D.rosso} strokeWidth="1.8" />
+          <text x={w.x} y={w.y - 10} fill={labelColor} fontSize="10" textAnchor={w.anchor}
             letterSpacing="0.5" style={{ fontFamily: "sans-serif" }}>{w.label}</text>
           <text x={w.x} y={w.y - 22} fill={D.rosso} fontSize="8.5" textAnchor={w.anchor}
             letterSpacing="1.2" opacity="0.85"
@@ -262,30 +262,54 @@ const MARCOS = [
       "As tres torres de calcario mais fotografadas do mundo. O circuito completo revela a formacao rochosa por todos os angulos, com parada no Rifugio Locatelli. 15,43 km percorridos num dia que nenhum participante esquece.",
     detalhe: "3.003 m · Circuito 15 km · Dia 2",
     img: "https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg",
-    bg: D.notte,
+    bg: D.verde,
     imgDireita: true,
+    colors: {
+      kicker: D.rosso,
+      title: D.calcare,
+      titleAccent: D.creme,
+      body: "rgba(232,221,208,0.8)",
+      detalhe: D.creme,
+      link: D.calcare,
+    },
   },
   {
     id: "braies",
     kicker: "Dia 3 · Inicio da travessia real",
     titulo: ["Lago", "di Braies"],
     texto:
-      "Um dos lagos alpinos mais bonitos do mundo — aguas turquesas cercadas de picos rochosos. Daqui a Alta Via comeca de verdade: 12,60 km e +1.037 m de subida ate o Rifugio Sennes, onde tudo muda de escala.",
+      "Um dos lagos alpinos mais bonitos do mundo. Aguas turquesas cercadas de picos rochosos. Daqui a Alta Via comeca de verdade: 12,60 km e +1.037 m de subida ate o Rifugio Sennes, onde tudo muda de escala.",
     detalhe: "1.496 m · 12,60 km · +1.037 m",
     img: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg",
-    bg: D.bosco,
+    bg: "#ffffff",
     imgDireita: false,
+    colors: {
+      kicker: D.rosso,
+      title: D.notte,
+      titleAccent: D.rosso,
+      body: "rgba(6,16,10,0.62)",
+      detalhe: D.rosso,
+      link: D.notte,
+    },
   },
   {
     id: "civetta",
     kicker: "Dias 8-9 · A grande parede",
     titulo: ["Monte", "Civetta"],
     texto:
-      "3.220 metros de altura, com uma das faces verticais mais longas dos Alpes Italianos. A Alta Via atravessa sua base por dois dias inteiros. Chegar ao Lago di Coldai e erguer os olhos para essa parede — nao tem descricao.",
+      "3.220 metros de altura, com uma das faces verticais mais longas dos Alpes Italianos. A Alta Via atravessa sua base por dois dias inteiros. Chegar ao Lago di Coldai e erguer os olhos para essa parede: nao tem descricao.",
     detalhe: "3.220 m · Parede NE com 1.000 m · Dias 8-9",
     img: "https://static.wixstatic.com/media/2d4f5b_b5691cbefb4e4071afddcb67131f3af5~mv2.jpeg",
-    bg: D.notte,
+    bg: D.rosso,
     imgDireita: true,
+    colors: {
+      kicker: "rgba(232,221,208,0.65)",
+      title: D.creme,
+      titleAccent: D.calcare,
+      body: "rgba(240,235,224,0.75)",
+      detalhe: D.calcare,
+      link: D.creme,
+    },
   },
 ];
 
@@ -496,7 +520,7 @@ export default function DolomitasAltaViaPage() {
       </section>
 
       {/* ===== PERFIL DE ELEVAÇÃO ===== */}
-      <section className="w-full overflow-hidden pb-0 pt-16" style={{ background: D.bosco }}>
+      <section className="w-full overflow-hidden pb-0 pt-16" style={{ background: "#ffffff" }}>
         <div className="mx-auto px-4 md:px-8">
           <Reveal>
             <p className="mb-8 text-center text-[11px] font-semibold uppercase tracking-[0.4em]"
@@ -504,7 +528,9 @@ export default function DolomitasAltaViaPage() {
               Perfil da travessia · 10 dias · +5.116 m
             </p>
           </Reveal>
-          <Reveal delay={0.05}><ElevationProfile /></Reveal>
+          <Reveal delay={0.05}>
+            <ElevationProfile labelColor={D.notte} gridColor="rgba(0,0,0,0.1)" />
+          </Reveal>
         </div>
       </section>
 
@@ -521,7 +547,7 @@ export default function DolomitasAltaViaPage() {
                 style={{ background: `linear-gradient(to bottom, transparent 35%, ${m.bg}cc 100%)` }} />
               <div className="absolute bottom-4 left-5">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.3em]"
-                  style={{ color: D.rosso }}>
+                  style={{ color: m.colors.detalhe }}>
                   {m.detalhe}
                 </span>
               </div>
@@ -532,28 +558,28 @@ export default function DolomitasAltaViaPage() {
               style={{ direction: "ltr" }}>
               <Reveal>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.35em]"
-                  style={{ color: D.rosso }}>
+                  style={{ color: m.colors.kicker }}>
                   {m.kicker}
                 </p>
               </Reveal>
               <Reveal delay={0.08}>
                 <h2 className="mt-5 font-display font-light uppercase leading-[0.88]"
-                  style={{ fontSize: "clamp(2.4rem,4.5vw,4rem)", color: D.calcare }}>
+                  style={{ fontSize: "clamp(2.4rem,4.5vw,4rem)", color: m.colors.title }}>
                   {m.titulo[0]}
                   <br />
-                  <span style={{ color: D.rosso }}>{m.titulo[1]}</span>
+                  <span style={{ color: m.colors.titleAccent }}>{m.titulo[1]}</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className="mt-6 max-w-sm text-[15px] font-light leading-relaxed"
-                  style={{ color: D.textSoft }}>
+                  style={{ color: m.colors.body }}>
                   {m.texto}
                 </p>
               </Reveal>
               <Reveal delay={0.2}>
                 <a href="#contato"
                   className="mt-8 inline-flex w-fit items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em] transition-opacity hover:opacity-70"
-                  style={{ color: D.calcare }}>
+                  style={{ color: m.colors.link }}>
                   Quero vivenciar <span>&#8594;</span>
                 </a>
               </Reveal>
@@ -563,12 +589,12 @@ export default function DolomitasAltaViaPage() {
       ))}
 
       {/* ===== GALERIA ===== */}
-      <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: D.notte }}>
+      <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: "#ffffff" }}>
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: D.rosso }}>Galeria</p>
             <h2 className="mt-4 font-display font-light"
-              style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: D.creme }}>
+              style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: D.notte }}>
               O que voce vai viver
             </h2>
           </Reveal>
