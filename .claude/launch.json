@@ -2,10 +2,44 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "losviajeros-web",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "PATH=/opt/homebrew/bin:$PATH bun run dev --port 3002"],
+      "cwd": "/Users/julianosantana/losviajeros-v2/apps/web",
+      "port": 3002,
+      "autoPort": false
+    },
+    {
+      "name": "trako-circuit",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "PATH=/opt/homebrew/bin:$PATH npm run dev"],
+      "cwd": "trako-circuit",
+      "port": 3000,
+      "autoPort": false
+    },
+    {
+      "name": "aonik-dev",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "PATH=/Users/julianosantana/.bun/bin:$PATH bun run dev --port 5174"],
+      "cwd": "aonikoperadora",
+      "port": 5174,
+      "autoPort": false
+    },
+    {
       "name": "aonik-v2",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "3011"],
-      "port": 3011
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "PATH=/opt/homebrew/bin:$PATH npm run dev"],
+      "cwd": "aonik-site-v2",
+      "port": 3011,
+      "autoPort": false
+    },
+    {
+      "name": "ntn-walking",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "PATH=/opt/homebrew/bin:$PATH npm run dev"],
+      "cwd": "Site_PortugalNTN/ntn-walking",
+      "port": 3000,
+      "autoPort": false
     }
   ]
 }
