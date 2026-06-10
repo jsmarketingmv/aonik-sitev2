@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
+/* ============================================================
+   AONIK — Turismo de Natureza · Design tokens (V2)
+   Paleta extraída do SaaS: verde floresta + dourado quente + creme
+   ============================================================ */
+@theme {
+  --color-cream: #f5f1e8;
+  --color-cream-deep: #ece5d6;
+  --color-forest: #0d2a1f;
+  --color-forest-soft: #163a2a;
+  --color-forest-line: #1f4d39;
+  --color-gold: #cf9a4e;
+  --color-gold-soft: #e3b574;
+  --color-neon: #a3e635;
+  --color-ink: #0b1711;
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-forest);
+  --foreground: var(--color-cream);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-forest);
+  /* Lenis cuida do smooth scroll; nada de scroll-behavior nativo aqui */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-forest);
+  color: var(--color-cream);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* Grão sutil de filme — dá textura premium sobre as fotos */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Linha-régua editorial reutilizável */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-forest-line),
+    transparent
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }

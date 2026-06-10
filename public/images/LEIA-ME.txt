@@ -1,0 +1,27 @@
+COMO ADICIONAR AS IMAGENS REAIS DA AONIK
+=========================================
+Salve aqui dentro com EXATAMENTE estes nomes (jpg ou webp).
+O Claude troca as URLs do Unsplash por estas, e TODOS os filtros
+(gradiente verde, grão, zoom no hover) continuam funcionando.
+
+Recomendado: imagens largas (>= 2000px), boa qualidade, paisagem.
+
+hero/ (fundo do banner — troca junto com a palavra)
+  hero-caminhada.jpg
+  hero-pedalada.jpg
+  hero-navegacao.jpg
+  hero-refugio.jpg
+  hero-travessia.jpg
+  hero-jornada.jpg
+
+segmentos/ (blocos da seção creme)
+  seg-caminhadas.jpg
+  seg-bike.jpg
+  seg-navegacao.jpg
+  seg-refugios.jpg
+
+portais/ (blocos Grupos e Jornada)
+  portal-grupos.jpg
+  portal-jornada.jpg
+
+Pode mandar quantas tiver; o que faltar segue com o Unsplash atual.
