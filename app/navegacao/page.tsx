@@ -34,13 +34,13 @@ const PILARES = [
 
 const PRODUTOS = [
   {
-    nome: "Cruzeiro Skorpios",
-    rota: "Ruta Kawéskar · Patagônia Chilena",
-    desc: "4 noites pelos fiordes patagônicos a bordo do MN Skorpios III. Geleiras Amalia, El Brujo e Bernal, com desembarques em embarcações de expedição.",
+    nome: "Cruzeiros Skorpios",
+    rota: "Kawéskar · Chonos · Patagônia Chilena",
+    desc: "Dois navios, duas rotas. Ruta Kawéskar (5 dias, Puerto Natales, fiordes do sul) e Ruta Chonos (6 dias, Puerto Montt, arquipélagos e Glaciar San Rafael).",
     preco: "a partir de US$ 1.890",
     href: "/destinos/cruzeiro-skorpios",
     tag: "Patagônia",
-    img: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1600&auto=format&fit=crop",
+    img: "/skorpios/DSC_0020.JPG",
   },
   {
     nome: "Antarctica21",
@@ -156,8 +156,8 @@ export default function NavegacaoPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="max-w-sm text-[14px] font-light leading-relaxed text-ink/55">
-                Dois mundos de gelo, dois navios de expedição. Cada um com sua
-                própria página e personalidade.
+                Skorpios e Antarctica21: cada operadora com sua própria
+                página, identidade e rota.
               </p>
             </Reveal>
           </div>
