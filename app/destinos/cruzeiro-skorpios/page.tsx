@@ -248,6 +248,18 @@ export default function CruzeiroSkorpiosHubPage() {
               de massa jamais alcança.
             </p>
           </Reveal>
+          <Reveal delay={0.2}>
+            <a
+              href="https://cantu.cl/skorpios/cruceros-skorpios/mn-skorpios-iii/tour-virtual-mn-skorpios-iii/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:bg-white/5"
+              style={{ borderColor: P.ice, color: P.ice }}
+            >
+              Tour Virtual · MN Skorpios III
+              <span className="text-[10px]">↗</span>
+            </a>
+          </Reveal>
         </div>
       </section>
 

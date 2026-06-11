@@ -25,11 +25,11 @@ const P = {
 
 // ---------- MAPA DOS CANAIS ----------
 const STOPS = [
-  { x: 215, y: 55,  label: "Puerto Natales",       kind: "ship"    },
-  { x: 110, y: 175, label: "Fiordo Calvo · El Brujo", kind: "glacier" },
-  { x: 255, y: 285, label: "Glaciar Amalia",        kind: "glacier" },
-  { x: 120, y: 390, label: "Glaciar Bernal",        kind: "glacier" },
-  { x: 230, y: 495, label: "Guardramiro",           kind: "fauna"   },
+  { x: 215, y: 55,  label: "Puerto Natales",          kind: "ship"    },
+  { x: 110, y: 175, label: "Fiordo Calvo · El Brujo",  kind: "glacier" },
+  { x: 255, y: 285, label: "Glaciar Amalia",           kind: "glacier" },
+  { x: 120, y: 390, label: "Glaciar Bernal",           kind: "glacier" },
+  { x: 230, y: 495, label: "Guardramiro",              kind: "fauna"   },
 ];
 const CHANNEL =
   "M215,55 Q70,120 110,175 Q150,235 255,285 Q335,335 120,390 Q-10,450 230,495";
@@ -60,19 +60,14 @@ function ChannelMap() {
         return (
           <g key={s.label}>
             {s.kind === "glacier" && (
-              <path
-                d={`M${s.x - 6},${s.y + 5} L${s.x},${s.y - 6} L${s.x + 6},${s.y + 5} Z`}
-                fill={P.white}
-              />
+              <path d={`M${s.x-6},${s.y+5} L${s.x},${s.y-6} L${s.x+6},${s.y+5} Z`} fill={P.white} />
             )}
             {s.kind !== "glacier" && (
-              <circle cx={s.x} cy={s.y} r="5"
-                fill={s.kind === "ship" ? P.steppe : P.ice} />
+              <circle cx={s.x} cy={s.y} r="5" fill={s.kind === "ship" ? P.steppe : P.ice} />
             )}
             <text x={lx} y={s.y} fill="rgba(233,245,248,0.75)"
               fontSize="11.5" letterSpacing="1.2" textAnchor={anchor}
-              dominantBaseline="middle"
-              style={{ textTransform: "uppercase" }}>
+              dominantBaseline="middle" style={{ textTransform: "uppercase" }}>
               {s.label}
             </text>
           </g>
@@ -85,10 +80,8 @@ function ChannelMap() {
 // ---------- ESCALA DO GELO ----------
 function IceScale() {
   const ticks = [
-    { y: 24,  t: "60 m" },
-    { y: 90,  t: "40 m" },
-    { y: 156, t: "20 m" },
-    { y: 222, t: "0"    },
+    { y: 24,  t: "60 m" }, { y: 90,  t: "40 m" },
+    { y: 156, t: "20 m" }, { y: 222, t: "0"    },
   ];
   return (
     <svg viewBox="0 0 130 250" className="w-full" style={{ maxWidth: 130 }}>
@@ -96,9 +89,7 @@ function IceScale() {
       {ticks.map((tk) => (
         <g key={tk.t}>
           <line x1="34" y1={tk.y} x2="46" y2={tk.y} stroke={P.ice} strokeWidth="1.5" />
-          <text x="54" y={tk.y + 4} fill={P.white} fontSize="12" letterSpacing="1">
-            {tk.t}
-          </text>
+          <text x="54" y={tk.y+4} fill={P.white} fontSize="12" letterSpacing="1">{tk.t}</text>
         </g>
       ))}
       <path d="M28,228 L52,228 L48,236 L32,236 Z" fill={P.steppe} />
@@ -106,6 +97,15 @@ function IceScale() {
     </svg>
   );
 }
+
+const DESTAQUES = [
+  { num: "01", t: "Geleiras vivas",        d: "3 frentes de gelo acessadas de bote de expedição a poucos metros de distância." },
+  { num: "02", t: "Campo de Gelo Sul",     d: "O maior campo de gelo fora das regiões polares, visível do nível do mar." },
+  { num: "03", t: "Skorpios III",          d: "92 hóspedes apenas. Onde navios grandes não entram, a expedição começa." },
+  { num: "04", t: "505 milhas náuticas",   d: "5 dias de imersão total. Ida e volta a Puerto Natales pelos canais dos Kawésqar." },
+  { num: "05", t: "Botes de expedição",    d: "Desembarques nas frentes das geleiras, onde o navio não pode chegar." },
+  { num: "06", t: "Fauna patagônica",      d: "Elefantes-marinhos, golfinhos e aves em estado selvagem nos canais." },
+];
 
 const GELEIRAS = [
   { nome: "Amalia",  cor: "#9ee3ec", info: "Desce do Campo de Gelo Sul direto ao mar." },
@@ -115,73 +115,97 @@ const GELEIRAS = [
 ];
 
 const ROTEIRO = [
-  { d: "01", t: "Puerto Natales: embarque",  s: "Zarpamos rumo aos canais dos Kawésqar." },
-  { d: "02", t: "Fiordo Calvo & El Brujo",   s: "Navegação entre témpanos em botes de expedição." },
-  { d: "03", t: "Glaciar Amalia",            s: "Frente a frente com o Campo de Gelo Sul." },
-  { d: "04", t: "Bernal & Guardramiro",      s: "Caminhada na geleira e elefantes-marinhos." },
-  { d: "05", t: "Retorno a Puerto Natales",  s: "O fim da rota e o começo das histórias." },
+  { d: "01", t: "Puerto Natales: embarque",   s: "Zarpamos rumo aos canais dos Kawésqar." },
+  { d: "02", t: "Fiordo Calvo & El Brujo",    s: "Navegação entre témpanos em botes de expedição." },
+  { d: "03", t: "Glaciar Amalia",             s: "Frente a frente com o Campo de Gelo Sul." },
+  { d: "04", t: "Bernal & Guardramiro",       s: "Caminhada na geleira e elefantes-marinhos." },
+  { d: "05", t: "Retorno a Puerto Natales",   s: "O fim da rota e o começo das histórias." },
 ];
 
+// Temporada Out 2026 – Abr 2027 · zarpes às sextas/sábados
+const SAIDAS = {
+  baja: [
+    { mes: "Out 2026",  dias: [12, 17, 23, 28] },
+    { mes: "Nov 2026",  dias: [3, 8, 14, 19, 25] },
+    { mes: "Dez 2026",  dias: [1, 7, 12, 19] },
+    { mes: "Fev 2027",  dias: [28] },
+    { mes: "Mar 2027",  dias: [5, 10, 15, 20, 25, 31] },
+    { mes: "Abr 2027",  dias: [5, 11, 16, 22, 27] },
+  ],
+  alta: [
+    { mes: "Dez 2026",  dias: [24, 30] },
+    { mes: "Jan 2027",  dias: [4, 10, 15, 21, 26] },
+    { mes: "Fev 2027",  dias: [1, 6, 12, 17, 23] },
+  ],
+};
+
 const GALERIA = [
-  { src: "/skorpios/DSC_3290.JPG", cap: "Botes de expedição entre os témpanos",      tag: "Expedição"   },
-  { src: "/skorpios/DSC_1727.JPG", cap: "Desembarque na frente do glaciar Bernal",   tag: "Desembarque" },
-  { src: "/skorpios/DSC_1970.JPG", cap: "A parede de gelo vista do nível do mar",    tag: "Gelo"        },
+  { src: "/skorpios/DSC_3290.JPG", cap: "Botes de expedição entre os témpanos",     tag: "Expedição"   },
+  { src: "/skorpios/DSC_1727.JPG", cap: "Desembarque na frente do Glaciar Bernal",  tag: "Desembarque" },
+  { src: "/skorpios/DSC_1970.JPG", cap: "A parede de gelo vista do nível do mar",   tag: "Gelo"        },
   { src: "/skorpios/DSC_4495.JPG", cap: "Golfinhos acompanham o MN Skorpios III",   tag: "Fauna"       },
   { src: "/skorpios/DSC_6380.JPG", cap: "Sobre o gelo milenário",                   tag: "Gelo"        },
-  { src: "/skorpios/DSC_1808.JPG", cap: "Trekking rumo ao Glaciar Bernal",           tag: "Trekking"    },
+  { src: "/skorpios/DSC_1808.JPG", cap: "Trekking rumo ao Glaciar Bernal",          tag: "Trekking"    },
   { src: "/skorpios/DSC_2146.JPG", cap: "Whisky on the rocks com gelo do glaciar",  tag: "Experiência" },
   { src: "/skorpios/DSC_4751.JPG", cap: "A Patagônia ao redor de cada gole",        tag: "Experiência" },
 ];
 
 function GaleriaInterativa() {
   const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i - 1 + GALERIA.length) % GALERIA.length);
+  const next = () => setIdx((i) => (i + 1) % GALERIA.length);
   const img = GALERIA[idx];
   return (
-    <div className="grid gap-3 md:grid-cols-[1fr_190px]">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0.5, scale: 1.02 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.45, ease: EASE }}
-          className="relative overflow-hidden rounded-2xl"
-          style={{ aspectRatio: "16/10" }}
-        >
-          <img src={img.src} alt={img.cap}
-            className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0"
-            style={{ background: `linear-gradient(to top, ${P.abyss}cc 0%, transparent 55%)` }} />
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.32em]"
-              style={{ color: P.ice }}>
-              {img.tag}
-            </span>
-            <p className="mt-1 text-[14px] font-light" style={{ color: P.white }}>
-              {img.cap}
-            </p>
-          </div>
-          <div className="absolute right-4 top-4">
-            <span className="text-[11px] font-medium"
-              style={{ color: "rgba(233,245,248,0.5)" }}>
-              {idx + 1}/{GALERIA.length}
-            </span>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      <div className="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible">
+    <div className="flex flex-col gap-3">
+      {/* Imagem principal com navegação por setas */}
+      <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0.6, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="absolute inset-0"
+          >
+            <img src={img.src} alt={img.cap} className="h-full w-full object-cover" />
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0"
+          style={{ background: `linear-gradient(to top, ${P.abyss}cc 0%, transparent 55%)` }} />
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.32em]"
+            style={{ color: P.ice }}>{img.tag}</span>
+          <p className="mt-1 text-[14px] font-light" style={{ color: P.white }}>{img.cap}</p>
+        </div>
+        <span className="absolute right-4 top-4 text-[11px] font-medium"
+          style={{ color: "rgba(233,245,248,0.45)" }}>
+          {idx + 1} / {GALERIA.length}
+        </span>
+        <button onClick={prev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base font-light transition-all hover:opacity-100"
+          style={{ background: "rgba(7,35,48,0.6)", color: P.ice, opacity: 0.8 }}>
+          ‹
+        </button>
+        <button onClick={next}
+          className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base font-light transition-all hover:opacity-100"
+          style={{ background: "rgba(7,35,48,0.6)", color: P.ice, opacity: 0.8 }}>
+          ›
+        </button>
+      </div>
+      {/* Miniaturas — grid limpo, sem scrollbar */}
+      <div className="grid grid-cols-4 gap-2 sm:grid-cols-8">
         {GALERIA.map((g, i) => (
           <button key={i} onClick={() => setIdx(i)}
-            className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
+            className="relative overflow-hidden rounded-lg transition-all duration-300"
             style={{
-              width: 190, height: 108,
-              opacity: i === idx ? 1 : 0.42,
+              aspectRatio: "16/10",
               outline: i === idx ? `2px solid ${P.ice}` : "2px solid transparent",
               outlineOffset: 2,
             }}>
             <img src={g.src} alt={g.cap}
-              className="h-full w-full object-cover" />
+              className="h-full w-full object-cover transition-opacity duration-300"
+              style={{ opacity: i === idx ? 1 : 0.42 }} />
           </button>
         ))}
       </div>
@@ -194,9 +218,9 @@ export default function KaweskarPage() {
     <main className="relative" style={{ background: P.paper }}>
       <Nav />
 
-      {/* BREADCRUMB */}
+      {/* BREADCRUMB — pt-20 para não sobrepor Nav fixo */}
       <div
-        className="relative z-20 flex items-center gap-2 px-6 py-3 text-[11px] font-medium uppercase tracking-[0.18em] md:px-10"
+        className="relative z-20 flex items-center gap-2 px-6 pt-20 pb-3 text-[11px] font-medium uppercase tracking-[0.18em] md:px-10"
         style={{ background: P.abyss, color: "rgba(233,245,248,0.45)" }}
       >
         <a href="/destinos/cruzeiro-skorpios"
@@ -212,17 +236,10 @@ export default function KaweskarPage() {
         className="relative flex min-h-[100svh] w-full items-center overflow-hidden"
         style={{ background: P.abyss }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/skorpios/DSC_3890.JPG')",
-            opacity: 0.38,
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{ background: `radial-gradient(ellipse at 35% 50%, transparent 28%, ${P.abyss} 80%)` }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/skorpios/DSC_3890.JPG')", opacity: 0.38 }} />
+        <div className="absolute inset-0"
+          style={{ background: `radial-gradient(ellipse at 35% 50%, transparent 28%, ${P.abyss} 80%)` }} />
 
         <div className="relative z-10 mx-auto grid w-full max-w-[1400px] items-center gap-10 px-6 py-28 md:grid-cols-[1.1fr_0.9fr] md:px-10">
           <div>
@@ -250,8 +267,8 @@ export default function KaweskarPage() {
               className="mt-6 max-w-md text-[15px] font-light leading-relaxed md:text-base"
               style={{ color: "rgba(233,245,248,0.72)" }}
             >
-              Quatro noites por um labirinto de fiordes onde a estrada acaba e
-              o gelo começa. Os mesmos canais que os{" "}
+              Quatro noites por um labirinto de fiordes onde a estrada acaba e o
+              gelo começa. Os mesmos canais que os{" "}
               <span style={{ color: P.white }}>Kawésqar</span> navegaram por
               milênios. Agora a bordo do MN Skorpios III.
             </motion.p>
@@ -260,19 +277,19 @@ export default function KaweskarPage() {
               transition={{ duration: 1, ease: EASE, delay: 0.65 }}
               className="mt-8 flex flex-wrap items-center gap-5"
             >
-              <a
-                href="#contato"
+              <a href="#contato"
                 className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]"
-                style={{ background: P.steppe, color: P.abyss }}
-              >
+                style={{ background: P.steppe, color: P.abyss }}>
                 Quero esta viagem <span>→</span>
               </a>
-              <span style={{ color: "rgba(233,245,248,0.85)" }}>
+              <span>
                 <span className="text-[12px] uppercase tracking-[0.16em]"
                   style={{ color: "rgba(233,245,248,0.5)" }}>
                   a partir de
                 </span>{" "}
-                <span className="font-display text-2xl">US$ 1.890</span>
+                <span className="font-display text-2xl" style={{ color: "rgba(233,245,248,0.85)" }}>
+                  US$ 2.720
+                </span>
               </span>
             </motion.div>
           </div>
@@ -287,18 +304,89 @@ export default function KaweskarPage() {
         </div>
       </section>
 
+      {/* ===== DESTAQUES DA ROTA ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-28"
+        style={{ background: P.fjord, color: P.white }}>
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal>
+            <p className="mb-10 text-[11px] font-semibold uppercase tracking-[0.34em]"
+              style={{ color: P.steppe }}>
+              Por que ir
+            </p>
+          </Reveal>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {DESTAQUES.map((d, i) => (
+              <Reveal key={d.num} delay={i * 0.06}>
+                <div className="border-t pt-6" style={{ borderColor: P.line }}>
+                  <span className="font-display text-sm" style={{ color: P.ice }}>
+                    {d.num}
+                  </span>
+                  <h3 className="mt-3 font-display text-xl font-light md:text-2xl">
+                    {d.t}
+                  </h3>
+                  <p className="mt-3 text-[14px] font-light leading-relaxed"
+                    style={{ color: "rgba(233,245,248,0.6)" }}>
+                    {d.d}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== VÍDEO + TOUR VIRTUAL ===== */}
+      <section className="px-6 py-16 md:px-10 md:py-20" style={{ background: P.abyss }}>
+        <div className="mx-auto max-w-[1400px]">
+          <Reveal>
+            <div className="grid gap-5 md:grid-cols-2">
+              {/* Vídeo */}
+              <div>
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em]"
+                  style={{ color: P.ice }}>
+                  Conheça a rota
+                </p>
+                <div className="overflow-hidden rounded-2xl"
+                  style={{ aspectRatio: "16/9", boxShadow: "0 0 40px rgba(127,212,224,0.08)" }}>
+                  <iframe
+                    src="https://www.youtube.com/embed/8G1BW_0jgaM?rel=0&modestbranding=1&color=white"
+                    title="Ruta Kawéskar — Cruzeiro Skorpios"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="h-full w-full"
+                  />
+                </div>
+              </div>
+              {/* Tour Virtual 360° */}
+              <div>
+                <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em]"
+                  style={{ color: P.ice }}>
+                  Tour Virtual 360° · MN Skorpios III
+                </p>
+                <div className="overflow-hidden rounded-2xl"
+                  style={{ aspectRatio: "16/9", boxShadow: "0 0 40px rgba(127,212,224,0.08)" }}>
+                  <iframe
+                    src="https://my.matterport.com/show/?m=ByrCD3dejGV"
+                    title="Tour Virtual MN Skorpios III"
+                    allow="xr-spatial-tracking; fullscreen"
+                    allowFullScreen
+                    className="h-full w-full border-0"
+                  />
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===== A ESCALA DO GELO ===== */}
       <section className="relative w-full overflow-hidden" style={{ background: P.fjord }}>
         <div className="grid md:grid-cols-2">
           <div className="relative h-[340px] md:h-[600px]">
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: "url('/skorpios/DSC_1970.JPG')" }}
-            />
-            <div
-              className="absolute inset-0"
-              style={{ background: `linear-gradient(to right, transparent, ${P.fjord})` }}
-            />
+            <div className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/skorpios/DSC_1970.JPG')" }} />
+            <div className="absolute inset-0"
+              style={{ background: `linear-gradient(to right, transparent, ${P.fjord})` }} />
           </div>
           <div className="flex items-center px-6 py-20 md:px-14">
             <div className="flex items-center gap-10">
@@ -309,18 +397,16 @@ export default function KaweskarPage() {
                     style={{ color: P.ice }}>
                     A escala do gelo
                   </p>
-                  <h2
-                    className="mt-5 font-display text-[clamp(2rem,4.5vw,3.6rem)] font-light leading-[1.05]"
-                    style={{ color: P.white }}
-                  >
+                  <h2 className="mt-5 font-display text-[clamp(2rem,4.5vw,3.6rem)] font-light leading-[1.05]"
+                    style={{ color: P.white }}>
                     Até 60 metros
                     <br />de parede viva
                   </h2>
                   <p className="mt-5 max-w-sm text-[15px] font-light leading-relaxed"
                     style={{ color: "rgba(233,245,248,0.7)" }}>
-                    Você, num bote de expedição, minúsculo diante de uma muralha
-                    de gelo que rangeu por séculos. É aqui que a Patagônia te
-                    lembra do seu tamanho.
+                    Você, num bote de expedição, minúsculo diante de uma muralha de
+                    gelo que rangeu por séculos. É aqui que a Patagônia te lembra
+                    do seu tamanho.
                   </p>
                 </div>
               </Reveal>
@@ -342,8 +428,8 @@ export default function KaweskarPage() {
           <Reveal delay={0.1}>
             <p className="mt-4 max-w-lg text-[15px] font-light leading-relaxed"
               style={{ color: "rgba(233,245,248,0.6)" }}>
-              Quanto mais antigo e comprimido, mais azul. Cada geleira da rota
-              tem o seu tom, do turquesa leitoso ao azul profundo.
+              Quanto mais antigo e comprimido, mais azul. Cada geleira da rota tem
+              o seu tom, do turquesa leitoso ao azul profundo.
             </p>
           </Reveal>
           <div className="mt-14 grid gap-px overflow-hidden rounded-xl"
@@ -352,8 +438,7 @@ export default function KaweskarPage() {
               <Reveal key={g.nome} delay={i * 0.05}>
                 <div className="flex items-center gap-6 px-6 py-7 md:px-8"
                   style={{ background: P.abyss }}>
-                  <span className="h-12 w-12 shrink-0 rounded-full"
-                    style={{ background: g.cor }} />
+                  <span className="h-12 w-12 shrink-0 rounded-full" style={{ background: g.cor }} />
                   <h3 className="font-display text-2xl font-light md:text-3xl"
                     style={{ minWidth: 160 }}>
                     Glaciar {g.nome}
@@ -371,10 +456,8 @@ export default function KaweskarPage() {
 
       {/* ===== OS KAWÉSQAR ===== */}
       <section className="relative w-full overflow-hidden" style={{ background: P.abyss }}>
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: "url('/skorpios/DSC_6897.JPG')" }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center opacity-25"
+          style={{ backgroundImage: "url('/skorpios/DSC_6897.JPG')" }} />
         <div className="absolute inset-0" style={{ background: `${P.abyss}cc` }} />
         <div className="relative z-10 mx-auto max-w-[900px] px-6 py-28 text-center md:py-40">
           <Reveal>
@@ -384,23 +467,20 @@ export default function KaweskarPage() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <p
-              className="mt-7 font-display text-[clamp(1.8rem,4vw,3.3rem)] font-light leading-[1.2]"
-              style={{ color: P.white }}
-            >
+            <p className="mt-7 font-display text-[clamp(1.8rem,4vw,3.3rem)] font-light leading-[1.2]"
+              style={{ color: P.white }}>
               Por milênios, os{" "}
               <span className="italic" style={{ color: P.ice }}>Kawésqar</span>{" "}
-              percorreram esses canais em canoas, com uma fogueira acesa no meio
-              do barco, entre Puerto Edén e Puerto Natales. Você refaz essa
-              rota com o conforto de hoje e o mesmo silêncio de sempre.
+              percorreram esses canais em canoas, com uma fogueira acesa no meio do
+              barco, entre Puerto Edén e Puerto Natales. Você refaz essa rota com
+              o conforto de hoje e o mesmo silêncio de sempre.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* ===== GALERIA ===== */}
-      <section className="px-6 py-24 md:px-10 md:py-32"
-        style={{ background: P.fjord }}>
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: P.fjord }}>
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.32em]"
@@ -408,9 +488,7 @@ export default function KaweskarPage() {
               Galeria
             </p>
           </Reveal>
-          <Reveal delay={0.08}>
-            <GaleriaInterativa />
-          </Reveal>
+          <Reveal delay={0.08}><GaleriaInterativa /></Reveal>
         </div>
       </section>
 
@@ -420,10 +498,8 @@ export default function KaweskarPage() {
         <div className="mx-auto grid max-w-[1280px] items-center gap-12 md:grid-cols-2 md:gap-16">
           <Reveal>
             <div className="relative h-[360px] overflow-hidden rounded-xl md:h-[460px]">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/skorpios/DSC_4317.JPG')" }}
-              />
+              <div className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: "url('/skorpios/DSC_4317.JPG')" }} />
             </div>
           </Reveal>
           <Reveal delay={0.1}>
@@ -437,14 +513,14 @@ export default function KaweskarPage() {
               </h2>
               <p className="mt-6 text-[15px] font-light leading-relaxed"
                 style={{ color: "rgba(7,35,48,0.7)" }}>
-                70 metros, 5 decks, até 92 hóspedes em 46 cabines. Todas com
-                banho privado, Smart TV e janelas abertas para o gelo. Comedor
+                70 metros, 5 decks, até 92 hóspedes em 46 cabines. Todas com banho
+                privado, Smart TV e janelas abertas para o gelo. Comedor
                 panorâmico, dois salões-bar e a Patagônia passando lá fora.
               </p>
               <p className="mt-4 text-[15px] font-light leading-relaxed"
                 style={{ color: "rgba(7,35,48,0.7)" }}>
-                Remodelado em 2025: a alma de um navio de expedição com o
-                conforto de um refúgio.
+                Remodelado em 2025: a alma de um navio de expedição com o conforto
+                de um refúgio.
               </p>
             </div>
           </Reveal>
@@ -463,21 +539,16 @@ export default function KaweskarPage() {
           </Reveal>
           <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed"
             style={{ color: "rgba(233,245,248,0.55)" }}>
-            O arco da expedição: ida e volta a Puerto Natales. O itinerário
-            detalhado a gente fecha com você.
+            Ida e volta a Puerto Natales em 5 dias. Zarpe às sextas ou sábados conforme o calendário.
           </p>
           <div className="mt-12">
             {ROTEIRO.map((r, i) => (
               <Reveal key={r.d} delay={i * 0.05}>
                 <div className="flex items-baseline gap-6 border-t py-6 md:gap-10"
                   style={{ borderColor: P.line }}>
-                  <span className="font-display text-sm" style={{ color: P.ice }}>
-                    {r.d}
-                  </span>
+                  <span className="font-display text-sm" style={{ color: P.ice }}>{r.d}</span>
                   <div>
-                    <h3 className="font-display text-xl font-light md:text-2xl">
-                      {r.t}
-                    </h3>
+                    <h3 className="font-display text-xl font-light md:text-2xl">{r.t}</h3>
                     <p className="mt-1 text-[14px] font-light"
                       style={{ color: "rgba(233,245,248,0.55)" }}>
                       {r.s}
@@ -490,19 +561,162 @@ export default function KaweskarPage() {
         </div>
       </section>
 
+      {/* ===== PRÓXIMAS SAÍDAS ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-28"
+        style={{ background: P.abyss, color: P.white }}>
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.32em]"
+              style={{ color: P.ice }}>
+              Próximas saídas
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="mt-4 font-display text-[clamp(1.6rem,3vw,2.4rem)] font-light">
+              Temporada 2026 / 2027
+            </h2>
+          </Reveal>
+          <div className="mt-10 grid gap-10 md:grid-cols-2">
+            {/* Temporada Baja */}
+            <Reveal delay={0.08}>
+              <div>
+                <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em]"
+                  style={{ color: P.steppe }}>
+                  Temporada Baja
+                </p>
+                <div className="space-y-3">
+                  {SAIDAS.baja.map((m) => (
+                    <div key={m.mes} className="flex items-center gap-4">
+                      <span className="w-24 shrink-0 text-[12px] font-medium"
+                        style={{ color: "rgba(233,245,248,0.5)" }}>
+                        {m.mes}
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        {m.dias.map((d) => (
+                          <span key={d}
+                            className="rounded-lg px-3 py-1 text-[12px] font-medium"
+                            style={{ background: P.fjord, color: P.ice }}>
+                            {String(d).padStart(2, "0")}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+            {/* Temporada Alta */}
+            <Reveal delay={0.12}>
+              <div>
+                <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.28em]"
+                  style={{ color: P.steppe }}>
+                  Temporada Alta
+                </p>
+                <div className="space-y-3">
+                  {SAIDAS.alta.map((m) => (
+                    <div key={m.mes} className="flex items-center gap-4">
+                      <span className="w-24 shrink-0 text-[12px] font-medium"
+                        style={{ color: "rgba(233,245,248,0.5)" }}>
+                        {m.mes}
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        {m.dias.map((d) => (
+                          <span key={d}
+                            className="rounded-lg px-3 py-1 text-[12px] font-medium"
+                            style={{ background: "#1a4a5e", color: P.white }}>
+                            {String(d).padStart(2, "0")}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={0.18}>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <a href="#contato"
+                className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]"
+                style={{ background: P.steppe, color: P.abyss }}>
+                Consultar disponibilidade <span>→</span>
+              </a>
+              <p className="text-[12px] font-light"
+                style={{ color: "rgba(233,245,248,0.38)" }}>
+                Valores variam por tipo de cabine · a partir de US$ 2.720 p.p.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== TARIFAS ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-28"
+        style={{ background: P.fjord, color: P.white }}>
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.32em]"
+              style={{ color: P.steppe }}>
+              Tarifas
+            </p>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="mt-4 font-display text-[clamp(1.6rem,3vw,2.4rem)] font-light">
+              Valores por cabine · temporada 2026/2027
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="mt-3 max-w-lg text-[13px] font-light leading-relaxed"
+              style={{ color: "rgba(233,245,248,0.5)" }}>
+              Preços por pessoa em ocupação dupla. Incluem todas as refeições a bordo, excursões e transfer aeroporto-navio.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="mt-10 overflow-hidden rounded-xl" style={{ border: `1px solid ${P.line}` }}>
+              {/* Cabeçalho */}
+              <div className="grid grid-cols-3 px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em]"
+                style={{ background: P.abyss, color: "rgba(233,245,248,0.45)" }}>
+                <span>Tipo de cabine</span>
+                <span className="text-center" style={{ color: P.ice }}>Temporada Baja</span>
+                <span className="text-center" style={{ color: "#c4a87a" }}>Temporada Alta</span>
+              </div>
+              {[
+                { tipo: "Doble Interior",  baja: "US$ 2.720",  alta: "US$ 3.360" },
+                { tipo: "Doble Exterior",  baja: "US$ 3.360",  alta: "US$ 4.160" },
+                { tipo: "Doble Deluxe",    baja: "US$ 4.160",  alta: "US$ 5.040" },
+                { tipo: "Suite",           baja: "US$ 5.520",  alta: "US$ 6.720" },
+              ].map((row, i) => (
+                <div key={row.tipo}
+                  className="grid grid-cols-3 items-center border-t px-6 py-5"
+                  style={{ borderColor: P.line, background: i % 2 === 0 ? P.fjord : P.abyss }}>
+                  <span className="text-[14px] font-light">{row.tipo}</span>
+                  <span className="text-center font-display text-lg font-light"
+                    style={{ color: P.ice }}>{row.baja}</span>
+                  <span className="text-center font-display text-lg font-light"
+                    style={{ color: P.steppe }}>{row.alta}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="mt-5 text-[12px] font-light"
+              style={{ color: "rgba(233,245,248,0.35)" }}>
+              Valores em USD por pessoa. Consulte disponibilidade e tarifas para cabine single.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===== AONIKIA ===== */}
-      <section className="px-6 py-20 md:px-10 md:py-24"
-        style={{ background: P.abyss }}>
+      <section className="px-6 py-20 md:px-10 md:py-24" style={{ background: P.fjord }}>
         <div className="mx-auto max-w-[860px] text-center">
           <Reveal>
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em]"
               style={{ color: P.ice }}>
               AonikIA · especialista neste cruzeiro
             </p>
-            <h2
-              className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.15]"
-              style={{ color: P.white }}
-            >
+            <h2 className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.15]"
+              style={{ color: P.white }}>
               Pergunte tudo sobre a Ruta Kawéskar
             </h2>
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed"
@@ -511,11 +725,9 @@ export default function KaweskarPage() {
               incluído. A AonikIA conhece este cruzeiro e te conecta com um
               especialista.
             </p>
-            <a
-              href="#contato"
+            <a href="#contato"
               className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300"
-              style={{ borderColor: P.ice, color: P.ice }}
-            >
+              style={{ borderColor: P.ice, color: P.ice }}>
               Conversar com a AonikIA <span>→</span>
             </a>
           </Reveal>
