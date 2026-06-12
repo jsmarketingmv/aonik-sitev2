@@ -228,6 +228,15 @@ const DECKS = [
   { name: "Deck Atenas",    sub: "Doble Interior",               n: 10, cor: "#2a7494", corDim: "rgba(42,116,148,0.16)"  },
 ];
 
+// ---------- MAPA DE CABINES (modal) ----------
+const CABIN_PLANS = [
+  { name: "Deck Athos",     tipo: "Suite",          cor: "#4a9e72", port: ["503","501"],                               star: ["504","502"],                               areas: ["Capitão","Puente de Mando"] },
+  { name: "Deck Olympo",    tipo: "Doble Deluxe",   cor: "#c8952d", port: ["411","409","407","405","403","401"],       star: ["412","410","408","406","404","402"],       areas: [] },
+  { name: "Deck Pártenon",  tipo: "Doble Exterior", cor: "#c07060", port: ["311","309","307","305","303","301"],       star: ["312","310","308","306","304","302"],       areas: ["Salon Zeus","Bar Apolo","Boutique"] },
+  { name: "Deck Acrópolis", tipo: "Doble Interior", cor: "#3f93b2", port: ["211","209","207","205","203","201"],       star: ["212","210","208","206","204","202"],       areas: ["Salon Comedor","Cocina"] },
+  { name: "Deck Atenas",    tipo: "Doble Interior", cor: "#2a7494", port: ["109","107","105","103"],                   star: ["112","110","108","106"],                   areas: ["Sala de Maquinas"] },
+];
+
 function ShipProfile({ active }: { active: number | null }) {
   const bands = [
     { x: 230, w: 240, y: 10,  h: 42 },
@@ -246,14 +255,6 @@ function ShipProfile({ active }: { active: number | null }) {
           style={{ opacity: active === null ? 0.28 : active === i ? 0.75 : 0.07, transition: "opacity 0.2s ease" }}
         />
       ))}
-      <polyline
-        points="230,10 230,54 120,54 120,100 40,100 40,146 18,146 18,232 658,232 658,192 680,192 680,146 682,146 682,100 660,100 660,54 480,54 480,10 230,10"
-        fill="none" stroke={P.ice} strokeWidth="1.2" opacity="0.3"
-      />
-      <path d="M658,232 Q690,232 700,210 L700,180 Q698,146 682,146"
-        fill="none" stroke={P.ice} strokeWidth="1.2" opacity="0.3" />
-      <path d="M18,232 Q8,232 4,218 L4,200 Q6,192 18,192"
-        fill="none" stroke={P.ice} strokeWidth="1.2" opacity="0.3" />
       <rect x="148" y="18" width="22" height="36" rx="3" fill={P.steppe} opacity="0.5" />
       <rect x="150" y="10" width="18" height="10" rx="2" fill={P.steppe} opacity="0.75" />
     </svg>
@@ -310,6 +311,7 @@ function ShipDecks() {
 }
 
 export default function KaweskarPage() {
+  const [showMap, setShowMap] = useState(false);
   return (
     <main className="relative" style={{ background: P.paper }}>
       <Nav />
@@ -592,81 +594,35 @@ export default function KaweskarPage() {
       {/* ===== O NAVIO ===== */}
       <section className="px-6 py-24 md:px-10 md:py-32"
         style={{ background: P.paper, color: P.abyss }}>
-        <div className="mx-auto max-w-[1280px]">
-
-          {/* Grid de fotos: navio grande + 2 cabines */}
+        <div className="mx-auto grid max-w-[1280px] items-center gap-12 md:grid-cols-2 md:gap-16">
           <Reveal>
-            <div className="grid grid-cols-3 gap-3 md:gap-4"
-              style={{ height: "clamp(260px, 36vw, 500px)" }}>
-              {/* Exterior do navio — 2 colunas */}
-              <div className="col-span-2 relative overflow-hidden rounded-2xl">
-                <div className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url('/skorpios/DSC_4317.JPG')" }} />
-                <div className="absolute bottom-0 left-0 right-0 h-20"
-                  style={{ background: `linear-gradient(to top, ${P.abyss}88, transparent)` }} />
-                <span className="absolute bottom-4 left-5 text-[10px] font-semibold uppercase tracking-[0.24em]"
-                  style={{ color: "rgba(233,245,248,0.6)" }}>MN Skorpios III</span>
-              </div>
-              {/* Coluna direita: 2 cabines */}
-              <div className="flex flex-col gap-3 md:gap-4">
-                <div className="flex-1 relative overflow-hidden rounded-2xl"
-                  style={{ background: P.fjord }}>
-                  <div className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/skorpios/cabin-twin.jpg')" }} />
-                  <div className="absolute inset-0 flex items-end p-3"
-                    style={{ background: "rgba(7,35,48,0.5)" }}>
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.2em]"
-                      style={{ color: P.ice }}>Doble Exterior</span>
-                  </div>
-                </div>
-                <div className="flex-1 relative overflow-hidden rounded-2xl"
-                  style={{ background: P.fjord }}>
-                  <div className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: "url('/skorpios/cabin-deluxe.jpg')" }} />
-                  <div className="absolute inset-0 flex items-end p-3"
-                    style={{ background: "rgba(7,35,48,0.5)" }}>
-                    <span className="text-[9px] font-semibold uppercase tracking-[0.2em]"
-                      style={{ color: P.steppe }}>Doble Deluxe</span>
-                  </div>
-                </div>
-              </div>
+            <div className="relative h-[360px] overflow-hidden rounded-xl md:h-[460px]">
+              <div className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: "url('/skorpios/DSC_4317.JPG')" }} />
             </div>
           </Reveal>
-
-          {/* Texto */}
-          <div className="mt-14 grid gap-8 md:grid-cols-2 md:gap-16">
-            <Reveal>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.32em]"
-                  style={{ color: P.iceDeep }}>Refúgio flutuante</p>
-                <h2 className="mt-5 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]">
-                  MN Skorpios III
-                </h2>
-                <p className="mt-6 text-[15px] font-light leading-relaxed"
-                  style={{ color: "rgba(7,35,48,0.7)" }}>
-                  70 metros, 5 decks, até 92 hóspedes em 46 cabines. Remodelado em
-                  2025 com a alma de uma expedição e o conforto de um refúgio boutique.
-                </p>
-              </div>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div>
-                <p className="text-[15px] font-light leading-relaxed"
-                  style={{ color: "rgba(7,35,48,0.7)" }}>
-                  Cada cabine tem banho privativo, Smart TV, música ambiente e janelas
-                  abertas para os canais patagônicos. As categorias vão do Doble
-                  Interior, íntimo e aconchegante no Deck Atenas, até as Suítes do
-                  Deck Athos com área de estar e vistas panorâmicas para o gelo.
-                </p>
-                <p className="mt-4 text-[15px] font-light leading-relaxed"
-                  style={{ color: "rgba(7,35,48,0.7)" }}>
-                  A bordo: comedor panorâmico no Deck Acrópolis, dois lounges-bar e
-                  passagem livre entre os cinco decks para contemplar a Patagônia
-                  sem intermediários.
-                </p>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal delay={0.1}>
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.32em]"
+                style={{ color: P.iceDeep }}>
+                Refúgio flutuante
+              </p>
+              <h2 className="mt-5 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]">
+                MN Skorpios III
+              </h2>
+              <p className="mt-6 text-[15px] font-light leading-relaxed"
+                style={{ color: "rgba(7,35,48,0.7)" }}>
+                70 metros, 5 decks, até 92 hóspedes em 46 cabines. Todas com banho
+                privado, Smart TV e janelas abertas para o gelo. Comedor
+                panorâmico, dois salões-bar e a Patagônia passando lá fora.
+              </p>
+              <p className="mt-4 text-[15px] font-light leading-relaxed"
+                style={{ color: "rgba(7,35,48,0.7)" }}>
+                Remodelado em 2025: a alma de um navio de expedição com o conforto
+                de um refúgio.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -689,10 +645,54 @@ export default function KaweskarPage() {
                   Interiores do Atenas, tudo pensado para dormir com a Patagônia
                   passando pela janela.
                 </p>
-                <p className="mt-5 text-[12px] italic"
-                  style={{ color: "rgba(233,245,248,0.3)" }}>
-                  Passe o cursor sobre cada deck para explorar.
-                </p>
+
+                {/* Fotos das cabines */}
+                <div className="mt-8 grid grid-cols-2 gap-3">
+                  <div className="relative overflow-hidden rounded-xl" style={{ aspectRatio: "4/3" }}>
+                    <img src="/skorpios/cabin-402.jpg" alt="Cabine 402"
+                      className="h-full w-full object-cover" />
+                    <div className="absolute bottom-0 left-0 right-0 px-3 py-2"
+                      style={{ background: "rgba(7,35,48,0.7)" }}>
+                      <span className="text-[9px] font-semibold uppercase tracking-[0.2em]"
+                        style={{ color: "#c8952d" }}>Doble Deluxe</span>
+                    </div>
+                  </div>
+                  <div className="relative overflow-hidden rounded-xl" style={{ aspectRatio: "4/3" }}>
+                    <img src="/skorpios/cabin-403.jpg" alt="Cabine 403"
+                      className="h-full w-full object-cover" />
+                    <div className="absolute bottom-0 left-0 right-0 px-3 py-2"
+                      style={{ background: "rgba(7,35,48,0.7)" }}>
+                      <span className="text-[9px] font-semibold uppercase tracking-[0.2em]"
+                        style={{ color: "#c07060" }}>Doble Exterior</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA: abrir mapa de cabines */}
+                <button
+                  onClick={() => setShowMap(true)}
+                  className="group mt-5 flex w-full items-center gap-4 rounded-xl px-4 py-3.5 text-left transition-all duration-300 hover:bg-white/5"
+                  style={{ border: `1px solid ${P.line}` }}
+                >
+                  <div className="shrink-0">
+                    <svg viewBox="0 0 44 28" className="h-6 w-11" fill="none">
+                      <path d="M5,22 L39,22 Q43,22 43,18 L43,13 Q43,10 40,10 L34,10 L31,6 L18,6 L15,10 L5,10 Q2,12 2,17 L2,20 Z"
+                        stroke={P.ice} strokeWidth="1.5" strokeLinejoin="round" opacity="0.75" />
+                      <rect x="28" y="6" width="7" height="10" rx="1.5"
+                        stroke={P.ice} strokeWidth="1" opacity="0.5" />
+                      <line x1="18" y1="10" x2="18" y2="4" stroke={P.ice} strokeWidth="1" opacity="0.45" />
+                      <line x1="23" y1="4" x2="23" y2="1" stroke={P.ice} strokeWidth="1" opacity="0.3" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.22em]"
+                      style={{ color: P.ice }}>Mapa de Cabines</p>
+                    <p className="mt-0.5 text-[12px] font-light"
+                      style={{ color: "rgba(233,245,248,0.38)" }}>Clique e conheça a planta com as numerações</p>
+                  </div>
+                  <span className="text-base font-light transition-transform duration-300 group-hover:translate-x-1"
+                    style={{ color: P.ice }}>→</span>
+                </button>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
@@ -908,6 +908,111 @@ export default function KaweskarPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* ===== MODAL: MAPA DE CABINES ===== */}
+      <AnimatePresence>
+        {showMap && (
+          <motion.div
+            key="cabin-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto px-4 py-10"
+            style={{ background: "rgba(7,35,48,0.92)", backdropFilter: "blur(8px)" }}
+            onClick={() => setShowMap(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 22, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 10, scale: 0.97 }}
+              transition={{ duration: 0.28, ease: EASE }}
+              className="relative w-full max-w-[700px] overflow-hidden rounded-2xl"
+              style={{ background: "#0b2d3e" }}
+              onClick={e => e.stopPropagation()}
+            >
+              {/* Cabeçalho fixo */}
+              <div className="sticky top-0 z-10 flex items-center justify-between px-7 py-5"
+                style={{ background: P.abyss, borderBottom: `1px solid ${P.line}` }}>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em]"
+                    style={{ color: P.steppe }}>Motonave Skorpios III</p>
+                  <h3 className="mt-1 font-display text-xl font-light" style={{ color: P.white }}>
+                    Plantas das Cabines
+                  </h3>
+                </div>
+                <button onClick={() => setShowMap(false)}
+                  className="flex h-9 w-9 items-center justify-center rounded-full text-xl font-light transition-opacity hover:opacity-60"
+                  style={{ color: P.ice, border: `1px solid ${P.line}` }}>
+                  ×
+                </button>
+              </div>
+
+              {/* Decks */}
+              <div className="space-y-3 p-5 pb-8">
+                {CABIN_PLANS.map((dp) => (
+                  <div key={dp.name} className="overflow-hidden rounded-xl"
+                    style={{ border: `1px solid ${dp.cor}28` }}>
+                    <div className="flex items-center justify-between px-5 py-3"
+                      style={{ background: `${dp.cor}18` }}>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.24em]"
+                        style={{ color: dp.cor }}>{dp.name}</span>
+                      <span className="text-[9px] italic font-light"
+                        style={{ color: `${dp.cor}99` }}>{dp.tipo}</span>
+                    </div>
+                    <div className="space-y-2 px-5 py-4">
+                      <div className="flex items-center gap-2">
+                        <span className="w-8 shrink-0 text-right text-[8px] font-semibold uppercase tracking-[0.18em]"
+                          style={{ color: "rgba(233,245,248,0.22)" }}>Bab.</span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {dp.port.map(n => (
+                            <div key={n}
+                              className="flex h-7 min-w-[2.4rem] items-center justify-center rounded px-1.5 text-[11px] font-semibold"
+                              style={{ background: `${dp.cor}22`, color: dp.cor, border: `1px solid ${dp.cor}45` }}>
+                              {n}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-8 shrink-0 text-right text-[8px] font-semibold uppercase tracking-[0.18em]"
+                          style={{ color: "rgba(233,245,248,0.22)" }}>Est.</span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {dp.star.map(n => (
+                            <div key={n}
+                              className="flex h-7 min-w-[2.4rem] items-center justify-center rounded px-1.5 text-[11px] font-medium"
+                              style={{ background: `${dp.cor}12`, color: `${dp.cor}cc`, border: `1px solid ${dp.cor}30` }}>
+                              {n}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      {dp.areas.length > 0 && (
+                        <div className="flex items-center gap-2">
+                          <span className="w-8 shrink-0" />
+                          <div className="flex flex-wrap gap-1.5">
+                            {dp.areas.map(a => (
+                              <div key={a}
+                                className="flex h-7 items-center justify-center rounded px-3 text-[9px] uppercase tracking-wide"
+                                style={{ background: "rgba(233,245,248,0.04)", color: "rgba(233,245,248,0.32)", border: "1px solid rgba(233,245,248,0.1)" }}>
+                                {a}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+                <p className="pt-2 text-center text-[10px]"
+                  style={{ color: "rgba(233,245,248,0.18)" }}>
+                  Bab. = Babor · Est. = Estibordo · 46 cabines · 92 hóspedes
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Contato />
       <Footer />
