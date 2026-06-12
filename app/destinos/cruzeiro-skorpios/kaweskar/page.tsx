@@ -312,6 +312,8 @@ function ShipDecks() {
 
 export default function KaweskarPage() {
   const [showMap, setShowMap] = useState(false);
+  const [mapTab, setMapTab] = useState<"planta" | "lista">("planta");
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
   return (
     <main className="relative" style={{ background: P.paper }}>
       <Nav />
@@ -646,26 +648,35 @@ export default function KaweskarPage() {
                   passando pela janela.
                 </p>
 
-                {/* Fotos das cabines */}
+                {/* Fotos das cabines — lightbox */}
                 <div className="mt-8 grid grid-cols-2 gap-3">
-                  <div className="relative overflow-hidden rounded-xl" style={{ aspectRatio: "4/3" }}>
-                    <img src="/skorpios/cabin-402.jpg" alt="Cabine 402"
-                      className="h-full w-full object-cover" />
-                    <div className="absolute bottom-0 left-0 right-0 px-3 py-2"
-                      style={{ background: "rgba(7,35,48,0.7)" }}>
-                      <span className="text-[9px] font-semibold uppercase tracking-[0.2em]"
-                        style={{ color: "#c8952d" }}>Doble Deluxe</span>
-                    </div>
-                  </div>
-                  <div className="relative overflow-hidden rounded-xl" style={{ aspectRatio: "4/3" }}>
-                    <img src="/skorpios/cabin-403.jpg" alt="Cabine 403"
-                      className="h-full w-full object-cover" />
-                    <div className="absolute bottom-0 left-0 right-0 px-3 py-2"
-                      style={{ background: "rgba(7,35,48,0.7)" }}>
-                      <span className="text-[9px] font-semibold uppercase tracking-[0.2em]"
-                        style={{ color: "#c07060" }}>Doble Exterior</span>
-                    </div>
-                  </div>
+                  {[
+                    { src: "/skorpios/cabin-402.jpg", label: "Doble Deluxe",   cor: "#c8952d", alt: "Cabine 402" },
+                    { src: "/skorpios/cabin-403.jpg", label: "Doble Exterior", cor: "#c07060", alt: "Cabine 403" },
+                  ].map((c) => (
+                    <button key={c.src} onClick={() => setLightboxSrc(c.src)}
+                      className="group relative overflow-hidden rounded-xl cursor-zoom-in"
+                      style={{ aspectRatio: "4/3" }}>
+                      <img src={c.src} alt={c.alt}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        style={{ background: "rgba(7,35,48,0.28)" }} />
+                      <div className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        style={{ background: "rgba(7,35,48,0.72)", border: `1px solid ${P.line}` }}>
+                        <svg viewBox="0 0 12 12" className="h-3 w-3" fill="none">
+                          <circle cx="5" cy="5" r="3.2" stroke={P.ice} strokeWidth="1" />
+                          <line x1="7.2" y1="7.2" x2="10.5" y2="10.5" stroke={P.ice} strokeWidth="1.2" strokeLinecap="round" />
+                          <line x1="3.5" y1="5" x2="6.5" y2="5" stroke={P.ice} strokeWidth="1" strokeLinecap="round" />
+                          <line x1="5" y1="3.5" x2="5" y2="6.5" stroke={P.ice} strokeWidth="1" strokeLinecap="round" />
+                        </svg>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 px-3 py-2"
+                        style={{ background: "rgba(7,35,48,0.7)" }}>
+                        <span className="text-[9px] font-semibold uppercase tracking-[0.2em]"
+                          style={{ color: c.cor }}>{c.label}</span>
+                      </div>
+                    </button>
+                  ))}
                 </div>
 
                 {/* CTA: abrir mapa de cabines */}
@@ -927,88 +938,147 @@ export default function KaweskarPage() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.97 }}
               transition={{ duration: 0.28, ease: EASE }}
-              className="relative w-full max-w-[700px] overflow-hidden rounded-2xl"
+              className="relative w-full max-w-[820px] overflow-hidden rounded-2xl"
               style={{ background: "#0b2d3e" }}
               onClick={e => e.stopPropagation()}
             >
-              {/* Cabeçalho fixo */}
-              <div className="sticky top-0 z-10 flex items-center justify-between px-7 py-5"
+              {/* Cabeçalho fixo com tabs */}
+              <div className="sticky top-0 z-10 px-7 pb-0 pt-5"
                 style={{ background: P.abyss, borderBottom: `1px solid ${P.line}` }}>
-                <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.3em]"
-                    style={{ color: P.steppe }}>Motonave Skorpios III</p>
-                  <h3 className="mt-1 font-display text-xl font-light" style={{ color: P.white }}>
-                    Plantas das Cabines
-                  </h3>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.3em]"
+                      style={{ color: P.steppe }}>Motonave Skorpios III</p>
+                    <h3 className="mt-1 font-display text-xl font-light" style={{ color: P.white }}>
+                      Mapa de Cabines
+                    </h3>
+                  </div>
+                  <button onClick={() => setShowMap(false)}
+                    className="flex h-9 w-9 items-center justify-center rounded-full text-xl font-light transition-opacity hover:opacity-60"
+                    style={{ color: P.ice, border: `1px solid ${P.line}` }}>
+                    ×
+                  </button>
                 </div>
-                <button onClick={() => setShowMap(false)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-xl font-light transition-opacity hover:opacity-60"
-                  style={{ color: P.ice, border: `1px solid ${P.line}` }}>
-                  ×
-                </button>
+                {/* Tabs */}
+                <div className="mt-4 flex gap-1">
+                  {(["planta", "lista"] as const).map((tab) => (
+                    <button key={tab} onClick={() => setMapTab(tab)}
+                      className="rounded-t-lg px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] transition-all duration-200"
+                      style={{
+                        background: mapTab === tab ? "#0b2d3e" : "transparent",
+                        color: mapTab === tab ? P.ice : "rgba(233,245,248,0.35)",
+                        borderTop: mapTab === tab ? `1px solid ${P.line}` : "none",
+                        borderLeft: mapTab === tab ? `1px solid ${P.line}` : "none",
+                        borderRight: mapTab === tab ? `1px solid ${P.line}` : "none",
+                      }}>
+                      {tab === "planta" ? "Planta" : "Por Deck"}
+                    </button>
+                  ))}
+                </div>
               </div>
 
-              {/* Decks */}
-              <div className="space-y-3 p-5 pb-8">
-                {CABIN_PLANS.map((dp) => (
-                  <div key={dp.name} className="overflow-hidden rounded-xl"
-                    style={{ border: `1px solid ${dp.cor}28` }}>
-                    <div className="flex items-center justify-between px-5 py-3"
-                      style={{ background: `${dp.cor}18` }}>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.24em]"
-                        style={{ color: dp.cor }}>{dp.name}</span>
-                      <span className="text-[9px] italic font-light"
-                        style={{ color: `${dp.cor}99` }}>{dp.tipo}</span>
+              {/* PLANTA: imagem real do navio */}
+              {mapTab === "planta" && (
+                <div className="p-5 pb-8">
+                  {/* Legenda de cores */}
+                  <div className="mb-4 flex flex-wrap gap-1.5">
+                    {CABIN_PLANS.map(dp => (
+                      <span key={dp.name}
+                        className="rounded-full px-3 py-1 text-[8.5px] font-semibold uppercase tracking-[0.18em]"
+                        style={{ background: `${dp.cor}18`, color: dp.cor, border: `1px solid ${dp.cor}35` }}>
+                        {dp.name} · {dp.tipo}
+                      </span>
+                    ))}
+                  </div>
+                  {/* PNG da planta — clicável para lightbox */}
+                  <button
+                    onClick={() => setLightboxSrc("/skorpios/cabin-plan.png")}
+                    className="group relative w-full overflow-hidden rounded-xl cursor-zoom-in"
+                    style={{ background: "#f3f0ea" }}
+                  >
+                    <img
+                      src="/skorpios/cabin-plan.png"
+                      alt="Planta das Cabines MN Skorpios III"
+                      className="w-full transition-transform duration-500 group-hover:scale-[1.01]"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      style={{ background: "rgba(7,35,48,0.12)" }}>
+                      <div className="flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.18em]"
+                        style={{ background: P.abyss, color: P.ice, border: `1px solid ${P.line}` }}>
+                        Ver em tela cheia ↗
+                      </div>
                     </div>
-                    <div className="space-y-2 px-5 py-4">
-                      <div className="flex items-center gap-2">
-                        <span className="w-8 shrink-0 text-right text-[8px] font-semibold uppercase tracking-[0.18em]"
-                          style={{ color: "rgba(233,245,248,0.22)" }}>Bab.</span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {dp.port.map(n => (
-                            <div key={n}
-                              className="flex h-7 min-w-[2.4rem] items-center justify-center rounded px-1.5 text-[11px] font-semibold"
-                              style={{ background: `${dp.cor}22`, color: dp.cor, border: `1px solid ${dp.cor}45` }}>
-                              {n}
-                            </div>
-                          ))}
-                        </div>
+                  </button>
+                  <p className="mt-3 text-center text-[10px]"
+                    style={{ color: "rgba(233,245,248,0.2)" }}>
+                    Clique para ampliar · 46 cabines · 5 decks · 92 hóspedes
+                  </p>
+                </div>
+              )}
+
+              {/* LISTA: por deck com numeração */}
+              {mapTab === "lista" && (
+                <div className="space-y-3 p-5 pb-8">
+                  {CABIN_PLANS.map((dp) => (
+                    <div key={dp.name} className="overflow-hidden rounded-xl"
+                      style={{ border: `1px solid ${dp.cor}28` }}>
+                      <div className="flex items-center justify-between px-5 py-3"
+                        style={{ background: `${dp.cor}18` }}>
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.24em]"
+                          style={{ color: dp.cor }}>{dp.name}</span>
+                        <span className="text-[9px] italic font-light"
+                          style={{ color: `${dp.cor}99` }}>{dp.tipo}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="w-8 shrink-0 text-right text-[8px] font-semibold uppercase tracking-[0.18em]"
-                          style={{ color: "rgba(233,245,248,0.22)" }}>Est.</span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {dp.star.map(n => (
-                            <div key={n}
-                              className="flex h-7 min-w-[2.4rem] items-center justify-center rounded px-1.5 text-[11px] font-medium"
-                              style={{ background: `${dp.cor}12`, color: `${dp.cor}cc`, border: `1px solid ${dp.cor}30` }}>
-                              {n}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      {dp.areas.length > 0 && (
+                      <div className="space-y-2 px-5 py-4">
                         <div className="flex items-center gap-2">
-                          <span className="w-8 shrink-0" />
+                          <span className="w-8 shrink-0 text-right text-[8px] font-semibold uppercase tracking-[0.18em]"
+                            style={{ color: "rgba(233,245,248,0.22)" }}>Bab.</span>
                           <div className="flex flex-wrap gap-1.5">
-                            {dp.areas.map(a => (
-                              <div key={a}
-                                className="flex h-7 items-center justify-center rounded px-3 text-[9px] uppercase tracking-wide"
-                                style={{ background: "rgba(233,245,248,0.04)", color: "rgba(233,245,248,0.32)", border: "1px solid rgba(233,245,248,0.1)" }}>
-                                {a}
+                            {dp.port.map(n => (
+                              <div key={n}
+                                className="flex h-7 min-w-[2.4rem] items-center justify-center rounded px-1.5 text-[11px] font-semibold"
+                                style={{ background: `${dp.cor}22`, color: dp.cor, border: `1px solid ${dp.cor}45` }}>
+                                {n}
                               </div>
                             ))}
                           </div>
                         </div>
-                      )}
+                        <div className="flex items-center gap-2">
+                          <span className="w-8 shrink-0 text-right text-[8px] font-semibold uppercase tracking-[0.18em]"
+                            style={{ color: "rgba(233,245,248,0.22)" }}>Est.</span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {dp.star.map(n => (
+                              <div key={n}
+                                className="flex h-7 min-w-[2.4rem] items-center justify-center rounded px-1.5 text-[11px] font-medium"
+                                style={{ background: `${dp.cor}12`, color: `${dp.cor}cc`, border: `1px solid ${dp.cor}30` }}>
+                                {n}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        {dp.areas.length > 0 && (
+                          <div className="flex items-center gap-2">
+                            <span className="w-8 shrink-0" />
+                            <div className="flex flex-wrap gap-1.5">
+                              {dp.areas.map(a => (
+                                <div key={a}
+                                  className="flex h-7 items-center justify-center rounded px-3 text-[9px] uppercase tracking-wide"
+                                  style={{ background: "rgba(233,245,248,0.04)", color: "rgba(233,245,248,0.32)", border: "1px solid rgba(233,245,248,0.1)" }}>
+                                  {a}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
-                <p className="pt-2 text-center text-[10px]"
-                  style={{ color: "rgba(233,245,248,0.18)" }}>
-                  Bab. = Babor · Est. = Estibordo · 46 cabines · 92 hóspedes
-                </p>
-              </div>
+                  ))}
+                  <p className="pt-2 text-center text-[10px]"
+                    style={{ color: "rgba(233,245,248,0.18)" }}>
+                    Bab. = Babor · Est. = Estibordo · 46 cabines · 92 hóspedes
+                  </p>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -1017,6 +1087,49 @@ export default function KaweskarPage() {
       <Contato />
       <Footer />
       <FloatingActions />
+
+      {/* ===== LIGHTBOX ===== */}
+      <AnimatePresence>
+        {lightboxSrc && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-10"
+            style={{ background: "rgba(7,35,48,0.97)", backdropFilter: "blur(18px)" }}
+            onClick={() => setLightboxSrc(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.25, ease: EASE }}
+              className="relative"
+              onClick={e => e.stopPropagation()}
+            >
+              <img
+                src={lightboxSrc}
+                alt="Visualização"
+                className="max-h-[88vh] max-w-[92vw] rounded-xl object-contain"
+                style={{ boxShadow: "0 40px 100px rgba(0,0,0,0.6)" }}
+              />
+              <button
+                onClick={() => setLightboxSrc(null)}
+                className="absolute -right-3 -top-3 flex h-9 w-9 items-center justify-center rounded-full text-lg transition-opacity hover:opacity-60"
+                style={{ background: P.fjord, color: P.ice, border: `1px solid ${P.line}` }}
+              >
+                ×
+              </button>
+              <p className="mt-4 text-center text-[10px] font-light"
+                style={{ color: "rgba(233,245,248,0.28)" }}>
+                Clique fora para fechar
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
