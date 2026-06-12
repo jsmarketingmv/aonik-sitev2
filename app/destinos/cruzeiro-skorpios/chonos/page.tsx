@@ -25,28 +25,29 @@ const C = {
 };
 
 // ---------- MAPA DOS ARQUIPÉLAGOS ----------
+// Ordem geográfica correta: Montt → Quemchi/Dalcahue → Islote Conejos → Puerto Aguirre → Quitralco → San Rafael
 const CHONOS_PATH =
-  "M210,48 Q120,90 130,145 Q140,195 95,245 Q70,290 65,335 Q55,375 185,415 Q280,450 260,508";
+  "M220,48 Q110,85 115,145 Q120,195 72,255 Q58,298 90,335 Q130,368 210,375 Q252,400 252,415 Q256,458 246,510";
 const CHONOS_STOPS = [
-  { x: 210, y: 48,  label: "Puerto Montt",       kind: "ship"    },
-  { x: 130, y: 145, label: "Quemchi / Dalcahue", kind: "island"  },
-  { x: 95,  y: 245, label: "Puerto Aguirre",     kind: "village" },
-  { x: 65,  y: 335, label: "Islotes Conejos",    kind: "fauna"   },
-  { x: 185, y: 415, label: "Fiordo Quitralco",   kind: "glacier" },
-  { x: 260, y: 508, label: "Glaciar San Rafael", kind: "glacier" },
+  { x: 220, y: 48,  label: "Puerto Montt",       kind: "ship"    },
+  { x: 115, y: 145, label: "Quemchi / Dalcahue", kind: "island"  },
+  { x: 72,  y: 255, label: "Islote Conejos",     kind: "fauna"   },
+  { x: 210, y: 375, label: "Puerto Aguirre",     kind: "village" },
+  { x: 252, y: 415, label: "Quitralco",          kind: "glacier" },
+  { x: 246, y: 510, label: "Glaciar San Rafael", kind: "glacier" },
 ];
 const CHONOS_ISLANDS = [
-  { cx: 80,  cy: 80,  rx: 30, ry: 14 },
-  { cx: 240, cy: 130, rx: 26, ry: 12 },
-  { cx: 155, cy: 200, rx: 22, ry: 10 },
-  { cx: 55,  cy: 290, rx: 18, ry: 9  },
-  { cx: 290, cy: 350, rx: 24, ry: 11 },
-  { cx: 130, cy: 460, rx: 28, ry: 13 },
+  { cx: 82,  cy: 82,  rx: 34, ry: 16 },
+  { cx: 248, cy: 128, rx: 28, ry: 13 },
+  { cx: 148, cy: 205, rx: 24, ry: 11 },
+  { cx: 52,  cy: 298, rx: 20, ry: 9  },
+  { cx: 288, cy: 385, rx: 26, ry: 12 },
+  { cx: 135, cy: 468, rx: 30, ry: 14 },
 ];
 
 function ChonorMap() {
   return (
-    <svg viewBox="-30 20 420 540" className="h-full w-full">
+    <svg viewBox="-130 10 580 560" className="h-full w-full">
       {CHONOS_ISLANDS.map((is, i) => (
         <ellipse key={i} cx={is.cx} cy={is.cy} rx={is.rx} ry={is.ry}
           fill={C.bosco} opacity="0.7" />
@@ -213,19 +214,6 @@ export default function ChonosPage() {
     <main className="relative" style={{ background: C.creme }}>
       <Nav />
 
-      {/* BREADCRUMB — pt-20 para não sobrepor Nav fixo */}
-      <div
-        className="relative z-20 flex items-center gap-2 px-6 pt-20 pb-3 text-[11px] font-medium uppercase tracking-[0.18em] md:px-10"
-        style={{ background: C.selva, color: "rgba(212,230,224,0.45)" }}
-      >
-        <a href="/destinos/cruzeiro-skorpios"
-          className="transition-colors hover:text-[#3aab8a]">
-          Cruzeiros Skorpios
-        </a>
-        <span>/</span>
-        <span style={{ color: C.esm }}>Ruta Chonos</span>
-      </div>
-
       {/* ===== HERO ===== */}
       <section
         className="relative flex min-h-[100svh] w-full items-center overflow-hidden"
@@ -281,6 +269,20 @@ export default function ChonosPage() {
                 style={{ color: "rgba(212,230,224,0.5)" }}>
                 sob consulta
               </span>
+            </motion.div>
+            {/* Breadcrumb abaixo do CTA */}
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, ease: EASE, delay: 0.85 }}
+              className="mt-6 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em]"
+              style={{ color: "rgba(212,230,224,0.32)" }}
+            >
+              <a href="/destinos/cruzeiro-skorpios"
+                className="transition-colors hover:text-[#3aab8a]">
+                Cruzeiros Skorpios
+              </a>
+              <span>/</span>
+              <span style={{ color: C.esm }}>Ruta Chonos</span>
             </motion.div>
           </div>
 
