@@ -929,7 +929,7 @@ export default function KaweskarPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22 }}
-            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto px-4 py-10"
+            className="fixed inset-0 z-50 flex items-center justify-center px-4 py-6"
             style={{ background: "rgba(7,35,48,0.92)", backdropFilter: "blur(8px)" }}
             onClick={() => setShowMap(false)}
           >
@@ -938,8 +938,8 @@ export default function KaweskarPage() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.97 }}
               transition={{ duration: 0.28, ease: EASE }}
-              className="relative w-full max-w-[820px] overflow-hidden rounded-2xl"
-              style={{ background: "#0b2d3e" }}
+              className="relative flex w-full max-w-[680px] flex-col overflow-hidden rounded-2xl"
+              style={{ background: "#0b2d3e", maxHeight: "80vh" }}
               onClick={e => e.stopPropagation()}
             >
               {/* Cabeçalho fixo com tabs */}
@@ -979,7 +979,7 @@ export default function KaweskarPage() {
 
               {/* PLANTA: imagem real do navio */}
               {mapTab === "planta" && (
-                <div className="p-5 pb-8">
+                <div className="flex-1 overflow-y-auto p-5 pb-8">
                   {/* Legenda de cores */}
                   <div className="mb-4 flex flex-wrap gap-1.5">
                     {CABIN_PLANS.map(dp => (
@@ -1018,7 +1018,7 @@ export default function KaweskarPage() {
 
               {/* LISTA: por deck com numeração */}
               {mapTab === "lista" && (
-                <div className="space-y-3 p-5 pb-8">
+                <div className="flex-1 space-y-3 overflow-y-auto p-5 pb-8">
                   {CABIN_PLANS.map((dp) => (
                     <div key={dp.name} className="overflow-hidden rounded-xl"
                       style={{ border: `1px solid ${dp.cor}28` }}>
