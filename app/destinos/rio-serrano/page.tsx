@@ -184,44 +184,69 @@ function GaleriaInterativa() {
 }
 
 /* ===== TARIFAS COM MARGEM APLICADA ===== */
-/* Cálculo: (tarifa - 20%) / 0.70 */
-const TARIFAS = {
-  baixa: {
-    periodo: "10 Set a 10 Out 2026 · 1 a 2 Mai 2027",
-    superior: { single: 1069, doble: 1611 },
-    standard: { single: 949, doble: 1463 },
-    classic: { single: 891, doble: 1394 },
-    adicional: 606,
-    crianca: 389,
+/* Fonte: PDF Rio Serrano 2026-2027. Cálculo: (tarifa - 20%) / 0.70. Valores por quarto. */
+const PERIODOS = {
+  baixa: "10 Set a 10 Out 2026 · 1 a 2 Mai 2027",
+  media: "11 Out a 31 Out 2026 · 1 a 30 Abr 2027",
+  alta: "1 Nov a 22 Dez 2026 · 7 Jan a 31 Mar 2027",
+  finalAno: "23 Dez 2026 a 6 Jan 2027 · mínimo 2 noites",
+};
+
+type Tarifa = {
+  superior: { single: number; doble: number };
+  standard: { single: number; doble: number };
+  classic: { single: number; doble: number };
+  adicional: number;
+  crianca: number;
+};
+
+const PROGRAMAS_TARIFA = {
+  allInclusive: {
+    label: "All Inclusive",
+    desc: "Tudo incluído: refeições, open bar, excursões guiadas e transfers.",
+    seasons: {
+      baixa: { superior: { single: 1069, doble: 1611 }, standard: { single: 949, doble: 1463 }, classic: { single: 891, doble: 1394 }, adicional: 606, crianca: 389 },
+      media: { superior: { single: 1389, doble: 2091 }, standard: { single: 1240, doble: 1886 }, classic: { single: 1171, doble: 1806 }, adicional: 783, crianca: 537 },
+      alta: { superior: { single: 1783, doble: 2686 }, standard: { single: 1583, doble: 2446 }, classic: { single: 1491, doble: 2331 }, adicional: 1006, crianca: 600 },
+      finalAno: { superior: { single: 2411, doble: 3531 }, standard: { single: 2017, doble: 3029 }, classic: { single: 1903, doble: 2891 }, adicional: 1326, crianca: 697 },
+    } as Record<string, Tarifa>,
   },
-  media: {
-    periodo: "11 Out a 31 Out 2026 · 1 a 30 Abr 2027",
-    superior: { single: 1389, doble: 2091 },
-    standard: { single: 1240, doble: 1886 },
-    classic: { single: 1171, doble: 1806 },
-    adicional: 783,
-    crianca: 537,
+  fullBoard: {
+    label: "Full Board",
+    desc: "Pensão completa: café, almoço e jantar com bebidas. Excursões à parte.",
+    seasons: {
+      baixa: { superior: { single: 589, doble: 771 }, standard: { single: 531, doble: 703 }, classic: { single: 503, doble: 669 }, adicional: 331, crianca: 234 },
+      media: { superior: { single: 869, doble: 1171 }, standard: { single: 783, doble: 1063 }, classic: { single: 731, doble: 1011 }, adicional: 434, crianca: 297 },
+      alta: { superior: { single: 983, doble: 1286 }, standard: { single: 886, doble: 1171 }, classic: { single: 834, doble: 1114 }, adicional: 543, crianca: 394 },
+      finalAno: { superior: { single: 1474, doble: 1966 }, standard: { single: 1314, doble: 1709 }, classic: { single: 1217, doble: 1531 }, adicional: 726, crianca: 537 },
+    } as Record<string, Tarifa>,
   },
-  alta: {
-    periodo: "1 Nov a 22 Dez 2026 · 7 Jan a 31 Mar 2027",
-    superior: { single: 1783, doble: 2686 },
-    standard: { single: 1583, doble: 2446 },
-    classic: { single: 1491, doble: 2331 },
-    adicional: 1006,
-    crianca: 600,
-  },
-  finalAno: {
-    periodo: "23 Dez 2026 a 6 Jan 2027 · mínimo 2 noites",
-    superior: { single: 2411, doble: 3531 },
-    standard: { single: 1994, doble: 3086 },
-    classic: { single: 1879, doble: 2943 },
-    adicional: 1269,
-    crianca: 600,
+  bedBreakfast: {
+    label: "Bed & Breakfast",
+    desc: "Café da manhã buffet. Liberdade total para explorar. Sem Final de Ano.",
+    seasons: {
+      baixa: { superior: { single: 400, doble: 463 }, standard: { single: 337, doble: 389 }, classic: { single: 309, doble: 354 }, adicional: 103, crianca: 103 },
+      media: { superior: { single: 503, doble: 583 }, standard: { single: 417, doble: 474 }, classic: { single: 383, doble: 440 }, adicional: 137, crianca: 137 },
+      alta: { superior: { single: 669, doble: 766 }, standard: { single: 560, doble: 646 }, classic: { single: 514, doble: 594 }, adicional: 177, crianca: 177 },
+    } as Record<string, Tarifa>,
   },
 };
 
+type ProgramaKey = keyof typeof PROGRAMAS_TARIFA;
+type SeasonKey = "baixa" | "media" | "alta" | "finalAno";
+
 export default function RioSerranoPage() {
-  const [selectedSeason, setSelectedSeason] = useState<"baixa" | "media" | "alta" | "finalAno">("baixa");
+  const [programa, setPrograma] = useState<ProgramaKey>("allInclusive");
+  const [selectedSeason, setSelectedSeason] = useState<SeasonKey>("baixa");
+
+  const seasonsDisponiveis = PROGRAMAS_TARIFA[programa].seasons;
+  const seasonAtiva: SeasonKey = seasonsDisponiveis[selectedSeason] ? selectedSeason : "baixa";
+  const tarifaAtual = seasonsDisponiveis[seasonAtiva];
+
+  function trocarPrograma(p: ProgramaKey) {
+    setPrograma(p);
+    if (!PROGRAMAS_TARIFA[p].seasons[selectedSeason]) setSelectedSeason("baixa");
+  }
   const heroRef = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
@@ -281,7 +306,7 @@ export default function RioSerranoPage() {
                 <span className="text-[12px] uppercase tracking-[0.16em]" style={{ color: "rgba(243,239,230,0.5)" }}>
                   a partir de
                 </span>{" "}
-                <span className="font-display text-2xl">US$ 891 / noite</span>
+                <span className="font-display text-2xl">US$ 309 / noite</span>
               </span>
               <a
                 href="#contato"
@@ -564,32 +589,68 @@ export default function RioSerranoPage() {
               Valores por quarto
             </p>
             <h2 className="mt-5 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]" style={{ color: R.cream }}>
-              Tarifas 2026/2027 · All Inclusive
+              Tarifas 2026/2027
             </h2>
             <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed" style={{ color: "rgba(243,239,230,0.55)" }}>
-              Preços por pessoa em USD. Incluem todas as refeições a bordo, excursões guiadas e transfer aeroporto.
+              Escolha o programa e a temporada. Valores por quarto em USD.
             </p>
           </Reveal>
 
-          {/* Selector de temporada */}
-          <div className="mt-10 flex flex-wrap gap-3">
-            {(["baixa", "media", "alta", "finalAno"] as const).map((season) => (
-              <button
-                key={season}
-                onClick={() => setSelectedSeason(season)}
-                className="rounded-full px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300"
-                style={{
-                  background: selectedSeason === season ? R.amber : "transparent",
-                  color: selectedSeason === season ? R.night : "rgba(243,239,230,0.7)",
-                  border: `1px solid ${selectedSeason === season ? R.amber : "rgba(243,239,230,0.2)"}`,
-                }}
-              >
-                {season === "baixa" && "Temporada Baixa"}
-                {season === "media" && "Temporada Média"}
-                {season === "alta" && "Temporada Alta"}
-                {season === "finalAno" && "Final de Ano"}
-              </button>
-            ))}
+          {/* Seletor de PROGRAMA (segmented) */}
+          <div className="mt-9">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.28em]" style={{ color: "rgba(243,239,230,0.4)" }}>
+              Programa
+            </p>
+            <div className="inline-flex flex-wrap gap-1.5 rounded-full p-1.5" style={{ background: "rgba(243,239,230,0.05)", border: `1px solid ${R.line}` }}>
+              {(Object.keys(PROGRAMAS_TARIFA) as ProgramaKey[]).map((p) => (
+                <button
+                  key={p}
+                  onClick={() => trocarPrograma(p)}
+                  className="rounded-full px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.14em] transition-all duration-300"
+                  style={{
+                    background: programa === p ? R.amber : "transparent",
+                    color: programa === p ? R.night : "rgba(243,239,230,0.7)",
+                  }}
+                >
+                  {PROGRAMAS_TARIFA[p].label}
+                </button>
+              ))}
+            </div>
+            <p className="mt-3 text-[13px] font-light" style={{ color: "rgba(243,239,230,0.55)" }}>
+              {PROGRAMAS_TARIFA[programa].desc}
+            </p>
+          </div>
+
+          {/* Seletor de TEMPORADA */}
+          <div className="mt-7">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.28em]" style={{ color: "rgba(243,239,230,0.4)" }}>
+              Temporada
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {(["baixa", "media", "alta", "finalAno"] as SeasonKey[]).map((season) => {
+                const disponivel = !!seasonsDisponiveis[season];
+                const ativo = seasonAtiva === season;
+                return (
+                  <button
+                    key={season}
+                    onClick={() => disponivel && setSelectedSeason(season)}
+                    disabled={!disponivel}
+                    className="rounded-full px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300"
+                    style={{
+                      background: ativo ? R.amber : "transparent",
+                      color: ativo ? R.night : disponivel ? "rgba(243,239,230,0.7)" : "rgba(243,239,230,0.25)",
+                      border: `1px solid ${ativo ? R.amber : "rgba(243,239,230,0.2)"}`,
+                      cursor: disponivel ? "pointer" : "not-allowed",
+                    }}
+                  >
+                    {season === "baixa" && "Temporada Baixa"}
+                    {season === "media" && "Temporada Média"}
+                    {season === "alta" && "Temporada Alta"}
+                    {season === "finalAno" && "Final de Ano"}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Tabela */}
@@ -610,7 +671,7 @@ export default function RioSerranoPage() {
               </thead>
               <tbody>
                 {(["superior", "standard", "classic"] as const).map((tipo) => {
-                  const values = TARIFAS[selectedSeason][tipo];
+                  const values = tarifaAtual[tipo];
                   return (
                     <tr key={tipo} style={{ borderTop: `1px solid ${R.line}` }}>
                       <td className="px-6 py-5 font-display text-base capitalize">{tipo}</td>
@@ -621,18 +682,18 @@ export default function RioSerranoPage() {
                 })}
                 <tr style={{ borderTop: `1px solid ${R.line}` }}>
                   <td className="px-6 py-5 text-[14px]" style={{ color: "rgba(243,239,230,0.75)" }}>Acompanhante Adicional</td>
-                  <td colSpan={2} className="px-6 py-5 text-center">US$ {TARIFAS[selectedSeason].adicional.toLocaleString("pt-BR")}</td>
+                  <td colSpan={2} className="px-6 py-5 text-center">US$ {tarifaAtual.adicional.toLocaleString("pt-BR")}</td>
                 </tr>
                 <tr style={{ borderTop: `1px solid ${R.line}` }}>
                   <td className="px-6 py-5 text-[14px]" style={{ color: "rgba(243,239,230,0.75)" }}>Criança</td>
-                  <td colSpan={2} className="px-6 py-5 text-center">US$ {TARIFAS[selectedSeason].crianca.toLocaleString("pt-BR")}</td>
+                  <td colSpan={2} className="px-6 py-5 text-center">US$ {tarifaAtual.crianca.toLocaleString("pt-BR")}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <p className="mt-5 text-[12px]" style={{ color: "rgba(243,239,230,0.5)" }}>
-            {TARIFAS[selectedSeason].periodo} · Valores por pessoa. Consulte disponibilidade e tarifas para cabine single.
+            {PERIODOS[seasonAtiva]} · Valores por quarto. Consulte disponibilidade e ocupação single.
           </p>
         </div>
       </section>
