@@ -104,8 +104,8 @@ const LODGES = [
     local: "Patagônia Chilena · base das Torres",
     desc: "Uma estância patagônica autêntica virada all-inclusive: cordeiro assado, pisco sour, tosquia de ovelhas e mais de 20 excursões guiadas no parque.",
     tag: "Estância",
-    href: "#contato",
-    img: "https://lastorres.com/content/uploads/01-7.jpg",
+    href: "/destinos/hotel-las-torres",
+    img: "/lastorres/hero.jpg",
   },
   {
     nome: "Jaci's Lodges",
@@ -375,7 +375,7 @@ export default function RefugiosPage() {
             <div className="mt-8 flex flex-wrap gap-8 border-t pt-8" style={{ borderColor: "rgba(201,168,106,0.15)" }}>
               {[
                 { label: "Rio Serrano", sub: "Lodge · Torres del Paine", href: "/destinos/rio-serrano" },
-                { label: "Las Torres", sub: "Estância · Torres del Paine", href: "#contato" },
+                { label: "Las Torres", sub: "Estância · Torres del Paine", href: "/destinos/hotel-las-torres" },
                 { label: "Jaci's Lodges", sub: "Safári · Madikwe · África do Sul", href: "#contato" },
               ].map((item) => (
                 <a key={item.label} href={item.href} className="group flex items-start gap-3 transition-opacity duration-300 hover:opacity-80">
