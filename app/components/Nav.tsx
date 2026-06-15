@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "./LanguageProvider";
 import { LANGS } from "../lib/i18n";
 
-// Caminhadas, Navegação, Refúgios e Grupos têm página; Bike ainda é âncora na home.
-const HREFS = ["/caminhadas", "/#bike", "/navegacao", "/refugios", "/grupos", "/jornada"];
+// Peregrinação → /jornada; Hotéis → /refugios (rotas existentes, só renomeadas no nav)
+const HREFS = ["/caminhadas", "/jornada", "/grupos", "/navegacao", "/refugios"];
 
 export default function Nav() {
   const { lang, setLang, t } = useLang();
@@ -42,7 +42,7 @@ export default function Nav() {
         }`}
       >
         <nav
-          className={`mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 transition-all duration-500 md:px-10 ${
+          className={`relative mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 transition-all duration-500 md:px-10 ${
             scrolled ? "py-4" : "py-6"
           }`}
         >
@@ -56,13 +56,13 @@ export default function Nav() {
             />
           </a>
 
-          {/* Links de categoria (telas largas ≥ 1024px) */}
-          <ul className="hidden items-center gap-7 lg:flex">
+          {/* Links de categoria — centralizados absolutamente */}
+          <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">
             {t.nav.links.map((label, i) => (
               <li key={label}>
                 <a
                   href={HREFS[i]}
-                  className="group relative text-[12px] font-medium uppercase tracking-[0.16em] text-cream/70 transition-colors hover:text-cream"
+                  className="group relative text-[11px] font-medium uppercase tracking-[0.18em] text-cream/70 transition-colors hover:text-cream"
                 >
                   {label}
                   <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />

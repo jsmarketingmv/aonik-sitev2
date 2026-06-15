@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useLang } from "./LanguageProvider";
+import type { Lang } from "../lib/i18n";
+
+const SOON: Record<Lang, string> = { pt: "Em breve", es: "Próximamente", en: "Coming soon" };
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -31,7 +34,7 @@ const SEG_META = [
 
 
 export default function Universos() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
 
   return (
     <section
@@ -62,6 +65,7 @@ export default function Universos() {
               meta={s}
               texto={t.universos.segmentos[i]}
               explorar={t.universos.explorar}
+              soon={SOON[lang]}
               reverse={i % 2 === 1}
             />
           ))}
@@ -76,13 +80,20 @@ function SegmentRow({
   meta,
   texto,
   explorar,
+  soon,
   reverse,
 }: {
   meta: (typeof SEG_META)[number];
   texto: { kicker: string; nome: string; desc: string };
   explorar: string;
+  soon: string;
   reverse: boolean;
 }) {
+  const isBike = meta.id === "bike";
+  const href = ["caminhadas", "navegacao", "refugios"].includes(meta.id)
+    ? `/${meta.id}`
+    : `#${meta.id}`;
+
   return (
     <Reveal>
       <div
@@ -95,7 +106,7 @@ function SegmentRow({
           }`}
         >
           <div
-            className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
+            className={`absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100 ${isBike ? "grayscale opacity-60" : ""}`}
             style={{ backgroundImage: `url('${meta.img}')` }}
           />
           <span className="absolute left-5 top-4 font-display text-sm text-cream/90 mix-blend-difference">
@@ -108,25 +119,27 @@ function SegmentRow({
             <span className="h-px w-8 bg-gold/50" />
             {texto.kicker}
           </p>
-          <h3 className="font-display text-[clamp(2rem,4vw,3.25rem)] font-light leading-[1.02] tracking-[-0.02em] text-forest">
+          <h3 className={`font-display text-[clamp(2rem,4vw,3.25rem)] font-light leading-[1.02] tracking-[-0.02em] ${isBike ? "text-ink/40" : "text-forest"}`}>
             {texto.nome}
           </h3>
           <p className="mt-5 max-w-md text-[15px] font-light leading-relaxed text-ink/60">
             {texto.desc}
           </p>
-          <a
-            href={
-              ["caminhadas", "navegacao", "refugios"].includes(meta.id)
-                ? `/${meta.id}`
-                : `#${meta.id}`
-            }
-            className="group mt-7 inline-flex items-center gap-3 rounded-full border border-forest/25 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-forest transition-all duration-300 hover:border-forest hover:bg-forest hover:text-cream"
-          >
-            {explorar}
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
+          {isBike ? (
+            <span className="mt-7 inline-flex items-center gap-3 rounded-full border border-ink/15 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-ink/30 cursor-default">
+              {soon}
             </span>
-          </a>
+          ) : (
+            <a
+              href={href}
+              className="group mt-7 inline-flex items-center gap-3 rounded-full border border-forest/25 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-forest transition-all duration-300 hover:border-forest hover:bg-forest hover:text-cream"
+            >
+              {explorar}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </a>
+          )}
         </div>
       </div>
     </Reveal>

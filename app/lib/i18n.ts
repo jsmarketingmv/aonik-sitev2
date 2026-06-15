@@ -6,7 +6,7 @@ export const LANGS: Lang[] = ["pt", "es", "en"];
 
 export interface Dict {
   nav: {
-    links: string[]; // Caminhadas, Bike, Navegação, Refúgios, Grupos, Jornada
+    links: string[]; // Caminhadas, Peregrinação, Grupos, Navegação, Hotéis
     login: string;
     loginTitle: string;
     loginAgente: string;
@@ -79,7 +79,7 @@ export interface Dict {
 export const translations: Record<Lang, Dict> = {
   pt: {
     nav: {
-      links: ["Caminhadas", "Bike", "Navegação", "Refúgios", "Grupos", "Jornada"],
+      links: ["Caminhadas", "Peregrinação", "Grupos", "Navegação", "Hotéis"],
       login: "Login",
       loginTitle: "Acessar o sistema AONIK",
       loginAgente: "Sou agente / operador",
@@ -135,7 +135,7 @@ export const translations: Record<Lang, Dict> = {
         },
         {
           kicker: "Para ficar",
-          nome: "Refúgios",
+          nome: "Hotéis",
           desc: "Hotéis e lodges de natureza onde ficar já é o destino. Conforto imerso no silêncio das paisagens mais bonitas do mundo.",
         },
       ],
@@ -206,7 +206,7 @@ export const translations: Record<Lang, Dict> = {
         "Nossos Grupos",
       ],
       colExp: "Experiências",
-      colExpLinks: ["Caminhadas", "Tours de Bike", "Navegação", "Refúgios"],
+      colExpLinks: ["Caminhadas", "Peregrinação", "Navegação", "Hotéis"],
       contato: "Contato",
       copyright: "Turismo de Natureza. Todos os direitos reservados.",
       tagline: "Feito para quem busca o mundo natural",
@@ -220,7 +220,7 @@ export const translations: Record<Lang, Dict> = {
 
   es: {
     nav: {
-      links: ["Caminatas", "Bici", "Navegación", "Refugios", "Grupos", "Jornada"],
+      links: ["Caminatas", "Peregrinación", "Grupos", "Navegación", "Hoteles"],
       login: "Acceso",
       loginTitle: "Acceder al sistema AONIK",
       loginAgente: "Soy agente / operador",
@@ -276,7 +276,7 @@ export const translations: Record<Lang, Dict> = {
         },
         {
           kicker: "Para quedarse",
-          nome: "Refugios",
+          nome: "Hoteles",
           desc: "Hoteles y lodges de naturaleza donde quedarse ya es el destino. Confort inmerso en el silencio de los paisajes más bellos.",
         },
       ],
@@ -346,7 +346,7 @@ export const translations: Record<Lang, Dict> = {
         "Nuestros Grupos",
       ],
       colExp: "Experiencias",
-      colExpLinks: ["Caminatas", "Tours en Bici", "Navegación", "Refugios"],
+      colExpLinks: ["Caminatas", "Peregrinación", "Navegación", "Hoteles"],
       contato: "Contacto",
       copyright: "Turismo de Naturaleza. Todos los derechos reservados.",
       tagline: "Hecho para quien busca el mundo natural",
@@ -360,7 +360,7 @@ export const translations: Record<Lang, Dict> = {
 
   en: {
     nav: {
-      links: ["Hiking", "Bike", "Sailing", "Lodges", "Groups", "Journey"],
+      links: ["Hiking", "Pilgrimage", "Groups", "Sailing", "Hotels"],
       login: "Login",
       loginTitle: "Access the AONIK system",
       loginAgente: "I'm an agent / operator",
@@ -416,7 +416,7 @@ export const translations: Record<Lang, Dict> = {
         },
         {
           kicker: "To stay",
-          nome: "Lodges",
+          nome: "Hotels",
           desc: "Nature hotels and lodges where staying is already the destination. Comfort immersed in the silence of the world's finest landscapes.",
         },
       ],
@@ -481,7 +481,7 @@ export const translations: Record<Lang, Dict> = {
       colNav: "Navigation",
       colNavLinks: ["About Us", "Our Story", "Our Passion", "Our Groups"],
       colExp: "Experiences",
-      colExpLinks: ["Hiking", "Bike Tours", "Sailing", "Lodges"],
+      colExpLinks: ["Hiking", "Pilgrimage", "Sailing", "Hotels"],
       contato: "Contact",
       copyright: "Nature Travel. All rights reserved.",
       tagline: "Made for those who seek the natural world",
