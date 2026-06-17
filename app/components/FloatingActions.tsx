@@ -13,6 +13,13 @@ export default function FloatingActions() {
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
 
+  /* Auto-detecta slug pela URL (ex: /destinos/torres-del-paine/w-tradicional → "w-tradicional") */
+  useEffect(() => {
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    const last = parts[parts.length - 1];
+    if (last) setSlug(last);
+  }, []);
+
   useEffect(() => {
     const open = (e: Event) => {
       const detail = (e as CustomEvent<{ slug?: string }>).detail;
@@ -65,7 +72,6 @@ export default function FloatingActions() {
     setIaOpen(false);
     setMessages([]);
     setInput("");
-    setSlug(undefined);
   }
 
   return (
@@ -75,7 +81,7 @@ export default function FloatingActions() {
         {iaOpen && (
           <div
             className="absolute bottom-16 left-0 flex flex-col rounded-2xl border border-white/10 bg-[#0c1219] shadow-2xl"
-            style={{ width: 320, maxHeight: 480 }}
+            style={{ width: 400, maxHeight: 580 }}
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
@@ -86,7 +92,7 @@ export default function FloatingActions() {
             </div>
 
             {/* Mensagens */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" style={{ minHeight: 200, maxHeight: 300 }}>
+            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" style={{ minHeight: 240, maxHeight: 400 }}>
               {messages.map((m, i) => (
                 <div key={i} className={`flex flex-col gap-1 ${m.role === "user" ? "items-end" : "items-start"}`}>
                   <div
