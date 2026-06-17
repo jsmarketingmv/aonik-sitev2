@@ -990,7 +990,7 @@ export function ProgramaPage({ data }: { data: Programa }) {
               Nível da trilha, melhor época, o que levar, refúgio ou camping, tarifas. A Aonik <strong className="font-semibold" style={{ color: T.creme }}>IA</strong> responde sobre este circuito. Para outros assuntos, te levamos ao WhatsApp do time AONIK.
             </p>
             <button
-              onClick={() => { if (typeof window !== "undefined") window.dispatchEvent(new Event("open-aonikia")); }}
+              onClick={() => { if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("open-aonikia", { detail: { slug: data.slug } })); }}
               className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03]" style={{ borderColor: AS, color: AS }}>
               Conversar com a Aonik <strong className="font-bold">IA</strong> <span>→</span>
             </button>
