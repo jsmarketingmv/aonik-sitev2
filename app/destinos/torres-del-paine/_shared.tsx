@@ -41,7 +41,7 @@ export const PROG: Record<
   { accent: string; soft: string; dark: string; fauna: string }
 > = {
   journey: { accent: "#6a763f", soft: "#94a063", dark: "#161c0e", fauna: "O host" },
-  express: { accent: "#b0533a", soft: "#cd7f68", dark: "#1f0f0a", fauna: "Caracara" },
+  express: { accent: "#b0533a", soft: "#cd7f68", dark: "#110a1e", fauna: "Caracara" },
   plus: { accent: "#557f9c", soft: "#84a8be", dark: "#0d1c25", fauna: "Huemul" },
   tradicional: { accent: "#bd5e2b", soft: "#dd8b5b", dark: "#1f0f06", fauna: "Guanaco" },
 };

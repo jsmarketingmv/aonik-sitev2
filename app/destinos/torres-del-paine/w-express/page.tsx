@@ -13,11 +13,12 @@ export const metadata: Metadata = {
 
 const GAL = [
   { src: "/lastorres/IMG_5668.jpeg", cap: "Os Cuernos sobre o Lago Nordenskjöld", tag: "Cuernos" },
-  { src: "/lastorres/IMG_5591.jpeg", cap: "Base Torres ao amanhecer", tag: "Dia 1" },
+  { src: "/lastorres/paisagem.jpg",  cap: "A paisagem inconfundível da Patagônia", tag: "Patagônia" },
   { src: "/lastorres/IMG_6333.jpeg", cap: "O circo glacial do Vale do Francés", tag: "Francés" },
-  { src: "/lastorres/IMG_6447.jpeg", cap: "Glaciar Grey e seus icebergs", tag: "Grey" },
+  { src: "/lastorres/IMG_6691.jpeg", cap: "Torres del Paine ao amanhecer", tag: "Torres" },
   { src: "/lastorres/IMG_5610.jpeg", cap: "As águas turquesa do Pehoé", tag: "Pehoé" },
   { src: "/lastorres/IMG_5816.jpeg", cap: "A trilha pela floresta de lenga", tag: "Chileno" },
+  { src: "/lastorres/IMG_6063.jpeg", cap: "Natureza bruta da Patagônia Chilena", tag: "Paine" },
 ];
 
 const DATA: Programa = {
@@ -81,8 +82,8 @@ const DATA: Programa = {
     {
       nome: "Upgrade cabana ou hotel", tipo: "Opcional",
       desc: "Cabanas no Setor Cuernos ou noite no Hotel Las Torres, sob consulta. Eleve a experiência sem mudar o roteiro.",
-      img: "/lastorres/IMG_5694.jpeg",
-      imgs: ["/lastorres/IMG_5694.jpeg", "/lastorres/IMG_5703.JPG", "/lastorres/IMG_5710.jpeg"],
+      img: "/lastorres/IMG_5820.jpeg",
+      imgs: ["/lastorres/IMG_5820.jpeg", "/lastorres/700-x-580-6.jpg", "/lastorres/1200-x-500-5%20(1).jpg"],
     },
   ],
   tarifaPerfis: [
