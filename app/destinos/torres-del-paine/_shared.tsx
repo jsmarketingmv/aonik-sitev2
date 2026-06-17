@@ -588,7 +588,7 @@ export function Tarifas({ accent, perfis, naoInclui }: { accent: string; perfis:
   const p = perfis[sel];
   const fmt = (n: number) => `U$ ${n.toLocaleString("pt-BR")}`;
   const linhas: { label: string; valor: number }[] = [
-    { label: p.base2pax ? "Tarifa por pessoa · base 2 pax" : "Tarifa por pessoa", valor: p.tarifa },
+    { label: p.base2pax ? "Tarifa por pessoa · Em Habitação Dupla" : "Tarifa por pessoa", valor: p.tarifa },
     ...(p.single != null ? [{ label: "Suplemento single", valor: p.single }] : []),
     { label: "Jantares especiais *", valor: p.jantar },
   ];
