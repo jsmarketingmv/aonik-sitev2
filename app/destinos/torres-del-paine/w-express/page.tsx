@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProgramaPage, IMG, type Programa } from "../_shared";
+import { ProgramaPage, type Programa } from "../_shared";
 
 export const metadata: Metadata = {
   title: "W Express · autoguiado 4D/3N | Torres del Paine | AONIK",
@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 };
 
 const GAL = [
-  { src: IMG.cuernos, cap: "Os Cuernos sobre o Lago Nordenskjöld", tag: "Cuernos" },
-  { src: IMG.torres, cap: "Base Torres ao amanhecer", tag: "Dia 1" },
-  { src: IMG.vale, cap: "O circo glacial do Vale do Francés", tag: "Francés" },
-  { src: IMG.grey, cap: "Glaciar Grey e seus icebergs", tag: "Grey" },
-  { src: IMG.lago, cap: "As águas turquesa do Pehoé", tag: "Pehoé" },
-  { src: IMG.trilha, cap: "A trilha pela floresta de lenga", tag: "Chileno" },
+  { src: "/lastorres/IMG_5668.jpeg", cap: "Os Cuernos sobre o Lago Nordenskjöld", tag: "Cuernos" },
+  { src: "/lastorres/IMG_5591.jpeg", cap: "Base Torres ao amanhecer", tag: "Dia 1" },
+  { src: "/lastorres/IMG_6333.jpeg", cap: "O circo glacial do Vale do Francés", tag: "Francés" },
+  { src: "/lastorres/IMG_6447.jpeg", cap: "Glaciar Grey e seus icebergs", tag: "Grey" },
+  { src: "/lastorres/IMG_5610.jpeg", cap: "As águas turquesa do Pehoé", tag: "Pehoé" },
+  { src: "/lastorres/IMG_5816.jpeg", cap: "A trilha pela floresta de lenga", tag: "Chileno" },
 ];
 
 const DATA: Programa = {
@@ -29,7 +29,7 @@ const DATA: Programa = {
   titulo: ["W Express", "4D · 3N"],
   taglineLead: "O W essencial, sem perder nenhum ícone.",
   tagline: "A versão mais compacta do circuito mais popular da Patagônia.",
-  heroImg: IMG.cuernos,
+  heroImg: "/lastorres/IMG_5800.jpeg",
   resumoTitulo: "4 dias · 3 noites · autoguiado",
   resumo:
     "Venha viver a versão mais curta do circuito de trekking mais famoso de Torres del Paine, sem abrir mão dos grandes ícones: Base Torres, Cuernos, Vale do Francés, o maciço Paine e o imponente Glaciar Grey.",
@@ -66,13 +66,48 @@ const DATA: Programa = {
     "Jantares especiais de 24/12 e 31/12 (US$ 71 por pessoa)",
   ],
   hospedagens: [
-    { nome: "Refúgios de montanha", tipo: "Mountain stays", desc: "Quarto compartilhado de 6 a 8 camas, banho quente e cama de verdade ao fim do dia.", img: IMG.refugio },
-    { nome: "Camping full equipado", tipo: "Acampamento premium", desc: "Barraca em altura, colchão de alta densidade e saco de dormir. Conforto a céu aberto.", img: IMG.camping },
-    { nome: "Upgrade cabana ou hotel", tipo: "Opcional", desc: "Cabanas no Setor Cuernos ou noite no Hotel Las Torres, sob consulta.", img: IMG.hotel },
+    {
+      nome: "Refúgios de montanha", tipo: "Mountain stays",
+      desc: "Quarto compartilhado de 6 a 8 camas, banho quente e cama de verdade ao fim do dia.",
+      img: "/lastorres/Vertice_Refugio_PG-4.jpg",
+      imgs: ["/lastorres/Vertice_Refugio_PG-4.jpg", "https://lastorres.com/content/uploads/1200-x-500-1-1.jpg", "https://lastorres.com/content/uploads/1200x1000-1.jpg"],
+    },
+    {
+      nome: "Camping full equipado", tipo: "Acampamento premium",
+      desc: "Barraca em altura, colchão de alta densidade e saco de dormir, já montados quando você chega.",
+      img: "/lastorres/IMG_5860.JPG",
+      imgs: ["/lastorres/IMG_5860.JPG", "/lastorres/Vertice_Refugio_Camping_PG.jpg", "https://lastorres.com/content/uploads/700-x-580-2-17.jpg"],
+    },
+    {
+      nome: "Upgrade cabana ou hotel", tipo: "Opcional",
+      desc: "Cabanas no Setor Cuernos ou noite no Hotel Las Torres, sob consulta. Eleve a experiência sem mudar o roteiro.",
+      img: "/lastorres/IMG_5694.jpeg",
+      imgs: ["/lastorres/IMG_5694.jpeg", "/lastorres/IMG_5703.JPG", "/lastorres/IMG_5710.jpeg"],
+    },
   ],
   tarifaPerfis: [
-    { key: "camping", label: "Camping", tarifa: 1657, base2pax: true, single: 1160, jantar: 71, nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single." },
-    { key: "refugio", label: "Refúgio", tarifa: 2000, base2pax: false, single: null, jantar: 71, nota: "Valores por pessoa, em ocupação simples." },
+    {
+      key: "camping", label: "Camping", tarifa: 1657, base2pax: true, single: 1160, jantar: 71,
+      nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single.",
+      inclui: [
+        "Welcome drink em cada setor e todas as refeições (jantar incluído no Dia 1)",
+        "Camping full equipado: barraca em plataforma, saco de dormir, colchão de alta densidade, travesseiro e banheiros com chuveiro quente",
+        "Welcome kit: garrafa d'água, liner* e toalha",
+        "Catamarã no Lago Pehoé*",
+        "Taxa de entrada do Parque Nacional e ônibus regular Puerto Natales ↔ Torres del Paine (ida e volta)",
+      ],
+    },
+    {
+      key: "refugio", label: "Refúgio", tarifa: 2000, base2pax: false, single: null, jantar: 71,
+      nota: "Valores por pessoa, em ocupação simples.",
+      inclui: [
+        "Welcome drink em cada setor e todas as refeições",
+        "Cama em quarto compartilhado de 6 a 8 camas, saco de dormir e banheiros com água quente",
+        "Welcome kit: garrafa d'água, liner* e toalha",
+        "Catamarã no Lago Pehoé*",
+        "Taxa de entrada do Parque Nacional e ônibus regular Puerto Natales ↔ Torres del Paine (ida e volta)",
+      ],
+    },
   ],
   galeria: GAL,
 };
