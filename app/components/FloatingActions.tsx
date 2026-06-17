@@ -1,9 +1,68 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 import { waUrl } from "../lib/contato";
 
 type Msg = { role: "user" | "assistant"; text: string; whatsapp?: string | null };
+
+/* ── Markdown renderer simples (sem dependência extra) ── */
+function inlineFmt(text: string): ReactNode {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((p, i) =>
+    p.startsWith("**") && p.endsWith("**")
+      ? <strong key={i} className="font-semibold">{p.slice(2, -2)}</strong>
+      : <span key={i}>{p}</span>
+  );
+}
+
+function MdText({ text }: { text: string }) {
+  const lines = text.split("\n");
+  const out: ReactNode[] = [];
+  const listBuf: ReactNode[] = [];
+
+  const flushList = (key: string) => {
+    if (listBuf.length) {
+      out.push(
+        <ul key={key} className="space-y-1 mt-1">
+          {[...listBuf]}
+        </ul>
+      );
+      listBuf.length = 0;
+    }
+  };
+
+  lines.forEach((line, i) => {
+    const k = String(i);
+    if (!line.trim()) { flushList(`l${i}`); return; }
+
+    if (/^#+\s/.test(line)) {
+      flushList(`l${i}`);
+      out.push(
+        <p key={k} className="font-semibold text-[#f1ece2] mt-2 first:mt-0">
+          {inlineFmt(line.replace(/^#+\s*/, ""))}
+        </p>
+      );
+    } else if (/^[-*]\s/.test(line)) {
+      listBuf.push(
+        <li key={k} className="flex gap-1.5 leading-snug">
+          <span className="opacity-40 shrink-0 select-none mt-[1px]">·</span>
+          <span>{inlineFmt(line.replace(/^[-*]\s/, ""))}</span>
+        </li>
+      );
+    } else {
+      flushList(`l${i}`);
+      out.push(
+        <p key={k} className="leading-relaxed mt-1.5 first:mt-0">
+          {inlineFmt(line)}
+        </p>
+      );
+    }
+  });
+  flushList("end");
+
+  return <div className="space-y-0.5 text-[13px] text-[#f1ece2]">{out}</div>;
+}
 
 export default function FloatingActions() {
   const [iaOpen, setIaOpen] = useState(false);
@@ -91,19 +150,25 @@ export default function FloatingActions() {
               <button onClick={close} aria-label="Fechar" className="text-[#f1ece2]/40 hover:text-[#f1ece2] transition-colors text-lg leading-none">✕</button>
             </div>
 
-            {/* Mensagens */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" style={{ minHeight: 240, maxHeight: 400 }}>
+            {/* Mensagens — scroll capturado pelo mouse dentro do painel */}
+            <div
+              className="flex-1 overflow-y-auto px-4 py-4 space-y-3"
+              style={{ minHeight: 240, maxHeight: 400 }}
+              onWheel={(e) => e.stopPropagation()}
+            >
               {messages.map((m, i) => (
                 <div key={i} className={`flex flex-col gap-1 ${m.role === "user" ? "items-end" : "items-start"}`}>
                   <div
-                    className="rounded-xl px-3.5 py-2.5 text-[13px] font-light leading-relaxed"
+                    className="rounded-xl px-3.5 py-2.5"
                     style={{
-                      maxWidth: "85%",
+                      maxWidth: "88%",
                       background: m.role === "user" ? "#bd5e2b" : "rgba(255,255,255,0.06)",
-                      color: "#f1ece2",
                     }}
                   >
-                    {m.text}
+                    {m.role === "assistant"
+                      ? <MdText text={m.text} />
+                      : <span className="text-[13px] font-light leading-relaxed text-[#f1ece2]">{m.text}</span>
+                    }
                   </div>
                   {m.whatsapp && (
                     <a
