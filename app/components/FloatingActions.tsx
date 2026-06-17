@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { AONIK } from "../lib/contato";
+import { waUrl } from "../lib/contato";
 
 type Msg = { role: "user" | "assistant"; text: string; whatsapp?: string | null };
 
@@ -152,7 +152,7 @@ export default function FloatingActions() {
             <div className="border-t border-white/10 px-5 py-2.5 flex justify-between items-center">
               <span className="text-[10px] text-[#f1ece2]/30">Fora do escopo?</span>
               <a
-                href={`https://wa.me/${AONIK.whatsapp}`}
+                href={waUrl(slug)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={close}
@@ -182,7 +182,7 @@ export default function FloatingActions() {
 
       {/* WhatsApp — canto inferior direito */}
       <a
-        href={`https://wa.me/${AONIK.whatsapp}`}
+        href={waUrl(slug)}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar no WhatsApp"

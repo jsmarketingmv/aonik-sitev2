@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
-const WA = "5547988047422";
+import { waUrl } from "../../lib/contato";
 
 /* Base de conhecimento por slug de produto */
 const KB: Record<string, string> = {
@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
 
     /* Sem KB para este slug → redireciona direto para WhatsApp */
     if (!system) {
-      return NextResponse.json({ reply: OFF_SCOPE, whatsapp: `https://wa.me/${WA}` });
+      return NextResponse.json({ reply: OFF_SCOPE, whatsapp: waUrl(slug) });
     }
 
     const client = new Anthropic({ apiKey });
@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
     const isOffScope = reply.includes("WhatsApp do time AONIK");
     return NextResponse.json({
       reply,
-      whatsapp: isOffScope ? `https://wa.me/${WA}` : null,
+      whatsapp: isOffScope ? waUrl(slug) : null,
     });
   } catch (err) {
     console.error("[aonikia]", err);

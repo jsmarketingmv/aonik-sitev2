@@ -9,6 +9,27 @@ export const AONIK = {
   cidade: "Blumenau, Santa Catarina, SC, Brasil",
 } as const;
 
+/* Mensagens pré-preenchidas por slug de produto */
+const WA_MSGS: Record<string, string> = {
+  "w-tradicional":  "Olá! Gostaria de mais informações sobre o Circuito W Tradicional em Torres del Paine.",
+  "w-express":      "Olá! Gostaria de mais informações sobre o Circuito W Express em Torres del Paine.",
+  "w-plus":         "Olá! Gostaria de mais informações sobre o W+ Express Plus em Torres del Paine.",
+  "w-journey":      "Olá! Gostaria de mais informações sobre o W Journey em Torres del Paine.",
+  "skorpios":       "Olá! Gostaria de mais informações sobre o Cruzeiro Skorpios na Patagônia.",
+  "rio-serrano":    "Olá! Gostaria de mais informações sobre o Hotel Rio Serrano na Patagônia.",
+  "compostela":     "Olá! Gostaria de mais informações sobre o Caminho de Santiago de Compostela.",
+  "tmb":            "Olá! Gostaria de mais informações sobre o Tour du Mont Blanc.",
+  "dolomitas":      "Olá! Gostaria de mais informações sobre as Dolomitas Alta Via 1.",
+  "antarctica21":   "Olá! Gostaria de mais informações sobre a expedição com a Antarctica21.",
+};
+const WA_DEFAULT = "Olá! Gostaria de mais informações sobre os roteiros da AONIK.";
+
+/** Gera link wa.me com mensagem pré-preenchida, por slug de produto. */
+export function waUrl(slug?: string): string {
+  const text = (slug ? WA_MSGS[slug] : undefined) ?? WA_DEFAULT;
+  return `https://wa.me/${AONIK.whatsapp}?text=${encodeURIComponent(text)}`;
+}
+
 // Lista curada de destinos — espelha o portfólio do SaaS (ContactForm.tsx).
 // Mantida em PT (nomes próprios do portfólio) para os 3 idiomas; localizar depois se preciso.
 export const DESTINOS_CURADOS = [
