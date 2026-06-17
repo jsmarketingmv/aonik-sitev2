@@ -56,8 +56,8 @@ export default function Nav() {
             />
           </a>
 
-          {/* Links de categoria — centralizados absolutamente */}
-          <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">
+          {/* Links de categoria — centralizados no espaço entre marca e ações */}
+          <ul className="hidden flex-1 items-center justify-center gap-7 lg:flex xl:gap-9">
             {t.nav.links.map((label, i) => (
               <li key={label}>
                 <a

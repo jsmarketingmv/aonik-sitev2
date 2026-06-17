@@ -39,9 +39,9 @@ const DESTINOS = [
   },
   {
     nome: "Torres del Paine",
-    local: "Patagônia Chilena",
-    preco: "a partir de R$ 9.900",
-    href: "#contato",
+    local: "Patagônia Chilena · Circuito W",
+    preco: "a partir de US$ 1.491",
+    href: "/destinos/torres-del-paine",
     img: "https://images.unsplash.com/photo-1531794343237-93e7e6e25b3f?q=80&w=1600&auto=format&fit=crop",
   },
   {

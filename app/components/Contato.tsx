@@ -7,13 +7,13 @@ import { useLang } from "./LanguageProvider";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export default function Contato() {
+export default function Contato({ destino = "" }: { destino?: string }) {
   const { t } = useLang();
   const c = t.contato;
 
   const [form, setForm] = useState({
     nome: "",
-    destino: "",
+    destino,
     email: "",
     telefone: "",
     cidade: "",
