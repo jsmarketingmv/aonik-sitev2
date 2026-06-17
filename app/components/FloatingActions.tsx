@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AONIK } from "../lib/contato";
 import { useLang } from "./LanguageProvider";
 
@@ -8,18 +8,27 @@ export default function FloatingActions() {
   const { t } = useLang();
   const [iaOpen, setIaOpen] = useState(false);
 
+  // Permite que CTAs da página (ex.: "Conversar com a Aonik IA") abram o painel.
+  useEffect(() => {
+    const open = () => setIaOpen(true);
+    window.addEventListener("open-aonikia", open);
+    return () => window.removeEventListener("open-aonikia", open);
+  }, []);
+
   return (
     <>
-      {/* AonikIA — canto inferior esquerdo */}
+      {/* Aonik IA — canto inferior esquerdo */}
       <div className="fixed bottom-6 left-6 z-50">
         {iaOpen && (
           <div className="absolute bottom-16 left-0 w-72 rounded-2xl border border-forest-line/40 bg-forest p-5 shadow-2xl">
-            <p className="font-display text-lg text-cream">AonikIA</p>
+            <p className="font-display text-lg text-cream">Aonik <strong className="font-bold">IA</strong></p>
             <p className="mt-2 text-[13px] font-light leading-relaxed text-cream/65">
               {t.floating.balloon}
             </p>
             <a
-              href="#contato"
+              href={`https://wa.me/${AONIK.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setIaOpen(false)}
               className="mt-4 inline-flex text-[12px] font-semibold uppercase tracking-[0.14em] text-gold"
             >
@@ -30,7 +39,7 @@ export default function FloatingActions() {
         <button
           onClick={() => setIaOpen((v) => !v)}
           className="flex items-center gap-2 rounded-full border border-cream/15 bg-ink/90 py-3 pl-3 pr-5 text-cream shadow-xl backdrop-blur transition-transform hover:scale-[1.03]"
-          aria-label="Abrir AonikIA"
+          aria-label="Abrir Aonik IA"
         >
           <span className="text-neon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -38,7 +47,7 @@ export default function FloatingActions() {
             </svg>
           </span>
           <span className="text-[13px] font-semibold tracking-[0.04em]">
-            AonikIA
+            Aonik <strong className="font-bold">IA</strong>
           </span>
         </button>
       </div>

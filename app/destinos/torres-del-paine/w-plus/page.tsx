@@ -70,15 +70,9 @@ const DATA: Programa = {
     { nome: "Camping full equipado", tipo: "Acampamento premium", desc: "Barraca em altura, colchão de alta densidade e saco de dormir.", img: IMG.camping },
     { nome: "Hotel Las Torres", tipo: "Quarto Superior", desc: "Conforto e vista para o maciço no Setor Central, na última noite da viagem.", img: IMG.hotel },
   ],
-  tarifaLinhas: [
-    { hosp: "Camping + Hotel Las Torres", tabela: 2126, vista: 1913, parc: 2019, x10: 2126 },
-    { hosp: "Refúgios + Hotel Las Torres", tabela: 2594, vista: 2335, parc: 2465, x10: 2594 },
-  ],
-  tarifaNotas: [
-    "Valores por pessoa, em ocupação dupla. A noite extra no hotel é em meia pensão (café e jantar).",
-    "Suplemento single: US$ 1.490 (camping + hotel) ou US$ 1.800 (refúgio + hotel).",
-    "Early Booking válido para reservas de 02/06 a 30/07/2026. À vista 10% off, parcelado 5% off (entrada 30% + 7x sem juros) ou 10x sem juros (entrada 20%).",
-    "Jantares especiais de 24/12 e 31/12: US$ 71 por pessoa (US$ 64 à vista).",
+  tarifaPerfis: [
+    { key: "camping", label: "Camping + Hotel", tarifa: 2126, base2pax: true, single: 1490, jantar: 71, nota: "Valores por pessoa, em ocupação dupla. A noite no hotel é em meia pensão. Para 1 Pax, aplica-se suplemento single." },
+    { key: "refugio", label: "Refúgio + Hotel", tarifa: 2594, base2pax: true, single: 1800, jantar: 71, nota: "Valores por pessoa, em ocupação dupla. A noite no hotel é em meia pensão. Para 1 Pax, aplica-se suplemento single." },
   ],
   galeria: GAL,
 };

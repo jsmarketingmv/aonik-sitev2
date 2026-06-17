@@ -73,16 +73,9 @@ const DATA: Programa = {
     { nome: "Refúgio Francés", tipo: "Mountain stay", desc: "Aos pés do circo glacial, no coração selvagem do circuito.", img: IMG.trilha },
     { nome: "Camping full equipado", tipo: "Acampamento premium", desc: "Barraca em altura, colchão de alta densidade e saco de dormir. Acampar com conforto.", img: IMG.camping },
   ],
-  tarifaLinhas: [
-    { hosp: "Camping full equipado", tabela: 2800, vista: 2520, parc: 2660, x10: 2800 },
-    { hosp: "Refúgio de montanha", tabela: 2990, vista: 2691, parc: 2841, x10: 2990 },
-  ],
-  tarifaNotas: [
-    "Valores por pessoa, em ocupação dupla (camping) ou quarto compartilhado (refúgio).",
-    "Suplemento single no camping: US$ 2.240.",
-    "Grupos de 2 a 12 pessoas. Saídas do refúgio às terças, quintas e sábados; do camping às segundas, quartas e sextas.",
-    "Condições Early Booking (à vista 10% e parcelado 5%) sob confirmação para o programa guiado.",
-    "Jantares especiais de 24/12 e 31/12: US$ 50 por pessoa.",
+  tarifaPerfis: [
+    { key: "camping", label: "Camping", tarifa: 2800, base2pax: true, single: 2240, jantar: 50, nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single. Grupos de 2 a 12 pessoas. Condições sob confirmação para o programa guiado." },
+    { key: "refugio", label: "Refúgio", tarifa: 2990, base2pax: false, single: null, jantar: 50, nota: "Valores por pessoa, em ocupação simples. Grupos de 2 a 12 pessoas. Condições sob confirmação para o programa guiado." },
   ],
   galeria: GAL,
 };

@@ -70,16 +70,9 @@ const DATA: Programa = {
     { nome: "Camping full equipado", tipo: "Acampamento premium", desc: "Barraca em altura, colchão de alta densidade e saco de dormir. Conforto a céu aberto.", img: IMG.camping },
     { nome: "Upgrade cabana ou hotel", tipo: "Opcional", desc: "Cabanas no Setor Cuernos ou noite no Hotel Las Torres, sob consulta.", img: IMG.hotel },
   ],
-  tarifaLinhas: [
-    { hosp: "Camping full equipado", tabela: 1657, vista: 1491, parc: 1574, x10: 1657 },
-    { hosp: "Refúgios de montanha", tabela: 2000, vista: 1800, parc: 1900, x10: 2000 },
-  ],
-  tarifaNotas: [
-    "Valores por pessoa, em ocupação dupla (camping) ou quarto compartilhado (refúgio).",
-    "Suplemento single no camping: US$ 1.160.",
-    "Tarifa infante (menos de 5 anos): US$ 234. Criança (5 a 10 anos): US$ 800.",
-    "Early Booking válido para reservas de 02/06 a 30/07/2026. À vista 10% off, parcelado 5% off (entrada 30% + 7x sem juros) ou 10x sem juros (entrada 20%).",
-    "Jantares especiais de 24/12 e 31/12: US$ 71 por pessoa (US$ 64 à vista).",
+  tarifaPerfis: [
+    { key: "camping", label: "Camping", tarifa: 1657, base2pax: true, single: 1160, jantar: 71, nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single." },
+    { key: "refugio", label: "Refúgio", tarifa: 2000, base2pax: false, single: null, jantar: 71, nota: "Valores por pessoa, em ocupação simples." },
   ],
   galeria: GAL,
 };

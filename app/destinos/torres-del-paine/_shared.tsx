@@ -31,6 +31,7 @@ export const T = {
   cSoft: "rgba(241,236,226,0.66)",
   cFaint: "rgba(241,236,226,0.42)",
   line: "rgba(156,195,212,0.18)",
+  lime: "#bfe34a", // verde-limão dos pinos do mapa W
 };
 
 /* Cada programa herda sua cor do catálogo + um animal-assinatura */
@@ -207,6 +208,35 @@ export function TorresSilhueta({
 }
 
 /* ============================================================
+   ASSINATURA "W" — animação minimalista do circuito
+   Traço único desenhando um W + pontos de luz nos cumes.
+   ============================================================ */
+export function WSignature({ stroke = T.creme, accent = T.ouro }: { stroke?: string; accent?: string }) {
+  return (
+    <svg viewBox="0 0 420 340" className="h-full w-full" fill="none" role="img">
+      <title>Circuito W — Torres del Paine</title>
+      {/* base sutil */}
+      <motion.line x1="40" y1="312" x2="380" y2="312" stroke={stroke} strokeWidth="1" opacity="0.12"
+        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 1.4, ease: EASE, delay: 2.2 }} />
+      {/* o W */}
+      <motion.path
+        d="M 44,70 L 140,288 L 210,150 L 280,288 L 376,70"
+        stroke={stroke} strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }}
+        transition={{ duration: 2.6, ease: EASE, delay: 0.3 }}
+      />
+      {/* pontos de luz nos cumes e vales */}
+      {([[44, 70], [140, 288], [210, 150], [280, 288], [376, 70]] as [number, number][]).map(([x, y], i) => (
+        <motion.circle key={i} cx={x} cy={y} r={y > 200 ? 4 : 5.5} fill={accent}
+          initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, ease: EASE, delay: 1.9 + i * 0.18 }}
+          style={{ transformOrigin: `${x}px ${y}px` }} />
+      ))}
+    </svg>
+  );
+}
+
+/* ============================================================
    MAPA DO W — INTERATIVO (a assinatura da navegação)
    Traçado do circuito animado + 4 pins que sincronizam com
    os cards de highlight ao passar o cursor.
@@ -214,8 +244,8 @@ export function TorresSilhueta({
 /* mx/my = posição do pino sobre o mapa (fração 0-1 do container da imagem) */
 export type WPin = { mx: number; my: number; nome: string; dia: string; desc: string; img: string };
 export const WMAP_HL: WPin[] = [
-  { mx: 0.705, my: 0.285, nome: "Mirador Base Torres", dia: "O coração do parque", desc: "As três torres de granito e a lagoa glacial ao amanhecer.", img: "/lastorres/torres.jpg" },
-  { mx: 0.552, my: 0.595, nome: "Setor Cuernos", dia: "Lago Nordenskjöld", desc: "A trilha beira o lago turquesa aos pés dos Cuernos del Paine.", img: "/torres-del-paine/prod-w-tradicional.jpg" },
+  { mx: 0.683, my: 0.228, nome: "Mirador Base Torres", dia: "O coração do parque", desc: "As três torres de granito e a lagoa glacial ao amanhecer.", img: "/lastorres/torres.jpg" },
+  { mx: 0.545, my: 0.585, nome: "Setor Cuernos", dia: "Lago Nordenskjöld", desc: "A trilha beira o lago turquesa aos pés dos Cuernos del Paine.", img: "/torres-del-paine/prod-w-tradicional.jpg" },
   { mx: 0.415, my: 0.375, nome: "Vale do Francés · Británico", dia: "O circo glacial", desc: "Anfiteatro de gelo cercado por Paine Grande e os Cuernos.", img: "/lastorres/paisagem.jpg" },
   { mx: 0.108, my: 0.535, nome: "Glaciar Grey", dia: "Campo de Hielo Sul", desc: "Icebergs à deriva no lago e o catamarã sobre o Pehoé.", img: "/torres-del-paine/setor-grey.jpg" },
 ];
@@ -241,26 +271,29 @@ export function WMap({ accent = T.ouro }: { accent?: string }) {
               onFocus={() => setActive(i)}
               onClick={() => setActive(i)}
               aria-label={p.nome}
-              className="absolute flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
+              className="absolute flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center"
               style={{ left: `${p.mx * 100}%`, top: `${p.my * 100}%` }}
             >
-              {/* anel de pulso quando ativo */}
+              {/* anel pulsante quando ativo */}
               {on && (
                 <motion.span
                   className="absolute rounded-full"
-                  style={{ background: accent }}
-                  initial={{ width: 14, height: 14, opacity: 0.5 }}
-                  animate={{ width: 40, height: 40, opacity: 0 }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+                  style={{ border: `2px solid ${T.lime}` }}
+                  initial={{ width: 16, height: 16, opacity: 0.8 }}
+                  animate={{ width: 42, height: 42, opacity: 0 }}
+                  transition={{ duration: 1.6, repeat: Infinity, ease: "easeOut" }}
                 />
               )}
-              {/* pino */}
-              <span className="relative rounded-full shadow-md transition-all duration-200"
+              {/* anel-marcador padrão (lime), preenche quando ativo */}
+              <span className="relative flex items-center justify-center rounded-full transition-all duration-200"
                 style={{
-                  width: on ? 17 : 12, height: on ? 17 : 12,
-                  background: on ? accent : T.creme,
-                  border: `2px solid ${on ? T.creme : accent}`,
-                }} />
+                  width: on ? 20 : 15, height: on ? 20 : 15,
+                  background: on ? T.lime : "rgba(12,18,25,0.55)",
+                  border: `2px solid ${T.lime}`,
+                  boxShadow: on ? `0 0 12px ${T.lime}` : "none",
+                }}>
+                <span className="rounded-full" style={{ width: 5, height: 5, background: on ? T.ink : T.lime }} />
+              </span>
             </button>
           );
         })}
@@ -517,74 +550,160 @@ export function Galeria({ images, accent = T.ouro }: { images: GalImg[]; accent?
 }
 
 /* ============================================================
-   TARIFAS — Early Booking (padrão Rio Serrano: limpo)
-   Toggle por condição de pagamento; linhas por hospedagem.
+   TARIFAS — Temporada 2026/2027
+   Badges = PERFIL DE HOSPEDAGEM (Camping / Refúgio / Hotel + Refúgio).
+   Linhas = tarifa por pessoa, suplemento single, jantares especiais.
+   + Informações importantes + Promoção vigente (Early Booking).
    ============================================================ */
-export type Coluna = "tabela" | "vista" | "parc" | "x10";
-export type TarifaLinha = { hosp: string; tabela: number; vista: number; parc: number; x10: number };
-const COLS: { key: Coluna; label: string; sub: string }[] = [
-  { key: "vista", label: "À vista", sub: "10% off" },
-  { key: "parc", label: "Parcelado", sub: "5% off" },
-  { key: "x10", label: "Em 10x", sub: "sem juros" },
-  { key: "tabela", label: "Tabela", sub: "cheia" },
-];
+export type TarifaPerfil = {
+  key: string;
+  label: string;
+  tarifa: number;
+  base2pax: boolean;
+  single: number | null;
+  jantar: number;
+  nota: string;
+  inclui?: string[];
+};
 
-export function Tarifas({
-  accent,
-  linhas,
-  notas,
-}: {
-  accent: string;
-  linhas: TarifaLinha[];
-  notas: string[];
-}) {
-  const [col, setCol] = useState<Coluna>("vista");
-  const fmt = (n: number) => `US$ ${n.toLocaleString("pt-BR")}`;
+const INFO_IMPORTANTES = [
+  "O valor desta publicação é apresentado em DÓLAR. No ato do fechamento, a base referencial de conversão para o REAL é o DÓLAR TURISMO, na cotação do dia da negociação.",
+  "Consulte a disponibilidade com antecedência. Normalmente levamos de 48h a 72h para validar as hospedagens no destino, conferindo cada oportunidade em detalhe, pois a demanda é extremamente alta.",
+  "O Parque Nacional Torres del Paine é um dos 10 mais visitados do mundo e a capacidade de hospedagem é limitada por temporada.",
+];
+const INFO_AVISO =
+  "Avisos de fechamento do parque ou alterações de datas na temporada podem ocorrer a qualquer momento e sem aviso prévio, sob responsabilidade da gestão do Parque Nacional, por variáveis climáticas e outras situações imprevistas, além do nosso controle e por força maior.";
+
+const PROMO = {
+  validade: "31 de julho de 2027",
+  formas: [
+    { titulo: "À vista", badge: "10% OFF", destaque: true, desc: "Pagamento integral à vista, com 10% de desconto.", entrada: "PIX ou transferência", obs: "Quitação imediata." },
+    { titulo: "Parcelado", badge: "5% OFF", destaque: true, desc: "Entrada de 30% + saldo em até 7x sem juros, com 5% de desconto.", entrada: "Entrada em PIX/transferência · parcelas no cartão", obs: "No cartão de crédito não há prazo de quitação antes da viagem." },
+    { titulo: "Em 10x", badge: "sem juros", destaque: false, desc: "Saldo em até 10x sem juros, sem desconto adicional.", entrada: "Entrada em PIX/transferência · parcelas no cartão", obs: "No cartão de crédito não há prazo de quitação antes da viagem." },
+  ],
+};
+
+export function Tarifas({ accent, perfis, naoInclui }: { accent: string; perfis: TarifaPerfil[]; naoInclui?: string[] }) {
+  const [sel, setSel] = useState(0);
+  const p = perfis[sel];
+  const fmt = (n: number) => `U$ ${n.toLocaleString("pt-BR")}`;
+  const linhas: { label: string; valor: number }[] = [
+    { label: p.base2pax ? "Tarifa por pessoa · base 2 pax" : "Tarifa por pessoa", valor: p.tarifa },
+    ...(p.single != null ? [{ label: "Suplemento single", valor: p.single }] : []),
+    { label: "Jantares especiais *", valor: p.jantar },
+  ];
   return (
     <div>
+      {/* badges = perfil de hospedagem */}
       <div className="mb-6 flex flex-wrap gap-2">
-        {COLS.map((c) => {
-          const on = c.key === col;
+        {perfis.map((pf, i) => {
+          const on = i === sel;
           return (
-            <button key={c.key} onClick={() => setCol(c.key)}
-              className="rounded-full border px-5 py-2.5 text-left transition-all duration-300"
-              style={{
-                borderColor: on ? accent : T.line,
-                background: on ? accent : "transparent",
-                color: on ? T.ink : T.cSoft,
-              }}>
-              <span className="block text-[12px] font-semibold uppercase tracking-[0.12em]">{c.label}</span>
-              <span className="block text-[10px] uppercase tracking-[0.1em] opacity-70">{c.sub}</span>
+            <button key={pf.key} onClick={() => setSel(i)}
+              className="rounded-full border px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[0.12em] transition-all duration-300"
+              style={{ borderColor: on ? accent : T.line, background: on ? accent : "transparent", color: on ? T.ink : T.cSoft }}>
+              {pf.label}
             </button>
           );
         })}
       </div>
 
+      {/* tabela do perfil selecionado */}
       <div className="overflow-hidden rounded-2xl border" style={{ borderColor: T.line }}>
-        <div className="flex items-center justify-between px-6 py-3"
-          style={{ background: accent }}>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: T.ink }}>Hospedagem</span>
+        <div className="flex items-center justify-between px-6 py-3" style={{ background: accent }}>
+          <span className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: T.ink }}>{p.label}</span>
           <span className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: T.ink }}>Por pessoa · USD</span>
         </div>
         {linhas.map((l, i) => (
-          <div key={l.hosp}
-            className="flex items-center justify-between px-6 py-4"
+          <div key={l.label} className="flex items-center justify-between px-6 py-4"
             style={{ borderTop: i === 0 ? "none" : `1px solid ${T.line}`, background: i % 2 ? "rgba(156,195,212,0.03)" : "transparent" }}>
-            <span className="pr-4 text-[14px] font-light" style={{ color: T.cInk }}>{l.hosp}</span>
-            <span className="font-display text-[clamp(1.1rem,2.4vw,1.5rem)] font-light whitespace-nowrap" style={{ color: T.creme }}>
-              {fmt(l[col])}
-              {col !== "tabela" && (
-                <span className="ml-2 align-middle text-[12px] line-through" style={{ color: T.cFaint }}>{fmt(l.tabela)}</span>
-              )}
-            </span>
+            <span className="pr-4 text-[14px] font-light" style={{ color: T.cInk }}>{l.label}</span>
+            <span className="font-display text-[clamp(1.1rem,2.4vw,1.5rem)] font-light whitespace-nowrap" style={{ color: T.creme }}>{fmt(l.valor)}</span>
           </div>
         ))}
+
+        {/* INCLUI — por perfil (extensão da tabela) */}
+        {p.inclui && p.inclui.length > 0 && (
+          <div style={{ borderTop: `1px solid ${T.line}` }}>
+            <div className="px-6 pt-5 pb-2">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.26em]" style={{ color: accent }}>O que está incluído</span>
+            </div>
+            <ul className="px-6 pb-5 space-y-2">
+              {p.inclui.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-[12.5px] font-light leading-relaxed" style={{ color: T.cSoft }}>
+                  <span className="mt-0.5 shrink-0" style={{ color: accent }}>✦</span>{item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* NÃO INCLUI */}
+        {naoInclui && naoInclui.length > 0 && (
+          <div style={{ borderTop: `1px solid ${T.line}`, background: "rgba(156,195,212,0.02)" }}>
+            <div className="px-6 pt-5 pb-2">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.26em]" style={{ color: "rgba(156,195,212,0.45)" }}>Não incluído</span>
+            </div>
+            <ul className="px-6 pb-5 space-y-2">
+              {naoInclui.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-[12.5px] font-light leading-relaxed" style={{ color: T.cFaint }}>
+                  <span className="mt-0.5 shrink-0" style={{ color: "rgba(156,195,212,0.35)" }}>×</span>{item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
-      <div className="mt-5 space-y-1.5">
-        {notas.map((n) => (
-          <p key={n} className="text-[12px] font-light leading-relaxed" style={{ color: T.cSoft }}>{n}</p>
+      {/* legendas do perfil */}
+      <ul className="mt-5 space-y-2">
+        {[p.nota, "* Jantares especiais aplicados em períodos festivos: 24/12 e 31/12."].map((n) => (
+          <li key={n} className="flex items-start gap-2 text-[12px] font-light leading-relaxed" style={{ color: T.cSoft }}>
+            <span className="mt-0.5 shrink-0" style={{ color: accent }}>·</span>{n}
+          </li>
         ))}
+      </ul>
+
+      {/* INFORMAÇÕES IMPORTANTES */}
+      <div className="mt-10">
+        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.28em]" style={{ color: T.gelo }}>Informações importantes</p>
+        <ul className="space-y-2.5">
+          {INFO_IMPORTANTES.map((n) => (
+            <li key={n} className="flex items-start gap-2 text-[12.5px] font-light leading-relaxed" style={{ color: T.cSoft }}>
+              <span className="mt-0.5 shrink-0" style={{ color: T.gelo }}>·</span>{n}
+            </li>
+          ))}
+          <li className="flex items-start gap-2 text-[12.5px] font-semibold leading-relaxed" style={{ color: T.creme }}>
+            <span className="mt-0.5 shrink-0" style={{ color: T.creme }}>·</span>{INFO_AVISO}
+          </li>
+        </ul>
+      </div>
+
+      {/* PROMOÇÃO VIGENTE — Early Booking */}
+      <div className="mt-10 rounded-2xl border p-6 md:p-8" style={{ borderColor: accent, background: "rgba(156,195,212,0.04)" }}>
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em]" style={{ color: accent }}>Promoção vigente</p>
+          <p className="text-[11px] uppercase tracking-[0.16em]" style={{ color: T.cFaint }}>válida até {PROMO.validade}</p>
+        </div>
+        <h3 className="mt-2 font-display text-2xl font-light" style={{ color: T.creme }}>
+          Early Booking <span className="text-lg" style={{ color: T.cSoft }}>(reserva antecipada)</span>
+        </h3>
+        <p className="mt-1 text-[13px] font-light" style={{ color: T.cSoft }}>Descontos por forma de pagamento. Escolha a que melhor combina com você.</p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {PROMO.formas.map((f) => (
+            <div key={f.titulo} className="rounded-xl border p-5"
+              style={{ borderColor: f.destaque ? accent : T.line, background: f.destaque ? "rgba(207,154,78,0.06)" : "transparent" }}>
+              <div className="flex items-center justify-between">
+                <span className="font-display text-lg font-light" style={{ color: T.creme }}>{f.titulo}</span>
+                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em]"
+                  style={{ background: f.destaque ? accent : T.line, color: f.destaque ? T.ink : T.cSoft }}>{f.badge}</span>
+              </div>
+              <p className="mt-2 text-[12.5px] font-light leading-relaxed" style={{ color: T.cSoft }}>{f.desc}</p>
+              <p className="mt-3 text-[11px] font-light" style={{ color: T.cFaint }}>{f.entrada}</p>
+              <p className="mt-1 text-[11px] font-light italic" style={{ color: T.cFaint }}>{f.obs}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -682,7 +801,7 @@ export function HospModal({
    PROGRAMAPAGE — página de produto data-driven
    ============================================================ */
 export type RoteiroDia = { dia: string; titulo: string; desc: string; km?: string; horas?: string; desnivel?: string; pernoite?: string };
-export type Hospedagem = { nome: string; tipo: string; desc: string; img: string };
+export type Hospedagem = { nome: string; tipo: string; desc: string; img: string; imgs?: string[] };
 export type Programa = {
   slug: string;
   accentKey: AccentKey;
@@ -701,22 +820,22 @@ export type Programa = {
   inclui: string[];
   naoInclui: string[];
   hospedagens: Hospedagem[];
-  tarifaLinhas: TarifaLinha[];
-  tarifaNotas: string[];
+  tarifaPerfis: TarifaPerfil[];
   galeria: GalImg[];
 };
 
 export function ProgramaPage({ data }: { data: Programa }) {
   const p = PROG[data.accentKey];
   const A = p.accent, AS = p.soft, AD = p.dark;
+  const [hospModal, setHospModal] = useState<HospModalData | null>(null);
   return (
     <main className="relative" style={{ background: T.creme }}>
       <Nav />
 
       {/* HERO */}
       <section className="relative flex min-h-[100svh] w-full items-center overflow-hidden" style={{ background: AD }}>
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${data.heroImg}')`, opacity: 0.34 }} />
-        <div className="absolute inset-0" style={{ background: `radial-gradient(ellipse at 30% 50%, transparent 18%, ${AD} 78%)` }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${data.heroImg}')`, opacity: 0.5 }} />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(100deg, ${AD}f2 0%, ${AD}d9 34%, ${AD}80 58%, ${AD}40 100%)` }} />
         <div className="relative z-10 mx-auto grid w-full max-w-[1400px] items-center gap-10 px-6 py-28 md:grid-cols-[1.15fr_0.85fr] md:px-10">
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: EASE, delay: 0.2 }}
@@ -747,8 +866,8 @@ export function ProgramaPage({ data }: { data: Programa }) {
             </motion.div>
           </div>
           <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
-            className="mx-auto h-[380px] w-full max-w-[420px] md:h-[480px]">
-            <TorresSilhueta glow={AS} rock={"#0a0f08"} snow={T.gelo} />
+            className="mx-auto hidden h-[300px] w-full max-w-[420px] md:block md:h-[360px]">
+            <WSignature stroke={T.creme} accent={AS} />
           </motion.div>
         </div>
       </section>
@@ -792,7 +911,7 @@ export function ProgramaPage({ data }: { data: Programa }) {
                     <p className="mt-2 text-[14px] font-light leading-relaxed" style={{ color: T.cSoft }}>{r.desc}</p>
                   </div>
                   <div className="flex flex-col gap-1 text-[12px] font-light md:text-right" style={{ color: T.cFaint }}>
-                    {r.km && <span>{r.km}</span>}
+                    {r.km && <span className="text-[14px] font-bold" style={{ color: T.creme }}>{r.km}</span>}
                     {r.horas && <span>{r.horas}</span>}
                     {r.desnivel && <span>{r.desnivel}</span>}
                     {r.pernoite && <span style={{ color: AS }}>{r.pernoite}</span>}
@@ -813,57 +932,31 @@ export function ProgramaPage({ data }: { data: Programa }) {
         </div>
       </section>
 
-      {/* INCLUI / NÃO INCLUI */}
-      <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: T.creme, color: T.ink }}>
-        <div className="mx-auto grid max-w-[1100px] gap-12 md:grid-cols-2">
-          <div>
-            <Reveal><p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: A }}>O que está incluído</p></Reveal>
-            <div className="space-y-4">
-              {data.inclui.map((item, i) => (
-                <Reveal key={item} delay={i * 0.03}>
-                  <div className="flex items-start gap-3 border-t pt-4" style={{ borderColor: "rgba(27,39,51,0.12)" }}>
-                    <span className="mt-0.5 text-[13px]" style={{ color: A }}>✦</span>
-                    <p className="text-[14px] font-light leading-relaxed" style={{ color: "rgba(12,18,25,0.7)" }}>{item}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-          <div>
-            <Reveal><p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: "rgba(12,18,25,0.4)" }}>Não incluído</p></Reveal>
-            <div className="space-y-4">
-              {data.naoInclui.map((item, i) => (
-                <Reveal key={item} delay={i * 0.03}>
-                  <div className="flex items-start gap-3 border-t pt-4" style={{ borderColor: "rgba(27,39,51,0.12)" }}>
-                    <span className="mt-0.5 text-[13px]" style={{ color: "rgba(12,18,25,0.35)" }}>×</span>
-                    <p className="text-[14px] font-light leading-relaxed" style={{ color: "rgba(12,18,25,0.5)" }}>{item}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* HOSPEDAGENS */}
-      <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: T.granito, color: T.creme }}>
+      <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: T.creme, color: T.ink }}>
         <div className="mx-auto max-w-[1280px]">
-          <Reveal><p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: AS }}>Onde você descansa</p></Reveal>
-          <Reveal delay={0.05}><h2 className="mb-10 max-w-2xl font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]">Conforto no fim de cada caminhada</h2></Reveal>
+          <Reveal><p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: A }}>Onde você descansa</p></Reveal>
+          <Reveal delay={0.05}><h2 className="mb-10 max-w-2xl font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]" style={{ color: T.granito }}>Conforto no fim de cada caminhada</h2></Reveal>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {data.hospedagens.map((h, i) => (
               <Reveal key={h.nome} delay={i * 0.06}>
-                <div className="overflow-hidden rounded-xl border" style={{ borderColor: T.line }}>
+                <button
+                  className="group w-full overflow-hidden rounded-xl border text-left transition-transform duration-300 hover:-translate-y-1"
+                  style={{ borderColor: "rgba(27,39,51,0.12)", background: "#fff" }}
+                  onClick={() => setHospModal({ nome: h.nome, tipo: h.tipo, desc: h.desc, imgs: h.imgs ?? [h.img] })}
+                >
                   <div className="relative h-52 overflow-hidden">
-                    <div className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1200ms] hover:scale-100" style={{ backgroundImage: `url('${h.img}')` }} />
-                    <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${T.ink}cc, transparent 60%)` }} />
+                    <div className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1200ms] group-hover:scale-110" style={{ backgroundImage: `url('${h.img}')` }} />
+                    <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${T.ink}d9, transparent 60%)` }} />
                     <span className="absolute bottom-3 left-4 text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ color: AS }}>{h.tipo}</span>
+                    <span className="absolute right-3 top-3 rounded-full px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      style={{ background: "rgba(12,18,25,0.7)", color: AS }}>Ver fotos →</span>
                   </div>
                   <div className="p-5">
-                    <h3 className="font-display text-xl font-light">{h.nome}</h3>
-                    <p className="mt-2 text-[13px] font-light leading-relaxed" style={{ color: T.cSoft }}>{h.desc}</p>
+                    <h3 className="font-display text-xl font-light" style={{ color: T.granito }}>{h.nome}</h3>
+                    <p className="mt-2 text-[13px] font-light leading-relaxed" style={{ color: "rgba(12,18,25,0.6)" }}>{h.desc}</p>
                   </div>
-                </div>
+                </button>
               </Reveal>
             ))}
           </div>
@@ -881,9 +974,9 @@ export function ProgramaPage({ data }: { data: Programa }) {
       {/* TARIFAS */}
       <section id="tarifas" className="scroll-mt-24 px-6 py-24 md:px-10 md:py-28" style={{ background: T.granito, color: T.creme }}>
         <div className="mx-auto max-w-[860px]">
-          <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: AS }}>Valores · Early Booking 2026/2027</p></Reveal>
-          <Reveal delay={0.05}><h2 className="mt-4 mb-8 font-display text-[clamp(1.8rem,3.6vw,2.8rem)] font-light leading-[1.15]">Escolha sua hospedagem e a forma de pagamento</h2></Reveal>
-          <Reveal delay={0.1}><Tarifas accent={A} linhas={data.tarifaLinhas} notas={data.tarifaNotas} /></Reveal>
+          <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: AS }}>Tarifas · Temporada 2026/2027</p></Reveal>
+          <Reveal delay={0.05}><h2 className="mt-4 mb-8 font-display text-[clamp(1.8rem,3.6vw,2.8rem)] font-light leading-[1.15]">Defina abaixo o seu perfil de hospedagem ideal</h2></Reveal>
+          <Reveal delay={0.1}><Tarifas accent={A} perfis={data.tarifaPerfis} naoInclui={data.naoInclui} /></Reveal>
         </div>
       </section>
 
@@ -891,21 +984,25 @@ export function ProgramaPage({ data }: { data: Programa }) {
       <section className="px-6 py-20 md:px-10 md:py-24" style={{ background: T.ink }}>
         <div className="mx-auto max-w-[860px] text-center">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: AS }}>AonikIA · especialista em Torres del Paine</p>
-            <h2 className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.15]" style={{ color: T.creme }}>Ainda em dúvida entre os programas?</h2>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: AS }}>Aonik <strong className="font-bold">IA</strong> · especialista nesta página</p>
+            <h2 className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.15]" style={{ color: T.creme }}>Dúvidas sobre o {data.nome}?</h2>
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed" style={{ color: T.cSoft }}>
-              Nível das trilhas, melhor época, o que levar na mala, refúgio ou camping. A AonikIA conhece o parque e te conecta com um especialista.
+              Nível da trilha, melhor época, o que levar, refúgio ou camping, tarifas. A Aonik <strong className="font-semibold" style={{ color: T.creme }}>IA</strong> responde sobre este circuito. Para outros assuntos, te levamos ao WhatsApp do time AONIK.
             </p>
-            <a href="#contato" className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300" style={{ borderColor: AS, color: AS }}>
-              Conversar com a AonikIA <span>→</span>
-            </a>
+            <button
+              onClick={() => { if (typeof window !== "undefined") window.dispatchEvent(new Event("open-aonikia")); }}
+              className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03]" style={{ borderColor: AS, color: AS }}>
+              Conversar com a Aonik <strong className="font-bold">IA</strong> <span>→</span>
+            </button>
           </Reveal>
         </div>
       </section>
 
-      <Contato destino="PATAGÔNIA CHILENA - Torres del Paine" />
+      <Contato destino={`PATAGÔNIA CHILENA - Torres del Paine · ${data.nome}`} />
       <Footer />
       <FloatingActions />
+
+      <HospModal data={hospModal} onClose={() => setHospModal(null)} accent={A} />
     </main>
   );
 }
