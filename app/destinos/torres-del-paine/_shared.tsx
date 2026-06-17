@@ -244,7 +244,7 @@ export function WSignature({ stroke = T.creme, accent = T.ouro }: { stroke?: str
 /* mx/my = posição do pino sobre o mapa (fração 0-1 do container da imagem) */
 export type WPin = { mx: number; my: number; nome: string; dia: string; desc: string; img: string };
 export const WMAP_HL: WPin[] = [
-  { mx: 0.683, my: 0.228, nome: "Mirador Base Torres", dia: "O coração do parque", desc: "As três torres de granito e a lagoa glacial ao amanhecer.", img: "/lastorres/torres.jpg" },
+  { mx: 0.710, my: 0.282, nome: "Mirador Base Torres", dia: "O coração do parque", desc: "As três torres de granito e a lagoa glacial ao amanhecer.", img: "/lastorres/torres.jpg" },
   { mx: 0.545, my: 0.585, nome: "Setor Cuernos", dia: "Lago Nordenskjöld", desc: "A trilha beira o lago turquesa aos pés dos Cuernos del Paine.", img: "/torres-del-paine/prod-w-tradicional.jpg" },
   { mx: 0.415, my: 0.375, nome: "Vale do Francés · Británico", dia: "O circo glacial", desc: "Anfiteatro de gelo cercado por Paine Grande e os Cuernos.", img: "/lastorres/paisagem.jpg" },
   { mx: 0.108, my: 0.535, nome: "Glaciar Grey", dia: "Campo de Hielo Sul", desc: "Icebergs à deriva no lago e o catamarã sobre o Pehoé.", img: "/torres-del-paine/setor-grey.jpg" },
