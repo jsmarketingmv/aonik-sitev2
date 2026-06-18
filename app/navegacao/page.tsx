@@ -42,15 +42,16 @@ const PRODUTOS = [
     tag: "Patagônia",
     img: "/skorpios/DSC_0020.JPG",
   },
-  {
-    nome: "Antarctica21",
-    rota: "Air-Cruise · Antártica",
-    desc: "Voe sobre o Drake e navegue a Antártica em navios boutique. Círculo Polar, fauna polar e expedições íntimas saindo de Punta Arenas.",
-    preco: "a partir de US$ 4.995",
-    href: "/destinos/antarctica21",
-    tag: "Antártica",
-    img: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1600&auto=format&fit=crop",
-  },
+  // Antarctica21 oculto temporariamente — página em finalização
+  // {
+  //   nome: "Antarctica21",
+  //   rota: "Air-Cruise · Antártica",
+  //   desc: "Voe sobre o Drake e navegue a Antártica em navios boutique. Círculo Polar, fauna polar e expedições íntimas saindo de Punta Arenas.",
+  //   preco: "a partir de US$ 4.995",
+  //   href: "/destinos/antarctica21",
+  //   tag: "Antártica",
+  //   img: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1600&auto=format&fit=crop",
+  // },
 ];
 
 export default function NavegacaoPage() {
@@ -156,13 +157,12 @@ export default function NavegacaoPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="max-w-sm text-[14px] font-light leading-relaxed text-ink/55">
-                Skorpios e Antarctica21: cada operadora com sua própria
-                página, identidade e rota.
+                Dois navios, duas rotas. Patagônia chilena, fiordes e geleiras.
               </p>
             </Reveal>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+          <div className="grid gap-6 md:grid-cols-1 md:gap-8 md:max-w-2xl">
             {PRODUTOS.map((p, i) => (
               <Reveal key={p.nome} delay={i * 0.08}>
                 <a

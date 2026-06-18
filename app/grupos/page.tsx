@@ -16,16 +16,22 @@ const EMBER = "#d98c4a";
 const HERO_IMG =
   "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2600&auto=format&fit=crop";
 
-// Colagem editorial — placeholders verificados (Juliano troca pelas reais)
-const U = "https://images.unsplash.com/photo-";
+// Colagem editorial — mix dos destinos de grupos AONIK
 const GALERIA_GRUPOS = [
-  { src: `${U}1551632811-561732d1e306?q=80&w=1400&auto=format&fit=crop`, cls: "col-span-12 sm:col-span-8 h-64 md:h-96" },
-  { src: `${U}1454496522488-7a8e488e8606?q=80&w=900&auto=format&fit=crop`, cls: "col-span-12 sm:col-span-4 h-64 md:h-96" },
-  { src: `${U}1500514966906-fe245eea9344?q=80&w=900&auto=format&fit=crop`, cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
-  { src: `${U}1469474968028-56623f02e42e?q=80&w=900&auto=format&fit=crop`, cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
-  { src: `${U}1518780664697-55e3ad937233?q=80&w=900&auto=format&fit=crop`, cls: "col-span-12 sm:col-span-4 h-44 md:h-64" },
-  { src: `${U}1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop`, cls: "col-span-7 h-52 md:h-80" },
-  { src: `${U}1517649763962-0c623066013b?q=80&w=900&auto=format&fit=crop`, cls: "col-span-5 h-52 md:h-80" },
+  // Tour du Mont Blanc — painel principal
+  { src: "https://static.wixstatic.com/media/nsplsh_b1564644fa994e589c62424e365560e9~mv2.jpg?w=1400&auto=format", cls: "col-span-12 sm:col-span-8 h-64 md:h-96" },
+  // Dolomitas Alta Via
+  { src: "https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg?w=900&auto=format", cls: "col-span-12 sm:col-span-4 h-64 md:h-96" },
+  // Coxilha Rica — campo aberto
+  { src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=900&auto=format&fit=crop", cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
+  // TMB — trilha nos Alpes
+  { src: "https://static.wixstatic.com/media/61ab00_70ab5a86382c4bb7825240cc732d08fd~mv2.jpeg?w=900&auto=format", cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
+  // Dolomitas — Tre Cime
+  { src: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg?w=900&auto=format", cls: "col-span-12 sm:col-span-4 h-44 md:h-64" },
+  // TMB — vale e grupo
+  { src: "https://static.wixstatic.com/media/2d4f5b_2c19dbc8a0ca4eab9c3f93e02a421779~mv2.jpg?w=1200&auto=format", cls: "col-span-7 h-52 md:h-80" },
+  // Coxilha Rica / trilheiros
+  { src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=900&auto=format&fit=crop", cls: "col-span-5 h-52 md:h-80" },
 ];
 
 const BENEFICIOS = [

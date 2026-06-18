@@ -28,7 +28,7 @@ const SEG_META = [
   {
     id: "refugios",
     n: "04",
-    img: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1600&auto=format&fit=crop",
+    img: "/rioserrano/hotel-1.webp",
   },
 ];
 

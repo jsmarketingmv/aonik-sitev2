@@ -2,8 +2,8 @@
 // Centralizado para reuso em formulário, rodapé e botão flutuante.
 export const AONIK = {
   whatsapp: "5547988047422", // 47 98804-7422
-  whatsappLabel: "47 98804-7422 / 47 99929-6585",
-  email: "comercial@aonik.com.br",
+  whatsappLabel: "47 98804-7422",
+  email: "contato@aonik.com.br",
   instagram: "aonik.experiences",
   instagramUrl: "https://instagram.com/aonik.experiences",
   cidade: "Blumenau, Santa Catarina, SC, Brasil",
