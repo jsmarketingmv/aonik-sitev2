@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProgramaPage, IMG, type Programa } from "../_shared";
+import { ProgramaPage, type Programa } from "../_shared";
 
 export const metadata: Metadata = {
   title: "W+ Express Plus · 5D/4N com Hotel Las Torres | Torres del Paine | AONIK",
@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 };
 
 const GAL = [
-  { src: IMG.hotel, cap: "Quarto Superior do Hotel Las Torres", tag: "Conforto" },
-  { src: IMG.torres, cap: "Base Torres ao amanhecer", tag: "Dia 1" },
-  { src: IMG.cuernos, cap: "Os Cuernos sobre o Lago Nordenskjöld", tag: "Cuernos" },
-  { src: IMG.vale, cap: "O circo glacial do Vale do Francés", tag: "Francés" },
-  { src: IMG.grey, cap: "Glaciar Grey e seus icebergs", tag: "Grey" },
-  { src: IMG.lago, cap: "As águas turquesa do Pehoé", tag: "Pehoé" },
+  { src: "/lastorres/IMG_5698.jpeg",  cap: "Quarto Superior do Hotel Las Torres", tag: "Hotel" },
+  { src: "/lastorres/IMG_5591.jpeg",  cap: "Base Torres ao amanhecer", tag: "Dia 1" },
+  { src: "/lastorres/IMG_6104.jpeg",  cap: "Os Cuernos sobre o Lago Nordenskjöld", tag: "Cuernos" },
+  { src: "/lastorres/IMG_6291.jpeg",  cap: "O circo glacial do Vale do Francés", tag: "Francés" },
+  { src: "/lastorres/IMG_6447.jpeg",  cap: "Glaciar Grey e seus icebergs azuis", tag: "Grey" },
+  { src: "/lastorres/IMG_5695.jpeg",  cap: "As águas turquesa do Pehoé ao entardecer", tag: "Pehoé" },
 ];
 
 const DATA: Programa = {
@@ -29,7 +29,7 @@ const DATA: Programa = {
   titulo: ["W+ Express", "Plus"],
   taglineLead: "O W completo, com um final à altura.",
   tagline: "O circuito mais confortável da Patagônia, fechando no Hotel Las Torres.",
-  heroImg: IMG.hotel,
+  heroImg: "/lastorres/IMG_5715.jpeg",
   resumoTitulo: "5 dias · 4 noites · com hotel",
   resumo:
     "Este programa completa o circuito W e adiciona uma quarta noite, ao final, no Hotel Las Torres. Toda a aventura do W, coroada pelo conforto e pelas comodidades de se hospedar no hotel.",
@@ -51,7 +51,7 @@ const DATA: Programa = {
   ],
   inclui: [
     "Trekking autoguiado pelos marcos do circuito W",
-    "3 noites em refúgio de montanha ou camping + 1 noite no Hotel Las Torres (Quarto Superior)",
+    "3 noites em refúgio de montanha ou camping full equipado + 1 noite no Hotel Las Torres (Quarto Superior)",
     "Todas as refeições no trekking e meia pensão no hotel",
     "Ônibus regular na ida e van privativa no retorno",
     "Catamarã no Lago Pehoé",
@@ -66,13 +66,50 @@ const DATA: Programa = {
     "Jantares especiais de 24/12 e 31/12 (US$ 71 por pessoa)",
   ],
   hospedagens: [
-    { nome: "Refúgios de montanha", tipo: "Mountain stays", desc: "Quarto compartilhado aconchegante, banho quente e cama de verdade nos primeiros dias.", img: IMG.refugio },
-    { nome: "Camping full equipado", tipo: "Acampamento premium", desc: "Barraca em altura, colchão de alta densidade e saco de dormir.", img: IMG.camping },
-    { nome: "Hotel Las Torres", tipo: "Quarto Superior", desc: "Conforto e vista para o maciço no Setor Central, na última noite da viagem.", img: IMG.hotel },
+    {
+      nome: "Refúgios de montanha", tipo: "Mountain stays",
+      desc: "Quarto compartilhado aconchegante, banho quente e cama de verdade nos primeiros dias.",
+      img: "/lastorres/Vertice_Refugio_PG-4.jpg",
+      imgs: ["/lastorres/Vertice_Refugio_PG-4.jpg", "https://lastorres.com/content/uploads/1200-x-500-1-1.jpg", "https://lastorres.com/content/uploads/1200x1000-1.jpg"],
+    },
+    {
+      nome: "Camping full equipado", tipo: "Acampamento premium",
+      desc: "Barraca em altura, colchão de alta densidade e saco de dormir, já montados quando você chega.",
+      img: "/lastorres/IMG_5860.JPG",
+      imgs: ["/lastorres/IMG_5860.JPG", "/lastorres/Vertice_Refugio_Camping_PG.jpg", "https://lastorres.com/content/uploads/700-x-580-2-17.jpg"],
+    },
+    {
+      nome: "Hotel Las Torres", tipo: "Quarto Superior",
+      desc: "Conforto e vista para o maciço no Setor Central, na última noite da viagem.",
+      img: "/lastorres/IMG_5703.JPG",
+      imgs: ["/lastorres/IMG_5703.JPG", "/lastorres/IMG_5700.jpeg", "/lastorres/IMG_5704.JPG", "/lastorres/IMG_5710.jpeg"],
+    },
   ],
   tarifaPerfis: [
-    { key: "camping", label: "Camping + Hotel", tarifa: 2126, base2pax: true, single: 1490, jantar: 71, nota: "Valores por pessoa, em ocupação dupla. A noite no hotel é em meia pensão. Para 1 Pax, aplica-se suplemento single." },
-    { key: "refugio", label: "Refúgio + Hotel", tarifa: 2594, base2pax: true, single: 1800, jantar: 71, nota: "Valores por pessoa, em ocupação dupla. A noite no hotel é em meia pensão. Para 1 Pax, aplica-se suplemento single." },
+    {
+      key: "camping", label: "Camping + Hotel", tarifa: 2126, base2pax: true, single: 1490, jantar: 71,
+      nota: "Valores por pessoa, em ocupação dupla. A noite no hotel é em meia pensão. Para 1 Pax, aplica-se suplemento single.",
+      inclui: [
+        "Welcome drink em cada setor e todas as refeições (jantar incluído no Dia 1 e meia pensão no hotel)",
+        "Camping full equipado por 3 noites: barraca em plataforma, saco de dormir, colchão de alta densidade, travesseiro e banheiros com chuveiro quente",
+        "1 noite em Quarto Superior do Hotel Las Torres (meia pensão incluída)",
+        "Welcome kit: garrafa d'água, liner* e toalha",
+        "Catamarã no Lago Pehoé*",
+        "Taxa de entrada do Parque Nacional, ônibus regular Puerto Natales → parque e van privativa de retorno",
+      ],
+    },
+    {
+      key: "refugio", label: "Refúgio + Hotel", tarifa: 2594, base2pax: true, single: 1800, jantar: 71,
+      nota: "Valores por pessoa, em ocupação dupla. A noite no hotel é em meia pensão. Para 1 Pax, aplica-se suplemento single.",
+      inclui: [
+        "Welcome drink em cada setor e todas as refeições (meia pensão no hotel)",
+        "Cama em quarto compartilhado de 6 a 8 camas, saco de dormir e banheiros com água quente por 3 noites",
+        "1 noite em Quarto Superior do Hotel Las Torres (meia pensão incluída)",
+        "Welcome kit: garrafa d'água, liner* e toalha",
+        "Catamarã no Lago Pehoé*",
+        "Taxa de entrada do Parque Nacional, ônibus regular Puerto Natales → parque e van privativa de retorno",
+      ],
+    },
   ],
   galeria: GAL,
 };
