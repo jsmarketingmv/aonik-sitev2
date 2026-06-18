@@ -71,7 +71,7 @@ const DATA: Programa = {
     "Voos nacionais e internacionais",
     "Seguro de viagem e assistência médica",
     "Equipamento não listado e gorjetas",
-    "Jantares especiais de 24/12 e 31/12 (US$ 71 por pessoa)",
+    "Jantares especiais de 24/12 e 31/12",
   ],
   hospedagens: [
     {

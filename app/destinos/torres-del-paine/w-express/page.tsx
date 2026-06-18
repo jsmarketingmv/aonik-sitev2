@@ -64,7 +64,7 @@ const DATA: Programa = {
     "Voos nacionais e internacionais",
     "Seguro de viagem e assistência médica",
     "Equipamento não listado e gorjetas",
-    "Jantares especiais de 24/12 e 31/12 (US$ 71 por pessoa)",
+    "Jantares especiais de 24/12 e 31/12",
   ],
   hospedagens: [
     {
@@ -88,7 +88,7 @@ const DATA: Programa = {
   ],
   tarifaPerfis: [
     {
-      key: "camping", label: "Camping", tarifa: 1657, base2pax: true, single: 1160, jantar: 71,
+      key: "camping", label: "Camping", tarifa: 1657, base2pax: true, single: 1657, jantar: 71,
       nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single.",
       inclui: [
         "Welcome drink em cada setor e todas as refeições (jantar incluído no Dia 1)",
