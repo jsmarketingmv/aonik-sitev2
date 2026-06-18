@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProgramaPage, IMG, type Programa } from "../_shared";
+import { ProgramaPage, type Programa, type WPin } from "../_shared";
 
 export const metadata: Metadata = {
   title: "W Journey Circuit · guiado 5D/4N | Torres del Paine | AONIK",
@@ -12,12 +12,20 @@ export const metadata: Metadata = {
 };
 
 const GAL = [
-  { src: IMG.torres, cap: "Base Torres ao amanhecer", tag: "Dia 2" },
-  { src: IMG.cuernos, cap: "Os Cuernos sobre o Lago Nordenskjöld", tag: "Cuernos" },
-  { src: IMG.vale, cap: "O circo glacial do Vale do Francés", tag: "Francés" },
-  { src: IMG.grey, cap: "Glaciar Grey e seus icebergs", tag: "Grey" },
-  { src: IMG.trilha, cap: "A trilha pela floresta de lenga", tag: "Chileno" },
-  { src: IMG.lago, cap: "As águas turquesa do Pehoé", tag: "Pehoé" },
+  { src: "/lastorres/IMG_5590.jpeg",  cap: "Base Torres ao amanhecer, o primeiro grande marco", tag: "Dia 2" },
+  { src: "/lastorres/IMG_6534.jpeg",  cap: "A orla do Lago Nordenskjöld aos pés dos Cuernos", tag: "Cuernos" },
+  { src: "/lastorres/IMG_5715.jpeg",  cap: "O circo glacial do Vale do Francés", tag: "Francés" },
+  { src: "/lastorres/IMG_5957.jpeg",  cap: "Glaciar Grey e os icebergs à deriva no lago", tag: "Grey" },
+  { src: "/lastorres/sunset.jpg",     cap: "O pôr do sol da Patagônia, a celebração de cada dia", tag: "Celebração" },
+  { src: "/lastorres/IMG_6369.JPG",   cap: "Catamarã cruzando o Lago Pehoé no último dia", tag: "Pehoé" },
+];
+
+/* Pins do mapa específicos para o W Journey: 2 noites no Setor Central + 2 noites no Setor Francés */
+const WMAP_JOURNEY: WPin[] = [
+  { mx: 0.710, my: 0.282, nome: "Mirador Base Torres · 2 noites", dia: "Dias 1 e 2", desc: "A abertura da jornada guiada: Rito do Explorador, after trek e as três torres ao amanhecer.", img: "/lastorres/torres.jpg" },
+  { mx: 0.545, my: 0.585, nome: "Setor Cuernos", dia: "Lago Nordenskjöld", desc: "A trilha beira o lago turquesa aos pés dos Cuernos del Paine.", img: "/torres-del-paine/prod-w-tradicional.jpg" },
+  { mx: 0.480, my: 0.470, nome: "Setor Francés · 2 noites", dia: "Dias 3 e 4", desc: "Duas noites no coração do circuito: Vale do Francés e Mirador Británico.", img: "/lastorres/paisagem.jpg" },
+  { mx: 0.108, my: 0.535, nome: "Glaciar Grey · Celebração final", dia: "Dia 5", desc: "Icebergs, catamarã no Pehoé e o jantar de despedida antes do retorno privativo.", img: "/torres-del-paine/setor-grey.jpg" },
 ];
 
 const DATA: Programa = {
@@ -29,13 +37,12 @@ const DATA: Programa = {
   titulo: ["W Journey", "Circuit"],
   taglineLead: "O destino importa, mas a boa companhia faz toda a diferença.",
   tagline: "Um programa guiado, do início ao fim, na mão de um host.",
-  heroImg: IMG.amanhecer,
+  heroImg: "/lastorres/IMG_5590.jpeg",
   resumoTitulo: "5 dias · 4 noites · guiado",
   resumo:
     "O circuito mais cativante da Patagônia, desenhado para você aproveitar, conectar e crescer no caminho. Mais do que caminhar o W, uma experiência que deixa marca a cada passo.",
   stats: [
     { label: "Duração", value: "5d · 4n" },
-    { label: "Noites", value: "4" },
     { label: "Distância", value: "69,5 km" },
     { label: "Estilo", value: "Guiado" },
     { label: "Grupo", value: "2 a 12" },
@@ -50,16 +57,14 @@ const DATA: Programa = {
     { dia: "Dia 5", titulo: "Último empurrão e celebração", desc: "Mirante do Glaciar Grey, o Campo de Hielo Sul e os icebergs no lago. Catamarã pelo Pehoé e jantar de despedida antes do retorno privativo a Puerto Natales.", km: "13,5 km", horas: "4,5 a 6,5h", desnivel: "+80 m", pernoite: "Catamarã + traslado privativo" },
   ],
   inclui: [
-    "Caminhada guiada com host bilíngue: Base Torres, Los Cuernos, Vale do Francés e primeiro mirante do Grey",
+    "Caminhada guiada com host bilíngue: Base Torres, Cuernos, Vale do Francés e Glaciar Grey",
     "Traslado privativo de Puerto Natales ao parque, ida e volta",
     "4 noites em refúgio de montanha ou camping full equipado",
     "Todas as refeições: café da manhã, box lunch e jantar",
-    "Catamarã no Lago Pehoé",
-    "Entrada do Parque Nacional e welcome kit",
-    "Bastões e crampons quando o clima exigir",
-    "Bebidas quentes ilimitadas e wifi nos 5 setores",
-    "Rito do Explorador, after trek e jantar de despedida",
-    "Guarda-volumes em Paine Grande e confirmação imediata de vagas",
+    "Catamarã no Lago Pehoé e entrada do Parque Nacional",
+    "Welcome kit, bastões e crampons quando o clima exigir",
+    "Rito do Explorador, after trek em cada marco e jantar de despedida",
+    "Certificado de conclusão do W Journey",
   ],
   naoInclui: [
     "Voos nacionais e internacionais",
@@ -69,15 +74,68 @@ const DATA: Programa = {
     "Jantares especiais de 24/12 e 31/12 (US$ 50 por pessoa)",
   ],
   hospedagens: [
-    { nome: "Refúgio Central", tipo: "Mountain stay", desc: "Base do parque, perto do Welcome Center, com banho quente e cama de verdade.", img: IMG.refugio },
-    { nome: "Refúgio Francés", tipo: "Mountain stay", desc: "Aos pés do circo glacial, no coração selvagem do circuito.", img: IMG.trilha },
-    { nome: "Camping full equipado", tipo: "Acampamento premium", desc: "Barraca em altura, colchão de alta densidade e saco de dormir. Acampar com conforto.", img: IMG.camping },
+    {
+      nome: "Refúgio Central", tipo: "Mountain stay",
+      desc: "Base do parque, perto do Welcome Center, com banho quente e cama de verdade. O lar do grupo nas noites 1 e 2.",
+      img: "/lastorres/Vertice_Refugio_PG-4.jpg",
+      imgs: [
+        "/lastorres/Vertice_Refugio_PG-4.jpg",
+        "/lastorres/Vertice_Refugio_Camping_Paine_Grande_-1.jpg",
+        "https://lastorres.com/content/uploads/1200-x-500-1-1.jpg",
+        "https://lastorres.com/content/uploads/1200x1000-1.jpg",
+      ],
+    },
+    {
+      nome: "Refúgio Francés", tipo: "Mountain stay",
+      desc: "Aos pés do circo glacial, no coração selvagem do circuito. Duas noites no silêncio do vale.",
+      img: "/lastorres/Vertice_Refugio_Camping_Paine_Grande_-3.jpg",
+      imgs: [
+        "/lastorres/Vertice_Refugio_Camping_Paine_Grande_-3.jpg",
+        "https://www.vertice.travel/wp-content/uploads/2026/04/Vertice_Refugio_Camping_Paine_Grande_-5.jpg",
+        "https://www.vertice.travel/wp-content/uploads/2026/04/Vertice_Refugio_Camping_Paine_Grande_-7.jpg",
+      ],
+    },
+    {
+      nome: "Camping full equipado", tipo: "Acampamento premium",
+      desc: "Barraca em plataforma, colchão de alta densidade e saco de dormir. Acampar com conforto, acordar com a Patagônia.",
+      img: "/lastorres/IMG_5860.JPG",
+      imgs: [
+        "/lastorres/IMG_5860.JPG",
+        "/lastorres/Vertice_Refugio_Camping_PG.jpg",
+        "https://www.vertice.travel/wp-content/uploads/2026/04/Vertice_Refugio_Camping_Paine_Grande_-20.jpg",
+      ],
+    },
   ],
   tarifaPerfis: [
-    { key: "camping", label: "Camping", tarifa: 2800, base2pax: true, single: 2240, jantar: 50, nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single. Grupos de 2 a 12 pessoas. Condições sob confirmação para o programa guiado." },
-    { key: "refugio", label: "Refúgio", tarifa: 2990, base2pax: false, single: null, jantar: 50, nota: "Valores por pessoa, em ocupação simples. Grupos de 2 a 12 pessoas. Condições sob confirmação para o programa guiado." },
+    {
+      key: "camping", label: "Camping", tarifa: 2800, base2pax: true, single: 2240, jantar: 50,
+      nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single. Grupos de 2 a 12 pessoas. Condições sob confirmação para o programa guiado.",
+      inclui: [
+        "Host bilíngue durante os 5 dias, do traslado de chegada ao de retorno",
+        "Traslados privativos Puerto Natales, ida e volta",
+        "Camping full equipado por 4 noites: barraca em plataforma, saco de dormir, colchão de alta densidade, travesseiro e banheiros com chuveiro quente",
+        "Todas as refeições: café da manhã, box lunch e jantar em todos os setores",
+        "Catamarã no Lago Pehoé e taxa de entrada do Parque Nacional",
+        "Welcome kit: garrafa d'água e toalha. Bastões e crampons quando o clima exigir",
+        "Rito do Explorador, after trek em cada marco, jantar de despedida e certificado",
+      ],
+    },
+    {
+      key: "refugio", label: "Refúgio", tarifa: 2990, base2pax: false, single: null, jantar: 50,
+      nota: "Valores por pessoa, em ocupação simples. Grupos de 2 a 12 pessoas. Condições sob confirmação para o programa guiado.",
+      inclui: [
+        "Host bilíngue durante os 5 dias, do traslado de chegada ao de retorno",
+        "Traslados privativos Puerto Natales, ida e volta",
+        "4 noites em refúgio de montanha: cama em quarto compartilhado (6 a 8 camas), saco de dormir e banheiros com água quente",
+        "Todas as refeições: café da manhã, box lunch e jantar em todos os setores",
+        "Catamarã no Lago Pehoé e taxa de entrada do Parque Nacional",
+        "Welcome kit: garrafa d'água e toalha. Bastões e crampons quando o clima exigir",
+        "Rito do Explorador, after trek em cada marco, jantar de despedida e certificado",
+      ],
+    },
   ],
   galeria: GAL,
+  wmapPins: WMAP_JOURNEY,
 };
 
 export default function Page() {
