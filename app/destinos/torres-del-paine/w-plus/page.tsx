@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 };
 
 const GAL = [
+  { src: "/lastorres/hotel-verde.jpg", cap: "Fachada do Hotel Las Torres entre as lengas patagônicas", tag: "Hotel" },
   { src: "/lastorres/IMG_5698.jpeg",  cap: "Quarto Superior do Hotel Las Torres", tag: "Hotel" },
   { src: "/lastorres/IMG_5591.jpeg",  cap: "Base Torres ao amanhecer", tag: "Dia 1" },
   { src: "/lastorres/IMG_6104.jpeg",  cap: "Os Cuernos sobre o Lago Nordenskjöld", tag: "Cuernos" },
   { src: "/lastorres/IMG_5860.JPG",   cap: "Camping full equipado no parque", tag: "Camping" },
   { src: "/lastorres/IMG_5700.jpeg",  cap: "Hotel Las Torres, a última noite da viagem", tag: "Hotel" },
-  { src: "/lastorres/hotel-verde.jpg", cap: "Refúgio de montanha entre as lengas patagônicas", tag: "Refúgio" },
   { src: "/lastorres/IMG_5695.jpeg",  cap: "As águas turquesa do Pehoé ao entardecer", tag: "Pehoé" },
 ];
 
