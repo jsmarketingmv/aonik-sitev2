@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 const GAL = [
+  { src: "/lastorres/IMG_6333.jpeg", cap: "O circo glacial do Vale do Francés", tag: "Francés" },
   { src: "/lastorres/IMG_5668.jpeg", cap: "Os Cuernos sobre o Lago Nordenskjöld", tag: "Cuernos" },
   { src: "/lastorres/paisagem.jpg",  cap: "A paisagem inconfundível da Patagônia", tag: "Patagônia" },
-  { src: "/lastorres/IMG_6333.jpeg", cap: "O circo glacial do Vale do Francés", tag: "Francés" },
   { src: "/lastorres/IMG_6691.jpeg", cap: "Torres del Paine ao amanhecer", tag: "Torres" },
   { src: "/lastorres/IMG_5610.jpeg", cap: "As águas turquesa do Pehoé", tag: "Pehoé" },
   { src: "/lastorres/IMG_5816.jpeg", cap: "A trilha pela floresta de lenga", tag: "Chileno" },
