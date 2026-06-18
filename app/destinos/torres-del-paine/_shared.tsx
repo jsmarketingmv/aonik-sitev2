@@ -250,7 +250,7 @@ export const WMAP_HL: WPin[] = [
   { mx: 0.108, my: 0.535, nome: "Glaciar Grey", dia: "Campo de Hielo Sul", desc: "Icebergs à deriva no lago e o catamarã sobre o Pehoé.", img: "/torres-del-paine/setor-grey.jpg" },
 ];
 
-export function WMap({ accent = T.ouro }: { accent?: string }) {
+export function WMap({ accent = T.ouro, pins = WMAP_HL }: { accent?: string; pins?: WPin[] }) {
   const [active, setActive] = useState(0);
   return (
     <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
@@ -262,7 +262,7 @@ export function WMap({ accent = T.ouro }: { accent?: string }) {
           alt="Mapa do circuito W em Torres del Paine, com os pontos de Mirador Base Torres, Cuernos, Vale do Francés e Glaciar Grey"
           className="w-full"
         />
-        {WMAP_HL.map((p, i) => {
+        {pins.map((p, i) => {
           const on = i === active;
           return (
             <button
@@ -301,7 +301,7 @@ export function WMap({ accent = T.ouro }: { accent?: string }) {
 
       {/* CARDS */}
       <div className="flex flex-col gap-3">
-        {WMAP_HL.map((p, i) => {
+        {pins.map((p, i) => {
           const on = i === active;
           return (
             <button
@@ -822,6 +822,7 @@ export type Programa = {
   hospedagens: Hospedagem[];
   tarifaPerfis: TarifaPerfil[];
   galeria: GalImg[];
+  wmapPins?: WPin[];
 };
 
 export function ProgramaPage({ data }: { data: Programa }) {
@@ -928,7 +929,7 @@ export function ProgramaPage({ data }: { data: Programa }) {
         <div className="mx-auto max-w-[1280px]">
           <Reveal><p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: AS }}>Mapa do programa</p></Reveal>
           <Reveal delay={0.05}><h2 className="mb-10 max-w-2xl font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]" style={{ color: T.creme }}>Os marcos que você vai conquistar</h2></Reveal>
-          <Reveal delay={0.1}><WMap accent={A} /></Reveal>
+          <Reveal delay={0.1}><WMap accent={A} pins={data.wmapPins ?? WMAP_HL} /></Reveal>
         </div>
       </section>
 
