@@ -535,7 +535,7 @@ export function Galeria({ images, accent = T.ouro }: { images: GalImg[]; accent?
           className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base transition-all"
           style={{ background: "rgba(12,18,25,0.6)", color: accent }}>›</button>
       </div>
-      <div className="grid grid-cols-4 gap-2 sm:grid-cols-6">
+      <div className="grid auto-cols-fr grid-flow-col gap-2">
         {images.map((g, i) => (
           <button key={i} onClick={() => setIdx(i)} aria-label={g.cap}
             className="relative overflow-hidden rounded-lg transition-all duration-300"
@@ -949,12 +949,18 @@ export function ProgramaPage({ data }: { data: Programa }) {
                     <div className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1200ms] group-hover:scale-110" style={{ backgroundImage: `url('${h.img}')` }} />
                     <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${T.ink}d9, transparent 60%)` }} />
                     <span className="absolute bottom-3 left-4 text-[10px] font-semibold uppercase tracking-[0.18em]" style={{ color: AS }}>{h.tipo}</span>
-                    <span className="absolute right-3 top-3 rounded-full px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                      style={{ background: "rgba(12,18,25,0.7)", color: AS }}>Ver fotos →</span>
+                    <span className="absolute right-3 top-3 flex items-center gap-1 rounded-full px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+                      style={{ background: "rgba(12,18,25,0.72)", color: AS }}>
+                      <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 2A1.5 1.5 0 0 0 4 3.5v.086A3 3 0 0 0 1 6.5v5A3 3 0 0 0 4 14.5h8a3 3 0 0 0 3-3v-5a3 3 0 0 0-3-3h-.086A1.5 1.5 0 0 0 10.5 2h-5zM8 6a3 3 0 1 1 0 6A3 3 0 0 1 8 6zm0 1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+                      Ver fotos
+                    </span>
                   </div>
                   <div className="p-5">
                     <h3 className="font-display text-xl font-light" style={{ color: T.granito }}>{h.nome}</h3>
                     <p className="mt-2 text-[13px] font-light leading-relaxed" style={{ color: "rgba(12,18,25,0.6)" }}>{h.desc}</p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-300" style={{ color: AS }}>
+                      Ver fotos <span className="text-base leading-none">→</span>
+                    </span>
                   </div>
                 </button>
               </Reveal>
