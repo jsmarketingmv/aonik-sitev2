@@ -98,7 +98,7 @@ function ConchaVieira({ className = "" }: { className?: string }) {
 
 /* ── Dados de produto ─────────────────────────────────────── */
 type TipoProduto = "A Pe" | "Bike";
-type Produto = { nome: string; tipo: TipoProduto; km: string; dias: string; preco: string; desc: string };
+type Produto = { nome: string; tipo: TipoProduto; km: string; dias: string; preco: string; desc: string; href?: string };
 
 const PORTUGUES_APE: Produto[] = [
   { nome: "Central",                tipo: "A Pe", km: "226 km", dias: "14 dias", preco: "a partir de € 1.466", desc: "Porto para Santiago. A rota historica classica pelo interior de Portugal." },
@@ -110,8 +110,8 @@ const PORTUGUES_APE: Produto[] = [
 ];
 
 const PORTUGUES_BIKE: Produto[] = [
-  { nome: "Bike Costa",    tipo: "Bike", km: "260 km", dias: "9 dias", preco: "a partir de € 1.390", desc: "Costa atlantica de bicicleta. Alforjes, vento e liberdade." },
-  { nome: "Bike Central",  tipo: "Bike", km: "240 km", dias: "8 dias", preco: "a partir de € 1.262", desc: "Interior portugues. Paisagens de vinha, granito e aldeia." },
+  { nome: "Bike Costa",    tipo: "Bike", km: "260 km", dias: "9 dias", preco: "a partir de € 1.390", desc: "Costa atlantica de bicicleta. Alforjes, vento e liberdade.", href: "/destinos/caminho-costa-bike" },
+  { nome: "Bike Central",  tipo: "Bike", km: "240 km", dias: "8 dias", preco: "a partir de € 1.262", desc: "Interior portugues. Paisagens de vinha, granito e aldeia.", href: "/destinos/caminho-central-bike" },
 ];
 
 const FRANCES: Produto[] = [
@@ -184,7 +184,7 @@ const INCLUSOS = [
 function ProdutoCardDark({ p, delay = 0 }: { p: Produto; delay?: number }) {
   return (
     <Reveal delay={delay}>
-      <a href="#contato" className="group flex h-full flex-col gap-3 rounded-xl p-6 transition-all duration-300"
+      <a href={p.href || "#contato"} className="group flex h-full flex-col gap-3 rounded-xl p-6 transition-all duration-300"
         style={{ border: `1px solid ${J.amarLine}`, backgroundColor: "rgba(255,255,255,0.03)" }}>
         <div className="flex items-start justify-between gap-2">
           <span className="rounded-full px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em]"
