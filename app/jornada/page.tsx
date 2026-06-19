@@ -109,9 +109,9 @@ const PORTUGUES_APE: Produto[] = [
   { nome: "Central",              tipo: "A Pe", km: "226 km",   dias: "14 dias", preco: "a partir de € 1.466", desc: "Porto para Santiago. A rota historica classica pelo interior de Portugal.", href: "/destinos/caminho-central-ape" },
   { nome: "Costa",                tipo: "A Pe", km: "260 km",   dias: "15 dias", preco: "a partir de € 1.498", desc: "A beira do Atlantico. Praias, dunas e aldeias piscatorias de Portugal.", href: "/destinos/caminho-costa-ape" },
   { nome: "Valenca",              tipo: "A Pe", km: "121 km",   dias: "8 dias",  preco: "a partir de € 810",   desc: "Comeca na fronteira do Rio Minho. Mais curto e acessivel para iniciantes.", href: "/destinos/caminho-valenca-ape" },
-  { nome: "Baiona",               tipo: "A Pe", km: "126,5 km", dias: "8 dias",  preco: "a partir de € 886",   desc: "Variante espanhola. Vila medieval como ponto de partida na Galiza." },
-  { nome: "Easy",                 tipo: "A Pe", km: "256 km",   dias: "21 dias", preco: "a partir de € 2.359", desc: "Etapas curtas, ritmo tranquilo. Ideal para quem caminha pela primeira vez." },
-  { nome: "Santiago a Finisterre",tipo: "A Pe", km: "90 km",    dias: "7 dias",  preco: "a partir de € 791",   desc: "Do fim ao fim do mundo. Estender a peregrinacao alem da Catedral." },
+  { nome: "Baiona",               tipo: "A Pe", km: "126,5 km", dias: "8 dias",  preco: "a partir de € 886",   desc: "Variante espanhola. Vila medieval como ponto de partida na Galiza.", href: "/destinos/caminho-baiona-ape" },
+  { nome: "Easy",                 tipo: "A Pe", km: "256 km",   dias: "21 dias", preco: "a partir de € 2.359", desc: "Etapas curtas, ritmo tranquilo. Ideal para quem caminha pela primeira vez.", href: "/destinos/caminho-easy-ape" },
+  { nome: "Santiago a Finisterre",tipo: "A Pe", km: "90 km",    dias: "7 dias",  preco: "a partir de € 791",   desc: "Do fim ao fim do mundo. Estender a peregrinacao alem da Catedral.", href: "/destinos/santiago-finisterre" },
 ];
 const PORTUGUES_BIKE: Produto[] = [
   { nome: "Bike Costa",   tipo: "Bike", km: "260 km", dias: "9 dias", preco: "a partir de € 1.390", desc: "Costa atlantica de bicicleta. Alforjes, vento e liberdade." },
