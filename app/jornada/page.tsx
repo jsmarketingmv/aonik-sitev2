@@ -221,7 +221,7 @@ function CardSky({ p, delay = 0 }: { p: Produto; delay?: number }) {
 function CardSand({ p, delay = 0 }: { p: Produto; delay?: number }) {
   return (
     <Reveal delay={delay}>
-      <a href="#contato" className="group flex h-full flex-col gap-3 rounded-2xl p-6 transition-all duration-300"
+      <a href={p.href ?? "#contato"} className="group flex h-full flex-col gap-3 rounded-2xl p-6 transition-all duration-300"
         style={{ border: `1px solid rgba(48,127,226,0.28)`, backgroundColor: "rgba(0,32,91,0.09)" }}>
         <div className="flex items-start justify-between gap-2">
           {/* badge SKY */}
