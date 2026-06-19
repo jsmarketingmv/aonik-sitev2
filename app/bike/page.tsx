@@ -181,7 +181,7 @@ function ProdutoCard({
       <a
         href={p.href}
         className="group relative block overflow-hidden rounded-xl transition-transform duration-500 hover:scale-[1.02]"
-        style={{ backgroundColor: "#1e1916" }}
+        style={{ backgroundColor: B.asfalto }}
       >
         <div className="relative h-[220px] overflow-hidden">
           <div
@@ -190,7 +190,7 @@ function ProdutoCard({
           />
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(to top, #1e1916 0%, transparent 55%)" }}
+            style={{ background: `linear-gradient(to top, ${B.asfalto} 0%, transparent 55%)` }}
           />
           <div className="absolute right-4 top-4 text-lg">{p.bandeira}</div>
         </div>
