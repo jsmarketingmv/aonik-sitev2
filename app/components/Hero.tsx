@@ -6,12 +6,12 @@ import { useLang } from "./LanguageProvider";
 
 // Imagens por palavra-chave (independentes de idioma) — mesma ordem do dicionário
 const ROTATING_IMGS = [
-  "/images/hero/IMG_3490.jpg", // caminhada
+  "/images/hero/IMG_3490.JPG", // caminhada
   "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1848.jpg/1900x800/2/1900x800/", // pedalada
   "https://cdn.prod.website-files.com/66f12032b3f2015fa639ef3e/684c66f504adcb4c0296f6b9_Nicola%CC%81s%20Gildemeister%20-%20image%20(10).jpg", // navegação
   "https://lastorres.com/content/uploads/01-6.jpg", // luxo (Las Torres)
-  "/images/hero/IMG_1704.jpg", // travessia
-  "/images/hero/IMG_3775.jpg", // jornada
+  "/images/hero/IMG_1704.JPG", // travessia
+  "/images/hero/IMG_3775.JPG", // jornada
 ];
 
 // Estrutura das categorias (href/soon); rótulos vêm do dicionário
