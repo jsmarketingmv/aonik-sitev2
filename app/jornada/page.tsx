@@ -52,12 +52,12 @@ const HERO_IMG =
    ─────────────────────────────────────────────────────────── */
 const HX = 130, HY = 200;
 const TIPS: [number, number][] = [
-  [15, 104], [39, 81], [67, 64], [98, 54], [130, 50],
-  [163, 54], [193, 64], [221, 81], [245, 104],
+  [-5, 130], [15, 104], [39, 81], [67, 64], [98, 54], [130, 50],
+  [163, 54], [193, 64], [221, 81], [245, 104], [265, 130],
 ];
 const CPS: [number, number][] = [
-  [10, 75], [40, 51], [75, 35], [111, 27],
-  [149, 27], [186, 35], [220, 51], [250, 75],
+  [3, 72], [10, 75], [40, 51], [75, 35], [111, 27],
+  [149, 27], [186, 35], [220, 51], [250, 75], [258, 72],
 ];
 
 let SHELL_PATH = `M ${HX},${HY} L ${TIPS[0][0]},${TIPS[0][1]}`;
@@ -73,7 +73,7 @@ for (let i = 0; i < CPS.length; i++) {
 
 function ConchaVieira({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 20 260 200" className={className} style={{ overflow: "visible" }}>
+    <svg viewBox="-10 20 280 210" className={className} style={{ overflow: "visible" }}>
       <motion.path d={SHELL_PATH} fill={S.sky} fillOpacity={0.1}
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ duration: 1.6, ease: EASE, delay: 0.5 }} />
@@ -118,10 +118,10 @@ const PORTUGUES_BIKE: Produto[] = [
   { nome: "Bike Central", tipo: "Bike", km: "240 km", dias: "8 dias", preco: "a partir de € 1.262", desc: "Interior portugues. Paisagens de vinha, granito e aldeia." },
 ];
 const FRANCES: Produto[] = [
-  { nome: "Sarria · 7 Etapas", tipo: "A Pe", km: "112 km", dias: "7 dias", preco: "a partir de € 750", desc: "O trecho minimo para a Compostela. Galiza a pe, do comeco ao fim." },
-  { nome: "Sarria · 8 Etapas", tipo: "A Pe", km: "112 km", dias: "8 dias", preco: "a partir de € 850", desc: "Mesma rota, um dia extra. Mais descanso, mais conversa no caminho." },
-  { nome: "O Cebreiro",         tipo: "A Pe", km: "152 km", dias: "8 dias", preco: "a partir de € 928", desc: "Comeca no alto da montanha galega. Descida epica pelo vale." },
-  { nome: "Primitivo",          tipo: "A Pe", km: "102 km", dias: "7 dias", preco: "a partir de € 750", desc: "Variante mais selvagem e menos multidao. Solidao e montanha." },
+  { nome: "Sarria · 7 Etapas", tipo: "A Pe", km: "112 km", dias: "7 dias", preco: "a partir de € 580", desc: "O trecho minimo para a Compostela. Galiza a pe, do comeco ao fim.", href: "/destinos/sarria-7-etapas" },
+  { nome: "Sarria · 8 Etapas", tipo: "A Pe", km: "112 km", dias: "8 dias", preco: "a partir de € 680", desc: "Mesma rota, um dia extra. Mais descanso, mais conversa no caminho.", href: "/destinos/sarria-8-etapas" },
+  { nome: "O Cebreiro",         tipo: "A Pe", km: "152 km", dias: "8 dias", preco: "a partir de € 750", desc: "Comeca no alto da montanha galega. Descida epica pelo vale.", href: "/destinos/caminho-cebreiro" },
+  { nome: "Primitivo",          tipo: "A Pe", km: "102 km", dias: "7 dias", preco: "a partir de € 590", desc: "Variante mais selvagem e menos multidao. Solidao e montanha.", href: "/destinos/caminho-primitivo" },
 ];
 const OUTROS = [
   { nome: "Caminho Primitivo",  desc: "O primeiro caminho historico. Oviedo ate Santiago pelas montanhas asturianas." },
