@@ -79,7 +79,7 @@ export interface Dict {
 export const translations: Record<Lang, Dict> = {
   pt: {
     nav: {
-      links: ["Caminhadas", "Peregrinação", "Grupos", "Navegação", "Hotéis"],
+      links: ["Caminhadas", "Peregrinação", "Grupos", "Bike", "Navegação", "Hotéis"],
       login: "Login",
       loginTitle: "Acessar o sistema AONIK",
       loginAgente: "Sou agente / operador",
@@ -206,7 +206,7 @@ export const translations: Record<Lang, Dict> = {
         "Nossos Grupos",
       ],
       colExp: "Experiências",
-      colExpLinks: ["Caminhadas", "Peregrinação", "Navegação", "Hotéis"],
+      colExpLinks: ["Caminhadas", "Peregrinação", "Bike", "Navegação", "Hotéis"],
       contato: "Contato",
       copyright: "Turismo de Natureza. Todos os direitos reservados.",
       tagline: "Feito para quem busca o mundo natural",
@@ -220,7 +220,7 @@ export const translations: Record<Lang, Dict> = {
 
   es: {
     nav: {
-      links: ["Caminatas", "Peregrinación", "Grupos", "Navegación", "Hoteles"],
+      links: ["Caminatas", "Peregrinación", "Grupos", "Bike", "Navegación", "Hoteles"],
       login: "Acceso",
       loginTitle: "Acceder al sistema AONIK",
       loginAgente: "Soy agente / operador",
@@ -346,7 +346,7 @@ export const translations: Record<Lang, Dict> = {
         "Nuestros Grupos",
       ],
       colExp: "Experiencias",
-      colExpLinks: ["Caminatas", "Peregrinación", "Navegación", "Hoteles"],
+      colExpLinks: ["Caminatas", "Peregrinación", "Bike", "Navegación", "Hoteles"],
       contato: "Contacto",
       copyright: "Turismo de Naturaleza. Todos los derechos reservados.",
       tagline: "Hecho para quien busca el mundo natural",
@@ -360,7 +360,7 @@ export const translations: Record<Lang, Dict> = {
 
   en: {
     nav: {
-      links: ["Hiking", "Pilgrimage", "Groups", "Sailing", "Hotels"],
+      links: ["Hiking", "Pilgrimage", "Groups", "Bike", "Sailing", "Hotels"],
       login: "Login",
       loginTitle: "Access the AONIK system",
       loginAgente: "I'm an agent / operator",
@@ -481,7 +481,7 @@ export const translations: Record<Lang, Dict> = {
       colNav: "Navigation",
       colNavLinks: ["About Us", "Our Story", "Our Passion", "Our Groups"],
       colExp: "Experiences",
-      colExpLinks: ["Hiking", "Pilgrimage", "Sailing", "Hotels"],
+      colExpLinks: ["Hiking", "Pilgrimage", "Bike", "Sailing", "Hotels"],
       contato: "Contact",
       copyright: "Nature Travel. All rights reserved.",
       tagline: "Made for those who seek the natural world",

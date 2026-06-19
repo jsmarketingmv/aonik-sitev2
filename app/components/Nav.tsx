@@ -6,7 +6,7 @@ import { useLang } from "./LanguageProvider";
 import { LANGS } from "../lib/i18n";
 
 // Peregrinação → /jornada; Hotéis → /refugios (rotas existentes, só renomeadas no nav)
-const HREFS = ["/caminhadas", "/jornada", "/grupos", "/navegacao", "/refugios"];
+const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/refugios"];
 
 export default function Nav() {
   const { lang, setLang, t } = useLang();

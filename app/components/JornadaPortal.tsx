@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/* ── Paleta Jornada — azul/amarelo do totem de sinalização ── */
+/* ── Paleta oficial Santiago — zero tons marrom ─────────── */
 const J = {
-  pedra:    "#13100c",
-  azul:     "#003d7a",
-  amar:     "#d9a800",
-  amarVivo: "#f0be00",
-  concha:   "#f0e6cc",
-  textSoft: "rgba(240,230,204,0.60)",
-  line:     "rgba(217,168,0,0.18)",
+  pedra:    "#00205B",   // midnight (substituiu o marrom)
+  azul:     "#003087",   // ocean
+  amar:     "#F2A900",   // sun
+  amarVivo: "#FFE264",   // sand
+  concha:   "#FFFFFF",   // white
+  textSoft: "rgba(255,255,255,0.62)",
+  line:     "rgba(242,169,0,0.20)",
 };
 
 /* ── Concha da Vieira — versao decorativa (menor) ─────────── */
