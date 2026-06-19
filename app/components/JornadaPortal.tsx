@@ -121,15 +121,10 @@ export default function JornadaPortal() {
             >
               Descubra{" "}
               <span className="italic" style={{ color: J.amar }}>
-                caminhos e jornadas
+                caminhos
               </span>
               <br />
-              <span
-                className="text-[0.6em] font-light not-italic"
-                style={{ color: J.textSoft }}
-              >
-                que te transformam
-              </span>
+              e jornadas que transformam
             </motion.h2>
 
             <motion.p

@@ -53,9 +53,13 @@ export default function GruposHome() {
         <div className="mb-16 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <Reveal>
             <h2 className="max-w-2xl font-display text-[clamp(2.2rem,4.8vw,4rem)] font-light leading-[1.04] tracking-[-0.02em] text-forest">
-              Caminhamos juntos pelos{" "}
+              Caminhamos juntos
+              <br />
+              pelos{" "}
               <span className="italic text-gold">
-                lugares mais extraordinários
+                lugares mais
+                <br />
+                extraordinários
               </span>{" "}
               do planeta
             </h2>
