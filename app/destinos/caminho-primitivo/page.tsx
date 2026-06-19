@@ -97,23 +97,23 @@ function RotaPrimitivo({ size = 300 }: { size?: number }) {
       {/* Picos de montanha estilizados — evoca o interior selvagem */}
       {[[60, 145, 22], [90, 148, 16], [120, 143, 20]].map(([cx, base, h], i) => (
         <motion.path key={i} d={`M ${cx - h} ${base} L ${cx} ${base - h * 1.4} L ${cx + h} ${base}`}
-          fill="rgba(0,32,91,0.05)" stroke="rgba(0,32,91,0.10)" strokeWidth="0.8"
+          fill="rgba(255,226,100,0.06)" stroke="rgba(242,169,0,0.25)" strokeWidth="0.8"
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ delay: 0.2 + i * 0.1, duration: 0.6, ease: EASE }} />
       ))}
       {/* Muralha de Lugo — símbolo da cidade */}
       <motion.rect x="162" y="36" width="24" height="14" rx="1"
-        fill="rgba(0,32,91,0.08)" stroke={S.midnight} strokeWidth="0.8"
+        fill="rgba(242,169,0,0.1)" stroke={S.sun} strokeWidth="0.8"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6, ease: EASE }} />
       {/* Ameias da muralha */}
       {[164, 168, 172, 176, 180].map(x => (
         <rect key={x} x={x} y="33" width="2.5" height="4" rx="0.5"
-          fill="rgba(0,32,91,0.15)" stroke={S.midnight} strokeWidth="0.4" />
+          fill="rgba(242,169,0,0.3)" stroke={S.sun} strokeWidth="0.4" />
       ))}
       {/* Rota */}
-      <motion.path d={d} fill="none" stroke="rgba(0,32,91,0.15)" strokeWidth="4" strokeLinecap="round"/>
-      <motion.path d={d} fill="none" stroke={S.midnight} strokeWidth="2" strokeDasharray="7 4" strokeLinecap="round"
+      <motion.path d={d} fill="none" stroke="rgba(242,169,0,0.22)" strokeWidth="4" strokeLinecap="round"/>
+      <motion.path d={d} fill="none" stroke={S.sun} strokeWidth="2" strokeDasharray="7 4" strokeLinecap="round"
         initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
         transition={{ duration: 2.4, ease: EASE, delay: 0.5 }} />
       {/* Waypoints */}
@@ -127,30 +127,30 @@ function RotaPrimitivo({ size = 300 }: { size?: number }) {
             transition={{ duration: 0.4, ease: EASE, delay: 0.8 + i * 0.2 }}>
             <circle cx={x} cy={y}
               r={isStart || isEnd ? 6 : isLugo ? 5.5 : 3.5}
-              fill={isEnd ? S.midnight : isLugo ? "rgba(0,32,91,0.2)" : "rgba(0,32,91,0.1)"}
-              stroke={S.midnight} strokeWidth={isLugo ? "2" : "1.5"} />
+              fill={isEnd ? S.sun : isLugo ? "rgba(242,169,0,0.35)" : "rgba(242,169,0,0.18)"}
+              stroke={S.sun} strokeWidth={isLugo ? "2" : "1.5"} />
             {isStart && (
               <text x={x + 8} y={y - 8} fontSize="7.5" fontWeight="700"
-                fill={S.midnight} fontFamily="sans-serif">Sárria</text>
+                fill={S.white} fontFamily="sans-serif">Sárria</text>
             )}
             {isEnd && (
               <text x={x - 5} y={y - 10} fontSize="8" fontWeight="700"
-                fill={S.midnight} fontFamily="sans-serif" textAnchor="end">Santiago</text>
+                fill={S.white} fontFamily="sans-serif" textAnchor="end">Santiago</text>
             )}
             {isLugo && (
               <text x={x} y={y + 18} fontSize="7.5" fontWeight="700"
-                fill={S.midnight} fontFamily="sans-serif" textAnchor="middle">Lugo</text>
+                fill={S.sand} fontFamily="sans-serif" textAnchor="middle">Lugo</text>
             )}
           </motion.g>
         );
       })}
       {/* "PRIMITIVO" label diagonal */}
-      <motion.text x="135" y="135" fontSize="7" fill={S.midnight} opacity={0.25}
+      <motion.text x="135" y="135" fontSize="7" fill={S.sand} opacity={0.4}
         fontFamily="sans-serif" textAnchor="middle" letterSpacing="0.22em"
         fontWeight="700"
-        initial={{ opacity: 0 }} animate={{ opacity: 0.25 }}
+        initial={{ opacity: 0 }} animate={{ opacity: 0.4 }}
         transition={{ delay: 1.8, duration: 0.7, ease: EASE }}>VARIANTE PRIMITIVA</motion.text>
-      <text x="130" y="170" fontSize="7.5" fill={S.midnight} fontFamily="sans-serif"
+      <text x="130" y="170" fontSize="7.5" fill={S.onDarkSoft} fontFamily="sans-serif"
         textAnchor="middle" letterSpacing="0.18em">102 km · MENOS MULTIDÃO</text>
     </svg>
   );
@@ -206,28 +206,28 @@ export default function CaminhoPrimitivoPage() {
       <Nav />
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden" style={{ backgroundColor: S.sun }}>
+      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden" style={{ backgroundColor: S.midnight }}>
         <div className="absolute inset-0">
           <img src={HERO} alt="Caminho Primitivo, Galiza" className="h-full w-full object-cover"
-            style={{ opacity: 0.2, mixBlendMode: "multiply" }} />
-          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${S.sun}f5 0%, ${S.sun}a0 60%, transparent 100%)` }} />
+            style={{ opacity: 0.42 }} />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${S.midnight}e8 0%, ${S.midnight}88 55%, transparent 100%)` }} />
         </div>
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 md:grid md:grid-cols-2 md:items-end md:gap-12">
           <div>
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE }}>
               <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em]"
-                style={{ backgroundColor: "rgba(0,32,91,0.12)", color: S.midnight, border: `1px solid rgba(0,32,91,0.22)` }}>
+                style={{ backgroundColor: "rgba(242,169,0,0.15)", color: S.sun, border: `1px solid rgba(242,169,0,0.3)` }}>
                 Caminho Francês · A Pé · Variante Primitiva
               </span>
             </motion.div>
             <motion.h1 className="mt-4 font-display text-[2.8rem] font-light leading-[1.07] md:text-[3.8rem]"
-              style={{ color: S.midnight }}
+              style={{ color: S.white }}
               initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.1 }}>
               Primitivo
             </motion.h1>
-            <motion.p className="mt-3 text-[1.2rem] font-medium" style={{ color: S.ocean }}
+            <motion.p className="mt-3 text-[1.2rem] font-light" style={{ color: S.sand }}
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}>
               A variante mais selvagem. Menos multidão. Solidão, montanha e Lugo.
@@ -237,8 +237,8 @@ export default function CaminhoPrimitivoPage() {
               transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}>
               {[["102 km", "Distância"], ["7 dias", "Duração"], ["a partir de € 590", "Preço p.p."]].map(([v, l]) => (
                 <div key={l} className="flex flex-col gap-0.5">
-                  <span className="font-bold" style={{ color: S.midnight }}>{v}</span>
-                  <span style={{ color: "rgba(0,32,91,0.55)" }}>{l}</span>
+                  <span className="font-semibold" style={{ color: S.sun }}>{v}</span>
+                  <span style={{ color: S.onDarkSoft }}>{l}</span>
                 </div>
               ))}
             </motion.div>
@@ -246,12 +246,12 @@ export default function CaminhoPrimitivoPage() {
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}>
               <a href="#contato" className="rounded-full px-7 py-3 text-[14px] font-semibold transition-all hover:brightness-110"
-                style={{ backgroundColor: S.midnight, color: S.sun }}>
+                style={{ backgroundColor: S.sun, color: S.midnight }}>
                 Reservar Minha Vaga
               </a>
               <a href="https://wa.me/5548988160000" target="_blank" rel="noopener noreferrer"
                 className="rounded-full px-7 py-3 text-[14px] font-medium"
-                style={{ backgroundColor: "rgba(0,32,91,0.1)", color: S.midnight, border: `1px solid rgba(0,32,91,0.2)` }}>
+                style={{ backgroundColor: "rgba(255,255,255,0.1)", color: S.white, border: `1px solid ${S.wLine}` }}>
                 Falar no WhatsApp
               </a>
             </motion.div>

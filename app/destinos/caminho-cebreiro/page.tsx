@@ -96,16 +96,16 @@ function RotaCebreiro({ size = 300 }: { size?: number }) {
   return (
     <svg viewBox="0 0 265 175" width={size} height={size * (175 / 265)}>
       {/* Pico da montanha */}
-      <motion.path d="M 242 38 L 228 18 L 214 38 Z" fill="none" stroke={S.midnight} strokeWidth="1.8"
+      <motion.path d="M 242 38 L 228 18 L 214 38 Z" fill="none" stroke={S.sun} strokeWidth="1.8"
         strokeLinejoin="round"
         initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.7, ease: EASE }} />
       {/* Neve no pico */}
-      <motion.path d="M 231 22 L 228 18 L 225 22 L 228 21 Z" fill={S.midnight} opacity={0.35}
+      <motion.path d="M 231 22 L 228 18 L 225 22 L 228 21 Z" fill={S.white} opacity={0.6}
         initial={{ opacity: 0 }} animate={{ opacity: 0.35 }}
         transition={{ delay: 0.5, duration: 0.5, ease: EASE }} />
       {/* Altitude label */}
-      <motion.text x="250" y="30" fontSize="7" fill={S.midnight} opacity={0.5}
+      <motion.text x="250" y="30" fontSize="7" fill={S.sand} opacity={0.7}
         fontFamily="sans-serif" textAnchor="start"
         initial={{ opacity: 0 }} animate={{ opacity: 0.5 }}
         transition={{ delay: 0.7, duration: 0.5, ease: EASE }}>1.300m</motion.text>
@@ -115,8 +115,8 @@ function RotaCebreiro({ size = 300 }: { size?: number }) {
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.8, ease: EASE }} />
       {/* Rota principal */}
-      <motion.path d={d} fill="none" stroke="rgba(0,32,91,0.15)" strokeWidth="4" strokeLinecap="round"/>
-      <motion.path d={d} fill="none" stroke={S.midnight} strokeWidth="2" strokeDasharray="7 4" strokeLinecap="round"
+      <motion.path d={d} fill="none" stroke="rgba(242,169,0,0.22)" strokeWidth="4" strokeLinecap="round"/>
+      <motion.path d={d} fill="none" stroke={S.sun} strokeWidth="2" strokeDasharray="7 4" strokeLinecap="round"
         initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
         transition={{ duration: 2.5, ease: EASE, delay: 0.5 }} />
       {/* Waypoints */}
@@ -126,24 +126,24 @@ function RotaCebreiro({ size = 300 }: { size?: number }) {
           transition={{ duration: 0.4, ease: EASE, delay: 0.8 + i * 0.2 }}>
           <circle cx={x} cy={y}
             r={i === 0 ? 7 : i === pts.length - 1 ? 6 : 3.5}
-            fill={i === 0 ? "rgba(0,32,91,0.2)" : i === pts.length - 1 ? S.midnight : "rgba(0,32,91,0.12)"}
-            stroke={S.midnight} strokeWidth="1.5" />
+            fill={i === 0 ? "rgba(242,169,0,0.3)" : i === pts.length - 1 ? S.sun : "rgba(242,169,0,0.18)"}
+            stroke={S.sun} strokeWidth="1.5" />
           {i === 0 && (
             <text x={x - 6} y={y + 16} fontSize="7.5" fontWeight="700"
-              fill={S.midnight} fontFamily="sans-serif" textAnchor="middle">O Cebreiro</text>
+              fill={S.white} fontFamily="sans-serif" textAnchor="middle">O Cebreiro</text>
           )}
           {i === pts.length - 1 && (
             <text x={x - 5} y={y - 10} fontSize="8" fontWeight="700"
-              fill={S.midnight} fontFamily="sans-serif" textAnchor="end">Santiago</text>
+              fill={S.white} fontFamily="sans-serif" textAnchor="end">Santiago</text>
           )}
         </motion.g>
       ))}
       {/* "Descida épica" label */}
-      <motion.text x="226" y="58" fontSize="6.5" fill={S.midnight} opacity={0.4}
+      <motion.text x="226" y="58" fontSize="6.5" fill={S.sand} opacity={0.6}
         fontFamily="sans-serif" transform="rotate(-22 226 58)"
-        initial={{ opacity: 0 }} animate={{ opacity: 0.4 }}
+        initial={{ opacity: 0 }} animate={{ opacity: 0.6 }}
         transition={{ delay: 1.8, duration: 0.6, ease: EASE }}>DESCIDA ÉPICA</motion.text>
-      <text x="130" y="170" fontSize="7.5" fill={S.midnight} fontFamily="sans-serif"
+      <text x="130" y="170" fontSize="7.5" fill={S.onDarkSoft} fontFamily="sans-serif"
         textAnchor="middle" letterSpacing="0.18em">152 km · COMEÇA NO ALTO</text>
     </svg>
   );
@@ -199,28 +199,28 @@ export default function CaminhoCreireiroPage() {
       <Nav />
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden" style={{ backgroundColor: S.sun }}>
+      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden" style={{ backgroundColor: S.midnight }}>
         <div className="absolute inset-0">
           <img src={HERO} alt="O Cebreiro, Galiza" className="h-full w-full object-cover"
-            style={{ opacity: 0.25, mixBlendMode: "multiply" }} />
-          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${S.sun}f5 0%, ${S.sun}a0 60%, transparent 100%)` }} />
+            style={{ opacity: 0.42 }} />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${S.midnight}e8 0%, ${S.midnight}88 55%, transparent 100%)` }} />
         </div>
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 md:grid md:grid-cols-2 md:items-end md:gap-12">
           <div>
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE }}>
               <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em]"
-                style={{ backgroundColor: "rgba(0,32,91,0.12)", color: S.midnight, border: `1px solid rgba(0,32,91,0.22)` }}>
+                style={{ backgroundColor: "rgba(242,169,0,0.15)", color: S.sun, border: `1px solid rgba(242,169,0,0.3)` }}>
                 Caminho Francês · A Pé · O Cebreiro
               </span>
             </motion.div>
             <motion.h1 className="mt-4 font-display text-[2.8rem] font-light leading-[1.07] md:text-[3.8rem]"
-              style={{ color: S.midnight }}
+              style={{ color: S.white }}
               initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.1 }}>
               O Cebreiro
             </motion.h1>
-            <motion.p className="mt-3 text-[1.2rem] font-medium" style={{ color: S.ocean }}
+            <motion.p className="mt-3 text-[1.2rem] font-light" style={{ color: S.sand }}
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}>
               Começa no alto da montanha galega. Desce em épica. Chega em Santiago.
@@ -230,8 +230,8 @@ export default function CaminhoCreireiroPage() {
               transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}>
               {[["152 km", "Distância"], ["8 dias", "Duração"], ["a partir de € 750", "Preço p.p."]].map(([v, l]) => (
                 <div key={l} className="flex flex-col gap-0.5">
-                  <span className="font-bold" style={{ color: S.midnight }}>{v}</span>
-                  <span style={{ color: "rgba(0,32,91,0.55)" }}>{l}</span>
+                  <span className="font-semibold" style={{ color: S.sun }}>{v}</span>
+                  <span style={{ color: S.onDarkSoft }}>{l}</span>
                 </div>
               ))}
             </motion.div>
@@ -239,12 +239,12 @@ export default function CaminhoCreireiroPage() {
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}>
               <a href="#contato" className="rounded-full px-7 py-3 text-[14px] font-semibold transition-all hover:brightness-110"
-                style={{ backgroundColor: S.midnight, color: S.sun }}>
+                style={{ backgroundColor: S.sun, color: S.midnight }}>
                 Reservar Minha Vaga
               </a>
               <a href="https://wa.me/5548988160000" target="_blank" rel="noopener noreferrer"
                 className="rounded-full px-7 py-3 text-[14px] font-medium"
-                style={{ backgroundColor: "rgba(0,32,91,0.1)", color: S.midnight, border: `1px solid rgba(0,32,91,0.2)` }}>
+                style={{ backgroundColor: "rgba(255,255,255,0.1)", color: S.white, border: `1px solid ${S.wLine}` }}>
                 Falar no WhatsApp
               </a>
             </motion.div>

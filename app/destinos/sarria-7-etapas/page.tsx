@@ -104,19 +104,19 @@ function RotaSarria7({ size = 300 }: { size?: number }) {
   return (
     <svg viewBox="0 0 265 175" width={size} height={size * (175 / 265)}>
       {/* Vieira (scallop shell) no fundo — símbolo do Caminho */}
-      <g opacity={0.1}>
-        <path d="M 132 155 L 132 75" stroke={S.midnight} strokeWidth="1" fill="none"/>
+      <g opacity={0.18}>
+        <path d="M 132 155 L 132 75" stroke={S.sun} strokeWidth="1" fill="none"/>
         {[-40,-25,-10,5,20,35,50].map((offset, i) => {
           const cx = 132 + offset;
           const r = 18 + i * 2;
           return <path key={i} d={`M ${cx} 155 Q ${cx - r/2} ${155 - r} ${cx} ${155 - r * 1.8} Q ${cx + r/2} ${155 - r} ${cx} 155`}
-            stroke={S.midnight} strokeWidth="0.8" fill="none"/>;
+            stroke={S.sun} strokeWidth="0.8" fill="none"/>;
         })}
-        <ellipse cx="132" cy="155" rx="55" ry="8" stroke={S.midnight} strokeWidth="0.8" fill="none"/>
+        <ellipse cx="132" cy="155" rx="55" ry="8" stroke={S.sun} strokeWidth="0.8" fill="none"/>
       </g>
       {/* Rota */}
-      <motion.path d={d} fill="none" stroke="rgba(0,32,91,0.18)" strokeWidth="4" strokeLinecap="round"/>
-      <motion.path d={d} fill="none" stroke={S.midnight} strokeWidth="2" strokeDasharray="7 4" strokeLinecap="round"
+      <motion.path d={d} fill="none" stroke="rgba(242,169,0,0.22)" strokeWidth="4" strokeLinecap="round"/>
+      <motion.path d={d} fill="none" stroke={S.sun} strokeWidth="2" strokeDasharray="7 4" strokeLinecap="round"
         initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
         transition={{ duration: 2.2, ease: EASE, delay: 0.4 }} />
       {/* Waypoints */}
@@ -125,28 +125,28 @@ function RotaSarria7({ size = 300 }: { size?: number }) {
           initial={{ opacity: 0, scale: 0.4 }} animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.4, ease: EASE, delay: 0.6 + i * 0.2 }}>
           <circle cx={x} cy={y} r={i === 0 || i === pts.length - 1 ? 6.5 : 3.5}
-            fill={i === pts.length - 1 ? S.midnight : i === 0 ? "rgba(0,32,91,0.3)" : "rgba(0,32,91,0.15)"}
-            stroke={S.midnight} strokeWidth="1.5" />
+            fill={i === pts.length - 1 ? S.sun : i === 0 ? "rgba(242,169,0,0.35)" : "rgba(242,169,0,0.18)"}
+            stroke={S.sun} strokeWidth="1.5" />
           {(i === 0 || i === pts.length - 1) && (
             <text x={i === pts.length - 1 ? x - 6 : x + 10} y={y - 10}
               fontSize={i === pts.length - 1 ? "8" : "7.5"} fontWeight="700"
-              fill={S.midnight} fontFamily="sans-serif" textAnchor={i === pts.length - 1 ? "end" : "start"}>
+              fill={S.white} fontFamily="sans-serif" textAnchor={i === pts.length - 1 ? "end" : "start"}>
               {label}
             </text>
           )}
         </motion.g>
       ))}
       {/* Seta → oeste */}
-      <motion.text x="130" y="130" fontSize="16" fill={S.midnight} textAnchor="middle" opacity={0.25}
-        initial={{ opacity: 0 }} animate={{ opacity: 0.25 }}
+      <motion.text x="130" y="130" fontSize="16" fill={S.sun} textAnchor="middle" opacity={0.35}
+        initial={{ opacity: 0 }} animate={{ opacity: 0.35 }}
         transition={{ delay: 1.8, duration: 0.7, ease: EASE }}>←</motion.text>
       {/* Fronteira Galiza */}
-      <motion.line x1="220" y1="40" x2="220" y2="130" stroke={S.midnight} strokeWidth="0.8"
-        strokeDasharray="3 3" opacity={0.18}
-        initial={{ opacity: 0 }} animate={{ opacity: 0.18 }}
+      <motion.line x1="220" y1="40" x2="220" y2="130" stroke={S.sand} strokeWidth="0.8"
+        strokeDasharray="3 3" opacity={0.3}
+        initial={{ opacity: 0 }} animate={{ opacity: 0.3 }}
         transition={{ delay: 1.2, duration: 0.6, ease: EASE }} />
-      <text x="222" y="60" fontSize="6" fill={S.midnight} fontFamily="sans-serif" opacity={0.35} transform="rotate(90 222 60)">GALIZA</text>
-      <text x="130" y="170" fontSize="7.5" fill={S.midnight} fontFamily="sans-serif"
+      <text x="222" y="60" fontSize="6" fill={S.sand} fontFamily="sans-serif" opacity={0.5} transform="rotate(90 222 60)">GALIZA</text>
+      <text x="130" y="170" fontSize="7.5" fill={S.onDarkSoft} fontFamily="sans-serif"
         textAnchor="middle" letterSpacing="0.18em">112 km · 5 ETAPAS · GALIZA</text>
     </svg>
   );
@@ -204,28 +204,28 @@ export default function Sarria7EtapasPage() {
       <Nav />
 
       {/* ── HERO — SUN dominante ──────────────────────────── */}
-      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden" style={{ backgroundColor: S.sun }}>
+      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden" style={{ backgroundColor: S.midnight }}>
         <div className="absolute inset-0">
           <img src={HERO} alt="Caminho Francês, Sarria" className="h-full w-full object-cover"
-            style={{ opacity: 0.22, mixBlendMode: "multiply" }} />
-          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${S.sun}f5 0%, ${S.sun}a0 60%, transparent 100%)` }} />
+            style={{ opacity: 0.42 }} />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${S.midnight}e8 0%, ${S.midnight}88 55%, transparent 100%)` }} />
         </div>
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 md:grid md:grid-cols-2 md:items-end md:gap-12">
           <div>
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE }}>
               <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em]"
-                style={{ backgroundColor: "rgba(0,32,91,0.12)", color: S.midnight, border: `1px solid rgba(0,32,91,0.22)` }}>
+                style={{ backgroundColor: "rgba(242,169,0,0.15)", color: S.sun, border: `1px solid rgba(242,169,0,0.3)` }}>
                 Caminho Francês · A Pé · Sarria
               </span>
             </motion.div>
             <motion.h1 className="mt-4 font-display text-[2.8rem] font-light leading-[1.07] md:text-[3.8rem]"
-              style={{ color: S.midnight }}
+              style={{ color: S.white }}
               initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.1 }}>
               Sarria · 7 Etapas
             </motion.h1>
-            <motion.p className="mt-3 text-[1.2rem] font-medium" style={{ color: S.ocean }}
+            <motion.p className="mt-3 text-[1.2rem] font-light" style={{ color: S.sand }}
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}>
               O trecho mínimo. A Galiza inteira. 112 km que mudam tudo.
@@ -235,8 +235,8 @@ export default function Sarria7EtapasPage() {
               transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}>
               {[["112 km", "Distância"], ["7 dias", "Duração"], ["a partir de € 580", "Preço p.p."]].map(([v, l]) => (
                 <div key={l} className="flex flex-col gap-0.5">
-                  <span className="font-bold" style={{ color: S.midnight }}>{v}</span>
-                  <span style={{ color: "rgba(0,32,91,0.55)" }}>{l}</span>
+                  <span className="font-semibold" style={{ color: S.sun }}>{v}</span>
+                  <span style={{ color: S.onDarkSoft }}>{l}</span>
                 </div>
               ))}
             </motion.div>
@@ -244,12 +244,12 @@ export default function Sarria7EtapasPage() {
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}>
               <a href="#contato" className="rounded-full px-7 py-3 text-[14px] font-semibold transition-all hover:brightness-110"
-                style={{ backgroundColor: S.midnight, color: S.sun }}>
+                style={{ backgroundColor: S.sun, color: S.midnight }}>
                 Reservar Minha Vaga
               </a>
               <a href="https://wa.me/5548988160000" target="_blank" rel="noopener noreferrer"
-                className="rounded-full px-7 py-3 text-[14px] font-medium transition-all"
-                style={{ backgroundColor: "rgba(0,32,91,0.1)", color: S.midnight, border: `1px solid rgba(0,32,91,0.2)` }}>
+                className="rounded-full px-7 py-3 text-[14px] font-medium"
+                style={{ backgroundColor: "rgba(255,255,255,0.1)", color: S.white, border: `1px solid ${S.wLine}` }}>
                 Falar no WhatsApp
               </a>
             </motion.div>

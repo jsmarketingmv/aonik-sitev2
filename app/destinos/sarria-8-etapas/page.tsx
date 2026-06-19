@@ -95,16 +95,16 @@ function RotaSarria8({ size = 300 }: { size?: number }) {
     <svg viewBox="0 0 265 175" width={size} height={size * (175 / 265)}>
       {/* "DIA EXTRA" badge */}
       <motion.rect x="100" y="6" width="68" height="16" rx="8"
-        fill="rgba(0,32,91,0.12)" stroke={S.midnight} strokeWidth="0.8"
+        fill="rgba(242,169,0,0.15)" stroke={S.sun} strokeWidth="0.8"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.6, ease: EASE }} />
-      <motion.text x="134" y="16.5" fontSize="7" fontWeight="700" fill={S.midnight}
+      <motion.text x="134" y="16.5" fontSize="7" fontWeight="700" fill={S.sun}
         textAnchor="middle" fontFamily="sans-serif" letterSpacing="0.12em"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.5, ease: EASE }}>DIA EXTRA</motion.text>
       {/* Rota */}
-      <motion.path d={d} fill="none" stroke="rgba(0,32,91,0.15)" strokeWidth="4" strokeLinecap="round"/>
-      <motion.path d={d} fill="none" stroke={S.midnight} strokeWidth="2" strokeDasharray="7 4" strokeLinecap="round"
+      <motion.path d={d} fill="none" stroke="rgba(242,169,0,0.22)" strokeWidth="4" strokeLinecap="round"/>
+      <motion.path d={d} fill="none" stroke={S.sun} strokeWidth="2" strokeDasharray="7 4" strokeLinecap="round"
         initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
         transition={{ duration: 2.4, ease: EASE, delay: 0.4 }} />
       {/* Waypoints */}
@@ -118,18 +118,18 @@ function RotaSarria8({ size = 300 }: { size?: number }) {
             transition={{ duration: 0.4, ease: EASE, delay: 0.7 + i * 0.18 }}>
             <circle cx={x} cy={y}
               r={isStart || isEnd ? 6 : isMelide ? 5 : 3.5}
-              fill={isEnd ? S.midnight : isMelide ? "rgba(0,32,91,0.25)" : "rgba(0,32,91,0.12)"}
-              stroke={S.midnight} strokeWidth={isMelide ? "2" : "1.5"} />
+              fill={isEnd ? S.sun : isMelide ? "rgba(242,169,0,0.35)" : "rgba(242,169,0,0.18)"}
+              stroke={S.sun} strokeWidth={isMelide ? "2" : "1.5"} />
             {(isStart || isEnd || isMelide) && (
               <text x={isEnd ? x - 5 : x + 8} y={isMelide ? y - 9 : y - 10}
                 fontSize={isEnd ? "8" : "7.5"} fontWeight="700"
-                fill={S.midnight} fontFamily="sans-serif"
+                fill={S.white} fontFamily="sans-serif"
                 textAnchor={isEnd ? "end" : "start"}>{label}</text>
             )}
           </motion.g>
         );
       })}
-      <text x="130" y="170" fontSize="7.5" fill={S.midnight} fontFamily="sans-serif"
+      <text x="130" y="170" fontSize="7.5" fill={S.onDarkSoft} fontFamily="sans-serif"
         textAnchor="middle" letterSpacing="0.18em">112 km · 6 ETAPAS · DIA EXTRA</text>
     </svg>
   );
@@ -185,28 +185,28 @@ export default function Sarria8EtapasPage() {
       <Nav />
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden" style={{ backgroundColor: S.sun }}>
+      <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden" style={{ backgroundColor: S.midnight }}>
         <div className="absolute inset-0">
           <img src={HERO} alt="Caminho Francês, 8 Etapas" className="h-full w-full object-cover"
-            style={{ opacity: 0.22, mixBlendMode: "multiply" }} />
-          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${S.sun}f5 0%, ${S.sun}a0 60%, transparent 100%)` }} />
+            style={{ opacity: 0.42 }} />
+          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${S.midnight}e8 0%, ${S.midnight}88 55%, transparent 100%)` }} />
         </div>
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 md:grid md:grid-cols-2 md:items-end md:gap-12">
           <div>
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE }}>
               <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em]"
-                style={{ backgroundColor: "rgba(0,32,91,0.12)", color: S.midnight, border: `1px solid rgba(0,32,91,0.22)` }}>
+                style={{ backgroundColor: "rgba(242,169,0,0.15)", color: S.sun, border: `1px solid rgba(242,169,0,0.3)` }}>
                 Caminho Francês · A Pé · Sarria
               </span>
             </motion.div>
             <motion.h1 className="mt-4 font-display text-[2.8rem] font-light leading-[1.07] md:text-[3.8rem]"
-              style={{ color: S.midnight }}
+              style={{ color: S.white }}
               initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.1 }}>
               Sarria · 8 Etapas
             </motion.h1>
-            <motion.p className="mt-3 text-[1.2rem] font-medium" style={{ color: S.ocean }}
+            <motion.p className="mt-3 text-[1.2rem] font-light" style={{ color: S.sand }}
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}>
               A mesma rota. Um dia a mais. Mais descanso, mais conversa, mais Caminho.
@@ -216,8 +216,8 @@ export default function Sarria8EtapasPage() {
               transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}>
               {[["112 km", "Distância"], ["8 dias", "Duração"], ["a partir de € 680", "Preço p.p."]].map(([v, l]) => (
                 <div key={l} className="flex flex-col gap-0.5">
-                  <span className="font-bold" style={{ color: S.midnight }}>{v}</span>
-                  <span style={{ color: "rgba(0,32,91,0.55)" }}>{l}</span>
+                  <span className="font-semibold" style={{ color: S.sun }}>{v}</span>
+                  <span style={{ color: S.onDarkSoft }}>{l}</span>
                 </div>
               ))}
             </motion.div>
@@ -225,12 +225,12 @@ export default function Sarria8EtapasPage() {
               initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}>
               <a href="#contato" className="rounded-full px-7 py-3 text-[14px] font-semibold transition-all hover:brightness-110"
-                style={{ backgroundColor: S.midnight, color: S.sun }}>
+                style={{ backgroundColor: S.sun, color: S.midnight }}>
                 Reservar Minha Vaga
               </a>
               <a href="https://wa.me/5548988160000" target="_blank" rel="noopener noreferrer"
                 className="rounded-full px-7 py-3 text-[14px] font-medium"
-                style={{ backgroundColor: "rgba(0,32,91,0.1)", color: S.midnight, border: `1px solid rgba(0,32,91,0.2)` }}>
+                style={{ backgroundColor: "rgba(255,255,255,0.1)", color: S.white, border: `1px solid ${S.wLine}` }}>
                 Falar no WhatsApp
               </a>
             </motion.div>
