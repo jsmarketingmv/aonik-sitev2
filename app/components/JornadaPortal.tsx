@@ -112,20 +112,22 @@ export default function JornadaPortal() {
             </motion.p>
 
             <motion.h2
-              className="font-display font-light leading-[1.03] tracking-[-0.025em]"
+              className="font-light leading-[1.03] tracking-[-0.025em]"
               style={{ fontSize: "clamp(2.6rem, 5.5vw, 4.4rem)", color: J.concha }}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 1, ease: EASE, delay: 0.1 }}
             >
-              Caminhos de{" "}
-              <span className="italic" style={{ color: J.amar }}>
-                Santiago
+              <span
+                className="block italic"
+                style={{ fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: J.amar, fontFamily: "var(--font-caveat), cursive", fontWeight: 700 }}
+              >
+                Buen Camino
               </span>
               <br />
               <span
-                className="text-[0.6em] font-light not-italic"
+                className="font-display text-[0.6em] font-light not-italic"
                 style={{ color: J.textSoft }}
               >
                 e jornadas que te transformam

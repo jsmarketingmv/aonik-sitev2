@@ -14,12 +14,12 @@ const SEG_META = [
   {
     id: "bike",
     n: "02",
-    img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1847.jpg/1920x700/2/1920x700/",
+    img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1848.jpg/1900x800/2/1900x800/",
   },
   {
     id: "navegacao",
     n: "03",
-    img: "https://images.unsplash.com/photo-1500514966906-fe245eea9344?q=80&w=1600&auto=format&fit=crop",
+    img: "/skorpios/DSC_0020.JPG",
   },
   {
     id: "refugios",
