@@ -8,14 +8,14 @@ import FloatingActions from "../../components/FloatingActions";
 import { Reveal, Kicker, EASE } from "../../components/ui";
 
 const C = {
-  bg:       "#13100c",
-  dark:     "#1e1810",
-  pedal:    "#d45820",
-  amar:     "#d9a800",
-  granito:  "#9a8a7a",
-  areia:    "#c4a080",
-  creme:    "#f2ede3",
-  cremeDp:  "#e8e0d0",
+  bg:      "#0a1e1e",   // Aqua Cove dark
+  dark:    "#0e2828",
+  pedal:   "#3da09a",   // Aqua Cove
+  amar:    "#d9a800",   // mantém amarelo do Caminho
+  granito: "#7aa8a0",
+  areia:   "#b89460",   // Sisal Beige
+  creme:   "#f0ece4",   // Beachwood
+  cremeDp: "#e6e2d8",
 };
 
 const HERO_IMG =

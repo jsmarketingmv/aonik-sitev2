@@ -103,12 +103,12 @@ const DATA: A2ZBikeData = {
     partidas: "Sabados e Segundas",
   },
   pal: {
-    bg: "#0c0906",
-    dark: "#141008",
-    accent: "#8b5a2b",
-    granito: "#a08070",
-    creme: "#f2ede3",
-    cremeDp: "#e8e0d0",
+    bg: "#0c1e1c",    // Everglade dark
+    dark: "#142a24",
+    accent: "#3da09a",  // Aqua Cove (contraste vibrante no verde-escuro)
+    granito: "#7aa898",
+    creme: "#f0ece4",   // Beachwood
+    cremeDp: "#e6e2d8",
   },
 };
 

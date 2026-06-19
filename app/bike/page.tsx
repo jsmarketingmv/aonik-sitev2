@@ -9,15 +9,15 @@ import { Reveal, Kicker, EASE } from "../components/ui";
 
 /* ── PALETA ──────────────────────────────────────────────────── */
 const B = {
-  asfalto:  "#0c0a07",
-  pedal:    "#d45820",
-  pedalSoft:"#e87a48",
-  caminho:  "#171410",
-  granito:  "#9a8a7a",
-  areia:    "#c4a080",
-  creme:    "#f2ede3",
-  cremedp:  "#e8e0d0",
-  texto:    "#1a1714",
+  asfalto:  "#0d1e1c",   // Everglade dark
+  pedal:    "#c4902a",   // Cornfield golden
+  pedalSoft:"#d4a840",
+  caminho:  "#152824",   // Everglade medium-dark
+  granito:  "#8aaa98",   // muted teal
+  areia:    "#b89460",   // Sisal Beige
+  creme:    "#f0ece4",   // Beachwood
+  cremedp:  "#e6e2d8",
+  texto:    "#1a2b28",   // dark Everglade text
 };
 
 const HERO_IMG =

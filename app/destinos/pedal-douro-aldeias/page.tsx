@@ -111,12 +111,12 @@ const DATA: A2ZBikeData = {
     stopSales: "Agosto",
   },
   pal: {
-    bg: "#08050f",
-    dark: "#0f0c1c",
-    accent: "#9a4a28",
-    granito: "#9a8090",
-    creme: "#f2ede3",
-    cremeDp: "#e8e0d0",
+    bg: "#1a1008",    // escuro âmbar (vinhedo noturno)
+    dark: "#241608",
+    accent: "#c4902a",  // Cornfield dourado
+    granito: "#9a8060",
+    creme: "#f0ece4",   // Beachwood
+    cremeDp: "#e6e2d8",
   },
 };
 

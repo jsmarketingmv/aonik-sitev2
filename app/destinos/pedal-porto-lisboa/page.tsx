@@ -111,12 +111,12 @@ const DATA: A2ZBikeData = {
     stopSales: "Agosto",
   },
   pal: {
-    bg: "#060f1a",
-    dark: "#091424",
-    accent: "#2e78b8",
-    granito: "#8aa8c4",
-    creme: "#f2ede3",
-    cremeDp: "#e8e0d0",
+    bg: "#0a1728",    // Whirlpool deep navy
+    dark: "#0e2038",
+    accent: "#3a7abf",  // Whirlpool blue
+    granito: "#7a9cb8",
+    creme: "#f0ece4",   // Beachwood
+    cremeDp: "#e6e2d8",
   },
 };
 
