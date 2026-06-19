@@ -6,20 +6,20 @@ import { useLang } from "./LanguageProvider";
 
 // Imagens por palavra-chave (independentes de idioma) — mesma ordem do dicionário
 const ROTATING_IMGS = [
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2400&auto=format&fit=crop", // caminhada (mountain landscape)
+  "https://static.wixstatic.com/media/fe55bd_d9f026c7039a47c4ac41969f2488d4f6~mv2.jpg/v1/fill/w_1900,h_900,al_c,q_90,enc_avif,quality_auto/bavaria.jpg", // caminhada (Bavaria)
   "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1848.jpg/1900x800/2/1900x800/", // pedalada
   "https://cdn.prod.website-files.com/66f12032b3f2015fa639ef3e/684c66f504adcb4c0296f6b9_Nicola%CC%81s%20Gildemeister%20-%20image%20(10).jpg", // navegação
-  "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=2400&auto=format&fit=crop", // refúgio
+  "https://lastorres.com/content/uploads/01-6.jpg", // luxo (Las Torres)
   "/images/hero/IMG_1704.jpg", // travessia
   "/images/hero/IMG_3775.jpg", // jornada
 ];
 
 // Estrutura das categorias (href/soon); rótulos vêm do dicionário
 const CAT_META = [
-  { n: "01", href: "/caminhadas" },
+  { n: "01", href: "#caminhadas" },
   { n: "02", href: "#bike" },
-  { n: "03", href: "/navegacao" },
-  { n: "04", href: "/refugios" },
+  { n: "03", href: "#navegacao" },
+  { n: "04", href: "#refugios" },
   { n: "05", href: "/grupos" },
   { n: "06", href: "#neve", soon: true },
 ];
@@ -153,39 +153,63 @@ export default function Hero() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <div className="rule mb-0" />
           <ul className="flex items-stretch divide-x divide-cream/10 overflow-x-auto">
-            {CAT_META.map((c, i) => (
-              <li key={c.n} className="min-w-fit flex-1">
-                <a
-                  href={c.soon ? undefined : c.href}
-                  aria-disabled={c.soon}
-                  className={`group flex h-full items-center gap-3 px-5 py-5 transition-colors ${
-                    c.soon ? "cursor-default" : "hover:bg-cream/[0.04]"
-                  }`}
-                >
-                  <span className="font-display text-[11px] text-gold/60">
-                    {c.n}
-                  </span>
-                  <span
-                    className={`whitespace-nowrap text-[12px] font-medium uppercase tracking-[0.16em] transition-colors ${
+            {CAT_META.map((c, i) => {
+              const isActive = index === i;
+              return (
+                <li key={c.n} className="relative min-w-fit flex-1">
+                  {isActive && (
+                    <motion.div
+                      layoutId="hero-tab-bar"
+                      className="absolute top-0 left-0 right-0 h-[2px] bg-gold"
+                      transition={{ duration: 0.5, ease: EASE }}
+                    />
+                  )}
+                  <a
+                    href={c.soon ? undefined : c.href}
+                    aria-disabled={c.soon}
+                    className={`group flex h-full items-center gap-3 px-5 py-5 transition-colors ${
                       c.soon
-                        ? "text-cream/35"
-                        : "text-cream/75 group-hover:text-gold"
+                        ? "cursor-default"
+                        : isActive
+                          ? "bg-cream/[0.05]"
+                          : "hover:bg-cream/[0.04]"
                     }`}
                   >
-                    {t.hero.categorias[i]}
-                  </span>
-                  {c.soon ? (
-                    <span className="ml-1 rounded-full border border-cream/15 px-2 py-0.5 text-[8px] uppercase tracking-[0.18em] text-cream/40">
-                      {t.hero.soon}
+                    <span
+                      className={`font-display text-[11px] transition-colors ${
+                        isActive ? "text-gold" : "text-gold/60"
+                      }`}
+                    >
+                      {c.n}
                     </span>
-                  ) : (
-                    <span className="ml-auto hidden text-cream/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-gold md:inline">
-                      ↗
+                    <span
+                      className={`whitespace-nowrap text-[12px] font-medium uppercase tracking-[0.16em] transition-colors ${
+                        c.soon
+                          ? "text-cream/35"
+                          : isActive
+                            ? "text-cream"
+                            : "text-cream/75 group-hover:text-gold"
+                      }`}
+                    >
+                      {t.hero.categorias[i]}
                     </span>
-                  )}
-                </a>
-              </li>
-            ))}
+                    {c.soon ? (
+                      <span className="ml-1 rounded-full border border-cream/15 px-2 py-0.5 text-[8px] uppercase tracking-[0.18em] text-cream/40">
+                        {t.hero.soon}
+                      </span>
+                    ) : (
+                      <span
+                        className={`ml-auto hidden transition-all duration-300 group-hover:translate-x-1 md:inline ${
+                          isActive ? "text-gold" : "text-cream/30 group-hover:text-gold"
+                        }`}
+                      >
+                        ↗
+                      </span>
+                    )}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </motion.nav>
