@@ -23,9 +23,8 @@ ROTEIRO:
 - Dia 5: Mirante Grey, icebergs, catamarã Pehoé + jantar de despedida + traslado privativo Puerto Natales (13,5 km, 4,5-6,5h)
 
 TARIFAS (Temporada 2026/2027 · por pessoa · USD):
-⚠️ Valores sob confirmação para o programa guiado.
-Camping (base 2 pax): U$ 2.800 | Suplemento single: U$ 2.240 | Jantares festivos: U$ 50
-Refúgio (ocupação simples): U$ 2.990 | Sem suplemento single | Jantares festivos: U$ 50
+Camping (base 2 pax): U$ 3.200 | Suplemento single: U$ 2.560 | Jantares festivos: U$ 71
+Refúgio (ocupação simples): U$ 3.315 | Sem suplemento single | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
 
 EARLY BOOKING (válido até 31/07/2027):
@@ -45,7 +44,6 @@ AVISOS IMPORTANTES:
 - Parque Nacional: top 10 mais visitados do mundo, capacidade limitada por temporada.
 - Fechamentos e alterações por clima são responsabilidade do Parque Nacional (força maior).
 - W Journey é o único programa GUIADO da AONIK em Torres del Paine; todas as atividades são acompanhadas pelo host.
-- Tarifas sob confirmação definitiva — entre em contato com o time AONIK para valores finais.
 
 Responda em português brasileiro, de forma amigável, clara e concisa. Máximo 3 parágrafos.
 Se não souber algo específico, diga que vai confirmar com a equipe AONIK.

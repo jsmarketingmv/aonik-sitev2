@@ -108,8 +108,8 @@ const DATA: Programa = {
   ],
   tarifaPerfis: [
     {
-      key: "camping", label: "Camping", tarifa: 2800, base2pax: true, single: 2240, jantar: 50,
-      nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single. Grupos de 2 a 12 pessoas. Condições sob confirmação para o programa guiado.",
+      key: "camping", label: "Camping", tarifa: 3200, base2pax: true, single: 2560, jantar: 71,
+      nota: "Valores por pessoa, em ocupação dupla. Para 1 Pax, aplica-se suplemento single. Grupos de 2 a 12 pessoas.",
       inclui: [
         "Host bilíngue durante os 5 dias, do traslado de chegada ao de retorno",
         "Traslados privativos Puerto Natales, ida e volta",
@@ -121,8 +121,8 @@ const DATA: Programa = {
       ],
     },
     {
-      key: "refugio", label: "Refúgio", tarifa: 2990, base2pax: false, single: null, jantar: 50,
-      nota: "Valores por pessoa, em ocupação simples. Grupos de 2 a 12 pessoas. Condições sob confirmação para o programa guiado.",
+      key: "refugio", label: "Refúgio", tarifa: 3315, base2pax: false, single: null, jantar: 71,
+      nota: "Valores por pessoa, em ocupação simples. Grupos de 2 a 12 pessoas.",
       inclui: [
         "Host bilíngue durante os 5 dias, do traslado de chegada ao de retorno",
         "Traslados privativos Puerto Natales, ida e volta",
