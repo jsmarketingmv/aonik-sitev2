@@ -18,12 +18,12 @@ const J = {
 /* ── Concha da Vieira — versao decorativa (menor) ─────────── */
 const HX = 130, HY = 200;
 const TIPS: [number, number][] = [
-  [15, 104], [39, 81], [67, 64], [98, 54], [130, 50],
-  [163, 54], [193, 64], [221, 81], [245, 104],
+  [-5, 130], [15, 104], [39, 81], [67, 64], [98, 54], [130, 50],
+  [163, 54], [193, 64], [221, 81], [245, 104], [265, 130],
 ];
 const CPS: [number, number][] = [
-  [10, 75], [40, 51], [75, 35], [111, 27],
-  [149, 27], [186, 35], [220, 51], [250, 75],
+  [3, 72], [10, 75], [40, 51], [75, 35], [111, 27],
+  [149, 27], [186, 35], [220, 51], [250, 75], [258, 72],
 ];
 
 let SHELL_PATH = `M ${HX},${HY} L ${TIPS[0][0]},${TIPS[0][1]}`;
@@ -39,7 +39,7 @@ for (let i = 0; i < CPS.length; i++) {
 
 function ConchaSmall() {
   return (
-    <svg viewBox="0 20 260 190" className="h-full w-full" style={{ overflow: "visible" }}>
+    <svg viewBox="-10 20 280 205" className="h-full w-full" style={{ overflow: "visible" }}>
       <motion.path d={SHELL_PATH} fill={J.concha} fillOpacity={0.08}
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -62,6 +62,14 @@ function ConchaSmall() {
         initial={{ scale: 0 }} whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, ease: EASE, delay: 0.5 }} />
+      <motion.text x={HX} y={218} textAnchor="middle"
+        fill={J.amar} fillOpacity="0.55" fontSize="7.5" letterSpacing="3.5"
+        style={{ fontFamily: "sans-serif", fontWeight: 700 }}
+        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: EASE, delay: 2.0 }}>
+        BOM CAMINHO
+      </motion.text>
     </svg>
   );
 }
