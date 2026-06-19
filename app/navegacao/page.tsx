@@ -11,7 +11,7 @@ import { Reveal, Kicker, EASE } from "../components/ui";
 const SEA = "#2e8aa0";
 
 const HERO_IMG =
-  "https://images.unsplash.com/photo-1500514966906-fe245eea9344?q=80&w=2600&auto=format&fit=crop";
+  "https://cdn.prod.website-files.com/66f12032b3f2015fa639ef3e/676daa5c8254d5e5ffdca5bd_A21_MAG03-CA_2019-2020ANACARLAMARTINEZ_20191215DSC_7028_Original_19241.webp";
 
 const PILARES = [
   {

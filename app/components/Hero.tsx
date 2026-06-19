@@ -6,9 +6,9 @@ import { useLang } from "./LanguageProvider";
 
 // Imagens por palavra-chave (independentes de idioma) — mesma ordem do dicionário
 const ROTATING_IMGS = [
-  "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2400&auto=format&fit=crop", // caminhada
-  "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=2400&auto=format&fit=crop", // pedalada
-  "https://images.unsplash.com/photo-1500514966906-fe245eea9344?q=80&w=2400&auto=format&fit=crop", // navegação
+  "https://marketingeturismo.wixsite.com/targettrekking/bavaria-alema?pgid=mja46vm91-152b1308-faab-481f-9a62-4cb6c15c7261", // caminhada
+  "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1848.jpg/1900x800/2/1900x800/", // pedalada
+  "https://cdn.prod.website-files.com/66f12032b3f2015fa639ef3e/676daa5c8254d5e5ffdca5bd_A21_MAG03-CA_2019-2020ANACARLAMARTINEZ_20191215DSC_7028_Original_19241.webp", // navegação
   "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=2400&auto=format&fit=crop", // refúgio
   "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2400&auto=format&fit=crop", // travessia
   "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2400&auto=format&fit=crop", // jornada
