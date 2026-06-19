@@ -91,8 +91,8 @@ const DESTINATIONS: Destination[] = [
     id: "dana-petra",
     name: "Dana → Petra",
     region: "Deserto da Jordânia",
-    tagline: "Nov 2027",
-    taglines: { 2027: "14–23 Nov 2027" },
+    tagline: "Out 2027",
+    taglines: { 2027: "18–27 Out 2027" },
     years: [2027],
     lat: 30.7,
     lng: 35.5,
@@ -101,6 +101,7 @@ const DESTINATIONS: Destination[] = [
     type: "aventura",
     description:
       "77 km pelo deserto da Jordânia, da Reserva de Dana até a cidade rosa de Petra. 10 dias de expedição.",
+    href: "/destinos/dana-ate-petra",
   },
 ];
 
