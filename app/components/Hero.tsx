@@ -6,7 +6,7 @@ import { useLang } from "./LanguageProvider";
 
 // Imagens por palavra-chave (independentes de idioma) — mesma ordem do dicionário
 const ROTATING_IMGS = [
-  "https://static.wixstatic.com/media/fe55bd_d9f026c7039a47c4ac41969f2488d4f6~mv2.jpg/v1/fill/w_1900,h_900,al_c,q_90,enc_avif,quality_auto/bavaria.jpg", // caminhada (Bavaria)
+  "/images/hero/IMG_3490.jpg", // caminhada
   "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1848.jpg/1900x800/2/1900x800/", // pedalada
   "https://cdn.prod.website-files.com/66f12032b3f2015fa639ef3e/684c66f504adcb4c0296f6b9_Nicola%CC%81s%20Gildemeister%20-%20image%20(10).jpg", // navegação
   "https://lastorres.com/content/uploads/01-6.jpg", // luxo (Las Torres)
