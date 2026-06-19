@@ -40,14 +40,14 @@ for (let i = 0; i < CPS.length; i++) {
 function ConchaSmall() {
   return (
     <svg viewBox="0 20 260 190" className="h-full w-full" style={{ overflow: "visible" }}>
-      <motion.path d={SHELL_PATH} fill={J.azul} fillOpacity={0.07}
+      <motion.path d={SHELL_PATH} fill={J.concha} fillOpacity={0.08}
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.6, ease: EASE, delay: 0.4 }} />
       {TIPS.map(([tx, ty], i) => (
         <motion.line key={i}
           x1={HX} y1={HY} x2={tx} y2={ty}
-          stroke={J.azul} strokeWidth="0.8" strokeOpacity="0.32"
+          stroke={J.concha} strokeWidth="0.8" strokeOpacity="0.4"
           initial={{ pathLength: 0, opacity: 0 }}
           whileInView={{ pathLength: 1, opacity: 1 }}
           viewport={{ once: true }}
@@ -58,7 +58,7 @@ function ConchaSmall() {
         whileInView={{ pathLength: 1, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 2.0, ease: EASE, delay: 0.8 }} />
-      <motion.circle cx={HX} cy={HY} r="4" fill={J.azul} fillOpacity="0.5"
+      <motion.circle cx={HX} cy={HY} r="4" fill={J.concha} fillOpacity="0.5"
         initial={{ scale: 0 }} whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, ease: EASE, delay: 0.5 }} />
@@ -119,25 +119,16 @@ export default function JornadaPortal() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 1, ease: EASE, delay: 0.1 }}
             >
-              Caminhos de{" "}
+              Descubra{" "}
               <span className="italic" style={{ color: J.amar }}>
-                <motion.span
-                  initial={{ opacity: 0, pathLength: 0 }}
-                  whileInView={{ opacity: 1, pathLength: 1 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 2.5, ease: EASE, delay: 0.4 }}
-                  className="inline-block"
-                  style={{ fontFamily: "var(--font-caveat), cursive", fontWeight: 700, fontSize: "1.1em" }}
-                >
-                  Buen Camino
-                </motion.span>
+                caminhos e jornadas
               </span>
               <br />
               <span
                 className="text-[0.6em] font-light not-italic"
                 style={{ color: J.textSoft }}
               >
-                e jornadas que te transformam
+                que te transformam
               </span>
             </motion.h2>
 

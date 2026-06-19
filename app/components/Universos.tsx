@@ -24,7 +24,7 @@ const SEG_META = [
   {
     id: "refugios",
     n: "04",
-    img: "https://rioserrano.com/wp-content/uploads/2023/10/Superio-1-1-1024x684.jpg",
+    img: "https://lastorres.com/content/uploads/01-6.jpg",
   },
 ];
 

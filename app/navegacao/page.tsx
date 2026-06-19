@@ -11,7 +11,7 @@ import { Reveal, Kicker, EASE } from "../components/ui";
 const SEA = "#2e8aa0";
 
 const HERO_IMG =
-  "https://cdn.prod.website-files.com/66f12032b3f2015fa639ef3e/676daa5c8254d5e5ffdca5bd_A21_MAG03-CA_2019-2020ANACARLAMARTINEZ_20191215DSC_7028_Original_19241.webp";
+  "https://cdn.prod.website-files.com/66f12032b3f2015fa639ef3e/684c66f504adcb4c0296f6b9_Nicola%CC%81s%20Gildemeister%20-%20image%20(10).jpg";
 
 const PILARES = [
   {
