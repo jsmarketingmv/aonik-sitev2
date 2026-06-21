@@ -770,14 +770,14 @@ export default function DouroPage() {
         </div>
       </section>
 
-      {/* ===== ROTEIRO ===== */}
-      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: D.noite }}>
+      {/* ===== ROTEIRO — fundo creme (terceiro bloco editorial claro) ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: D.creme }}>
         <div className="mx-auto max-w-[1100px]">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: D.ouro }}>Roteiro dia a dia</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: D.sage }}>Roteiro dia a dia</p>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="mt-3 max-w-lg text-[14px] font-light leading-relaxed" style={{ color: D.textSoft }}>
+            <p className="mt-3 max-w-lg text-[14px] font-light leading-relaxed" style={{ color: "rgba(40,12,20,0.55)" }}>
               Seis dias de caminhada real entre vinhas, quintas e aldeias vinhateiras,
               com chegada tranquila em Régua e saída de comboio histórico do Pinhão ao Porto.
             </p>
@@ -785,14 +785,15 @@ export default function DouroPage() {
           <div className="mt-12">
             {ROTEIRO.map((r, i) => (
               <Reveal key={r.d} delay={i * 0.04}>
-                <div className="grid grid-cols-[auto_1fr] items-baseline gap-6 border-t py-7 md:gap-10" style={{ borderColor: D.line }}>
+                <div className="grid grid-cols-[auto_1fr] items-baseline gap-6 border-t py-7 md:gap-10"
+                  style={{ borderColor: "rgba(122,143,98,0.22)" }}>
                   <div className="flex items-center gap-4">
-                    <span className="font-display text-sm" style={{ color: D.vinho }}>{r.d}</span>
+                    <span className="font-display text-sm" style={{ color: "rgba(40,12,20,0.32)" }}>{r.d}</span>
                     <Icon name={r.icon} size={18} color={D.sage} />
                   </div>
                   <div>
-                    <h3 className="font-display font-light" style={{ fontSize: "clamp(1.1rem,2vw,1.5rem)", color: D.creme }}>{r.t}</h3>
-                    <p className="mt-1.5 text-[14px] font-light leading-relaxed" style={{ color: D.textSoft }}>{r.s}</p>
+                    <h3 className="font-display font-light" style={{ fontSize: "clamp(1.1rem,2vw,1.5rem)", color: D.vinho }}>{r.t}</h3>
+                    <p className="mt-1.5 text-[14px] font-light leading-relaxed" style={{ color: "rgba(40,12,20,0.58)" }}>{r.s}</p>
                   </div>
                 </div>
               </Reveal>
