@@ -355,30 +355,30 @@ const MARCOS = [
 ];
 
 const EXPERIENCIAS = [
-  { icon: "🍷", t: "Quinta do Bomfim",     s: "Prova de 3 Vinhos do Porto Vintage com vista para o Douro.",                  tag: "Vinho do Porto" },
-  { icon: "🍇", t: "Quinta da Avessada",   s: "Vindima com enólogo, prova de licorosos e almoço regional harmonizado.",      tag: "Vindima" },
-  { icon: "⛵", t: "Barco Rabelo",          s: "Passeio pelo Cais do Pinhão, com socalcos em espelho no Douro.",              tag: "Rio" },
-  { icon: "🚂", t: "Comboio Histórico",    s: "Pinhão ao Porto na estação dos 24 azulejos, saga do Vinho do Porto.",         tag: "Patrimônio" },
-  { icon: "🌄", t: "Casal de Loivos",      s: "Um dos miradouros mais belos do mundo, eleito pela BBC, em setembro.",        tag: "Panorama" },
-  { icon: "🍞", t: "Núcleo de Favaios",   s: "Moscatel do século XVIII, pão de Favaios e a história da aldeia vinhateira.", tag: "Aldeia" },
+  { icon: "wine",     t: "Quinta do Bomfim",   s: "Prova de 3 Vinhos do Porto Vintage com vista para o Douro.",                  tag: "Vinho do Porto" },
+  { icon: "grape",    t: "Quinta da Avessada", s: "Vindima com enólogo, prova de licorosos e almoço regional harmonizado.",      tag: "Vindima" },
+  { icon: "boat",     t: "Barco Rabelo",       s: "Passeio pelo Cais do Pinhão, com socalcos em espelho no Douro.",              tag: "Rio" },
+  { icon: "train",    t: "Comboio Histórico",  s: "Pinhão ao Porto na estação dos 24 azulejos, saga do Vinho do Porto.",         tag: "Patrimônio" },
+  { icon: "mountain", t: "Casal de Loivos",    s: "Um dos miradouros mais belos do mundo, eleito pela BBC, em setembro.",        tag: "Panorama" },
+  { icon: "village",  t: "Núcleo de Favaios",  s: "Moscatel do século XVIII, pão de Favaios e a história da aldeia vinhateira.", tag: "Aldeia" },
 ];
 
 const ROTEIRO = [
-  { d: "01", icon: "✈", t: "Chegada a Peso da Régua",
+  { d: "01", icon: "plane",    t: "Chegada a Peso da Régua",
     s: "Recepção no Aeroporto do Porto e transfer privado a Peso da Régua. Check-in no hotel. Visita ao Museu do Douro com prova de Vinho do Porto e frutos secos. Dia de relaxar e entrar no ritmo do vale." },
-  { d: "02", icon: "🍷", t: "Caminho dos Monges e Santiago",
+  { d: "02", icon: "wine",     t: "Caminho dos Monges e Santiago",
     s: "Percurso circular a partir do centro da Régua. Passagem pela Estação da Régua, Ponte Metálica Pedonal e primeiras vistas do Vale do Douro. O rio já apresenta os socalcos que vão guiar toda a semana." },
-  { d: "03", icon: "🥾", t: "Caminhada por Samodães",
+  { d: "03", icon: "boot",     t: "Caminhada por Samodães",
     s: "Manhã com pick-up da bagagem pelo guia. Caminhada guiada por entre vinhas nas encostas sobre o Douro. Paisagem que abre o apetite para os dias seguintes." },
-  { d: "04", icon: "🍇", t: "Trilha de Alijó a Favaios",
+  { d: "04", icon: "grape",    t: "Trilha de Alijó a Favaios",
     s: "Socalcos de vinhas e olivais (UNESCO). Enoteca da Quinta da Avessada: jardins, vindima autêntica, prova com enólogo incluindo licorosos e almoço regional harmonizado. Chegada a Favaios, Aldeia Vinhateira do século XVIII, pão e Moscatel." },
-  { d: "05", icon: "⛵", t: "Pinhão a Casal de Loivos",
+  { d: "05", icon: "boat",     t: "Pinhão a Casal de Loivos",
     s: "Transfer ao Pinhão. Descida pelas vinhas e quintas históricas com prova de 3 Vinhos do Porto Vintage na Quinta do Bomfim. Barco rabelo no Cais do Pinhão. Subida ao Miradouro de Casal de Loivos, eleito pela BBC um dos mais belos do mundo." },
-  { d: "06", icon: "🏘", t: "Vinhateiro de Provesende",
+  { d: "06", icon: "village",  t: "Vinhateiro de Provesende",
     s: "Transfer ao pelourinho de Provesende. Fonte Velha de 1755 em granito com brasões. Igreja Matriz maneirista do século XVIII. Miradouro de São Cristóvão, ligado a Miguel Torga, com vista da confluência dos rios Pinhão e Douro." },
-  { d: "07", icon: "🚂", t: "Viagem ao Porto, partida de trem",
+  { d: "07", icon: "train",    t: "Viagem ao Porto, partida de trem",
     s: "Traslado à Estação Ferroviária do Pinhão, uma das mais belas de Portugal, com 24 painéis de azulejos narrando a saga do Vinho do Porto do século XIX. Comboio histórico até o Porto." },
-  { d: "08", icon: "🏁", t: "Último dia, check-out",
+  { d: "08", icon: "flag",     t: "Último dia, check-out",
     s: "Café da manhã incluso, tempo livre no Porto e partida para o aeroporto. Fim das operações." },
 ];
 
@@ -411,6 +411,88 @@ const NAO_INCLUSO = [
 ];
 
 // ============================================================
+// ÍCONES SVG MONOCROMÁTICOS — stroke fino, sem emoji
+// ============================================================
+function Icon({ name, size = 22, color = "currentColor" }: { name: string; size?: number; color?: string }) {
+  const s = {
+    width: size, height: size,
+    stroke: color, fill: "none",
+    strokeWidth: 1.5,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    display: "block", flexShrink: 0,
+  };
+  switch (name) {
+    case "wine":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <path d="M8 3h8l-1.5 7a4.5 4.5 0 0 1-5 0Z" />
+        <line x1="12" y1="10" x2="12" y2="19" />
+        <line x1="8.5" y1="19" x2="15.5" y2="19" />
+      </svg>;
+    case "grape":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <circle cx="12" cy="6" r="2" />
+        <circle cx="8.5" cy="10" r="2" />
+        <circle cx="15.5" cy="10" r="2" />
+        <circle cx="10" cy="14" r="2" />
+        <circle cx="14" cy="14" r="2" />
+        <circle cx="12" cy="18" r="2" />
+        <path d="M12 4 C13.5 1.5 16.5 2 17.5 3.5" />
+      </svg>;
+    case "boat":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <path d="M3 17 C7 13.5 10 13 12 13 C14 13 17 13.5 21 17" />
+        <path d="M6.5 13 L8.5 6 L15.5 6 L17.5 13" />
+        <line x1="12" y1="6" x2="12" y2="2" />
+        <path d="M12 2 L16 5 L12 8" />
+      </svg>;
+    case "train":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <rect x="5" y="3" width="14" height="13" rx="2" />
+        <line x1="5" y1="10" x2="19" y2="10" />
+        <circle cx="8.5" cy="14.5" r="1.5" />
+        <circle cx="15.5" cy="14.5" r="1.5" />
+        <path d="M7 21 L9 17" />
+        <path d="M17 21 L15 17" />
+      </svg>;
+    case "mountain":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <path d="M3 20 L10 7 L14 14 L17 9 L21 20 Z" />
+        <path d="M8.5 11.5 L12 10 L13 11.5" strokeOpacity="0.5" strokeWidth="1" />
+      </svg>;
+    case "village":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <path d="M3 20 V11 L9 5 L15 11 V20" />
+        <path d="M15 14 L20 10 V20" />
+        <line x1="3" y1="20" x2="21" y2="20" />
+        <rect x="7" y="14.5" width="4" height="5.5" />
+      </svg>;
+    case "plane":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <path d="M22 16 L2 9 L5 8 L9 10 L14 3 L16 4 L13 11 L18 13 Z" />
+        <line x1="5.5" y1="18" x2="10" y2="15.5" strokeOpacity="0.55" />
+      </svg>;
+    case "boot":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <path d="M5 20 L5 7 C5 5.5 6 4 8 4 L8 12 C10 12 14 14 17 16 L19 20 Z" />
+        <line x1="4" y1="20" x2="20" y2="20" />
+      </svg>;
+    case "flag":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <line x1="5" y1="3" x2="5" y2="21" />
+        <path d="M5 3 L19 7 L5 12 Z" />
+      </svg>;
+    case "pin":
+      return <svg viewBox="0 0 24 24" style={s}>
+        <path d="M12 2 C8.5 2 5.5 5 5.5 9 C5.5 14.5 12 22 12 22 C12 22 18.5 14.5 18.5 9 C18.5 5 15.5 2 12 2 Z" />
+        <circle cx="12" cy="9" r="3" />
+      </svg>;
+    default:
+      return null;
+  }
+}
+
+// ============================================================
 // PAGE
 // ============================================================
 export default function DouroPage() {
@@ -435,7 +517,7 @@ export default function DouroPage() {
           <div>
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.2 }} className="mb-4 flex items-center gap-3">
-              <span className="text-2xl">🇵🇹</span>
+              <Icon name="pin" size={14} color={D.ouro} />
               <span className="text-[11px] font-semibold uppercase tracking-[0.4em]" style={{ color: D.ouro }}>
                 Portugal · Vale do Douro
               </span>
@@ -611,7 +693,7 @@ export default function DouroPage() {
                 <div className="group relative rounded-2xl p-7 transition-all duration-300"
                   style={{ background: "rgba(122,143,98,0.10)", border: `1px solid rgba(122,143,98,0.22)` }}>
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="text-3xl">{e.icon}</span>
+                    <Icon name={e.icon} size={22} color={D.sage} />
                     <span className="rounded-full px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]"
                       style={{ background: "rgba(42,56,32,0.6)", color: D.sage }}>{e.tag}</span>
                   </div>
@@ -625,32 +707,32 @@ export default function DouroPage() {
         </div>
       </section>
 
-      {/* ===== HOSPEDAGENS ===== */}
-      <section className="w-full" style={{ background: D.vinhoDeep }}>
+      {/* ===== HOSPEDAGENS — fundo creme (segundo bloco editorial claro) ===== */}
+      <section className="w-full" style={{ background: D.creme }}>
         <div className="grid md:grid-cols-2">
           <div className="relative min-h-[420px] overflow-hidden md:min-h-[560px]">
             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-[1.03]"
               style={{ backgroundImage: `url('${wx(IMG.quarto, 1400, 1000)}')` }} />
-            <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 35%, ${D.vinhoDeep}cc 100%)` }} />
+            <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, rgba(40,12,20,0.55) 100%)` }} />
             <div className="absolute bottom-4 left-5">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.3em]" style={{ color: D.ouro }}>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.3em]" style={{ color: D.creme }}>
                 Hotéis e Quintas 4 estrelas · Vista para o vale
               </span>
             </div>
           </div>
           <div className="flex flex-col justify-center px-8 py-16 md:px-14 md:py-20">
             <Reveal>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: D.ouro }}>Hospedagens</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: D.sage }}>Hospedagens</p>
             </Reveal>
             <Reveal delay={0.08}>
-              <h2 className="mt-5 font-display font-light uppercase leading-[0.88]" style={{ fontSize: "clamp(2.4rem,4.5vw,4rem)", color: D.creme }}>
+              <h2 className="mt-5 font-display font-light uppercase leading-[0.88]" style={{ fontSize: "clamp(2.4rem,4.5vw,4rem)", color: D.vinho }}>
                 Acordar com
                 <br />
-                <span style={{ color: D.ouro }}>o Douro</span>
+                <span style={{ color: D.sage }}>o Douro</span>
               </h2>
             </Reveal>
             <Reveal delay={0.14}>
-              <p className="mt-6 max-w-sm text-[15px] font-light leading-relaxed" style={{ color: "rgba(243,236,224,0.78)" }}>
+              <p className="mt-6 max-w-sm text-[15px] font-light leading-relaxed" style={{ color: "rgba(40,12,20,0.65)" }}>
                 Hotéis e quintas 4 estrelas escolhidos pela posição no vale e pela vista
                 privilegiada para o rio e os socalcos. Você caminha leve porque a bagagem vai à
                 frente no pick-up matinal do guia.
@@ -664,8 +746,8 @@ export default function DouroPage() {
                   "Café da manhã incluso todos os dias",
                   "Estrutura 4 estrelas antes e depois de cada etapa",
                 ].map((item) => (
-                  <div key={item} className="flex items-start gap-3 text-[13px] font-light" style={{ color: "rgba(243,236,224,0.72)" }}>
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: D.ouro }} />
+                  <div key={item} className="flex items-start gap-3 text-[13px] font-light" style={{ color: "rgba(40,12,20,0.62)" }}>
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: D.sage }} />
                     {item}
                   </div>
                 ))}
@@ -706,7 +788,7 @@ export default function DouroPage() {
                 <div className="grid grid-cols-[auto_1fr] items-baseline gap-6 border-t py-7 md:gap-10" style={{ borderColor: D.line }}>
                   <div className="flex items-center gap-4">
                     <span className="font-display text-sm" style={{ color: D.vinho }}>{r.d}</span>
-                    <span className="text-lg">{r.icon}</span>
+                    <Icon name={r.icon} size={18} color={D.sage} />
                   </div>
                   <div>
                     <h3 className="font-display font-light" style={{ fontSize: "clamp(1.1rem,2vw,1.5rem)", color: D.creme }}>{r.t}</h3>
@@ -761,18 +843,19 @@ export default function DouroPage() {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {[
-                      { p: "Salkantay a Machu Picchu · 4.600 m", f: "🇵🇪" },
-                      { p: "Aconcágua · 6.962 m",                 f: "🇦🇷" },
-                      { p: "Kilimanjaro · 5.895 m",               f: "🇹🇿" },
-                      { p: "Huayna Potosí · 6.088 m",             f: "🇧🇴" },
-                      { p: "Monte Roraima · 3 anos",              f: "🇻🇪" },
-                      { p: "Tour du Mont Blanc",                  f: "🇫🇷" },
-                      { p: "Alta Via 1 · Dolomitas",              f: "🇮🇹" },
-                      { p: "Caminho de Santiago · 515 km",        f: "🇪🇸" },
-                    ].map((e) => (
-                      <span key={e.p} className="rounded-full border px-4 py-1.5 text-[12px] font-light"
+                      "Salkantay a Machu Picchu · 4.600 m",
+                      "Aconcágua · 6.962 m",
+                      "Kilimanjaro · 5.895 m",
+                      "Huayna Potosí · 6.088 m",
+                      "Monte Roraima · 3 anos",
+                      "Tour du Mont Blanc",
+                      "Alta Via 1 · Dolomitas",
+                      "Caminho de Santiago · 515 km",
+                    ].map((p) => (
+                      <span key={p} className="flex items-center gap-2 rounded-full border px-4 py-1.5 text-[12px] font-light"
                         style={{ borderColor: "rgba(200,154,78,0.3)", color: "rgba(243,236,224,0.7)" }}>
-                        {e.f} {e.p}
+                        <Icon name="mountain" size={12} color="rgba(200,154,78,0.55)" />
+                        {p}
                       </span>
                     ))}
                   </div>
