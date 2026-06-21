@@ -71,6 +71,7 @@ const DESTINATIONS: Destination[] = [
     type: "cultural",
     description:
       "8 dias de caminhada pelo Vale do Douro, entre quintas históricas, vinhas e aldeias de xisto. 58,7 km, 2.051 m+.",
+    href: "/destinos/douro",
   },
   {
     id: "coxilha-rica",

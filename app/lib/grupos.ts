@@ -60,7 +60,7 @@ export const GRUPOS: Grupo[] = [
     duration: "8 dias",
     priceFrom: "a partir de € 5.100",
     status: "confirmada",
-    href: "#contato",
+    href: "/destinos/douro",
     img: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1200&auto=format&fit=crop",
   },
   {
