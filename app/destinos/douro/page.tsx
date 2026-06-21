@@ -12,16 +12,19 @@ import { GRUPOS, datasDoAno } from "../../lib/grupos";
 const GRUPO = GRUPOS.find((g) => g.id === "douro")!;
 
 const D = {
-  noite:     "#0d0809",
-  casca:     "#17100d",
-  vinho:     "#8a1f2d",
-  vinhoDeep: "#561019",
-  ouro:      "#c89a4e",
-  verde:     "#46622f",
-  rio:       "#6d9290",
-  creme:     "#f3ece0",
-  line:      "rgba(200,154,78,0.2)",
-  textSoft:  "rgba(243,236,224,0.62)",
+  noite:     "#130c0e",   // escuro quente
+  casca:     "#1e141a",   // casca de barril
+  vinho:     "#3f1521",   // Vintage Wine (Pantone 75C) — profundo
+  vinhoDeep: "#280c14",   // tanino profundo
+  ouro:      "#c4a56a",   // dourado envelhecido
+  verde:     "#2a3820",   // verde escuro das vinhas — fundos
+  rio:       "#6d9290",   // azul-verde do Douro
+  creme:     "#ede6dd",   // Mother of Pearl — creme sofisticado
+  sage:      "#7a8f62",   // Herbal Garden — verde das vinhas (acento)
+  terracota: "#be6549",   // Terracotta — acento quente
+  pedra:     "#9e8e82",   // xisto / pedra do muro
+  line:      "rgba(196,165,106,0.18)",
+  textSoft:  "rgba(237,230,221,0.62)",
 };
 
 const wx = (file: string, w: number, h: number) =>
@@ -171,25 +174,29 @@ function RioSocalcos() {
 }
 
 // ============================================================
-// COMPONENTE: ElevationProfile — Régua → Favaios → Pinhão → Porto
+// COMPONENTE: ElevationProfile — SOCALCOS (degraus/plataformas)
+// Evoca os terraços de xisto do Douro: plataformas horizontais
+// conectadas por paredes inclinadas — não ondas suaves.
 // ============================================================
+
+// Degraus em camadas: plataforma (L horizontal) → parede (L diagonal)
 const HILL_PATH =
-  "M 0,160 C 46,148 90,128 130,98 " +
-  "C 170,68 212,62 250,80 " +
-  "C 288,98 322,148 362,186 " +
-  "C 402,212 436,218 472,214 " +
-  "C 512,210 554,178 592,162 " +
-  "C 630,146 666,140 706,158 " +
-  "C 746,174 782,190 822,172 " +
-  "C 862,154 912,148 960,150";
-const HILL_FILL = HILL_PATH + " L 960,260 L 0,260 Z";
+  "M 0,165 L 65,165 L 72,140 L 135,140 " +        // Régua sobe
+  "L 141,115 L 203,115 L 209,90 L 252,90 " +       // Favaios (topo)
+  "L 258,118 L 324,118 L 330,150 L 392,150 " +     // descida escalonada
+  "L 398,182 L 462,182 L 468,212 L 508,212 " +     // Pinhão (vale)
+  "L 514,192 L 556,192 L 562,165 L 594,165 " +     // Casal de Loivos
+  "L 600,178 L 672,178 L 678,165 L 754,165 " +     // Provesende
+  "L 760,152 L 866,152 L 872,148 L 960,148";       // Porto
+
+const HILL_FILL = HILL_PATH + " L 960,248 L 0,248 Z";
 
 const PERFIL = [
-  { x: 14,  y: 160, label: "Régua",          sub: "partida",        anchor: "start"  as const },
-  { x: 250, y: 80,  label: "Favaios",         sub: "ponto mais alto", anchor: "middle" as const },
-  { x: 472, y: 214, label: "Pinhão",          sub: "cais do rio",   anchor: "middle" as const },
-  { x: 592, y: 162, label: "Casal de Loivos", sub: "BBC",           anchor: "middle" as const },
-  { x: 946, y: 150, label: "Porto",           sub: "chegada",       anchor: "end"    as const },
+  { x: 14,  y: 165, label: "Régua",          sub: "partida",        anchor: "start"  as const },
+  { x: 252, y: 90,  label: "Favaios",         sub: "ponto mais alto", anchor: "middle" as const },
+  { x: 468, y: 212, label: "Pinhão",          sub: "cais do rio",   anchor: "middle" as const },
+  { x: 562, y: 165, label: "Casal de Loivos", sub: "BBC",           anchor: "middle" as const },
+  { x: 946, y: 148, label: "Porto",           sub: "chegada",       anchor: "end"    as const },
 ];
 
 function ElevationProfile() {
@@ -197,27 +204,39 @@ function ElevationProfile() {
     <svg viewBox="0 0 960 260" className="w-full" style={{ overflow: "visible" }}>
       <defs>
         <linearGradient id="drFill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={D.vinho} stopOpacity="0.30" />
-          <stop offset="100%" stopColor={D.vinho} stopOpacity="0.03" />
+          <stop offset="0%" stopColor={D.sage}  stopOpacity="0.38" />
+          <stop offset="48%" stopColor={D.vinho} stopOpacity="0.28" />
+          <stop offset="100%" stopColor={D.vinho} stopOpacity="0.04" />
         </linearGradient>
       </defs>
-      {[60, 100, 140, 180].map((y) => (
-        <line key={y} x1={0} y1={y} x2={960} y2={y} stroke={D.line} strokeWidth="0.6" />
+      {/* linhas de grade horizontais suaves */}
+      {[90, 130, 170, 210].map((y) => (
+        <line key={y} x1={0} y1={y} x2={960} y2={y} stroke={D.line} strokeWidth="0.5" />
       ))}
+      {/* área preenchida com gradiente vinhas→xisto */}
       <path d={HILL_FILL} fill="url(#drFill)" />
-      <motion.path d={HILL_PATH} fill="none" stroke={D.ouro} strokeWidth="2.2" strokeLinecap="round"
+      {/* traço animado dos socalcos */}
+      <motion.path d={HILL_PATH} fill="none" stroke={D.sage} strokeWidth="2.2"
+        strokeLinejoin="round" strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}
         whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
-        transition={{ duration: 3.6, ease: EASE, delay: 0.2 }} />
+        transition={{ duration: 4.2, ease: EASE, delay: 0.2 }} />
+      {/* traço dourado tênue por baixo — xisto */}
+      <motion.path d={HILL_PATH} fill="none" stroke={D.ouro} strokeWidth="0.8"
+        strokeLinejoin="round" strokeLinecap="round" strokeOpacity="0.35"
+        initial={{ pathLength: 0, opacity: 0 }}
+        whileInView={{ pathLength: 1, opacity: 1 }} viewport={{ once: true }}
+        transition={{ duration: 4.8, ease: EASE, delay: 0.5 }} />
       {PERFIL.map((w) => (
         <g key={w.label}>
-          <line x1={w.x} y1={w.y} x2={w.x} y2={218} stroke={D.vinho} strokeWidth="1"
-            strokeDasharray="2 3" strokeOpacity="0.45" />
-          <circle cx={w.x} cy={w.y} r="4.5" fill={D.noite} stroke={D.vinho} strokeWidth="1.8" />
+          <line x1={w.x} y1={w.y} x2={w.x} y2={228} stroke={D.sage} strokeWidth="1"
+            strokeDasharray="2 4" strokeOpacity="0.4" />
+          <circle cx={w.x} cy={w.y} r="4.5" fill={D.casca} stroke={D.sage} strokeWidth="1.8" />
+          <circle cx={w.x} cy={w.y} r="1.8" fill={D.sage} />
           <text x={w.x} y={w.y - 10} fill={D.creme} fontSize="10" textAnchor={w.anchor}
             letterSpacing="0.5" style={{ fontFamily: "sans-serif" }}>{w.label}</text>
-          <text x={w.x} y={w.y - 22} fill={D.ouro} fontSize="8.5" textAnchor={w.anchor}
-            letterSpacing="1.2" opacity="0.85"
+          <text x={w.x} y={w.y - 22} fill={D.sage} fontSize="8.5" textAnchor={w.anchor}
+            letterSpacing="1.2" opacity="0.9"
             style={{ fontFamily: "sans-serif", textTransform: "uppercase" }}>{w.sub}</text>
         </g>
       ))}
@@ -265,7 +284,7 @@ function GaleriaInterativa() {
           <button key={i} onClick={() => setIdx(i)}
             className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
             style={{ width: 210, height: 70, opacity: i === idx ? 1 : 0.42,
-              outline: i === idx ? `2px solid ${D.vinho}` : "2px solid transparent", outlineOffset: 2 }}>
+              outline: i === idx ? `2px solid ${D.terracota}` : "2px solid transparent", outlineOffset: 2 }}>
             <img src={wx(g.id, 420, 140)} alt={g.tag}
               className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.05]" />
           </button>
@@ -311,11 +330,11 @@ const MARCOS = [
       "Cada terraço foi construído à mão, pedra a pedra, ao longo de dois mil anos. O xisto cinza retém o calor do dia e devolve à noite para as raízes das videiras. De Alijó a Favaios, de Pinhão a Casal de Loivos, você caminha no topo de uma das paisagens vitícolas mais dramáticas do mundo. A BBC elegeu o miradouro um dos mais belos que existem.",
     detalhe: "Miradouro Casal de Loivos · eleito BBC · UNESCO",
     img: IMG.socalcos,
-    bg: D.vinhoDeep,
+    bg: D.verde,
     imgDireita: false,
     colors: {
-      kicker: "rgba(243,236,224,0.7)", title: D.creme, titleAccent: D.ouro,
-      body: "rgba(243,236,224,0.78)", detalhe: D.creme, link: D.creme,
+      kicker: D.sage, title: D.creme, titleAccent: D.sage,
+      body: "rgba(237,230,221,0.78)", detalhe: D.creme, link: D.creme,
     },
   },
   {
@@ -329,8 +348,8 @@ const MARCOS = [
     bg: D.vinho,
     imgDireita: true,
     colors: {
-      kicker: "rgba(243,236,224,0.7)", title: D.creme, titleAccent: D.creme,
-      body: "rgba(243,236,224,0.82)", detalhe: D.creme, link: D.creme,
+      kicker: "rgba(237,230,221,0.7)", title: D.creme, titleAccent: D.terracota,
+      body: "rgba(237,230,221,0.82)", detalhe: D.creme, link: D.creme,
     },
   },
 ];
@@ -447,7 +466,7 @@ export default function DouroPage() {
               transition={{ duration: 1, ease: EASE, delay: 0.7 }} className="mt-8 flex flex-wrap items-center gap-5">
               <a href="#reservar"
                 className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]"
-                style={{ background: D.vinho, color: D.creme }}>
+                style={{ background: D.terracota, color: D.creme }}>
                 Reserve sua vaga <span>&#8594;</span>
               </a>
               <span>
@@ -457,8 +476,8 @@ export default function DouroPage() {
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.95 }}
               className="mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] uppercase tracking-[0.16em]"
-              style={{ borderColor: D.vinho, color: D.ouro }}>
-              <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: D.vinho }} />
+              style={{ borderColor: D.sage, color: D.sage }}>
+              <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: D.sage }} />
               Próxima saída · 14 a 21 Set 2026
             </motion.div>
           </div>
@@ -478,42 +497,42 @@ export default function DouroPage() {
           <Reveal key={i} delay={i * 0.04}>
             <div className="flex flex-col px-6 py-8" style={{ background: D.casca }}>
               <span className="font-display font-light leading-none" style={{ fontSize: "clamp(1.7rem,3vw,2.5rem)", color: D.creme }}>{s.v}</span>
-              <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: D.vinho }}>{s.u}</span>
+              <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: D.sage }}>{s.u}</span>
               <span className="mt-1 text-[12px] font-light" style={{ color: D.textSoft }}>{s.s}</span>
             </div>
           </Reveal>
         ))}
       </section>
 
-      {/* ===== CENTERPIECE — OS SOCALCOS ===== */}
-      <section className="relative w-full overflow-hidden" style={{ background: D.vinhoDeep }}>
+      {/* ===== CENTERPIECE — OS SOCALCOS (fundo claro — Mother of Pearl) ===== */}
+      <section className="relative w-full overflow-hidden" style={{ background: D.creme }}>
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
           <span className="select-none font-display font-light uppercase"
-            style={{ fontSize: "clamp(5rem,18vw,16rem)", color: "rgba(243,236,224,0.04)",
+            style={{ fontSize: "clamp(5rem,18vw,16rem)", color: "rgba(63,21,33,0.055)",
               letterSpacing: "-0.04em", lineHeight: 1, whiteSpace: "nowrap" }}>
             DOURO
           </span>
         </div>
         <div className="relative z-10 mx-auto max-w-[1000px] px-6 py-32 text-center md:py-44">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.4em]" style={{ color: D.creme, opacity: 0.6 }}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.4em]" style={{ color: D.sage }}>
               A escultura que virou Patrimônio
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mt-6 font-display font-light leading-[1.05]" style={{ fontSize: "clamp(2.4rem,5.5vw,4.6rem)", color: D.creme }}>
+            <h2 className="mt-6 font-display font-light leading-[1.05]" style={{ fontSize: "clamp(2.4rem,5.5vw,4.6rem)", color: D.vinho }}>
               Os socalcos
               <br />
-              <span className="italic" style={{ color: D.ouro }}>esculpidos à mão</span>
+              <span className="italic" style={{ color: D.sage }}>esculpidos à mão</span>
             </h2>
           </Reveal>
           <Reveal delay={0.18}>
-            <p className="mx-auto mt-8 max-w-2xl text-[16px] font-light leading-relaxed" style={{ color: "rgba(243,236,224,0.74)" }}>
+            <p className="mx-auto mt-8 max-w-2xl text-[16px] font-light leading-relaxed" style={{ color: "rgba(40,12,20,0.65)" }}>
               Por dois mil anos, gerações de agricultores ergueram terraços de xisto nas encostas
               do Douro para plantar videiras onde não havia chão plano. O resultado é uma das
               paisagens mais impressionantes do mundo, reconhecida pela UNESCO como Patrimônio
               da Humanidade.{" "}
-              <span style={{ color: D.creme, fontStyle: "italic" }}>Você caminha dentro dessa obra de arte.</span>
+              <span style={{ color: D.vinho, fontStyle: "italic" }}>Você caminha dentro dessa obra de arte.</span>
             </p>
           </Reveal>
         </div>
@@ -568,16 +587,16 @@ export default function DouroPage() {
       ))}
 
       {/* ===== EXPERIÊNCIAS ===== */}
-      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: D.noite }}>
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: D.verde }}>
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: D.ouro }}>Experiências incluídas</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: D.sage }}>Experiências incluídas</p>
           </Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-4 font-display font-light leading-[1.05]" style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: D.creme }}>
               Cada gole tem
               <br />
-              <span className="italic" style={{ color: D.vinho }}>uma história atrás</span>
+              <span className="italic" style={{ color: D.terracota }}>uma história atrás</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
@@ -590,15 +609,15 @@ export default function DouroPage() {
             {EXPERIENCIAS.map((e, i) => (
               <Reveal key={i} delay={i * 0.06}>
                 <div className="group relative rounded-2xl p-7 transition-all duration-300"
-                  style={{ background: "rgba(200,154,78,0.07)", border: `1px solid ${D.line}` }}>
+                  style={{ background: "rgba(122,143,98,0.10)", border: `1px solid rgba(122,143,98,0.22)` }}>
                   <div className="mb-4 flex items-center justify-between">
                     <span className="text-3xl">{e.icon}</span>
                     <span className="rounded-full px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]"
-                      style={{ background: "rgba(138,31,45,0.3)", color: D.ouro }}>{e.tag}</span>
+                      style={{ background: "rgba(42,56,32,0.6)", color: D.sage }}>{e.tag}</span>
                   </div>
                   <h3 className="font-display font-light" style={{ fontSize: "1.15rem", color: D.creme }}>{e.t}</h3>
                   <p className="mt-2 text-[13px] font-light leading-relaxed" style={{ color: D.textSoft }}>{e.s}</p>
-                  <div className="mt-4 h-px w-0 transition-all duration-500 group-hover:w-full" style={{ background: D.vinho }} />
+                  <div className="mt-4 h-px w-0 transition-all duration-500 group-hover:w-full" style={{ background: D.terracota }} />
                 </div>
               </Reveal>
             ))}
@@ -843,7 +862,7 @@ export default function DouroPage() {
                   Valor em Euro, base câmbio na data do fechamento.
                 </p>
               </div>
-              <a href="#contato" className="inline-flex shrink-0 items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]" style={{ background: D.vinho, color: D.creme }}>
+              <a href="#contato" className="inline-flex shrink-0 items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]" style={{ background: D.terracota, color: D.creme }}>
                 Falar com a equipe &#8594;
               </a>
             </div>
@@ -903,7 +922,7 @@ export default function DouroPage() {
               vindima, o que levar na mochila, como funciona o comboio histórico. A AonikIA
               conhece este programa de ponta a ponta.
             </p>
-            <a href="#contato" className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:opacity-80" style={{ borderColor: D.ouro, color: D.ouro }}>
+            <a href="#contato" className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:opacity-80" style={{ borderColor: D.sage, color: D.sage }}>
               Conversar com a AonikIA <span>&#8594;</span>
             </a>
           </Reveal>
