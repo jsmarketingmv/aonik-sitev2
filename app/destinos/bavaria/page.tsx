@@ -38,7 +38,7 @@ const IMG = {
   lagoEspelho: "fe55bd_d51e539338c34676b71eeb8658a34dac~mv2.jpg", // Königssee, reflexo espelhado das montanhas
   salzburg:    "fe55bd_2fa987d79bb64351803593be5d3477d1~mv2.jpg", // Salzburg panorâmica com a fortaleza
   quartoHotel: "fe55bd_3eedc749dec4448ba0f8c9e281ed49ba~mv2.jpg", // quarto de hotel (conforto)
-  guiaTrilha:  "fe55bd_23c82eee3eff483a8a35f127c9a2c2f4~mv2.jpg", // caminhante de costas na trilha (seção do guia)
+  hendrik:     "fe55bd_56f62fc99b7c42e6a4a5b0d81ef835c9~mv2.jpg", // foto real do Hendrik (boné + óculos)
   // galeria
   cumeNuvens:    "fe55bd_9ee52928dfb54ac0af7e88e6c9b3c45a~mv2.jpg", // cume acima do mar de nuvens
   lagoPier:      "2d4f5b_657d6fdbe90a48f4b0663e8df3010a61~mv2.jpg", // Königssee, píer e montanhas
@@ -806,7 +806,7 @@ export default function BavariaPage() {
           <div className="mt-10 grid items-start gap-10 md:grid-cols-[420px_1fr] md:gap-16">
             <Reveal>
               <div className="relative overflow-hidden rounded-2xl" style={{ height: 540 }}>
-                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${wx(IMG.guiaTrilha, 900, 1200)}')` }} />
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${wx(IMG.hendrik, 900, 1200)}')` }} />
                 <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${B.casca}ee 0%, transparent 55%)` }} />
                 <div className="absolute inset-x-0 bottom-0 p-7">
                   <p className="font-display text-[1.6rem] font-light leading-tight" style={{ color: B.creme }}>Hendrik Fendel</p>
