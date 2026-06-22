@@ -116,7 +116,7 @@ export const GRUPOS: Grupo[] = [
     altitude: "5.930 m+",
     duration: "10 dias",
     priceFrom: "a partir de € 4.200",
-    status: "confirmada",
+    status: "a-confirmar",
     href: "/destinos/tirol",
     img: "https://images.unsplash.com/photo-1454942901704-3c44c11b2ad1?q=80&w=1200&auto=format&fit=crop",
   },

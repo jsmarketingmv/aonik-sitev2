@@ -35,21 +35,22 @@ const wx = (file: string, w: number, h: number) =>
 // IDs reais extraídos das galerias do Wix (Stubaier Höhenweg), verificados
 // visualmente via contact sheet e distribuídos por tema.
 const IMG = {
-  hero:        "fe55bd_5f82f5cd2f7a4277856c7a20343c59e4~mv2.jpg",  // dois caminhantes na crista, mar de nuvens
+  hero:        "fe55bd_e6bf1523cb2f48d0b2afe545fe1c5a89~mv2.jpeg", // cristas de granito de Stubai, céu dramático
   glaciar:     "fe55bd_486e96323bff411ea9250c2612e70308~mv2.jpg",  // glaciar e picos nevados de Stubai
   refugio:     "fe55bd_d9eee6ea39d54774af739da11734401d~mv2.jpg",  // refúgio com vista glacial entre nuvens
-  cristaRidge: "fe55bd_8a45e6e9d50f4c4f907b0784ea8c098b~mv2.jpg",  // caminhante em crista dramática
+  tecnica:     "fe55bd_2e2f31aa53a6474089e9cedbc5629325~mv2.jpg",  // guia em encosta nevada, etapa técnica (Dia 8)
   quartoHotel: "fe55bd_34aae10b8e374a2c9e4b94a8cc75536b~mv2.jpg",  // lounge de madeira do Explorer Hotel
   guia:        "fe55bd_56f62fc99b7c42e6a4a5b0d81ef835c9~mv2.jpg",  // Hendrik, perfil, mar de nuvens
   // galeria
   cristaPan:   "fe55bd_f094593b4e1945b1aff86421afbbda32~mv2.jpeg", // cristas de Stubai em panorâmica
-  lagoTurq:    "fe55bd_2b11d28d04a247ac9b9ab54b9f9233a0~mv2.jpg",  // lago glaciar turquesa entre rochas
-  terrenoLunar:"fe55bd_3948f2cb51da46bca96bd586f3eddab4~mv2.jpg",  // Kalkkögel, terreno quase lunar
+  valeLago:    "fe55bd_622a1785b07e448f8e04151b2c01205c~mv2.jpg",  // vale glacial com lago turquesa e cascatas
+  lagoPrado:   "fe55bd_d7a49f1f4eb54a58b18215e2862b1c30~mv2.jpg",  // lago azul profundo entre os prados
+  nurnberger:  "fe55bd_32fb16c7afe048979f5d2ffce0840e51~mv2.jpg",  // Nürnberger Hütte, refúgio de pedra
   bigHut:      "fe55bd_8f02c88e885e47bcafe4cb7f5a1914d2~mv2.jpg",  // refúgio de Stubai em prado verde
-  lagoConq:    "fe55bd_7b689c6a20c54fe39aee79849caaeae3~mv2.jpg",  // caminhante de braços abertos junto ao lago
+  dormida:     "fe55bd_ffabcbfc1da946918356d4ed8c47112d~mv2.jpg",  // dormitório da cabana, camas e cobertores
   refugioInt:  "fe55bd_42cb443297ab48d8b03311bf833b07ba~mv2.jpeg", // interior aconchegante de refúgio
+  neveStubai:  "fe55bd_d525f08f00e34124b8eb9d0bd8c7b562~mv2.jpg",  // neve de setembro no alto de Stubai
   signpost:    "fe55bd_a9a84fafd0374f50990cd4f76e514882~mv2.jpg",  // placa amarela e cairn no caminho
-  stoneHut:    "fe55bd_159aae212f9848f291c0fa2ebebdd65a~mv2.jpg",  // refúgio de pedra na encosta
   grupoTrilha: "fe55bd_a9dd86d6b5234f97b98f565977d6bfe3~mv2.jpg",  // grupo na trilha rochosa
 };
 
@@ -213,15 +214,16 @@ function ElevationProfile() {
 // COMPONENTE: GaleriaInterativa
 // ============================================================
 const GALERIA = [
-  { id: IMG.cristaPan,    cap: "As cristas afiadas de Stubai, vistas que se estendem sem fim", tag: "Crista" },
-  { id: IMG.lagoTurq,     cap: "Lagos glaciares de um azul profundo, escondidos entre as rochas", tag: "Lagos" },
-  { id: IMG.terrenoLunar, cap: "O Kalkkögel, paisagem rochosa que lembra os Dolomitas", tag: "Kalkkögel" },
-  { id: IMG.bigHut,       cap: "Refúgios de Stubai, abrigo caloroso no fim de cada etapa", tag: "Refúgio" },
-  { id: IMG.lagoConq,     cap: "A conquista de braços abertos, diante do silêncio dos Alpes", tag: "Conquista" },
-  { id: IMG.refugioInt,   cap: "O interior aconchegante da cabana, calor depois do esforço", tag: "Calor" },
-  { id: IMG.signpost,     cap: "O caminho marcado, placas amarelas e cairns que guiam a travessia", tag: "O caminho" },
-  { id: IMG.stoneHut,     cap: "Cabanas de pedra que parecem nascer da própria montanha", tag: "Pedra" },
-  { id: IMG.grupoTrilha,  cap: "O grupo em marcha pelos campos rochosos do alto caminho", tag: "Grupo" },
+  { id: IMG.cristaPan,   cap: "As cristas afiadas de Stubai, vistas que se estendem sem fim", tag: "Crista" },
+  { id: IMG.valeLago,    cap: "Vales de gelo com lagos turquesa e cascatas ao longe", tag: "Vale glacial" },
+  { id: IMG.lagoPrado,   cap: "Lagos de um azul profundo escondidos entre os prados alpinos", tag: "Lagos" },
+  { id: IMG.nurnberger,  cap: "A Nürnberger Hütte, refúgio de pedra sob os picos de Stubai", tag: "Nürnberger" },
+  { id: IMG.bigHut,      cap: "Refúgios de Stubai, abrigo caloroso no fim de cada etapa", tag: "Cabanas" },
+  { id: IMG.dormida,     cap: "Os dormitórios das cabanas, a vida simples da alta montanha", tag: "Pernoite" },
+  { id: IMG.refugioInt,  cap: "O interior aconchegante da cabana, calor depois do esforço", tag: "Calor" },
+  { id: IMG.neveStubai,  cap: "A neve de setembro, o clima que muda depressa no alto de Stubai", tag: "Neve" },
+  { id: IMG.signpost,    cap: "O caminho marcado, placas amarelas e cairns que guiam a travessia", tag: "O caminho" },
+  { id: IMG.grupoTrilha, cap: "O grupo em marcha pelos campos rochosos do alto caminho", tag: "Grupo" },
 ];
 
 function GaleriaInterativa() {
@@ -309,7 +311,7 @@ const MARCOS = [
     texto:
       "Da Bremer até a Innsbrucker Hütte, a etapa mais técnica e desafiadora de toda a travessia. O caminho é uma sucessão de subidas e descidas íngremes, que testam a resistência e o passo firme. A recompensa é a sensação de estar no topo do mundo, com vistas de 360 graus. A chegada à cabana mais alta do roteiro é uma celebração da perseverança, brindada com uma cerveja gelada e a alegria do grupo.",
     detalhe: "Innsbrucker Hütte · 360 graus · a cabana mais alta",
-    img: IMG.cristaRidge,
+    img: IMG.tecnica,
     bg: T.geloDeep,
     imgDireita: true,
     colors: {
@@ -531,7 +533,7 @@ export default function TirolPage() {
               className="mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] uppercase tracking-[0.16em]"
               style={{ borderColor: T.sage, color: T.sage }}>
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: T.sage }} />
-              Próxima saída · 03 a 12 Set 2027
+              Próxima saída · 03 a 12 Set 2027 · grupo a confirmar
             </motion.div>
           </div>
 
