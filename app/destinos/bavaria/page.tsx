@@ -30,22 +30,25 @@ const B = {
 const wx = (file: string, w: number, h: number) =>
   `https://static.wixstatic.com/media/${file}/v1/fill/w_${w},h_${h},al_c,q_82,enc_avif,quality_auto/img.jpg`;
 
+// IDs reais extraídos das galerias do Wix (uma galeria por dia), verificados
+// visualmente via contact sheet e distribuídos por tema.
 const IMG = {
-  pano:    "fe55bd_eb1690c8ee144811a83b7f9f9f3c70ec~mv2.jpg",
-  ninho:   "fe55bd_6e5598684d5d40f5b5d11ba30a3cf62c~mv2.jpg",
-  lago:    "fe55bd_d9f026c7039a47c4ac41969f2488d4f6~mv2.jpg",
-  salzburg:"fe55bd_26361cdaa4674a25baa8f0f1a6180f92~mv2.jpg",
-  trilha:  "fe55bd_2c9d1bca6129414a80d52169c3c8643a~mv2.jpg",
-  cume:    "fe55bd_3eedc749dec4448ba0f8c9e281ed49ba~mv2.jpg",
-  refugio: "fe55bd_6348357277f94da98e02380b1afdf5dc~mv2.jpg",
-  vale:    "fe55bd_a2e8ae8972d643869a233757243c1c18~mv2.jpg",
-  g1:      "fe55bd_c9d49e29a7d847879d0ce19f4278e1b7~mv2.jpg",
-  g2:      "fe55bd_85c3c1b577af425991d00286925641e1~mv2.jpg",
-  g3:      "fe55bd_9efef68f016e4cc68769830669111056~mv2.jpg",
-  g4:      "fe55bd_6955c18ec721411890bbd072a576e0f0~mv2.jpg",
-  g5:      "fe55bd_d7499d2aee3f4a03813ded0d137eade1~mv2.jpg",
-  g6:      "fe55bd_af207968faa841d4a705235050098d91~mv2.jpg",
-  quarto:  "fe55bd_4f7d15b55c8444d880498304243af7b8~mv2.jpg",
+  hero:        "fe55bd_f554b84e76a94f349bce45b1cdb90916~mv2.jpg", // vale alpino com caminhantes (hero escolhido pelo Juliano)
+  ninho:       "fe55bd_9efef68f016e4cc68769830669111056~mv2.jpg", // Kehlsteinhaus, o Ninho da Águia no topo
+  lagoEspelho: "fe55bd_d51e539338c34676b71eeb8658a34dac~mv2.jpg", // Königssee, reflexo espelhado das montanhas
+  salzburg:    "fe55bd_2fa987d79bb64351803593be5d3477d1~mv2.jpg", // Salzburg panorâmica com a fortaleza
+  quartoHotel: "fe55bd_3eedc749dec4448ba0f8c9e281ed49ba~mv2.jpg", // quarto de hotel (conforto)
+  guiaTrilha:  "fe55bd_23c82eee3eff483a8a35f127c9a2c2f4~mv2.jpg", // caminhante de costas na trilha (seção do guia)
+  // galeria
+  cumeNuvens:    "fe55bd_9ee52928dfb54ac0af7e88e6c9b3c45a~mv2.jpg", // cume acima do mar de nuvens
+  lagoPier:      "2d4f5b_657d6fdbe90a48f4b0663e8df3010a61~mv2.jpg", // Königssee, píer e montanhas
+  terrenoLunar:  "fe55bd_16bb2a2ec50f4558aea0870371813f42~mv2.jpg", // caminhante na crista, terreno lunar
+  valeLago:      "fe55bd_e46d45b92eb743bebdb70068423dfa6b~mv2.jpg", // lago alpino em vale verde
+  refugioDusk:   "fe55bd_657f4b2f129749f095087fe0dd7b288b~mv2.jpg", // refúgios de madeira ao entardecer
+  trilhaParedao: "fe55bd_85c3c1b577af425991d00286925641e1~mv2.jpg", // trilha em paredão rochoso
+  salzburgNoite: "fe55bd_cc437b616510400c85dde3cd682e77eb~mv2.jpg", // Salzburg à noite, rio e fortaleza
+  hotelMontanha: "fe55bd_af207968faa841d4a705235050098d91~mv2.jpg", // Hotel Explorer em Schönau, junto às montanhas
+  grupoRefugio:  "fe55bd_74619336b6f645809a15e8f154b0824f~mv2.jpg", // grupo confraternizando no refúgio
 };
 
 // ============================================================
@@ -224,15 +227,15 @@ function ElevationProfile() {
 // COMPONENTE: GaleriaInterativa
 // ============================================================
 const GALERIA = [
-  { id: IMG.pano,    cap: "Refúgio alpino nos Alpes Bávaros, entre a rocha e o céu", tag: "Travessia" },
-  { id: IMG.lago,    cap: "O Lago Königssee, águas que refletem as paredes de rocha", tag: "Königssee" },
-  { id: IMG.ninho,   cap: "O Ninho da Águia, mirante a 1.800 metros de altitude", tag: "Berchtesgaden" },
-  { id: IMG.cume,    cap: "A crista dos Alpes Bávaros, terreno lunar sobre as pedras", tag: "Cumes" },
-  { id: IMG.trilha,  cap: "Trilhas que serpenteiam entre campos verdes e encostas", tag: "Trilha" },
-  { id: IMG.vale,    cap: "Vales profundos e mirantes naturais ao longo do caminho", tag: "Vale" },
-  { id: IMG.salzburg,cap: "Salzburg barroca, onde a música de Mozart ainda ecoa", tag: "Salzburg" },
-  { id: IMG.g3,      cap: "Refúgios de montanha, abrigo caloroso ao fim do dia", tag: "Refúgio" },
-  { id: IMG.g4,      cap: "Setembro nos Alpes, a estação ideal para a travessia", tag: "Setembro" },
+  { id: IMG.cumeNuvens,    cap: "Cumes dos Alpes Bávaros acima do mar de nuvens", tag: "Cumes" },
+  { id: IMG.lagoPier,      cap: "O Lago Königssee, águas-espelho entre paredes de rocha", tag: "Königssee" },
+  { id: IMG.terrenoLunar,  cap: "A crista alpina, quase um terreno lunar sobre as pedras", tag: "Travessia" },
+  { id: IMG.valeLago,      cap: "Vales escondidos e lagos alpinos ao longo do caminho", tag: "Vale" },
+  { id: IMG.refugioDusk,   cap: "Refúgios de montanha, abrigo caloroso ao fim do dia", tag: "Refúgio" },
+  { id: IMG.trilhaParedao, cap: "Trilhas alpinas que serpenteiam pelos paredões", tag: "Trilha" },
+  { id: IMG.salzburgNoite, cap: "Salzburg à noite, o rio e a Fortaleza Hohensalzburg", tag: "Salzburg" },
+  { id: IMG.hotelMontanha, cap: "Hotéis de montanha em Schönau, conforto antes da travessia", tag: "Conforto" },
+  { id: IMG.grupoRefugio,  cap: "A confraternização ao fim do dia, no calor do refúgio", tag: "Grupo" },
 ];
 
 function GaleriaInterativa() {
@@ -305,7 +308,7 @@ const MARCOS = [
     texto:
       "Uma navegação serena pelo Lago Königssee, de águas tão claras que refletem o céu e as paredes de rocha como um espelho, com o trompete ecoando entre os paredões. É assim que começa a travessia a pé. Mais adiante, no Parque Nacional de Berchtesgaden, a cachoeira Röthbach despenca 470 metros em dois estágios, a mais alta de toda a Alemanha.",
     detalhe: "Königssee · Röthbach 470 m · Parque Nacional",
-    img: IMG.lago,
+    img: IMG.lagoEspelho,
     bg: B.abeto,
     imgDireita: false,
     colors: {
@@ -494,7 +497,7 @@ export default function BavariaPage() {
       {/* ===== HERO ===== */}
       <section className="relative flex min-h-[100svh] w-full items-center overflow-hidden" style={{ background: B.noite }}>
         <motion.div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${wx(IMG.pano, 2400, 1500)}')` }}
+          style={{ backgroundImage: `url('${wx(IMG.hero, 2400, 1500)}')` }}
           initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 14, ease: "easeOut" }} />
         <div className="absolute inset-0"
           style={{ background: `linear-gradient(to right, ${B.noite}f2 0%, ${B.noite}b0 52%, ${B.noite}66 100%)` }} />
@@ -700,11 +703,11 @@ export default function BavariaPage() {
         <div className="grid md:grid-cols-2">
           <div className="relative min-h-[420px] overflow-hidden md:min-h-[560px]">
             <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-[1.03]"
-              style={{ backgroundImage: `url('${wx(IMG.refugio, 1400, 1000)}')` }} />
+              style={{ backgroundImage: `url('${wx(IMG.quartoHotel, 1400, 1000)}')` }} />
             <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, rgba(13,20,17,0.55) 100%)` }} />
             <div className="absolute bottom-4 left-5">
               <span className="text-[10px] font-semibold uppercase tracking-[0.3em]" style={{ color: B.creme }}>
-                Hotéis em Salzburg e refúgios de montanha
+                Quartos confortáveis · Hotéis em Salzburg e Schönau
               </span>
             </div>
           </div>
@@ -803,7 +806,7 @@ export default function BavariaPage() {
           <div className="mt-10 grid items-start gap-10 md:grid-cols-[420px_1fr] md:gap-16">
             <Reveal>
               <div className="relative overflow-hidden rounded-2xl" style={{ height: 540 }}>
-                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${wx(IMG.trilha, 900, 1200)}')` }} />
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${wx(IMG.guiaTrilha, 900, 1200)}')` }} />
                 <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${B.casca}ee 0%, transparent 55%)` }} />
                 <div className="absolute inset-x-0 bottom-0 p-7">
                   <p className="font-display text-[1.6rem] font-light leading-tight" style={{ color: B.creme }}>Hendrik Fendel</p>
