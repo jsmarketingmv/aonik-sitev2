@@ -214,7 +214,6 @@ function ElevationProfile() {
 // COMPONENTE: GaleriaInterativa
 // ============================================================
 const GALERIA = [
-  { id: IMG.cristaPan,   cap: "As cristas afiadas de Stubai, vistas que se estendem sem fim", tag: "Crista" },
   { id: IMG.valeLago,    cap: "Vales de gelo com lagos turquesa e cascatas ao longe", tag: "Vale glacial" },
   { id: IMG.lagoPrado,   cap: "Lagos de um azul profundo escondidos entre os prados alpinos", tag: "Lagos" },
   { id: IMG.nurnberger,  cap: "A Nürnberger Hütte, refúgio de pedra sob os picos de Stubai", tag: "Nürnberger" },
@@ -222,7 +221,6 @@ const GALERIA = [
   { id: IMG.dormida,     cap: "Os dormitórios das cabanas, a vida simples da alta montanha", tag: "Pernoite" },
   { id: IMG.refugioInt,  cap: "O interior aconchegante da cabana, calor depois do esforço", tag: "Calor" },
   { id: IMG.neveStubai,  cap: "A neve de setembro, o clima que muda depressa no alto de Stubai", tag: "Neve" },
-  { id: IMG.signpost,    cap: "O caminho marcado, placas amarelas e cairns que guiam a travessia", tag: "O caminho" },
   { id: IMG.grupoTrilha, cap: "O grupo em marcha pelos campos rochosos do alto caminho", tag: "Grupo" },
 ];
 
