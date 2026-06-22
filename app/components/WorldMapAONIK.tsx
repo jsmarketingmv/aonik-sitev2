@@ -75,6 +75,22 @@ const DESTINATIONS: Destination[] = [
     href: "/destinos/bavaria",
   },
   {
+    id: "tirol",
+    name: "Tirol Austríaco",
+    region: "Alpes de Stubai",
+    tagline: "03–12 Set 2027",
+    taglines: { 2027: "03–12 Set 2027" },
+    years: [2027],
+    lat: 47.12,
+    lng: 11.31,
+    labelOffsetX: 62,
+    labelOffsetY: 18,
+    type: "aventura",
+    description:
+      "Stubaier Höhenweg pelo Tirol austríaco: travessia de cabana em cabana entre glaciares e lagos de gelo. 90 km, 5.930 m+, 10 dias.",
+    href: "/destinos/tirol",
+  },
+  {
     id: "douro-experience",
     name: "Douro Experience",
     region: "Vale do Douro · Portugal",
@@ -137,6 +153,7 @@ const EUROPE_REGIONS = [
   "Alpes · 3 países",
   "Alpes Italianos",
   "Alpes Bávaros",
+  "Alpes de Stubai",
   "Vale do Douro · Portugal",
 ];
 
