@@ -43,19 +43,36 @@ const DESTINATIONS: Destination[] = [
     href: "/destinos/tour-du-mont-blanc",
   },
   {
-    id: "dolomitas-bavaria",
-    name: "Dolomitas · Bavária",
-    region: "Europa Central",
+    id: "dolomitas-alta-via",
+    name: "Dolomitas Alta Via 1",
+    region: "Alpes Italianos",
     tagline: "Set 2026 + Set 2027",
-    taglines: { 2026: "03–12 Set 2026", 2027: "02 Set + Bavária 2027" },
+    taglines: { 2026: "03–12 Set 2026", 2027: "02–11 Set 2027" },
     years: [2026, 2027],
-    lat: 46.9,
-    lng: 12.5,
-    labelOffsetX: 68,
-    labelOffsetY: -20,
+    lat: 46.5,
+    lng: 12.0,
+    labelOffsetX: -72,
+    labelOffsetY: -24,
     type: "aventura",
     description:
-      "Alta Via 1 nos Dolomitas italianos (10 dias, Set 2026) e Bavária Alemã pelos Alpes bávaros (9 dias, Set 2027).",
+      "Alta Via 1 pelos Dolomitas italianos: 100 km e 5.116 m+ entre as montanhas mais cênicas dos Alpes. 10 dias.",
+    href: "/destinos/dolomitas-alta-via",
+  },
+  {
+    id: "bavaria",
+    name: "Bavária Alemã",
+    region: "Alpes Bávaros",
+    tagline: "14–24 Set 2027",
+    taglines: { 2027: "14–24 Set 2027" },
+    years: [2027],
+    lat: 47.6,
+    lng: 13.0,
+    labelOffsetX: 64,
+    labelOffsetY: -18,
+    type: "aventura",
+    description:
+      "Travessia de Salzburg pelos Alpes Bávaros: Ninho da Águia, Lago Königssee e refúgios de montanha. 65,4 km, 9 dias.",
+    href: "/destinos/bavaria",
   },
   {
     id: "douro-experience",
@@ -118,7 +135,8 @@ const FILTERS = [
 
 const EUROPE_REGIONS = [
   "Alpes · 3 países",
-  "Europa Central",
+  "Alpes Italianos",
+  "Alpes Bávaros",
   "Vale do Douro · Portugal",
 ];
 

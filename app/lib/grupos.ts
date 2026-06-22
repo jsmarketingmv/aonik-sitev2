@@ -103,7 +103,7 @@ export const GRUPOS: Grupo[] = [
     duration: "9 dias",
     priceFrom: "a partir de € 4.950",
     status: "confirmada",
-    href: "#contato",
+    href: "/destinos/bavaria",
     img: "https://images.unsplash.com/photo-1500514966906-fe245eea9344?q=80&w=1200&auto=format&fit=crop",
   },
   {
