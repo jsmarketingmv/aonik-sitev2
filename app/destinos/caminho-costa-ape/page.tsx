@@ -87,6 +87,12 @@ const TARIFAS = [
   { temporada: "Alta",   periodo: "Jul e Ago",         duplo: "€ 1.785", single: "+ € 1.058" },
 ];
 
+const TARIFAS_2027 = [
+  { temporada: "Baixa",  periodo: "Mar, Abr e Out",   duplo: "€ 1.798", single: "+ € 1.033" },
+  { temporada: "Média",  periodo: "Mai, Jun e Set",   duplo: "€ 1.943", single: "+ € 1.102" },
+  { temporada: "Alta",   periodo: "Jul e Ago",         duplo: "€ 2.142", single: "+ € 1.270" },
+];
+
 /* ── SVG: Rota Costa (Porto → Santiago pela orla atlântica) ─── */
 function RotaCosta({ size = 280 }: { size?: number }) {
   const pts: [number, number, string][] = [
@@ -203,7 +209,9 @@ function GaleriaInterativa() {
 
 export default function CaminhoCostaApePage() {
   const [tarifa, setTarifa] = useState(0);
+  const [ano, setAno] = useState(0);
   const [etapaAberta, setEtapaAberta] = useState<number | null>(null);
+  const tarifas = ano === 0 ? TARIFAS : TARIFAS_2027;
 
   return (
     <main className="relative" style={{ backgroundColor: S.midnight }}>
@@ -413,18 +421,26 @@ export default function CaminhoCostaApePage() {
       <section className="py-24" style={{ backgroundColor: S.midnight }}>
         <div className="mx-auto max-w-3xl px-6">
           <Reveal>
-            <h2 className="font-display text-[2.4rem] font-light" style={{ color: S.white }}>Tarifas 2026</h2>
+            <h2 className="font-display text-[2.4rem] font-light" style={{ color: S.white }}>Tarifas</h2>
             <p className="mt-2 text-[14px]" style={{ color: S.onDarkSoft }}>Por pessoa · Cotação em euros · Parcelamento disponível</p>
           </Reveal>
+          <Reveal delay={0.07}>
+            <div className="mt-6 inline-flex rounded-full p-1" style={{ backgroundColor: "rgba(255,255,255,0.07)", border: `1px solid ${S.wLine}` }}>
+              {["2026", "2027"].map((a, i) => (
+                <button key={a} onClick={() => setAno(i)}
+                  className="rounded-full px-6 py-2 text-[13px] font-medium transition-all duration-200"
+                  style={{ backgroundColor: ano === i ? S.sun : "transparent", color: ano === i ? S.midnight : S.onDarkSoft }}>
+                  {a}
+                </button>
+              ))}
+            </div>
+          </Reveal>
           <Reveal delay={0.1}>
-            <div className="mt-8 inline-flex rounded-full p-1" style={{ backgroundColor: "rgba(255,255,255,0.07)", border: `1px solid ${S.wLine}` }}>
-              {TARIFAS.map((t, i) => (
+            <div className="mt-4 inline-flex rounded-full p-1" style={{ backgroundColor: "rgba(255,255,255,0.07)", border: `1px solid ${S.wLine}` }}>
+              {tarifas.map((t, i) => (
                 <button key={i} onClick={() => setTarifa(i)}
                   className="rounded-full px-5 py-2 text-[13px] font-medium transition-all duration-200"
-                  style={{
-                    backgroundColor: tarifa === i ? S.sun : "transparent",
-                    color: tarifa === i ? S.midnight : S.onDarkSoft,
-                  }}>
+                  style={{ backgroundColor: tarifa === i ? S.sun : "transparent", color: tarifa === i ? S.midnight : S.onDarkSoft }}>
                   {t.temporada}
                 </button>
               ))}
@@ -434,10 +450,10 @@ export default function CaminhoCostaApePage() {
             <div className="mt-6 overflow-hidden rounded-2xl" style={{ border: `1px solid ${S.wLine}` }}>
               <div className="p-4 text-[12px] font-medium uppercase tracking-[0.18em]"
                 style={{ backgroundColor: "rgba(242,169,0,0.1)", color: S.sun, borderBottom: `1px solid ${S.wLine}` }}>
-                {TARIFAS[tarifa].temporada} · {TARIFAS[tarifa].periodo}
+                {tarifas[tarifa].temporada} · {tarifas[tarifa].periodo}
               </div>
               <div className="divide-y" style={{ borderColor: S.wLine }}>
-                {[["Quarto duplo / casal", TARIFAS[tarifa].duplo], ["Suplemento quarto individual", TARIFAS[tarifa].single]].map(([label, preco]) => (
+                {[["Quarto duplo / casal", tarifas[tarifa].duplo], ["Suplemento quarto individual", tarifas[tarifa].single]].map(([label, preco]) => (
                   <div key={label} className="flex items-center justify-between px-5 py-4">
                     <span className="text-[14px] font-light" style={{ color: S.onDark }}>{label}</span>
                     <span className="text-[18px] font-semibold" style={{ color: S.sun }}>{preco}</span>
@@ -449,7 +465,45 @@ export default function CaminhoCostaApePage() {
               </div>
             </div>
           </Reveal>
-          <Reveal delay={0.2}>
+          {ano === 1 && (
+            <Reveal delay={0.22}>
+              <div className="mt-8 overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(242,169,0,0.3)`, backgroundColor: "rgba(242,169,0,0.04)" }}>
+                <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4"
+                  style={{ borderBottom: `1px solid rgba(242,169,0,0.2)` }}>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: S.sun }}>Promoção Vigente</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: S.onDarkSoft }}>Válida até 30 de Setembro de 2027</span>
+                </div>
+                <div className="px-6 py-5">
+                  <h3 className="font-display text-[1.6rem] font-light" style={{ color: S.white }}>
+                    Early Booking{" "}
+                    <span className="text-[1rem] font-normal" style={{ color: S.onDarkSoft }}>(reserva antecipada)</span>
+                  </h3>
+                  <p className="mt-1 text-[13px] font-light" style={{ color: S.onDarkSoft }}>
+                    Descontos por forma de pagamento. Escolha a que melhor combina com você.
+                  </p>
+                  <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    {[
+                      { titulo: "À vista", badge: "10% OFF", desc: "Pagamento integral à vista, com 10% de desconto.", info: ["PIX ou transferência", "Quitação imediata."] },
+                      { titulo: "Parcelado", badge: "5% OFF", desc: "Entrada de 30% + saldo em até 7x sem juros, com 5% de desconto.", info: ["Entrada em PIX/transferência, parcelas no cartão.", "No cartão não há prazo de quitação antes da viagem."] },
+                      { titulo: "Em 10x", badge: "Sem Juros", desc: "Saldo em até 10x sem juros, sem desconto adicional.", info: ["Entrada em PIX/transferência, parcelas no cartão.", "No cartão não há prazo de quitação antes da viagem."] },
+                    ].map(({ titulo, badge, desc, info }) => (
+                      <div key={titulo} className="rounded-xl p-4" style={{ backgroundColor: "rgba(255,255,255,0.04)", border: `1px solid ${S.wLine}` }}>
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="text-[15px] font-semibold" style={{ color: S.white }}>{titulo}</span>
+                          <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase" style={{ backgroundColor: "rgba(242,169,0,0.15)", color: S.sun }}>{badge}</span>
+                        </div>
+                        <p className="mt-2 text-[12px] font-light leading-relaxed" style={{ color: S.onDark }}>{desc}</p>
+                        <ul className="mt-3 space-y-0.5">
+                          {info.map((item) => <li key={item} className="text-[11px] font-light italic" style={{ color: S.onDarkSoft }}>{item}</li>)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
+          <Reveal delay={0.28}>
             <div className="mt-8 text-center">
               <a href="#contato" className="inline-block rounded-full px-10 py-4 text-[15px] font-semibold transition-all hover:brightness-110"
                 style={{ backgroundColor: S.sun, color: S.midnight }}>

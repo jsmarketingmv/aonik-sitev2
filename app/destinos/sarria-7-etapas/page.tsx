@@ -89,6 +89,21 @@ const TIERS = [
   },
 ];
 
+const TIERS_2027 = [
+  {
+    label: "Standard",
+    stars: "2★ / 3★",
+    duplo: "€ 696",
+    single: "€ 1.020",
+  },
+  {
+    label: "Premium",
+    stars: "3★ / 4★ · Pousadas",
+    duplo: "€ 900",
+    single: "€ 1.260",
+  },
+];
+
 /* ── SVG: Rota Sarria → Santiago (com vieira no fundo) ───── */
 function RotaSarria7({ size = 300 }: { size?: number }) {
   const pts: [number, number, string][] = [
@@ -196,8 +211,10 @@ function GaleriaInterativa() {
 
 export default function Sarria7EtapasPage() {
   const [tier, setTier] = useState(0);
+  const [ano, setAno] = useState(0);
   const [etapaAberta, setEtapaAberta] = useState<number | null>(null);
-  const t = TIERS[tier];
+  const tiers = ano === 0 ? TIERS : TIERS_2027;
+  const t = tiers[tier];
 
   return (
     <main className="relative" style={{ backgroundColor: S.sun }}>
@@ -421,16 +438,27 @@ export default function Sarria7EtapasPage() {
       <section className="py-24" style={{ backgroundColor: S.midnight }}>
         <div className="mx-auto max-w-3xl px-6">
           <Reveal>
-            <h2 className="font-display text-[2.4rem] font-light" style={{ color: S.white }}>Tarifas 2026</h2>
+            <h2 className="font-display text-[2.4rem] font-light" style={{ color: S.white }}>Tarifas</h2>
             <p className="mt-2 text-[14px]" style={{ color: S.onDarkSoft }}>Por pessoa · 6 noites incluídas · Cotação em euros</p>
           </Reveal>
+          <Reveal delay={0.07}>
+            <div className="mt-6 inline-flex rounded-full p-1" style={{ backgroundColor: "rgba(255,255,255,0.07)", border: `1px solid ${S.wLine}` }}>
+              {["2026", "2027"].map((a, i) => (
+                <button key={a} onClick={() => setAno(i)}
+                  className="rounded-full px-6 py-2 text-[13px] font-medium transition-all duration-200"
+                  style={{ backgroundColor: ano === i ? S.sun : "transparent", color: ano === i ? S.midnight : S.onDarkSoft }}>
+                  {a}
+                </button>
+              ))}
+            </div>
+          </Reveal>
           <Reveal delay={0.1}>
-            <div className="mt-8 inline-flex rounded-full p-1" style={{ backgroundColor: "rgba(255,255,255,0.07)", border: `1px solid ${S.wLine}` }}>
-              {TIERS.map((t, i) => (
+            <div className="mt-4 inline-flex rounded-full p-1" style={{ backgroundColor: "rgba(255,255,255,0.07)", border: `1px solid ${S.wLine}` }}>
+              {tiers.map((tier_item, i) => (
                 <button key={i} onClick={() => setTier(i)}
                   className="rounded-full px-6 py-2 text-[13px] font-medium transition-all duration-200"
                   style={{ backgroundColor: tier === i ? S.sun : "transparent", color: tier === i ? S.midnight : S.onDarkSoft }}>
-                  {t.label}
+                  {tier_item.label}
                 </button>
               ))}
             </div>
@@ -468,7 +496,45 @@ export default function Sarria7EtapasPage() {
               </div>
             </div>
           </Reveal>
-          <Reveal delay={0.2}>
+          {ano === 1 && (
+            <Reveal delay={0.22}>
+              <div className="mt-8 overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(242,169,0,0.3)`, backgroundColor: "rgba(242,169,0,0.04)" }}>
+                <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4"
+                  style={{ borderBottom: `1px solid rgba(242,169,0,0.2)` }}>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: S.sun }}>Promoção Vigente</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: S.onDarkSoft }}>Válida até 30 de Setembro de 2027</span>
+                </div>
+                <div className="px-6 py-5">
+                  <h3 className="font-display text-[1.6rem] font-light" style={{ color: S.white }}>
+                    Early Booking{" "}
+                    <span className="text-[1rem] font-normal" style={{ color: S.onDarkSoft }}>(reserva antecipada)</span>
+                  </h3>
+                  <p className="mt-1 text-[13px] font-light" style={{ color: S.onDarkSoft }}>
+                    Descontos por forma de pagamento. Escolha a que melhor combina com você.
+                  </p>
+                  <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    {[
+                      { titulo: "À vista", badge: "10% OFF", desc: "Pagamento integral à vista, com 10% de desconto.", info: ["PIX ou transferência", "Quitação imediata."] },
+                      { titulo: "Parcelado", badge: "5% OFF", desc: "Entrada de 30% + saldo em até 7x sem juros, com 5% de desconto.", info: ["Entrada em PIX/transferência, parcelas no cartão.", "No cartão não há prazo de quitação antes da viagem."] },
+                      { titulo: "Em 10x", badge: "Sem Juros", desc: "Saldo em até 10x sem juros, sem desconto adicional.", info: ["Entrada em PIX/transferência, parcelas no cartão.", "No cartão não há prazo de quitação antes da viagem."] },
+                    ].map(({ titulo, badge, desc, info }) => (
+                      <div key={titulo} className="rounded-xl p-4" style={{ backgroundColor: "rgba(255,255,255,0.04)", border: `1px solid ${S.wLine}` }}>
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="text-[15px] font-semibold" style={{ color: S.white }}>{titulo}</span>
+                          <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase" style={{ backgroundColor: "rgba(242,169,0,0.15)", color: S.sun }}>{badge}</span>
+                        </div>
+                        <p className="mt-2 text-[12px] font-light leading-relaxed" style={{ color: S.onDark }}>{desc}</p>
+                        <ul className="mt-3 space-y-0.5">
+                          {info.map((item) => <li key={item} className="text-[11px] font-light italic" style={{ color: S.onDarkSoft }}>{item}</li>)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
+          <Reveal delay={0.28}>
             <div className="mt-8 text-center">
               <a href="#contato" className="inline-block rounded-full px-10 py-4 text-[15px] font-semibold transition-all hover:brightness-110"
                 style={{ backgroundColor: S.sun, color: S.midnight }}>
