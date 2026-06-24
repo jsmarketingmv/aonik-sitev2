@@ -906,23 +906,37 @@ export default function BavariaPage() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <div className="mt-14 flex flex-col gap-4 border-t pt-10 md:flex-row md:items-center md:justify-between" style={{ borderColor: "rgba(59,125,128,0.35)" }}>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: B.textSoft }}>Investimento</p>
-                <p className="mt-2 font-display font-light" style={{ fontSize: "clamp(2rem,3.5vw,2.8rem)", color: B.creme }}>
-                  € 4.950
-                  <span className="ml-3 text-[14px]" style={{ color: B.textSoft }}>por pessoa · habitação dupla</span>
-                </p>
-                <p className="mt-1 text-[13px] font-light" style={{ color: B.textSoft }}>
-                  30% de entrada via Pix ou transferência + 5x sem juros no cartão. Consulte tarifa single.
-                </p>
-                <p className="mt-1 text-[11px] font-light" style={{ color: "rgba(236,230,218,0.4)" }}>
-                  Valor em Euro, base Euro Turismo na data do fechamento.
-                </p>
+            <div className="mt-14 border-t pt-10" style={{ borderColor: "rgba(59,125,128,0.35)" }}>
+              <div className="overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(59,125,128,0.32)`, backgroundColor: "rgba(59,125,128,0.05)" }}>
+                <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4" style={{ borderBottom: `1px solid rgba(59,125,128,0.18)` }}>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: B.lago }}>Tarifas · Temporada 2027</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: B.textSoft }}>Promoção válida até 30 de setembro de 2027</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2">
+                  <div className="p-6" style={{ borderRight: `1px solid rgba(59,125,128,0.14)`, borderBottom: `1px solid rgba(59,125,128,0.14)` }}>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: B.textSoft }}>Tarifa Temporada 2027</p>
+                    <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: B.creme }}>€ 4.830</p>
+                    <p className="text-[12px]" style={{ color: B.textSoft }}>por pessoa · habitação dupla</p>
+                    <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: B.textSoft }}>30% de entrada + saldo em parcelas no cartão. Consulte tarifa single.</p>
+                    <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(236,230,218,0.4)" }}>Valor em Euro, base Euro Turismo no fechamento.</p>
+                  </div>
+                  <div className="p-6" style={{ backgroundColor: "rgba(59,125,128,0.08)" }}>
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: B.lago }}>Early Booking</p>
+                      <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase" style={{ backgroundColor: "rgba(59,125,128,0.18)", color: B.lago }}>reserva antecipada</span>
+                    </div>
+                    <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: B.creme }}>€ 4.550</p>
+                    <p className="text-[12px]" style={{ color: B.textSoft }}>por pessoa · habitação dupla</p>
+                    <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: B.textSoft }}>20% de entrada + saldo em 7 parcelas sem juros.</p>
+                    <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(236,230,218,0.4)" }}>Entrada em Pix/transferência, parcelas no cartão.</p>
+                  </div>
+                </div>
               </div>
-              <a href="#contato" className="inline-flex shrink-0 items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]" style={{ background: B.lago, color: B.creme }}>
-                Falar com a equipe &#8594;
-              </a>
+              <div className="mt-6 flex justify-center sm:justify-end">
+                <a href="#contato" className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]" style={{ background: B.lago, color: B.creme }}>
+                  Falar com a equipe &#8594;
+                </a>
+              </div>
             </div>
           </Reveal>
         </div>

@@ -685,14 +685,46 @@ export default function TMBV2Page() {
                       <p className="text-[12px] font-semibold uppercase tracking-[0.12em]"
                         style={{ color: C.ch }}>Saída confirmada</p>
                     </div>
-                    <p className="mt-2 text-[12px] font-light" style={{ color: "rgba(238,243,246,0.45)" }}>
-                      Entrada: 30% via Pix/transferência · 5× sem juros no cartão
-                    </p>
                   </div>
                 </Reveal>
               );
             })}
           </div>
+
+          <Reveal delay={0.15}>
+            <div className="mt-10 border-t pt-10" style={{ borderColor: "rgba(217,140,74,0.3)" }}>
+              <div className="overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(217,140,74,0.28)`, backgroundColor: "rgba(217,140,74,0.04)" }}>
+                <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4" style={{ borderBottom: `1px solid rgba(217,140,74,0.18)` }}>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: C.wood }}>Tarifas · Temporada 2027</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: "rgba(238,243,246,0.55)" }}>Promoção válida até 30 de setembro de 2027</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2">
+                  <div className="p-6" style={{ borderRight: `1px solid rgba(217,140,74,0.14)`, borderBottom: `1px solid rgba(217,140,74,0.14)` }}>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: "rgba(238,243,246,0.55)" }}>Tarifa Temporada 2027</p>
+                    <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: C.snow }}>€ 5.900</p>
+                    <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · habitação dupla</p>
+                    <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: "rgba(238,243,246,0.55)" }}>30% de entrada + saldo em parcelas no cartão.</p>
+                    <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(238,243,246,0.35)" }}>Valor em Euro, base Euro Turismo no fechamento.</p>
+                  </div>
+                  <div className="p-6" style={{ backgroundColor: "rgba(217,140,74,0.08)" }}>
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: C.wood }}>Early Booking</p>
+                      <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase" style={{ backgroundColor: "rgba(217,140,74,0.18)", color: C.wood }}>reserva antecipada</span>
+                    </div>
+                    <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: C.snow }}>€ 5.450</p>
+                    <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · habitação dupla</p>
+                    <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: "rgba(238,243,246,0.55)" }}>20% de entrada + saldo em 7 parcelas sem juros.</p>
+                    <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(238,243,246,0.35)" }}>Entrada em Pix/transferência, parcelas no cartão.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 flex justify-center sm:justify-end">
+                <a href="#contato" className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]" style={{ background: C.wood, color: C.night }}>
+                  Falar com a equipe &#8594;
+                </a>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
