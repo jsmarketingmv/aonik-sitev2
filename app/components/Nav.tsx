@@ -8,6 +8,10 @@ import { LANGS } from "../lib/i18n";
 // Peregrinação → /jornada; Hotéis → /refugios (rotas existentes, só renomeadas no nav)
 const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/refugios"];
 
+// Login do SaaS Operadora (mesmo destino para agente/operador e equipe AONIK).
+// Ativa quando o domínio aonik.com.br for conectado (path /reservas → SaaS).
+const SAAS_LOGIN = "https://reservas.aonik.com.br/reservas/login";
+
 export default function Nav() {
   const { lang, setLang, t } = useLang();
   const [loginOpen, setLoginOpen] = useState(false);
@@ -102,13 +106,13 @@ export default function Nav() {
                     {t.nav.loginTitle}
                   </p>
                   <a
-                    href="#"
+                    href={SAAS_LOGIN}
                     className="block px-4 py-3 text-[13px] text-cream/80 transition-colors hover:bg-cream/[0.05] hover:text-cream"
                   >
                     {t.nav.loginAgente}
                   </a>
                   <a
-                    href="#"
+                    href={SAAS_LOGIN}
                     className="block px-4 py-3 text-[13px] text-cream/80 transition-colors hover:bg-cream/[0.05] hover:text-cream"
                   >
                     {t.nav.loginEquipe}
@@ -197,10 +201,10 @@ export default function Nav() {
                   <p className="text-[10px] uppercase tracking-[0.2em] text-cream/40">
                     {t.nav.loginTitle}
                   </p>
-                  <a href="#" className="text-[13px] text-cream/70 hover:text-cream">
+                  <a href={SAAS_LOGIN} className="text-[13px] text-cream/70 hover:text-cream">
                     {t.nav.loginAgente}
                   </a>
-                  <a href="#" className="text-[13px] text-cream/70 hover:text-cream">
+                  <a href={SAAS_LOGIN} className="text-[13px] text-cream/70 hover:text-cream">
                     {t.nav.loginEquipe}
                   </a>
                 </div>

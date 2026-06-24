@@ -60,8 +60,12 @@ export interface Dict {
     selecione: string;
     destinos: string[];
     enviar: string;
+    enviando: string;
     disclaimer: string;
     waIntro: string;
+    okTitle: string;
+    okMsg: string;
+    erro: string;
   };
   footer: {
     descricao: string;
@@ -191,9 +195,14 @@ export const translations: Record<Lang, Dict> = {
         "Ainda não sei, me ajudem a escolher",
       ],
       enviar: "Quero viajar",
+      enviando: "Enviando…",
       disclaimer:
-        "Ao enviar, você abre uma conversa direta no WhatsApp com a AONIK.",
+        "Seus dados ficam só com a AONIK. Retornamos em até um dia útil.",
       waIntro: "Olá, equipe AONIK! Vim pelo site:",
+      okTitle: "Recebemos o seu contato!",
+      okMsg:
+        "Já está com a nossa equipe. Em breve um especialista AONIK fala com você para desenhar a sua experiência.",
+      erro: "Algo não saiu como esperado. Tente de novo em instantes.",
     },
     footer: {
       descricao:
@@ -331,9 +340,14 @@ export const translations: Record<Lang, Dict> = {
         "Aún no lo sé, ayúdenme a elegir",
       ],
       enviar: "Quiero viajar",
+      enviando: "Enviando…",
       disclaimer:
-        "Al enviar, abres una conversación directa por WhatsApp con AONIK.",
+        "Tus datos quedan solo con AONIK. Respondemos en un día hábil.",
       waIntro: "¡Hola, equipo AONIK! Vengo desde el sitio:",
+      okTitle: "¡Recibimos tu contacto!",
+      okMsg:
+        "Ya está con nuestro equipo. Pronto un especialista AONIK hablará contigo para diseñar tu experiencia.",
+      erro: "Algo no salió como esperábamos. Inténtalo de nuevo en un momento.",
     },
     footer: {
       descricao:
@@ -471,9 +485,14 @@ export const translations: Record<Lang, Dict> = {
         "Not sure yet, help me choose",
       ],
       enviar: "I want to travel",
+      enviando: "Sending…",
       disclaimer:
-        "On submit, you open a direct WhatsApp conversation with AONIK.",
+        "Your details stay with AONIK only. We reply within one business day.",
       waIntro: "Hello, AONIK team! I came from the website:",
+      okTitle: "We got your message!",
+      okMsg:
+        "It is already with our team. An AONIK specialist will reach out soon to craft your experience.",
+      erro: "Something went wrong. Please try again in a moment.",
     },
     footer: {
       descricao:

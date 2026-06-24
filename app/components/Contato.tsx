@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { AONIK, DESTINOS_CURADOS } from "../lib/contato";
+import { DESTINOS_CURADOS } from "../lib/contato";
+import { gravarLead } from "../lib/leads";
 import { useLang } from "./LanguageProvider";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -21,30 +22,27 @@ export default function Contato({ destino = "" }: { destino?: string }) {
     mensagem: "",
   });
 
+  // idle → sending → done | error
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">(
+    "idle"
+  );
+
   function set<K extends keyof typeof form>(k: K, v: string) {
     setForm((f) => ({ ...f, [k]: v }));
   }
 
-  // Por ora, o envio monta uma mensagem e abre o WhatsApp da AONIK.
-  // (Próxima etapa: gravar lead na tabela `leads` do Supabase do SaaS.)
-  function handleSubmit(e: React.FormEvent) {
+  // O envio grava o lead na tabela `leads` do Supabase do SaaS (CRM/kanban).
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const texto = [
-      c.waIntro,
-      `• ${c.f.nome}: ${form.nome}`,
-      form.destino ? `• ${c.f.interesse}: ${form.destino}` : "",
-      form.cidade || form.estado
-        ? `• ${[form.cidade, form.estado].filter(Boolean).join(" / ")}`
-        : "",
-      form.email ? `• ${c.f.email}: ${form.email}` : "",
-      form.mensagem ? `\n${form.mensagem}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
-    window.open(
-      `https://wa.me/${AONIK.whatsapp}?text=${encodeURIComponent(texto)}`,
-      "_blank"
-    );
+    if (status === "sending") return;
+    setStatus("sending");
+    try {
+      await gravarLead(form);
+      setStatus("done");
+    } catch (err) {
+      console.error("Falha ao gravar lead", err);
+      setStatus("error");
+    }
   }
 
   return (
@@ -72,6 +70,35 @@ export default function Contato({ destino = "" }: { destino?: string }) {
           </p>
         </motion.div>
 
+        {status === "done" ? (
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: EASE }}
+            className="rounded-2xl border border-ink/10 bg-cream p-10 text-center shadow-[0_30px_80px_-50px_rgba(11,23,17,0.4)] md:p-16"
+          >
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-forest text-cream">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-7 w-7"
+                aria-hidden="true"
+              >
+                <path d="M20 6 9 17l-5-5" />
+              </svg>
+            </div>
+            <h3 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-light leading-tight text-forest">
+              {c.okTitle}
+            </h3>
+            <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed text-ink/60">
+              {c.okMsg}
+            </p>
+          </motion.div>
+        ) : (
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 28 }}
@@ -163,17 +190,26 @@ export default function Contato({ destino = "" }: { destino?: string }) {
 
           <button
             type="submit"
-            className="group mt-8 flex w-full items-center justify-center gap-3 rounded-full bg-forest py-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-300 hover:bg-forest-soft"
+            disabled={status === "sending"}
+            className="group mt-8 flex w-full items-center justify-center gap-3 rounded-full bg-forest py-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-300 hover:bg-forest-soft disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {c.enviar}
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
+            {status === "sending" ? c.enviando : c.enviar}
+            {status !== "sending" && (
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            )}
           </button>
+          {status === "error" && (
+            <p className="mt-4 text-center text-[12px] font-medium text-red-600">
+              {c.erro}
+            </p>
+          )}
           <p className="mt-4 text-center text-[12px] text-ink/40">
             {c.disclaimer}
           </p>
         </motion.form>
+        )}
       </div>
     </section>
   );
