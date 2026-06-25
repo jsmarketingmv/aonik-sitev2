@@ -16,22 +16,18 @@ const EMBER = "#d98c4a";
 const HERO_IMG =
   "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2600&auto=format&fit=crop";
 
-// Colagem editorial — foco em pessoas e momentos de grupo
+// Colagem editorial — fotos reais dos grupos AONIK (TMB + Dolomitas)
 const GALERIA_GRUPOS = [
-  // TMB — grupo nos Alpes
-  { src: "https://static.wixstatic.com/media/61ab00_5b1a43c0ce41447abdbdb8403c5fecc3~mv2.jpeg?w=1400&auto=format", cls: "col-span-12 sm:col-span-8 h-64 md:h-96" },
-  // TMB — caminhada em grupo (vale)
-  { src: "https://static.wixstatic.com/media/2d4f5b_2c19dbc8a0ca4eab9c3f93e02a421779~mv2.jpg?w=900&auto=format", cls: "col-span-12 sm:col-span-4 h-64 md:h-96" },
-  // TMB — grupo na trilha
-  { src: "https://static.wixstatic.com/media/2d4f5b_22579166c00b4c9aabcb71fb4565473e~mv2.jpeg?w=900&auto=format", cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
-  // TMB — caminhadores (grupo)
-  { src: "https://static.wixstatic.com/media/61ab00_70ab5a86382c4bb7825240cc732d08fd~mv2.jpeg?w=900&auto=format", cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
-  // Dolomitas — grupo na Alta Via
-  { src: "https://static.wixstatic.com/media/2d4f5b_b5691cbefb4e4071afddcb67131f3af5~mv2.jpeg?w=900&auto=format", cls: "col-span-12 sm:col-span-4 h-44 md:h-64" },
-  // TMB — jantar/momento de grupo
-  { src: "https://static.wixstatic.com/media/2d4f5b_bad1e5d4f34a41109e523804f0216ae7~mv2.jpg?w=1200&auto=format", cls: "col-span-7 h-52 md:h-80" },
-  // Coxilha Rica — trilheiros
-  { src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=900&auto=format&fit=crop", cls: "col-span-5 h-52 md:h-80" },
+  // ROW 1 — hero + contemplação
+  { src: "/images/grupos/tmb-start.jpg",        cls: "col-span-12 sm:col-span-8 h-72 md:h-[420px]" },
+  { src: "/images/grupos/tmb-contemplacao.jpg",  cls: "col-span-12 sm:col-span-4 h-60 md:h-[420px]" },
+  // ROW 2 — trio de momentos
+  { src: "/images/grupos/dolomitas-igrejinha.jpg", cls: "col-span-12 sm:col-span-4 h-64 md:h-80" },
+  { src: "/images/grupos/dolomitas-trecime.jpg",   cls: "col-span-6  sm:col-span-4 h-64 md:h-80" },
+  { src: "/images/grupos/tmb-cume.jpg",            cls: "col-span-6  sm:col-span-4 h-64 md:h-80" },
+  // ROW 3 — trilha + jantar
+  { src: "/images/grupos/dolomitas-trilha.jpg",  cls: "col-span-7 h-52 md:h-72" },
+  { src: "/images/grupos/tmb-jantar.jpg",         cls: "col-span-5 h-52 md:h-72" },
 ];
 
 const BENEFICIOS = [
@@ -275,7 +271,16 @@ export default function GruposPage() {
             </Kicker>
           </Reveal>
           <div className="mt-8 flex flex-wrap gap-3">
-            {EM_BREVE.map((e) => (
+            {EM_BREVE.slice(0, 3).map((e) => (
+              <span
+                key={e.title}
+                className="inline-flex items-center gap-2 rounded-full border border-forest/15 px-4 py-2 text-[13px] font-light text-ink/70"
+              >
+                <span>{e.flag}</span> {e.title}
+              </span>
+            ))}
+            <div className="basis-full" />
+            {EM_BREVE.slice(3).map((e) => (
               <span
                 key={e.title}
                 className="inline-flex items-center gap-2 rounded-full border border-forest/15 px-4 py-2 text-[13px] font-light text-ink/70"
