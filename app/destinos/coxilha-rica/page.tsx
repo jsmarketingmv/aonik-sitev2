@@ -22,7 +22,7 @@ const C = {
   terra:    "#0e0906",
   argila:   "#7a3420",
   campo:    "#c4904a",
-  ceu:      "#7bafce",
+  céu:      "#7bafce",
   verde:    "#2e4c1a",
   creme:    "#f1e8d8",
   stone:    "#1c1208",
@@ -682,7 +682,7 @@ export default function CoxilhaRicaPage() {
             <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 30%, ${C.terra}dd 100%)` }} />
             <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
               <Reveal>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: C.ceu }}>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: C.céu }}>
                   Lá fora
                 </p>
                 <h3

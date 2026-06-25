@@ -131,7 +131,7 @@ export const GRUPOS: Grupo[] = [
     duration: "10 dias",
     priceFrom: "a partir de US$ 5.200",
     status: "confirmada",
-    href: "/destinos/dana-ate-petra",
+    href: "/destinos/dana-até-petra",
     img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop",
   },
 ];

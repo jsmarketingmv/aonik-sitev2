@@ -70,7 +70,7 @@ const ATIVIDADES = [
     num: "03",
     t: "Vida de baqueano",
     d: "A lida com os cavalos, o laço, a boina e o fogón. A cultura viva da estância patagônica, de perto.",
-    img: "/lastorres/estancia-1.jpg",
+    img: "/lastorres/estância-1.jpg",
   },
   {
     num: "04",
@@ -84,11 +84,11 @@ const ATIVIDADES = [
 const GALERIA = [
   { src: "/lastorres/hero.jpg", cap: "A estância sob o maciço Paine", tag: "A Estância" },
   { src: "/lastorres/sunset.jpg", cap: "As torres de granito ao pôr do sol", tag: "Paisagem" },
-  { src: "/lastorres/estancia-1.jpg", cap: "O baqueano e a lida com os cavalos", tag: "Herança" },
+  { src: "/lastorres/estância-1.jpg", cap: "O baqueano e a lida com os cavalos", tag: "Herança" },
   { src: "/lastorres/torres.jpg", cap: "A recompensa: a base das Torres", tag: "Trekking" },
   { src: "/lastorres/cavalgada-1.jpg", cap: "Cavalgada rumo ao maciço", tag: "Cavalgadas" },
   { src: "/lastorres/paisagem.jpg", cap: "O outono incendiando a estepe", tag: "Paisagem" },
-  { src: "/lastorres/estancia-2.jpg", cap: "A conexão ancestral com o cavalo", tag: "Herança" },
+  { src: "/lastorres/estância-2.jpg", cap: "A conexão ancestral com o cavalo", tag: "Herança" },
   { src: "/lastorres/hotel-verde.jpg", cap: "O hotel entre o bosque e a montanha", tag: "A Estância" },
 ];
 
@@ -257,7 +257,7 @@ export default function HotelLasTorresPage() {
       {/* ===== A ESTÂNCIA (story + gaúcho) ===== */}
       <section className="grid md:grid-cols-2">
         <div className="relative min-h-[460px] overflow-hidden md:min-h-[680px]">
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/lastorres/estancia-1.jpg')" }} />
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('/lastorres/estância-1.jpg')" }} />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${L.night}aa, ${L.night}22 60%, ${L.night}44)` }} />
         </div>
         <div className="flex flex-col justify-center px-6 py-20 md:px-14 md:py-0" style={{ background: L.stone }}>

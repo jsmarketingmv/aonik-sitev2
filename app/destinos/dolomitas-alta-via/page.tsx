@@ -191,7 +191,7 @@ const GALERIA = [
   },
   {
     src: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1400&auto=format&fit=crop",
-    cap: "Rifugio historico — hospedagem de altitude",
+    cap: "Rifugio histórico — hospedagem de altitude",
     tag: "Rifugio",
   },
   {
@@ -249,7 +249,7 @@ const STATS = [
   { v: "+5.116",  u: "metros",         s: "positivo acumulado" },
   { v: "3.003",   u: "metros",         s: "Tre Cime di Lavaredo" },
   { v: "3",       u: "noites",         s: "hotel em Cortina d'Ampezzo" },
-  { v: "6",       u: "noites",         s: "em rifugi de altitude" },
+  { v: "6",       u: "noites",         s: "em refúgios de altitude" },
 ];
 
 // 3 marcos da travessia (alternando esq/dir como TMB 3 culturas)
@@ -259,7 +259,7 @@ const MARCOS = [
     kicker: "Dia 2 · Marco das Dolomitas",
     titulo: ["Tre Cime", "di Lavaredo"],
     texto:
-      "As tres torres de calcario mais fotografadas do mundo. O circuito completo revela a formacao rochosa por todos os angulos, com parada no Rifugio Locatelli. 15,43 km percorridos num dia que nenhum participante esquece.",
+      "As três torres de calcário mais fotografadas do mundo. O circuito completo revela a formação rochosa por todos os ângulos, com parada no Rifugio Locatelli. 15,43 km percorridos num dia que nenhum participante esquece.",
     detalhe: "3.003 m · Circuito 15 km · Dia 2",
     img: "https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg",
     bg: D.verde,
@@ -278,7 +278,7 @@ const MARCOS = [
     kicker: "Dia 3 · Inicio da travessia real",
     titulo: ["Lago", "di Braies"],
     texto:
-      "Um dos lagos alpinos mais bonitos do mundo. Aguas turquesas cercadas de picos rochosos. Daqui a Alta Via comeca de verdade: 12,60 km e +1.037 m de subida ate o Rifugio Sennes, onde tudo muda de escala.",
+      "Um dos lagos alpinos mais bonitos do mundo. Águas turquesas cercadas de picos rochosos. Daqui a Alta Via comeca de verdade: 12,60 km e +1.037 m de subida até o Rifugio Sennes, onde tudo muda de escala.",
     detalhe: "1.496 m · 12,60 km · +1.037 m",
     img: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg",
     bg: "#ffffff",
@@ -297,7 +297,7 @@ const MARCOS = [
     kicker: "Dias 8-9 · A grande parede",
     titulo: ["Monte", "Civetta"],
     texto:
-      "3.220 metros de altura, com uma das faces verticais mais longas dos Alpes Italianos. A Alta Via atravessa sua base por dois dias inteiros. Chegar ao Lago di Coldai e erguer os olhos para essa parede: nao tem descricao.",
+      "3.220 metros de altura, com uma das faces verticais mais longas dos Alpes Italianos. A Alta Via atravessa sua base por dois dias inteiros. Chegar ao Lago di Coldai e erguer os olhos para essa parede: não tem descricao.",
     detalhe: "3.220 m · Parede NE com 1.000 m · Dias 8-9",
     img: "https://static.wixstatic.com/media/2d4f5b_b5691cbefb4e4071afddcb67131f3af5~mv2.jpeg",
     bg: D.rosso,
@@ -317,70 +317,70 @@ const ROTEIRO = [
   {
     d: "01", icon: "✈",
     t: "Transfer Veneza · Cortina d'Ampezzo",
-    s: "Chegada ao Aeroporto Marco Polo e transfer privado ate Cortina d'Ampezzo. Check-in em hotel no centro. Briefing da viagem as 19h. Cafe da manha e jantar livre.",
+    s: "Chegada ao Aeroporto Marco Polo e transfer privado até Cortina d'Ampezzo. Check-in em hotel no centro. Briefing da viagem as 19h. Café da manhã e jantar livre.",
   },
   {
     d: "02", icon: "🗻",
     t: "Circuito Tre Cime di Lavaredo e Cadini di Misurina",
-    s: "15,43 km · +695 m. Transfer ate o Rifugio Auronzo. Circuito completo dos Tre Cime — as tres torres mais icônicas dos Alpes — com parada no Rifugio Locatelli. Retorno por Lago di Misurina. Hotel em Cortina.",
+    s: "15,43 km · +695 m. Transfer até o Rifugio Auronzo. Circuito completo dos Tre Cime — as três torres mais icônicas dos Alpes — com parada no Rifugio Locatelli. Retorno por Lago di Misurina. Hotel em Cortina.",
   },
   {
     d: "03", icon: "💧",
-    t: "Lago di Braies ate Rifugio Sennes",
-    s: "12,60 km · +1.037 m. Transfer ate o Lago di Braies — o cartao postal das Dolomitas. Subida exigente ate 2.369 m. Inicio da travessia de verdade, de refugio em refugio.",
+    t: "Lago di Braies até Rifugio Sennes",
+    s: "12,60 km · +1.037 m. Transfer até o Lago di Braies — o cartao postal das Dolomitas. Subida exigente até 2.369 m. Inicio da travessia de verdade, de refugio em refugio.",
   },
   {
     d: "04", icon: "⛰",
-    t: "Sennes ate Fanes",
-    s: "12,90 km · +617 m. Descidas iniciais ate o Rifugio Pederu, subida ate o vale de Fanes. O grande platô de Fanes e um dos cenarios mais surreais de toda a rota.",
+    t: "Sennes até Fanes",
+    s: "12,90 km · +617 m. Descidas iniciais até o Rifugio Pederu, subida até o vale de Fanes. O grande platô de Fanes e um dos cenários mais surreais de toda a rota.",
   },
   {
     d: "05", icon: "🏔",
-    t: "Fanes ate Passo Falzarego",
-    s: "18,98 km · +1.052 m. O dia mais longo e mais tecnicamente desafiador. Travessia pelo Lago de Lagazuoi e subida ate o Rifugio Lagazuoi (2.752 m). Descida ate o Passo Falzarego. Troca de bagagem no rifugio.",
+    t: "Fanes até Passo Falzarego",
+    s: "18,98 km · +1.052 m. O dia mais longo e mais tecnicamente desafiador. Travessia pelo Lago de Lagazuoi e subida até o Rifugio Lagazuoi (2.752 m). Descida até o Passo Falzarego. Troca de bagagem no refúgio.",
   },
   {
     d: "06", icon: "🪨",
-    t: "Passo Falzarego ate Lago Federa · Cinque Torri",
-    s: "12,23 km · +788 m. Passagem pelos Cinque Torri — palco de batalhas da Primeira Guerra Mundial. Opção de bondinho. Chegada ao Lago Federa com rifugio de frente para a agua.",
+    t: "Passo Falzarego até Lago Federa · Cinque Torri",
+    s: "12,23 km · +788 m. Passagem pelos Cinque Torri — palco de batalhas da Primeira Guerra Mundial. Opção de bondinho. Chegada ao Lago Federa com refúgio de frente para a água.",
   },
   {
     d: "07", icon: "🌿",
-    t: "Lago Federa ate Monte Pelmo",
+    t: "Lago Federa até Monte Pelmo",
     s: "11,34 km · +386 m. O dia mais leve da travessia. Caminhada pela base do Monte Pelmo, montanha tradicional e icônica. Visuals impresionantes de campos de batalha da WWI.",
   },
   {
     d: "08", icon: "🧗",
-    t: "Monte Pelmo ate Monte Civetta",
-    s: "9,58 km · +733 m. Dia curto mas com substancial ganho altimétrico. Chegada antecipada ao rifugio com vista direta do Civetta. Caminhada opcional ao Lago di Coldai no final da tarde.",
+    t: "Monte Pelmo até Monte Civetta",
+    s: "9,58 km · +733 m. Dia curto mas com substancial ganho altimétrico. Chegada antecipada ao refúgio com vista direta do Civetta. Caminhada opcional ao Lago di Coldai no final da tarde.",
   },
   {
     d: "09", icon: "🌄",
-    t: "Civetta ate Capanna Alpina · Transfer para Cortina",
-    s: "14,39 km · +369 m. Penultimo dia ao lado do Monte Civetta. Descida ingreme ate a Capanna Alpina. Transfer de retorno a Cortina d'Ampezzo passando pelo Passo Giau.",
+    t: "Civetta até Capanna Alpina · Transfer para Cortina",
+    s: "14,39 km · +369 m. Penultimo dia ao lado do Monte Civetta. Descida ingreme até a Capanna Alpina. Transfer de retorno a Cortina d'Ampezzo passando pelo Passo Giau.",
   },
   {
     d: "10", icon: "🏁",
     t: "Transfer Cortina · Aeroporto Marco Polo",
-    s: "Cafe da manha no hotel. Organizacao de bagagens. Transfer privado para o Aeroporto Marco Polo (Veneza) com chegada prevista as 14h. Fim dos servicos.",
+    s: "Café da manhã no hotel. Organizacao de bagagens. Transfer privado para o Aeroporto Marco Polo (Veneza) com chegada prevista as 14h. Fim dos servicos.",
   },
 ];
 
 const INCLUSO = [
   "Transfer privado VAN Aeroporto Marco Polo → Cortina (ida e volta)",
-  "3 noites em hotel duplo/triplo com cafe da manha em Cortina",
-  "6 noites em rifugi (jantar + cafe da manha + banho)",
+  "3 noites em hotel duplo/triplo com café da manhã em Cortina",
+  "6 noites em refúgios (jantar + café da manhã + banho)",
   "1 condutor brasileiro com certificacao internacional (primeiros socorros)",
   "Transfer privado Cortina ↔ Rifugio Auronzo (Tre Cime)",
   "Transfer privado Cortina → Lago di Braies (inicio da travessia)",
-  "2 transfers de bagagem para troca de roupas nos rifugi (Dias 5 e 7)",
+  "2 transfers de bagagem para troca de roupas nos refúgios (Dias 5 e 7)",
   "Rastreador satelital SPOT com acompanhamento remoto",
-  "Apoio pre-viagem: orientacoes de equipamentos e mochila",
+  "Apoio pre-viagem: orientações de equipamentos e mochila",
 ];
 
 const NAO_INCLUSO = [
   "Passagem aerea internacional",
-  "Seguro viagem para esportes de aventura (obrigatorio)",
+  "Seguro viagem para esportes de aventura (obrigatório)",
   "Jantares nos dias 1, 2, 9 e 10",
   "Almoco em todos os dias",
   "Bebidas durante toda a viagem",
@@ -440,7 +440,7 @@ export default function DolomitasAltaViaPage() {
               className="mt-6 max-w-md text-[15px] font-light leading-relaxed md:text-base"
               style={{ color: "rgba(232,221,208,0.72)" }}>
               A rota de trekking mais iconica dos Alpes Italianos conecta Veneza ao
-              coracao das Dolomitas, de rifugio em rifugio, passando por Tre Cime,
+              coração das Dolomitas, de refúgio em refúgio, passando por Tre Cime,
               Lago di Braies e Monte Civetta.{" "}
               <span style={{ color: D.calcare }}>Italia vista de dentro.</span>
             </motion.p>
@@ -510,10 +510,10 @@ export default function DolomitasAltaViaPage() {
             <p className="mx-auto mt-8 max-w-2xl text-[16px] font-light leading-relaxed"
               style={{ color: "rgba(240,235,224,0.72)" }}>
               Em ladino antigo, &ldquo;enrosadüra&rdquo; descreve o instante em que
-              as paredes de calcario das Dolomitas ficam rosadas. A rocha branca
+              as paredes de calcário das Dolomitas ficam rosadas. A rocha branca
               reflete a luz do por do sol e, por alguns minutos, as montanhas inteiras
               parecem em chamas.{" "}
-              <span style={{ color: D.creme, fontStyle: "italic" }}>Voce tem que estar la.</span>
+              <span style={{ color: D.creme, fontStyle: "italic" }}>Você tem que estar la.</span>
             </p>
           </Reveal>
         </div>
@@ -595,7 +595,7 @@ export default function DolomitasAltaViaPage() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: D.rosso }}>Galeria</p>
             <h2 className="mt-4 font-display font-light"
               style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: D.notte }}>
-              O que voce vai viver
+              O que você vai viver
             </h2>
           </Reveal>
           <Reveal delay={0.1} className="mt-8"><GaleriaInterativa /></Reveal>
@@ -613,7 +613,7 @@ export default function DolomitasAltaViaPage() {
           <Reveal delay={0.08}>
             <p className="mt-3 max-w-lg text-[14px] font-light leading-relaxed" style={{ color: D.textSoft }}>
               Cortina d'Ampezzo como base — 2 noites de hotel antes e 1 depois da travessia.
-              Oito dias de caminhada real entre rifugi historicos.
+              Oito dias de caminhada real entre refúgios históricos.
             </p>
           </Reveal>
           <div className="mt-12">
@@ -649,7 +649,7 @@ export default function DolomitasAltaViaPage() {
           <Reveal delay={0.08}>
             <h2 className="mt-5 font-display font-light leading-[1.05]"
               style={{ fontSize: "clamp(2rem,4.5vw,3.6rem)", color: D.creme }}>
-              Quando voce quer
+              Quando você quer
               <br />
               <span className="italic">cruzar as Dolomitas?</span>
             </h2>
@@ -758,7 +758,7 @@ export default function DolomitasAltaViaPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-[11px] font-semibold uppercase tracking-[0.32em]"
-              style={{ color: "rgba(174,28,44,0.55)" }}>Nao incluso</p>
+              style={{ color: "rgba(174,28,44,0.55)" }}>Não incluso</p>
             <ul className="mt-8 space-y-4">
               {NAO_INCLUSO.map((item) => (
                 <li key={item} className="flex items-start gap-4 text-[14px] font-light leading-relaxed"
@@ -785,8 +785,8 @@ export default function DolomitasAltaViaPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed"
               style={{ color: "rgba(240,235,224,0.65)" }}>
-              O que levar, condicao fisica necessaria, como chegar a Veneza, melhor
-              equipamento para os rifugi. A AonikIA conhece esta travessia de ponta
+              O que levar, condicao fisica necessária, como chegar a Veneza, melhor
+              equipamento para os refúgios. A AonikIA conhece esta travessia de ponta
               a ponta.
             </p>
             <a href="#contato"

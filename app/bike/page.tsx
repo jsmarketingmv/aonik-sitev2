@@ -84,8 +84,8 @@ function RotaBike() {
 const CICLOTURISMO = [
   {
     n: "01",
-    titulo: "Imersao e Vivencia",
-    desc: "O ritmo desacelerado da bike cria espaco para o que as viagens rapidas nao permitem: conversar com moradores, entrar numa padaria local, parar num miradouro sem roteiro. Voce nao e turista, e protagonista.",
+    titulo: "Imersao e Vivência",
+    desc: "O ritmo desacelerado da bike cria espaco para o que as viagens rapidas não permitem: conversar com moradores, entrar numa padaria local, parar num miradouro sem roteiro. Você não e turista, e protagonista.",
   },
   {
     n: "02",
@@ -95,7 +95,7 @@ const CICLOTURISMO = [
   {
     n: "03",
     titulo: "Sustentabilidade",
-    desc: "Zero emissoes, impacto minimo. A bike passa por onde onibus e carros nao chegam, e o dinheiro gasto fica nas maos de pousadas e restaurantes locais. A forma mais etica de explorar um territorio.",
+    desc: "Zero emissoes, impacto minimo. A bike passa por onde onibus e carros não chegam, e o dinheiro gasto fica nas maos de pousadas e restaurantes locais. A forma mais etica de explorar um território.",
   },
 ];
 
@@ -113,14 +113,14 @@ const A2Z_PRODUTOS = [
     img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2685.jpg/900x600/1/900x600/",
   },
   {
-    nome: "Aldeias Historicas",
+    nome: "Aldeias Históricas",
     subtitulo: "Cicloturismo · Interior",
     bandeira: "🇵🇹",
-    desc: "227 km pelo interior montanhoso. Fortalezas medievais, Serra da Estrela e gravuras pre-historicas UNESCO.",
+    desc: "227 km pelo interior montanhoso. Fortalezas medievais, Serra da Estrela e gravuras pré-históricas UNESCO.",
     km: "227 km",
     dias: "7 dias",
     preco: "a partir de € 1.557",
-    href: "/destinos/pedal-aldeias-historicas",
+    href: "/destinos/pedal-aldeias-históricas",
     img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1847.jpg/900x600/1/900x600/",
   },
   {
@@ -139,9 +139,9 @@ const A2Z_PRODUTOS = [
 const SANTIAGO_PRODUTOS = [
   {
     nome: "Caminho da Costa de Bike",
-    subtitulo: "Peregrinacao · Costa Atlantica",
+    subtitulo: "Peregrinação · Costa Atlantica",
     bandeira: "🇵🇹 🇪🇸",
-    desc: "A beira do Atlantico. Porto ate Santiago pela orla de Portugal e pelas Rias Baixas da Galiza.",
+    desc: "A beira do Atlantico. Porto até Santiago pela orla de Portugal e pelas Rias Baixas da Galiza.",
     km: "260 km",
     dias: "9 dias",
     preco: "a partir de € 1.390",
@@ -150,9 +150,9 @@ const SANTIAGO_PRODUTOS = [
   },
   {
     nome: "Caminho Central de Bike",
-    subtitulo: "Peregrinacao · Interior",
+    subtitulo: "Peregrinação · Interior",
     bandeira: "🇵🇹 🇪🇸",
-    desc: "A rota historica classica. Porto ate Santiago pelo coracao de Portugal e da Galiza, de seta em seta amarela.",
+    desc: "A rota histórica classica. Porto até Santiago pelo coração de Portugal e da Galiza, de seta em seta amarela.",
     km: "240 km",
     dias: "8 dias",
     preco: "a partir de € 1.262",
@@ -265,7 +265,7 @@ export default function BikePage() {
               </h1>
               <p className="mt-6 max-w-md text-base font-light leading-relaxed md:text-lg" style={{ color: `${B.creme}bb` }}>
                 Pedaladas que tem destino, historia e paisagem. Alforjes leves,
-                estrada aberta e tudo organizado para voce so precisar pedalar.
+                estrada aberta e tudo organizado para você so precisar pedalar.
               </p>
               <div className="mt-3 flex items-center gap-3">
                 <span className="text-sm font-light" style={{ color: B.areia }}>a partir de</span>
@@ -332,8 +332,8 @@ export default function BikePage() {
               style={{ fontSize: "clamp(1.5rem,3vw,2.4rem)", color: B.texto }}
             >
               A bicicleta tem um jeito de revelar o mundo que nenhum outro
-              transporte consegue. Voce vai rapido o suficiente para cobrir
-              distancia, mas lento o suficiente para ver{" "}
+              transporte consegue. Você vai rapido o suficiente para cobrir
+              distância, mas lento o suficiente para ver{" "}
               <span className="italic" style={{ color: B.pedal }}>
                 o que existe entre os pontos
               </span>
@@ -399,8 +399,8 @@ export default function BikePage() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mb-14 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: B.granito }}>
-              De norte a sul. Costa atlantica, planaltos medievais e o Vale do Douro. Tres rotas de
-              cicloturismo autoguiado, cada uma com carater e paisagem propria.
+              De norte a sul. Costa atlantica, planaltos medievais e o Vale do Douro. Três rotas de
+              cicloturismo autoguiado, cada uma com carater e paisagem própria.
             </p>
           </Reveal>
 
@@ -430,7 +430,7 @@ export default function BikePage() {
 
           <Reveal delay={0.2}>
             <p className="mt-8 text-center text-sm font-light" style={{ color: B.granito }}>
-              Os Caminhos de Santiago tambem estao disponiveis a pe.{" "}
+              Os Caminhos de Santiago também estao disponiveis a pe.{" "}
               <a
                 href="/jornada"
                 className="underline underline-offset-4 transition-opacity hover:opacity-70"

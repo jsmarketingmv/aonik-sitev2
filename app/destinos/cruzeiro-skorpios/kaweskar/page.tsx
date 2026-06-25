@@ -230,11 +230,11 @@ const DECKS = [
 
 // ---------- MAPA DE CABINES (modal) ----------
 const CABIN_PLANS = [
-  { name: "Deck Athos",     tipo: "Suite",          cor: "#4a9e72", port: ["503","501"],                               star: ["504","502"],                               areas: ["Capitão","Puente de Mando"] },
-  { name: "Deck Olympo",    tipo: "Doble Deluxe",   cor: "#c8952d", port: ["411","409","407","405","403","401"],       star: ["412","410","408","406","404","402"],       areas: [] },
-  { name: "Deck Pártenon",  tipo: "Doble Exterior", cor: "#c07060", port: ["311","309","307","305","303","301"],       star: ["312","310","308","306","304","302"],       areas: ["Salon Zeus","Bar Apolo","Boutique"] },
-  { name: "Deck Acrópolis", tipo: "Doble Interior", cor: "#3f93b2", port: ["211","209","207","205","203","201"],       star: ["212","210","208","206","204","202"],       areas: ["Salon Comedor","Cocina"] },
-  { name: "Deck Atenas",    tipo: "Doble Interior", cor: "#2a7494", port: ["109","107","105","103"],                   star: ["112","110","108","106"],                   areas: ["Sala de Maquinas"] },
+  { name: "Deck Athos",     tipo: "Suite",          cor: "#4a9e72", port: ["503","501"],                               star: ["504","502"],                               áreas: ["Capitão","Puente de Mando"] },
+  { name: "Deck Olympo",    tipo: "Doble Deluxe",   cor: "#c8952d", port: ["411","409","407","405","403","401"],       star: ["412","410","408","406","404","402"],       áreas: [] },
+  { name: "Deck Pártenon",  tipo: "Doble Exterior", cor: "#c07060", port: ["311","309","307","305","303","301"],       star: ["312","310","308","306","304","302"],       áreas: ["Salon Zeus","Bar Apolo","Boutique"] },
+  { name: "Deck Acrópolis", tipo: "Doble Interior", cor: "#3f93b2", port: ["211","209","207","205","203","201"],       star: ["212","210","208","206","204","202"],       áreas: ["Salon Comedor","Cocina"] },
+  { name: "Deck Atenas",    tipo: "Doble Interior", cor: "#2a7494", port: ["109","107","105","103"],                   star: ["112","110","108","106"],                   áreas: ["Sala de Maquinas"] },
 ];
 
 function ShipProfile({ active }: { active: number | null }) {
@@ -1056,11 +1056,11 @@ export default function KaweskarPage() {
                             ))}
                           </div>
                         </div>
-                        {dp.areas.length > 0 && (
+                        {dp.áreas.length > 0 && (
                           <div className="flex items-center gap-2">
                             <span className="w-8 shrink-0" />
                             <div className="flex flex-wrap gap-1.5">
-                              {dp.areas.map(a => (
+                              {dp.áreas.map(a => (
                                 <div key={a}
                                   className="flex h-7 items-center justify-center rounded px-3 text-[9px] uppercase tracking-wide"
                                   style={{ background: "rgba(233,245,248,0.04)", color: "rgba(233,245,248,0.32)", border: "1px solid rgba(233,245,248,0.1)" }}>

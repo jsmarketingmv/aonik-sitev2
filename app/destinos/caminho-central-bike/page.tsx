@@ -22,21 +22,21 @@ const HERO_IMG =
   "https://static.wixstatic.com/media/2d4f5b_81c89a7a405a41dda38a215d2fe19d08~mv2.jpg/v1/fill/w_1920,h_1080,q_90,enc_avif,quality_auto/2d4f5b_81c89a7a405a41dda38a215d2fe19d08~mv2.jpg";
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Porto → Rates",          km: "45 km", desc: "Saida do Porto pelo centro historico e Ribeira. Pedalada pelo interior norte portugues ate Rates, vila com basilica romanica do sec. XII." },
+  { dia: "DIA 1", titulo: "Porto → Rates",          km: "45 km", desc: "Saída do Porto pelo centro histórico e Ribeira. Pedalada pelo interior norte português até Rates, vila com basilica romanica do sec. XII." },
   { dia: "DIA 2", titulo: "Rates → Barcelos",        km: "32 km", desc: "Chegada a Barcelos, a cidade do Galo, simbolo de Portugal. Mercado medieval as quintas-feiras. Ponte medieval sobre o Rio Cavado." },
   { dia: "DIA 3", titulo: "Barcelos → Ponte de Lima", km: "43 km", desc: "Pedalada entre vinhas e aldeias de granito. Chegada a Ponte de Lima, a cidade mais antiga de Portugal, pela ponte romana ainda intacta." },
   { dia: "DIA 4", titulo: "Ponte de Lima → Valenca", km: "45 km", desc: "Ascensao suave pelo Alto Minho. Valenca: cidadela abaluartada do sec. XVII com vista para a Espanha. Passagem para Tui pela Ponte Internacional." },
-  { dia: "DIA 5", titulo: "Tui → Redondela",         km: "30 km", desc: "Entrada definitiva na Galiza. Setas amarelas no granito guiam ate Redondela, conhecida pelos seus viaductos sobre a Ria de Vigo." },
-  { dia: "DIA 6", titulo: "Redondela → Pontevedra",  km: "20 km", desc: "Etapa curta pelo litoral galego. Pontevedra, cidade medieval sem carros no centro, e um dos tesouros do Caminho Frances." },
-  { dia: "DIA 7", titulo: "Pontevedra → Padron",     km: "38 km", desc: "Trecho por bosques de carvalhos galegos, aldeias de pedra e cruzeiros seculares. Padron: onde a barca com o corpo de Sao Tiago aportou." },
-  { dia: "DIA 8", titulo: "Padron → Santiago de Compostela", km: "25 km", desc: "A ultima etapa. Entrada pela Porta do Caminho na cidade velha. Chegada a Praca do Obradoiro, a Catedral e a emocao da Compostela em maos." },
+  { dia: "DIA 5", titulo: "Tui → Redondela",         km: "30 km", desc: "Entrada definitiva na Galiza. Setas amarelas no granito guiam até Redondela, conhecida pelos seus viaductos sobre a Ria de Vigo." },
+  { dia: "DIA 6", titulo: "Redondela → Pontevedra",  km: "20 km", desc: "Etapa curta pelo litoral galego. Pontevedra, cidade medieval sem carros no centro, e um dos tesouros do Caminho Francês." },
+  { dia: "DIA 7", titulo: "Pontevedra → Padron",     km: "38 km", desc: "Trecho por bosques de carvalhos galegos, aldeias de pedra e cruzeiros seculares. Padron: onde a barca com o corpo de São Tiago aportou." },
+  { dia: "DIA 8", titulo: "Padron → Santiago de Compostela", km: "25 km", desc: "A última etapa. Entrada pela Porta do Caminho na cidade velha. Chegada a Praca do Obradoiro, a Catedral e a emocao da Compostela em maos." },
 ];
 
 const INCLUSOS = [
   "7 noites em hoteis e pousadas selecionados (quarto duplo)",
-  "7 cafes da manha",
+  "7 cafes da manhã",
   "Bicicleta hibrida de qualidade (tamanho customizavel)",
-  "Transferencia de bagagem diaria entre hospedagens",
+  "Transferência de bagagem diária entre hospedagens",
   "Aplicativo GPS com rota e pontos do Caminho",
   "Credencial do Peregrino e Kit Caminho",
   "Suporte AONIK por telefone durante todo o roteiro",
@@ -78,7 +78,7 @@ export default function CaminhoCentralBikePage() {
           >
             <Kicker color="" line="">
               <span style={{ color: C.pedal }}>—</span>
-              <span style={{ color: C.areia }}>Caminho Portugues · Central · Bike</span>
+              <span style={{ color: C.areia }}>Caminho Português · Central · Bike</span>
             </Kicker>
             <h1
               className="mt-3 font-display font-light uppercase leading-[0.85] tracking-[-0.02em]"
@@ -90,7 +90,7 @@ export default function CaminhoCentralBikePage() {
             </h1>
 
             <div className="mt-5 flex flex-wrap gap-7">
-              {[["240 km", "distancia"], ["8 dias", "duracao"], ["7 etapas", "pedais"], ["Porto → Santiago", "rota"]].map(
+              {[["240 km", "distância"], ["8 dias", "duração"], ["7 etapas", "pedais"], ["Porto → Santiago", "rota"]].map(
                 ([v, l]) => (
                   <div key={l}>
                     <p className="font-display text-xl font-light" style={{ color: C.creme }}>{v}</p>
@@ -135,8 +135,8 @@ export default function CaminhoCentralBikePage() {
               className="mt-6 font-display font-light leading-[1.3] tracking-[-0.01em]"
               style={{ fontSize: "clamp(1.4rem,2.8vw,2.1rem)", color: "#1a1714" }}
             >
-              O coracao de Portugal de norte a sul, pedalada a pedalada. Granito,
-              vinho verde e a rota historica que peregrinos percorrem ha mais de mil anos.
+              O coração de Portugal de norte a sul, pedalada a pedalada. Granito,
+              vinho verde e a rota histórica que peregrinos percorrem ha mais de mil anos.
             </p>
           </Reveal>
           <Reveal delay={0.14}>
@@ -144,9 +144,9 @@ export default function CaminhoCentralBikePage() {
               className="mt-5 max-w-2xl text-[15px] font-light leading-relaxed"
               style={{ color: "rgba(26,23,20,0.58)" }}
             >
-              O Caminho Central e a rota historica classica do Caminho Portugues. A bike
-              permite cobrir 30-50 km por dia sem perder a essencia da peregrinacao: as
-              setas amarelas, as aldeias de granito, os mosteiros e a comunidade unica
+              O Caminho Central e a rota histórica classica do Caminho Português. A bike
+              permite cobrir 30-50 km por dia sem perder a essência da peregrinação: as
+              setas amarelas, as aldeias de granito, os mosteiros e a comunidade única
               que se forma ao longo do Caminho. O roteiro mais acessivel para quem faz
               Compostela pela primeira vez.
             </p>
@@ -229,7 +229,7 @@ export default function CaminhoCentralBikePage() {
             <Reveal delay={0.1}>
               <div>
                 <h3 className="font-display text-xl font-light" style={{ color: "#1a1714" }}>
-                  Nao incluso
+                  Não incluso
                 </h3>
                 <ul className="mt-5 space-y-2.5">
                   {NAO_INCLUSOS.map((item) => (
@@ -251,7 +251,7 @@ export default function CaminhoCentralBikePage() {
                     Prefere fazer a pe?
                   </p>
                   <p className="mt-2 text-[13px] font-light" style={{ color: "rgba(26,23,20,0.65)" }}>
-                    O Caminho Central tambem esta disponivel na versao peregrinacao a pe, com 14 dias e etapas de 15-20 km.
+                    O Caminho Central também esta disponivel na versao peregrinação a pe, com 14 dias e etapas de 15-20 km.
                   </p>
                   <a
                     href="/jornada"

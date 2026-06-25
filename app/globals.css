@@ -2,18 +2,24 @@
 
 /* ============================================================
    AONIK — Turismo de Natureza · Design tokens (V2)
-   Paleta extraída do SaaS: verde floresta + dourado quente + creme
+   Paleta institucional (fusão Kleido): evergreen + dark teal +
+   cayenne (accent vivo) + yellow green + soft linen + verdes claros.
+   NOTA: os tokens "gold" e "neon" mantêm o nome por compatibilidade,
+   mas agora valem Cayenne (#E55812) e Yellow Green (#95C623).
+   Blocos Caminho (Santiago) e Patagônia usam paleta inline própria.
    ============================================================ */
 @theme {
-  --color-cream: #f5f1e8;
-  --color-cream-deep: #ece5d6;
-  --color-forest: #0d2a1f;
-  --color-forest-soft: #163a2a;
-  --color-forest-line: #1f4d39;
-  --color-gold: #cf9a4e;
-  --color-gold-soft: #e3b574;
-  --color-neon: #a3e635;
-  --color-ink: #0b1711;
+  --color-cream: #efe7da;        /* Soft Linen */
+  --color-cream-deep: #e4dcc9;   /* Linen mais fundo (neutro quente) */
+  --color-honeydew: #ecf5e2;     /* Honeydew (Print 2) */
+  --color-tea: #d7e3a4;          /* Tea Green (Print 2) */
+  --color-forest: #002626;       /* Evergreen */
+  --color-forest-soft: #0e4749;  /* Dark Teal */
+  --color-forest-line: #1a5e60;  /* Teal hairline */
+  --color-gold: #e55812;         /* Cayenne (accent / CTA) */
+  --color-gold-soft: #f08a4e;    /* Cayenne claro (hover / texto sobre foto) */
+  --color-neon: #95c623;         /* Yellow Green */
+  --color-ink: #06201f;          /* Tinta evergreen quase preta */
 
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);

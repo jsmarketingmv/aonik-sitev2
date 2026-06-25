@@ -3,7 +3,7 @@
 import BikeA2ZPage, { type A2ZBikeData } from "../../components/BikeA2ZPage";
 
 const DATA: A2ZBikeData = {
-  nome: "Aldeias Historicas",
+  nome: "Aldeias Históricas",
   subtitulo: "Tour de Bike · 227 km · Interior de Portugal",
   heroImg:
     "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1847.jpg/1920x700/2/1920x700/",
@@ -11,10 +11,10 @@ const DATA: A2ZBikeData = {
   quote:
     "Seis aldeias medievais, granito secular e ares da Serra da Estrela. A rota que preserva o Portugal que a modernidade esqueceu.",
   descricao:
-    "Pedal autoguiado de 227 km pelo interior montanhoso de Portugal. A rota conecta aldeias classificadas pela Fundacao Aldeias Historicas: Guarda, Belmonte (berco de Pedro Alvares Cabral), Sabugal, Almeida (fortaleza hexagonal do sec. XVII) e Foz Coa (gravuras pre-historicas UNESCO). Terreno variado com subidas na Serra da Estrela.",
+    "Pedal autoguiado de 227 km pelo interior montanhoso de Portugal. A rota conecta aldeias classificadas pela Fundação Aldeias Históricas: Guarda, Belmonte (berço de Pedro Álvares Cabral), Sabugal, Almeida (fortaleza hexagonal do sec. XVII) e Foz Coa (gravuras pré-históricas UNESCO). Terreno variado com subidas na Serra da Estrela.",
   stats: [
-    { valor: "7 dias", label: "duracao" },
-    { valor: "227 km", label: "distancia" },
+    { valor: "7 dias", label: "duração" },
+    { valor: "227 km", label: "distância" },
     { valor: "5 etapas", label: "pedais" },
     { valor: "6 cafes", label: "refeiçoes" },
   ],
@@ -22,14 +22,14 @@ const DATA: A2ZBikeData = {
     {
       dia: "DIA 0",
       titulo: "Porto → Guarda",
-      desc: "Chegada ao Porto e transfer incluido ate Guarda (2h30). Noite em Guarda, a cidade mais alta de Portugal, a 1.000 m de altitude.",
+      desc: "Chegada ao Porto e transfer incluido até Guarda (2h30). Noite em Guarda, a cidade mais alta de Portugal, a 1.000 m de altitude.",
       hotel: "Hotel Guarda",
     },
     {
       dia: "DIA 1",
       titulo: "Guarda → Belmonte",
       km: "35 km",
-      desc: "Descida tecnica pela Serra da Estrela com vistas deslumbrantes. Chegada a Belmonte, berco de Pedro Alvares Cabral, com castelo medieval e judaria historica.",
+      desc: "Descida tecnica pela Serra da Estrela com vistas deslumbrantes. Chegada a Belmonte, berço de Pedro Álvares Cabral, com castelo medieval e judaria histórica.",
       hotel: "Hotel Belmonte",
     },
     {
@@ -43,14 +43,14 @@ const DATA: A2ZBikeData = {
       dia: "DIA 3",
       titulo: "Termas do Cro → Almeida",
       km: "51 km",
-      desc: "Subida progressiva ate a aldeia-fortaleza de Almeida, com muralha hexagonal estrelar do sec. XVII. Uma das fortalezas militares melhor conservadas da Europa.",
+      desc: "Subida progressiva até a aldeia-fortaleza de Almeida, com muralha hexagonal estrelar do sec. XVII. Uma das fortalezas militares melhor conservadas da Europa.",
       hotel: "Pousada Almeida",
     },
     {
       dia: "DIA 4",
       titulo: "Almeida → Cidadelhe",
       km: "41 km",
-      desc: "Travessia por paisagens de planalto com horizontes abertos. Chegada a Cidadelhe, proximo do Vale do Coa com gravuras pre-historicas do Paleolitico, Patrimonio UNESCO.",
+      desc: "Travessia por paisagens de planalto com horizontes abertos. Chegada a Cidadelhe, próximo do Vale do Coa com gravuras pré-históricas do Paleolitico, Patrimonio UNESCO.",
       hotel: "Hotel Cidadelhe",
     },
     {
@@ -63,7 +63,7 @@ const DATA: A2ZBikeData = {
     {
       dia: "DIA 6",
       titulo: "Partida de Guarda",
-      desc: "Cafe da manha. Transfer de volta ao Porto incluido (2h30). Fim do roteiro.",
+      desc: "Café da manhã. Transfer de volta ao Porto incluido (2h30). Fim do roteiro.",
     },
   ],
   galeria: [
@@ -74,12 +74,12 @@ const DATA: A2ZBikeData = {
   ],
   inclusos: [
     "6 noites em hoteis e pousadas 3*/4* selecionados",
-    "6 cafes da manha",
+    "6 cafes da manhã",
     "Transfer Porto → Guarda (chegada) e Guarda → Porto (partida)",
     "Bicicleta hibrida 21v (tamanho customizavel)",
-    "Transferencia de bagagem diaria entre hospedagens",
+    "Transferência de bagagem diária entre hospedagens",
     "Aplicativo GPS com rota completa",
-    "Seguro de assistencia em viagem",
+    "Seguro de assistência em viagem",
     "Suporte AONIK por telefone durante todo o roteiro",
   ],
   naoInclusos: [

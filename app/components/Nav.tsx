@@ -45,6 +45,14 @@ export default function Nav() {
             : "bg-transparent"
         }`}
       >
+        {/* Scrim de leitura — gradiente sutil que desce além do menu e some.
+            Some quando a barra sólida entra (scrolled/menuOpen). */}
+        <div
+          aria-hidden
+          className={`pointer-events-none absolute inset-x-0 top-0 h-[150px] bg-gradient-to-b from-forest/75 via-forest/35 to-transparent transition-opacity duration-500 ${
+            scrolled || menuOpen ? "opacity-0" : "opacity-100"
+          }`}
+        />
         <nav
           className={`relative mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-6 transition-all duration-500 md:px-10 ${
             scrolled ? "py-4" : "py-6"

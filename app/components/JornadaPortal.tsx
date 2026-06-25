@@ -116,7 +116,7 @@ export default function JornadaPortal() {
               transition={{ duration: 0.8, ease: EASE }}
             >
               <span className="h-px w-8" style={{ backgroundColor: `${J.amar}60` }} />
-              Peregrinacao · Autoconhecimento
+              Peregrinação · Autoconhecimento
             </motion.p>
 
             <motion.h2
@@ -144,7 +144,7 @@ export default function JornadaPortal() {
               transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
             >
               A AONIK opera Compostela desde 2022 com mais rotas que qualquer operadora
-              brasileira. Caminhos Portugues, Frances e muito mais.
+              brasileira. Caminhos Português, Francês e muito mais.
             </motion.p>
 
             {/* Stats */}

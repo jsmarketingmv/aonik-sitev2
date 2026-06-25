@@ -62,7 +62,7 @@ const data: Expedition = {
     { src: IMG.neve, cap: "O Magellan Discoverer rumo ao sul", tag: "Inaugural" },
     { src: IMG.fiorde, cap: "Glacier Alley no Canal Beagle", tag: "Beagle" },
     { src: IMG.picos, cap: "Icebergs da Península Antártica", tag: "Gelo" },
-    { src: IMG.agua, cap: "Golfinhos-de-peale na proa", tag: "Fauna" },
+    { src: IMG.água, cap: "Golfinhos-de-peale na proa", tag: "Fauna" },
     { src: IMG.montanha, cap: "Cabo Froward no Estreito de Magalhães", tag: "Magalhães" },
     { src: IMG.costa, cap: "Desembarque entre pinguins", tag: "Pinguins" },
     { src: IMG.vale, cap: "Varandas com vista para o gelo", tag: "Navio" },

@@ -106,16 +106,16 @@ type TipoProduto = "A Pe" | "Bike";
 type Produto = { nome: string; tipo: TipoProduto; km: string; dias: string; preco: string; desc: string; href?: string };
 
 const PORTUGUES_APE: Produto[] = [
-  { nome: "Central",              tipo: "A Pe", km: "226 km",   dias: "14 dias", preco: "a partir de € 1.466", desc: "Porto para Santiago. A rota historica classica pelo interior de Portugal.", href: "/destinos/caminho-central-ape" },
+  { nome: "Central",              tipo: "A Pe", km: "226 km",   dias: "14 dias", preco: "a partir de € 1.466", desc: "Porto para Santiago. A rota histórica classica pelo interior de Portugal.", href: "/destinos/caminho-central-ape" },
   { nome: "Costa",                tipo: "A Pe", km: "260 km",   dias: "15 dias", preco: "a partir de € 1.498", desc: "A beira do Atlantico. Praias, dunas e aldeias piscatorias de Portugal.", href: "/destinos/caminho-costa-ape" },
   { nome: "Valenca",              tipo: "A Pe", km: "121 km",   dias: "8 dias",  preco: "a partir de € 810",   desc: "Comeca na fronteira do Rio Minho. Mais curto e acessivel para iniciantes.", href: "/destinos/caminho-valenca-ape" },
   { nome: "Baiona",               tipo: "A Pe", km: "126,5 km", dias: "8 dias",  preco: "a partir de € 886",   desc: "Variante espanhola. Vila medieval como ponto de partida na Galiza.", href: "/destinos/caminho-baiona-ape" },
   { nome: "Easy",                 tipo: "A Pe", km: "256 km",   dias: "21 dias", preco: "a partir de € 2.359", desc: "Etapas curtas, ritmo tranquilo. Ideal para quem caminha pela primeira vez.", href: "/destinos/caminho-easy-ape" },
-  { nome: "Santiago a Finisterre",tipo: "A Pe", km: "90 km",    dias: "7 dias",  preco: "a partir de € 791",   desc: "Do fim ao fim do mundo. Estender a peregrinacao alem da Catedral.", href: "/destinos/santiago-finisterre" },
+  { nome: "Santiago a Finisterre",tipo: "A Pe", km: "90 km",    dias: "7 dias",  preco: "a partir de € 791",   desc: "Do fim ao fim do mundo. Estender a peregrinação além da Catedral.", href: "/destinos/santiago-finisterre" },
 ];
 const PORTUGUES_BIKE: Produto[] = [
   { nome: "Bike Costa",   tipo: "Bike", km: "260 km", dias: "9 dias", preco: "a partir de € 1.390", desc: "Costa atlantica de bicicleta. Alforjes, vento e liberdade." },
-  { nome: "Bike Central", tipo: "Bike", km: "240 km", dias: "8 dias", preco: "a partir de € 1.262", desc: "Interior portugues. Paisagens de vinha, granito e aldeia." },
+  { nome: "Bike Central", tipo: "Bike", km: "240 km", dias: "8 dias", preco: "a partir de € 1.262", desc: "Interior português. Paisagens de vinha, granito e aldeia." },
 ];
 const FRANCES: Produto[] = [
   { nome: "Sarria · 7 Etapas", tipo: "A Pe", km: "112 km", dias: "7 dias", preco: "a partir de € 580", desc: "O trecho minimo para a Compostela. Galiza a pe, do comeco ao fim.", href: "/destinos/sarria-7-etapas" },
@@ -124,27 +124,27 @@ const FRANCES: Produto[] = [
   { nome: "Primitivo",          tipo: "A Pe", km: "102 km", dias: "7 dias", preco: "a partir de € 590", desc: "Variante mais selvagem e menos multidao. Solidao e montanha.", href: "/destinos/caminho-primitivo" },
 ];
 const OUTROS = [
-  { nome: "Caminho Primitivo",  desc: "O primeiro caminho historico. Oviedo ate Santiago pelas montanhas asturianas." },
+  { nome: "Caminho Primitivo",  desc: "O primeiro caminho histórico. Oviedo até Santiago pelas montanhas asturianas." },
   { nome: "Caminho Espiritual", desc: "Pontevedra, Padron e Santiago pelo rio Ulla. Historia e liturgia." },
-  { nome: "Caminho do Norte",   desc: "Costa cantabrica. De Irun ate Santiago entre mar e montanha." },
+  { nome: "Caminho do Norte",   desc: "Costa cantabrica. De Irun até Santiago entre mar e montanha." },
 ];
 const PILARES = [
   { n: "01", t: "Autoconhecimento",       d: "O silencio de 200 km te diz coisas que nenhum retiro consegue. O Caminho cria espaco para ouvir a si mesmo sem ruido, sem agenda, sem pressa." },
-  { n: "02", t: "1.000 Anos de Historia", d: "A rota europeia mais antiga ainda em uso. Voce caminha nos mesmos passos de peregrinos medievais, reis, poetas e gente comum em busca de algo maior." },
-  { n: "03", t: "A Comunidade",           d: "Comeca sozinho. Em tres dias voce tem uma turma pra vida. Tem algo no Caminho que faz estranhos virarem amigos antes do jantar." },
-  { n: "04", t: "Portugal e Espanha",     d: "Granito e calcario. Vinho verde e Rioja. Igreja rural e Catedral. Dois paises, dois idiomas que se entendem, uma experiencia inesquecivel." },
+  { n: "02", t: "1.000 Anos de Historia", d: "A rota europeia mais antiga ainda em uso. Você caminha nos mesmos passos de peregrinos medievais, reis, poetas e gente comum em busca de algo maior." },
+  { n: "03", t: "A Comunidade",           d: "Comeca sozinho. Em três dias você tem uma turma pra vida. Tem algo no Caminho que faz estranhos virarem amigos antes do jantar." },
+  { n: "04", t: "Portugal e Espanha",     d: "Granito e calcário. Vinho verde e Rioja. Igreja rural e Catedral. Dois paises, dois idiomas que se entendem, uma experiência inesquecivel." },
 ];
 const GALERIA = [
-  { img: "https://static.wixstatic.com/media/2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg", tag: "O Caminho", label: "A seta amarela. A concha. O granito. Tres simbolos que guiam 300.000 peregrinos por ano." },
-  { img: "https://static.wixstatic.com/media/2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg", tag: "Portugal", label: "Ponte de Lima, vinho verde, granito. O Caminho Portugues atravessa o coracao do pais." },
-  { img: "https://static.wixstatic.com/media/2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg", tag: "Galiza", label: "Na Galiza espanhola, os ultimos km te preparam para o choro de chegada a Catedral." },
+  { img: "https://static.wixstatic.com/media/2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg", tag: "O Caminho", label: "A seta amarela. A concha. O granito. Três simbolos que guiam 300.000 peregrinos por ano." },
+  { img: "https://static.wixstatic.com/media/2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg", tag: "Portugal", label: "Ponte de Lima, vinho verde, granito. O Caminho Português atravessa o coração do pais." },
+  { img: "https://static.wixstatic.com/media/2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg", tag: "Galiza", label: "Na Galiza espanhola, os últimos km te preparam para o choro de chegada a Catedral." },
   { img: "https://static.wixstatic.com/media/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg", tag: "A Jornada", label: "Cada etapa e uma imersao na Europa que sobreviveu ao tempo." },
 ];
 const INCLUSOS = [
-  { t: "Transfer de Bagagem",   d: "Suas malas viajam para o proximo alojamento. Voce caminha so com a mochila." },
+  { t: "Transfer de Bagagem",   d: "Suas malas viajam para o próximo alojamento. Você caminha so com a mochila." },
   { t: "Kit do Peregrino",      d: "Credencial, guia impresso e acessorios essenciais para a jornada." },
   { t: "Hospedagem",            d: "Pousadas e hoteis selecionados. Quarto duplo ou single, conforme sua escolha." },
-  { t: "Programas Autoguiados", d: "No seu ritmo. Apoio e suporte AONIK do primeiro ate o ultimo dia de caminhada." },
+  { t: "Programas Autoguiados", d: "No seu ritmo. Apoio e suporte AONIK do primeiro até o último dia de caminhada." },
 ];
 
 /* ── Card — sobre fundo escuro (midnight / ocean) ─────────── */
@@ -168,11 +168,11 @@ function CardDark({ p, delay = 0 }: { p: Produto; delay?: number }) {
           <div className="flex gap-5">
             <div>
               <div className="text-[12px] font-semibold" style={{ color: S.onDark }}>{p.km}</div>
-              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: S.onDarkSoft }}>distancia</div>
+              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: S.onDarkSoft }}>distância</div>
             </div>
             <div>
               <div className="text-[12px] font-semibold" style={{ color: S.onDark }}>{p.dias}</div>
-              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: S.onDarkSoft }}>duracao</div>
+              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: S.onDarkSoft }}>duração</div>
             </div>
           </div>
           <div className="text-[13px] font-bold" style={{ color: S.sun }}>{p.preco}</div>
@@ -203,11 +203,11 @@ function CardSky({ p, delay = 0 }: { p: Produto; delay?: number }) {
           <div className="flex gap-5">
             <div>
               <div className="text-[12px] font-semibold" style={{ color: S.midnight }}>{p.km}</div>
-              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: S.onSkySoft }}>distancia</div>
+              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: S.onSkySoft }}>distância</div>
             </div>
             <div>
               <div className="text-[12px] font-semibold" style={{ color: S.midnight }}>{p.dias}</div>
-              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: S.onSkySoft }}>duracao</div>
+              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: S.onSkySoft }}>duração</div>
             </div>
           </div>
           <div className="text-[13px] font-bold" style={{ color: S.midnight }}>{p.preco}</div>
@@ -241,11 +241,11 @@ function CardSand({ p, delay = 0 }: { p: Produto; delay?: number }) {
           <div className="flex gap-5">
             <div>
               <div className="text-[12px] font-semibold" style={{ color: S.midnight }}>{p.km}</div>
-              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: "rgba(0,32,91,0.55)" }}>distancia</div>
+              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: "rgba(0,32,91,0.55)" }}>distância</div>
             </div>
             <div>
               <div className="text-[12px] font-semibold" style={{ color: S.midnight }}>{p.dias}</div>
-              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: "rgba(0,32,91,0.55)" }}>duracao</div>
+              <div className="text-[9px] uppercase tracking-[0.18em]" style={{ color: "rgba(0,32,91,0.55)" }}>duração</div>
             </div>
           </div>
           {/* preço OCEAN — destaca sem gritar */}
@@ -297,7 +297,7 @@ export default function JornadaPage() {
                 style={{ color: S.sun }}
                 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: EASE, delay: 0.15 }}>
-                Jornada · Peregrinacao
+                Jornada · Peregrinação
               </motion.p>
               <motion.h1 className="font-display font-light leading-[1.02] tracking-[-0.025em]"
                 style={{ fontSize: "clamp(3.2rem, 7vw, 5.5rem)", color: S.onDark }}
@@ -310,7 +310,7 @@ export default function JornadaPage() {
                 style={{ color: S.onDarkSoft }}
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: EASE, delay: 0.45 }}>
-                Voce chega buscando uma viagem. Volta transformado. A AONIK opera
+                Você chega buscando uma viagem. Volta transformado. A AONIK opera
                 Compostela desde 2022 com mais rotas que qualquer operadora brasileira.
               </motion.p>
               {/* Stats */}
@@ -386,7 +386,7 @@ export default function JornadaPage() {
           <Reveal delay={0.32}>
             <p className="mx-auto mt-10 max-w-[540px] text-[15px] font-light leading-relaxed"
               style={{ color: S.onLightSoft }}>
-              O Caminho de Santiago nao e so uma trilha. E uma das experiencias mais
+              O Caminho de Santiago não e so uma trilha. E uma das experiências mais
               transformadoras que um ser humano pode ter. Silencio, esforco fisico,
               comunidade, historia e fe se misturam num percurso que existe ha mais de mil anos.
             </p>
@@ -470,11 +470,11 @@ export default function JornadaPage() {
             <Kicker color={S.sun} lineColor={`${S.sun}50`}>Portugal para Santiago · Espanha</Kicker>
             <h2 className="mb-3 font-display font-light leading-[1.04] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)", color: S.onDark }}>
-              Caminho Portugues
+              Caminho Português
             </h2>
             <p className="mb-10 max-w-[520px] text-[14px] font-light leading-relaxed" style={{ color: S.onDarkSoft }}>
               A rota mais procurada pelos brasileiros. Do Porto ou Lisboa, percorre o
-              interior e a costa ate cruzar para a Galiza.
+              interior e a costa até cruzar para a Galiza.
             </p>
           </Reveal>
           {/* Tabs */}
@@ -508,11 +508,11 @@ export default function JornadaPage() {
             <Kicker color={S.midnight} lineColor={S.ocean}>Pireneus · Meseta · Galiza</Kicker>
             <h2 className="mb-3 font-display font-light leading-[1.04] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)", color: S.midnight }}>
-              Caminho Frances
+              Caminho Francês
             </h2>
             <p className="mb-10 max-w-[520px] text-[14px] font-light leading-relaxed" style={{ color: "rgba(0,32,91,0.62)" }}>
               O caminho mais iconico. Cruza os Pireneus e a Meseta espanhola. Os trechos
-              a partir de Sarria sao os preferidos dos brasileiros.
+              a partir de Sarria são os preferidos dos brasileiros.
             </p>
           </Reveal>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

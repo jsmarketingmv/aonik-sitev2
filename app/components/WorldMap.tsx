@@ -25,7 +25,7 @@ const LAND: string[] = [
     `L${mx(-120)},${my(61)}`, // Alaska panhandle start
     `L${mx(-140)},${my(60)}`,
     `L${mx(-168)},${my(60)}`, // Alaska tip
-    `L${mx(-152)},${my(58)}`, // Kodiak area
+    `L${mx(-152)},${my(58)}`, // Kodiak área
     `L${mx(-134)},${my(57)}`, // SE Alaska
     `L${mx(-124)},${my(49)}`, // Vancouver
     `L${mx(-122)},${my(38)}`, // SF
@@ -53,7 +53,7 @@ const LAND: string[] = [
     `L${mx(-75)},${my(11)}`,  // Venezuela west
     `L${mx(-67)},${my(11)}`,  // Caracas
     `L${mx(-62)},${my(11)}`,
-    `L${mx(-60)},${my(8)}`,   // Trinidad area
+    `L${mx(-60)},${my(8)}`,   // Trinidad área
     `L${mx(-50)},${my(2)}`,   // Amapá
     `L${mx(-38)},${my(-4)}`,  // Fortaleza — easternmost Brazil
     `L${mx(-35)},${my(-8)}`,  // Recife (Brazil's tip)
@@ -66,13 +66,13 @@ const LAND: string[] = [
     `L${mx(-53)},${my(-33)}`, // Chuy
     `L${mx(-56)},${my(-35)}`, // Montevideo
     `L${mx(-58)},${my(-34)}`, // Buenos Aires
-    `L${mx(-63)},${my(-38)}`, // Mar del Plata area
+    `L${mx(-63)},${my(-38)}`, // Mar del Plata área
     `L${mx(-65)},${my(-43)}`, // Peninsula Valdés
     `L${mx(-66)},${my(-48)}`, // Comodoro
     `L${mx(-68)},${my(-54)}`, // Río Gallegos
     `L${mx(-68)},${my(-55)}`, // Cape Horn
     `L${mx(-72)},${my(-52)}`, // Puerto Natales
-    `L${mx(-75)},${my(-42)}`, // Puerto Montt area
+    `L${mx(-75)},${my(-42)}`, // Puerto Montt área
     `L${mx(-74)},${my(-37)}`, // Concepción
     `L${mx(-71)},${my(-33)}`, // Valparaíso
     `L${mx(-70)},${my(-23)}`, // Antofagasta
@@ -92,7 +92,7 @@ const LAND: string[] = [
     `L${mx(-3)},${my(44)}`,   // Cantabrian coast
     `L${mx(-2)},${my(44)}`,   // Basque
     `L${mx(1)},${my(43)}`,    // Pyrenees/Med
-    `L${mx(3)},${my(43)}`,    // Marseille area
+    `L${mx(3)},${my(43)}`,    // Marseille área
     `L${mx(5)},${my(44)}`,    // Rhône delta
     `L${mx(7)},${my(44)}`,    // Genoa/Liguria
     `L${mx(12)},${my(44)}`,   // Italy NE/Adriatic
@@ -116,7 +116,7 @@ const LAND: string[] = [
     `L${mx(14)},${my(66)}`,   // Norway arctic
     `L${mx(25)},${my(71)}`,   // Nordkapp
     `L${mx(30)},${my(70)}`,   // North Finland
-    `L${mx(30)},${my(60)}`,   // St. Petersburg area
+    `L${mx(30)},${my(60)}`,   // St. Petersburg área
     `L${mx(27)},${my(59)}`,   // Estonia/Latvia
     `L${mx(22)},${my(57)}`,   // Lithuania
     `L${mx(21)},${my(54)}`,   // Gdansk
@@ -179,7 +179,7 @@ const LAND: string[] = [
     `L${mx(85)},${my(55)}`,
     `L${mx(105)},${my(73)}`,  // Siberia
     `L${mx(130)},${my(70)}`,  // Siberia East
-    `L${mx(143)},${my(48)}`,  // Sakhalin area
+    `L${mx(143)},${my(48)}`,  // Sakhalin área
     `L${mx(141)},${my(43)}`,  // Japan mainland (Korea Strait)
     `L${mx(129)},${my(35)}`,  // Korea south
     `L${mx(122)},${my(24)}`,  // China SE coast / Taiwan
@@ -215,7 +215,7 @@ const LAND: string[] = [
   [
     `M${mx(114)},${my(-22)}`, // NW Pilbara
     `L${mx(122)},${my(-18)}`, // Broome
-    `L${mx(128)},${my(-15)}`, // Darwin area east
+    `L${mx(128)},${my(-15)}`, // Darwin área east
     `L${mx(130)},${my(-12)}`, // Darwin
     `L${mx(136)},${my(-12)}`, // Arnhem Land
     `L${mx(140)},${my(-14)}`,

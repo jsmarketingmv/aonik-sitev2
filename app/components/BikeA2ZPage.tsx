@@ -272,7 +272,7 @@ export default function BikeA2ZPage({ d }: { d: A2ZBikeData }) {
             <Reveal delay={0.1}>
               <div>
                 <h3 className="font-display text-xl font-light" style={{ color: "#1a1714" }}>
-                  Nao incluso
+                  Não incluso
                 </h3>
                 <ul className="mt-5 space-y-2.5">
                   {d.naoInclusos.map((item) => (
@@ -430,7 +430,7 @@ export default function BikeA2ZPage({ d }: { d: A2ZBikeData }) {
               className="mt-4 text-xs font-light"
               style={{ color: `${d.pal.granito}77` }}
             >
-              Precos por pessoa em quarto duplo. Bicicleta hibrida, transferencia de bagagem e app GPS inclusos.
+              Precos por pessoa em quarto duplo. Bicicleta hibrida, transferência de bagagem e app GPS inclusos.
             </p>
           </Reveal>
 

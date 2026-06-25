@@ -250,8 +250,8 @@ export const translations: Record<Lang, Dict> = {
       ],
       subhead:
         "Caminatas, bici, navegación y refugios seleccionados para quien viaja en busca de algo que no cabe en un itinerario común.",
-      ctaPrimary: "Descubre tu experiencia",
-      ctaSecondary: "Ver experiencias",
+      ctaPrimary: "Descubre tu experiência",
+      ctaSecondary: "Ver experiências",
       categorias: [
         "Caminatas",
         "Tours en Bici",
@@ -266,7 +266,7 @@ export const translations: Record<Lang, Dict> = {
       headingPre: "Elige por dónde",
       headingEm: "vivir la naturaleza",
       intro:
-        "No somos solo de caminatas. Somos de turismo de naturaleza: a pie, en bici, sobre el agua o en un refugio. Empieza por un universo.",
+        "No somos solo de caminatas. Somos de turismo de naturaleza: a pie, en bici, sobre el água o en un refugio. Empieza por un universo.",
       segmentos: [
         {
           kicker: "A pie",
@@ -279,9 +279,9 @@ export const translations: Record<Lang, Dict> = {
           desc: "Cicloturismo por rutas y senderos que unen pueblos, viñedos y paisajes vivos, a tu tiempo, a tu ritmo.",
         },
         {
-          kicker: "Sobre el agua",
+          kicker: "Sobre el água",
           nome: "Navegación",
-          desc: "Expediciones por fiordos, glaciares y canales. La naturaleza vista desde el agua, donde el propio barco es refugio.",
+          desc: "Expediciones por fiordos, glaciares y canales. La naturaleza vista desde el água, donde el propio barco es refugio.",
         },
         {
           kicker: "Para quedarse",
@@ -346,12 +346,12 @@ export const translations: Record<Lang, Dict> = {
       waIntro: "¡Hola, equipo AONIK! Vengo desde el sitio:",
       okTitle: "¡Recibimos tu contacto!",
       okMsg:
-        "Ya está con nuestro equipo. Pronto un especialista AONIK hablará contigo para diseñar tu experiencia.",
+        "Ya está con nuestro equipo. Pronto un especialista AONIK hablará contigo para diseñar tu experiência.",
       erro: "Algo no salió como esperábamos. Inténtalo de nuevo en un momento.",
     },
     footer: {
       descricao:
-        "Experiencias de turismo de naturaleza que transforman la forma de viajar. Trekking, peregrinación e inmersiones genuinas por el mundo.",
+        "Experiências de turismo de naturaleza que transforman la forma de viajar. Trekking, peregrinación e inmersiones genuinas por el mundo.",
       colNav: "Navegación",
       colNavLinks: [
         "Quiénes Somos",
@@ -359,7 +359,7 @@ export const translations: Record<Lang, Dict> = {
         "Nuestra Pasión",
         "Nuestros Grupos",
       ],
-      colExp: "Experiencias",
+      colExp: "Experiências",
       colExpLinks: ["Caminatas", "Peregrinación", "Bike", "Navegación", "Hoteles"],
       contato: "Contacto",
       copyright: "Turismo de Naturaleza. Todos los derechos reservados.",

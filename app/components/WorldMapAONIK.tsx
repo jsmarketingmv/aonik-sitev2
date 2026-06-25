@@ -135,7 +135,7 @@ const DESTINATIONS: Destination[] = [
     type: "aventura",
     description:
       "77 km pelo deserto da Jordânia, da Reserva de Dana até a cidade rosa de Petra. 10 dias de expedição.",
-    href: "/destinos/dana-ate-petra",
+    href: "/destinos/dana-até-petra",
   },
 ];
 

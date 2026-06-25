@@ -113,7 +113,7 @@ const COLS = [
 ];
 function ElevationProfile() {
   const line = PROFILE.map((p, i) => (i ? "L" : "M") + p[0] + "," + p[1]).join(" ");
-  const area = line + " L1000,240 L0,240 Z";
+  const área = line + " L1000,240 L0,240 Z";
   return (
     <svg viewBox="0 0 1000 240" className="w-full" preserveAspectRatio="none" style={{ height: 220 }}>
       <defs>
@@ -122,7 +122,7 @@ function ElevationProfile() {
           <stop offset="100%" stopColor={C.fr} stopOpacity="0" />
         </linearGradient>
       </defs>
-      <motion.path d={area} fill="url(#elev)"
+      <motion.path d={área} fill="url(#elev)"
         initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
         transition={{ duration: 1.2 }} />
       <motion.path d={line} fill="none" stroke={C.snow} strokeWidth="2" strokeLinejoin="round"

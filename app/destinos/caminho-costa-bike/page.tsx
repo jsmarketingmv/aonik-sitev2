@@ -22,22 +22,22 @@ const HERO_IMG =
   "https://static.wixstatic.com/media/2d4f5b_2377bcbf693348f282eaf5bd3daa74d2~mv2.jpg/v1/fill/w_1920,h_1080,q_90,enc_avif,quality_auto/2d4f5b_2377bcbf693348f282eaf5bd3daa74d2~mv2.jpg";
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Porto → Vila do Conde",  km: "35 km", desc: "Saida do Porto pelas margens do Douro. Primeira etapa pela costa norte: praia de Miramar, Aguda e chegada a Vila do Conde com o mosteiro de Santa Clara." },
+  { dia: "DIA 1", titulo: "Porto → Vila do Conde",  km: "35 km", desc: "Saída do Porto pelas margens do Douro. Primeira etapa pela costa norte: praia de Miramar, Aguda e chegada a Vila do Conde com o mosteiro de Santa Clara." },
   { dia: "DIA 2", titulo: "Vila do Conde → Viana do Castelo", km: "47 km", desc: "Ciclovia costeira com vista para o Atlantico. Passagem por Ofir, Esposende e chegada a Viana do Castelo, cidade barroca com o Santuario de Santa Luzia." },
   { dia: "DIA 3", titulo: "Viana do Castelo → Caminha", km: "25 km", desc: "Etapa curta pela foz do Rio Lima. Aldeia de Ancora e chegada a Caminha, na margem do Rio Minho que faz fronteira com a Espanha." },
-  { dia: "DIA 4", titulo: "Caminha → A Guarda (Galiza)", km: "15 km", desc: "Travessia de barco pelo Rio Minho. Entrada em territorio espanhol. Subida ao Monte de Santa Trega com vista panoramica da costa da Galiza." },
+  { dia: "DIA 4", titulo: "Caminha → A Guarda (Galiza)", km: "15 km", desc: "Travessia de barco pelo Rio Minho. Entrada em território espanhol. Subida ao Monte de Santa Trega com vista panoramica da costa da Galiza." },
   { dia: "DIA 5", titulo: "A Guarda → Baiona", km: "38 km", desc: "Ciclovia pelas Rias Baixas galegas. Baiona: vila onde a Pinta aportou ao voltar do Novo Mundo, em 1493. Castelo medieval com vista para o Atlantico." },
-  { dia: "DIA 6", titulo: "Baiona → Pontevedra", km: "50 km", desc: "Pedalada pelas Rias Baixas. Chegada a Pontevedra, uma das cidades medievais mais bem conservadas da Galiza, com centro historico livre de carros." },
+  { dia: "DIA 6", titulo: "Baiona → Pontevedra", km: "50 km", desc: "Pedalada pelas Rias Baixas. Chegada a Pontevedra, uma das cidades medievais mais bem conservadas da Galiza, com centro histórico livre de carros." },
   { dia: "DIA 7", titulo: "Pontevedra → Caldas de Reis", km: "35 km", desc: "Trecho genuino do Caminho. Setas amarelas no chao, bosques de eucalipto e granito. O Caminho de Santiago comeca a se sentir perto." },
-  { dia: "DIA 8", titulo: "Caldas de Reis → Santiago de Compostela", km: "39 km", desc: "A ultima etapa. Entrada emocionante na cidade velha de Santiago. Chegada a Praca do Obradoiro e a Catedral. Compostela em maos." },
-  { dia: "DIA 9", titulo: "Partida de Santiago", desc: "Cafe da manha. Missa do Peregrino opcional as 12h00. Transfer para o aeroporto de Santiago (15 min). Fim da jornada." },
+  { dia: "DIA 8", titulo: "Caldas de Reis → Santiago de Compostela", km: "39 km", desc: "A última etapa. Entrada emocionante na cidade velha de Santiago. Chegada a Praca do Obradoiro e a Catedral. Compostela em maos." },
+  { dia: "DIA 9", titulo: "Partida de Santiago", desc: "Café da manhã. Missa do Peregrino opcional as 12h00. Transfer para o aeroporto de Santiago (15 min). Fim da jornada." },
 ];
 
 const INCLUSOS = [
   "8 noites em hoteis e pousadas selecionados (quarto duplo)",
-  "8 cafes da manha",
+  "8 cafes da manhã",
   "Bicicleta hibrida de qualidade (tamanho customizavel)",
-  "Transferencia de bagagem diaria entre hospedagens",
+  "Transferência de bagagem diária entre hospedagens",
   "Aplicativo GPS com rota e setas do Caminho",
   "Travessia de barco Caminha → A Guarda",
   "Credencial do Peregrino e Kit Caminho",
@@ -80,7 +80,7 @@ export default function CaminhoCostaBikePage() {
           >
             <Kicker color="" line="">
               <span style={{ color: C.pedal }}>—</span>
-              <span style={{ color: C.areia }}>Caminho Portugues · Costa · Bike</span>
+              <span style={{ color: C.areia }}>Caminho Português · Costa · Bike</span>
             </Kicker>
             <h1
               className="mt-3 font-display font-light uppercase leading-[0.85] tracking-[-0.02em]"
@@ -92,7 +92,7 @@ export default function CaminhoCostaBikePage() {
             </h1>
 
             <div className="mt-5 flex flex-wrap gap-7">
-              {[["260 km", "distancia"], ["9 dias", "duracao"], ["8 etapas", "pedais"], ["Porto → Santiago", "rota"]].map(
+              {[["260 km", "distância"], ["9 dias", "duração"], ["8 etapas", "pedais"], ["Porto → Santiago", "rota"]].map(
                 ([v, l]) => (
                   <div key={l}>
                     <p className="font-display text-xl font-light" style={{ color: C.creme }}>{v}</p>
@@ -137,7 +137,7 @@ export default function CaminhoCostaBikePage() {
               className="mt-6 font-display font-light leading-[1.3] tracking-[-0.01em]"
               style={{ fontSize: "clamp(1.4rem,2.8vw,2.1rem)", color: "#1a1714" }}
             >
-              A peregrinacao mais antiga da Europa, agora a pedal. A mesma seta amarela,
+              A peregrinação mais antiga da Europa, agora a pedal. A mesma seta amarela,
               o mesmo granito da Galiza, e a Catedral de Santiago no horizonte.
             </p>
           </Reveal>
@@ -148,7 +148,7 @@ export default function CaminhoCostaBikePage() {
             >
               O Caminho da Costa percorre a orla atlantica de Portugal e entra na Galiza pela
               costa das Rias Baixas. A bike amplia o terreno coberto por dia sem perder a
-              essencia do Caminho: o encontro consigo mesmo e com quem vai no mesmo sentido.
+              essência do Caminho: o encontro consigo mesmo e com quem vai no mesmo sentido.
               Bagagem transferida, bicicleta hibrida e credencial do peregrino inclusos.
             </p>
           </Reveal>
@@ -230,7 +230,7 @@ export default function CaminhoCostaBikePage() {
             <Reveal delay={0.1}>
               <div>
                 <h3 className="font-display text-xl font-light" style={{ color: "#1a1714" }}>
-                  Nao incluso
+                  Não incluso
                 </h3>
                 <ul className="mt-5 space-y-2.5">
                   {NAO_INCLUSOS.map((item) => (
@@ -254,7 +254,7 @@ export default function CaminhoCostaBikePage() {
                     Prefere fazer a pe?
                   </p>
                   <p className="mt-2 text-[13px] font-light" style={{ color: "rgba(26,23,20,0.65)" }}>
-                    O Caminho da Costa tambem esta disponivel na versao peregrinacao a pe, com 15 dias e etapas de 15-25 km.
+                    O Caminho da Costa também esta disponivel na versao peregrinação a pe, com 15 dias e etapas de 15-25 km.
                   </p>
                   <a
                     href="/jornada"

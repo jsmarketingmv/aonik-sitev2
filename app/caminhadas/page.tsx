@@ -8,6 +8,7 @@ import FloatingActions from "../components/FloatingActions";
 import JornadaPortal from "../components/JornadaPortal";
 import PatagoniaPortal from "../components/PatagoniaPortal";
 import GruposHome from "../components/GruposHome";
+import Breadcrumb from "../components/Breadcrumb";
 import { Reveal, Kicker, EASE } from "../components/ui";
 
 const HERO_IMG =
@@ -71,17 +72,27 @@ export default function CaminhadasPage() {
             </p>
             <a
               href="#contato"
-              className="mt-8 inline-flex items-center gap-3 rounded-full bg-gold px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink transition-transform duration-300 hover:scale-[1.03]"
+              className="mt-8 inline-flex items-center gap-3 rounded-full bg-gold px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-cream transition-transform duration-300 hover:scale-[1.03]"
             >
               Falar com especialista
               <span>→</span>
             </a>
+            <div className="mt-7">
+              <Breadcrumb
+                tone="dark"
+                accent="var(--color-gold-soft)"
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Caminhadas" },
+                ]}
+              />
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── MANIFESTO (Por que caminhar) ─────────────────── */}
-      <section className="bg-cream px-6 pt-24 pb-16 text-ink md:px-10 md:pt-32 md:pb-20">
+      {/* ── MANIFESTO (Por que caminhar) — fundo Honeydew ── */}
+      <section className="bg-honeydew px-6 pt-24 pb-16 text-ink md:px-10 md:pt-32 md:pb-20">
         <div className="mx-auto max-w-[820px] text-center">
           <Reveal>
             <Kicker>Por que caminhar com a AONIK</Kicker>
@@ -97,8 +108,8 @@ export default function CaminhadasPage() {
         </div>
       </section>
 
-      {/* ── BENEFÍCIOS DA CAMINHADA ──────────────────────── */}
-      <section className="bg-cream px-6 pb-24 text-ink md:px-10 md:pb-32">
+      {/* ── BENEFÍCIOS DA CAMINHADA — segue o Honeydew ───── */}
+      <section className="bg-honeydew px-6 pb-24 text-ink md:px-10 md:pb-32">
         <div className="mx-auto max-w-[1180px]">
           <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {BENEFICIOS.map((b, i) => (
@@ -120,17 +131,17 @@ export default function CaminhadasPage() {
         </div>
       </section>
 
+      {/* ── VIAGENS EM GRUPO (logo após "Por que caminhar") ── */}
+      <GruposHome />
+
       {/* ── CAMINHO DE SANTIAGO (Peregrinação) ───────────── */}
       <JornadaPortal />
 
       {/* ── TORRES DEL PAINE (Patagônia) ─────────────────── */}
       <PatagoniaPortal />
 
-      {/* ── VIAGENS EM GRUPO (mapa + calendário + cards) ── */}
-      <GruposHome />
-
-      {/* ── CAMINHOS AUTOGUIADOS (prévia) ────────────────── */}
-      <section className="bg-cream-deep px-6 py-24 text-ink md:px-10 md:py-32">
+      {/* ── CAMINHOS AUTOGUIADOS (prévia) — fundo Tea Green ── */}
+      <section className="bg-tea px-6 py-24 text-ink md:px-10 md:py-32">
         <div className="mx-auto max-w-[1180px]">
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>

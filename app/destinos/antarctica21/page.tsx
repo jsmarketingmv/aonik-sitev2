@@ -62,7 +62,7 @@ const AIR_CRUISES = [
 
 const SEA_VOYAGES = [
   {
-    nome: "Patagonia & Chilean Fjords",
+    nome: "Patagônia & Chilean Fjords",
     sub: "9 dias · Puerto Montt ↔ Ushuaia",
     desc: "Navegação pura entre geleiras azuis e os picos dos Andes. San Rafael, Pío XI e a vila de Caleta Tortel.",
     stats: [
@@ -102,7 +102,7 @@ const NAVIOS = [
   {
     nome: "Magellan Explorer",
     desc: "76 hóspedes e 60 tripulantes. Construído sob especificação polar, com lounge panorâmico e cabines com vista para o gelo. O navio que firmou a Antarctica21 entre os fiordes.",
-    img: IMG.agua,
+    img: IMG.água,
   },
   {
     nome: "Magellan Discoverer",

@@ -71,7 +71,7 @@ const data: Expedition = {
   saidasNote: "Partida única em abril de 2028. Vagas limitadas a 76 hóspedes. Combinações com South Georgia e Antártida sob consulta.",
   galeria: [
     { src: IMG.costa, cap: "Colônia de pinguins-rei em Volunteer Point", tag: "Pinguins" },
-    { src: IMG.agua, cap: "Albatrozes sobre Steeple Jason", tag: "Albatroz" },
+    { src: IMG.água, cap: "Albatrozes sobre Steeple Jason", tag: "Albatroz" },
     { src: IMG.picos, cap: "Costa dramática das Malvinas", tag: "Costa" },
     { src: IMG.cabana, cap: "Casas coloridas de Port Stanley", tag: "Stanley" },
     { src: IMG.estrada, cap: "Pradarias varridas pelo vento", tag: "Paisagem" },

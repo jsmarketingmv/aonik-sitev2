@@ -60,7 +60,7 @@ const data: Expedition = {
   galeria: [
     { src: IMG.picos, cap: "Muralhas de gelo da Península Antártica", tag: "Gelo" },
     { src: IMG.fiorde, cap: "Navegação entre icebergs azuis", tag: "Navegação" },
-    { src: IMG.agua, cap: "Baía silenciosa ao amanhecer polar", tag: "Baía" },
+    { src: IMG.água, cap: "Baía silenciosa ao amanhecer polar", tag: "Baía" },
     { src: IMG.costa, cap: "Desembarque de Zodiac em terra antártica", tag: "Zodiac" },
     { src: IMG.neve, cap: "Campos de neve eterna das Shetland", tag: "Shetland" },
     { src: IMG.montanha, cap: "Picos nevados a pino sobre o canal", tag: "Montanha" },

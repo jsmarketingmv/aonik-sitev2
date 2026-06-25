@@ -13,8 +13,8 @@ const DATA: A2ZBikeData = {
   descricao:
     "Pedal autoguiado de 232 km que une dois mundos: as aldeias medievais de granito no planalto da Beira Alta e o Vale do Douro, Patrimonio Mundial da UNESCO. A rota passa por Castelo Rodrigo, Almeida e Penedono antes de descer ao vale do vinho. Inclui prova de vinho em quinta do Douro e passeio de barco Rabelo.",
   stats: [
-    { valor: "8 dias", label: "duracao" },
-    { valor: "232 km", label: "distancia" },
+    { valor: "8 dias", label: "duração" },
+    { valor: "232 km", label: "distância" },
     { valor: "6 etapas", label: "pedais" },
     { valor: "7 cafes", label: "refeiçoes" },
   ],
@@ -43,7 +43,7 @@ const DATA: A2ZBikeData = {
       dia: "DIA 3",
       titulo: "Castelo Rodrigo → Juizo",
       km: "30 km",
-      desc: "Descida gradual do planalto em direcao ao sul. Paisagem de amendoeiras, oliveiras e campos abertos de centeio. Etapa curta com subidas tecnicas.",
+      desc: "Descida gradual do planalto em direção ao sul. Paisagem de amendoeiras, oliveiras e campos abertos de centeio. Etapa curta com subidas tecnicas.",
       hotel: "Hotel Juizo",
     },
     {
@@ -57,7 +57,7 @@ const DATA: A2ZBikeData = {
       dia: "DIA 5",
       titulo: "Penedono → Peso da Regua",
       km: "57 km",
-      desc: "A descida epica ate o Vale do Douro. A vista dos vinhedos em terracos sobre o rio e uma das mais marcantes da Europa. Chegada ao coracao viticultor do Douro.",
+      desc: "A descida epica até o Vale do Douro. A vista dos vinhedos em terracos sobre o rio e uma das mais marcantes da Europa. Chegada ao coração viticultor do Douro.",
       hotel: "Hotel Peso da Regua",
     },
     {
@@ -70,7 +70,7 @@ const DATA: A2ZBikeData = {
     {
       dia: "DIA 7",
       titulo: "Partida",
-      desc: "Cafe da manha. Transfer incluido de volta ao Porto (2h30). Fim do roteiro.",
+      desc: "Café da manhã. Transfer incluido de volta ao Porto (2h30). Fim do roteiro.",
     },
   ],
   galeria: [
@@ -81,11 +81,11 @@ const DATA: A2ZBikeData = {
   ],
   inclusos: [
     "7 noites em hoteis e pousadas 3*/4* selecionados",
-    "7 cafes da manha",
+    "7 cafes da manhã",
     "Transfers Porto → Castelo Rodrigo e Peso da Regua → Porto",
     "Prova de vinho em quinta do Douro",
     "Bicicleta hibrida 21v (tamanho customizavel)",
-    "Transferencia de bagagem diaria entre hospedagens",
+    "Transferência de bagagem diária entre hospedagens",
     "Aplicativo GPS com rota completa",
     "Suporte AONIK por telefone durante todo o roteiro",
   ],
