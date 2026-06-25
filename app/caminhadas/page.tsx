@@ -5,59 +5,40 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Contato from "../components/Contato";
 import FloatingActions from "../components/FloatingActions";
+import JornadaPortal from "../components/JornadaPortal";
+import PatagoniaPortal from "../components/PatagoniaPortal";
+import GruposHome from "../components/GruposHome";
 import { Reveal, Kicker, EASE } from "../components/ui";
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2400&auto=format&fit=crop";
 
-const PILARES = [
+/* Benefícios da caminhada como atividade — conecta com o manifesto acima */
+const BENEFICIOS = [
   {
-    titulo: "Peregrinação",
-    desc: "Caminhos antigos como os de Santiago. O trajeto vira propósito e quem chega ao fim não é quem partiu.",
+    titulo: "Natureza no corpo",
+    desc: "Ar livre, ritmo do próprio passo e o corpo que reaprende a respirar longe da pressa.",
   },
   {
-    titulo: "Caminhada de imersão",
-    desc: "Longe do roteiro de massa. Você caminha dentro da cultura, da comida e da gente do lugar.",
+    titulo: "Imersão na cultura",
+    desc: "Você caminha dentro da comida, da gente e dos costumes do lugar, não passa por fora.",
   },
   {
-    titulo: "Viagens em grupo",
-    desc: "Saídas guiadas pelo mundo, com líder AONIK. A montanha aproxima quem a percorre junto.",
+    titulo: "O mundo mais leve",
+    desc: "Sem bagagem demais, sem agenda apertada. Só o caminho, a paisagem e o essencial.",
   },
   {
-    titulo: "Autoguiado ou guiado",
-    desc: "No seu ritmo, com tudo organizado ou acompanhado por um especialista do início ao fim.",
+    titulo: "A verdade do destino",
+    desc: "A pé, os lugares se mostram como são. A conexão é real porque o tempo é outro.",
   },
 ];
 
-const DESTINOS = [
-  {
-    nome: "Tour du Mont Blanc",
-    local: "Alpes · França · Itália · Suíça",
-    preco: "a partir de € 2.490",
-    href: "/destinos/tour-du-mont-blanc",
-    img: "https://static.wixstatic.com/media/nsplsh_b1564644fa994e589c62424e365560e9~mv2.jpg",
-  },
-  {
-    nome: "Torres del Paine",
-    local: "Patagônia Chilena · Circuito W",
-    preco: "a partir de US$ 1.491",
-    href: "/destinos/torres-del-paine",
-    img: "/torres-del-paine/hero.jpg",
-  },
-  {
-    nome: "Dolomitas Alta Via",
-    local: "Alpes Italianos",
-    preco: "a partir de € 2.190",
-    href: "/destinos/dolomitas-alta-via",
-    img: "https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg",
-  },
-  {
-    nome: "Caminho de Santiago",
-    local: "Portugal · Espanha",
-    preco: "a partir de € 1.290",
-    href: "/jornada",
-    img: "https://static.wixstatic.com/media/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg/v1/fit/w_1200,h_960,q_90,enc_avif,quality_auto/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg",
-  },
+/* Caminhos autoguiados — prévia de página futura dedicada */
+const AUTOGUIADOS = [
+  { nome: "Caminho de Santiago", local: "Portugal · Espanha", soon: false },
+  { nome: "Torres del Paine", local: "Patagônia Chilena", soon: false },
+  { nome: "Vale do Douro", local: "Portugal", soon: true },
+  { nome: "Rota Vicentina", local: "Portugal", soon: true },
 ];
 
 export default function CaminhadasPage() {
@@ -65,7 +46,7 @@ export default function CaminhadasPage() {
     <main className="relative bg-cream">
       <Nav />
 
-      {/* HERO */}
+      {/* ── HERO ─────────────────────────────────────────── */}
       <section className="grain relative flex h-[80svh] min-h-[560px] w-full items-end overflow-hidden">
         <div
           className="absolute inset-0 scale-105 bg-cover bg-center"
@@ -99,8 +80,8 @@ export default function CaminhadasPage() {
         </div>
       </section>
 
-      {/* MANIFESTO */}
-      <section className="bg-cream px-6 py-24 text-ink md:px-10 md:py-32">
+      {/* ── MANIFESTO (Por que caminhar) ─────────────────── */}
+      <section className="bg-cream px-6 pt-24 pb-16 text-ink md:px-10 md:pt-32 md:pb-20">
         <div className="mx-auto max-w-[820px] text-center">
           <Reveal>
             <Kicker>Por que caminhar com a AONIK</Kicker>
@@ -116,24 +97,21 @@ export default function CaminhadasPage() {
         </div>
       </section>
 
-      {/* O QUE VOCÊ ENCONTRA */}
-      <section className="bg-cream-deep px-6 py-24 text-ink md:px-10 md:py-28">
+      {/* ── BENEFÍCIOS DA CAMINHADA ──────────────────────── */}
+      <section className="bg-cream px-6 pb-24 text-ink md:px-10 md:pb-32">
         <div className="mx-auto max-w-[1180px]">
-          <Reveal>
-            <Kicker>O que você encontra</Kicker>
-          </Reveal>
-          <div className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2">
-            {PILARES.map((p, i) => (
-              <Reveal key={p.titulo} delay={i * 0.06}>
+          <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {BENEFICIOS.map((b, i) => (
+              <Reveal key={b.titulo} delay={i * 0.06}>
                 <div className="border-t border-forest/15 pt-6">
                   <span className="font-display text-sm text-gold">
                     0{i + 1}
                   </span>
-                  <h3 className="mt-2 font-display text-2xl font-light text-forest md:text-3xl">
-                    {p.titulo}
+                  <h3 className="mt-2 font-display text-xl font-light text-forest md:text-2xl">
+                    {b.titulo}
                   </h3>
-                  <p className="mt-3 max-w-sm text-[15px] font-light leading-relaxed text-ink/60">
-                    {p.desc}
+                  <p className="mt-3 text-[14px] font-light leading-relaxed text-ink/60">
+                    {b.desc}
                   </p>
                 </div>
               </Reveal>
@@ -142,57 +120,74 @@ export default function CaminhadasPage() {
         </div>
       </section>
 
-      {/* DESTINOS DE CAMINHADA */}
-      <section className="bg-cream px-6 py-24 text-ink md:px-10 md:py-32">
+      {/* ── CAMINHO DE SANTIAGO (Peregrinação) ───────────── */}
+      <JornadaPortal />
+
+      {/* ── TORRES DEL PAINE (Patagônia) ─────────────────── */}
+      <PatagoniaPortal />
+
+      {/* ── VIAGENS EM GRUPO (mapa + calendário + cards) ── */}
+      <GruposHome />
+
+      {/* ── CAMINHOS AUTOGUIADOS (prévia) ────────────────── */}
+      <section className="bg-cream-deep px-6 py-24 text-ink md:px-10 md:py-32">
         <div className="mx-auto max-w-[1180px]">
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <Reveal>
-              <h2 className="font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1] tracking-[-0.01em] text-forest">
-                Destinos de <span className="italic text-gold">caminhada</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
+            <div>
+              <Reveal>
+                <Kicker>Caminhos autoguiados</Kicker>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <h2 className="mt-4 max-w-xl font-display text-[clamp(1.9rem,4vw,3.2rem)] font-light leading-[1.08] tracking-[-0.01em] text-forest">
+                  No seu ritmo, com{" "}
+                  <span className="italic text-gold">tudo organizado</span>
+                </h2>
+              </Reveal>
+            </div>
+            <Reveal delay={0.15}>
               <p className="max-w-sm text-[14px] font-light leading-relaxed text-ink/55">
-                Uma seleção curada. Cada destino tem sua própria página, com tudo
-                o que importa para você decidir.
+                Roteiros desenhados para você caminhar sozinho ou em dupla, com
+                logística, hospedagens e mapas resolvidos. A liberdade do seu
+                tempo, a segurança da nossa curadoria.
               </p>
             </Reveal>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {DESTINOS.map((d, i) => (
-              <Reveal key={d.nome} delay={i * 0.06}>
-                <a
-                  href={d.href}
-                  className="group block overflow-hidden rounded-xl"
-                >
-                  <div className="relative h-64 overflow-hidden">
-                    <div
-                      className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
-                      style={{ backgroundImage: `url('${d.img}')` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-5">
-                      <p className="text-[10px] uppercase tracking-[0.18em] text-gold-soft">
-                        {d.local}
-                      </p>
-                      <h3 className="mt-1 font-display text-2xl font-light text-cream">
-                        {d.nome}
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between bg-forest px-5 py-4">
-                    <span className="text-[12px] font-light text-cream/70">
-                      {d.preco}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {AUTOGUIADOS.map((a, i) => (
+              <Reveal key={a.nome} delay={i * 0.06}>
+                <div className="relative flex h-full flex-col justify-between rounded-xl border border-forest/12 bg-cream p-6">
+                  {a.soon && (
+                    <span className="absolute right-4 top-4 rounded-full border border-forest/15 px-2.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em] text-ink/40">
+                      Em breve
                     </span>
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gold transition-transform duration-300 group-hover:translate-x-1">
-                      Ver →
-                    </span>
+                  )}
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-gold">
+                      {a.local}
+                    </p>
+                    <h3 className="mt-2 font-display text-xl font-light leading-tight text-forest">
+                      {a.nome}
+                    </h3>
                   </div>
-                </a>
+                </div>
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.3}>
+            <div className="mt-10 flex justify-center">
+              <a
+                href="/caminhos-autoguiados"
+                className="group inline-flex items-center gap-3 rounded-full border border-forest/25 px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-forest transition-all duration-300 hover:border-forest hover:bg-forest hover:text-cream"
+              >
+                Ver caminhos autoguiados
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
 
