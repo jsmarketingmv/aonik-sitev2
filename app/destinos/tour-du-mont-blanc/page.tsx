@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
@@ -142,21 +143,21 @@ const CULTURAS = [
     titulo: "O berço, no frio do granito",
     texto: "Chamonix e a alta montanha: o nascimento do alpinismo, sob a face branca do Mont Blanc. Geleiras, granito e queijos de altitude regados a vinho da Savoia.",
     nota: "Reblochon · Génépi · alpinismo",
-    img: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1400&auto=format&fit=crop",
+    img: "/images/tmb/franca.jpg",
   },
   {
     flag: "🇮🇹", pais: "Itália", cor: C.it, bg: "#2a1d12",
     titulo: "O calor desce no Val Ferret",
     texto: "Cruzar para a Itália é sentir a temperatura mudar. Courmayeur, a dolce vita alpina: polenta fumegante, espresso e o sol batendo nas paredes do maciço.",
     nota: "Polenta · Espresso · Vinho do Valle d'Aosta",
-    img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1400&auto=format&fit=crop",
+    img: "/images/tmb/italia.jpg",
   },
   {
     flag: "🇨🇭", pais: "Suíça", cor: C.ch, bg: "#16241a",
     titulo: "A ordem verde dos vilarejos",
     texto: "A Suíça é pasto, lago e chalé. Champex e La Fouly em ordem perfeita, vacas com sinos, raclette derretida e o silêncio limpo do alto.",
     nota: "Raclette · Chocolate · vilarejos de cartão-postal",
-    img: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1400&auto=format&fit=crop",
+    img: "/images/tmb/suica.jpg",
   },
 ];
 
@@ -196,43 +197,24 @@ function CulturaPanel({ c, i }: { c: (typeof CULTURAS)[number]; i: number }) {
 
 // ---------- GALERIA ----------
 const GALLERY_IMGS = [
-  {
-    src: "https://static.wixstatic.com/media/nsplsh_b1564644fa994e589c62424e365560e9~mv2.jpg",
-    caption: "O maciço emerge a cada etapa",
-    tag: "Paisagem",
-  },
-  {
-    src: "https://static.wixstatic.com/media/61ab00_70ab5a86382c4bb7825240cc732d08fd~mv2.jpeg",
-    caption: "O grupo em expedição nos Alpes",
-    tag: "Equipe",
-  },
-  {
-    src: "https://static.wixstatic.com/media/61ab00_5b1a43c0ce41447abdbdb8403c5fecc3~mv2.jpeg",
-    caption: "Trilhas por vales alpinos",
-    tag: "Trilha",
-  },
-  {
-    src: "https://static.wixstatic.com/media/2d4f5b_2c19dbc8a0ca4eab9c3f93e02a421779~mv2.jpg",
-    caption: "Refúgio de montanha, conforto após a trilha",
-    tag: "Hospedagem",
-  },
-  {
-    src: "https://static.wixstatic.com/media/2d4f5b_bad1e5d4f34a41109e523804f0216ae7~mv2.jpg",
-    caption: "Panorama glacial sobre os Alpes",
-    tag: "Vista",
-  },
-  {
-    src: "https://static.wixstatic.com/media/2d4f5b_22579166c00b4c9aabcb71fb4565473e~mv2.jpeg",
-    caption: "O anel se fecha em Chamonix",
-    tag: "TMB",
-  },
+  "/images/tmb/trail-peaks.jpg",
+  "/images/tmb/gallery-val-ferret.jpg",
+  "/images/tmb/gallery-glacier.jpg",
+  "/images/tmb/gallery-goats.jpg",
+  "/images/tmb/gallery-trekkers-valley.jpg",
+  "/images/tmb/gallery-trekkers-rocky.jpg",
+  "/images/tmb/gallery-chamonix-statue.jpg",
+  "/images/tmb/gallery-climber.jpg",
+  "/images/tmb/grupo.jpg",
+  "/images/tmb/gallery-selfie.jpg",
+  "/images/tmb/gallery-group-forest.jpg",
 ];
 
 // ---------- GUIA ----------
 const GUIA = {
   nome: "Ivo Léo Schmitz",
   origem: "Brusque, Santa Catarina",
-  photo: "https://static.wixstatic.com/media/2d4f5b_04c3cfc3602342daae1f688cf1a1e994~mv2.jpg",
+  photo: "/images/tmb/guia.jpg",
   bio: "Montanhista, peregrino, remador e ciclista. Natural de Brusque (SC), Ivo Leonardo Schmitz transforma trilhas em expedições de vida, desenvolvendo roteiros pelo mundo com segurança, técnica e presença de espírito.",
   credentials: [
     "Certificações Internacionais de Primeiros Socorros e Resgate em Áreas Remotas",
@@ -287,6 +269,7 @@ const STATS = [
 
 // ============================================================
 export default function TMBV2Page() {
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   return (
     <main className="relative" style={{ background: C.cool }}>
       <Nav />
@@ -294,8 +277,8 @@ export default function TMBV2Page() {
       {/* ===== HERO — O ANEL ===== */}
       <section className="relative flex min-h-[100svh] w-full items-center overflow-hidden"
         style={{ background: C.night }}>
-        <div className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=2400&auto=format&fit=crop')" }} />
+        <div className="absolute inset-0 bg-cover bg-center opacity-40"
+          style={{ backgroundImage: "url('/images/tmb/hero.jpg')" }} />
         <div className="absolute inset-0"
           style={{ background: `radial-gradient(ellipse at 65% 50%, transparent 30%, ${C.night} 78%)` }} />
 
@@ -419,61 +402,131 @@ export default function TMBV2Page() {
         <CulturaPanel key={c.pais} c={c} i={i} />
       ))}
 
-      {/* ===== GALERIA — A EXPERIÊNCIA NA PRÁTICA ===== */}
-      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: C.night }}>
-        <div className="mx-auto max-w-[1400px]">
-          <div className="mb-12 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <Reveal>
-              <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
-                style={{ color: C.wood }}>
-                <span className="h-px w-8" style={{ background: C.wood }} />
-                Galeria
-              </p>
-              <h2 className="mt-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]"
-                style={{ color: C.snow }}>
-                O que você vai viver
-              </h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="max-w-xs text-[14px] font-light leading-relaxed text-white/50">
-                Hospedagens nos refúgios alpinos, o grupo em campo, vistas que justificam cada passo.
-              </p>
-            </Reveal>
-          </div>
-
-          {/* grid editorial: grande + 2 · depois 3 iguais */}
+      {/* ===== HOSPEDAGENS ===== */}
+      <section className="py-24 md:py-32" style={{ background: C.night }}>
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <Reveal>
-            <div className="grid gap-2" style={{ gridTemplateColumns: "2fr 1fr", gridTemplateRows: "280px 280px" }}>
-              {/* imagem grande */}
-              <div className="overflow-hidden rounded-xl" style={{ gridRow: "1 / 3" }}>
-                <div className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
-                  style={{ backgroundImage: `url('${GALLERY_IMGS[0].src}')` }} />
-              </div>
-              {/* duas stacked direita */}
-              {[GALLERY_IMGS[1], GALLERY_IMGS[2]].map((img) => (
-                <div key={img.tag} className="group relative overflow-hidden rounded-xl">
-                  <div className="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url('${img.src}')` }} />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 pb-4 pt-8">
-                    <span className="block text-[10px] uppercase tracking-[0.18em] text-white/60">{img.tag}</span>
-                    <span className="block text-[13px] font-light text-white/90">{img.caption}</span>
-                  </div>
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
+              style={{ color: C.wood }}>
+              <span className="h-px w-8" style={{ background: C.wood }} />
+              Onde você vai dormir
+            </p>
+            <h2 className="mt-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]"
+              style={{ color: C.snow }}>
+              As hospedagens do TMB
+            </h2>
+            <p className="mt-3 max-w-xl text-[15px] font-light leading-relaxed text-white/55">
+              Do design irreverente de Chamonix às noites de altitude nos refúgios alpinos — cada hospedagem é parte da experiência.
+            </p>
+          </Reveal>
+
+          {/* Rocky Pop Hotel */}
+          <Reveal>
+            <div className="mt-14 overflow-hidden rounded-3xl">
+              <div className="relative h-64 overflow-hidden md:h-[400px]">
+                <img src="/images/tmb/hotel-rocky-ext.jpg" alt="Rocky Pop Hotel"
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
+                <div className="absolute inset-0"
+                  style={{ background: "linear-gradient(to top, #0f1c26e0 0%, transparent 55%)" }} />
+                <div className="absolute bottom-6 left-7">
+                  <span className="rounded-full border px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em]"
+                    style={{ borderColor: C.wood, color: C.wood }}>
+                    ★ Hospedagem Premium
+                  </span>
+                  <h3 className="mt-3 font-display text-[1.8rem] font-light leading-tight"
+                    style={{ color: C.snow }}>Rocky Pop Hotel</h3>
+                  <p className="text-[12px] text-white/55">Chamonix-Mont-Blanc, França</p>
                 </div>
-              ))}
+              </div>
+              <div className="grid grid-cols-3 gap-px" style={{ background: "#1a2c3a" }}>
+                {[
+                  "/images/tmb/hotel-rocky-room.jpg",
+                  "/images/tmb/hotel-rocky-bar.jpg",
+                  "/images/tmb/hotel-rocky-breakfast.jpg",
+                ].map((src, i) => (
+                  <div key={i} className="group relative h-36 overflow-hidden md:h-48">
+                    <img src={src} alt=""
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  </div>
+                ))}
+              </div>
+              <div className="px-7 py-5" style={{ background: "#0c1e2c" }}>
+                <p className="max-w-2xl text-[13px] font-light leading-relaxed text-white/50">
+                  Localizado no coração de Chamonix, ao pé do Mont Blanc, o Rocky Pop combina design irreverente com conforto — o ponto de partida e chegada perfeito para uma travessia de 11 etapas pelos Alpes.
+                </p>
+              </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.15}>
-            <div className="mt-2 grid grid-cols-3 gap-2" style={{ height: 240 }}>
-              {[GALLERY_IMGS[3], GALLERY_IMGS[4], GALLERY_IMGS[5]].map((img) => (
-                <div key={img.tag} className="group relative overflow-hidden rounded-xl">
-                  <div className="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                    style={{ backgroundImage: `url('${img.src}')` }} />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 pb-4 pt-8">
-                    <span className="block text-[10px] uppercase tracking-[0.18em] text-white/60">{img.tag}</span>
-                    <span className="block text-[13px] font-light text-white/90">{img.caption}</span>
+          {/* Refúgios Alpinos */}
+          <Reveal>
+            <div className="mt-5 overflow-hidden rounded-3xl" style={{ background: "#0c1e2c" }}>
+              <div className="px-7 py-7">
+                <h3 className="font-display text-[1.5rem] font-light" style={{ color: C.snow }}>
+                  Refúgios Alpinos
+                </h3>
+                <p className="mt-2 max-w-lg text-[13px] font-light leading-relaxed text-white/50">
+                  Durante a travessia, as noites são em refúgios com caráter próprio — jantares comunitários, raclette a altitude e o amanhecer com vista para os cumes.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-px md:grid-cols-4" style={{ background: "#1a2c3a" }}>
+                {[
+                  "/images/tmb/refugio-raclette.jpg",
+                  "/images/tmb/refugio-terrace.jpg",
+                  "/images/tmb/refugio-dorm1.jpg",
+                  "/images/tmb/refugio-dorm2.jpg",
+                ].map((src, i) => (
+                  <div key={i} className="group relative h-44 overflow-hidden md:h-52">
+                    <img src={src} alt=""
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
-                </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ===== GALERIA ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: "#091520" }}>
+        <div className="mx-auto max-w-[1400px]">
+          <Reveal>
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
+              style={{ color: C.wood }}>
+              <span className="h-px w-8" style={{ background: C.wood }} />
+              Galeria
+            </p>
+            <h2 className="mt-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]"
+              style={{ color: C.snow }}>
+              O que você vai viver
+            </h2>
+          </Reveal>
+
+          <Reveal>
+            <div className="mt-10 grid grid-cols-3 gap-1.5 sm:grid-cols-4">
+              {GALLERY_IMGS.map((src, i) => (
+                <button
+                  key={i}
+                  onClick={() => setLightboxIdx(i)}
+                  className="group relative aspect-square overflow-hidden rounded-lg focus:outline-none"
+                >
+                  <img
+                    src={src}
+                    alt=""
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div
+                    className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{ background: "rgba(0,0,0,0.28)" }}
+                  >
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      <line x1="11" y1="8" x2="11" y2="14" />
+                      <line x1="8" y1="11" x2="14" y2="11" />
+                    </svg>
+                  </div>
+                </button>
               ))}
             </div>
           </Reveal>
@@ -571,16 +624,16 @@ export default function TMBV2Page() {
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-[3fr_2fr]">
+          <div className="mt-12 grid items-stretch gap-8 md:grid-cols-[3fr_2fr]">
             {/* incluído — destaque */}
             <Reveal>
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid h-full gap-3 sm:grid-cols-2" style={{ gridAutoRows: "1fr" }}>
                 {INCLUIDO.map((item) => (
                   <div key={item.cat}
-                    className="flex gap-4 rounded-2xl bg-white p-5 shadow-[0_2px_16px_rgba(15,28,38,0.06)]">
-                    <span className="text-2xl shrink-0">{item.icon}</span>
+                    className="flex gap-4 rounded-2xl bg-white p-6 shadow-[0_2px_16px_rgba(15,28,38,0.06)]">
+                    <span className="text-2xl shrink-0 mt-0.5">{item.icon}</span>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] mb-1"
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] mb-1.5"
                         style={{ color: C.ch }}>{item.cat}</p>
                       <p className="text-[13px] font-light leading-relaxed"
                         style={{ color: "rgba(15,28,38,0.7)" }}>{item.text}</p>
@@ -755,6 +808,54 @@ export default function TMBV2Page() {
       <Contato />
       <Footer />
       <FloatingActions />
+
+      {/* Lightbox */}
+      {lightboxIdx !== null && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          style={{ background: "rgba(0,0,0,0.95)" }}
+          onClick={() => setLightboxIdx(null)}
+        >
+          <button
+            className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full p-3 text-white transition-colors hover:bg-white/15 md:left-6"
+            onClick={(e) => { e.stopPropagation(); setLightboxIdx((n) => ((n ?? 0) - 1 + GALLERY_IMGS.length) % GALLERY_IMGS.length); }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <img
+            src={GALLERY_IMGS[lightboxIdx]}
+            alt=""
+            className="max-h-[85vh] max-w-[85vw] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          <button
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-3 text-white transition-colors hover:bg-white/15 md:right-6"
+            onClick={(e) => { e.stopPropagation(); setLightboxIdx((n) => ((n ?? 0) + 1) % GALLERY_IMGS.length); }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+
+          <button
+            className="absolute right-4 top-4 rounded-full p-2 text-white transition-colors hover:bg-white/15"
+            onClick={() => setLightboxIdx(null)}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+
+          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-[12px] font-light text-white/40">
+            {lightboxIdx + 1} / {GALLERY_IMGS.length}
+          </p>
+        </div>
+      )}
     </main>
   );
 }
