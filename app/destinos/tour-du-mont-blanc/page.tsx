@@ -25,6 +25,7 @@ const C = {
   ch: "#4f7d4a",
   chRed: "#b8402f",
   wood: "#d98c4a",
+  frRed: "#c0392b",
   line: "rgba(238,243,246,0.18)",
 };
 
@@ -251,14 +252,60 @@ const GUIA = {
   ],
 };
 
+// ---------- ÍCONES ----------
+const ICONS: Record<string, JSX.Element> = {
+  guide: (
+    <svg className="h-6 w-6 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+    </svg>
+  ),
+  hotel: (
+    <svg className="h-6 w-6 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/>
+      <path d="M2 17h20"/><path d="M6 8v9"/>
+    </svg>
+  ),
+  transfer: (
+    <svg className="h-6 w-6 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="1" y="3" width="15" height="13" rx="2"/>
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+      <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+    </svg>
+  ),
+  gps: (
+    <svg className="h-6 w-6 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/>
+      <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/>
+      <circle cx="12" cy="12" r="2"/>
+      <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/>
+      <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/>
+    </svg>
+  ),
+  coffee: (
+    <svg className="h-6 w-6 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+      <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/>
+      <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+    </svg>
+  ),
+  plan: (
+    <svg className="h-6 w-6 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+      <rect x="9" y="3" width="6" height="4" rx="2"/>
+      <line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="11" y2="16"/>
+    </svg>
+  ),
+};
+
 // ---------- INCLUÍDO ----------
 const INCLUIDO = [
-  { icon: "🧭", cat: "Guia especialista", text: "Condutor TARGET certificado em expedições de alta montanha e primeiros socorros em áreas remotas. Ivo Léo Schmitz lidera cada etapa." },
-  { icon: "🏨", cat: "Hospedagem completa", text: "Hotéis 2–3★ (quartos duplos), pousadas e refúgios alpinos durante toda a travessia." },
-  { icon: "🚌", cat: "Transfer no dia 1", text: "Transfer Genebra–Chamonix (ônibus regular). Você chega ao aeroporto e a gente resolve o restante." },
-  { icon: "📡", cat: "Segurança SPOT GPS", text: "Monitoramento em tempo real com dispositivo SPOT GPS e acionamento de resgate se necessário." },
-  { icon: "☕", cat: "Café da manhã", text: "Café da manhã incluso nas hospedagens em Chamonix (chegada e retorno do circuito)." },
-  { icon: "📋", cat: "Planejamento exclusivo", text: "Grupo pequeno e privado com roteiro adaptado ao perfil e ritmo do grupo." },
+  { icon: "guide",    cat: "Guia especialista",     text: "Condutor TARGET certificado em expedições de alta montanha e primeiros socorros em áreas remotas. Ivo Léo Schmitz lidera cada etapa." },
+  { icon: "hotel",    cat: "Hospedagem completa",    text: "Hotéis 2–3★ (quartos duplos), pousadas e refúgios alpinos durante toda a travessia." },
+  { icon: "transfer", cat: "Transfer no dia 1",      text: "Transfer Genebra–Chamonix (ônibus regular). Você chega ao aeroporto e a gente resolve o restante." },
+  { icon: "gps",      cat: "Segurança SPOT GPS",     text: "Monitoramento em tempo real com dispositivo SPOT GPS e acionamento de resgate se necessário." },
+  { icon: "coffee",   cat: "Café da manhã",          text: "Café da manhã incluso nas hospedagens em Chamonix (chegada e retorno do circuito)." },
+  { icon: "plan",     cat: "Planejamento exclusivo", text: "Grupo pequeno e privado com roteiro adaptado ao perfil e ritmo do grupo." },
 ];
 
 const NAO_INCLUIDO = [
@@ -305,7 +352,7 @@ export default function TMBV2Page() {
           <div>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.2 }}
-              className="text-[12px] font-medium uppercase tracking-[0.4em]" style={{ color: C.wood }}>
+              className="text-[12px] font-medium uppercase tracking-[0.4em]" style={{ color: C.frRed }}>
               Alpes · O grande circuito
             </motion.p>
             <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
@@ -401,7 +448,7 @@ export default function TMBV2Page() {
       <section className="px-6 py-24 md:px-10 md:py-36" style={{ background: C.cool, color: C.night }}>
         <div className="mx-auto max-w-[1000px]">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: C.it }}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: C.frRed }}>
               Um gigante no meio do caminho
             </p>
           </Reveal>
@@ -426,8 +473,8 @@ export default function TMBV2Page() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <Reveal>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
-              style={{ color: C.wood }}>
-              <span className="h-px w-8" style={{ background: C.wood }} />
+              style={{ color: C.frRed }}>
+              <span className="h-px w-8" style={{ background: C.frRed }} />
               Onde você vai dormir
             </p>
             <h2 className="mt-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]"
@@ -516,8 +563,8 @@ export default function TMBV2Page() {
         <div className="mx-auto max-w-[1400px]">
           <Reveal>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
-              style={{ color: C.wood }}>
-              <span className="h-px w-8" style={{ background: C.wood }} />
+              style={{ color: C.frRed }}>
+              <span className="h-px w-8" style={{ background: C.frRed }} />
               Galeria
             </p>
             <h2 className="mt-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]"
@@ -562,8 +609,8 @@ export default function TMBV2Page() {
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
-              style={{ color: C.wood }}>
-              <span className="h-px w-8" style={{ background: C.wood }} />
+              style={{ color: C.frRed }}>
+              <span className="h-px w-8" style={{ background: C.frRed }} />
               O guia da aventura
             </p>
           </Reveal>
@@ -639,8 +686,8 @@ export default function TMBV2Page() {
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
-              style={{ color: C.it }}>
-              <span className="h-px w-8" style={{ background: C.it }} />
+              style={{ color: C.frRed }}>
+              <span className="h-px w-8" style={{ background: C.frRed }} />
               O que está incluído
             </p>
             <h2 className="mt-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]">
@@ -655,7 +702,7 @@ export default function TMBV2Page() {
                 {INCLUIDO.map((item) => (
                   <div key={item.cat}
                     className="flex gap-4 rounded-2xl bg-white p-6 shadow-[0_2px_16px_rgba(15,28,38,0.06)]">
-                    <span className="text-2xl shrink-0 mt-0.5">{item.icon}</span>
+                    <span style={{ color: C.granite }}>{ICONS[item.icon]}</span>
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] mb-1.5"
                         style={{ color: C.ch }}>{item.cat}</p>
@@ -673,7 +720,7 @@ export default function TMBV2Page() {
                 {/* não incluído */}
                 <div className="rounded-2xl p-6" style={{ background: "rgba(15,28,38,0.05)" }}>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.2em] mb-4"
-                    style={{ color: C.it }}>Não está incluído</p>
+                    style={{ color: C.frRed }}>Não está incluído</p>
                   <ul className="space-y-3">
                     {NAO_INCLUIDO.map((item) => (
                       <li key={item} className="flex items-start gap-3 text-[13px] font-light"
@@ -721,8 +768,8 @@ export default function TMBV2Page() {
           <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <Reveal>
               <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
-                style={{ color: C.it }}>
-                <span className="h-px w-8" style={{ background: C.it }} />
+                style={{ color: C.frRed }}>
+                <span className="h-px w-8" style={{ background: C.frRed }} />
                 Próximas saídas em grupo
               </p>
               <h2 className="mt-5 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]">
@@ -809,7 +856,7 @@ export default function TMBV2Page() {
       <section className="px-6 py-20 md:px-10 md:py-24" style={{ background: C.granite }}>
         <div className="mx-auto max-w-[860px] text-center">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: C.wood }}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: C.frRed }}>
               AonikIA · especialista neste circuito
             </p>
             <h2 className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.15]"
