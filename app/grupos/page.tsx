@@ -16,21 +16,21 @@ const EMBER = "#d98c4a";
 const HERO_IMG =
   "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2600&auto=format&fit=crop";
 
-// Colagem editorial — mix dos destinos de grupos AONIK
+// Colagem editorial — foco em pessoas e momentos de grupo
 const GALERIA_GRUPOS = [
-  // Tour du Mont Blanc — painel principal
-  { src: "https://static.wixstatic.com/media/nsplsh_b1564644fa994e589c62424e365560e9~mv2.jpg?w=1400&auto=format", cls: "col-span-12 sm:col-span-8 h-64 md:h-96" },
-  // Dolomitas Alta Via
-  { src: "https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg?w=900&auto=format", cls: "col-span-12 sm:col-span-4 h-64 md:h-96" },
-  // Coxilha Rica — campo aberto
-  { src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=900&auto=format&fit=crop", cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
-  // TMB — trilha nos Alpes
+  // TMB — grupo nos Alpes
+  { src: "https://static.wixstatic.com/media/61ab00_5b1a43c0ce41447abdbdb8403c5fecc3~mv2.jpeg?w=1400&auto=format", cls: "col-span-12 sm:col-span-8 h-64 md:h-96" },
+  // TMB — caminhada em grupo (vale)
+  { src: "https://static.wixstatic.com/media/2d4f5b_2c19dbc8a0ca4eab9c3f93e02a421779~mv2.jpg?w=900&auto=format", cls: "col-span-12 sm:col-span-4 h-64 md:h-96" },
+  // TMB — grupo na trilha
+  { src: "https://static.wixstatic.com/media/2d4f5b_22579166c00b4c9aabcb71fb4565473e~mv2.jpeg?w=900&auto=format", cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
+  // TMB — caminhadores (grupo)
   { src: "https://static.wixstatic.com/media/61ab00_70ab5a86382c4bb7825240cc732d08fd~mv2.jpeg?w=900&auto=format", cls: "col-span-6 sm:col-span-4 h-44 md:h-64" },
-  // Dolomitas — Tre Cime
-  { src: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg?w=900&auto=format", cls: "col-span-12 sm:col-span-4 h-44 md:h-64" },
-  // TMB — vale e grupo
-  { src: "https://static.wixstatic.com/media/2d4f5b_2c19dbc8a0ca4eab9c3f93e02a421779~mv2.jpg?w=1200&auto=format", cls: "col-span-7 h-52 md:h-80" },
-  // Coxilha Rica / trilheiros
+  // Dolomitas — grupo na Alta Via
+  { src: "https://static.wixstatic.com/media/2d4f5b_b5691cbefb4e4071afddcb67131f3af5~mv2.jpeg?w=900&auto=format", cls: "col-span-12 sm:col-span-4 h-44 md:h-64" },
+  // TMB — jantar/momento de grupo
+  { src: "https://static.wixstatic.com/media/2d4f5b_bad1e5d4f34a41109e523804f0216ae7~mv2.jpg?w=1200&auto=format", cls: "col-span-7 h-52 md:h-80" },
+  // Coxilha Rica — trilheiros
   { src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=900&auto=format&fit=crop", cls: "col-span-5 h-52 md:h-80" },
 ];
 
@@ -295,7 +295,7 @@ export default function GruposPage() {
               Sob medida
             </p>
             <h2 className="mt-5 font-display text-[clamp(1.8rem,3.6vw,2.8rem)] font-light leading-[1.15]">
-              Tem uma turma e um sonho? Monte seu grupo
+              Tem uma turma e um sonho?<br />Monte seu grupo
             </h2>
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed text-cream/65">
               Família, amigos, sua agência. A gente desenha uma saída exclusiva no

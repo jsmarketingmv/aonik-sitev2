@@ -132,7 +132,7 @@ export default function CaminhadasPage() {
       </section>
 
       {/* ── VIAGENS EM GRUPO (logo após "Por que caminhar") ── */}
-      <GruposHome />
+      <GruposHome variant="green" />
 
       {/* ── CAMINHO DE SANTIAGO (Peregrinação) ───────────── */}
       <JornadaPortal />
@@ -140,23 +140,25 @@ export default function CaminhadasPage() {
       {/* ── TORRES DEL PAINE (Patagônia) ─────────────────── */}
       <PatagoniaPortal />
 
-      {/* ── CAMINHOS AUTOGUIADOS (prévia) — fundo Tea Green ── */}
-      <section className="bg-tea px-6 py-24 text-ink md:px-10 md:py-32">
+      {/* ── CAMINHOS AUTOGUIADOS (prévia) — GREEN 4 ── */}
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ backgroundColor: "#2A6F2B" }}>
         <div className="mx-auto max-w-[1180px]">
           <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <Reveal>
-                <Kicker>Caminhos autoguiados</Kicker>
+                <Kicker color="text-[#C8F169]" line="bg-[#C8F169]/40">
+                  Caminhos autoguiados
+                </Kicker>
               </Reveal>
               <Reveal delay={0.1}>
-                <h2 className="mt-4 max-w-xl font-display text-[clamp(1.9rem,4vw,3.2rem)] font-light leading-[1.08] tracking-[-0.01em] text-forest">
+                <h2 className="mt-4 max-w-xl font-display text-[clamp(1.9rem,4vw,3.2rem)] font-light leading-[1.08] tracking-[-0.01em] text-cream">
                   No seu ritmo, com{" "}
-                  <span className="italic text-gold">tudo organizado</span>
+                  <span className="italic text-[#C8F169]">tudo organizado</span>
                 </h2>
               </Reveal>
             </div>
             <Reveal delay={0.15}>
-              <p className="max-w-sm text-[14px] font-light leading-relaxed text-ink/55">
+              <p className="max-w-sm text-[14px] font-light leading-relaxed text-cream/65">
                 Roteiros desenhados para você caminhar sozinho ou em dupla, com
                 logística, hospedagens e mapas resolvidos. A liberdade do seu
                 tempo, a segurança da nossa curadoria.
@@ -167,17 +169,19 @@ export default function CaminhadasPage() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {AUTOGUIADOS.map((a, i) => (
               <Reveal key={a.nome} delay={i * 0.06}>
-                <div className="relative flex h-full flex-col justify-between rounded-xl border border-forest/12 bg-cream p-6">
+                <div className="relative flex h-full flex-col justify-between rounded-xl border p-6"
+                  style={{ borderColor: "rgba(200,241,105,0.2)", backgroundColor: "rgba(255,255,255,0.07)" }}>
                   {a.soon && (
-                    <span className="absolute right-4 top-4 rounded-full border border-forest/15 px-2.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em] text-ink/40">
+                    <span className="absolute right-4 top-4 rounded-full border px-2.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em]"
+                      style={{ borderColor: "rgba(200,241,105,0.3)", color: "rgba(200,241,105,0.6)" }}>
                       Em breve
                     </span>
                   )}
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.18em] text-gold">
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-[#C8F169]">
                       {a.local}
                     </p>
-                    <h3 className="mt-2 font-display text-xl font-light leading-tight text-forest">
+                    <h3 className="mt-2 font-display text-xl font-light leading-tight text-cream">
                       {a.nome}
                     </h3>
                   </div>
@@ -190,7 +194,10 @@ export default function CaminhadasPage() {
             <div className="mt-10 flex justify-center">
               <a
                 href="/caminhos-autoguiados"
-                className="group inline-flex items-center gap-3 rounded-full border border-forest/25 px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-forest transition-all duration-300 hover:border-forest hover:bg-forest hover:text-cream"
+                className="group inline-flex items-center gap-3 rounded-full border px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-300"
+                style={{ borderColor: "rgba(200,241,105,0.4)" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "#C8F169"; (e.currentTarget as HTMLAnchorElement).style.color = "#1a3a10"; (e.currentTarget as HTMLAnchorElement).style.borderColor = "#C8F169"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.backgroundColor = ""; (e.currentTarget as HTMLAnchorElement).style.color = ""; (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(200,241,105,0.4)"; }}
               >
                 Ver caminhos autoguiados
                 <span className="transition-transform duration-300 group-hover:translate-x-1">

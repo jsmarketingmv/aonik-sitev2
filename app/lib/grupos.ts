@@ -141,10 +141,10 @@ export const EM_BREVE = [
   { title: "Coxilha Rica de Bike", flag: "🇧🇷" },
   { title: "Yosemite · São Francisco", flag: "🇺🇸" },
   { title: "Hiking Tour Liechtenstein", flag: "🇱🇮" },
-  { title: "Áustria: Raquetes na Neve", flag: "🇦🇹" },
-  { title: "Circuito W, Torres del Paine", flag: "🇨🇱" },
-  { title: "Bike Portugal: Porto a Lisboa", flag: "🇵🇹" },
-  { title: "Bike Portugal: Aldeias Históricas", flag: "🇵🇹" },
+  { title: "Rocky Mountains", flag: "🇨🇦" },
+  { title: "Islândia", flag: "🇮🇸" },
+  { title: "Eslovênia · Alps Juliano", flag: "🇸🇮" },
+  { title: "Pireneus", flag: "🇪🇸" },
 ];
 
 // Helper: datas de um grupo por ano
