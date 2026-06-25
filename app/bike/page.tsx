@@ -120,7 +120,7 @@ const A2Z_PRODUTOS = [
     km: "227 km",
     dias: "7 dias",
     preco: "a partir de € 1.557",
-    href: "/destinos/pedal-aldeias-históricas",
+    href: "/destinos/pedal-aldeias-historicas",
     img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1847.jpg/900x600/1/900x600/",
   },
   {
