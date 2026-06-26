@@ -253,7 +253,7 @@ const GUIA = {
 };
 
 // ---------- ÍCONES ----------
-const ICONS: Record<string, JSX.Element> = {
+const ICONS: Record<string, React.JSX.Element> = {
   guide: (
     <svg className="h-6 w-6 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="10"/>

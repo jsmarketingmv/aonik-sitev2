@@ -36,10 +36,10 @@ const BENEFICIOS = [
 
 /* Caminhos autoguiados — prévia de página futura dedicada */
 const AUTOGUIADOS = [
-  { nome: "Caminho de Santiago", local: "Portugal · Espanha", soon: false },
-  { nome: "Torres del Paine", local: "Patagônia Chilena", soon: false },
-  { nome: "Vale do Douro", local: "Portugal", soon: true },
-  { nome: "Rota Vicentina", local: "Portugal", soon: true },
+  { nome: "Caminho de Santiago", local: "Portugal · Espanha", soon: false, href: "/jornada" },
+  { nome: "Torres del Paine", local: "Patagônia Chilena", soon: false, href: "/destinos/torres-del-paine" },
+  { nome: "Vale do Douro", local: "Portugal", soon: false, href: "/caminhos-autoguiados/douro" },
+  { nome: "Rota Vicentina", local: "Portugal", soon: true, href: undefined as string | undefined },
 ];
 
 export default function CaminhadasPage() {
@@ -167,9 +167,9 @@ export default function CaminhadasPage() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {AUTOGUIADOS.map((a, i) => (
-              <Reveal key={a.nome} delay={i * 0.06}>
-                <div className="relative flex h-full flex-col justify-between rounded-xl border p-6"
+            {AUTOGUIADOS.map((a, i) => {
+              const Card = (
+                <div className="relative flex h-full flex-col justify-between rounded-xl border p-6 transition-all duration-300"
                   style={{ borderColor: "rgba(200,241,105,0.2)", backgroundColor: "rgba(255,255,255,0.07)" }}>
                   {a.soon && (
                     <span className="absolute right-4 top-4 rounded-full border px-2.5 py-0.5 text-[8px] font-semibold uppercase tracking-[0.18em]"
@@ -185,9 +185,26 @@ export default function CaminhadasPage() {
                       {a.nome}
                     </h3>
                   </div>
+                  {a.href && (
+                    <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#C8F169]">
+                      Ver roteiro
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </span>
+                  )}
                 </div>
-              </Reveal>
-            ))}
+              );
+              return (
+                <Reveal key={a.nome} delay={i * 0.06}>
+                  {a.href ? (
+                    <a href={a.href} className="group block h-full hover:-translate-y-1 transition-transform duration-300">
+                      {Card}
+                    </a>
+                  ) : (
+                    Card
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
 
           <Reveal delay={0.3}>
