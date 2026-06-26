@@ -8,114 +8,153 @@ import FloatingActions from "../components/FloatingActions";
 import Breadcrumb from "../components/Breadcrumb";
 import { Reveal, Kicker, EASE } from "../components/ui";
 
-/* ───── PALETTE ───── */
-const A = {
-  bg:        "#F0EAE0",   // cream global
-  dark:      "#1C1409",   // deep earth
-  accent:    "#C07040",   // burnt amber
-  accentSoft:"#F0A868",   // soft amber
-  text:      "#1C1409",
-  textSoft:  "rgba(28,20,9,0.62)",
-  cream:     "#F0EAE0",
-  line:      "rgba(192,112,64,0.18)",
+/* ───── NOVA PALETA ───── */
+const C = {
+  offwhite: "#F1F2EE",   // fundo global
+  slate:    "#435058",   // dark teal-slate (hero bg, headings)
+  steel:    "#848C8E",   // grey (eyebrows, borders)
+  lime:     "#DCF763",   // accent neon-lime (CTAs, destaques)
+  taupe:    "#BFB7B6",   // warm grey (soft text)
+  ink:      "#1E2A30",   // texto principal
+  limeLight:"rgba(220,247,99,0.12)",
+  limeEdge: "rgba(220,247,99,0.28)",
+  slateEdge:"rgba(67,80,88,0.18)",
 };
 
-/* ───── PALETTES POR DESTINO ───── */
-const S = { bg: "#0A1935", acc: "#6B9FCC", soft: "rgba(107,159,204,0.15)", cream: "#EEF3FA" };   // Santiago
-const T = { bg: "#0E2A34", acc: "#7FD4E0", soft: "rgba(127,212,224,0.12)", cream: "#EAF6F8" };   // TDP
-const P = { bg: "#220A11", acc: "#C4A56A", soft: "rgba(196,165,106,0.15)", cream: "#F0EAE0" };   // Portugal
+/* ───── HELPER WIX ───── */
+const wx = (id: string, w = 800, h = 560) =>
+  `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},al_c,q_82,enc_avif,quality_auto/img.jpg`;
 
-/* ───── SVG ROTAS LIVRES ───── */
-function RotasLivres() {
+/* ───── IMAGENS ───── */
+const IMG = {
+  /* TDP */
+  tdpHero:         "/torres-del-paine/patagonia.jpg",
+  wTradicional:    "/torres-del-paine/prod-w-tradicional.jpg",
+  wExpress:        "/torres-del-paine/prod-w-express.jpg",
+  wPlus:           "/torres-del-paine/prod-w-plus.jpg",
+  wJourney:        "/lastorres/exterior.jpg",
+  /* Santiago */
+  sgHero:          "https://static.wixstatic.com/media/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg/v1/fill/w_800,h_560,q_82,enc_avif,quality_auto/img.jpg",
+  sgValenca:       wx("2d4f5b_596f7144ab49417692221a0fa9dab404~mv2.jpg"),
+  sgCentral:       wx("2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg"),
+  sgCosta:         wx("2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg"),
+  /* Portugal */
+  ptHero:          wx("2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg"),
+  douroExp:        wx("2d4f5b_7edb87bf58444c00a4e2f0882eaff778~mv2.jpg"),
+  douroLux:        wx("2d4f5b_5a366974e9d24c1ab879fcf6eccb3a0c~mv2.jpeg"),
+  sgDouro:         wx("2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg"),
+  vicentina:       `https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=800&h=560&auto=format&fit=crop`,
+  fatima:          `https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=800&h=560&auto=format&fit=crop`,
+};
+
+/* ───── SVG GPS NAVIGATOR ───── */
+function GPSNavigator() {
   return (
     <svg
-      viewBox="0 0 420 380"
+      viewBox="0 0 420 460"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Três rotas autoguiadas: Santiago, Torres del Paine e Portugal"
-      style={{ width: "100%", maxWidth: 440, height: "auto" }}
+      aria-label="Mapa GPS interativo — navegue no seu próprio ritmo"
+      style={{ width: "100%", maxWidth: 420, height: "auto" }}
     >
-      <title>Rotas autoguiadas AONIK pelo mundo</title>
+      <title>GPS Autoguiado — escolha seu destino</title>
 
-      {/* Fundo circular suave */}
-      <circle cx="210" cy="190" r="170" fill="rgba(192,112,64,0.06)" />
-      <circle cx="210" cy="190" r="120" fill="rgba(192,112,64,0.05)" />
+      {/* ── Fundo: tela de GPS ── */}
+      <rect x="30" y="20" width="360" height="420" rx="24" fill="#2e3c44" />
+      <rect x="30" y="20" width="360" height="420" rx="24" fill="none" stroke={C.lime} strokeWidth="1.5" strokeOpacity="0.35" />
 
-      {/* Ponto central — o viajante */}
-      <circle cx="210" cy="190" r="10" fill={A.accent} />
-      <circle cx="210" cy="190" r="16" fill="none" stroke={A.accent} strokeWidth="1.5" strokeDasharray="3 3" />
-      <text x="210" y="216" textAnchor="middle" fontSize="8" fill={A.accentSoft} fontFamily="inherit" letterSpacing="0.08em">
-        VOCÊ AQUI
-      </text>
+      {/* ── Header bar do GPS ── */}
+      <rect x="30" y="20" width="360" height="52" rx="24" fill="#1E2A30" />
+      <rect x="30" y="50" width="360" height="22" fill="#1E2A30" />
+      <text x="210" y="51" textAnchor="middle" fontSize="11" fontWeight="600" fill={C.lime} fontFamily="inherit" letterSpacing="0.2em">NAVEGAÇÃO AONIK</text>
 
-      {/* Rota 1: Santiago (cima-esquerda) */}
+      {/* ── Grade do mapa ── */}
+      {[100,140,180,220,260,300,340,380].map(y => (
+        <line key={y} x1="30" y1={y} x2="390" y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+      ))}
+      {[90,150,210,270,330].map(x => (
+        <line key={x} x1={x} y1="72" x2={x} y2="440" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+      ))}
+
+      {/* ── Continentes estilizados (patches) ── */}
+      {/* Europa */}
+      <path d="M 155 145 Q 180 130 220 138 Q 245 142 250 162 Q 248 178 228 184 Q 205 188 180 180 Q 158 172 155 145 Z" fill="rgba(132,140,142,0.22)" />
+      {/* América do Sul */}
+      <path d="M 95 230 Q 118 215 138 225 Q 150 240 148 280 Q 145 310 125 320 Q 100 315 88 290 Q 78 260 95 230 Z" fill="rgba(132,140,142,0.22)" />
+      {/* América do Norte outline suave */}
+      <path d="M 68 155 Q 100 140 140 148 Q 148 172 128 192 Q 100 200 72 186 Q 58 170 68 155 Z" fill="rgba(132,140,142,0.14)" />
+
+      {/* ── ROTA GPS ── dashed line conectando os 3 destinos ── */}
+      {/* Portugal → Santiago */}
       <path
-        d="M 204 175 Q 140 110 80 72"
-        fill="none"
-        stroke={S.acc}
-        strokeWidth="1.8"
-        strokeDasharray="6 4"
-        strokeLinecap="round"
+        d="M 173 175 Q 190 155 207 148"
+        fill="none" stroke={C.lime} strokeWidth="2" strokeDasharray="5 3" strokeLinecap="round"
       />
-      {/* Ponto Santiago */}
-      <circle cx="80" cy="72" r="8" fill={S.acc} fillOpacity="0.85" />
-      {/* Concha pequena */}
-      <path d="M76,68 Q80,63 84,68 L80,72 Z" fill={S.cream} fillOpacity="0.9" />
-      <text x="80" y="58" textAnchor="middle" fontSize="9.5" fontWeight="600" fill={S.cream} fontFamily="inherit" letterSpacing="0.06em">
-        SANTIAGO
-      </text>
-      <text x="80" y="49" textAnchor="middle" fontSize="8" fill={S.acc} fontFamily="inherit">
-        Espanha · Galiza
-      </text>
-
-      {/* Rota 2: Torres del Paine (cima-direita) */}
+      {/* Santiago → TDP (longa rota transatlântica) */}
       <path
-        d="M 216 175 Q 290 110 348 72"
-        fill="none"
-        stroke={T.acc}
-        strokeWidth="1.8"
-        strokeDasharray="6 4"
-        strokeLinecap="round"
+        d="M 215 145 Q 200 200 190 250 Q 178 280 118 290"
+        fill="none" stroke={C.lime} strokeWidth="2" strokeDasharray="5 3" strokeLinecap="round"
       />
-      {/* Ponto TDP */}
-      <circle cx="348" cy="72" r="8" fill={T.acc} fillOpacity="0.85" />
-      {/* Pico pequeno */}
-      <path d="M343,76 L348,64 L353,76 Z" fill={T.cream} fillOpacity="0.9" />
-      <text x="348" y="58" textAnchor="middle" fontSize="9.5" fontWeight="600" fill={T.cream} fontFamily="inherit" letterSpacing="0.06em">
-        PATAGÔNIA
-      </text>
-      <text x="348" y="49" textAnchor="middle" fontSize="8" fill={T.acc} fontFamily="inherit">
-        Torres del Paine
-      </text>
-
-      {/* Rota 3: Portugal (baixo) */}
-      <path
-        d="M 210 200 Q 210 270 210 318"
+      {/* Pulsação: current position (Portugal Douro) */}
+      <motion.circle
+        cx="173" cy="178"
+        r="12"
         fill="none"
-        stroke={P.acc}
-        strokeWidth="1.8"
-        strokeDasharray="6 4"
-        strokeLinecap="round"
+        stroke={C.lime}
+        strokeWidth="1.5"
+        initial={{ r: 12, opacity: 0.7 }}
+        animate={{ r: 22, opacity: 0 }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
       />
-      {/* Ponto Portugal */}
-      <circle cx="210" cy="318" r="8" fill={P.acc} fillOpacity="0.85" />
-      {/* Uva / socalco pequeno */}
-      <path d="M206,319 Q210,313 214,319 Q210,322 206,319Z" fill={P.bg} fillOpacity="0.7" />
-      <text x="210" y="339" textAnchor="middle" fontSize="9.5" fontWeight="600" fill={A.dark} fontFamily="inherit" letterSpacing="0.06em">
-        PORTUGAL
-      </text>
-      <text x="210" y="350" textAnchor="middle" fontSize="8" fill={P.acc} fontFamily="inherit">
-        Douro · Vicentina · Fátima
-      </text>
 
-      {/* Linhas de latitude suaves */}
-      <ellipse cx="210" cy="190" rx="165" ry="50" fill="none" stroke="rgba(192,112,64,0.08)" strokeWidth="1" />
-      <ellipse cx="210" cy="190" rx="165" ry="95" fill="none" stroke="rgba(192,112,64,0.06)" strokeWidth="1" />
+      {/* ── PIN 1: Portugal ── */}
+      <circle cx="173" cy="178" r="7" fill={C.lime} />
+      <path d="M173,171 L173,164 L178,168 Z" fill={C.lime} />
+      {/* pin shadow */}
+      <ellipse cx="173" cy="180" rx="5" ry="2" fill="rgba(220,247,99,0.25)" />
+      <rect x="118" y="186" width="82" height="26" rx="6" fill="#1E2A30" fillOpacity="0.92" />
+      <text x="159" y="198" textAnchor="middle" fontSize="8" fontWeight="700" fill={C.lime} fontFamily="inherit" letterSpacing="0.06em">PORTUGAL</text>
+      <text x="159" y="208" textAnchor="middle" fontSize="6.5" fill={C.taupe} fontFamily="inherit">Douro · Vicentina · Fátima</text>
+
+      {/* ── PIN 2: Santiago ── */}
+      <circle cx="210" cy="148" r="7" fill="#6B9FCC" />
+      <path d="M210,141 L210,134 L215,138 Z" fill="#6B9FCC" />
+      <ellipse cx="210" cy="150" rx="5" ry="2" fill="rgba(107,159,204,0.25)" />
+      <rect x="154" y="112" width="84" height="26" rx="6" fill="#1E2A30" fillOpacity="0.92" />
+      <text x="196" y="124" textAnchor="middle" fontSize="8" fontWeight="700" fill="#6B9FCC" fontFamily="inherit" letterSpacing="0.06em">SANTIAGO</text>
+      <text x="196" y="134" textAnchor="middle" fontSize="6.5" fill={C.taupe} fontFamily="inherit">Portugal · Espanha · Galiza</text>
+
+      {/* ── PIN 3: Torres del Paine ── */}
+      <circle cx="115" cy="290" r="7" fill="#7FD4E0" />
+      <path d="M115,283 L115,276 L120,280 Z" fill="#7FD4E0" />
+      <ellipse cx="115" cy="292" rx="5" ry="2" fill="rgba(127,212,224,0.25)" />
+      <rect x="120" y="278" width="100" height="26" rx="6" fill="#1E2A30" fillOpacity="0.92" />
+      <text x="170" y="290" textAnchor="middle" fontSize="8" fontWeight="700" fill="#7FD4E0" fontFamily="inherit" letterSpacing="0.06em">PATAGÔNIA</text>
+      <text x="170" y="300" textAnchor="middle" fontSize="6.5" fill={C.taupe} fontFamily="inherit">Torres del Paine · Chile</text>
+
+      {/* ── VOCÊ AQUI: ponto de partida ── */}
+      <circle cx="210" cy="370" r="9" fill={C.slate} stroke={C.lime} strokeWidth="2" />
+      <circle cx="210" cy="370" r="4" fill={C.lime} />
+      <motion.circle cx="210" cy="370" r="9" fill="none" stroke={C.lime} strokeWidth="1"
+        initial={{ r: 9, opacity: 1 }} animate={{ r: 20, opacity: 0 }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
+      />
+      <rect x="163" y="383" width="94" height="22" rx="6" fill={C.lime} />
+      <text x="210" y="397" textAnchor="middle" fontSize="8.5" fontWeight="700" fill={C.slate} fontFamily="inherit" letterSpacing="0.1em">VOCÊ AQUI</text>
+
+      {/* ── Rota do VOCÊ para Portugal ── */}
+      <path d="M 210 362 Q 200 290 180 210" fill="none" stroke="rgba(220,247,99,0.45)" strokeWidth="1.5" strokeDasharray="4 3" />
+
+      {/* ── Status bar ── */}
+      <rect x="30" y="420" width="360" height="20" rx="0" fill="#1E2A30" />
+      <rect x="30" y="420" width="360" height="20" rx="24" fill="#1E2A30" />
+      <text x="80" y="432" fontSize="7" fill={C.taupe} fontFamily="inherit">3 destinos disponíveis</text>
+      <text x="340" y="432" textAnchor="end" fontSize="7" fill={C.lime} fontFamily="inherit">● conectado</text>
     </svg>
   );
 }
 
-/* ───── DADOS ───── */
-const PILARES = [
+/* ───── DIFERENCIAIS ───── */
+const DIFERENCIAIS = [
   {
     n: "01",
     titulo: "Logística resolvida",
@@ -123,203 +162,240 @@ const PILARES = [
   },
   {
     n: "02",
-    titulo: "Seu ritmo, seu horário",
-    desc: "Sem grupo, sem guia. Você decide quando acordar, quando parar e quantos km faz por dia.",
+    titulo: "Você no comando",
+    desc: "Sem grupo fixo, sem guia, sem horário de saída. Você decide o ritmo, as pausas e o quanto caminha por dia.",
   },
   {
     n: "03",
-    titulo: "Disponibilidade ampla",
-    desc: "Partidas ao longo do ano, sem datas fixas. Você viaja quando quiser, com quem quiser.",
+    titulo: "Disponível o ano todo",
+    desc: "Partidas flexíveis, sem datas fixas de grupo. Você viaja quando quiser, com quem quiser.",
   },
   {
     n: "04",
-    titulo: "Suporte AONIK disponível",
-    desc: "WhatsApp de suporte ativo durante toda a viagem para qualquer imprevisto no caminho.",
+    titulo: "Suporte em rota",
+    desc: "WhatsApp AONIK ativo durante toda a viagem. Para qualquer imprevisto, a gente está do outro lado.",
   },
 ];
 
-const SANTIAGO = [
-  { nome: "Valença · Rota Clássica", km: "121 km", dias: "8 dias", preco: "a partir de € 810", href: "/destinos/caminho-valenca-ape" },
-  { nome: "Caminho Central", km: "226 km", dias: "14 dias", preco: "a partir de € 1.466", href: "/destinos/caminho-central-ape" },
-  { nome: "Caminho da Costa", km: "260 km", dias: "15 dias", preco: "a partir de € 1.498", href: "/destinos/caminho-costa-ape" },
-  { nome: "Sarria · 7 Etapas", km: "112 km", dias: "7 dias", preco: "a partir de € 580", href: "/destinos/sarria-7-etapas" },
-  { nome: "Caminho Easy", km: "256 km", dias: "21 dias", preco: "a partir de € 2.359", href: "/destinos/caminho-easy-ape" },
-  { nome: "Santiago a Finisterre", km: "90 km", dias: "7 dias", preco: "a partir de € 791", href: "/destinos/santiago-finisterre" },
+/* ───── PRODUTOS POR CATEGORIA ───── */
+const CAT_PATAGONIA = [
+  { nome: "W Tradicional",  sub: "Autoguiado",       meta: "5d · 75,5km", preco: "US$ 1.874", img: IMG.wTradicional, href: "/destinos/torres-del-paine/w-tradicional" },
+  { nome: "W Express",      sub: "Autoguiado",       meta: "4d · 69,5km", preco: "US$ 1.657", img: IMG.wExpress,     href: "/destinos/torres-del-paine/w-express" },
+  { nome: "W Plus",         sub: "Autoguiado · Hotel",meta:"5d · 69,5km", preco: "US$ 2.126", img: IMG.wPlus,        href: "/destinos/torres-del-paine/w-plus" },
+  { nome: "W Journey",      sub: "Com guia host",    meta: "5d · 69,5km", preco: "US$ 3.200", img: IMG.wJourney,     href: "/destinos/torres-del-paine/w-journey" },
 ];
 
-const TDP = [
-  {
-    nome: "W Tradicional",
-    sub: "Autoguiado",
-    meta: "5 dias · 75,5 km",
-    desc: "O circuito W clássico e completo. Torres de granito, Vale do Francés e Glaciar Grey.",
-    preco: "a partir de US$ 1.874",
-    href: "/destinos/torres-del-paine/w-tradicional",
-  },
-  {
-    nome: "W Express",
-    sub: "Autoguiado",
-    meta: "4 dias · 69,5 km",
-    desc: "O W essencial em menos tempo. Todos os ícones, sem abrir mão de nada.",
-    preco: "a partir de US$ 1.657",
-    href: "/destinos/torres-del-paine/w-express",
-  },
-  {
-    nome: "W Plus",
-    sub: "Autoguiado · com hotel",
-    meta: "5 dias · 69,5 km",
-    desc: "O W completo fechando no Hotel Las Torres. Mais conforto, mesmo emoção.",
-    preco: "a partir de US$ 2.126",
-    href: "/destinos/torres-del-paine/w-plus",
-  },
-  {
-    nome: "W Journey",
-    sub: "Com guia host",
-    meta: "5 dias · 69,5 km",
-    desc: "Um host acompanha do início ao fim. Para quem prefere boa companhia no caminho.",
-    preco: "a partir de US$ 3.200",
-    href: "/destinos/torres-del-paine/w-journey",
-  },
+const CAT_SANTIAGO = [
+  { nome: "Caminho Português · Valença", sub: "Autoguiado", meta: "8d · 121km",   preco: "€ 810",   img: IMG.sgValenca, href: "/destinos/caminho-valenca-ape" },
+  { nome: "Caminho Central",             sub: "Autoguiado", meta: "14d · 226km",  preco: "€ 1.466", img: IMG.sgCentral, href: "/destinos/caminho-central-ape" },
+  { nome: "Caminho da Costa",            sub: "Autoguiado", meta: "15d · 260km",  preco: "€ 1.498", img: IMG.sgCosta,   href: "/destinos/caminho-costa-ape" },
+  { nome: "Sarria · 7 Etapas",          sub: "Autoguiado", meta: "7d · 112km",   preco: "€ 580",   img: IMG.sgHero,    href: "/destinos/sarria-7-etapas" },
+  { nome: "Caminho Easy",               sub: "Autoguiado", meta: "21d · 256km",  preco: "€ 2.359", img: IMG.sgValenca, href: "/destinos/caminho-easy-ape" },
+  { nome: "Santiago a Finisterre",       sub: "Autoguiado", meta: "7d · 90km",    preco: "€ 791",   img: IMG.sgCosta,   href: "/destinos/santiago-finisterre" },
 ];
 
-const PORTUGAL = [
-  { nome: "Douro Experience", meta: "6 dias · 58,7 km", preco: "a partir de € 1.557", href: "/caminhos-autoguiados/douro" },
-  { nome: "Douro Luxury", meta: "6 dias · 27,2 km", preco: "a partir de € 2.130", href: "/caminhos-autoguiados/douro-luxury" },
-  { nome: "Santiago e Douro", meta: "13 dias · 133 km", preco: "a partir de € 2.200", href: "/caminhos-autoguiados/santiago-e-douro" },
-  { nome: "Rota Vicentina", meta: "8 dias · 91,1 km", preco: "a partir de € 856", href: "/caminhos-autoguiados/rota-vicentina" },
-  { nome: "Nazaré a Fátima", meta: "6 dias · 56 km", preco: "a partir de € 870", href: "/caminhos-autoguiados/nazare-a-fatima" },
+const CAT_PORTUGAL = [
+  { nome: "Douro Experience",   sub: "Autoguiado",           meta: "6d · 58,7km", preco: "€ 1.557", img: IMG.douroExp,  href: "/caminhos-autoguiados/douro" },
+  { nome: "Douro Luxury",       sub: "Premium · quintas",    meta: "6d · 27,2km", preco: "€ 2.130", img: IMG.douroLux,  href: "/caminhos-autoguiados/douro-luxury" },
+  { nome: "Santiago e Douro",   sub: "Peregrinação + vinhas",meta:"13d · 133km",  preco: "€ 2.200", img: IMG.sgDouro,   href: "/caminhos-autoguiados/santiago-e-douro" },
+  { nome: "Rota Vicentina",     sub: "Costa Atlântica",      meta: "8d · 91km",   preco: "€ 856",   img: IMG.vicentina, href: "/caminhos-autoguiados/rota-vicentina" },
+  { nome: "Nazaré a Fátima",    sub: "Peregrinação",         meta: "6d · 56km",   preco: "€ 870",   img: IMG.fatima,    href: "/caminhos-autoguiados/nazare-a-fatima" },
 ];
 
-/* ───── COMPONENTES ───── */
-function SecTitle({ n, titulo, accent }: { n: string; titulo: string; accent: string }) {
+/* ───── COMPONENTE CARD ───── */
+function ProdCard({
+  p, accentBg, accentText, darkBg,
+}: {
+  p: { nome: string; sub: string; meta: string; preco: string; img: string; href: string };
+  accentBg: string; accentText: string; darkBg: string;
+}) {
   return (
-    <div className="flex items-end gap-5">
-      <span className="font-display text-[4.5rem] font-light leading-none opacity-20" style={{ color: accent }}>
-        {n}
-      </span>
-      <h2 className="mb-1 font-display text-[clamp(1.9rem,4vw,3.2rem)] font-light leading-none tracking-[-0.02em]" style={{ color: accent }}>
-        {titulo}
-      </h2>
-    </div>
+    <a
+      href={p.href}
+      className="group flex flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1"
+      style={{ background: darkBg, border: "1px solid rgba(255,255,255,0.08)" }}
+    >
+      <div className="relative h-48 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.05]"
+          style={{ backgroundImage: `url('${p.img}')` }}
+        />
+        <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${darkBg}f0 0%, transparent 55%)` }} />
+        <span
+          className="absolute left-4 top-4 rounded-full px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.18em]"
+          style={{ background: "rgba(0,0,0,0.55)", color: accentText }}
+        >
+          {p.sub}
+        </span>
+      </div>
+      <div className="flex flex-1 flex-col p-6">
+        <h4 className="font-display text-[1.2rem] font-light leading-tight text-white">{p.nome}</h4>
+        <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: accentText }}>{p.meta}</p>
+        <div className="mt-auto flex items-center justify-between border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.1)", marginTop: "1rem" }}>
+          <span className="text-[12px] font-light text-white/70">a partir de <strong className="font-display text-[1rem] font-light" style={{ color: accentText }}>{p.preco}</strong></span>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.12em] transition-transform duration-300 group-hover:translate-x-1" style={{ color: accentText }}>Ver →</span>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+/* ───── SEÇÃO CATEGORIA ───── */
+function CatSection({
+  n, kicker, titulo, sub, desc, accent, darkBg, ctaHref, ctaLabel, children,
+}: {
+  n: string; kicker: string; titulo: string; sub?: string; desc: string;
+  accent: string; darkBg: string; ctaHref: string; ctaLabel: string; children: React.ReactNode;
+}) {
+  return (
+    <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: darkBg }}>
+      <div className="mx-auto max-w-[1180px]">
+        <Reveal>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.35em]" style={{ color: accent, opacity: 0.7 }}>{kicker}</p>
+        </Reveal>
+        <Reveal delay={0.05}>
+          <div className="mt-2 flex items-end gap-4">
+            <span className="font-display text-[4rem] font-light leading-none opacity-15 text-white">{n}</span>
+            <div>
+              <h2 className="font-display text-[clamp(1.9rem,4vw,3rem)] font-light leading-none tracking-[-0.02em] text-white">{titulo}</h2>
+              {sub && <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.14em]" style={{ color: accent }}>{sub}</p>}
+            </div>
+          </div>
+        </Reveal>
+        <Reveal delay={0.08}>
+          <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed text-white/60">{desc}</p>
+        </Reveal>
+
+        <div className="mt-12">{children}</div>
+
+        <Reveal delay={0.2}>
+          <a
+            href={ctaHref}
+            className="mt-10 inline-flex items-center gap-3 rounded-full border px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:opacity-90"
+            style={{ color: "white", borderColor: `${accent}55`, background: `${accent}18` }}
+          >
+            {ctaLabel} <span>→</span>
+          </a>
+        </Reveal>
+      </div>
+    </section>
   );
 }
 
 /* ───── PAGE ───── */
 export default function AutoguiadosPage() {
   return (
-    <main className="relative" style={{ background: A.bg }}>
+    <main style={{ background: C.offwhite }}>
       <Nav />
 
-      {/* ========== HERO ========== */}
+      {/* ===== HERO ===== */}
       <section
-        className="relative flex min-h-[90svh] w-full items-center overflow-hidden"
-        style={{ background: A.dark }}
+        className="relative flex min-h-[92svh] w-full items-center overflow-hidden"
+        style={{ background: C.slate }}
       >
-        <div className="relative z-10 mx-auto grid w-full max-w-[1180px] grid-cols-1 gap-12 px-6 py-28 md:grid-cols-2 md:items-center md:px-10">
+        {/* Grain */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.035]"
+          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: "200px" }} />
+
+        <div className="relative z-10 mx-auto grid w-full max-w-[1180px] grid-cols-1 gap-10 px-6 py-28 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-16 md:px-10">
           {/* Texto */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: EASE, delay: 0.15 }}
-          >
-            <Kicker color="text-[#C07040]" line="bg-[#C07040]/40">
-              Logística AONIK · Liberdade sua
+          <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: EASE, delay: 0.15 }}>
+            <Kicker color={`text-[${C.lime}]`} line={`bg-[${C.lime}]/40`}>
+              <span style={{ color: C.lime }}>Formato Self-Guided · AONIK</span>
             </Kicker>
             <h1
-              className="mt-4 font-display font-light uppercase leading-[0.88] tracking-[-0.03em]"
-              style={{ fontSize: "clamp(3.2rem,10vw,7.5rem)", color: A.cream }}
+              className="mt-4 font-display font-light uppercase leading-[0.88] tracking-[-0.03em] text-white"
+              style={{ fontSize: "clamp(3.6rem,11vw,8rem)" }}
             >
               AUTO
               <br />
-              <span style={{ color: A.accent }}>GUIADOS</span>
+              <span style={{ color: C.lime }}>GUIADOS</span>
             </h1>
-            <p className="mt-6 max-w-sm text-[15px] font-light leading-relaxed" style={{ color: "rgba(240,234,224,0.7)" }}>
-              Você escolhe o destino. A gente resolve os detalhes e libera você para só caminhar.
+            <p className="mt-6 max-w-sm text-[15px] font-light leading-relaxed text-white/65">
+              Você escolhe o destino, a data e o ritmo. A AONIK resolve toda a logística
+              para que sobre apenas o essencial: caminhar.
             </p>
 
             {/* Stats */}
-            <div className="mt-10 flex gap-8 border-t pt-8" style={{ borderColor: "rgba(192,112,64,0.25)" }}>
+            <div className="mt-10 flex gap-8 border-t pt-8" style={{ borderColor: "rgba(220,247,99,0.2)" }}>
               {[
                 { v: "3", l: "destinos" },
-                { v: "20+", l: "roteiros" },
-                { v: "4–21", l: "dias" },
+                { v: "15+", l: "roteiros" },
+                { v: "6–21", l: "dias" },
               ].map((s) => (
                 <div key={s.l}>
-                  <div className="font-display text-[2rem] font-light leading-none" style={{ color: A.accent }}>
-                    {s.v}
-                  </div>
-                  <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.15em]" style={{ color: "rgba(240,234,224,0.5)" }}>
-                    {s.l}
-                  </div>
+                  <div className="font-display text-[2.2rem] font-light leading-none" style={{ color: C.lime }}>{s.v}</div>
+                  <div className="mt-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-white/45">{s.l}</div>
                 </div>
               ))}
             </div>
 
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#destinos"
+                className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03]"
+                style={{ background: C.lime, color: C.slate }}
+              >
+                Explorar destinos <span>→</span>
+              </a>
+            </div>
+
             <div className="mt-8">
-              <Breadcrumb
-                tone="dark"
-                accent={A.accent}
-                items={[
-                  { label: "Home", href: "/" },
-                  { label: "Caminhadas", href: "/caminhadas" },
-                  { label: "Autoguiados" },
-                ]}
-              />
+              <Breadcrumb tone="dark" accent={C.lime} items={[{ label: "Home", href: "/" }, { label: "Caminhadas", href: "/caminhadas" }, { label: "Autoguiados" }]} />
             </div>
           </motion.div>
 
-          {/* SVG */}
+          {/* GPS SVG */}
           <motion.div
             className="flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: EASE, delay: 0.35 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, ease: EASE, delay: 0.4 }}
           >
-            <RotasLivres />
+            <GPSNavigator />
           </motion.div>
         </div>
       </section>
 
-      {/* ========== COMO FUNCIONA ========== */}
-      <section className="px-6 py-24 md:px-10 md:py-32">
-        <div className="mx-auto max-w-[1180px]">
+      {/* ===== FRASE ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: C.offwhite }}>
+        <div className="mx-auto max-w-[860px] text-center">
           <Reveal>
-            <Kicker color="text-[#C07040]" line="bg-[#C07040]/40">
-              O que é viajar autoguiado com a AONIK
-            </Kicker>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.38em]" style={{ color: C.steel }}>
+              O modelo autoguiado
+            </p>
           </Reveal>
           <Reveal delay={0.08}>
             <h2
-              className="mt-4 max-w-xl font-display text-[clamp(1.6rem,3vw,2.5rem)] font-light leading-[1.2] tracking-[-0.01em]"
-              style={{ color: A.text }}
+              className="mt-5 font-display text-[clamp(1.8rem,3.5vw,3rem)] font-light leading-[1.2] tracking-[-0.015em]"
+              style={{ color: C.ink }}
             >
               Toda a estrutura de uma viagem organizada,{" "}
-              <span className="italic">sem abrir mão da sua liberdade</span>.
+              <em className="not-italic" style={{ color: C.slate }}>sem abrir mão da liberdade.</em>
             </h2>
           </Reveal>
+          <Reveal delay={0.12}>
+            <p className="mx-auto mt-6 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: C.steel }}>
+              Você chega, o alojamento está reservado, o mapa está no celular e a caderneta de rota
+              está na mochila. O resto é só você, a paisagem e o próximo passo.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {PILARES.map((p, i) => (
-              <Reveal key={p.n} delay={i * 0.07}>
+      {/* ===== DIFERENCIAIS ===== */}
+      <section className="px-6 pb-20 md:px-10 md:pb-28" style={{ background: C.offwhite }}>
+        <div className="mx-auto max-w-[1180px]">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {DIFERENCIAIS.map((d, i) => (
+              <Reveal key={d.n} delay={i * 0.07}>
                 <div
                   className="rounded-2xl p-8"
-                  style={{ background: "rgba(192,112,64,0.06)", border: `1px solid ${A.line}` }}
+                  style={{ background: C.slate, border: `1px solid ${C.slateEdge}` }}
                 >
-                  <span
-                    className="font-display text-[2.8rem] font-light leading-none"
-                    style={{ color: A.accent, opacity: 0.4 }}
-                  >
-                    {p.n}
-                  </span>
-                  <h3
-                    className="mt-4 font-display text-[1.3rem] font-light leading-tight"
-                    style={{ color: A.text }}
-                  >
-                    {p.titulo}
-                  </h3>
-                  <p className="mt-3 text-[13px] font-light leading-relaxed" style={{ color: A.textSoft }}>
-                    {p.desc}
-                  </p>
+                  <span className="font-display text-[2.8rem] font-light leading-none" style={{ color: C.lime, opacity: 0.35 }}>{d.n}</span>
+                  <h3 className="mt-4 font-display text-[1.2rem] font-light leading-tight text-white">{d.titulo}</h3>
+                  <p className="mt-3 text-[13px] font-light leading-relaxed" style={{ color: C.taupe }}>{d.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -327,274 +403,86 @@ export default function AutoguiadosPage() {
         </div>
       </section>
 
-      {/* ========== CAMINHO DE SANTIAGO ========== */}
-      <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: S.bg }}>
-        <div className="mx-auto max-w-[1180px]">
-          <Reveal>
-            <Kicker color="text-[#6B9FCC]" line="bg-[#6B9FCC]/40">
-              Espanha · Galiza · Portugal
-            </Kicker>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <SecTitle n="01" titulo="Caminho de Santiago" accent={S.acc} />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed" style={{ color: "rgba(238,243,250,0.65)" }}>
-              A peregrinação mais famosa do mundo, no seu ritmo. Escolha a rota, o número de dias e
-              caminhe até a Catedral de Santiago de Compostela.
-            </p>
-          </Reveal>
+      {/* ===== DESTINOS (CATEGORIAS) ===== */}
+      <div id="destinos">
 
-          {/* Grid de roteiros */}
-          <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {SANTIAGO.map((r, i) => (
-              <Reveal key={r.nome} delay={i * 0.06}>
-                <a
-                  href={r.href}
-                  className="group flex flex-col gap-2 rounded-xl p-6 transition-all duration-300 hover:-translate-y-[2px]"
-                  style={{ background: S.soft, border: "1px solid rgba(107,159,204,0.18)" }}
-                >
-                  <h3
-                    className="font-display text-[1.2rem] font-light leading-tight"
-                    style={{ color: S.cream }}
-                  >
-                    {r.nome}
-                  </h3>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: S.acc }}>
-                    {r.km} · {r.dias}
-                  </p>
-                  <div
-                    className="mt-3 flex items-center justify-between border-t pt-4"
-                    style={{ borderColor: "rgba(107,159,204,0.15)" }}
-                  >
-                    <span className="text-[12px] font-light" style={{ color: "rgba(238,243,250,0.65)" }}>
-                      {r.preco}
-                    </span>
-                    <span
-                      className="text-[10px] font-semibold uppercase tracking-[0.12em] transition-transform duration-300 group-hover:translate-x-1"
-                      style={{ color: S.acc }}
-                    >
-                      Ver →
-                    </span>
-                  </div>
-                </a>
+        {/* ── 01 PATAGÔNIA ── */}
+        <CatSection
+          n="01" kicker="Chile · Patagônia" titulo="Torres del Paine" sub="Circuito W"
+          desc="Geleiras, torres de granito e fiordes no fim do mundo. O circuito W em quatro versões, do mais compacto ao mais confortável."
+          accent="#7FD4E0" darkBg="#0E2A34"
+          ctaHref="/destinos/torres-del-paine" ctaLabel="Conhecer Torres del Paine"
+        >
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {CAT_PATAGONIA.map((p, i) => (
+              <Reveal key={p.nome} delay={i * 0.07}>
+                <ProdCard p={p} accentBg="#7FD4E0" accentText="#7FD4E0" darkBg="rgba(14,42,52,0.7)" />
               </Reveal>
             ))}
           </div>
+        </CatSection>
 
-          <Reveal delay={0.2}>
-            <div className="mt-10">
-              <a
-                href="/jornada"
-                className="inline-flex items-center gap-3 rounded-full border px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-[#6B9FCC]/10"
-                style={{ color: S.cream, borderColor: "rgba(107,159,204,0.4)" }}
-              >
-                Ver todos os roteiros de Santiago
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ========== TORRES DEL PAINE ========== */}
-      <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: T.bg }}>
-        <div className="mx-auto max-w-[1180px]">
-          <Reveal>
-            <Kicker color="text-[#7FD4E0]" line="bg-[#7FD4E0]/40">
-              Patagônia · Chile
-            </Kicker>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <SecTitle n="02" titulo="Torres del Paine" accent={T.acc} />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed" style={{ color: "rgba(234,246,248,0.65)" }}>
-              O circuito W em quatro versões, do mais compacto ao mais confortável. Geleiras, torres
-              de granito e fiordes no fim do mundo.
-            </p>
-          </Reveal>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {TDP.map((r, i) => (
-              <Reveal key={r.nome} delay={i * 0.07}>
-                <a
-                  href={r.href}
-                  className="group flex flex-col rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1"
-                  style={{ background: T.soft, border: "1px solid rgba(127,212,224,0.18)" }}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <h3
-                      className="font-display text-[1.5rem] font-light leading-tight"
-                      style={{ color: T.cream }}
-                    >
-                      {r.nome}
-                    </h3>
-                    <span
-                      className="shrink-0 rounded-full px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.15em]"
-                      style={{ background: "rgba(127,212,224,0.12)", color: T.acc }}
-                    >
-                      {r.sub}
-                    </span>
-                  </div>
-                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: T.acc }}>
-                    {r.meta}
-                  </p>
-                  <p className="mt-4 flex-1 text-[13px] font-light leading-relaxed" style={{ color: "rgba(234,246,248,0.65)" }}>
-                    {r.desc}
-                  </p>
-                  <div
-                    className="mt-6 flex items-center justify-between border-t pt-5"
-                    style={{ borderColor: "rgba(127,212,224,0.15)" }}
-                  >
-                    <span className="text-[13px] font-light" style={{ color: T.acc }}>{r.preco}</span>
-                    <span
-                      className="text-[10px] font-semibold uppercase tracking-[0.12em] transition-transform duration-300 group-hover:translate-x-1"
-                      style={{ color: T.cream }}
-                    >
-                      Ver circuito →
-                    </span>
-                  </div>
-                </a>
+        {/* ── 02 PEREGRINAÇÃO ── */}
+        <CatSection
+          n="02" kicker="Portugal · Espanha · Galiza" titulo="Caminho de Santiago" sub="Caminho Português"
+          desc="A peregrinação mais famosa do mundo, no seu ritmo. Escolha a rota e o número de dias e caminhe até a Catedral de Santiago."
+          accent="#6B9FCC" darkBg="#0A1935"
+          ctaHref="/jornada" ctaLabel="Ver todos os roteiros de Santiago"
+        >
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {CAT_SANTIAGO.map((p, i) => (
+              <Reveal key={p.nome} delay={i * 0.06}>
+                <ProdCard p={p} accentBg="#6B9FCC" accentText="#6B9FCC" darkBg="rgba(10,25,53,0.7)" />
               </Reveal>
             ))}
           </div>
+        </CatSection>
 
-          <Reveal delay={0.2}>
-            <div className="mt-10">
-              <a
-                href="/destinos/torres-del-paine"
-                className="inline-flex items-center gap-3 rounded-full border px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-[#7FD4E0]/10"
-                style={{ color: T.cream, borderColor: "rgba(127,212,224,0.35)" }}
-              >
-                Conheça Torres del Paine
-                <span>→</span>
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ========== CAMINHOS DE PORTUGAL ========== */}
-      <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: P.bg }}>
-        <div className="mx-auto max-w-[1180px]">
-          <Reveal>
-            <Kicker color="text-[#C4A56A]" line="bg-[#C4A56A]/40">
-              Portugal · Autoguiado
-            </Kicker>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <SecTitle n="03" titulo="Caminhos de Portugal" accent={P.acc} />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed" style={{ color: "rgba(240,234,224,0.65)" }}>
-              Das vinhas em socalcos do Douro às falésias do Alentejo. Cinco roteiros pelo país mais
-              caminhável da Europa, todos no seu ritmo.
-            </p>
-          </Reveal>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {PORTUGAL.map((r, i) => (
-              <Reveal key={r.nome} delay={i * 0.07}>
-                <a
-                  href={r.href}
-                  className="group flex flex-col gap-3 rounded-xl p-7 transition-all duration-300 hover:-translate-y-[2px]"
-                  style={{ background: P.soft, border: "1px solid rgba(196,165,106,0.2)" }}
-                >
-                  <h3
-                    className="font-display text-[1.3rem] font-light leading-tight"
-                    style={{ color: P.cream }}
-                  >
-                    {r.nome}
-                  </h3>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: P.acc }}>
-                    {r.meta}
-                  </p>
-                  <div
-                    className="mt-auto flex items-center justify-between border-t pt-4"
-                    style={{ borderColor: "rgba(196,165,106,0.15)" }}
-                  >
-                    <span className="text-[12px] font-light" style={{ color: "rgba(240,234,224,0.7)" }}>
-                      {r.preco}
-                    </span>
-                    <span
-                      className="text-[10px] font-semibold uppercase tracking-[0.12em] transition-transform duration-300 group-hover:translate-x-1"
-                      style={{ color: P.acc }}
-                    >
-                      Ver →
-                    </span>
-                  </div>
-                </a>
+        {/* ── 03 PORTUGAL ── */}
+        <CatSection
+          n="03" kicker="Portugal · Autoguiado" titulo="Caminhos de Portugal" sub="Norte ao sul"
+          desc="Das vinhas em socalcos do Douro às falésias do Alentejo. Cinco roteiros pelo país mais caminhável da Europa."
+          accent="#C4A56A" darkBg="#220A11"
+          ctaHref="/caminhos-autoguiados" ctaLabel="Ver hub Caminhos de Portugal"
+        >
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {CAT_PORTUGAL.map((p, i) => (
+              <Reveal key={p.nome} delay={i * 0.07}>
+                <ProdCard p={p} accentBg="#C4A56A" accentText="#C4A56A" darkBg="rgba(34,10,17,0.7)" />
               </Reveal>
             ))}
           </div>
+        </CatSection>
 
-          <Reveal delay={0.22}>
-            <div className="mt-10">
-              <a
-                href="/caminhos-autoguiados"
-                className="inline-flex items-center gap-3 rounded-full border px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:bg-[#C4A56A]/10"
-                style={{ color: P.cream, borderColor: "rgba(196,165,106,0.4)" }}
-              >
-                Ver hub Caminhos de Portugal
-                <span>→</span>
-              </a>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      </div>
 
-      {/* ========== SOBRE DUAS RODAS ========== */}
-      <section
-        className="px-6 py-16 md:px-10 md:py-20"
-        style={{ background: "rgba(192,112,64,0.06)", borderTop: `1px solid ${A.line}` }}
-      >
+      {/* ===== PREFERE GRUPOS? ===== */}
+      <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: C.slate }}>
         <div className="mx-auto max-w-[1180px]">
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <Reveal>
-              <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.3em]" style={{ color: A.accent }}>
-                  Também autoguiado
+              <div className="max-w-xl">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: C.lime }}>
+                  Prefere companhia?
                 </p>
-                <h3
-                  className="mt-2 font-display text-[clamp(1.4rem,2.5vw,2rem)] font-light"
-                  style={{ color: A.text }}
-                >
-                  Cicloturismo em Portugal
-                </h3>
-                <p className="mt-2 max-w-sm text-[13px] font-light leading-relaxed" style={{ color: A.textSoft }}>
-                  Porto, Douro, Aldeias Históricas e os Caminhos de Santiago de bike. Mesma
-                  liberdade, sobre duas rodas.
+                <h2 className="mt-3 font-display text-[clamp(1.8rem,4vw,3rem)] font-light leading-[1.1] text-white">
+                  Prefere caminhar em grupo?
+                </h2>
+                <p className="mt-4 max-w-md text-[14px] font-light leading-relaxed" style={{ color: C.taupe }}>
+                  Se você quer a experiência completa com guia, saída confirmada, grupo pequeno e toda
+                  a logística na mão de um especialista, os grupos AONIK são para você. TMB, Dolomitas,
+                  Bavária, Tirol, Dana a Petra e mais.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="flex flex-wrap gap-4">
-                {[
-                  { n: "Porto · Lisboa", km: "306 km", dias: "8 dias", href: "/destinos/pedal-porto-lisboa" },
-                  { n: "Aldeias Históricas", km: "227 km", dias: "7 dias", href: "/destinos/pedal-aldeias-historicas" },
-                  { n: "Douro e Aldeias", km: "232 km", dias: "8 dias", href: "/destinos/pedal-douro-aldeias" },
-                ].map((b) => (
-                  <a
-                    key={b.n}
-                    href={b.href}
-                    className="group flex flex-col gap-1 rounded-xl px-6 py-5 transition-all duration-300 hover:-translate-y-[2px]"
-                    style={{ background: A.bg, border: `1px solid ${A.line}`, minWidth: 160 }}
-                  >
-                    <span className="text-[13px] font-light" style={{ color: A.text }}>{b.n}</span>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ color: A.accent }}>
-                      {b.km} · {b.dias}
-                    </span>
-                  </a>
-                ))}
-                <a
-                  href="/bike"
-                  className="self-center rounded-full border px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 hover:bg-[#C07040]/10"
-                  style={{ color: A.text, borderColor: A.line }}
-                >
-                  Ver cicloturismo →
-                </a>
-              </div>
+              <a
+                href="/grupos"
+                className="inline-flex items-center gap-3 rounded-full px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 hover:scale-[1.03]"
+                style={{ background: C.lime, color: C.slate }}
+              >
+                Ver grupos com guia <span>→</span>
+              </a>
             </Reveal>
           </div>
         </div>
