@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Nav from "../../components/Nav";
+import Breadcrumb from "../../components/Breadcrumb";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
@@ -562,7 +563,14 @@ export default function DouroPage() {
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: D.sage }} />
               Próxima saída · 14 a 21 Set 2026
             </motion.div>
-          </div>
+                      <div className="mt-7">
+              <Breadcrumb tone="dark" items={[
+                { label: "Home", href: "/" },
+                { label: "Grupos", href: "/grupos" },
+                { label: "Douro Experience" },
+              ]} />
+            </div>
+</div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, ease: EASE, delay: 0.35 }}

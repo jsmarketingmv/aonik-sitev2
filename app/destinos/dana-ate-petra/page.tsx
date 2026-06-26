@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Nav from "../../components/Nav";
+import Breadcrumb from "../../components/Breadcrumb";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
@@ -494,7 +495,14 @@ export default function DanaPetraPage() {
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: D.petra }} />
               Saída confirmada · 18 a 27 Out 2027
             </motion.div>
-          </div>
+                      <div className="mt-7">
+              <Breadcrumb tone="dark" items={[
+                { label: "Home", href: "/" },
+                { label: "Grupos", href: "/grupos" },
+                { label: "Dana até Petra" },
+              ]} />
+            </div>
+</div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, ease: EASE, delay: 0.35 }}
