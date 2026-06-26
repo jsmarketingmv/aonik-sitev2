@@ -65,6 +65,8 @@ export interface Dict {
     waIntro: string;
     okTitle: string;
     okMsg: string;
+    okWaCta: string;
+    okAte: string;
     erro: string;
   };
   footer: {
@@ -201,7 +203,9 @@ export const translations: Record<Lang, Dict> = {
       waIntro: "Olá, equipe AONIK! Vim pelo site:",
       okTitle: "Recebemos o seu contato!",
       okMsg:
-        "Já está com a nossa equipe. Em breve um especialista AONIK fala com você para desenhar a sua experiência.",
+        "Sua solicitação já está com a nossa equipe. Em breve um especialista AONIK fará contato com você para sanar suas dúvidas e desenhar uma experiência exclusiva.",
+      okWaCta: "Quer antecipar alguma informação ou dúvida? Chame nosso time pelo WhatsApp:",
+      okAte: "Até breve!",
       erro: "Algo não saiu como esperado. Tente de novo em instantes.",
     },
     footer: {
@@ -346,7 +350,9 @@ export const translations: Record<Lang, Dict> = {
       waIntro: "¡Hola, equipo AONIK! Vengo desde el sitio:",
       okTitle: "¡Recibimos tu contacto!",
       okMsg:
-        "Ya está con nuestro equipo. Pronto un especialista AONIK hablará contigo para diseñar tu experiência.",
+        "Tu solicitud ya está con nuestro equipo. Pronto un especialista AONIK se pondrá en contacto contigo para responder tus dudas y diseñar una experiencia exclusiva.",
+      okWaCta: "¿Quieres adelantar alguna información o duda? Habla con nuestro equipo por WhatsApp:",
+      okAte: "¡Hasta pronto!",
       erro: "Algo no salió como esperábamos. Inténtalo de nuevo en un momento.",
     },
     footer: {
@@ -491,7 +497,9 @@ export const translations: Record<Lang, Dict> = {
       waIntro: "Hello, AONIK team! I came from the website:",
       okTitle: "We got your message!",
       okMsg:
-        "It is already with our team. An AONIK specialist will reach out soon to craft your experience.",
+        "Your request is already with our team. An AONIK specialist will reach out soon to answer your questions and craft an exclusive experience for you.",
+      okWaCta: "Want to share something in advance? Reach our team on WhatsApp:",
+      okAte: "See you soon!",
       erro: "Something went wrong. Please try again in a moment.",
     },
     footer: {
