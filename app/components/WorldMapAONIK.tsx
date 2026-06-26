@@ -35,8 +35,8 @@ const DESTINATIONS: Destination[] = [
     years: [2026, 2027],
     lat: 45.83,
     lng: 6.86,
-    labelOffsetX: 0,
-    labelOffsetY: -52,
+    labelOffsetX: -55,
+    labelOffsetY: -68,
     type: "aventura",
     description:
       "Trilha icônica que atravessa França, Itália e Suíça em 170 km pelos Alpes. 14 dias, 8.823 m de desnível. Saída confirmada.",
@@ -51,8 +51,8 @@ const DESTINATIONS: Destination[] = [
     years: [2026, 2027],
     lat: 46.5,
     lng: 12.0,
-    labelOffsetX: -72,
-    labelOffsetY: -24,
+    labelOffsetX: -98,
+    labelOffsetY: -10,
     type: "aventura",
     description:
       "Alta Via 1 pelos Dolomitas italianos: 100 km e 5.116 m+ entre as montanhas mais cênicas dos Alpes. 10 dias.",
@@ -67,8 +67,8 @@ const DESTINATIONS: Destination[] = [
     years: [2027],
     lat: 47.6,
     lng: 13.0,
-    labelOffsetX: 64,
-    labelOffsetY: -18,
+    labelOffsetX: 100,
+    labelOffsetY: -52,
     type: "aventura",
     description:
       "Travessia de Salzburg pelos Alpes Bávaros: Ninho da Águia, Lago Königssee e refúgios de montanha. 65,4 km, 9 dias.",
@@ -83,8 +83,8 @@ const DESTINATIONS: Destination[] = [
     years: [2027],
     lat: 47.12,
     lng: 11.31,
-    labelOffsetX: 62,
-    labelOffsetY: 18,
+    labelOffsetX: 95,
+    labelOffsetY: 32,
     type: "aventura",
     description:
       "Stubaier Höhenweg pelo Tirol austríaco: travessia de cabana em cabana entre glaciares e lagos de gelo. 90 km, 5.930 m+, 10 dias.",
@@ -99,8 +99,8 @@ const DESTINATIONS: Destination[] = [
     years: [2026, 2027],
     lat: 41.1,
     lng: -7.8,
-    labelOffsetX: -68,
-    labelOffsetY: -20,
+    labelOffsetX: -95,
+    labelOffsetY: -24,
     type: "cultural",
     description:
       "8 dias de caminhada pelo Vale do Douro, entre quintas históricas, vinhas e aldeias de xisto. 58,7 km, 2.051 m+.",
@@ -176,6 +176,7 @@ const CREAM  = "#f5f1e8";
 interface WorldMapAONIKProps {
   yearFilter?: 2026 | 2027;
   onYearChange?: (y: 2026 | 2027) => void;
+  bgColor?: string;
 }
 
 // ─── Componente ───────────────────────────────────────────────────────────────
@@ -183,6 +184,7 @@ interface WorldMapAONIKProps {
 export default function WorldMapAONIK({
   yearFilter: extYear,
   onYearChange,
+  bgColor,
 }: WorldMapAONIKProps = {}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const svgRef       = useRef<SVGSVGElement>(null);
@@ -291,7 +293,7 @@ export default function WorldMapAONIK({
       <div
         ref={containerRef}
         className="relative w-full overflow-hidden rounded-2xl"
-        style={{ height: dims.h || 480, backgroundColor: CREAM }}
+        style={{ height: dims.h || 480, backgroundColor: bgColor ?? CREAM }}
       >
         {/* ── FIX 3: Toggle de ano — overlay top-right ─── */}
         <div className="absolute right-4 top-4 z-10 flex overflow-hidden rounded-full border border-forest/15 bg-cream/90 shadow-sm backdrop-blur-sm">

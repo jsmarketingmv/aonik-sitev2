@@ -109,6 +109,7 @@ export default function GruposHome({ variant = "amber" }: { variant?: "amber" | 
         <WorldMapAONIK
           yearFilter={yearFilter}
           onYearChange={setYearFilter}
+          bgColor={variant === "green" ? "#EEF2E3" : undefined}
         />
       </div>
 

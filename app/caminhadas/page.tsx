@@ -136,6 +136,69 @@ export default function CaminhadasPage() {
       {/* ── CAMINHOS DE PORTUGAL (Douro · Santiago e Douro) ── */}
       <CaminhosPortugalPortal />
 
+      {/* ── AUTOGUIADOS — link para /autoguiados ─────────── */}
+      <section className="bg-[#2A6F2B] px-6 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-[1180px]">
+          <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-xl">
+              <Reveal>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-[#C8F169]/70">
+                  Formato · Self-guided
+                </p>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.8rem)] font-light uppercase leading-[0.9] tracking-[-0.02em] text-cream">
+                  Viaje no seu<br />
+                  <span className="italic normal-case text-[#C8F169]">próprio ritmo</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <p className="mt-5 max-w-sm text-[14px] font-light leading-relaxed text-cream/65">
+                  Santiago de Compostela, Torres del Paine, Caminhos de Portugal e
+                  cicloturismo. Todos os roteiros sem guia fixo reunidos em um só lugar.
+                </p>
+              </Reveal>
+              <Reveal delay={0.14}>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a
+                    href="/autoguiados"
+                    className="inline-flex items-center gap-3 rounded-full bg-[#C8F169] px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a3a1b] transition-all duration-300 hover:scale-[1.03]"
+                  >
+                    Ver todos os autoguiados
+                    <span>→</span>
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Cards rápidos */}
+            <Reveal delay={0.12}>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 md:min-w-[420px]">
+                {[
+                  { nome: "Caminho de Santiago", n: "10+", u: "roteiros", href: "/jornada" },
+                  { nome: "Torres del Paine", n: "4", u: "circuitos W", href: "/destinos/torres-del-paine" },
+                  { nome: "Caminhos de Portugal", n: "5", u: "roteiros", href: "/caminhos-autoguiados" },
+                ].map((c) => (
+                  <a
+                    key={c.nome}
+                    href={c.href}
+                    className="group flex flex-col gap-2 rounded-xl p-5 transition-all duration-300 hover:-translate-y-[2px]"
+                    style={{ background: "rgba(200,241,105,0.08)", border: "1px solid rgba(200,241,105,0.2)" }}
+                  >
+                    <span className="font-display text-[2rem] font-light leading-none text-[#C8F169]">{c.n}</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C8F169]/60">{c.u}</span>
+                    <span className="mt-1 text-[12px] font-light text-cream/70">{c.nome}</span>
+                    <span className="mt-auto text-[10px] font-semibold uppercase tracking-[0.12em] text-cream/40 transition-transform duration-300 group-hover:translate-x-1">
+                      Ver →
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       <Contato />
       <Footer />
       <FloatingActions />
