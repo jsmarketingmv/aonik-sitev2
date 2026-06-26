@@ -8,6 +8,7 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
+import Breadcrumb from "../../components/Breadcrumb";
 import { Reveal, EASE } from "../../components/ui";
 
 /* ============================================================
@@ -860,11 +861,18 @@ export function ProgramaPage({ data }: { data: Programa }) {
               </a>
               <a href="#tarifas" className="text-[12px] uppercase tracking-[0.16em] transition-colors" style={{ color: T.cFaint }}>Ver tarifas</a>
             </motion.div>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, ease: EASE, delay: 0.85 }}
-              className="mt-6 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em]" style={{ color: T.cFaint }}>
-              <a href="/destinos/torres-del-paine" className="transition-colors hover:opacity-80">Torres del Paine</a>
-              <span>/</span><span style={{ color: AS }}>{data.nome}</span>
-            </motion.div>
+            <div className="mt-6">
+              <Breadcrumb
+                tone="dark"
+                accent={AS}
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Caminhadas", href: "/caminhadas" },
+                  { label: "Torres del Paine", href: "/destinos/torres-del-paine" },
+                  { label: data.nome },
+                ]}
+              />
+            </div>
           </div>
           <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
             className="mx-auto hidden h-[300px] w-full max-w-[420px] md:block md:h-[360px]">

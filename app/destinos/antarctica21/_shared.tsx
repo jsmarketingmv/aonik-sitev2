@@ -6,6 +6,7 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
+import Breadcrumb from "../../components/Breadcrumb";
 import { Reveal, EASE } from "../../components/ui";
 
 /* ============================================================
@@ -346,17 +347,18 @@ export function ExpeditionPage({ data }: { data: Expedition }) {
                 {data.price}
               </span>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, ease: EASE, delay: 0.85 }}
-              className="mt-6 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em]"
-              style={{ color: A.geloFaint }}>
-              <a href="/destinos/antarctica21" className="transition-colors hover:text-[#6fa8c9]">
-                Antarctica21
-              </a>
-              <span>/</span>
-              <span style={{ color: A.glacial }}>{data.title.join(" ")}</span>
-            </motion.div>
+            <div className="mt-6">
+              <Breadcrumb
+                tone="dark"
+                accent={A.glacial}
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Navegação", href: "/navegacao" },
+                  { label: "Antarctica21", href: "/destinos/antarctica21" },
+                  { label: data.title.join(" ") },
+                ]}
+              />
+            </div>
           </div>
 
           <motion.div

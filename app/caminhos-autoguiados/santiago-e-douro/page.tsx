@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Nav from "../../components/Nav";
+import Breadcrumb from "../../components/Breadcrumb";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
@@ -336,6 +337,14 @@ export default function SantiagoEDouroPage() {
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: S.ouro }} />
               Saídas de Março a Outubro · no seu ritmo
             </motion.div>
+            <div className="mt-7">
+              <Breadcrumb tone="dark" accent="#c4a56a" items={[
+                { label: "Home", href: "/" },
+                { label: "Caminhadas", href: "/caminhadas" },
+                { label: "Caminhos de Portugal", href: "/caminhos-autoguiados" },
+                { label: "Santiago e Douro" },
+              ]} />
+            </div>
           </div>
 
           <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
