@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Nav from "../components/Nav";
+import Breadcrumb from "../components/Breadcrumb";
 import Footer from "../components/Footer";
 import Contato from "../components/Contato";
 import FloatingActions from "../components/FloatingActions";
@@ -286,6 +287,12 @@ export default function BikePage() {
                 >
                   Falar com especialista
                 </a>
+              </div>
+              <div className="mt-7">
+                <Breadcrumb tone="dark" accent={B.pedal} items={[
+                  { label: "Home", href: "/" },
+                  { label: "Bike" },
+                ]} />
               </div>
             </motion.div>
           </div>

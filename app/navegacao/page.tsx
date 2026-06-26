@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Nav from "../components/Nav";
+import Breadcrumb from "../components/Breadcrumb";
 import Footer from "../components/Footer";
 import Contato from "../components/Contato";
 import FloatingActions from "../components/FloatingActions";
@@ -93,6 +94,12 @@ export default function NavegacaoPage() {
             >
               Falar com especialista <span>→</span>
             </a>
+            <div className="mt-7">
+              <Breadcrumb tone="dark" accent={SEA} items={[
+                { label: "Home", href: "/" },
+                { label: "Navegação" },
+              ]} />
+            </div>
           </motion.div>
         </div>
       </section>
