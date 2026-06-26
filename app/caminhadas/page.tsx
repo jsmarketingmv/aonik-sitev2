@@ -137,19 +137,26 @@ export default function CaminhadasPage() {
       <CaminhosPortugalPortal />
 
       {/* ── AUTOGUIADOS — link para /autoguiados ─────────── */}
-      <section className="bg-[#2A6F2B] px-6 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-[1180px]">
+      <section className="relative overflow-hidden px-6 py-20 md:px-10 md:py-28" style={{ background: "#435058" }}>
+        {/* Foto de fundo sutil */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: "url('/torres-del-paine/prod-w-express.jpg')" }}
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to right, #435058f8, #43505890 65%, #43505870)" }} />
+
+        <div className="relative z-10 mx-auto max-w-[1180px]">
           <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
             <div className="max-w-xl">
               <Reveal>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-[#C8F169]/70">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.35em]" style={{ color: "rgba(220,247,99,0.7)" }}>
                   Formato · Self-guided
                 </p>
               </Reveal>
               <Reveal delay={0.06}>
                 <h2 className="mt-3 font-display text-[clamp(2rem,5vw,3.8rem)] font-light uppercase leading-[0.9] tracking-[-0.02em] text-cream">
                   Viaje no seu<br />
-                  <span className="italic normal-case text-[#C8F169]">próprio ritmo</span>
+                  <span className="italic normal-case" style={{ color: "#DCF763" }}>próprio ritmo</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.1}>
@@ -162,7 +169,8 @@ export default function CaminhadasPage() {
                 <div className="mt-8 flex flex-wrap gap-4">
                   <a
                     href="/autoguiados"
-                    className="inline-flex items-center gap-3 rounded-full bg-[#C8F169] px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a3a1b] transition-all duration-300 hover:scale-[1.03]"
+                    className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03]"
+                    style={{ background: "#DCF763", color: "#1E2A30" }}
                   >
                     Ver todos os autoguiados
                     <span>→</span>
@@ -183,10 +191,10 @@ export default function CaminhadasPage() {
                     key={c.nome}
                     href={c.href}
                     className="group flex flex-col gap-2 rounded-xl p-5 transition-all duration-300 hover:-translate-y-[2px]"
-                    style={{ background: "rgba(200,241,105,0.08)", border: "1px solid rgba(200,241,105,0.2)" }}
+                    style={{ background: "rgba(220,247,99,0.08)", border: "1px solid rgba(220,247,99,0.2)" }}
                   >
-                    <span className="font-display text-[2rem] font-light leading-none text-[#C8F169]">{c.n}</span>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#C8F169]/60">{c.u}</span>
+                    <span className="font-display text-[2rem] font-light leading-none" style={{ color: "#DCF763" }}>{c.n}</span>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.14em]" style={{ color: "rgba(220,247,99,0.55)" }}>{c.u}</span>
                     <span className="mt-1 text-[12px] font-light text-cream/70">{c.nome}</span>
                     <span className="mt-auto text-[10px] font-semibold uppercase tracking-[0.12em] text-cream/40 transition-transform duration-300 group-hover:translate-x-1">
                       Ver →

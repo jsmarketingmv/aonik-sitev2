@@ -47,111 +47,6 @@ const IMG = {
   fatima:          `https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=800&h=560&auto=format&fit=crop`,
 };
 
-/* ───── SVG GPS NAVIGATOR ───── */
-function GPSNavigator() {
-  return (
-    <svg
-      viewBox="0 0 420 460"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="Mapa GPS interativo — navegue no seu próprio ritmo"
-      style={{ width: "100%", maxWidth: 420, height: "auto" }}
-    >
-      <title>GPS Autoguiado — escolha seu destino</title>
-
-      {/* ── Fundo: tela de GPS ── */}
-      <rect x="30" y="20" width="360" height="420" rx="24" fill="#2e3c44" />
-      <rect x="30" y="20" width="360" height="420" rx="24" fill="none" stroke={C.lime} strokeWidth="1.5" strokeOpacity="0.35" />
-
-      {/* ── Header bar do GPS ── */}
-      <rect x="30" y="20" width="360" height="52" rx="24" fill="#1E2A30" />
-      <rect x="30" y="50" width="360" height="22" fill="#1E2A30" />
-      <text x="210" y="51" textAnchor="middle" fontSize="11" fontWeight="600" fill={C.lime} fontFamily="inherit" letterSpacing="0.2em">NAVEGAÇÃO AONIK</text>
-
-      {/* ── Grade do mapa ── */}
-      {[100,140,180,220,260,300,340,380].map(y => (
-        <line key={y} x1="30" y1={y} x2="390" y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-      ))}
-      {[90,150,210,270,330].map(x => (
-        <line key={x} x1={x} y1="72" x2={x} y2="440" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
-      ))}
-
-      {/* ── Continentes estilizados (patches) ── */}
-      {/* Europa */}
-      <path d="M 155 145 Q 180 130 220 138 Q 245 142 250 162 Q 248 178 228 184 Q 205 188 180 180 Q 158 172 155 145 Z" fill="rgba(132,140,142,0.22)" />
-      {/* América do Sul */}
-      <path d="M 95 230 Q 118 215 138 225 Q 150 240 148 280 Q 145 310 125 320 Q 100 315 88 290 Q 78 260 95 230 Z" fill="rgba(132,140,142,0.22)" />
-      {/* América do Norte outline suave */}
-      <path d="M 68 155 Q 100 140 140 148 Q 148 172 128 192 Q 100 200 72 186 Q 58 170 68 155 Z" fill="rgba(132,140,142,0.14)" />
-
-      {/* ── ROTA GPS ── dashed line conectando os 3 destinos ── */}
-      {/* Portugal → Santiago */}
-      <path
-        d="M 173 175 Q 190 155 207 148"
-        fill="none" stroke={C.lime} strokeWidth="2" strokeDasharray="5 3" strokeLinecap="round"
-      />
-      {/* Santiago → TDP (longa rota transatlântica) */}
-      <path
-        d="M 215 145 Q 200 200 190 250 Q 178 280 118 290"
-        fill="none" stroke={C.lime} strokeWidth="2" strokeDasharray="5 3" strokeLinecap="round"
-      />
-      {/* Pulsação: current position (Portugal Douro) */}
-      <motion.circle
-        cx="173" cy="178"
-        r="12"
-        fill="none"
-        stroke={C.lime}
-        strokeWidth="1.5"
-        initial={{ r: 12, opacity: 0.7 }}
-        animate={{ r: 22, opacity: 0 }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
-      />
-
-      {/* ── PIN 1: Portugal ── */}
-      <circle cx="173" cy="178" r="7" fill={C.lime} />
-      <path d="M173,171 L173,164 L178,168 Z" fill={C.lime} />
-      {/* pin shadow */}
-      <ellipse cx="173" cy="180" rx="5" ry="2" fill="rgba(220,247,99,0.25)" />
-      <rect x="118" y="186" width="82" height="26" rx="6" fill="#1E2A30" fillOpacity="0.92" />
-      <text x="159" y="198" textAnchor="middle" fontSize="8" fontWeight="700" fill={C.lime} fontFamily="inherit" letterSpacing="0.06em">PORTUGAL</text>
-      <text x="159" y="208" textAnchor="middle" fontSize="6.5" fill={C.taupe} fontFamily="inherit">Douro · Vicentina · Fátima</text>
-
-      {/* ── PIN 2: Santiago ── */}
-      <circle cx="210" cy="148" r="7" fill="#6B9FCC" />
-      <path d="M210,141 L210,134 L215,138 Z" fill="#6B9FCC" />
-      <ellipse cx="210" cy="150" rx="5" ry="2" fill="rgba(107,159,204,0.25)" />
-      <rect x="154" y="112" width="84" height="26" rx="6" fill="#1E2A30" fillOpacity="0.92" />
-      <text x="196" y="124" textAnchor="middle" fontSize="8" fontWeight="700" fill="#6B9FCC" fontFamily="inherit" letterSpacing="0.06em">SANTIAGO</text>
-      <text x="196" y="134" textAnchor="middle" fontSize="6.5" fill={C.taupe} fontFamily="inherit">Portugal · Espanha · Galiza</text>
-
-      {/* ── PIN 3: Torres del Paine ── */}
-      <circle cx="115" cy="290" r="7" fill="#7FD4E0" />
-      <path d="M115,283 L115,276 L120,280 Z" fill="#7FD4E0" />
-      <ellipse cx="115" cy="292" rx="5" ry="2" fill="rgba(127,212,224,0.25)" />
-      <rect x="120" y="278" width="100" height="26" rx="6" fill="#1E2A30" fillOpacity="0.92" />
-      <text x="170" y="290" textAnchor="middle" fontSize="8" fontWeight="700" fill="#7FD4E0" fontFamily="inherit" letterSpacing="0.06em">PATAGÔNIA</text>
-      <text x="170" y="300" textAnchor="middle" fontSize="6.5" fill={C.taupe} fontFamily="inherit">Torres del Paine · Chile</text>
-
-      {/* ── VOCÊ AQUI: ponto de partida ── */}
-      <circle cx="210" cy="370" r="9" fill={C.slate} stroke={C.lime} strokeWidth="2" />
-      <circle cx="210" cy="370" r="4" fill={C.lime} />
-      <motion.circle cx="210" cy="370" r="9" fill="none" stroke={C.lime} strokeWidth="1"
-        initial={{ r: 9, opacity: 1 }} animate={{ r: 20, opacity: 0 }}
-        transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
-      />
-      <rect x="163" y="383" width="94" height="22" rx="6" fill={C.lime} />
-      <text x="210" y="397" textAnchor="middle" fontSize="8.5" fontWeight="700" fill={C.slate} fontFamily="inherit" letterSpacing="0.1em">VOCÊ AQUI</text>
-
-      {/* ── Rota do VOCÊ para Portugal ── */}
-      <path d="M 210 362 Q 200 290 180 210" fill="none" stroke="rgba(220,247,99,0.45)" strokeWidth="1.5" strokeDasharray="4 3" />
-
-      {/* ── Status bar ── */}
-      <rect x="30" y="420" width="360" height="20" rx="0" fill="#1E2A30" />
-      <rect x="30" y="420" width="360" height="20" rx="24" fill="#1E2A30" />
-      <text x="80" y="432" fontSize="7" fill={C.taupe} fontFamily="inherit">3 destinos disponíveis</text>
-      <text x="340" y="432" textAnchor="end" fontSize="7" fill={C.lime} fontFamily="inherit">● conectado</text>
-    </svg>
-  );
-}
 
 /* ───── DIFERENCIAIS ───── */
 const DIFERENCIAIS = [
@@ -290,19 +185,26 @@ export default function AutoguiadosPage() {
 
       {/* ===== HERO ===== */}
       <section
-        className="relative flex min-h-[92svh] w-full items-center overflow-hidden"
+        className="relative flex min-h-[100svh] w-full items-center overflow-hidden"
         style={{ background: C.slate }}
       >
-        {/* Grain */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.035]"
-          style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")", backgroundSize: "200px" }} />
+        {/* Foto de fundo — Torres del Paine */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/torres-del-paine/prod-w-tradicional.jpg')", backgroundPosition: "center 30%" }}
+        />
+        {/* Gradiente: forte na esquerda para legibilidade, abre na direita para mostrar a foto */}
+        <div
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(100deg, ${C.slate}f8 0%, ${C.slate}e0 38%, ${C.slate}90 62%, ${C.slate}50 80%, transparent 100%)` }}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-40" style={{ background: `linear-gradient(to top, ${C.slate}, transparent)` }} />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-[1180px] grid-cols-1 gap-10 px-6 py-28 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-16 md:px-10">
-          {/* Texto */}
+        <div className="relative z-10 mx-auto w-full max-w-[1180px] px-6 py-28 md:px-10">
           <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: EASE, delay: 0.15 }}>
-            <Kicker color={`text-[${C.lime}]`} line={`bg-[${C.lime}]/40`}>
-              <span style={{ color: C.lime }}>Formato Self-Guided · AONIK</span>
-            </Kicker>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.38em]" style={{ color: C.lime }}>
+              Formato Self-Guided · AONIK
+            </p>
             <h1
               className="mt-4 font-display font-light uppercase leading-[0.88] tracking-[-0.03em] text-white"
               style={{ fontSize: "clamp(3.6rem,11vw,8rem)" }}
@@ -344,16 +246,6 @@ export default function AutoguiadosPage() {
               <Breadcrumb tone="dark" accent={C.lime} items={[{ label: "Home", href: "/" }, { label: "Caminhadas", href: "/caminhadas" }, { label: "Autoguiados" }]} />
             </div>
           </motion.div>
-
-          {/* GPS SVG */}
-          <motion.div
-            className="flex items-center justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: EASE, delay: 0.4 }}
-          >
-            <GPSNavigator />
-          </motion.div>
         </div>
       </section>
 
@@ -386,16 +278,16 @@ export default function AutoguiadosPage() {
       {/* ===== DIFERENCIAIS ===== */}
       <section className="px-6 pb-20 md:px-10 md:pb-28" style={{ background: C.offwhite }}>
         <div className="mx-auto max-w-[1180px]">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {DIFERENCIAIS.map((d, i) => (
-              <Reveal key={d.n} delay={i * 0.07}>
+              <Reveal key={d.n} delay={i * 0.07} className="h-full">
                 <div
-                  className="rounded-2xl p-8"
+                  className="flex h-full flex-col rounded-2xl p-8"
                   style={{ background: C.slate, border: `1px solid ${C.slateEdge}` }}
                 >
                   <span className="font-display text-[2.8rem] font-light leading-none" style={{ color: C.lime, opacity: 0.35 }}>{d.n}</span>
                   <h3 className="mt-4 font-display text-[1.2rem] font-light leading-tight text-white">{d.titulo}</h3>
-                  <p className="mt-3 text-[13px] font-light leading-relaxed" style={{ color: C.taupe }}>{d.desc}</p>
+                  <p className="mt-3 flex-1 text-[13px] font-light leading-relaxed" style={{ color: C.taupe }}>{d.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -457,32 +349,41 @@ export default function AutoguiadosPage() {
       </div>
 
       {/* ===== PREFERE GRUPOS? ===== */}
-      <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: C.slate }}>
+      <section className="overflow-hidden px-6 py-20 md:px-10 md:py-28" style={{ background: C.ink }}>
         <div className="mx-auto max-w-[1180px]">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div className="grid grid-cols-1 gap-8 overflow-hidden rounded-2xl md:grid-cols-[1.1fr_0.9fr]" style={{ border: "1px solid rgba(220,247,99,0.12)" }}>
+            {/* Texto */}
             <Reveal>
-              <div className="max-w-xl">
+              <div className="flex flex-col justify-center gap-6 p-10 md:p-12">
                 <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: C.lime }}>
                   Prefere companhia?
                 </p>
-                <h2 className="mt-3 font-display text-[clamp(1.8rem,4vw,3rem)] font-light leading-[1.1] text-white">
+                <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] font-light leading-[1.1] text-white">
                   Prefere caminhar em grupo?
                 </h2>
-                <p className="mt-4 max-w-md text-[14px] font-light leading-relaxed" style={{ color: C.taupe }}>
+                <p className="max-w-md text-[14px] font-light leading-relaxed" style={{ color: C.taupe }}>
                   Se você quer a experiência completa com guia, saída confirmada, grupo pequeno e toda
                   a logística na mão de um especialista, os grupos AONIK são para você. TMB, Dolomitas,
                   Bavária, Tirol, Dana a Petra e mais.
                 </p>
+                <a
+                  href="/grupos"
+                  className="mt-2 inline-flex w-fit items-center gap-3 rounded-full px-9 py-4 text-[12px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 hover:scale-[1.03]"
+                  style={{ background: C.lime, color: C.slate }}
+                >
+                  Ver grupos com guia <span>→</span>
+                </a>
               </div>
             </Reveal>
-            <Reveal delay={0.1}>
-              <a
-                href="/grupos"
-                className="inline-flex items-center gap-3 rounded-full px-10 py-5 text-[12px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 hover:scale-[1.03]"
-                style={{ background: C.lime, color: C.slate }}
-              >
-                Ver grupos com guia <span>→</span>
-              </a>
+            {/* Foto igrejinha */}
+            <Reveal delay={0.08} className="h-full">
+              <div className="relative min-h-[300px] overflow-hidden md:min-h-0 md:rounded-none">
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-[1.04]"
+                  style={{ backgroundImage: "url('/images/grupos/dolomitas-igrejinha.jpg')" }}
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(30,42,48,0.35), transparent)" }} />
+              </div>
             </Reveal>
           </div>
         </div>
