@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Nav from "../../components/Nav";
+import Breadcrumb from "../../components/Breadcrumb";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
@@ -270,6 +271,14 @@ export default function Sarria7EtapasPage() {
                 Falar no WhatsApp
               </a>
             </motion.div>
+            <div className="mt-7">
+              <Breadcrumb tone="dark" accent="#F2A900" items={[
+                { label: "Home", href: "/" },
+                { label: "Caminhadas", href: "/caminhadas" },
+                { label: "Caminho de Santiago", href: "/jornada" },
+                { label: "Sarria · 7 Etapas" },
+              ]} />
+            </div>
           </div>
           <motion.div className="mt-12 flex items-center justify-center md:mt-0"
             initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
