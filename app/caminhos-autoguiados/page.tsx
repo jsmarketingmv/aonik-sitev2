@@ -22,6 +22,9 @@ const C = {
 
 const wx = (file: string, w: number, h: number) =>
   `https://static.wixstatic.com/media/${file}/v1/fill/w_${w},h_${h},al_c,q_82,enc_avif,quality_auto/img.jpg`;
+// PLACEHOLDER Unsplash p/ costa e peregrinação (trocar por fotos reais depois)
+const un = (id: string) =>
+  `https://images.unsplash.com/photo-${id}?q=80&w=800&h=560&auto=format&fit=crop`;
 
 const HERO = "2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg";
 
@@ -29,38 +32,48 @@ const ROTEIROS = [
   {
     nome: "Douro Experience",
     sub: "Autoguiado",
-    img: "2d4f5b_7edb87bf58444c00a4e2f0882eaff778~mv2.jpg",
+    src: wx("2d4f5b_7edb87bf58444c00a4e2f0882eaff778~mv2.jpg", 800, 560),
     meta: "6 dias · 58,7 km · mín. 2 pessoas",
     desc: "A travessia clássica do Vale do Douro no seu ritmo, entre vinhas em socalcos, quintas com prova e aldeias vinhateiras.",
     preco: "a partir de € 1.557",
     href: "/caminhos-autoguiados/douro",
-    soon: false,
   },
   {
     nome: "Douro Luxury",
     sub: "Premium · Estadias em quintas",
-    img: "2d4f5b_5a366974e9d24c1ab879fcf6eccb3a0c~mv2.jpeg",
+    src: wx("2d4f5b_5a366974e9d24c1ab879fcf6eccb3a0c~mv2.jpeg", 800, 560),
     meta: "6 dias · 27,2 km · caminhadas curtas",
     desc: "O Douro em estado de luxo. Hospedagem em quintas históricas, provas de Vinho do Porto Vintage e o roteiro com o maior número de experiências exclusivas.",
     preco: "a partir de € 2.130",
     href: "/caminhos-autoguiados/douro-luxury",
-    soon: false,
   },
   {
     nome: "Santiago e Douro",
     sub: "Peregrinação + vinhas",
-    img: "2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg",
+    src: wx("2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg", 800, 560),
     meta: "13 dias · 133 km · Caminho Português + Douro",
     desc: "Da emoção da chegada à Catedral de Santiago ao silêncio das vinhas do Douro. Duas paisagens Patrimônio UNESCO em uma só jornada.",
     preco: "a partir de € 2.200",
     href: "/caminhos-autoguiados/santiago-e-douro",
-    soon: false,
   },
-];
-
-const EM_BREVE = [
-  { nome: "Rota Vicentina", local: "Costa Vicentina · Alentejo" },
-  { nome: "Caminho de Fátima", local: "Centro de Portugal" },
+  {
+    nome: "Rota Vicentina",
+    sub: "Costa Atlântica · Alentejo",
+    src: un("1505118380757-91f5f5632de0"),
+    meta: "8 dias · 91,1 km · Trilho dos Pescadores",
+    desc: "A costa mais selvagem da Europa, no sudoeste de Portugal. Falésias, praias desertas e o silêncio do Atlântico, no seu ritmo.",
+    preco: "a partir de € 856",
+    href: "/caminhos-autoguiados/rota-vicentina",
+  },
+  {
+    nome: "Nazaré a Fátima",
+    sub: "Peregrinação · Caminho de Fátima",
+    src: un("1490730141103-6cac27aaab94"),
+    meta: "6 dias · 56 km · do mar ao santuário",
+    desc: "Uma peregrinação pelo coração de Portugal, do oceano de Nazaré aos mosteiros de Alcobaça e Batalha, até o Santuário de Fátima.",
+    preco: "a partir de € 870",
+    href: "/caminhos-autoguiados/nazare-a-fatima",
+  },
 ];
 
 export default function CaminhosPortugalHub() {
@@ -134,7 +147,7 @@ export default function CaminhosPortugalHub() {
                   style={{ background: C.casca, border: `1px solid rgba(196,165,106,0.18)` }}>
                   <div className="relative h-56 overflow-hidden">
                     <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.05]"
-                      style={{ backgroundImage: `url('${wx(r.img, 800, 560)}')` }} />
+                      style={{ backgroundImage: `url('${r.src}')` }} />
                     <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${C.casca} 4%, transparent 60%)` }} />
                     <span className="absolute left-4 top-4 rounded-full px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.2em]"
                       style={{ background: "rgba(34,10,17,0.7)", color: C.ouro }}>{r.sub}</span>
@@ -156,22 +169,6 @@ export default function CaminhosPortugalHub() {
             ))}
           </div>
 
-          {/* Em breve */}
-          <Reveal delay={0.1}>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              {EM_BREVE.map((e) => (
-                <div key={e.nome} className="flex items-center justify-between rounded-2xl border px-7 py-6"
-                  style={{ borderColor: "rgba(63,21,33,0.16)", background: "rgba(63,21,33,0.03)" }}>
-                  <div>
-                    <h3 className="font-display text-xl font-light" style={{ color: C.vinho }}>{e.nome}</h3>
-                    <p className="mt-1 text-[12px] uppercase tracking-[0.16em]" style={{ color: "rgba(63,21,33,0.5)" }}>{e.local}</p>
-                  </div>
-                  <span className="rounded-full border px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.18em]"
-                    style={{ borderColor: "rgba(190,101,73,0.4)", color: C.terracota }}>Em breve</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 
