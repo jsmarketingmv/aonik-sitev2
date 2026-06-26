@@ -25,7 +25,10 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "AONIK: Turismo de Natureza",
+  title: {
+    template: "%s | AONIK",
+    default: "AONIK: Turismo de Natureza",
+  },
   description:
     "Caminhadas, bike, cruzeiros e refúgios de natureza. Viagens que viram jornada. Descubra seu próximo destino com a AONIK.",
   openGraph: {
@@ -34,6 +37,7 @@ export const metadata: Metadata = {
       "Viagens que viram jornada. Caminhadas, bike, cruzeiros e refúgios de natureza.",
     type: "website",
     locale: "pt_BR",
+    siteName: "AONIK",
   },
 };
 
