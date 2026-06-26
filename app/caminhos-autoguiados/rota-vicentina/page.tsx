@@ -196,11 +196,11 @@ function GaleriaInterativa() {
   const [idx, setIdx] = useState(0);
   const img = GALERIA[idx];
   return (
-    <div className="grid gap-3 md:grid-cols-[1fr_210px]">
+    <div className="space-y-3">
       <AnimatePresence mode="wait">
         <motion.div key={idx} initial={{ opacity: 0.5, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }} transition={{ duration: 0.45, ease: EASE }}
-          className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
+          className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9" }}>
           <img src={img.src} alt={img.cap} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${V.noite}cc 0%, transparent 55%)` }} />
           <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -212,14 +212,14 @@ function GaleriaInterativa() {
           </div>
         </motion.div>
       </AnimatePresence>
-      <div className="flex gap-2 overflow-x-auto md:max-h-[470px] md:flex-col md:overflow-y-auto md:overflow-x-visible">
+      <div className="grid grid-cols-4 gap-2 sm:grid-cols-4 lg:grid-cols-8">
         {GALERIA.map((g, i) => (
-          <button key={i} onClick={() => setIdx(i)}
-            className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
-            style={{ width: 210, height: 70, opacity: i === idx ? 1 : 0.42,
+          <button key={i} onClick={() => setIdx(i)} aria-label={g.tag}
+            className="relative aspect-[16/10] overflow-hidden rounded-lg transition-all duration-300"
+            style={{ opacity: i === idx ? 1 : 0.5,
               outline: i === idx ? `2px solid ${V.agua}` : "2px solid transparent", outlineOffset: 2 }}>
             <img src={g.src} alt={g.tag}
-              className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.05]" />
+              className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.06]" />
           </button>
         ))}
       </div>

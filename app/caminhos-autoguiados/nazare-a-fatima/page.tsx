@@ -21,12 +21,13 @@ const F = {
   textSoft: "rgba(241,234,217,0.62)",
 };
 
-/* Fotos reais da rota Nazaré a Fátima (acervo Caminhos de Portugal). */
+/* Fotos reais da rota Nazaré a Fátima (acervos Caminhos de Portugal + Portugal A2Z). */
 const P = "/images/caminhos-autoguiados/nazare-fatima";
 const IMG = {
-  heroImg: `${P}/nazare-farol.jpg`,  // peregrinos na falésia, farol e Atlântico
-  baia:    `${P}/nazare-baia.jpg`,   // grupo no alto, baía e areal de Nazaré
-  batalha: `${P}/batalha.jpg`,       // caminhantes rumo ao Mosteiro da Batalha
+  hero:    `${P}/hero.jpg`,        // peregrinos na falésia de Nazaré, farol e Atlântico
+  baia:    `${P}/baia.jpg`,        // baía e areal de Nazaré do alto
+  batalha: `${P}/batalha.jpg`,     // caminhantes rumo ao Mosteiro da Batalha
+  chegada: `${P}/porto-mos.jpg`,   // peregrinos no alto do castelo de Porto de Mós
 };
 
 // ============================================================
@@ -175,20 +176,25 @@ function ElevationProfile() {
 // GaleriaInterativa
 // ============================================================
 const GALERIA = [
-  { src: IMG.baia,    cap: "A baía e o areal de Nazaré vistos do alto da falésia", tag: "Nazaré" },
-  { src: IMG.heroImg, cap: "Peregrinos no Sítio da Nazaré, diante do farol e do Atlântico", tag: "O Sítio" },
-  { src: IMG.batalha, cap: "A chegada ao Mosteiro da Batalha, joia do gótico", tag: "Os Mosteiros" },
+  { src: `${P}/baia.jpg`,        cap: "A baía e o areal de Nazaré vistos do alto da falésia", tag: "Nazaré" },
+  { src: `${P}/santuario.jpg`,   cap: "O Santuário no Sítio da Nazaré, debruçado sobre o Atlântico", tag: "O Sítio" },
+  { src: `${P}/vinhas.jpg`,      cap: "Peregrinos atravessam campos e vinhas rumo ao interior", tag: "O Caminho" },
+  { src: `${P}/porto-mos.jpg`,   cap: "O castelo de Porto de Mós, a meio da peregrinação", tag: "Porto de Mós" },
+  { src: `${P}/aldeia.jpg`,      cap: "Aldeias de pedra no coração de Portugal", tag: "Aldeias" },
+  { src: `${P}/batalha.jpg`,     cap: "A chegada ao Mosteiro da Batalha, joia do gótico", tag: "Os Mosteiros" },
+  { src: `${P}/serra.jpg`,       cap: "A serra verde entre Alcobaça e Fátima", tag: "Serra" },
+  { src: `${P}/sinalizacao.jpg`, cap: "Os marcos do Caminho de Fátima guiam cada etapa", tag: "Sinalização" },
 ];
 
 function GaleriaInterativa() {
   const [idx, setIdx] = useState(0);
   const img = GALERIA[idx];
   return (
-    <div className="grid gap-3 md:grid-cols-[1fr_210px]">
+    <div className="space-y-3">
       <AnimatePresence mode="wait">
         <motion.div key={idx} initial={{ opacity: 0.5, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }} transition={{ duration: 0.45, ease: EASE }}
-          className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
+          className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9" }}>
           <img src={img.src} alt={img.cap} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${F.noite}cc 0%, transparent 55%)` }} />
           <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -200,14 +206,14 @@ function GaleriaInterativa() {
           </div>
         </motion.div>
       </AnimatePresence>
-      <div className="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible">
+      <div className="grid grid-cols-4 gap-2 sm:grid-cols-4 lg:grid-cols-8">
         {GALERIA.map((g, i) => (
-          <button key={i} onClick={() => setIdx(i)}
-            className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
-            style={{ width: 210, height: 70, opacity: i === idx ? 1 : 0.42,
+          <button key={i} onClick={() => setIdx(i)} aria-label={g.tag}
+            className="relative aspect-[16/10] overflow-hidden rounded-lg transition-all duration-300"
+            style={{ opacity: i === idx ? 1 : 0.5,
               outline: i === idx ? `2px solid ${F.candeia}` : "2px solid transparent", outlineOffset: 2 }}>
             <img src={g.src} alt={g.tag}
-              className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.05]" />
+              className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.06]" />
           </button>
         ))}
       </div>
@@ -276,7 +282,7 @@ const MARCOS = [
     texto:
       "Depois de quatro dias caminhando, a entrada no Santuário de Fátima tem um peso diferente. A Capelinha das Aparições, a explanada imensa, o silêncio de quem chegou. Não importa a sua fé: chegar a pé a um lugar que move milhões de pessoas é uma experiência que fica.",
     detalhe: "A pé rumo ao Santuário de Fátima",
-    img: IMG.heroImg,
+    img: IMG.chegada,
     bg: F.noite,
     imgDireita: true,
     colors: {
@@ -365,7 +371,7 @@ export default function NazareAFatimaPage() {
       {/* ===== HERO ===== */}
       <section className="relative flex min-h-[100svh] w-full items-center overflow-hidden" style={{ background: F.noite }}>
         <motion.div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${IMG.heroImg}')`, backgroundPosition: "center 35%" }}
+          style={{ backgroundImage: `url('${IMG.hero}')`, backgroundPosition: "center 35%" }}
           initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 14, ease: "easeOut" }} />
         <div className="absolute inset-0"
           style={{ background: `linear-gradient(to right, ${F.noite}f2 0%, ${F.noite}b4 52%, ${F.noite}70 100%)` }} />
