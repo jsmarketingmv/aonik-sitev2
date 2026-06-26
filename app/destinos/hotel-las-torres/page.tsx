@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Nav from "../../components/Nav";
+import Breadcrumb from "../../components/Breadcrumb";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
@@ -216,6 +217,13 @@ export default function HotelLasTorresPage() {
               >
                 Quero me hospedar <span>→</span>
               </a>
+            </div>
+            <div className="mt-7">
+              <Breadcrumb tone="dark" accent={L.gold} items={[
+                { label: "Home", href: "/" },
+                { label: "Hotéis", href: "/refugios" },
+                { label: "Hotel Las Torres" },
+              ]} />
             </div>
           </motion.div>
         </div>

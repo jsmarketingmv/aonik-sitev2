@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Nav from "../../components/Nav";
+import Breadcrumb from "../../components/Breadcrumb";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
@@ -388,6 +389,13 @@ export default function TMBV2Page() {
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: C.ch }} />
               Saída confirmada · 18–31 Ago 2026
             </motion.div>
+            <div className="mt-7">
+              <Breadcrumb tone="dark" accent={C.ch} items={[
+                { label: "Home", href: "/" },
+                { label: "Grupos", href: "/grupos" },
+                { label: "Tour du Mont Blanc" },
+              ]} />
+            </div>
           </div>
 
           <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Nav from "../../components/Nav";
+import Breadcrumb from "../../components/Breadcrumb";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
@@ -567,6 +568,13 @@ export default function CoxilhaRicaPage() {
                 </span>
               </span>
             </motion.div>
+            <div className="mt-7">
+              <Breadcrumb tone="dark" accent={C.campo} items={[
+                { label: "Home", href: "/" },
+                { label: "Grupos", href: "/grupos" },
+                { label: "Coxilha Rica" },
+              ]} />
+            </div>
           </div>
 
           {/* Direita — campo horizon SVG */}
