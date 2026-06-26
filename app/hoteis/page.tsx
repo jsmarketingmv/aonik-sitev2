@@ -60,33 +60,33 @@ const EXPERIENCIAS_TIPOS = [
     n: "01",
     cat: "Na natureza",
     titulo: "Expedições do lugar",
-    desc: "Trekking nas Torres, safári com os Big Five, navegação em geleiras. O refúgio é a sua base.",
-    // Landscape/montage Rio Serrano + Torres del Paine
-    img: "https://rioserrano.com/wp-content/uploads/2025/05/230629_Montaje-Estanques-Serrano-1-1024x461-1.jpg",
+    desc: "Trekking nas Torres, safári com os Big Five, navegação em geleiras. O hotel é a sua base.",
+    // Trekking real Torres del Paine (Rio Serrano / The Massif)
+    img: "/rioserrano/massif-trekking.webp",
   },
   {
     n: "02",
     cat: "À mesa",
     titulo: "Alta gastronomia",
     desc: "Chefs autorais, ingredientes da região. Cada prato é uma leitura do território.",
-    // Gastronomy photo Rio Serrano
-    img: "https://rioserrano.com/wp-content/uploads/2023/12/F7S02517.png",
+    // Gastronomia real Rio Serrano
+    img: "/rioserrano/gastro-1.webp",
   },
   {
     n: "03",
     cat: "Para o corpo",
     titulo: "Spa & bem-estar",
     desc: "Tratamentos com vista para a montanha. A recuperação do corpo é parte do roteiro.",
-    // Interior/spa Rio Serrano
-    img: "https://rioserrano.com/wp-content/uploads/2023/12/1P0A4105.png",
+    // Spa real Rio Serrano (piscina 270m² com vista para o maciço)
+    img: "/rioserrano/spa-pool-1.webp",
   },
   {
     n: "04",
     cat: "Sem esforço",
     titulo: "Logística VIP",
     desc: "Transfers privados, concierge, guias exclusivos. Você só decide de que forma viver.",
-    // Luxury safari — Jaci's atmosphere
-    img: "https://www.jacis.co.za/images/home-hero.jpg",
+    // Hotel ao entardecer — chegada sem esforço (Rio Serrano)
+    img: "/rioserrano/hotel-noite.webp",
   },
 ];
 

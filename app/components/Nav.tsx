@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "./LanguageProvider";
 import { LANGS } from "../lib/i18n";
 
-// Peregrinação → /jornada; Hotéis → /refugios (rotas existentes, só renomeadas no nav)
-const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/refugios"];
+// Peregrinação → /jornada; Hotéis → /hoteis
+const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/hoteis"];
 
 // Login do SaaS Operadora (mesmo destino para agente/operador e equipe AONIK).
 // Ativa quando o domínio aonik.com.br for conectado (path /reservas → SaaS).

@@ -16,7 +16,7 @@ export default function Footer() {
     {
       titulo: f.colExp,
       links: f.colExpLinks,
-      hrefs: ["/caminhadas", "/#bike", "/navegacao", "/refugios"],
+      hrefs: ["/caminhadas", "/#bike", "/navegacao", "/hoteis"],
     },
   ];
 
