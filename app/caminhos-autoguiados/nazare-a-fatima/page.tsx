@@ -21,17 +21,12 @@ const F = {
   textSoft: "rgba(241,234,217,0.62)",
 };
 
-/* PLACEHOLDER: imagens Unsplash temáticas (onda, santuário, fé).
-   Trocar por fotos reais de Nazaré, Alcobaça, Batalha e Fátima (SSD). */
-const U = (id: string, w: number, h: number) =>
-  `https://images.unsplash.com/photo-${id}?q=80&w=${w}&h=${h}&auto=format&fit=crop`;
+/* Fotos reais da rota Nazaré a Fátima (acervo Caminhos de Portugal). */
+const P = "/images/caminhos-autoguiados/nazare-fatima";
 const IMG = {
-  hero:    "1559827260-dc66d52bef19",   // onda do Atlântico (Nazaré)
-  igreja:  "1438032005730-c779502df39b", // interior de igreja, vitrais (Fátima)
-  fe:      "1490730141103-6cac27aaab94", // silhueta de braços abertos ao pôr do sol
-  oceano:  "1518837695005-2083093ee35b", // superfície do oceano
-  caminho: "1454942901704-3c44c11b2ad1", // figura no alto da rocha
-  praia:   "1471922694854-ff1b63b20054", // praia ao pôr do sol
+  heroImg: `${P}/nazare-farol.jpg`,  // peregrinos na falésia, farol e Atlântico
+  baia:    `${P}/nazare-baia.jpg`,   // grupo no alto, baía e areal de Nazaré
+  batalha: `${P}/batalha.jpg`,       // caminhantes rumo ao Mosteiro da Batalha
 };
 
 // ============================================================
@@ -180,12 +175,9 @@ function ElevationProfile() {
 // GaleriaInterativa
 // ============================================================
 const GALERIA = [
-  { id: IMG.hero,    cap: "As ondas gigantes de Nazaré, início da peregrinação", tag: "Nazaré" },
-  { id: IMG.igreja,  cap: "A luz dos vitrais, o silêncio do destino", tag: "Fé" },
-  { id: IMG.fe,      cap: "O recolhimento de quem chega ao santuário", tag: "Chegada" },
-  { id: IMG.oceano,  cap: "O Atlântico, ponto de partida do caminho", tag: "Oceano" },
-  { id: IMG.caminho, cap: "Etapas por campos, aldeias e mosteiros", tag: "O Caminho" },
-  { id: IMG.praia,   cap: "Do mar ao interior, o primeiro dia", tag: "Litoral" },
+  { src: IMG.baia,    cap: "A baía e o areal de Nazaré vistos do alto da falésia", tag: "Nazaré" },
+  { src: IMG.heroImg, cap: "Peregrinos no Sítio da Nazaré, diante do farol e do Atlântico", tag: "O Sítio" },
+  { src: IMG.batalha, cap: "A chegada ao Mosteiro da Batalha, joia do gótico", tag: "Os Mosteiros" },
 ];
 
 function GaleriaInterativa() {
@@ -197,7 +189,7 @@ function GaleriaInterativa() {
         <motion.div key={idx} initial={{ opacity: 0.5, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }} transition={{ duration: 0.45, ease: EASE }}
           className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
-          <img src={U(img.id, 1280, 800)} alt={img.cap} className="absolute inset-0 h-full w-full object-cover" />
+          <img src={img.src} alt={img.cap} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${F.noite}cc 0%, transparent 55%)` }} />
           <div className="absolute bottom-0 left-0 right-0 p-6">
             <span className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: F.candeia }}>{img.tag}</span>
@@ -214,7 +206,7 @@ function GaleriaInterativa() {
             className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
             style={{ width: 210, height: 70, opacity: i === idx ? 1 : 0.42,
               outline: i === idx ? `2px solid ${F.candeia}` : "2px solid transparent", outlineOffset: 2 }}>
-            <img src={U(g.id, 420, 140)} alt={g.tag}
+            <img src={g.src} alt={g.tag}
               className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.05]" />
           </button>
         ))}
@@ -254,7 +246,7 @@ const MARCOS = [
     texto:
       "A peregrinação começa à beira do Atlântico, na vila de Nazaré, famosa pelas maiores ondas surfadas do mundo. Lá em cima, no Sítio, o santuário olha para o mar e para a falésia onde os surfistas desafiam montanhas de água. É daqui, do oceano, que o caminho parte rumo ao interior.",
     detalhe: "Sítio da Nazaré · ondas gigantes · Atlântico",
-    img: IMG.hero,
+    img: IMG.baia,
     bg: F.indigo,
     imgDireita: true,
     colors: {
@@ -269,7 +261,7 @@ const MARCOS = [
     texto:
       "Entre Nazaré e Fátima, o caminho passa por dois dos mais belos monumentos de Portugal: o Mosteiro de Alcobaça, com a igreja gótica e a lenda de amor de Pedro e Inês, e o Mosteiro da Batalha, obra-prima do gótico manuelino. Dois Patrimônios da Humanidade, encontrados a pé.",
     detalhe: "Alcobaça · Batalha · Patrimônio UNESCO",
-    img: IMG.caminho,
+    img: IMG.batalha,
     bg: F.azul,
     imgDireita: false,
     colors: {
@@ -283,8 +275,8 @@ const MARCOS = [
     titulo: ["A Chegada a", "Fátima"],
     texto:
       "Depois de quatro dias caminhando, a entrada no Santuário de Fátima tem um peso diferente. A Capelinha das Aparições, a explanada imensa, o silêncio de quem chegou. Não importa a sua fé: chegar a pé a um lugar que move milhões de pessoas é uma experiência que fica.",
-    detalhe: "Santuário de Fátima · Capelinha das Aparições",
-    img: IMG.igreja,
+    detalhe: "A pé rumo ao Santuário de Fátima",
+    img: IMG.heroImg,
     bg: F.noite,
     imgDireita: true,
     colors: {
@@ -373,7 +365,7 @@ export default function NazareAFatimaPage() {
       {/* ===== HERO ===== */}
       <section className="relative flex min-h-[100svh] w-full items-center overflow-hidden" style={{ background: F.noite }}>
         <motion.div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${U(IMG.hero, 2200, 1400)}')` }}
+          style={{ backgroundImage: `url('${IMG.heroImg}')`, backgroundPosition: "center 35%" }}
           initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 14, ease: "easeOut" }} />
         <div className="absolute inset-0"
           style={{ background: `linear-gradient(to right, ${F.noite}f2 0%, ${F.noite}b4 52%, ${F.noite}70 100%)` }} />
@@ -536,7 +528,7 @@ export default function NazareAFatimaPage() {
           <div className={`grid md:grid-cols-2 ${m.imgDireita ? "" : "md:[direction:rtl]"}`}>
             <div className="relative min-h-[420px] overflow-hidden md:min-h-[560px]" style={{ direction: "ltr" }}>
               <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-[1.03]"
-                style={{ backgroundImage: `url('${U(m.img, 1400, 1000)}')` }} />
+                style={{ backgroundImage: `url('${m.img}')` }} />
               <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 35%, ${m.bg}cc 100%)` }} />
               <div className="absolute bottom-4 left-5">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.3em]" style={{ color: m.colors.detalhe }}>{m.detalhe}</span>

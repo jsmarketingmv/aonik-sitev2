@@ -21,17 +21,15 @@ const V = {
   textSoft: "rgba(244,239,228,0.62)",
 };
 
-/* PLACEHOLDER: imagens Unsplash temáticas da costa atlântica.
-   Trocar por fotos reais da Rota Vicentina (SSD) quando disponíveis. */
-const U = (id: string, w: number, h: number) =>
-  `https://images.unsplash.com/photo-${id}?q=80&w=${w}&h=${h}&auto=format&fit=crop`;
+/* Fotos reais da Rota Vicentina (acervo AONIK · SSD). */
+const P = "/images/caminhos-autoguiados/vicentina";
 const IMG = {
-  hero:   "1505118380757-91f5f5632de0",
-  onda:   "1559827260-dc66d52bef19",
-  coast:  "1471922694854-ff1b63b20054",
-  praia:  "1473116763249-2faaef81ccda",
-  oceano: "1518837695005-2083093ee35b",
-  pausa:  "1454942901704-3c44c11b2ad1",
+  hero:   `${P}/IMG_8891.jpg`,  // figura na falésia diante do Atlântico
+  onda:   `${P}/IMG_8987.jpg`,  // falésias ocre sobre o mar
+  coast:  `${P}/IMG_9189.jpg`,  // areal imenso e deserto
+  praia:  `${P}/IMG_8763.jpg`,  // enseada de água turquesa
+  oceano: `${P}/IMG_9705.jpg`,  // cala turquesa ao pé da falésia
+  pausa:  `${P}/IMG_9408.jpg`,  // fim de tarde dourado
 };
 
 // ============================================================
@@ -184,12 +182,14 @@ function ElevationProfile() {
 // GaleriaInterativa
 // ============================================================
 const GALERIA = [
-  { id: IMG.hero,   cap: "A costa selvagem do sudoeste de Portugal, onde a terra acaba", tag: "Atlântico" },
-  { id: IMG.onda,   cap: "O mar bate forte ao pé das falésias do Trilho dos Pescadores", tag: "Falésias" },
-  { id: IMG.coast,  cap: "Praias desertas e o voo das aves ao pôr do sol", tag: "Praias" },
-  { id: IMG.praia,  cap: "Areais infinitos entre Porto Covo e Milfontes", tag: "Dunas" },
-  { id: IMG.oceano, cap: "O azul do Atlântico, sempre ao seu lado", tag: "Oceano" },
-  { id: IMG.pausa,  cap: "A pausa, o silêncio e o voltar a si", tag: "Pausa" },
+  { src: `${P}/IMG_8891.jpg`, cap: "Onde a terra se debruça sobre o Atlântico", tag: "Falésias" },
+  { src: `${P}/IMG_8763.jpg`, cap: "Enseadas de água turquesa escondidas entre as falésias", tag: "Praias" },
+  { src: `${P}/IMG_9125.jpg`, cap: "A costa recortada do sudoeste alentejano", tag: "Enseadas" },
+  { src: `${P}/IMG_9189.jpg`, cap: "Areais imensos onde, muitas vezes, você é a única pessoa", tag: "Dunas" },
+  { src: `${P}/IMG_9176.jpg`, cap: "A costa rochosa coberta de mato selvagem", tag: "Costa" },
+  { src: `${P}/IMG_9705.jpg`, cap: "Águas turquesa ao pé do Trilho dos Pescadores", tag: "Oceano" },
+  { src: `${P}/IMG_9408.jpg`, cap: "O fim de tarde dourado sobre o litoral do Alentejo", tag: "Pôr do sol" },
+  { src: `${P}/IMG_9432.jpg`, cap: "Fortalezas e história à beira do oceano", tag: "História" },
 ];
 
 function GaleriaInterativa() {
@@ -201,7 +201,7 @@ function GaleriaInterativa() {
         <motion.div key={idx} initial={{ opacity: 0.5, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }} transition={{ duration: 0.45, ease: EASE }}
           className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
-          <img src={U(img.id, 1280, 800)} alt={img.cap} className="absolute inset-0 h-full w-full object-cover" />
+          <img src={img.src} alt={img.cap} className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${V.noite}cc 0%, transparent 55%)` }} />
           <div className="absolute bottom-0 left-0 right-0 p-6">
             <span className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: V.agua }}>{img.tag}</span>
@@ -212,13 +212,13 @@ function GaleriaInterativa() {
           </div>
         </motion.div>
       </AnimatePresence>
-      <div className="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible">
+      <div className="flex gap-2 overflow-x-auto md:max-h-[470px] md:flex-col md:overflow-y-auto md:overflow-x-visible">
         {GALERIA.map((g, i) => (
           <button key={i} onClick={() => setIdx(i)}
             className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
             style={{ width: 210, height: 70, opacity: i === idx ? 1 : 0.42,
               outline: i === idx ? `2px solid ${V.agua}` : "2px solid transparent", outlineOffset: 2 }}>
-            <img src={U(g.id, 420, 140)} alt={g.tag}
+            <img src={g.src} alt={g.tag}
               className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.05]" />
           </button>
         ))}
@@ -382,7 +382,7 @@ export default function RotaVicentinaPage() {
       {/* ===== HERO ===== */}
       <section className="relative flex min-h-[100svh] w-full items-center overflow-hidden" style={{ background: V.noite }}>
         <motion.div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${U(IMG.hero, 2200, 1400)}')` }}
+          style={{ backgroundImage: `url('${IMG.hero}')` }}
           initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 14, ease: "easeOut" }} />
         <div className="absolute inset-0"
           style={{ background: `linear-gradient(to right, ${V.noite}f2 0%, ${V.noite}b0 52%, ${V.noite}66 100%)` }} />
@@ -545,7 +545,7 @@ export default function RotaVicentinaPage() {
           <div className={`grid md:grid-cols-2 ${m.imgDireita ? "" : "md:[direction:rtl]"}`}>
             <div className="relative min-h-[420px] overflow-hidden md:min-h-[560px]" style={{ direction: "ltr" }}>
               <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-[1.03]"
-                style={{ backgroundImage: `url('${U(m.img, 1400, 1000)}')` }} />
+                style={{ backgroundImage: `url('${m.img}')` }} />
               <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 35%, ${m.bg}cc 100%)` }} />
               <div className="absolute bottom-4 left-5">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.3em]" style={{ color: m.colors.detalhe }}>{m.detalhe}</span>
