@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Contato from "../components/Contato";
@@ -113,9 +113,85 @@ function GlobeRoutes() {
 }
 
 export default function GruposPage() {
+  const [lb, setLb] = useState<number | null>(null);
+
+  const prev = useCallback(() => setLb((i) => (i != null ? (i - 1 + GALERIA_GRUPOS.length) % GALERIA_GRUPOS.length : null)), []);
+  const next = useCallback(() => setLb((i) => (i != null ? (i + 1) % GALERIA_GRUPOS.length : null)), []);
+
+  useEffect(() => {
+    if (lb === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLb(null);
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lb, prev, next]);
+
   return (
     <main className="relative bg-cream">
       <Nav />
+
+      {/* ── LIGHTBOX ── */}
+      <AnimatePresence>
+        {lb !== null && (
+          <motion.div
+            className="fixed inset-0 z-[9999] flex items-center justify-center"
+            style={{ background: "rgba(0,0,0,0.92)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setLb(null)}
+          >
+            {/* Imagem */}
+            <motion.img
+              key={lb}
+              src={GALERIA_GRUPOS[lb].src}
+              alt=""
+              className="max-h-[88svh] max-w-[92vw] rounded-xl object-contain shadow-2xl"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            {/* Fechar */}
+            <button
+              onClick={() => setLb(null)}
+              className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full text-xl text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+              aria-label="Fechar"
+            >
+              ✕
+            </button>
+
+            {/* Prev */}
+            <button
+              onClick={(e) => { e.stopPropagation(); prev(); }}
+              className="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full text-white/60 transition-all hover:bg-white/10 hover:text-white"
+              aria-label="Anterior"
+            >
+              <span className="text-2xl">‹</span>
+            </button>
+
+            {/* Next */}
+            <button
+              onClick={(e) => { e.stopPropagation(); next(); }}
+              className="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full text-white/60 transition-all hover:bg-white/10 hover:text-white"
+              aria-label="Próxima"
+            >
+              <span className="text-2xl">›</span>
+            </button>
+
+            {/* Contador */}
+            <p className="absolute bottom-5 left-1/2 -translate-x-1/2 text-[12px] font-medium tracking-[0.12em] text-white/40">
+              {lb + 1} / {GALERIA_GRUPOS.length}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* HERO — o globo com rotas */}
       <section className="grain relative flex min-h-[100svh] w-full items-center overflow-hidden bg-forest">
@@ -247,12 +323,21 @@ export default function GruposPage() {
           <div className="grid grid-cols-12 gap-3 md:gap-4">
             {GALERIA_GRUPOS.map((g, i) => (
               <Reveal key={i} delay={(i % 4) * 0.05} className={g.cls}>
-                <div className="group relative h-full overflow-hidden rounded-xl">
+                <button
+                  className="group relative h-full w-full overflow-hidden rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                  onClick={() => setLb(i)}
+                  aria-label="Ampliar foto"
+                >
                   <div
                     className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
                     style={{ backgroundImage: `url('${g.src}')` }}
                   />
-                </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "rgba(0,0,0,0.22)" }}>
+                    <span className="rounded-full bg-black/40 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur-sm">
+                      Ampliar
+                    </span>
+                  </div>
+                </button>
               </Reveal>
             ))}
           </div>

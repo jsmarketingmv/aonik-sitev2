@@ -376,15 +376,13 @@ export default function AutoguiadosPage() {
               </div>
             </Reveal>
             {/* Foto igrejinha */}
-            <Reveal delay={0.08} className="h-full">
-              <div className="relative min-h-[300px] overflow-hidden md:min-h-0 md:rounded-none">
-                <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-[1.04]"
-                  style={{ backgroundImage: "url('/images/grupos/dolomitas-igrejinha.jpg')" }}
-                />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(30,42,48,0.35), transparent)" }} />
-              </div>
-            </Reveal>
+            <div className="relative min-h-[320px]">
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-[1.04]"
+                style={{ backgroundImage: "url('/images/grupos/dolomitas-igrejinha.jpg')" }}
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(30,42,48,0.35), transparent)" }} />
+            </div>
           </div>
         </div>
       </section>
