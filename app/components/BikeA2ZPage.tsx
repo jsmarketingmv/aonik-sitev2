@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Nav from "./Nav";
+import Breadcrumb from "./Breadcrumb";
 import Footer from "./Footer";
 import Contato from "./Contato";
 import FloatingActions from "./FloatingActions";
@@ -123,6 +124,13 @@ export default function BikeA2ZPage({ d }: { d: A2ZBikeData }) {
               >
                 Solicitar proposta
               </a>
+            </div>
+            <div className="mt-7">
+              <Breadcrumb tone="dark" accent={d.pal.accent} items={[
+                { label: "Home", href: "/" },
+                { label: "Bike", href: "/bike" },
+                { label: d.nome },
+              ]} />
             </div>
           </motion.div>
         </div>
