@@ -17,8 +17,6 @@ export default function Contato({ destino = "" }: { destino?: string }) {
     destino,
     email: "",
     telefone: "",
-    cidade: "",
-    estado: "",
     mensagem: "",
   });
 
@@ -175,23 +173,6 @@ export default function Contato({ destino = "" }: { destino?: string }) {
               />
             </Field>
 
-            <Field label={c.f.cidade}>
-              <input
-                value={form.cidade}
-                onChange={(e) => set("cidade", e.target.value)}
-                placeholder={c.ph.cidade}
-                className={inputCls}
-              />
-            </Field>
-
-            <Field label={c.f.estado}>
-              <input
-                value={form.estado}
-                onChange={(e) => set("estado", e.target.value)}
-                placeholder={c.ph.estado}
-                className={inputCls}
-              />
-            </Field>
           </div>
 
           <div className="mt-6">

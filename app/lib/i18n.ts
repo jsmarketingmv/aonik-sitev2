@@ -45,16 +45,12 @@ export interface Dict {
       interesse: string;
       email: string;
       telefone: string;
-      cidade: string;
-      estado: string;
       mensagem: string;
     };
     ph: {
       nome: string;
       email: string;
       telefone: string;
-      cidade: string;
-      estado: string;
       mensagem: string;
     };
     selecione: string;
@@ -173,18 +169,14 @@ export const translations: Record<Lang, Dict> = {
         interesse: "Interesse",
         email: "E-mail",
         telefone: "Telefone / WhatsApp",
-        cidade: "Cidade",
-        estado: "Estado / País",
         mensagem: "Mensagem",
       },
       ph: {
         nome: "Seu nome",
         email: "seu@email.com",
         telefone: "(11) 99999-9999",
-        cidade: "Sua cidade",
-        estado: "Ex: SP, Brasil",
         mensagem:
-          "Conte sobre o tipo de viagem, datas, número de pessoas…",
+          "Deixe aqui sua dúvida, solicitação ou deixe algumas informações sobre o período desejado, número de pessoas ou o comentário desejado.",
       },
       selecione: "Selecione…",
       destinos: [
@@ -321,17 +313,13 @@ export const translations: Record<Lang, Dict> = {
         interesse: "Interés",
         email: "Correo",
         telefone: "Teléfono / WhatsApp",
-        cidade: "Ciudad",
-        estado: "Provincia / País",
         mensagem: "Mensaje",
       },
       ph: {
         nome: "Tu nombre",
         email: "tu@correo.com",
         telefone: "+54 9 11 9999-9999",
-        cidade: "Tu ciudad",
-        estado: "Ej: Buenos Aires, Argentina",
-        mensagem: "Cuéntanos el tipo de viaje, fechas, número de personas…",
+        mensagem: "Deja aquí tu duda, solicitud o información sobre el período deseado, número de personas o el comentario que desees.",
       },
       selecione: "Selecciona…",
       destinos: [
@@ -468,17 +456,13 @@ export const translations: Record<Lang, Dict> = {
         interesse: "Interest",
         email: "Email",
         telefone: "Phone / WhatsApp",
-        cidade: "City",
-        estado: "State / Country",
         mensagem: "Message",
       },
       ph: {
         nome: "Your name",
         email: "you@email.com",
         telefone: "+1 555 999 9999",
-        cidade: "Your city",
-        estado: "Ex: CA, USA",
-        mensagem: "Tell us the kind of trip, dates, number of people…",
+        mensagem: "Leave your question, request, or some details about your desired travel period, number of people, or any other comment.",
       },
       selecione: "Select…",
       destinos: [

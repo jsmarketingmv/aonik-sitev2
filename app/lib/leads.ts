@@ -14,19 +14,13 @@ export type LeadInput = {
   email: string;
   telefone?: string;
   destino?: string;
-  cidade?: string;
-  estado?: string;
   mensagem?: string;
 };
 
 // Insere o lead no CRM (kanban) do SaaS. Lança erro se a API recusar,
 // para o formulário decidir o que mostrar ao usuário.
 export async function gravarLead(lead: LeadInput): Promise<void> {
-  const localizacao = [lead.cidade, lead.estado].filter(Boolean).join(" / ");
-  const message =
-    [lead.mensagem?.trim(), localizacao && `Localização: ${localizacao}`]
-      .filter(Boolean)
-      .join(" · ") || null;
+  const message = lead.mensagem?.trim() || null;
 
   const res = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
     method: "POST",
