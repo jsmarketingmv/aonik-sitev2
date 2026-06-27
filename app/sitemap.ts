@@ -68,6 +68,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/destinos/pedal-porto-lisboa`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/destinos/pedal-douro-aldeias`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/destinos/pedal-aldeias-historicas`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/destinos/vale-europeu-3-dias`, lastModified: today, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/destinos/vale-europeu-7-dias`, lastModified: today, changeFrequency: "monthly", priority: 0.8 },
 
     // Caminhos de Portugal — autoguiados
     { url: `${base}/caminhos-autoguiados/douro`, lastModified: today, changeFrequency: "monthly", priority: 0.8 },

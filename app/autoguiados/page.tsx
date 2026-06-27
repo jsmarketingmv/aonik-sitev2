@@ -89,6 +89,11 @@ const CAT_SANTIAGO = [
   { nome: "Santiago a Finisterre",       sub: "Autoguiado", meta: "7d · 90km",    preco: "€ 791",   img: IMG.sgCosta,   href: "/destinos/santiago-finisterre" },
 ];
 
+const CAT_BRASIL = [
+  { nome: "Vale Europeu · 3 dias", sub: "Cicloturismo · Bike", meta: "3d · 139km", preco: "R$ 2.100", img: "/vale-europeu/cover-circuito.jpeg", href: "/destinos/vale-europeu-3-dias" },
+  { nome: "Vale Europeu · 7 dias", sub: "Cicloturismo · Bike", meta: "7d · 319km", preco: "R$ 4.560", img: "/vale-europeu/fp-8.jpg",         href: "/destinos/vale-europeu-7-dias" },
+];
+
 const CAT_PORTUGAL = [
   { nome: "Douro Experience",   sub: "Autoguiado",           meta: "6d · 58,7km", preco: "€ 1.557", img: IMG.douroExp,  href: "/caminhos-autoguiados/douro" },
   { nome: "Douro Luxury",       sub: "Premium · quintas",    meta: "6d · 27,2km", preco: "€ 2.130", img: IMG.douroLux,  href: "/caminhos-autoguiados/douro-luxury" },
@@ -221,9 +226,9 @@ export default function AutoguiadosPage() {
             {/* Stats */}
             <div className="mt-10 flex gap-8 border-t pt-8" style={{ borderColor: "rgba(220,247,99,0.2)" }}>
               {[
-                { v: "3", l: "destinos" },
-                { v: "15+", l: "roteiros" },
-                { v: "6–21", l: "dias" },
+                { v: "4", l: "destinos" },
+                { v: "17+", l: "roteiros" },
+                { v: "3–21", l: "dias" },
               ].map((s) => (
                 <div key={s.l}>
                   <div className="font-display text-[2.2rem] font-light leading-none" style={{ color: C.lime }}>{s.v}</div>
@@ -341,6 +346,22 @@ export default function AutoguiadosPage() {
             {CAT_PORTUGAL.map((p, i) => (
               <Reveal key={p.nome} delay={i * 0.07}>
                 <ProdCard p={p} accentBg="#C4A56A" accentText="#C4A56A" darkBg="rgba(34,10,17,0.7)" />
+              </Reveal>
+            ))}
+          </div>
+        </CatSection>
+
+        {/* ── 04 BRASIL · VALE EUROPEU ── */}
+        <CatSection
+          n="04" kicker="Brasil · Santa Catarina" titulo="Vale Europeu Catarinense" sub="Cicloturismo de bike"
+          desc="O Brasil que fala alemão e italiano. Casas enxaimel, pontes cobertas, rios da Mata Atlântica e os campos altos do planalto. Pedal autoguiado em duas versões: 3 ou 7 dias."
+          accent="#FC6E4C" darkBg="#1c2b2a"
+          ctaHref="/bike" ctaLabel="Ver segmento de bike"
+        >
+          <div className="grid gap-5 sm:grid-cols-2">
+            {CAT_BRASIL.map((p, i) => (
+              <Reveal key={p.nome} delay={i * 0.07}>
+                <ProdCard p={p} accentBg="#FC6E4C" accentText="#FC6E4C" darkBg="rgba(28,43,42,0.8)" />
               </Reveal>
             ))}
           </div>

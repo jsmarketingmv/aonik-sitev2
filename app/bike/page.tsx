@@ -162,6 +162,32 @@ const SANTIAGO_PRODUTOS = [
   },
 ];
 
+/* ── PRODUTOS BRASIL · VALE EUROPEU CATARINENSE ──────────────── */
+const BRASIL_PRODUTOS = [
+  {
+    nome: "Vale Europeu · 3 dias",
+    subtitulo: "Cicloturismo · Santa Catarina",
+    bandeira: "🇧🇷",
+    desc: "Parte baixa colonial: Pomerode alemã, Rodeio italiana, pontes cobertas e rios da Mata Atlântica.",
+    km: "139 km",
+    dias: "3 dias",
+    preco: "a partir de R$ 2.100",
+    href: "/destinos/vale-europeu-3-dias",
+    img: "/vale-europeu/cover-circuito.jpeg",
+  },
+  {
+    nome: "Vale Europeu · 7 dias",
+    subtitulo: "Cicloturismo · Santa Catarina",
+    bandeira: "🇧🇷",
+    desc: "O circuito completo: da colônia europeia aos campos altos do planalto, cachoeiras e a Região dos Lagos.",
+    km: "319 km",
+    dias: "7 dias",
+    preco: "a partir de R$ 4.560",
+    href: "/destinos/vale-europeu-7-dias",
+    img: "/vale-europeu/fp-8.jpg",
+  },
+];
+
 /* ── EM BREVE ────────────────────────────────────────────────── */
 const EM_BREVE = [
   { nome: "Coxilha Rica de Bike", local: "Serra Catarinense · Brasil", flag: "🇧🇷" },
@@ -447,6 +473,37 @@ export default function BikePage() {
               </a>
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ── DESTINOS BRASIL · VALE EUROPEU ────────────────────── */}
+      <section id="brasil" className="px-6 py-24 md:px-10 md:py-28" style={{ backgroundColor: B.asfalto }}>
+        <div className="mx-auto max-w-[1180px]">
+          <Reveal>
+            <div className="mb-3 flex items-center gap-3">
+              <span className="text-2xl">🇧🇷</span>
+              <Kicker color="" line="">
+                <span style={{ color: B.pedal }}>—</span>
+                <span style={{ color: B.areia }}>Brasil · Vale Europeu Catarinense</span>
+              </Kicker>
+            </div>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <h2 className="mb-4 font-display font-light" style={{ fontSize: "clamp(2rem,5vw,3.8rem)", color: B.creme }}>
+              Pedale o Brasil colonial
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mb-14 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: B.granito }}>
+              No interior de Santa Catarina existe um Brasil que fala alemão e italiano, com casas enxaimel,
+              pontes cobertas e estradas de terra. O Circuito Vale Europeu autoguiado, em duas versões.
+            </p>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {BRASIL_PRODUTOS.map((p, i) => (
+              <ProdutoCard key={p.nome} p={p} delay={i * 0.08} />
+            ))}
+          </div>
         </div>
       </section>
 
