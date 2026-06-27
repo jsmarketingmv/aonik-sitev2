@@ -25,7 +25,7 @@ const CONCEITO = [
   { t: "Alta gastronomia", d: "Cozinha de origem, ingredientes locais, chefs autorais. Comer vira parte da paisagem." },
   { t: "Serviços VIP", d: "Transfers privados, concierge, guias particulares. Você só se entrega à experiência." },
   { t: "Exclusividade", d: "Poucas suítes, muito espaço. Privacidade e silêncio como o maior dos luxos." },
-  { t: "Experiências", d: "Trilhas, navegações, safáris, spa. O refúgio é a base e a natureza é o programa." },
+  { t: "Experiências", d: "Trilhas, cavalgadas, navegações, spa. O refúgio é a base e a natureza é o programa." },
 ];
 
 // O que você vive num refúgio — cards cinematográficos com foto real
@@ -34,7 +34,7 @@ const EXPERIENCIAS_TIPOS = [
     n: "01",
     cat: "Na natureza",
     titulo: "Expedições do lugar",
-    desc: "Trekking nas Torres, safári com os Big Five, navegação em geleiras. O hotel é a sua base.",
+    desc: "Trekking nas Torres, cavalgadas pela estepe, navegação em geleiras. O hotel é a sua base.",
     // Trekking real Torres del Paine (Rio Serrano / The Massif)
     img: "/rioserrano/massif-trekking.webp",
   },
@@ -81,14 +81,6 @@ const LODGES = [
     href: "/destinos/hotel-las-torres",
     img: "/lastorres/hero.jpg",
   },
-  {
-    nome: "Jaci's Lodges",
-    local: "Madikwe · África do Sul",
-    desc: "Safári de luxo livre de malária: os Big Five, suítes de vidro abertas para o bush, jantares à fogueira e o Finfoot Spa. Outra natureza, o mesmo requinte.",
-    tag: "Safári",
-    href: "#contato",
-    img: "https://www.jacis.co.za/images/home-hero.jpg",
-  },
 ];
 
 export default function RefugiosPage() {
@@ -123,7 +115,7 @@ export default function RefugiosPage() {
             </h1>
             <p className="mt-6 max-w-xl text-base font-light leading-relaxed md:text-lg" style={{ color: "rgba(245,241,232,0.75)" }}>
               Hospedagens de luxo onde só existe natureza. Conforto máximo, alta
-              gastronomia e experiências exclusivas, da Patagônia ao bush africano.
+              gastronomia e experiências exclusivas, no coração de Torres del Paine.
             </p>
             <a
               href="#lodges"
@@ -267,22 +259,22 @@ export default function RefugiosPage() {
             <Reveal>
               <Kicker color="text-[#c9a86a]" line="bg-[#c9a86a]/40">Onde ficamos</Kicker>
               <h2 className="mt-4 font-display text-[clamp(1.9rem,4vw,3.2rem)] font-light leading-[1.05] tracking-[-0.01em]">
-                Três mundos,{" "}
+                Dois refúgios,{" "}
                 <span className="italic" style={{ color: L.champagne }}>o mesmo luxo</span>
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="max-w-sm text-[14px] font-light leading-relaxed" style={{ color: "rgba(245,241,232,0.5)" }}>
-                Do lodge de design ao acampamento de safári. Naturezas opostas, a mesma busca por conforto e beleza.
+                Do lodge de design à estância patagônica, no coração de Torres del Paine. A mesma busca por conforto e beleza.
               </p>
             </Reveal>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="mx-auto grid max-w-[1040px] gap-8 md:grid-cols-2">
             {LODGES.map((e, i) => (
               <Reveal key={e.nome} delay={i * 0.08}>
                 <a href={e.href} className="group block overflow-hidden rounded-xl" style={{ background: L.charcoal }}>
-                  <div className="relative h-72 overflow-hidden">
+                  <div className="relative h-80 overflow-hidden md:h-96">
                     <div
                       className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
                       style={{ backgroundImage: `url('${e.img}')` }}
