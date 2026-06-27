@@ -56,6 +56,9 @@ export const metadata: Metadata = {
       "Viagens que viram jornada. Caminhadas, bike, cruzeiros e refúgios de natureza.",
     images: ["/images/tmb/hero.jpg"],
   },
+  verification: {
+    google: "L4RrmkObtGNjhnahE6koZCfkRhd_BPgKoV0VjTiF49k",
+  },
 };
 
 export default function RootLayout({
