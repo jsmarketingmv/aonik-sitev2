@@ -5,7 +5,6 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Contato from "../components/Contato";
 import FloatingActions from "../components/FloatingActions";
-import WorldMap, { MapPin } from "../components/WorldMap";
 import { Reveal, Kicker, EASE } from "../components/ui";
 
 const L = {
@@ -15,31 +14,6 @@ const L = {
   cream: "#f5f1e8",
   ink: "#0b0a07",
 };
-
-// Pins do mapa — apenas as hospedagens de refúgio (sem expedições como TMB)
-const MAP_PINS: MapPin[] = [
-  {
-    label: "Rio Serrano",
-    sub: "Torres del Paine · Patagônia",
-    lng: -74,
-    lat: -52,
-    anchor: "start",
-  },
-  {
-    label: "Las Torres",
-    sub: "Torres del Paine · Patagônia",
-    lng: -70,
-    lat: -49.5,
-    anchor: "start",
-  },
-  {
-    label: "Jaci's Lodges",
-    sub: "Madikwe · África do Sul",
-    lng: 26.3,
-    lat: -24.8,
-    anchor: "start",
-  },
-];
 
 // Hero: quarto Superior do Rio Serrano com vista para as Torres
 const HERO_IMG =
@@ -336,58 +310,6 @@ export default function RefugiosPage() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* MAPA MUNDI — onde estão os refúgios */}
-      <section className="relative overflow-hidden px-6 py-24 md:px-10 md:py-32" style={{ background: L.charcoal }}>
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40"
-          style={{ background: `linear-gradient(to right, ${L.charcoal}, transparent)` }}
-        />
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 w-24 md:w-40"
-          style={{ background: `linear-gradient(to left, ${L.charcoal}, transparent)` }}
-        />
-
-        <div className="relative z-10 mx-auto max-w-[1400px]">
-          <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <Reveal>
-              <Kicker color="text-[#c9a86a]" line="bg-[#c9a86a]/40">Presença global</Kicker>
-              <h2 className="mt-4 font-display text-[clamp(1.9rem,4vw,3.2rem)] font-light leading-[1.05] tracking-[-0.01em]" style={{ color: L.cream }}>
-                Onde vivemos{" "}
-                <span className="italic" style={{ color: L.champagne }}>a natureza</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.12}>
-              <p className="max-w-xs text-[13px] font-light leading-relaxed" style={{ color: "rgba(245,241,232,0.45)" }}>
-                Da Patagônia Chilena ao bush africano, dois destinos com a mesma filosofia de luxo imerso na natureza selvagem.
-              </p>
-            </Reveal>
-          </div>
-
-          <Reveal delay={0.18}>
-            <WorldMap pins={MAP_PINS} />
-          </Reveal>
-
-          {/* Legenda */}
-          <Reveal delay={0.28}>
-            <div className="mt-8 flex flex-wrap gap-8 border-t pt-8" style={{ borderColor: "rgba(201,168,106,0.15)" }}>
-              {[
-                { label: "Rio Serrano", sub: "Lodge · Torres del Paine", href: "/destinos/rio-serrano" },
-                { label: "Las Torres", sub: "Estância · Torres del Paine", href: "/destinos/hotel-las-torres" },
-                { label: "Jaci's Lodges", sub: "Safári · Madikwe · África do Sul", href: "#contato" },
-              ].map((item) => (
-                <a key={item.label} href={item.href} className="group flex items-start gap-3 transition-opacity duration-300 hover:opacity-80">
-                  <span className="mt-1 h-2 w-2 flex-shrink-0 rounded-full" style={{ background: L.champagne }} />
-                  <div>
-                    <p className="text-[13px] font-medium" style={{ color: L.champagne }}>{item.label}</p>
-                    <p className="text-[11px] font-light uppercase tracking-[0.1em]" style={{ color: "rgba(245,241,232,0.4)" }}>{item.sub}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 
