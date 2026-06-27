@@ -79,6 +79,8 @@ export default function FloatingActions() {
     if (last) setSlug(last);
   }, []);
 
+  const pathname = typeof window !== "undefined" ? window.location.pathname : "";
+
   useEffect(() => {
     const open = (e: Event) => {
       const detail = (e as CustomEvent<{ slug?: string }>).detail;
@@ -113,7 +115,7 @@ export default function FloatingActions() {
       const res = await fetch("/api/aonikia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, slug }),
+        body: JSON.stringify({ message: text, slug, pathname }),
       });
       const data = await res.json() as { reply?: string; whatsapp?: string | null; error?: string };
       setMessages((m) => [
