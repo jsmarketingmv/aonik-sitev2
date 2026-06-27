@@ -84,6 +84,36 @@ export default function CaminhadasPage() {
         </div>
       </section>
 
+      {/* ── ANCHOR NAV ───────────────────────────────────── */}
+      <div className="sticky top-[60px] z-40 bg-forest/95 backdrop-blur-sm">
+        <div className="mx-auto max-w-[1180px]">
+          <nav className="hide-scrollbar flex overflow-x-auto">
+            {[
+              { n: "01", label: "Grupos", href: "#grupos" },
+              { n: "02", label: "Compostela", href: "#compostela" },
+              { n: "03", label: "Patagônia", href: "#patagonia" },
+              { n: "04", label: "Portugal", href: "#portugal" },
+              { n: "05", label: "Autoguiados", href: "#autoguiados" },
+              { n: "06", label: "Contato", href: "#contato" },
+            ].map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="group flex shrink-0 items-center gap-2.5 border-r border-cream/[0.08] px-6 py-[14px] last:border-r-0 transition-colors hover:bg-cream/[0.06]"
+              >
+                <span className="text-[10px] font-semibold text-gold/50">{item.n}</span>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-cream/55 transition-colors group-hover:text-cream">
+                  {item.label}
+                </span>
+                <span className="text-[10px] text-cream/20 transition-transform duration-200 group-hover:translate-x-[2px] group-hover:text-cream/50">
+                  ↗
+                </span>
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
+
       {/* ── MANIFESTO (Por que caminhar) — fundo Honeydew ── */}
       <section className="bg-honeydew px-6 pt-24 pb-16 text-ink md:px-10 md:pt-32 md:pb-20">
         <div className="mx-auto max-w-[820px] text-center">
@@ -125,19 +155,27 @@ export default function CaminhadasPage() {
       </section>
 
       {/* ── VIAGENS EM GRUPO (logo após "Por que caminhar") ── */}
-      <GruposHome variant="green" />
+      <div id="grupos" className="scroll-mt-28">
+        <GruposHome variant="green" />
+      </div>
 
       {/* ── CAMINHO DE SANTIAGO (Peregrinação) ───────────── */}
-      <JornadaPortal />
+      <div id="compostela" className="scroll-mt-28">
+        <JornadaPortal />
+      </div>
 
       {/* ── TORRES DEL PAINE (Patagônia) ─────────────────── */}
-      <PatagoniaPortal />
+      <div id="patagonia" className="scroll-mt-28">
+        <PatagoniaPortal />
+      </div>
 
       {/* ── CAMINHOS DE PORTUGAL (Douro · Santiago e Douro) ── */}
-      <CaminhosPortugalPortal />
+      <div id="portugal" className="scroll-mt-28">
+        <CaminhosPortugalPortal />
+      </div>
 
       {/* ── AUTOGUIADOS — link para /autoguiados ─────────── */}
-      <section className="relative overflow-hidden px-6 py-20 md:px-10 md:py-28" style={{ background: "#435058" }}>
+      <section id="autoguiados" className="scroll-mt-28 relative overflow-hidden px-6 py-20 md:px-10 md:py-28" style={{ background: "#435058" }}>
         {/* Foto de fundo sutil */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
