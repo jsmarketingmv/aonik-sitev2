@@ -25,6 +25,7 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.aonik.com.br"),
   title: {
     template: "%s | AONIK",
     default: "AONIK: Turismo de Natureza",
@@ -38,6 +39,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "AONIK",
+    url: "https://www.aonik.com.br",
+    images: [
+      {
+        url: "/images/tmb/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AONIK — Turismo de Natureza",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AONIK: Turismo de Natureza",
+    description:
+      "Viagens que viram jornada. Caminhadas, bike, cruzeiros e refúgios de natureza.",
+    images: ["/images/tmb/hero.jpg"],
   },
 };
 
