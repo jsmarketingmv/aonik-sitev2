@@ -54,6 +54,7 @@ const DATA: ValeData = {
     { src: `${IMG}/fp-24.jpg`, cap: "Pausa sob as buganvílias, à sombra", tag: "Paradas" },
     { src: `${IMG}/fp-8.jpg`, cap: "Estrada de terra cortando a mata", tag: "Rota" },
     { src: `${IMG}/fp-22.jpg`, cap: "A paisagem do Vale Europeu", tag: "Paisagem" },
+    { src: `${IMG}/fp-33.jpg`, cap: "O dossel dos pinheiros e araucárias", tag: "Mata" },
   ],
   roteiro: [
     {

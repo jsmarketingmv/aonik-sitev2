@@ -145,49 +145,55 @@ function RotaVale({ cidades }: { cidades: string[] }) {
    ============================================================ */
 function GaleriaVale({ fotos }: { fotos: ValeGaleria[] }) {
   const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i - 1 + fotos.length) % fotos.length);
+  const next = () => setIdx((i) => (i + 1) % fotos.length);
   const img = fotos[idx];
 
   return (
-    <div className="grid gap-3 md:grid-cols-[1fr_200px]">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0.5, scale: 1.02 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.45, ease: EASE }}
-          className="relative overflow-hidden rounded-2xl"
-          style={{ aspectRatio: "16/10" }}
-        >
-          <img src={img.src} alt={img.cap} className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${C.greenDeep}dd 0%, transparent 55%)` }} />
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: C.fire }}>
-              {img.tag}
-            </span>
-            <p className="mt-1 text-[14px] font-light" style={{ color: C.cream }}>{img.cap}</p>
-          </div>
-          <div className="absolute right-4 top-4">
-            <span className="text-[11px] font-medium" style={{ color: C.textSoft }}>{idx + 1}/{fotos.length}</span>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      <div className="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible">
-        {fotos.map((g, i) => (
-          <button
-            key={i}
-            onClick={() => setIdx(i)}
-            className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
-            style={{
-              width: 200,
-              height: 115,
-              opacity: i === idx ? 1 : 0.45,
-              outline: i === idx ? `2px solid ${C.fire}` : "2px solid transparent",
-              outlineOffset: 2,
-            }}
+    <div className="flex flex-col gap-3">
+      {/* Imagem destacada */}
+      <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0.6, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="absolute inset-0"
           >
-            <img src={g.src} alt={g.tag} className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.05]" />
+            <img src={img.src} alt={img.cap} className="h-full w-full object-cover" />
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${C.greenDeep}dd 0%, transparent 55%)` }} />
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: C.fire }}>{img.tag}</span>
+          <p className="mt-1 text-[14px] font-light" style={{ color: C.cream }}>{img.cap}</p>
+        </div>
+        <span className="absolute right-4 top-4 text-[11px] font-medium" style={{ color: C.textSoft }}>
+          {idx + 1} / {fotos.length}
+        </span>
+        <button onClick={prev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base font-light transition-all hover:opacity-100"
+          style={{ background: "rgba(28,43,42,0.6)", color: C.fire, opacity: 0.85 }}>
+          ‹
+        </button>
+        <button onClick={next}
+          className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base font-light transition-all hover:opacity-100"
+          style={{ background: "rgba(28,43,42,0.6)", color: C.fire, opacity: 0.85 }}>
+          ›
+        </button>
+      </div>
+
+      {/* Miniaturas abaixo */}
+      <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
+        {fotos.map((g, i) => (
+          <button key={i} onClick={() => setIdx(i)}
+            className="relative overflow-hidden rounded-lg transition-all duration-300"
+            style={{ aspectRatio: "16/10", outline: i === idx ? `2px solid ${C.fire}` : "2px solid transparent", outlineOffset: 2 }}>
+            <img src={g.src} alt={g.cap}
+              className="h-full w-full object-cover transition-opacity duration-300"
+              style={{ opacity: i === idx ? 1 : 0.42 }} />
           </button>
         ))}
       </div>
