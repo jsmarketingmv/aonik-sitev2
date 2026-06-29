@@ -38,7 +38,7 @@ export default function Footer() {
           </div>
 
           {/* Colunas de navegação */}
-          {cols.map((col) => (
+          {cols.map((col, colIdx) => (
             <div key={col.titulo}>
               <h3 className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
                 {col.titulo}
@@ -54,6 +54,16 @@ export default function Footer() {
                     </a>
                   </li>
                 ))}
+                {colIdx === 0 && (
+                  <li>
+                    <a
+                      href="/news"
+                      className="text-[14px] font-light text-cream/65 transition-colors hover:text-cream"
+                    >
+                      AONIK News
+                    </a>
+                  </li>
+                )}
               </ul>
             </div>
           ))}

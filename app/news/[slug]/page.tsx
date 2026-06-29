@@ -42,13 +42,11 @@ function Reveal({
   );
 }
 
-function formatarData(iso: string) {
+function formatEdition(numero: number, iso: string) {
   const d = new Date(iso + "T12:00:00");
-  return d.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+  const mes = d.toLocaleDateString("pt-BR", { month: "long" });
+  const ano = d.getFullYear();
+  return `Ed. ${String(numero).padStart(2, "0")} / ${mes.charAt(0).toUpperCase() + mes.slice(1)} ${ano}`;
 }
 
 // ── BLOCOS ──────────────────────────────────────────────────
@@ -344,8 +342,7 @@ export default function EdicaoPage() {
           >
             <p className="mb-5 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
               <span className="h-px w-8 bg-gold/50" />
-              Ed. {String(edicao.numero).padStart(2, "0")} ·{" "}
-              {formatarData(edicao.data)} ·{" "}
+              {formatEdition(edicao.numero, edicao.data)} ·{" "}
               {isComercial ? "Condição especial" : "Novidades & Destinos"}
             </p>
             <h1 className="font-display max-w-3xl text-[clamp(2.2rem,5.5vw,4.5rem)] font-light leading-[0.97] tracking-[-0.02em] text-cream">

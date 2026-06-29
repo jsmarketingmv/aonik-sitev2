@@ -31,13 +31,11 @@ function Reveal({
   );
 }
 
-function formatarData(iso: string) {
+function formatEdition(numero: number, iso: string) {
   const d = new Date(iso + "T12:00:00");
-  return d.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+  const mes = d.toLocaleDateString("pt-BR", { month: "long" });
+  const ano = d.getFullYear();
+  return `Ed. ${String(numero).padStart(2, "0")} / ${mes.charAt(0).toUpperCase() + mes.slice(1)} ${ano}`;
 }
 
 const TIPO_KICKER: Record<string, string> = {
@@ -77,7 +75,7 @@ export default function NewsHubPage() {
           <h1
             className="font-display text-[clamp(2.8rem,7vw,6rem)] font-light leading-[0.95] tracking-[-0.02em] text-cream"
           >
-            AONIK <span className="italic text-gold">News</span>
+            <span className="italic text-gold">News</span> AONIK
           </h1>
           <p className="mt-6 max-w-md text-[15px] font-light leading-relaxed text-cream/65">
             Destinos, dicas de temporada e condições especiais.<br />
@@ -145,7 +143,7 @@ export default function NewsHubPage() {
                       <div className={reverse ? "md:order-1" : ""}>
                         <p className="mb-4 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
                           <span className="h-px w-8 bg-gold/50" />
-                          {formatarData(ed.data)}
+                          {formatEdition(ed.numero, ed.data)}
                         </p>
                         <h3 className="font-display text-[clamp(1.6rem,3vw,2.6rem)] font-light leading-[1.06] tracking-[-0.02em] text-forest transition-colors duration-300 group-hover:text-gold text-balance">
                           {ed.titulo}
@@ -154,7 +152,7 @@ export default function NewsHubPage() {
                           {ed.subtitulo}
                         </p>
                         <span className="mt-7 inline-flex items-center gap-3 rounded-full border border-forest/25 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-forest transition-all duration-300 group-hover:border-forest group-hover:bg-forest group-hover:text-cream">
-                          Ler edição
+                          {ed.titulo}
                           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                         </span>
                       </div>
