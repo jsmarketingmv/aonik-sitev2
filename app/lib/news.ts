@@ -96,7 +96,7 @@ export const EDICOES: EdicaoNews[] = [
         titulo: "A News AONIK chegou",
         icone: "newspaper",
         conteudo:
-          "Você faz parte de algo especial. A cada 15 dias, direto no seu WhatsApp, você recebe o que importa: destinos abertos, dicas de temporada, vagas confirmadas e inspiração para a próxima aventura. Sem enrolação, sem filtro. Só o essencial para quem vive o turismo de natureza de verdade. Seja bem vindo.",
+          "Você faz parte de algo especial. A cada 15 dias, traremos a você diversas novidades sobre AONIK e Turismo de Natureza: destinos abertos, dicas de temporada, vagas confirmadas e inspiração para a próxima aventura. Sem enrolação, sem filtro. Só o essencial para quem vive o turismo de natureza de verdade. Seja bem vindo.",
       },
       {
         tipo: "destaque",
