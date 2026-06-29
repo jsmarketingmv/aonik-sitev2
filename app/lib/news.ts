@@ -1,4 +1,4 @@
-// AONIK News — modelo de dados das edições quinzenais
+// AONIK News, modelo de dados das edições quinzenais
 // Fluxo: briefing → Claude gera blocos → Juliano aprova → push → no ar
 
 export type TipoEdicao = "informativo" | "comercial"
@@ -51,7 +51,7 @@ export type BlocoFrase = {
   local?: string
 }
 
-// Banner central — destaque especial em largura total
+// Banner central, destaque especial em largura total
 export type BlocoBanner = {
   tipo: "banner"
   titulo: string
@@ -83,8 +83,8 @@ export const EDICOES: EdicaoNews[] = [
   {
     slug: "edicao-01",
     numero: 1,
-    titulo: "A temporada começa. E as vagas, também.",
-    subtitulo: "TMB com últimas 2 vagas em 2026, Early Booking para 2027, Cochilha Rica e Torres del Paine com condições especiais.",
+    titulo: "A temporada começou. E as vagas já estão no fim.",
+    subtitulo: "Tour du Mont Blanc com as últimas vagas, Early Booking de Torres del Paine no ar e a Patagônia Brasileira que pouca gente conhece.",
     data: "2026-07-01",
     tipo: "informativo",
     hero: "/images/tmb/hero.jpg",
@@ -93,83 +93,74 @@ export const EDICOES: EdicaoNews[] = [
         tipo: "texto",
         titulo: "A News AONIK chegou",
         conteudo:
-          "Você faz parte de algo especial. A cada 15 dias, direto no seu WhatsApp: destinos abertos, dicas de temporada, vagas confirmadas e inspiração para a próxima aventura. Sem enrolação, sem filtro. Só o essencial para quem vive o turismo de natureza de verdade. Bem-vindo.",
+          "Você faz parte de algo especial. A cada 15 dias, direto no seu WhatsApp, você recebe o que importa: destinos abertos, dicas de temporada, vagas confirmadas e inspiração para a próxima aventura. Sem enrolação, sem filtro. Só o essencial para quem vive o turismo de natureza de verdade. Seja bem vindo.",
       },
       {
         tipo: "destaque",
-        titulo: "Tour du Mont Blanc 2026 — restam 2 vagas",
+        titulo: "Tour du Mont Blanc: restam apenas 2 vagas em 2026",
         descricao:
-          "170 km pelos Alpes Franceses, Italianos e Suíços. O grupo de agosto está confirmado e restam apenas 2 lugares. Guia especialista, tudo incluído, experiência que transforma. Se você ainda está pensando, o momento é esse.",
+          "São 170 km pelos Alpes Franceses, Italianos e Suíços. O grupo de agosto está confirmado e sobraram só 2 lugares. Para 2027, a pré-reserva já está aberta com tarifa especial de quem garante cedo. Guia especialista, tudo incluído, uma experiência que transforma. Se você ainda está pensando, o momento é agora.",
         href: "/destinos/tour-du-mont-blanc",
         img: "/images/tmb/hero.jpg",
-        badge: "ÚLTIMAS 2 VAGAS",
+        badge: "Últimas 2 vagas",
         preco: "a partir de € 5.450",
-      },
-      {
-        tipo: "destaque",
-        titulo: "TMB 2027 — pré-reserva aberta com tarifa especial",
-        descricao:
-          "A janela de reserva antecipada para 2027 está aberta. Garanta seu lugar com as melhores condições do ano antes que o grupo feche. Quem reserva cedo, caminha tranquilo.",
-        href: "/destinos/tour-du-mont-blanc",
-        img: "/images/grupos/tmb-contemplacao.jpg",
-        badge: "PRÉ-RESERVA ABERTA",
-        preco: "tarifa especial 2027",
       },
       {
         tipo: "dica",
         icone: "🏔️",
         titulo: "Julho nos Alpes: o que muda quando a neve some",
         texto:
-          "Julho abre a temporada nos Alpes. Trilhas liberadas, refúgios abastecidos e dias com até 16 horas de luz. É a janela ideal para o TMB e as Dolomitas. Setembro fica ainda mais silencioso, com menos turistas e os mesmos cenários de outro mundo. Qualquer que seja o mês, os Alpes entregam.",
+          "Julho abre a temporada nos Alpes. Trilhas liberadas, refúgios abastecidos e dias com até 16 horas de luz. É a janela ideal para o Tour du Mont Blanc e as Dolomitas. Setembro fica ainda mais silencioso, com menos gente nos caminhos e os mesmos cenários de tirar o fôlego. Qualquer que seja o mês, os Alpes entregam.",
       },
       {
         tipo: "destaque",
-        titulo: "A Patagônia Brasileira existe. Está a 2h de Porto Alegre.",
+        titulo: "A Patagônia Brasileira existe, e poucos conhecem",
         descricao:
-          "Cochilha Rica é um Brasil que poucas pessoas conhecem. Campos nativos, culinária gaúcha de verdade, silêncio absoluto e natureza que surpreende. Uma caminhada que mistura cultura, paisagem e autoconhecimento. Diferente de tudo que você já fez.",
+          "Coxilha Rica são cinco dias atravessando os campos de altitude da Serra Catarinense, de fazenda em fazenda, pelo mesmo caminho que os tropeiros usaram por séculos. Paredes de pedra centenárias, culinária campeira de verdade, silêncio e horizonte que nunca é o mesmo duas vezes. Um Brasil que ainda existe. Vale a caminhada.",
         href: "/destinos/coxilha-rica",
-        img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1400&auto=format&fit=crop",
-        badge: "BRASIL NATURAL",
+        img: "https://images.unsplash.com/photo-1444044205806-38f3ed106c10?q=80&w=1400&auto=format&fit=crop",
+        badge: "Brasil Natural",
+        preco: "a partir de R$ 5.800",
       },
       {
         tipo: "destaque",
-        titulo: "Caminho de Santiago — onde cada passo tem sentido",
+        titulo: "Caminho de Santiago: onde cada passo tem sentido",
         descricao:
-          "Além das rotas de Portugal, a AONIK opera as rotas espanholas. De Sarria ou de Cebreiro, são cerca de 100 km a pé até Santiago de Compostela. Programa completo, no seu ritmo, com suporte de ponta a ponta. Peregrinação real, sem abrir mão do conforto.",
-        href: "/caminhos-autoguiados",
-        img: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200&auto=format&fit=crop",
-        badge: "PEREGRINAÇÃO",
-        preco: "a partir de € 890",
+          "Além das rotas de Portugal, a AONIK opera as rotas espanholas. De Sarria, são 112 km a pé até a Catedral de Santiago. Do Cebreiro, 152 km começando no alto da montanha galega. Programa completo, no seu ritmo, com suporte de ponta a ponta. A rota europeia mais antiga ainda em uso, e a sua peregrinação te espera.",
+        href: "/jornada",
+        img: "https://static.wixstatic.com/media/2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg",
+        badge: "Peregrinação",
+        preco: "a partir de € 580",
       },
       {
         tipo: "banner",
-        titulo: "Torres del Paine — Early Booking ativo para 2026",
+        titulo: "Torres del Paine: Early Booking no ar para 2026",
         descricao:
-          "4 circuitos W disponíveis. Condições antecipadas: 10% de desconto à vista, 5% OFF parcelado com entrada de 30% + 7x, ou 10x sem juros. Capacidade limitada pelo Parque Nacional. Reserve antes que a janela feche.",
+          "São 4 circuitos W para escolher. Nas condições de reserva antecipada você garante 10% de desconto à vista, ou 5% no parcelado com entrada de 30% mais 7x, ou ainda 10x sem juros. A capacidade do Parque Nacional é limitada por temporada. Reserve antes que a janela feche.",
         href: "/destinos/torres-del-paine",
-        img: "/images/tmb/hero.jpg",
-        badge: "EARLY BOOKING",
+        img: "/lastorres/IMG_5036.jpeg",
+        badge: "Early Booking",
         cta: "Garantir minha vaga",
       },
       {
         tipo: "texto",
         titulo: "Quem vai caminhar com você",
         conteudo:
-          "A AONIK não é uma agência. É uma ONG que transforma caminhadas em jornadas reais. Nossos guias são apaixonados pela montanha, conhecem cada trilha e cuidam de cada detalhe. Desde 2011, levamos pessoas a experiências que mudam perspectivas. Você não vai sozinho. Vai com quem sabe o caminho.",
+          "A AONIK não é uma agência comum. É uma marca que transforma caminhadas em jornadas de verdade. Nossos guias são apaixonados pela montanha, conhecem cada trilha e cuidam de cada detalhe para que você só se preocupe em viver o momento. Levamos pessoas a experiências que mudam perspectivas. Você não caminha sozinho. Caminha com quem conhece o caminho.",
       },
       {
         tipo: "destaque",
-        titulo: "Canal AONIK no WhatsApp — entre para a conversa",
+        titulo: "Entre para o Canal AONIK no WhatsApp",
         descricao:
-          "Além da News quinzenal, temos um canal onde compartilhamos bastidores, dicas espontâneas e novidades em tempo real. Uma conversa entre quem ama o turismo de natureza, direta no seu WhatsApp. Toque e siga o canal.",
+          "Além da News quinzenal, temos um canal onde compartilhamos bastidores, dicas espontâneas e novidades em tempo real. É uma conversa leve entre quem ama o turismo de natureza, direta no seu WhatsApp. Toque, siga o canal e fique por dentro de tudo em primeira mão.",
         href: "https://whatsapp.com/channel/0029Vb8RCc37DAX4Q0AIVP3O",
         img: "/images/grupos/tmb-cume.jpg",
-        badge: "NOVO CANAL",
+        badge: "Novo Canal",
       },
       {
         tipo: "frase",
-        texto: "Silêncio, movimento, presença. É isso que a natureza ensina a quem para de correr.",
-        local: "Alpes Suíços",
+        texto: "Caminhar é o remédio mais antigo que existe. Cura o corpo, acalma a mente e devolve a gente para a natureza.",
+        local: "Em algum lugar da montanha",
       },
     ],
     cta: {
