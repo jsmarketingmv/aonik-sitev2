@@ -152,7 +152,7 @@ export default function NewsHubPage() {
                           {ed.subtitulo}
                         </p>
                         <span className="mt-7 inline-flex items-center gap-3 rounded-full border border-forest/25 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-forest transition-all duration-300 group-hover:border-forest group-hover:bg-forest group-hover:text-cream">
-                          {ed.titulo}
+                          {ed.tipo === "comercial" ? "Ver condição especial" : "Degustar a edição"}
                           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                         </span>
                       </div>

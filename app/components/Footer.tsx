@@ -58,9 +58,9 @@ export default function Footer() {
                   <li>
                     <a
                       href="/news"
-                      className="text-[14px] font-light text-cream/65 transition-colors hover:text-cream"
+                      className="text-[14px] font-light text-neon transition-colors hover:text-cream"
                     >
-                      AONIK News
+                      News AONIK
                     </a>
                   </li>
                 )}
