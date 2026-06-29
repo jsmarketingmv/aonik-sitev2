@@ -20,6 +20,38 @@ import type {
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+const ICONS: Record<string, React.ReactNode> = {
+  newspaper: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" />
+      <path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" />
+    </svg>
+  ),
+  mountain: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+    </svg>
+  ),
+  compass: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z" />
+    </svg>
+  ),
+  leaf: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+    </svg>
+  ),
+  map: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" />
+      <path d="M15 5.764v15M9 3.236v15" />
+    </svg>
+  ),
+}
+
 function Reveal({
   children,
   delay = 0,
@@ -54,8 +86,17 @@ function formatEdition(numero: number, iso: string) {
 function BlocoTextoComp({ b }: { b: BlocoTexto }) {
   return (
     <Reveal className="border-b border-ink/10 py-12">
+      {b.kicker && (
+        <p className="mb-4 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
+          <span className="h-px w-8 bg-gold/50" />
+          {b.kicker}
+        </p>
+      )}
       {b.titulo && (
-        <h2 className="font-display mb-5 text-[clamp(1.4rem,2.6vw,2rem)] font-light leading-[1.1] tracking-[-0.01em] text-forest">
+        <h2 className="font-display mb-5 flex items-center gap-3 text-[clamp(1.4rem,2.6vw,2rem)] font-light leading-[1.1] tracking-[-0.01em] text-forest">
+          {b.icone && ICONS[b.icone] && (
+            <span className="shrink-0 text-gold/70">{ICONS[b.icone]}</span>
+          )}
           {b.titulo}
         </h2>
       )}
@@ -129,7 +170,13 @@ function BlocoDicaComp({ b }: { b: BlocoDica }) {
   return (
     <Reveal className="border-b border-ink/10 py-10">
       <div className="flex gap-6">
-        <span className="mt-1 shrink-0 text-2xl">{b.icone}</span>
+        <span className="mt-1 shrink-0 text-gold/70">
+          {ICONS[b.icone] ?? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" />
+            </svg>
+          )}
+        </span>
         <div>
           <p className="mb-2 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
             <span className="h-px w-6 bg-gold/50" />

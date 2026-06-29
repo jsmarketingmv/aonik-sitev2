@@ -8,6 +8,8 @@ export type BlocoTexto = {
   tipo: "texto"
   titulo?: string
   conteudo: string
+  icone?: string
+  kicker?: string
 }
 
 // Card de destino com link para a página do produto
@@ -83,7 +85,7 @@ export const EDICOES: EdicaoNews[] = [
   {
     slug: "edicao-01",
     numero: 1,
-    titulo: "A temporada começou. E as vagas já estão no fim.",
+    titulo: "Poucas vagas para a Temporada Européia de Montanhas. Reservas Antecipadas abertas para Torres del Paine.",
     subtitulo: "Tour du Mont Blanc com as últimas vagas, Early Booking de Torres del Paine no ar e a Patagônia Brasileira que pouca gente conhece.",
     data: "2026-07-01",
     tipo: "informativo",
@@ -92,6 +94,7 @@ export const EDICOES: EdicaoNews[] = [
       {
         tipo: "texto",
         titulo: "A News AONIK chegou",
+        icone: "newspaper",
         conteudo:
           "Você faz parte de algo especial. A cada 15 dias, direto no seu WhatsApp, você recebe o que importa: destinos abertos, dicas de temporada, vagas confirmadas e inspiração para a próxima aventura. Sem enrolação, sem filtro. Só o essencial para quem vive o turismo de natureza de verdade. Seja bem vindo.",
       },
@@ -107,14 +110,14 @@ export const EDICOES: EdicaoNews[] = [
       },
       {
         tipo: "dica",
-        icone: "🏔️",
+        icone: "mountain",
         titulo: "Julho nos Alpes: o que muda quando a neve some",
         texto:
           "Julho abre a temporada nos Alpes. Trilhas liberadas, refúgios abastecidos e dias com até 16 horas de luz. É a janela ideal para o Tour du Mont Blanc e as Dolomitas. Setembro fica ainda mais silencioso, com menos gente nos caminhos e os mesmos cenários de tirar o fôlego. Qualquer que seja o mês, os Alpes entregam.",
       },
       {
         tipo: "destaque",
-        titulo: "A Patagônia Brasileira existe, e poucos conhecem",
+        titulo: "Existe um cantinho no Sul do Brasil, inspirado na essência da Patagônia",
         descricao:
           "Coxilha Rica são cinco dias atravessando os campos de altitude da Serra Catarinense, de fazenda em fazenda, pelo mesmo caminho que os tropeiros usaram por séculos. Paredes de pedra centenárias, culinária campeira de verdade, silêncio e horizonte que nunca é o mesmo duas vezes. Um Brasil que ainda existe. Vale a caminhada.",
         href: "/destinos/coxilha-rica",
@@ -144,6 +147,7 @@ export const EDICOES: EdicaoNews[] = [
       },
       {
         tipo: "texto",
+        kicker: "Sobre a AONIK",
         titulo: "Quem vai caminhar com você",
         conteudo:
           "A AONIK não é uma agência comum. É uma marca que transforma caminhadas em jornadas de verdade. Nossos guias são apaixonados pela montanha, conhecem cada trilha e cuidam de cada detalhe para que você só se preocupe em viver o momento. Levamos pessoas a experiências que mudam perspectivas. Você não caminha sozinho. Caminha com quem conhece o caminho.",
