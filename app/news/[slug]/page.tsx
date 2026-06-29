@@ -226,33 +226,47 @@ function BlocoPromoComp({ b }: { b: BlocoPromo }) {
   );
 }
 
-// Banner central — destaque especial largura total
+// Banner — ruptura visual na linha de leitura
+// Sai da coluna de conteúdo (negative margins), altura de impacto, display Fraunces
 function BlocoBannerComp({ b }: { b: BlocoBanner }) {
   return (
-    <Reveal className="py-4">
-      <Link href={b.href} className="group block overflow-hidden rounded-xl">
-        <div className="relative min-h-[200px] overflow-hidden">
+    <Reveal className="-mx-6 md:-mx-10 my-4 border-y border-ink/10">
+      <Link href={b.href} className="group block overflow-hidden">
+        <div className="relative min-h-[360px] overflow-hidden md:min-h-[460px]">
+
+          {/* Imagem de fundo */}
           {b.img && (
             <div
               className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
               style={{ backgroundImage: `url('${b.img}')` }}
             />
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-forest/90 via-forest/60 to-forest/20" />
-          <div className="relative z-10 flex h-full min-h-[200px] flex-col justify-center px-8 py-10 md:px-12">
+
+          {/* Gradiente — forte embaixo para texto, suave em cima */}
+          <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/55 to-forest/10" />
+          {/* Véu lateral para unir com paleta */}
+          <div className="absolute inset-0 bg-forest/15" />
+
+          {/* Conteúdo — ancorado no rodapé da imagem */}
+          <div className="relative z-10 flex h-full min-h-[360px] flex-col justify-end px-8 pb-10 md:min-h-[460px] md:px-14 md:pb-14">
             {b.badge && (
-              <p className="mb-4 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
+              <p className="mb-5 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
                 <span className="h-px w-8 bg-gold/50" />
                 {b.badge}
               </p>
             )}
-            <h3 className="font-display text-[clamp(1.4rem,2.8vw,2.2rem)] font-light leading-[1.05] tracking-[-0.01em] text-cream text-balance transition-colors duration-300 group-hover:text-gold max-w-lg">
+
+            <h3 className="font-display text-balance max-w-2xl text-[clamp(2rem,5vw,3.8rem)] font-light leading-[0.97] tracking-[-0.02em] text-cream transition-colors duration-500 group-hover:text-gold">
               {b.titulo}
             </h3>
-            <p className="mt-3 max-w-md text-[14px] font-light leading-relaxed text-cream/65">
-              {b.descricao}
-            </p>
-            <span className="mt-6 inline-flex w-fit items-center gap-3 rounded-full border border-cream/30 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-300 group-hover:border-gold group-hover:text-gold">
+
+            {b.descricao && (
+              <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed text-cream/60">
+                {b.descricao}
+              </p>
+            )}
+
+            <span className="mt-8 inline-flex w-fit items-center gap-3 rounded-full border border-cream/30 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-300 group-hover:border-gold group-hover:text-gold">
               {b.cta ?? "Saiba mais"}
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </span>

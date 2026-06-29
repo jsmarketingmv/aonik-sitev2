@@ -123,6 +123,15 @@ export const EDICOES: EdicaoNews[] = [
         preco: "a partir de € 890",
       },
       {
+        tipo: "banner",
+        titulo: "Torres del Paine — o circuito que muda tudo",
+        descricao: "Patagônia Chilena. 4 opções de circuito W, tudo incluído. Vagas abertas para 2026.",
+        href: "/destinos/torres-del-paine",
+        img: "/images/tmb/hero.jpg",
+        badge: "Destaque da edição",
+        cta: "Ver circuitos W",
+      },
+      {
         tipo: "frase",
         texto: "A montanha não tem pressa. Mas a vaga sim.",
         local: "Chamonix, França",
