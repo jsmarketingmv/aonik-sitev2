@@ -4,6 +4,7 @@ import Nav from "../../components/Nav"
 import Footer from "../../components/Footer"
 import FloatingActions from "../../components/FloatingActions"
 import { getEdicao, EDICOES } from "../../lib/news"
+import NewsShareBar from "../../components/NewsShareBar"
 import type {
   Bloco,
   BlocoTexto,
@@ -290,7 +291,7 @@ export default async function EdicaoPage({
 
         {/* CTA final */}
         {edicao.cta && (
-          <div className="pb-16 text-center">
+          <div className="text-center pt-4 pb-2">
             <Link
               href={edicao.cta.href}
               className={`inline-block px-8 py-4 rounded-full font-semibold text-sm tracking-wide transition-all ${
@@ -301,16 +302,25 @@ export default async function EdicaoPage({
             >
               {edicao.cta.texto}
             </Link>
-            <div className="mt-8 pt-6 border-t border-[#efe7da]/10">
-              <Link
-                href="/news"
-                className="text-xs text-[#efe7da]/40 hover:text-[#efe7da]/70 transition-colors"
-              >
-                ← Todas as edições
-              </Link>
-            </div>
           </div>
         )}
+
+        {/* Compartilhamento */}
+        <NewsShareBar
+          titulo={edicao.titulo}
+          subtitulo={edicao.subtitulo}
+          isComercial={isComercial}
+        />
+
+        {/* Voltar ao hub */}
+        <div className="pb-16 text-center">
+          <Link
+            href="/news"
+            className="text-xs text-[#efe7da]/40 hover:text-[#efe7da]/70 transition-colors"
+          >
+            ← Todas as edições
+          </Link>
+        </div>
       </div>
 
       <Footer />
