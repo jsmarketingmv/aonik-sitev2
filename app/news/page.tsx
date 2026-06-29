@@ -72,16 +72,15 @@ export default function NewsHubPage() {
         >
           <p className="mb-5 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
             <span className="h-px w-8 bg-gold/50" />
-            Quinzenal · Gratuito
+            Quinzenal
           </p>
           <h1
             className="font-display text-[clamp(2.8rem,7vw,6rem)] font-light leading-[0.95] tracking-[-0.02em] text-cream"
           >
-            AONIK
-            <span className="block italic text-gold">News</span>
+            AONIK <span className="italic text-gold">News</span>
           </h1>
           <p className="mt-6 max-w-md text-[15px] font-light leading-relaxed text-cream/65">
-            Destinos, dicas de temporada e condições especiais.
+            Destinos, dicas de temporada e condições especiais.<br />
             Direto ao ponto, a cada 15 dias.
           </p>
         </motion.div>
@@ -92,15 +91,11 @@ export default function NewsHubPage() {
         <div className="mx-auto max-w-[1180px]">
 
           {/* Header da seção */}
-          <Reveal className="mb-16 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <Reveal className="mb-16">
             <h2 className="font-display text-[clamp(1.5rem,2.8vw,2.25rem)] font-light leading-[1.1] tracking-[-0.01em] text-forest">
               Edições{" "}
               <span className="italic text-gold">publicadas</span>
             </h2>
-            <p className="max-w-xs text-[13px] font-light leading-relaxed text-ink/50">
-              Cada link foi pensado para abrir direto do WhatsApp no celular.
-              Compartilhe com quem vai adorar.
-            </p>
           </Reveal>
 
           {/* Edições */}
@@ -152,10 +147,10 @@ export default function NewsHubPage() {
                           <span className="h-px w-8 bg-gold/50" />
                           {formatarData(ed.data)}
                         </p>
-                        <h3 className="font-display text-[clamp(1.6rem,3vw,2.6rem)] font-light leading-[1.06] tracking-[-0.02em] text-forest transition-colors duration-300 group-hover:text-gold">
+                        <h3 className="font-display text-[clamp(1.6rem,3vw,2.6rem)] font-light leading-[1.06] tracking-[-0.02em] text-forest transition-colors duration-300 group-hover:text-gold text-balance">
                           {ed.titulo}
                         </h3>
-                        <p className="mt-4 max-w-sm text-[14px] font-light leading-relaxed text-ink/55">
+                        <p className="mt-4 max-w-sm text-[14px] font-light leading-relaxed text-ink/55 text-pretty">
                           {ed.subtitulo}
                         </p>
                         <span className="mt-7 inline-flex items-center gap-3 rounded-full border border-forest/25 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-forest transition-all duration-300 group-hover:border-forest group-hover:bg-forest group-hover:text-cream">

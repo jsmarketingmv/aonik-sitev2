@@ -15,6 +15,7 @@ import type {
   BlocoDica,
   BlocoPromo,
   BlocoFrase,
+  BlocoBanner,
 } from "../../lib/news";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -225,6 +226,43 @@ function BlocoPromoComp({ b }: { b: BlocoPromo }) {
   );
 }
 
+// Banner central — destaque especial largura total
+function BlocoBannerComp({ b }: { b: BlocoBanner }) {
+  return (
+    <Reveal className="py-4">
+      <Link href={b.href} className="group block overflow-hidden rounded-xl">
+        <div className="relative min-h-[200px] overflow-hidden">
+          {b.img && (
+            <div
+              className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-100"
+              style={{ backgroundImage: `url('${b.img}')` }}
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-r from-forest/90 via-forest/60 to-forest/20" />
+          <div className="relative z-10 flex h-full min-h-[200px] flex-col justify-center px-8 py-10 md:px-12">
+            {b.badge && (
+              <p className="mb-4 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
+                <span className="h-px w-8 bg-gold/50" />
+                {b.badge}
+              </p>
+            )}
+            <h3 className="font-display text-[clamp(1.4rem,2.8vw,2.2rem)] font-light leading-[1.05] tracking-[-0.01em] text-cream text-balance transition-colors duration-300 group-hover:text-gold max-w-lg">
+              {b.titulo}
+            </h3>
+            <p className="mt-3 max-w-md text-[14px] font-light leading-relaxed text-cream/65">
+              {b.descricao}
+            </p>
+            <span className="mt-6 inline-flex w-fit items-center gap-3 rounded-full border border-cream/30 px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-cream transition-all duration-300 group-hover:border-gold group-hover:text-gold">
+              {b.cta ?? "Saiba mais"}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </span>
+          </div>
+        </div>
+      </Link>
+    </Reveal>
+  )
+}
+
 // ── DISPATCHER ──────────────────────────────────────────────
 
 function RenderBloco({
@@ -247,6 +285,8 @@ function RenderBloco({
       return <BlocoPromoComp b={bloco} />;
     case "frase":
       return <BlocoFraseComp b={bloco} />;
+    case "banner":
+      return <BlocoBannerComp b={bloco} />;
     default:
       return null;
   }
@@ -321,38 +361,58 @@ export default function EdicaoPage() {
             ))}
           </div>
 
-          {/* CTA */}
-          {edicao.cta && (
-            <div className="border-t border-ink/10 px-6 py-14 text-center md:px-10">
-              <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.28em] text-ink/40">
-                Pronto para viver isso?
-              </p>
-              <h2 className="font-display mb-8 text-[clamp(1.4rem,2.6vw,2rem)] font-light text-forest">
-                Explore todos os{" "}
-                <span className="italic text-gold">destinos AONIK</span>
-              </h2>
+          {/* CTA + voltar — dentro da seção clara */}
+          <div className="border-t border-ink/10 px-6 py-16 text-center md:px-10">
+            {edicao.cta && (
+              <>
+                <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.28em] text-ink/40">
+                  Pronto para viver isso?
+                </p>
+                <h2 className="font-display mb-8 text-[clamp(1.4rem,2.6vw,2rem)] font-light text-forest">
+                  Explore todos os{" "}
+                  <span className="italic text-gold">destinos AONIK</span>
+                </h2>
+                <Link
+                  href={edicao.cta.href}
+                  className="group inline-flex items-center gap-3 rounded-full bg-forest px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-cream transition-transform duration-300 hover:scale-[1.03]"
+                >
+                  {edicao.cta.texto}
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
+              </>
+            )}
+            <div className="mt-12">
               <Link
-                href={edicao.cta.href}
-                className="group inline-flex items-center gap-3 rounded-full bg-forest px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-cream transition-transform duration-300 hover:scale-[1.03]"
+                href="/news"
+                className="text-[12px] font-medium uppercase tracking-[0.2em] text-ink/35 transition-colors duration-300 hover:text-ink/70"
               >
-                {edicao.cta.texto}
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                ← Todas as edições
               </Link>
             </div>
-          )}
+          </div>
         </section>
       )}
 
       {/* CTA comercial */}
-      {isComercial && edicao.cta && (
-        <div className="border-t border-cream/10 px-6 py-14 text-center md:px-10">
-          <Link
-            href={edicao.cta.href}
-            className="group inline-flex items-center gap-3 rounded-full bg-gold px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink transition-transform duration-300 hover:scale-[1.03]"
-          >
-            {edicao.cta.texto}
-            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </Link>
+      {isComercial && (
+        <div className="border-t border-cream/10 px-6 py-16 text-center md:px-10">
+          {edicao.cta && (
+            <Link
+              href={edicao.cta.href}
+              className="group inline-flex items-center gap-3 rounded-full bg-gold px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink transition-transform duration-300 hover:scale-[1.03]"
+            >
+              {edicao.cta.texto}
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </Link>
+          )}
+          <div className="mt-12">
+            <Link
+              href="/news"
+              className="text-[12px] font-medium uppercase tracking-[0.2em] text-cream/35 transition-colors duration-300 hover:text-cream/70"
+            >
+              ← Todas as edições
+            </Link>
+          </div>
         </div>
       )}
 
@@ -362,16 +422,6 @@ export default function EdicaoPage() {
         subtitulo={edicao.subtitulo}
         isComercial={isComercial}
       />
-
-      {/* Voltar */}
-      <div className="pb-16 text-center">
-        <Link
-          href="/news"
-          className="text-[12px] font-medium uppercase tracking-[0.2em] text-cream/35 transition-colors duration-300 hover:text-cream/70"
-        >
-          ← Todas as edições
-        </Link>
-      </div>
 
       <Footer />
       <FloatingActions />

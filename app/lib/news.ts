@@ -51,7 +51,18 @@ export type BlocoFrase = {
   local?: string
 }
 
-export type Bloco = BlocoTexto | BlocoDestaque | BlocoDica | BlocoPromo | BlocoFrase
+// Banner central — destaque especial em largura total
+export type BlocoBanner = {
+  tipo: "banner"
+  titulo: string
+  descricao: string
+  href: string
+  img?: string
+  badge?: string
+  cta?: string
+}
+
+export type Bloco = BlocoTexto | BlocoDestaque | BlocoDica | BlocoPromo | BlocoFrase | BlocoBanner
 
 export type EdicaoNews = {
   slug: string
@@ -107,7 +118,7 @@ export const EDICOES: EdicaoNews[] = [
         descricao:
           "Português, Francês, Costa, Primitivo... cada caminho tem uma personalidade diferente. Autoguiado, no seu ritmo.",
         href: "/caminhos-autoguiados",
-        img: "/images/caminho-santiago/caminho-santiago-1.jpg",
+        img: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200&auto=format&fit=crop",
         badge: "AUTOGUIADO",
         preco: "a partir de € 890",
       },

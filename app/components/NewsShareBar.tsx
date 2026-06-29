@@ -88,80 +88,82 @@ export default function NewsShareBar({ titulo, subtitulo, isComercial }: Props) 
   const btns = [
     {
       key: "facebook",
-      label: "Facebook",
+      title: "Compartilhar no Facebook",
       icon: ICONS.facebook,
       onClick: () => openWindow(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(getUrl())}`),
     },
     {
       key: "linkedin",
-      label: "LinkedIn",
+      title: "Compartilhar no LinkedIn",
       icon: ICONS.linkedin,
       onClick: () => openWindow(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(getUrl())}`),
     },
     {
       key: "email",
-      label: "E-mail",
+      title: "Enviar por e-mail",
       icon: ICONS.email,
       onClick: () => { window.location.href = `mailto:?subject=${encodeURIComponent(titulo)}&body=${encodeURIComponent(subtitulo + "\n\n" + getUrl())}` },
     },
     {
       key: "instagram",
-      label: copied === "instagram" ? "Copiado!" : "Instagram",
+      title: copied === "instagram" ? "Link copiado!" : "Copiar link para Instagram",
       icon: ICONS.instagram,
       onClick: () => copyToClipboard("instagram"),
     },
     {
       key: "link",
-      label: copied === "link" ? "Copiado!" : "Copiar link",
+      title: copied === "link" ? "Link copiado!" : "Copiar link",
       icon: ICONS.link,
       onClick: () => copyToClipboard("link"),
     },
   ]
 
   return (
-    <div className={`px-6 py-14 md:px-10 ${isComercial ? "bg-forest" : "bg-cream"}`}>
+    <div className={`px-6 py-12 md:px-10 ${isComercial ? "bg-forest" : "bg-cream"}`}>
       <div className="mx-auto max-w-[780px]">
-        <div className={`mb-8 h-px w-full ${lineClass}`} />
+        <div className={`h-px w-full ${lineClass}`} />
 
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-5 py-10 md:flex-row md:items-center md:justify-between">
           {/* Label */}
-          <p className={`text-[11px] font-medium uppercase tracking-[0.28em] ${labelClass}`}>
-            Compartilhe com quem vai adorar
+          <p className={`max-w-[220px] text-[11px] font-medium uppercase leading-relaxed tracking-[0.22em] ${labelClass}`}>
+            Compartilhe estas novidades com quem precisa saber disto!
           </p>
 
           {/* Botão nativo mobile */}
           <button
             onClick={handleNativeShare}
-            className={`md:hidden inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.16em] transition-colors duration-300 ${accentClass}`}
+            title="Compartilhar"
+            className={`md:hidden self-start rounded-full border px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors duration-300 ${
+              isComercial ? "border-cream/20 text-cream/60 hover:border-gold hover:text-gold" : "border-ink/20 text-ink/50 hover:border-forest hover:text-forest"
+            }`}
           >
-            {ICONS.share}
             Compartilhar
           </button>
 
-          {/* Links de redes */}
-          <div className="flex flex-wrap items-center gap-6 md:gap-8">
+          {/* Ícones das redes — sem texto */}
+          <div className="flex items-center gap-5">
             {btns.map((btn) => (
               <button
                 key={btn.key}
                 onClick={btn.onClick}
-                className={`inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 ${
+                title={btn.title}
+                className={`transition-colors duration-300 ${
                   copied === btn.key ? accentClass : itemClass
                 }`}
               >
-                {btn.icon}
-                {btn.label}
+                <span className="block h-5 w-5">{btn.icon}</span>
               </button>
             ))}
           </div>
         </div>
 
-        {copied === "instagram" && (
-          <p className={`mt-4 text-[11px] ${labelClass}`}>
-            Cole no Stories ou na bio do Instagram.
+        {(copied === "instagram" || copied === "link") && (
+          <p className={`-mt-4 mb-4 text-[11px] ${labelClass}`}>
+            {copied === "instagram" ? "Cole no Stories ou na bio do Instagram." : "Link copiado para a área de transferência."}
           </p>
         )}
 
-        <div className={`mt-8 h-px w-full ${lineClass}`} />
+        <div className={`h-px w-full ${lineClass}`} />
       </div>
     </div>
   )
