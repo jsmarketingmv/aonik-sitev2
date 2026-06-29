@@ -83,58 +83,93 @@ export const EDICOES: EdicaoNews[] = [
   {
     slug: "edicao-01",
     numero: 1,
-    titulo: "Julho começa com vagas nos Alpes",
-    subtitulo: "TMB com grupo confirmado, dica de temporada e o que está em aberto para 2027.",
+    titulo: "A temporada começa. E as vagas, também.",
+    subtitulo: "TMB com últimas 2 vagas em 2026, Early Booking para 2027, Cochilha Rica e Torres del Paine com condições especiais.",
     data: "2026-07-01",
     tipo: "informativo",
     hero: "/images/tmb/hero.jpg",
     blocos: [
       {
         tipo: "texto",
-        titulo: "Estreia da AONIK News",
+        titulo: "A News AONIK chegou",
         conteudo:
-          "A cada 15 dias você recebe os destaques dos nossos destinos: novidades, dicas de temporada e vagas disponíveis. Direto ao ponto, sem enrolação.",
+          "Você faz parte de algo especial. A cada 15 dias, direto no seu WhatsApp: destinos abertos, dicas de temporada, vagas confirmadas e inspiração para a próxima aventura. Sem enrolação, sem filtro. Só o essencial para quem vive o turismo de natureza de verdade. Bem-vindo.",
       },
       {
         tipo: "destaque",
-        titulo: "Tour du Mont Blanc — vagas abertas",
+        titulo: "Tour du Mont Blanc 2026 — restam 2 vagas",
         descricao:
-          "170 km pelos Alpes Franceses, Italianos e Suíços. Grupo de agosto/2026 com vagas limitadas, guia especialista e tudo incluído.",
+          "170 km pelos Alpes Franceses, Italianos e Suíços. O grupo de agosto está confirmado e restam apenas 2 lugares. Guia especialista, tudo incluído, experiência que transforma. Se você ainda está pensando, o momento é esse.",
         href: "/destinos/tour-du-mont-blanc",
         img: "/images/tmb/hero.jpg",
-        badge: "GRUPO CONFIRMADO",
+        badge: "ÚLTIMAS 2 VAGAS",
         preco: "a partir de € 5.450",
       },
       {
+        tipo: "destaque",
+        titulo: "TMB 2027 — pré-reserva aberta com tarifa especial",
+        descricao:
+          "A janela de reserva antecipada para 2027 está aberta. Garanta seu lugar com as melhores condições do ano antes que o grupo feche. Quem reserva cedo, caminha tranquilo.",
+        href: "/destinos/tour-du-mont-blanc",
+        img: "/images/grupos/tmb-contemplacao.jpg",
+        badge: "PRÉ-RESERVA ABERTA",
+        preco: "tarifa especial 2027",
+      },
+      {
         tipo: "dica",
-        icone: "🌤️",
-        titulo: "Melhor época para os Alpes",
+        icone: "🏔️",
+        titulo: "Julho nos Alpes: o que muda quando a neve some",
         texto:
-          "Julho e agosto têm neve derretida e trilhas abertas. Setembro fica mais tranquilo e os refúgios têm menos lotação, ótimo para quem quer mais silêncio na montanha.",
+          "Julho abre a temporada nos Alpes. Trilhas liberadas, refúgios abastecidos e dias com até 16 horas de luz. É a janela ideal para o TMB e as Dolomitas. Setembro fica ainda mais silencioso, com menos turistas e os mesmos cenários de outro mundo. Qualquer que seja o mês, os Alpes entregam.",
       },
       {
         tipo: "destaque",
-        titulo: "Caminhos de Santiago — saídas o ano todo",
+        titulo: "A Patagônia Brasileira existe. Está a 2h de Porto Alegre.",
         descricao:
-          "Português, Francês, Costa, Primitivo... cada caminho tem uma personalidade diferente. Autoguiado, no seu ritmo.",
+          "Cochilha Rica é um Brasil que poucas pessoas conhecem. Campos nativos, culinária gaúcha de verdade, silêncio absoluto e natureza que surpreende. Uma caminhada que mistura cultura, paisagem e autoconhecimento. Diferente de tudo que você já fez.",
+        href: "/destinos/coxilha-rica",
+        img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1400&auto=format&fit=crop",
+        badge: "BRASIL NATURAL",
+      },
+      {
+        tipo: "destaque",
+        titulo: "Caminho de Santiago — onde cada passo tem sentido",
+        descricao:
+          "Além das rotas de Portugal, a AONIK opera as rotas espanholas. De Sarria ou de Cebreiro, são cerca de 100 km a pé até Santiago de Compostela. Programa completo, no seu ritmo, com suporte de ponta a ponta. Peregrinação real, sem abrir mão do conforto.",
         href: "/caminhos-autoguiados",
         img: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200&auto=format&fit=crop",
-        badge: "AUTOGUIADO",
+        badge: "PEREGRINAÇÃO",
         preco: "a partir de € 890",
       },
       {
         tipo: "banner",
-        titulo: "Torres del Paine — o circuito que muda tudo",
-        descricao: "Patagônia Chilena. 4 opções de circuito W, tudo incluído. Vagas abertas para 2026.",
+        titulo: "Torres del Paine — Early Booking ativo para 2026",
+        descricao:
+          "4 circuitos W disponíveis. Condições antecipadas: 10% de desconto à vista, 5% OFF parcelado com entrada de 30% + 7x, ou 10x sem juros. Capacidade limitada pelo Parque Nacional. Reserve antes que a janela feche.",
         href: "/destinos/torres-del-paine",
         img: "/images/tmb/hero.jpg",
-        badge: "Destaque da edição",
-        cta: "Ver circuitos W",
+        badge: "EARLY BOOKING",
+        cta: "Garantir minha vaga",
+      },
+      {
+        tipo: "texto",
+        titulo: "Quem vai caminhar com você",
+        conteudo:
+          "A AONIK não é uma agência. É uma ONG que transforma caminhadas em jornadas reais. Nossos guias são apaixonados pela montanha, conhecem cada trilha e cuidam de cada detalhe. Desde 2011, levamos pessoas a experiências que mudam perspectivas. Você não vai sozinho. Vai com quem sabe o caminho.",
+      },
+      {
+        tipo: "destaque",
+        titulo: "Canal AONIK no WhatsApp — entre para a conversa",
+        descricao:
+          "Além da News quinzenal, temos um canal onde compartilhamos bastidores, dicas espontâneas e novidades em tempo real. Uma conversa entre quem ama o turismo de natureza, direta no seu WhatsApp. Toque e siga o canal.",
+        href: "https://whatsapp.com/channel/0029Vb8RCc37DAX4Q0AIVP3O",
+        img: "/images/grupos/tmb-cume.jpg",
+        badge: "NOVO CANAL",
       },
       {
         tipo: "frase",
-        texto: "A montanha não tem pressa. Mas a vaga sim.",
-        local: "Chamonix, França",
+        texto: "Silêncio, movimento, presença. É isso que a natureza ensina a quem para de correr.",
+        local: "Alpes Suíços",
       },
     ],
     cta: {
