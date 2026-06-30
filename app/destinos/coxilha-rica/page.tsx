@@ -290,97 +290,109 @@ function ElevationProfile() {
 // ============================================================
 const GALERIA = [
   {
-    src: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1400&auto=format&fit=crop",
-    cap: "Os campos de altitude da Serra Catarinense",
+    src: "/images/coxilha-rica/campo-grupo-araucaria.jpg",
+    cap: "Os campos de altitude entre as araucárias",
     tag: "Paisagem",
   },
   {
-    src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1400&auto=format&fit=crop",
-    cap: "Estrada das fazendas",
+    src: "/images/coxilha-rica/piquenique-chimarrao.jpg",
+    cap: "Chimarrão e pausa no meio do campo",
+    tag: "Convívio",
+  },
+  {
+    src: "/images/coxilha-rica/campo-estrada-pinheiros.jpg",
+    cap: "A estrada das fazendas entre os pinheiros",
     tag: "Rota",
   },
   {
-    src: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1400&auto=format&fit=crop",
-    cap: "Fazenda Lua Cheia — chegada e celebração",
+    src: "/images/coxilha-rica/fazenda-casa.jpg",
+    cap: "Chegada à fazenda histórica da serra",
     tag: "Fazenda",
   },
   {
-    src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1400&auto=format&fit=crop",
-    cap: "O horizonte que nunca é o mesmo duas vezes",
-    tag: "Vista",
+    src: "/images/coxilha-rica/cachoeira.jpg",
+    cap: "A cachoeira no coração da travessia",
+    tag: "Natureza",
   },
   {
-    src: "https://images.unsplash.com/photo-1500514966906-fe245eea9344?q=80&w=1400&auto=format&fit=crop",
-    cap: "Corredor dos Tropeiros — paredes de pedra históricas",
-    tag: "Cultura",
+    src: "/images/coxilha-rica/gastronomia.jpg",
+    cap: "A mesa farta da Serra Catarinense",
+    tag: "Gastronomia",
   },
 ];
 
 function GaleriaInterativa() {
   const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i - 1 + GALERIA.length) % GALERIA.length);
+  const next = () => setIdx((i) => (i + 1) % GALERIA.length);
   const img = GALERIA[idx];
 
   return (
-    <div className="grid gap-3 md:grid-cols-[1fr_200px]">
+    <div className="flex flex-col gap-3">
       {/* Imagem destacada */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0.5, scale: 1.02 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.45, ease: EASE }}
-          className="relative overflow-hidden rounded-2xl"
-          style={{ aspectRatio: "16/10" }}
-        >
-          <img
-            src={img.src}
-            alt={img.cap}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div
+      <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0.6, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
             className="absolute inset-0"
-            style={{ background: `linear-gradient(to top, ${C.terra}bb 0%, transparent 55%)` }}
-          />
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <span
-              className="text-[10px] font-semibold uppercase tracking-[0.32em]"
-              style={{ color: C.campo }}
-            >
-              {img.tag}
-            </span>
-            <p className="mt-1 text-[14px] font-light" style={{ color: C.creme }}>
-              {img.cap}
-            </p>
-          </div>
-          {/* Contador */}
-          <div className="absolute right-4 top-4">
-            <span className="text-[11px] font-medium" style={{ color: "rgba(241,232,216,0.55)" }}>
-              {idx + 1}/{GALERIA.length}
-            </span>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+          >
+            <img src={img.src} alt={img.cap} className="h-full w-full object-cover" />
+          </motion.div>
+        </AnimatePresence>
+        <div
+          className="absolute inset-0"
+          style={{ background: `linear-gradient(to top, ${C.terra}cc 0%, transparent 55%)` }}
+        />
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: C.campo }}>
+            {img.tag}
+          </span>
+          <p className="mt-1 text-[14px] font-light" style={{ color: C.creme }}>{img.cap}</p>
+        </div>
+        <span className="absolute right-4 top-4 text-[11px] font-medium" style={{ color: "rgba(241,232,216,0.55)" }}>
+          {idx + 1} / {GALERIA.length}
+        </span>
+        <button
+          onClick={prev}
+          aria-label="Anterior"
+          className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base transition-all hover:scale-110"
+          style={{ background: `${C.terra}99`, color: C.campo }}
+        >
+          ‹
+        </button>
+        <button
+          onClick={next}
+          aria-label="Próxima"
+          className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base transition-all hover:scale-110"
+          style={{ background: `${C.terra}99`, color: C.campo }}
+        >
+          ›
+        </button>
+      </div>
 
-      {/* Thumbnails */}
-      <div className="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible">
+      {/* Miniaturas — faixa horizontal abaixo */}
+      <div className="grid auto-cols-fr grid-flow-col gap-2">
         {GALERIA.map((g, i) => (
           <button
             key={i}
             onClick={() => setIdx(i)}
-            className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
+            aria-label={g.cap}
+            className="relative overflow-hidden rounded-lg transition-all duration-300"
             style={{
-              width: 200,
-              height: 115,
-              opacity: i === idx ? 1 : 0.45,
+              aspectRatio: "16/10",
               outline: i === idx ? `2px solid ${C.campo}` : "2px solid transparent",
               outlineOffset: 2,
             }}
           >
             <img
               src={g.src}
-              alt={g.tag}
-              className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.05]"
+              alt={g.cap}
+              className="h-full w-full object-cover transition-opacity duration-300"
+              style={{ opacity: i === idx ? 1 : 0.42 }}
             />
           </button>
         ))}
@@ -684,7 +696,7 @@ export default function CoxilhaRicaPage() {
               className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1400&auto=format&fit=crop')",
+                  "url('/images/coxilha-rica/campo-trilha-grupo.jpg')",
               }}
             />
             <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 30%, ${C.terra}dd 100%)` }} />
@@ -713,7 +725,7 @@ export default function CoxilhaRicaPage() {
               className="absolute inset-0 bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1400&auto=format&fit=crop')",
+                  "url('/images/coxilha-rica/fazenda-lareira.jpg')",
               }}
             />
             <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 30%, ${C.argila}ee 100%)` }} />
@@ -745,7 +757,7 @@ export default function CoxilhaRicaPage() {
           className="absolute inset-0 bg-cover bg-center opacity-20"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2000&auto=format&fit=crop')",
+              "url('/images/coxilha-rica/campo-muro-pedra.jpg')",
           }}
         />
         <div className="absolute inset-0" style={{ background: `${C.stone}bb` }} />
