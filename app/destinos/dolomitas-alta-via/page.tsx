@@ -176,29 +176,54 @@ function ElevationProfile({ labelColor = D.calcare, gridColor = D.line, legColor
 // ============================================================
 const GALERIA = [
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg",
-    cap: "Dolomitas — paisagem da travessia",
+    src: "https://static.wixstatic.com/media/2d4f5b_73a074d88fab40bcb682832c94f4581d~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "Um rifugio de pedra surge no meio da travessia",
+    tag: "Rifugi",
+  },
+  {
+    src: "https://static.wixstatic.com/media/2d4f5b_bad1e5d4f34a41109e523804f0216ae7~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "Lagos turquesa vistos do alto da rota",
     tag: "Paisagem",
   },
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg",
-    cap: "Alta Via 1 — os caminhos entre as torres",
-    tag: "Rota",
-  },
-  {
-    src: "https://static.wixstatic.com/media/2d4f5b_b5691cbefb4e4071afddcb67131f3af5~mv2.jpeg",
-    cap: "Alta Via 1 — o percurso pelos Alpes Italianos",
+    src: "https://static.wixstatic.com/media/2d4f5b_b3c8cfbb80f345ce9d319902aadf6ed8~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "O branco do calcario, marca das Dolomitas",
     tag: "Alta Via",
   },
   {
-    src: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1400&auto=format&fit=crop",
-    cap: "Rifugio histórico — hospedagem de altitude",
-    tag: "Rifugio",
+    src: "https://static.wixstatic.com/media/2d4f5b_d449c156a7234f07b8c4f731b6606ea9~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "Entre flores alpinas e as grandes paredes",
+    tag: "Trilha",
   },
   {
-    src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1400&auto=format&fit=crop",
-    cap: "Cortina d'Ampezzo e os picos ao redor",
-    tag: "Cortina",
+    src: "https://static.wixstatic.com/media/2d4f5b_2c19dbc8a0ca4eab9c3f93e02a421779~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "Jantar no rifugio, o fim de mais um dia",
+    tag: "Hospedagem",
+  },
+  {
+    src: "https://static.wixstatic.com/media/2d4f5b_9cab2d161dda4035a92e2ab4bbece616~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "Subida entre pinheiros e torres de pedra",
+    tag: "Travessia",
+  },
+  {
+    src: "https://static.wixstatic.com/media/2d4f5b_f8ec805979db406598fafadad9c7b2f8~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "Em grupo, no ritmo da montanha",
+    tag: "Comunidade",
+  },
+  {
+    src: "https://static.wixstatic.com/media/2d4f5b_3977985d33334389bba7406e75b42e65~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "Os prados de Fanes, um cenario surreal",
+    tag: "Fanes",
+  },
+  {
+    src: "https://static.wixstatic.com/media/2d4f5b_9949df77563e44849a30739cff4928d9~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "Floresta a caminho do proximo rifugio",
+    tag: "Floresta",
+  },
+  {
+    src: "https://static.wixstatic.com/media/2d4f5b_22579166c00b4c9aabcb71fb4565473e~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
+    cap: "O grupo AONIK nos Dolomiti",
+    tag: "Grupo",
   },
 ];
 
@@ -262,7 +287,7 @@ const MARCOS = [
     texto:
       "As três torres de calcário mais fotografadas do mundo. O circuito completo revela a formação rochosa por todos os ângulos, com parada no Rifugio Locatelli. 15,43 km percorridos num dia que nenhum participante esquece.",
     detalhe: "3.003 m · Circuito 15 km · Dia 2",
-    img: "https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg",
+    img: "https://static.wixstatic.com/media/2d4f5b_b5691cbefb4e4071afddcb67131f3af5~mv2.jpeg/v1/fill/w_1600,h_1280,al_c,q_82/file.jpg",
     bg: D.verde,
     imgDireita: true,
     colors: {
@@ -281,7 +306,7 @@ const MARCOS = [
     texto:
       "Um dos lagos alpinos mais bonitos do mundo. Águas turquesas cercadas de picos rochosos. Daqui a Alta Via comeca de verdade: 12,60 km e +1.037 m de subida até o Rifugio Sennes, onde tudo muda de escala.",
     detalhe: "1.496 m · 12,60 km · +1.037 m",
-    img: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg",
+    img: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg/v1/fill/w_1600,h_1280,al_c,q_82/file.jpg",
     bg: "#ffffff",
     imgDireita: false,
     colors: {
@@ -300,7 +325,7 @@ const MARCOS = [
     texto:
       "3.220 metros de altura, com uma das faces verticais mais longas dos Alpes Italianos. A Alta Via atravessa sua base por dois dias inteiros. Chegar ao Lago di Coldai e erguer os olhos para essa parede: não tem descricao.",
     detalhe: "3.220 m · Parede NE com 1.000 m · Dias 8-9",
-    img: "https://static.wixstatic.com/media/2d4f5b_b5691cbefb4e4071afddcb67131f3af5~mv2.jpeg",
+    img: "https://static.wixstatic.com/media/2d4f5b_d4a2d6fa4d424bf6bdbbb9f95f285d09~mv2.jpeg/v1/fill/w_1600,h_1280,al_c,q_82/file.jpg",
     bg: D.rosso,
     imgDireita: true,
     colors: {
@@ -323,12 +348,12 @@ const ROTEIRO = [
   {
     d: "02", icon: "🗻",
     t: "Circuito Tre Cime di Lavaredo e Cadini di Misurina",
-    s: "15,43 km · +695 m. Transfer até o Rifugio Auronzo. Circuito completo dos Tre Cime — as três torres mais icônicas dos Alpes — com parada no Rifugio Locatelli. Retorno por Lago di Misurina. Hotel em Cortina.",
+    s: "15,43 km · +695 m. Transfer até o Rifugio Auronzo. Circuito completo dos Tre Cime, as três torres mais icônicas dos Alpes, com parada no Rifugio Locatelli. Retorno por Lago di Misurina. Hotel em Cortina.",
   },
   {
     d: "03", icon: "💧",
     t: "Lago di Braies até Rifugio Sennes",
-    s: "12,60 km · +1.037 m. Transfer até o Lago di Braies — o cartao postal das Dolomitas. Subida exigente até 2.369 m. Inicio da travessia de verdade, de refugio em refugio.",
+    s: "12,60 km · +1.037 m. Transfer até o Lago di Braies, o cartao postal das Dolomitas. Subida exigente até 2.369 m. Inicio da travessia de verdade, de refugio em refugio.",
   },
   {
     d: "04", icon: "⛰",
@@ -343,7 +368,7 @@ const ROTEIRO = [
   {
     d: "06", icon: "🪨",
     t: "Passo Falzarego até Lago Federa · Cinque Torri",
-    s: "12,23 km · +788 m. Passagem pelos Cinque Torri — palco de batalhas da Primeira Guerra Mundial. Opção de bondinho. Chegada ao Lago Federa com refúgio de frente para a água.",
+    s: "12,23 km · +788 m. Passagem pelos Cinque Torri, palco de batalhas da Primeira Guerra Mundial. Opção de bondinho. Chegada ao Lago Federa com refúgio de frente para a água.",
   },
   {
     d: "07", icon: "🌿",
@@ -406,7 +431,7 @@ export default function DolomitasAltaViaPage() {
         style={{ background: D.notte }}
       >
         <div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg')" }} />
+          style={{ backgroundImage: "url('https://static.wixstatic.com/media/2d4f5b_b3679b85ae3049609cb6df62340cf2f5~mv2.jpg/v1/fill/w_1920,h_1280,al_c,q_82/file.jpg')" }} />
         <div className="absolute inset-0"
           style={{ background: `linear-gradient(to right, ${D.notte}f2 0%, ${D.notte}b5 55%, ${D.notte}70 100%)` }} />
         <motion.div className="absolute inset-0 z-[1]" style={{ background: D.notte, pointerEvents: "none" }}
@@ -494,6 +519,10 @@ export default function DolomitasAltaViaPage() {
 
       {/* ===== O ENROSADÜRA ===== */}
       <section className="relative w-full overflow-hidden" style={{ background: D.rossoDeep }}>
+        <div className="pointer-events-none absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://static.wixstatic.com/media/2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg/v1/fill/w_1920,h_1080,al_c,q_82/file.jpg')", opacity: 0.28 }} />
+        <div className="pointer-events-none absolute inset-0"
+          style={{ background: `linear-gradient(to bottom, ${D.rossoDeep}f2 0%, ${D.rossoDeep}cc 45%, ${D.rossoDeep}f2 100%)` }} />
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden">
           <span className="select-none font-display font-light uppercase"
             style={{ fontSize: "clamp(5rem,18vw,16rem)", color: "rgba(255,255,255,0.04)",
@@ -620,7 +649,7 @@ export default function DolomitasAltaViaPage() {
           </Reveal>
           <Reveal delay={0.08}>
             <p className="mt-3 max-w-lg text-[14px] font-light leading-relaxed" style={{ color: D.textSoft }}>
-              Cortina d'Ampezzo como base — 2 noites de hotel antes e 1 depois da travessia.
+              Cortina d'Ampezzo como base: 2 noites de hotel antes e 1 depois da travessia.
               Oito dias de caminhada real entre refúgios históricos.
             </p>
           </Reveal>
