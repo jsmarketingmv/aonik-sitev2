@@ -31,22 +31,7 @@ export const GRUPOS: Grupo[] = [
     priceFrom: "a partir de € 5.450",
     status: "confirmada",
     href: "/destinos/tour-du-mont-blanc",
-    img: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    id: "dolomitas-alta-via",
-    title: "Dolomitas Alta Via 1",
-    flags: "🇮🇹",
-    local: "Alpes Italianos",
-    dates2026: ["03 a 12/Set"],
-    dates2027: ["02 a 11/Set"],
-    distance: "100 km",
-    altitude: "5.116 m+",
-    duration: "10 dias",
-    priceFrom: "a partir de € 5.450",
-    status: "confirmada",
-    href: "/destinos/dolomitas-alta-via",
-    img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop",
+    img: "/images/tmb/hero.jpg",
   },
   {
     id: "douro",
@@ -61,7 +46,7 @@ export const GRUPOS: Grupo[] = [
     priceFrom: "a partir de € 4.300",
     status: "confirmada",
     href: "/destinos/douro",
-    img: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1200&auto=format&fit=crop",
+    img: "https://static.wixstatic.com/media/2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg/v1/fill/w_600,h_400,al_c,q_82,enc_avif,quality_auto/img.jpg",
   },
   {
     id: "coxilha-rica",
@@ -76,7 +61,7 @@ export const GRUPOS: Grupo[] = [
     priceFrom: "a partir de R$ 5.800",
     status: "confirmada",
     href: "/destinos/coxilha-rica",
-    img: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200&auto=format&fit=crop",
+    img: "/images/coxilha-rica/campo-grupo-araucaria.jpg",
   },
   {
     id: "bavaria",
@@ -90,7 +75,7 @@ export const GRUPOS: Grupo[] = [
     priceFrom: "a partir de € 4.550",
     status: "confirmada",
     href: "/destinos/bavaria",
-    img: "https://images.unsplash.com/photo-1500514966906-fe245eea9344?q=80&w=1200&auto=format&fit=crop",
+    img: "https://static.wixstatic.com/media/fe55bd_f554b84e76a94f349bce45b1cdb90916~mv2.jpg/v1/fill/w_600,h_400,al_c,q_82,enc_avif,quality_auto/img.jpg",
   },
   {
     id: "tirol",
@@ -104,7 +89,7 @@ export const GRUPOS: Grupo[] = [
     priceFrom: "a partir de € 4.200",
     status: "a-confirmar",
     href: "/destinos/tirol",
-    img: "https://images.unsplash.com/photo-1454942901704-3c44c11b2ad1?q=80&w=1200&auto=format&fit=crop",
+    img: "https://static.wixstatic.com/media/fe55bd_e6bf1523cb2f48d0b2afe545fe1c5a89~mv2.jpeg/v1/fill/w_600,h_400,al_c,q_82,enc_avif,quality_auto/img.jpg",
   },
   {
     id: "dana-petra",
@@ -118,7 +103,7 @@ export const GRUPOS: Grupo[] = [
     priceFrom: "a partir de US$ 5.200",
     status: "confirmada",
     href: "/destinos/dana-ate-petra",
-    img: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop",
+    img: "https://static.wixstatic.com/media/fe55bd_0280e88d2a6b41be8562852f23bb4ecb~mv2.jpg/v1/fill/w_600,h_400,al_c,q_82,enc_avif,quality_auto/img.jpg",
   },
 ];
 
