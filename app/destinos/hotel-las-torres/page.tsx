@@ -106,16 +106,30 @@ const NAO_INCLUI = [
   "Serviços não mencionados",
 ];
 
-/* ===== GALERIA ===== */
+/* ===== GALERIA DE GASTRONOMIA (bloco gastronomia) ===== */
+const GASTRO_GALERIA = [
+  { src: "/lastorres/hotel-br.jpg", cap: "A estância ao entardecer" },
+  { src: "/lastorres/cocina.jpg", cap: "Jantar patagônico à mesa" },
+  { src: "/lastorres/bar-hotel.jpg", cap: "Um brinde no bar aberto" },
+  { src: "/lastorres/img05.jpg", cap: "Alta gastronomia regional" },
+];
+
+/* ===== GALERIA PRINCIPAL ===== */
 const GALERIA = [
-  { src: "/lastorres/hero.jpg", cap: "A estância sob o maciço Paine", tag: "A Estância" },
+  { src: "/lastorres/hotel-br.jpg", cap: "A estância ao entardecer", tag: "A Estância" },
   { src: "/lastorres/quarto-suite.jpg", cap: "Junior Suite com vista para o maciço", tag: "Habitação" },
   { src: "/lastorres/lounge.jpg", cap: "Lounge com lareira e janelas para a montanha", tag: "Interiores" },
-  { src: "/lastorres/restaurante.jpg", cap: "Gastronomia patagônica de mesa farta", tag: "Gastronomia" },
+  { src: "/lastorres/vista-0144.jpg", cap: "Mirante sobre os lagos do parque", tag: "Paisagem" },
   { src: "/lastorres/cuernos.jpg", cap: "Os Cuernos del Paine sobre o lago", tag: "Paisagem" },
-  { src: "/lastorres/fauna-guanaco.jpg", cap: "O puma, senhor da estepe patagônica", tag: "Fauna" },
-  { src: "/lastorres/glaciar-grey.jpg", cap: "Os témpanos azuis do Glaciar Grey", tag: "Geleira" },
+  { src: "/lastorres/cocteleria.jpg", cap: "Coquetelaria de autor no bar", tag: "Bar" },
+  { src: "/lastorres/wine.jpg", cap: "Wine experience patagônica", tag: "Gastronomia" },
   { src: "/lastorres/fogon.jpg", cap: "O fogón, coração da cultura de estância", tag: "Herança" },
+  { src: "/lastorres/img033.jpg", cap: "Salão social com vista panorâmica", tag: "Interiores" },
+  { src: "/lastorres/img04.jpg", cap: "O bar do hotel", tag: "Bar" },
+  { src: "/lastorres/spa.jpg", cap: "Sala de massagens e bem-estar", tag: "Bem-estar" },
+  { src: "/lastorres/pano-1200x500.jpg", cap: "Habitação contemporânea", tag: "Habitação" },
+  { src: "/lastorres/pano-1200x1000.jpg", cap: "Quarto com vista para o jardim", tag: "Habitação" },
+  { src: "/lastorres/allinc.jpg", cap: "Lounge e lareira da estância", tag: "Interiores" },
 ];
 
 function GaleriaInterativa() {
@@ -380,6 +394,32 @@ export default function HotelLasTorresPage() {
         </div>
       </section>
 
+      {/* ===== VÍDEO ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: L.night }}>
+        <div className="mx-auto max-w-[1100px]">
+          <Reveal>
+            <p className="mb-3 text-center text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: L.gold }}>
+              O filme da estância
+            </p>
+            <h2 className="mb-12 text-center font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.15]" style={{ color: L.cream }}>
+              Torres del Paine como poucos veem
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9", border: `1px solid ${L.line}`, boxShadow: "0 30px 80px rgba(0,0,0,0.5)" }}>
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src="https://www.youtube-nocookie.com/embed/QcytVbo0-3Y?rel=0&modestbranding=1"
+                title="Hotel Las Torres Patagonia"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===== CONSERVAÇÃO & RECONHECIMENTO ===== */}
       <section className="px-6 py-20 md:px-10 md:py-28" style={{ background: L.cream, color: L.stone }}>
         <div className="mx-auto max-w-[1100px]">
@@ -508,8 +548,16 @@ export default function HotelLasTorresPage() {
       <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: L.stone, color: L.cream }}>
         <div className="mx-auto grid max-w-[1280px] items-center gap-12 md:grid-cols-2 md:gap-16">
           <Reveal>
-            <div className="relative h-[360px] overflow-hidden rounded-2xl md:h-[520px]">
-              <img src="/lastorres/restaurante.jpg" alt="Gastronomia patagônica" className="h-full w-full object-cover" />
+            <div className="grid grid-cols-2 gap-3">
+              {GASTRO_GALERIA.map((g) => (
+                <div key={g.src} className="group relative overflow-hidden rounded-xl" style={{ aspectRatio: "4/3" }}>
+                  <img src={g.src} alt={g.cap} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: `linear-gradient(to top, ${L.night}dd, transparent 60%)` }} />
+                  <p className="absolute bottom-3 left-3 right-3 text-[12px] font-light opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ color: L.cream }}>
+                    {g.cap}
+                  </p>
+                </div>
+              ))}
             </div>
           </Reveal>
           <Reveal delay={0.1}>
