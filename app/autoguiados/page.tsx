@@ -43,8 +43,8 @@ const IMG = {
   douroExp:        wx("2d4f5b_7edb87bf58444c00a4e2f0882eaff778~mv2.jpg"),
   douroLux:        wx("2d4f5b_5a366974e9d24c1ab879fcf6eccb3a0c~mv2.jpeg"),
   sgDouro:         wx("2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg"),
-  vicentina:       `https://images.unsplash.com/photo-1505118380757-91f5f5632de0?q=80&w=800&h=560&auto=format&fit=crop`,
-  fatima:          `https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=800&h=560&auto=format&fit=crop`,
+  vicentina:       `/images/caminhos-autoguiados/vicentina/IMG_8891.jpg`,
+  fatima:          `/images/caminhos-autoguiados/nazare-fatima/hero.jpg`,
 };
 
 

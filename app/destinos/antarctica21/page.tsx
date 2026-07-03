@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
 import { Reveal, EASE } from "../../components/ui";
-import { A, IMG, AirArc } from "./_shared";
+import { A, AirArc } from "./_shared";
 
 const CONCEITO = [
   { num: "01", t: "Pule a Passagem de Drake", d: "Um voo fretado de 2h leva você de Punta Arenas direto a King George Island. Sem dois dias de mar agitado." },
@@ -19,16 +19,17 @@ const AIR_CRUISES = [
   {
     nome: "Antarctica Express",
     sub: "6 dias · voo + navegação",
-    desc: "A porta de entrada para a Antártida, com passagem pelo Cabo Horn. O caminho mais curto até o gelo.",
+    desc: "A travessia completa: voo sobre a Drake, Península Antártica, Cabo Horn e Canal Beagle em seis dias.",
     stats: [
       { label: "Duração", value: "6d / 5n" },
-      { label: "Saída", value: "Punta Arenas" },
+      { label: "Rota", value: "P. Arenas ↔ Ushuaia" },
       { label: "Navio", value: "Explorer / Discoverer" },
     ],
-    preco: "a partir de US$ 4.995",
+    preco: "a partir de US$ 6.795",
     href: "/destinos/antarctica21/express",
-    img: IMG.picos,
+    img: "/antarctica21/ship-explorer-ice.webp",
     tag: "Air-Cruise",
+    emBreve: false,
   },
   {
     nome: "Classic Antarctica",
@@ -39,10 +40,11 @@ const AIR_CRUISES = [
       { label: "Saída", value: "Punta Arenas" },
       { label: "Navio", value: "Explorer / Discoverer" },
     ],
-    preco: "a partir de US$ 13.795",
-    href: "/destinos/antarctica21/classic",
-    img: IMG.montanha,
+    preco: "sob consulta",
+    href: "",
+    img: "/antarctica21/icebergs.webp",
     tag: "Air-Cruise",
+    emBreve: true,
   },
   {
     nome: "Magellan Discoverer Inaugural",
@@ -53,10 +55,11 @@ const AIR_CRUISES = [
       { label: "Partida", value: "Dez 2026" },
       { label: "Navio", value: "Discoverer" },
     ],
-    preco: "a partir de US$ 11.495",
-    href: "/destinos/antarctica21/inaugural",
-    img: IMG.neve,
+    preco: "sob consulta",
+    href: "",
+    img: "/antarctica21/ship-discoverer.webp",
     tag: "Inaugural",
+    emBreve: true,
   },
 ];
 
@@ -70,10 +73,11 @@ const SEA_VOYAGES = [
       { label: "Rota", value: "Montt ↔ Ushuaia" },
       { label: "Saídas", value: "Set / Abr" },
     ],
-    preco: "a partir de US$ 5.995",
-    href: "/destinos/antarctica21/patagonia-fjords",
-    img: IMG.fiorde,
+    preco: "sob consulta",
+    href: "",
+    img: "/antarctica21/ship-glacier.webp",
     tag: "Sea Voyage",
+    emBreve: true,
   },
   {
     nome: "Falkland Islands",
@@ -84,10 +88,11 @@ const SEA_VOYAGES = [
       { label: "Saída", value: "Ushuaia" },
       { label: "Partida", value: "Abr 2028" },
     ],
-    preco: "a partir de US$ 6.795",
-    href: "/destinos/antarctica21/falkland-islands",
-    img: IMG.costa,
+    preco: "sob consulta",
+    href: "",
+    img: "/antarctica21/penguins-beach.webp",
     tag: "Sea Voyage",
+    emBreve: true,
   },
 ];
 
@@ -101,24 +106,25 @@ const OUTRAS = [
 const NAVIOS = [
   {
     nome: "Magellan Explorer",
-    desc: "76 hóspedes e 60 tripulantes. Construído sob especificação polar, com lounge panorâmico e cabines com vista para o gelo. O navio que firmou a Antarctica21 entre os fiordes.",
-    img: IMG.água,
+    desc: "76 hóspedes e 60 tripulantes. Lançado em 2019 sob o Polar Code, com varandas privativas, lounge de observação, sauna e clínica médica. O navio que firmou a Antarctica21 no gelo.",
+    img: "/antarctica21/ship-explorer.webp",
   },
   {
     nome: "Magellan Discoverer",
-    desc: "O novo navio híbrido diesel-elétrico, com 76 hóspedes, varandas privativas, sauna, academia e clínica médica. Estreia na temporada 2026-27. O futuro da expedição polar.",
-    img: IMG.fiorde,
+    desc: "O novo navio híbrido diesel-elétrico, classe de gelo PC6, com 76 hóspedes em 40 cabines, estética de iate boutique e proa acessível. Estreia na temporada 2026-27.",
+    img: "/antarctica21/ship-discoverer.webp",
   },
 ];
 
 function ProdutoCard({ r, i }: { r: typeof AIR_CRUISES[number]; i: number }) {
+  const Tag = r.emBreve ? "div" : "a";
   return (
     <Reveal delay={i * 0.08}>
-      <a href={r.href}
-        className="group block overflow-hidden rounded-2xl transition-transform duration-300 hover:-translate-y-1"
+      <Tag {...(r.emBreve ? {} : { href: r.href })}
+        className={`group block overflow-hidden rounded-2xl transition-transform duration-300 ${r.emBreve ? "" : "hover:-translate-y-1"}`}
         style={{ background: A.abismo }}>
         <div className="relative h-56 overflow-hidden md:h-64">
-          <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+          <div className={`absolute inset-0 bg-cover bg-center transition-transform duration-[1400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${r.emBreve ? "" : "group-hover:scale-105"}`}
             style={{ backgroundImage: `url('${r.img}')` }} />
           <div className="absolute inset-0"
             style={{ background: `linear-gradient(to top, ${A.abismo} 0%, transparent 60%)` }} />
@@ -126,6 +132,12 @@ function ProdutoCard({ r, i }: { r: typeof AIR_CRUISES[number]; i: number }) {
             style={{ background: A.parka, color: A.gelo }}>
             {r.tag}
           </span>
+          {r.emBreve && (
+            <span className="absolute right-5 top-5 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em]"
+              style={{ borderColor: A.glacial, color: A.glacial, background: "rgba(7,21,31,0.55)" }}>
+              Em breve
+            </span>
+          )}
         </div>
         <div className="p-7 md:p-8">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em]" style={{ color: A.glacial }}>{r.sub}</p>
@@ -141,13 +153,20 @@ function ProdutoCard({ r, i }: { r: typeof AIR_CRUISES[number]; i: number }) {
           </div>
           <div className="mt-5 flex items-center justify-between">
             <span className="font-display text-lg font-light" style={{ color: A.geloSoft }}>{r.preco}</span>
-            <span className="text-[12px] font-semibold uppercase tracking-[0.14em] transition-transform duration-300 group-hover:translate-x-1"
-              style={{ color: A.parkaSoft }}>
-              Ver expedição →
-            </span>
+            {r.emBreve ? (
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em]"
+                style={{ color: A.geloFaint }}>
+                Em breve
+              </span>
+            ) : (
+              <span className="text-[12px] font-semibold uppercase tracking-[0.14em] transition-transform duration-300 group-hover:translate-x-1"
+                style={{ color: A.parkaSoft }}>
+                Ver expedição →
+              </span>
+            )}
           </div>
         </div>
-      </a>
+      </Tag>
     </Reveal>
   );
 }
@@ -160,7 +179,7 @@ export default function Antarctica21HubPage() {
       {/* ===== HERO ===== */}
       <section className="relative flex min-h-[100svh] w-full items-center overflow-hidden" style={{ background: A.abismo }}>
         <div className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${IMG.picos}')`, opacity: 0.3 }} />
+          style={{ backgroundImage: "url('/antarctica21/explorer-fineart.webp')", opacity: 0.4 }} />
         <div className="absolute inset-0"
           style={{ background: `radial-gradient(ellipse at 32% 50%, transparent 22%, ${A.abismo} 78%)` }} />
 
@@ -286,23 +305,23 @@ export default function Antarctica21HubPage() {
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <p className="mb-8 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: A.parkaSoft }}>
-              Outras expedições · sob consulta
+              Outras expedições · em breve
             </p>
           </Reveal>
           <div className="grid gap-px overflow-hidden rounded-2xl sm:grid-cols-2" style={{ background: A.line }}>
             {OUTRAS.map((o, i) => (
               <Reveal key={o.nome} delay={i * 0.05}>
-                <a href="#contato" className="group flex items-center justify-between gap-4 p-6 transition-colors md:p-7"
+                <div className="flex items-center justify-between gap-4 p-6 md:p-7"
                   style={{ background: A.abismo }}>
                   <div>
                     <h3 className="font-display text-lg font-light" style={{ color: A.gelo }}>{o.nome}</h3>
                     <p className="mt-1 text-[13px] font-light" style={{ color: A.geloSoft }}>{o.sub}</p>
                   </div>
-                  <span className="text-[12px] font-semibold uppercase tracking-[0.14em] transition-transform duration-300 group-hover:translate-x-1"
-                    style={{ color: A.glacial }}>
-                    Consultar →
+                  <span className="whitespace-nowrap rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em]"
+                    style={{ borderColor: A.glacial, color: A.glacial }}>
+                    Em breve
                   </span>
-                </a>
+                </div>
               </Reveal>
             ))}
           </div>

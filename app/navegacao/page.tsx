@@ -47,10 +47,10 @@ const PRODUTOS = [
     nome: "Antarctica21",
     rota: "Air-Cruise · Antártica",
     desc: "Voe sobre o Drake e navegue a Antártica em navios boutique. Círculo Polar, fauna polar e expedições íntimas saindo de Punta Arenas.",
-    preco: "a partir de US$ 4.995",
+    preco: "a partir de US$ 6.795",
     href: "/destinos/antarctica21",
     tag: "Antártica",
-    img: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1600&auto=format&fit=crop",
+    img: "/antarctica21/ship-explorer.webp",
   },
 ];
 
