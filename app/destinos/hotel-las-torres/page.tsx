@@ -132,6 +132,69 @@ const GALERIA = [
   { src: "/lastorres/allinc.jpg", cap: "Lounge e lareira da estância", tag: "Interiores" },
 ];
 
+function VideoEstancia() {
+  const ref = React.useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(true);
+
+  const togglePlay = () => {
+    const v = ref.current;
+    if (!v) return;
+    if (v.paused) { v.play(); setPlaying(true); }
+    else { v.pause(); setPlaying(false); }
+  };
+  const toggleSound = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const v = ref.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+    if (v.paused) { v.play(); setPlaying(true); }
+  };
+
+  return (
+    <div
+      onClick={togglePlay}
+      className="group relative cursor-pointer overflow-hidden rounded-2xl"
+      style={{ aspectRatio: "16/9", border: `1px solid ${L.line}`, boxShadow: "0 30px 80px rgba(0,0,0,0.5)" }}
+    >
+      <video
+        ref={ref}
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/lastorres/las-torres-video.mp4"
+        poster="/lastorres/hero.jpg"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+      <div className="pointer-events-none absolute inset-0" style={{ background: `linear-gradient(to top, ${L.night}66, transparent 30%)` }} />
+
+      {/* Play / pause central (aparece pausado ou no hover) */}
+      <div
+        className={`pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${playing ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
+      >
+        <span
+          className="flex h-16 w-16 items-center justify-center rounded-full text-xl"
+          style={{ background: "rgba(20,22,26,0.55)", color: L.cream, backdropFilter: "blur(4px)" }}
+        >
+          {playing ? "❚❚" : "▶"}
+        </span>
+      </div>
+
+      {/* Botão de som */}
+      <button
+        onClick={toggleSound}
+        className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-full px-4 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] transition-all duration-300 hover:scale-[1.04]"
+        style={{ background: muted ? L.gold : "rgba(20,22,26,0.7)", color: muted ? L.night : L.cream }}
+      >
+        {muted ? "♪ Ativar som" : "♪ Silenciar"}
+      </button>
+    </div>
+  );
+}
+
 function GaleriaInterativa() {
   const [idx, setIdx] = useState(0);
   const prev = () => setIdx((i) => (i - 1 + GALERIA.length) % GALERIA.length);
@@ -402,20 +465,11 @@ export default function HotelLasTorresPage() {
               O filme da estância
             </p>
             <h2 className="mb-12 text-center font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.15]" style={{ color: L.cream }}>
-              Torres del Paine como poucos veem
+              Torres del Paine como poucos conhecem
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9", border: `1px solid ${L.line}`, boxShadow: "0 30px 80px rgba(0,0,0,0.5)" }}>
-              <iframe
-                className="absolute inset-0 h-full w-full"
-                src="https://www.youtube-nocookie.com/embed/QcytVbo0-3Y?rel=0&modestbranding=1"
-                title="Hotel Las Torres Patagonia"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
+            <VideoEstancia />
           </Reveal>
         </div>
       </section>
