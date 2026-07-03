@@ -18,20 +18,16 @@ interface LangCtx {
 const Ctx = createContext<LangCtx | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Sempre 'pt' no primeiro render (servidor e cliente) p/ evitar mismatch.
+  // Site publicado só em PT por ora. O switcher foi removido do Nav; a infra
+  // de i18n fica intacta p/ a tradução futura dentro do site. Enquanto isso,
+  // travamos em 'pt' e limpamos qualquer preferência ES/EN antiga do
+  // localStorage (senão visitante que clicou ES fica preso no conteúdo em PT).
   const [lang, setLangState] = useState<Lang>("pt");
 
-  // Recupera a preferência salva após montar.
   useEffect(() => {
-    const saved = localStorage.getItem("aonik-lang") as Lang | null;
-    if (saved && saved !== lang) setLangState(saved);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    localStorage.removeItem("aonik-lang");
+    document.documentElement.lang = "pt-BR";
   }, []);
-
-  useEffect(() => {
-    document.documentElement.lang =
-      lang === "pt" ? "pt-BR" : lang === "es" ? "es" : "en";
-  }, [lang]);
 
   function setLang(l: Lang) {
     setLangState(l);

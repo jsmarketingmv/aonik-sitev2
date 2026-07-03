@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "./LanguageProvider";
-import { LANGS } from "../lib/i18n";
 
 // Peregrinação → /jornada; Hotéis → /hoteis
 const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/hoteis"];
@@ -13,7 +12,7 @@ const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/ho
 const SAAS_LOGIN = "https://reservas.aonik.com.br/reservas/login";
 
 export default function Nav() {
-  const { lang, setLang, t } = useLang();
+  const { t } = useLang();
   const [loginOpen, setLoginOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -85,20 +84,8 @@ export default function Nav() {
 
           {/* Ações à direita */}
           <div className="flex items-center gap-3 md:gap-5">
-            {/* Seletor de idioma */}
-            <div className="hidden items-center gap-1 sm:flex">
-              {LANGS.map((id) => (
-                <button
-                  key={id}
-                  onClick={() => setLang(id)}
-                  className={`px-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors ${
-                    lang === id ? "text-gold" : "text-cream/45 hover:text-cream/80"
-                  }`}
-                >
-                  {id}
-                </button>
-              ))}
-            </div>
+            {/* Seletor de idioma removido por ora — site só em PT.
+                Infra i18n (LanguageProvider/i18n.ts) preservada p/ tradução futura. */}
 
             {/* Login com ramificação (só desktop lg+) */}
             <div className="relative hidden lg:block">
@@ -189,20 +176,7 @@ export default function Nav() {
               </ul>
 
               <div className="mt-6 flex flex-col gap-4">
-                {/* Idioma */}
-                <div className="flex items-center gap-2">
-                  {LANGS.map((id) => (
-                    <button
-                      key={id}
-                      onClick={() => setLang(id)}
-                      className={`px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] transition-colors ${
-                        lang === id ? "text-gold" : "text-cream/45 hover:text-cream/80"
-                      }`}
-                    >
-                      {id}
-                    </button>
-                  ))}
-                </div>
+                {/* Seletor de idioma removido por ora — site só em PT. */}
 
                 {/* Login mobile */}
                 <div className="flex flex-col gap-2">
