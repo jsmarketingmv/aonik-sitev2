@@ -154,13 +154,15 @@ export default function FloatingActions() {
     const text = input.trim();
     if (!text || loading) return;
     setInput("");
+    /* Histórico da conversa até agora, para a IA manter contexto entre mensagens */
+    const history = messages.map((m) => ({ role: m.role, content: m.text }));
     setMessages((m) => [...m, { role: "user", text }]);
     setLoading(true);
     try {
       const res = await fetch("/api/aonikia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, slug, pathname }),
+        body: JSON.stringify({ message: text, slug, pathname, history }),
       });
       const data = await res.json() as { reply?: string; whatsapp?: string | null; navigate?: NavBtn[] | null; error?: string };
       setMessages((m) => [

@@ -575,6 +575,7 @@ DESTINO — TORRES DEL PAINE & HOTEL RIO SERRANO:
 Torres del Paine é um dos parques mais selvagens e icônicos do planeta — torres de granito cinza que rasgam o céu, lagos turquesa de cor impossível, geleiras azuis, condores sobrevoando e pumas invisíveis na estepe. O vento Patagônico (30-100 km/h) e o clima que muda 4 vezes por dia fazem parte da experiência. O Rio Serrano não fica na entrada do parque nem na cidade vizinha: fica dentro do parque, no coração dele. Você acorda com os Cuernos del Paine visíveis pela janela e sai direto para as trilhas da manhã. Depois do dia lá fora — com tudo que a Patagônia tem de selvagem e intenso — você volta para lareira acesa, spa, alta gastronomia e a cama que abraça. É o único hotel que oferece essa combinação: a brutalidade da Patagônia do lado de fora, o conforto completo do lado de dentro. Temporada principal: outubro a abril; dezembro a março é o pico, com luz até as 22h.
 
 PRODUTO: Hotel Rio Serrano · Hotel + Spa · Torres del Paine, Chile
+FORMATO: trekking diário com GUIA EXCLUSIVO/PRIVATIVO saindo do próprio hotel, incluído nos programas com excursões. NÃO é autoguiado (sempre acompanhado por guia) e NÃO é grupo fechado com data fixa (é sob demanda, no ritmo do hóspede, junto com a estadia).
 LOCALIZAÇÃO: Dentro do Parque Nacional Torres del Paine
 CATEGORIA: 108 habitações · Top 10% TripAdvisor · Desde 2002
 
@@ -742,8 +743,8 @@ DESTINO — TORRES DEL PAINE, PATAGONIA CHILENA:
 Torres del Paine e um dos parques nacionais mais espetaculares do planeta, no extremo sul do Chile. O Hotel Las Torres fica DENTRO do parque, na base do setor das Torres — a localizacao mais privilegiada para quem quer viver o parque com conforto, sem precisar carregar mochila ou dormir em camping. As Torres de granito, os condores, os guanacos e os ventos patagonicos sao o cenario diario do hotel. A estancia existe desde 1970 e tem uma historia de pioneirismo na regiao. Temporada: outubro a abril.
 
 PRODUTO: Hotel Las Torres — estancia dentro do Parque Nacional Torres del Paine
-FORMATO: Hospedagem de alto padrao dentro do parque, com estrutura completa
-ATIVIDADES: Trekking diario saindo da porta do hotel (inclui acesso ao setor Base Torres), cavalgadas, passeios de kayak, bird watching, jantar tematico patagônico
+FORMATO: Hospedagem de alto padrao dentro do parque, com estrutura completa. Trekking diario com GUIA EXCLUSIVO/PRIVATIVO saindo da porta do hotel. NAO e autoguiado (sempre acompanhado por guia) e NAO e grupo fechado com data fixa (e sob demanda, no ritmo do hospede, junto com a estadia).
+ATIVIDADES: Trekking diario saindo da porta do hotel com guia exclusivo (inclui acesso ao setor Base Torres), cavalgadas, passeios de kayak, bird watching, jantar tematico patagônico
 LOCALIZACAO: Setor Central do parque, a 2 km do inicio da trilha para Base Torres
 
 TARIFAS: Sob consulta — variam por tipo de quarto, temporada e pacote de atividades. Fale com a equipe AONIK para cotacao personalizada.
@@ -1642,10 +1643,11 @@ DESTINOS EM DESTAQUE (para recomendar direto):
 - Douro, Portugal, caminhar entre vinhas Patrimônio UNESCO. [IR:/caminhos-autoguiados/douro|Ver o Douro autoguiado]
 - Cruzeiro Skorpios, fiordes e geleiras da Patagônia de barco. [IR:/destinos/cruzeiro-skorpios|Ver o Skorpios]
 
-MAPA DE FORMATOS (nunca ofereça um produto no formato errado):
-- AUTOGUIADOS (no seu ritmo): Torres del Paine Circuito W (Tradicional, Express, W+), Caminho de Santiago a pé (todas as rotas), Caminhos de Portugal (Rota Vicentina, Nazaré a Fátima, Douro, Douro Luxury, Santiago e Douro), todos os roteiros de bike, Vale Europeu Catarinense.
-- GUIADOS EM GRUPO (datas fixas): Tour du Mont Blanc, Dolomitas Alta Via, Bavária Alemã, Tirol Austríaco, Dana até Petra, Douro Experience Grupos, Coxilha Rica, e o W Journey em Torres del Paine (único W guiado).
-- Se o visitante quer montanha no próprio ritmo, os caminhos certos são Torres del Paine (W autoguiado), Caminho de Santiago e Caminhos de Portugal. Alpes (TMB, Dolomitas, Tirol, Bavária) só em grupo guiado.
+MAPA DE FORMATOS (nunca ofereça um produto no formato errado; existem 3 formatos, não 2):
+- AUTOGUIADOS (no seu ritmo, sem guia): Torres del Paine Circuito W (Tradicional, Express, W+), Caminho de Santiago a pé (todas as rotas), Caminhos de Portugal (Rota Vicentina, Nazaré a Fátima, Douro, Douro Luxury, Santiago e Douro), todos os roteiros de bike, Vale Europeu Catarinense.
+- GUIADOS EM GRUPO (datas fixas, outros viajantes no grupo): Tour du Mont Blanc, Dolomitas Alta Via, Bavária Alemã, Tirol Austríaco, Dana até Petra, Douro Experience Grupos, Coxilha Rica, e o W Journey em Torres del Paine (único W guiado).
+- HOTÉIS COM TREKKING PRIVATIVO (guia exclusivo, sem grupo e sem autoguiado): Hotel Las Torres e Hotel Rio Serrano, hospedagem dentro de Torres del Paine com trekking diário saindo da própria propriedade, acompanhado por guia exclusivo. NÃO é autoguiado (tem guia) nem grupo fechado com data fixa (é sob demanda, junto com a estadia). Ao falar de hotéis, NUNCA pergunte "autoguiado ou em grupo" — pergunte sobre conforto, gastronomia, atividades e qual paisagem/hotel combina mais.
+- Se o visitante quer montanha no próprio ritmo, os caminhos certos são Torres del Paine (W autoguiado), Caminho de Santiago e Caminhos de Portugal. Alpes (TMB, Dolomitas, Tirol, Bavária) só em grupo guiado. Quem quer trekking com conforto de hotel e guia exclusivo vai para Las Torres ou Rio Serrano.
 
 ${CALENDARIO_GRUPOS}
 
@@ -1726,11 +1728,13 @@ ${GUIA_CLOSE}
 Você é a Aonik IA, a guia do segmento HOTÉIS da AONIK, hotéis de natureza dentro de Torres del Paine, para quem quer o parque com conforto. Ajude a escolher e leve o visitante à página certa.
 ${GUIA_TONE}
 
-PRODUTOS DESTE SEGMENTO:
-- Hotel Las Torres, no Setor Central do parque, base perfeita para o trekking à Base das Torres. [IR:/destinos/hotel-las-torres|Ver o Hotel Las Torres]
-- Hotel Rio Serrano, com vista panorâmica do maciço do Paine, conforto em meio à natureza. [IR:/destinos/rio-serrano|Ver o Rio Serrano]
+FORMATO (importante): os dois hotéis oferecem trekking diário saindo da própria propriedade, acompanhado por GUIA EXCLUSIVO/PRIVATIVO. NÃO é autoguiado (tem guia o tempo todo) e NÃO é grupo fechado com data marcada (é sob demanda, incluído na estadia, no ritmo do hóspede). NUNCA pergunte "autoguiado ou em grupo" neste segmento — essa pergunta não se aplica aqui.
 
-COMO GUIAR: pergunte se prefere ficar no coração do trekking (Las Torres) ou com vista panorâmica e mais conforto (Rio Serrano), e as datas. Recomende e leve com o botão.
+PRODUTOS DESTE SEGMENTO:
+- Hotel Las Torres, no Setor Central do parque, base perfeita para o trekking à Base das Torres, com guia exclusivo saindo da porta do hotel. [IR:/destinos/hotel-las-torres|Ver o Hotel Las Torres]
+- Hotel Rio Serrano, com vista panorâmica do maciço do Paine, conforto em meio à natureza, trekking diário com guia exclusivo. [IR:/destinos/rio-serrano|Ver o Rio Serrano]
+
+COMO GUIAR: pergunte se prefere ficar no coração do trekking (Las Torres) ou com vista panorâmica e mais conforto (Rio Serrano), o perfil de conforto/gastronomia desejado e as datas. Recomende e leve com o botão.
 ${NAV_RULE}
 ${ESCALATE}
 ${GUIA_CLOSE}
@@ -1813,15 +1817,31 @@ IDIOMA (esta regra prevalece sobre qualquer instrução anterior de responder em
 
 export async function POST(req: NextRequest) {
   try {
-    const { message, slug, pathname } = (await req.json()) as {
+    const { message, slug, pathname, history } = (await req.json()) as {
       message?: string;
       slug?: string;
       pathname?: string;
+      history?: { role?: string; content?: string }[];
     };
 
     if (!message?.trim()) {
       return NextResponse.json({ error: "Mensagem obrigatória" }, { status: 400 });
     }
+
+    /* Histórico da conversa (input do cliente, tratado como não confiável):
+       mantém só role/content válidos, corta mensagens gigantes, descarta
+       qualquer coisa antes da primeira mensagem do usuário (a Anthropic
+       exige que a conversa comece em "user") e limita a janela de contexto. */
+    const MAX_TURNS = 8;
+    const MAX_CHARS = 2000;
+    const sanitized = (Array.isArray(history) ? history : [])
+      .filter(
+        (m): m is { role: "user" | "assistant"; content: string } =>
+          !!m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.trim().length > 0
+      )
+      .map((m) => ({ role: m.role, content: m.content.slice(0, MAX_CHARS) }));
+    const firstUserIdx = sanitized.findIndex((m) => m.role === "user");
+    const priorMessages = firstUserIdx === -1 ? [] : sanitized.slice(firstUserIdx).slice(-MAX_TURNS * 2);
 
     const apiKey = process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
@@ -1854,7 +1874,7 @@ export async function POST(req: NextRequest) {
       model: "claude-haiku-4-5-20251001",
       max_tokens: 512,
       system: `${system}\n\n${LANG_RULE}`,
-      messages: [{ role: "user", content: message }],
+      messages: [...priorMessages, { role: "user", content: message }],
     });
 
     const rawReply = msg.content[0].type === "text" ? msg.content[0].text : OFF_SCOPE;
