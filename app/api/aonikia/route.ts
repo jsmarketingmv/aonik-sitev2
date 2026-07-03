@@ -1866,6 +1866,9 @@ export async function POST(req: NextRequest) {
       .replace(/ +([,.!?])/g, "$1")
       .replace(/[ \t]+\n/g, "\n")
       .replace(/\n{3,}/g, "\n\n")
+      .trim()
+      /* remove conectivos órfãos deixados pela extração dos marcadores (ex: "... ou") */
+      .replace(/[\s]*(?:\b(?:ou|e)\s*[,:]?)+$/i, "")
       .trim();
     if (!reply) reply = "Me conta o que você procura que eu te ajudo a encontrar a experiência ideal!";
 
