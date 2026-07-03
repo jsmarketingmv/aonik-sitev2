@@ -1802,6 +1802,15 @@ function pathKey(pathname?: string): string | undefined {
   return parts[0];
 }
 
+/* Regra global de idioma, anexada a TODOS os system prompts (produto, segmento e GUIA).
+   O site está travado em PT; a IA é o canal que atende ES/EN até a tradução completa. */
+const LANG_RULE = `
+IDIOMA (esta regra prevalece sobre qualquer instrução anterior de responder em português):
+- Detecte o idioma da mensagem do visitante e responda SEMPRE nesse idioma (português, espanhol, inglês ou outro).
+- Ao responder em espanhol ou inglês, traduza naturalmente todo o conteúdo, inclusive o TEXTO DOS RÓTULOS dos marcadores [IR:/rota|Rótulo] (traduza só o rótulo, nunca a rota) e a frase do WhatsApp continua sendo exatamente [Falar no WhatsApp do time AONIK →] (não traduza este marcador; ele vira um botão).
+- Se o visitante escrever em ES/EN, mencione UMA única vez, de forma natural, que o navegador pode traduzir as páginas do site automaticamente (no Chrome: clique com o botão direito na página e escolha "Traduzir", ou use o ícone de tradução na barra de endereço), já que o site está em português.
+`.trim();
+
 export async function POST(req: NextRequest) {
   try {
     const { message, slug, pathname } = (await req.json()) as {
@@ -1837,7 +1846,7 @@ export async function POST(req: NextRequest) {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 512,
-      system,
+      system: `${system}\n\n${LANG_RULE}`,
       messages: [{ role: "user", content: message }],
     });
 
