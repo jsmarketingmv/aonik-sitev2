@@ -4,7 +4,43 @@ import { useState, useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 import { waUrl } from "../lib/contato";
 
-type Msg = { role: "user" | "assistant"; text: string; whatsapp?: string | null };
+type NavBtn = { href: string; label: string };
+type Msg = { role: "user" | "assistant"; text: string; whatsapp?: string | null; navigate?: NavBtn[] | null };
+
+/* Segmentos que ativam a persona GUIA (não são produto único) */
+const SEGMENTS = new Set([
+  "caminhadas", "grupos", "bike", "navegacao", "hoteis", "jornada", "autoguiados", "caminhos-autoguiados",
+]);
+const SEG_NOME: Record<string, string> = {
+  caminhadas: "caminhadas",
+  grupos: "viagens em grupo",
+  bike: "cicloturismo",
+  navegacao: "cruzeiros de expedição",
+  hoteis: "hotéis de natureza",
+  jornada: "Caminho de Santiago",
+  autoguiados: "roteiros autoguiados",
+  "caminhos-autoguiados": "caminhos de Portugal",
+};
+
+function saudacao(): string {
+  const h = new Date().getHours();
+  if (h < 12) return "Bom dia";
+  if (h < 18) return "Boa tarde";
+  return "Boa noite";
+}
+
+/* Mensagem de boas-vindas conforme o tipo de página */
+function welcomeText(): string {
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  const last = parts[parts.length - 1];
+  if (parts.length === 0) {
+    return `${saudacao()}! Sou a guia da AONIK e conheço cada roteiro do nosso mundo 🌿 Para onde será sua próxima viagem? Me conta se você sonha em ir a pé, de bike ou de barco, que eu te levo até a experiência ideal!`;
+  }
+  if (last && SEGMENTS.has(last)) {
+    return `${saudacao()}! Sou a guia da AONIK aqui no universo de ${SEG_NOME[last] ?? "experiências"} 🌿 Me conta o que você procura que eu te ajudo a escolher o roteiro ideal!`;
+  }
+  return "Olá! Sou a Aonik IA, especialista nesta página. Pergunte sobre roteiro, tarifas, dificuldade, o que levar ou a melhor época!";
+}
 
 /* ── Markdown renderer simples (sem dependência extra) ── */
 function inlineFmt(text: string): ReactNode {
@@ -91,13 +127,22 @@ export default function FloatingActions() {
     return () => window.removeEventListener("open-aonikia", open);
   }, []);
 
+  /* Popup proativo da GUIA: só na home, 1x por sessão, dismissível */
+  useEffect(() => {
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    if (parts.length !== 0) return;
+    if (sessionStorage.getItem("aonik-guia-shown")) return;
+    const t = setTimeout(() => {
+      setIaOpen(true);
+      sessionStorage.setItem("aonik-guia-shown", "1");
+    }, 5000);
+    return () => clearTimeout(t);
+  }, []);
+
   /* Mensagem de boas-vindas quando o painel abre pela primeira vez */
   useEffect(() => {
     if (iaOpen && messages.length === 0) {
-      setMessages([{
-        role: "assistant",
-        text: "Olá! Sou a Aonik IA, especialista nesta página. Pergunte sobre roteiro, tarifas, dificuldade, o que levar ou a melhor época!",
-      }]);
+      setMessages([{ role: "assistant", text: welcomeText() }]);
     }
   }, [iaOpen, messages.length]);
 
@@ -117,10 +162,10 @@ export default function FloatingActions() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, slug, pathname }),
       });
-      const data = await res.json() as { reply?: string; whatsapp?: string | null; error?: string };
+      const data = await res.json() as { reply?: string; whatsapp?: string | null; navigate?: NavBtn[] | null; error?: string };
       setMessages((m) => [
         ...m,
-        { role: "assistant", text: data.reply ?? "Desculpe, ocorreu um erro. Tente novamente.", whatsapp: data.whatsapp },
+        { role: "assistant", text: data.reply ?? "Desculpe, ocorreu um erro. Tente novamente.", whatsapp: data.whatsapp, navigate: data.navigate },
       ]);
     } catch {
       setMessages((m) => [...m, { role: "assistant", text: "Não consegui responder agora. Tente novamente." }]);
@@ -172,6 +217,16 @@ export default function FloatingActions() {
                       : <span className="text-[13px] font-light leading-relaxed text-[#f1ece2]">{m.text}</span>
                     }
                   </div>
+                  {m.navigate?.map((n, j) => (
+                    <a
+                      key={j}
+                      href={n.href}
+                      className="mt-1 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.1em] transition-opacity hover:opacity-80"
+                      style={{ background: "#bd5e2b", color: "#f1ece2" }}
+                    >
+                      {n.label} →
+                    </a>
+                  ))}
                   {m.whatsapp && (
                     <a
                       href={m.whatsapp}
@@ -201,7 +256,7 @@ export default function FloatingActions() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); void send(); } }}
-                placeholder="Pergunte sobre este circuito..."
+                placeholder="Pergunte sobre as experiências AONIK..."
                 className="flex-1 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-[13px] text-[#f1ece2] placeholder-[#f1ece2]/30 outline-none focus:border-[#bd5e2b]/60 transition-colors"
               />
               <button
