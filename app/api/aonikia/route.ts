@@ -1600,10 +1600,23 @@ Se não souber algo específico, diga que vai confirmar com a equipe AONIK.
    e navega o visitante; cada segmento conhece seus produtos e navega entre eles.
    Para NAVEGAR, os KBs emitem o marcador [IR:/rota|Rótulo], parseado no POST. */
 
-const GUIA_TONE = "TOM: caloroso, humano, informal e leve, como um amigo viajante que conhece cada canto. Nunca corporativo. Máximo 3 parágrafos por resposta.";
+const GUIA_TONE = `TOM: caloroso, humano, informal e leve, como um amigo viajante que conhece cada canto. Nunca corporativo. Máximo 3 parágrafos por resposta.
+
+REGRAS INEGOCIÁVEIS (violar qualquer uma é falha grave):
+1. FORMATOS REAIS DO PORTFÓLIO: as experiências a pé e de bike da AONIK existem em exatamente DOIS formatos: GUIADAS EM GRUPO (datas fixas, guia especializado do início ao fim) ou AUTOGUIADAS (você caminha ou pedala no seu ritmo, sem guia, com hospedagem, roteiro e transfer de bagagem organizados pela AONIK). NÃO EXISTE formato "com guia local", "guia privativo" ou qualquer outro. Além delas, o portfólio tem cruzeiros de expedição e hotéis de natureza. Nunca cite formatos ou serviços fora desses.
+2. NUNCA INVENTE: não crie produtos, formatos, datas, preços ou informações que não estejam listados neste briefing. Se não souber algo, diga que a página tem os detalhes completos e leve o visitante até ela com o botão de navegação.
+3. NUNCA escreva URLs, links ou números de telefone no texto da resposta. Para levar a uma página, use APENAS o marcador [IR:/rota|Texto]. Para o WhatsApp, use APENAS a frase exata [Falar no WhatsApp do time AONIK →], que vira um botão.
+4. FUNIL DE NAVEGAÇÃO PRIMEIRO: seu papel é levar o visitante até a página certa do site. Só ofereça o WhatsApp quando ele quiser reservar, pedir cotação personalizada, ou pedir algo que não existe no portfólio. Em qualquer outro caso, navegue.
+5. FOCO NA DEMANDA: responda dentro do que o visitante pediu. Se ele quer caminhada, não ofereça cruzeiro nem bike; no máximo mencione outra opção em uma frase, se fizer sentido, sem desviar o funil.`;
 const NAV_RULE = "Para levar o visitante a uma página, inclua o marcador [IR:/rota|Texto do botão] ao fim da recomendação (ex: [IR:/grupos|Ver viagens em grupo]). Use SEMPRE o marcador ao indicar uma página; nunca escreva a URL crua no texto.";
-const ESCALATE = 'Para datas exatas, cotação personalizada ou algo que não esteja no site, acolha e leve ao time: "Que boa pergunta! Nosso time de especialistas resolve isso rapidinho com você. [Falar no WhatsApp do time AONIK →]"';
+const ESCALATE = 'Apenas quando o visitante quiser RESERVAR, pedir COTAÇÃO personalizada ou algo fora do portfólio: "Nosso time de especialistas resolve isso rapidinho com você. [Falar no WhatsApp do time AONIK →]". Em todos os outros casos, navegue até a página com o botão em vez de oferecer o WhatsApp.';
 const GUIA_CLOSE = "Responda em português brasileiro. Nunca use travessões. Termine sempre com uma pergunta de qualificação ou um botão de navegação.";
+
+/* Calendário de saídas em grupo REALMENTE PUBLICADO em /grupos (fonte: app/lib/grupos.ts) */
+const CALENDARIO_GRUPOS = `CALENDÁRIO DE SAÍDAS EM GRUPO (JÁ PUBLICADO no site, na página de grupos; nunca diga que está "sendo montado"):
+2026: Tour du Mont Blanc 18 a 31/Ago · Dolomitas Alta Via 03 a 12/Set · Douro Experience 14 a 21/Set · Coxilha Rica 12 a 16/Abr, 14 a 18/Jun e 13 a 17/Set
+2027: Tour du Mont Blanc 17 a 30/Ago · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set · Tirol Austríaco 03 a 12/Set · Dana até Petra 18 a 27/Out
+Se perguntarem sobre o calendário, informe as datas e leve à página: [IR:/grupos|Ver o calendário completo]`;
 
 const KB_GUIA: Record<string, string> = {
   home: `
@@ -1628,6 +1641,8 @@ DESTINOS EM DESTAQUE (para recomendar direto):
 - Tour du Mont Blanc, a volta ao teto da Europa cruzando 3 países. [IR:/destinos/tour-du-mont-blanc|Ver o Tour du Mont Blanc]
 - Douro, Portugal, caminhar entre vinhas Patrimônio UNESCO. [IR:/caminhos-autoguiados/douro|Ver o Douro autoguiado]
 - Cruzeiro Skorpios, fiordes e geleiras da Patagônia de barco. [IR:/destinos/cruzeiro-skorpios|Ver o Skorpios]
+
+${CALENDARIO_GRUPOS}
 
 ${ESCALATE}
 ${GUIA_CLOSE}
@@ -1661,6 +1676,8 @@ PRODUTOS DESTE SEGMENTO:
 - Dana até Petra, a travessia lendária pelo deserto da Jordânia até a cidade escavada na rocha. [IR:/destinos/dana-ate-petra|Ver Dana até Petra]
 - Douro Experience Grupos, 8 dias caminhando entre as vinhas do Douro com guia, Portugal UNESCO. [IR:/destinos/douro|Ver o Douro Experience]
 - Coxilha Rica, travessia na Serra Catarinense pela história dos tropeiros, aqui no Brasil. [IR:/destinos/coxilha-rica|Ver a Coxilha Rica]
+
+${CALENDARIO_GRUPOS}
 
 COMO GUIAR: pergunte o que combina mais (Alpes, deserto, vinhas ou Brasil?), o nível de esforço e a época. Recomende 1 a 2 e leve com o botão.
 ${NAV_RULE}
@@ -1821,8 +1838,12 @@ export async function POST(req: NextRequest) {
 
     const rawReply = msg.content[0].type === "text" ? msg.content[0].text : OFF_SCOPE;
 
-    /* Detecta escalonamento para o WhatsApp antes de limpar os marcadores */
-    const isOffScope = rawReply.includes("WhatsApp do time AONIK");
+    /* Detecta escalonamento para o WhatsApp antes de limpar os marcadores.
+       Se o modelo alucinar um link wa.me cru no texto (número errado!),
+       trata como intenção de WhatsApp: remove do texto e o botão verde
+       oficial (número real via waUrl) assume a ação. */
+    const isOffScope =
+      rawReply.includes("WhatsApp do time AONIK") || /wa\.me\//i.test(rawReply);
 
     /* Extrai marcadores de navegação [IR:/rota|Rótulo] → botões internos */
     const navigate: { href: string; label: string }[] = [];
@@ -1834,6 +1855,8 @@ export async function POST(req: NextRequest) {
     /* Remove o marcador textual do WhatsApp (o botão verde já cobre a ação) e sobras */
     reply = reply
       .replace(/\[Falar no WhatsApp[^\]]*\]/g, "")
+      .replace(/\(?\s*https?:\/\/wa\.me\/\S+?\)?(?=[\s.,!?]|$)/gi, "")
+      .replace(/\(?\s*\bwa\.me\/\S+?\)?(?=[\s.,!?]|$)/gi, "")
       .replace(/ {2,}/g, " ")
       .replace(/ +([,.!?])/g, "$1")
       .replace(/[ \t]+\n/g, "\n")
