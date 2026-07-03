@@ -1835,11 +1835,18 @@ export async function POST(req: NextRequest) {
        4. Fallback GUIA da home (conhece o site inteiro) — cobre home,
           institucionais e qualquer página sem KB próprio. */
     const pk = pathKey(pathname);
-    const system =
+    const systemBase =
       (pk ? KB_PATH[pk] : undefined) ??
       (slug ? KB[slug] : undefined) ??
       (slug ? KB_GUIA[slug] : undefined) ??
       KB_GUIA.home;
+
+    /* Todo KB termina com "Responda em português brasileiro..." hardcoded.
+       Essa instrução, por estar no fim do próprio KB, competia com a LANG_RULE
+       (testado em produção: em inglês, o modelo seguiu o KB e ignorou a regra
+       de idioma). Neutraliza a instrução fixa aqui, uma única vez, para as
+       47 KBs — a LANG_RULE abaixo é a única fonte de verdade sobre idioma. */
+    const system = systemBase.replace(/Responda em português brasileiro[.,]?\s*/gi, "");
 
     const client = new Anthropic({ apiKey });
 
