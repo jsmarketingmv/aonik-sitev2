@@ -188,8 +188,8 @@ export default function FloatingActions() {
       <div className="fixed bottom-6 left-6 z-50">
         {iaOpen && (
           <div
-            className="absolute bottom-16 left-0 flex flex-col rounded-2xl border border-white/10 bg-[#0c1219] shadow-2xl"
-            style={{ width: 400, maxHeight: 580 }}
+            className="absolute bottom-16 left-0 flex flex-col rounded-2xl border border-white/10 bg-[#0c1219] shadow-2xl w-[min(400px,calc(100vw_-_48px))]"
+            style={{ maxHeight: 580 }}
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
