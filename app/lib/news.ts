@@ -85,8 +85,8 @@ export const EDICOES: EdicaoNews[] = [
   {
     slug: "edicao-01",
     numero: 1,
-    titulo: "Poucas vagas para a Temporada Européia de Montanhas. Reservas Antecipadas abertas para Torres del Paine.",
-    subtitulo: "Tour du Mont Blanc com as últimas vagas, Early Booking de Torres del Paine no ar e a Patagônia Brasileira que pouca gente conhece.",
+    titulo: "Temporada Europeia 2026 esgotada. Para 2027, as reservas antecipadas estão abertas agora.",
+    subtitulo: "Novo site AONIK com IA no ar, TMB 2027 com condição especial de antecipação e a Patagônia Brasileira que poucos conhecem.",
     data: "2026-07-01",
     tipo: "informativo",
     hero: "/images/tmb/hero.jpg",
@@ -100,12 +100,21 @@ export const EDICOES: EdicaoNews[] = [
       },
       {
         tipo: "destaque",
-        titulo: "Tour du Mont Blanc: restam apenas 2 vagas em 2026",
+        titulo: "O novo site AONIK chegou com IA aplicada e personalidade própria",
         descricao:
-          "São 170 km pelos Alpes Franceses, Italianos e Suíços. O grupo de agosto está confirmado e sobraram só 2 lugares. Para 2027, a pré-reserva já está aberta com tarifa especial de quem garante cedo. Guia especialista, tudo incluído, uma experiência que transforma. Se você ainda está pensando, o momento é agora.",
+          "Dinâmico, moderno e com inteligência artificial integrada. Cada página tem personalidade e conversa com você de verdade: entende o que você procura, sugere o destino certo e acompanha sua jornada do primeiro clique até a reserva. Um site que pensa junto com você. Explore e descubra o que foi feito para o seu perfil de viajante.",
+        href: "https://www.aonik.com.br",
+        img: "/images/grupos/dolomitas-cume.jpg",
+        badge: "Novidade",
+      },
+      {
+        tipo: "destaque",
+        titulo: "Tour du Mont Blanc 2027: reserva antecipada com tarifa especial",
+        descricao:
+          "A temporada 2026 encerrou com grupo completo. Para 2027, as reservas já estão abertas com condições especiais de antecipação. São 170 km pelos Alpes Franceses, Italianos e Suíços, com guia especialista e tudo incluído. Quem reserva antes garante melhor tarifa e melhor escolha. A fila começa agora.",
         href: "/destinos/tour-du-mont-blanc",
         img: "/images/tmb/hero.jpg",
-        badge: "Últimas 2 vagas",
+        badge: "Reserva Antecipada 2027",
         preco: "a partir de € 5.450",
       },
       {
@@ -121,7 +130,7 @@ export const EDICOES: EdicaoNews[] = [
         descricao:
           "Coxilha Rica são cinco dias atravessando os campos de altitude da Serra Catarinense, de fazenda em fazenda, pelo mesmo caminho que os tropeiros usaram por séculos. Paredes de pedra centenárias, culinária campeira de verdade, silêncio e horizonte que nunca é o mesmo duas vezes. Um Brasil que ainda existe. Vale a caminhada.",
         href: "/destinos/coxilha-rica",
-        img: "https://images.unsplash.com/photo-1444044205806-38f3ed106c10?q=80&w=1400&auto=format&fit=crop",
+        img: "/images/coxilha-rica/campo-trilha-grupo.jpg",
         badge: "Brasil Natural",
         preco: "a partir de R$ 5.800",
       },
