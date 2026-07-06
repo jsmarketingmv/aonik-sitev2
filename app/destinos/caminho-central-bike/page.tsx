@@ -20,7 +20,7 @@ const C = {
 };
 
 const HERO_IMG =
-  "https://static.wixstatic.com/media/2d4f5b_81c89a7a405a41dda38a215d2fe19d08~mv2.jpg/v1/fill/w_1920,h_1080,q_90,enc_avif,quality_auto/2d4f5b_81c89a7a405a41dda38a215d2fe19d08~mv2.jpg";
+  "/bike/costa-bike/costa-12.jpg";
 
 const ETAPAS = [
   { dia: "DIA 1", titulo: "Porto → Rates",          km: "45 km", desc: "Saída do Porto pelo centro histórico e Ribeira. Pedalada pelo interior norte português até Rates, vila com basilica romanica do sec. XII." },

@@ -14,7 +14,7 @@ const SEG_META = [
   {
     id: "bike",
     n: "02",
-    img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1848.jpg/1900x800/2/1900x800/",
+    img: "/bike/costa-bike/costa-07.jpg",
   },
   {
     id: "navegacao",

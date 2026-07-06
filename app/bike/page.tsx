@@ -21,8 +21,7 @@ const B = {
   texto:    "#1a2b28",   // dark Everglade text
 };
 
-const HERO_IMG =
-  "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2685.jpg/1920x700/2/1920x700/";
+const HERO_IMG = "/bike/costa-bike/costa-02.jpg";
 
 /* ── SVG: Rota Costa Portuguesa Porto → Santiago ─────────────── */
 function RotaBike() {
@@ -150,7 +149,7 @@ const SANTIAGO_PRODUTOS = [
     dias: "9 dias",
     preco: "a partir de € 1.390",
     href: "/destinos/caminho-costa-bike",
-    img: "https://static.wixstatic.com/media/2d4f5b_2377bcbf693348f282eaf5bd3daa74d2~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_2377bcbf693348f282eaf5bd3daa74d2~mv2.jpg",
+    img: "/bike/costa-bike/costa-03.jpg",
     headerBg: "linear-gradient(135deg, #081e1e 0%, #0e3838 60%, #185858 100%)",
   },
   {
@@ -162,7 +161,7 @@ const SANTIAGO_PRODUTOS = [
     dias: "8 dias",
     preco: "a partir de € 1.262",
     href: "/destinos/caminho-central-bike",
-    img: "https://static.wixstatic.com/media/2d4f5b_81c89a7a405a41dda38a215d2fe19d08~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_81c89a7a405a41dda38a215d2fe19d08~mv2.jpg",
+    img: "/bike/costa-bike/costa-10.jpg",
     headerBg: "linear-gradient(135deg, #0d1e1c 0%, #1a3020 60%, #c4902a22 100%)",
   },
 ];

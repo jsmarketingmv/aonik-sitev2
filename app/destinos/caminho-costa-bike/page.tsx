@@ -19,8 +19,7 @@ const C = {
   cremeDp: "#e6e2d8",
 };
 
-const HERO_IMG =
-  "https://static.wixstatic.com/media/2d4f5b_2377bcbf693348f282eaf5bd3daa74d2~mv2.jpg/v1/fill/w_1920,h_1080,q_90,enc_avif,quality_auto/2d4f5b_2377bcbf693348f282eaf5bd3daa74d2~mv2.jpg";
+const HERO_IMG = "/bike/costa-bike/costa-01.jpg";
 
 const ETAPAS = [
   { dia: "DIA 1", titulo: "Porto → Vila do Conde",  km: "35 km", desc: "Saída do Porto pelas margens do Douro. Primeira etapa pela costa norte: praia de Miramar, Aguda e chegada a Vila do Conde com o mosteiro de Santa Clara." },
