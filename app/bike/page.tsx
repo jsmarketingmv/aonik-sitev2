@@ -112,17 +112,19 @@ const A2Z_PRODUTOS = [
     preco: "a partir de € 1.207",
     href: "/destinos/pedal-porto-lisboa",
     img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2685.jpg/900x600/1/900x600/",
+    headerBg: "linear-gradient(135deg, #0a1728 0%, #1a3a6c 60%, #2a5a9c 100%)",
   },
   {
-    nome: "Aldeias Históricas",
+    nome: "Aldeias Historicas",
     subtitulo: "Cicloturismo · Interior",
     bandeira: "🇵🇹",
-    desc: "227 km pelo interior montanhoso. Fortalezas medievais, Serra da Estrela e gravuras pré-históricas UNESCO.",
+    desc: "227 km pelo interior montanhoso. Fortalezas medievais, Serra da Estrela e gravuras pre-historicas UNESCO.",
     km: "227 km",
     dias: "7 dias",
     preco: "a partir de € 1.557",
     href: "/destinos/pedal-aldeias-historicas",
     img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1847.jpg/900x600/1/900x600/",
+    headerBg: "linear-gradient(135deg, #0c1e1c 0%, #163a30 60%, #1e5a44 100%)",
   },
   {
     nome: "Douro e Aldeias",
@@ -134,31 +136,34 @@ const A2Z_PRODUTOS = [
     preco: "a partir de € 1.736",
     href: "/destinos/pedal-douro-aldeias",
     img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2648.jpg/900x600/1/900x600/",
+    headerBg: "linear-gradient(135deg, #1a1008 0%, #4a2a0a 60%, #7a4a10 100%)",
   },
 ];
 
 const SANTIAGO_PRODUTOS = [
   {
     nome: "Caminho da Costa de Bike",
-    subtitulo: "Peregrinação · Costa Atlantica",
+    subtitulo: "Peregrinacao · Costa Atlantica",
     bandeira: "🇵🇹 🇪🇸",
-    desc: "A beira do Atlantico. Porto até Santiago pela orla de Portugal e pelas Rias Baixas da Galiza.",
+    desc: "A beira do Atlantico. Porto ate Santiago pela orla de Portugal e pelas Rias Baixas da Galiza.",
     km: "260 km",
     dias: "9 dias",
     preco: "a partir de € 1.390",
     href: "/destinos/caminho-costa-bike",
     img: "https://static.wixstatic.com/media/2d4f5b_2377bcbf693348f282eaf5bd3daa74d2~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_2377bcbf693348f282eaf5bd3daa74d2~mv2.jpg",
+    headerBg: "linear-gradient(135deg, #081e1e 0%, #0e3838 60%, #185858 100%)",
   },
   {
     nome: "Caminho Central de Bike",
-    subtitulo: "Peregrinação · Interior",
+    subtitulo: "Peregrinacao · Interior",
     bandeira: "🇵🇹 🇪🇸",
-    desc: "A rota histórica classica. Porto até Santiago pelo coração de Portugal e da Galiza, de seta em seta amarela.",
+    desc: "A rota historica classica. Porto ate Santiago pelo coracao de Portugal e da Galiza, de seta em seta amarela.",
     km: "240 km",
     dias: "8 dias",
     preco: "a partir de € 1.262",
     href: "/destinos/caminho-central-bike",
     img: "https://static.wixstatic.com/media/2d4f5b_81c89a7a405a41dda38a215d2fe19d08~mv2.jpg/v1/fill/w_900,h_600,q_90,enc_avif,quality_auto/2d4f5b_81c89a7a405a41dda38a215d2fe19d08~mv2.jpg",
+    headerBg: "linear-gradient(135deg, #0d1e1c 0%, #1a3020 60%, #c4902a22 100%)",
   },
 ];
 
@@ -168,23 +173,25 @@ const BRASIL_PRODUTOS = [
     nome: "Vale Europeu · 3 dias",
     subtitulo: "Cicloturismo · Santa Catarina",
     bandeira: "🇧🇷",
-    desc: "Parte baixa colonial: Pomerode alemã, Rodeio italiana, pontes cobertas e rios da Mata Atlântica.",
+    desc: "Parte baixa colonial: Pomerode alemã, Rodeio italiana, pontes cobertas e rios da Mata Atlantica.",
     km: "139 km",
     dias: "3 dias",
     preco: "a partir de R$ 2.100",
     href: "/destinos/vale-europeu-3-dias",
     img: "/vale-europeu/cover-circuito.jpeg",
+    headerBg: "linear-gradient(135deg, #0a1e14 0%, #1a4228 60%, #2e6a40 100%)",
   },
   {
     nome: "Vale Europeu · 7 dias",
     subtitulo: "Cicloturismo · Santa Catarina",
     bandeira: "🇧🇷",
-    desc: "O circuito completo: da colônia europeia aos campos altos do planalto, cachoeiras e a Região dos Lagos.",
+    desc: "O circuito completo: da colonia europeia aos campos altos do planalto, cachoeiras e a Regiao dos Lagos.",
     km: "319 km",
     dias: "7 dias",
     preco: "a partir de R$ 4.560",
     href: "/destinos/vale-europeu-7-dias",
     img: "/vale-europeu/fp-8.jpg",
+    headerBg: "linear-gradient(135deg, #101a0a 0%, #2a3a14 60%, #4a6020 100%)",
   },
 ];
 
@@ -196,13 +203,13 @@ const EM_BREVE = [
 ];
 
 /* ── CARD DE PRODUTO ─────────────────────────────────────────── */
-function ProdutoCard({
-  p,
-  delay = 0,
-}: {
-  p: (typeof A2Z_PRODUTOS)[0];
-  delay?: number;
-}) {
+type ProdutoItem = {
+  nome: string; subtitulo: string; bandeira: string; desc: string;
+  km: string; dias: string; preco: string; href: string;
+  img: string; headerBg: string;
+};
+
+function ProdutoCard({ p, delay = 0 }: { p: ProdutoItem; delay?: number }) {
   return (
     <Reveal delay={delay}>
       <a
@@ -210,7 +217,18 @@ function ProdutoCard({
         className="group relative block overflow-hidden rounded-xl transition-transform duration-500 hover:scale-[1.02]"
         style={{ backgroundColor: B.asfalto }}
       >
-        <div className="relative h-[220px] overflow-hidden">
+        {/* image area: gradient always visible, photo loads on top */}
+        <div
+          className="relative h-[220px] overflow-hidden"
+          style={{ background: p.headerBg }}
+        >
+          {/* km decorative label — visível quando foto falha */}
+          <span
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-display font-light opacity-20 select-none pointer-events-none"
+            style={{ fontSize: "clamp(3rem,8vw,5rem)", color: B.creme, lineHeight: 1 }}
+          >
+            {p.km}
+          </span>
           <div
             className="absolute inset-0 scale-105 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
             style={{ backgroundImage: `url('${p.img}')` }}
