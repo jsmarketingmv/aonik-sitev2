@@ -5,8 +5,7 @@ import BikeA2ZPage, { type A2ZBikeData } from "../../components/BikeA2ZPage";
 const DATA: A2ZBikeData = {
   nome: "Douro e Aldeias",
   subtitulo: "Tour de Bike · 232 km · Vale do Douro",
-  heroImg:
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2648.jpg/1920x700/2/1920x700/",
+  heroImg: "/bike/douro/hero.jpg",
   precoBase: "€ 1.736",
   quote:
     "Vinhedos em terracos sobre o Rio Douro, aldeias medievais no planalto e uma prova de vinho do Porto a cada parada.",
@@ -74,10 +73,10 @@ const DATA: A2ZBikeData = {
     },
   ],
   galeria: [
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2635.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2637.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2653.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2642.jpg/900x600/1/900x600/",
+    "/bike/costa-bike/costa-03.jpg",
+    "/bike/costa-bike/costa-08.jpg",
+    "/bike/costa-bike/costa-14.jpg",
+    "/bike/costa-bike/costa-20.jpg",
   ],
   inclusos: [
     "7 noites em hoteis e pousadas 3*/4* selecionados",

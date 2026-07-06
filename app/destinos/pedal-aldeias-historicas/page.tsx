@@ -5,8 +5,7 @@ import BikeA2ZPage, { type A2ZBikeData } from "../../components/BikeA2ZPage";
 const DATA: A2ZBikeData = {
   nome: "Aldeias Históricas",
   subtitulo: "Tour de Bike · 227 km · Interior de Portugal",
-  heroImg:
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1847.jpg/1920x700/2/1920x700/",
+  heroImg: "/bike/aldeias/hero.jpg",
   precoBase: "€ 1.557",
   quote:
     "Seis aldeias medievais, granito secular e ares da Serra da Estrela. A rota que preserva o Portugal que a modernidade esqueceu.",
@@ -67,10 +66,10 @@ const DATA: A2ZBikeData = {
     },
   ],
   galeria: [
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2579.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1857.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2577.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2580.jpg/900x600/1/900x600/",
+    "/bike/costa-bike/costa-02.jpg",
+    "/bike/costa-bike/costa-07.jpg",
+    "/bike/costa-bike/costa-11.jpg",
+    "/bike/costa-bike/costa-17.jpg",
   ],
   inclusos: [
     "6 noites em hoteis e pousadas 3*/4* selecionados",

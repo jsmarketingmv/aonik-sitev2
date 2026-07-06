@@ -5,8 +5,7 @@ import BikeA2ZPage, { type A2ZBikeData } from "../../components/BikeA2ZPage";
 const DATA: A2ZBikeData = {
   nome: "Porto · Lisboa",
   subtitulo: "Tour de Bike · 306 km · Costa Atlantica",
-  heroImg:
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2685.jpg/1920x700/2/1920x700/",
+  heroImg: "/bike/porto-lisboa/hero.jpg",
   precoBase: "€ 1.207",
   quote:
     "A costa atlantica que os romanos atravessaram de barco, você percorre de bike. Seis etapas entre dunas, lagoas e pinhais seculares até Obidos.",
@@ -74,10 +73,10 @@ const DATA: A2ZBikeData = {
     },
   ],
   galeria: [
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2228.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2229.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2231.jpg/900x600/1/900x600/",
-    "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2232.jpg/900x600/1/900x600/",
+    "/bike/costa-bike/costa-01.jpg",
+    "/bike/costa-bike/costa-05.jpg",
+    "/bike/costa-bike/costa-09.jpg",
+    "/bike/costa-bike/costa-13.jpg",
   ],
   inclusos: [
     "7 noites em hoteis 3*/4* selecionados (quarto duplo)",

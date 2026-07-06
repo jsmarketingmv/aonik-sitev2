@@ -110,7 +110,7 @@ const A2Z_PRODUTOS = [
     dias: "8 dias",
     preco: "a partir de € 1.207",
     href: "/destinos/pedal-porto-lisboa",
-    img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2685.jpg/900x600/1/900x600/",
+    img: "/bike/porto-lisboa/hero.jpg",
     headerBg: "linear-gradient(135deg, #0a1728 0%, #1a3a6c 60%, #2a5a9c 100%)",
   },
   {
@@ -122,7 +122,7 @@ const A2Z_PRODUTOS = [
     dias: "7 dias",
     preco: "a partir de € 1.557",
     href: "/destinos/pedal-aldeias-historicas",
-    img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/1847.jpg/900x600/1/900x600/",
+    img: "/bike/aldeias/hero.jpg",
     headerBg: "linear-gradient(135deg, #0c1e1c 0%, #163a30 60%, #1e5a44 100%)",
   },
   {
@@ -134,7 +134,7 @@ const A2Z_PRODUTOS = [
     dias: "8 dias",
     preco: "a partir de € 1.736",
     href: "/destinos/pedal-douro-aldeias",
-    img: "https://www.portugal-a2z.com/imagegen//client/files/0000000001/2648.jpg/900x600/1/900x600/",
+    img: "/bike/douro/hero.jpg",
     headerBg: "linear-gradient(135deg, #1a1008 0%, #4a2a0a 60%, #7a4a10 100%)",
   },
 ];
