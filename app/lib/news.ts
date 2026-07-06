@@ -85,7 +85,7 @@ export const EDICOES: EdicaoNews[] = [
   {
     slug: "edicao-01",
     numero: 1,
-    titulo: "Temporada Europeia 2026 esgotada. Para 2027, as reservas antecipadas estão abertas agora.",
+    titulo: "Site, Reservas Antecipadas, Temporada 2027 de Europa Disponível. News AONIK chegando!",
     subtitulo: "Novo site AONIK com IA no ar, TMB 2027 com condição especial de antecipação e a Patagônia Brasileira que poucos conhecem.",
     data: "2026-07-01",
     tipo: "informativo",
@@ -96,7 +96,7 @@ export const EDICOES: EdicaoNews[] = [
         titulo: "A News AONIK chegou",
         icone: "newspaper",
         conteudo:
-          "Você faz parte de algo especial. A cada 15 dias, traremos a você diversas novidades sobre AONIK e Turismo de Natureza: destinos abertos, dicas de temporada, vagas confirmadas e inspiração para a próxima aventura. Sem enrolação, sem filtro. Só o essencial para quem vive o turismo de natureza de verdade. Seja bem vindo.",
+          "Você faz parte de algo especial. A cada semana, traremos a você diversas novidades sobre Turismo de Natureza e as novidades AONIK: destinos abertos, dicas de temporada, características dos destinos, novas ideias de viagem de natureza e vida ao ar livre, promoções e condições especiais, vagas confirmadas e inspiração para a próxima aventura. Sem enrolação, sem filtro. Só o essencial para quem vive o turismo de natureza de verdade. Sejam todos bem-vindos e bem-vindas.",
       },
       {
         tipo: "destaque",

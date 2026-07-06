@@ -387,8 +387,8 @@ export default function EdicaoPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1, ease: EASE, delay: 0.3 }}
           >
-            <p className="mb-5 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-gold">
-              <span className="h-px w-8 bg-gold/50" />
+            <p className="mb-5 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-neon">
+              <span className="h-px w-8 bg-neon/50" />
               {formatEdition(edicao.numero, edicao.data)} ·{" "}
               {isComercial ? "Condição especial" : "Novidades & Destinos"}
             </p>
