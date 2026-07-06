@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import Nav from "./Nav";
 import Breadcrumb from "./Breadcrumb";
@@ -48,6 +48,34 @@ export type A2ZBikeData = {
 export default function BikeA2ZPage({ d }: { d: A2ZBikeData }) {
   const [season, setSeason] = useState<"r" | "a">("r");
   const tem = season === "r" ? d.temporadas.regular : d.temporadas.alta;
+
+  // Lightbox da galeria
+  const galeria = d.galeria.slice(0, 8);
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const closeLb = useCallback(() => setLightbox(null), []);
+  const nextLb = useCallback(
+    () => setLightbox((i) => (i === null ? i : (i + 1) % galeria.length)),
+    [galeria.length]
+  );
+  const prevLb = useCallback(
+    () => setLightbox((i) => (i === null ? i : (i - 1 + galeria.length) % galeria.length)),
+    [galeria.length]
+  );
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLb();
+      else if (e.key === "ArrowRight") nextLb();
+      else if (e.key === "ArrowLeft") prevLb();
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [lightbox, closeLb, nextLb, prevLb]);
 
   return (
     <main style={{ backgroundColor: d.pal.creme }}>
@@ -233,12 +261,32 @@ export default function BikeA2ZPage({ d }: { d: A2ZBikeData }) {
         <section className="px-6 pb-20 md:px-10" style={{ backgroundColor: d.pal.dark }}>
           <div className="mx-auto max-w-[1180px]">
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-              {d.galeria.slice(0, 8).map((img, i) => (
+              {galeria.map((img, i) => (
                 <Reveal key={img} delay={i * 0.06}>
-                  <div
-                    className="aspect-[3/2] overflow-hidden rounded-xl bg-cover bg-center"
-                    style={{ backgroundImage: `url('${img}')` }}
-                  />
+                  <button
+                    type="button"
+                    onClick={() => setLightbox(i)}
+                    aria-label={`Ampliar foto ${i + 1}`}
+                    className="group/gal relative block aspect-[3/2] w-full cursor-pointer overflow-hidden rounded-xl"
+                  >
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover/gal:scale-105"
+                      style={{ backgroundImage: `url('${img}')` }}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover/gal:bg-black/25">
+                      <span
+                        className="opacity-0 transition-opacity duration-300 group-hover/gal:opacity-100"
+                        style={{ color: d.pal.creme }}
+                      >
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="11" cy="11" r="7" />
+                          <line x1="21" y1="21" x2="16.5" y2="16.5" />
+                          <line x1="11" y1="8" x2="11" y2="14" />
+                          <line x1="8" y1="11" x2="14" y2="11" />
+                        </svg>
+                      </span>
+                    </div>
+                  </button>
                 </Reveal>
               ))}
             </div>
@@ -457,6 +505,72 @@ export default function BikeA2ZPage({ d }: { d: A2ZBikeData }) {
       <Contato />
       <Footer />
       <FloatingActions />
+
+      {/* LIGHTBOX DA GALERIA */}
+      {lightbox !== null && (
+          <motion.div
+            key="bike-lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-10"
+            onClick={closeLb}
+          >
+            {/* Fechar */}
+            <button
+              type="button"
+              onClick={closeLb}
+              aria-label="Fechar"
+              className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full text-white/80 transition hover:bg-white/10 hover:text-white md:right-8 md:top-8"
+            >
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+              </svg>
+            </button>
+
+            {/* Anterior */}
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); prevLb(); }}
+              aria-label="Foto anterior"
+              className="absolute left-3 z-10 flex h-12 w-12 items-center justify-center rounded-full text-white/80 transition hover:bg-white/10 hover:text-white md:left-8"
+            >
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+
+            {/* Imagem */}
+            <motion.img
+              key={lightbox}
+              src={galeria[lightbox]}
+              alt={`${d.nome} — foto ${lightbox + 1}`}
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, ease: EASE }}
+              className="max-h-[85vh] max-w-[92vw] rounded-lg object-contain shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            {/* Proximo */}
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); nextLb(); }}
+              aria-label="Proxima foto"
+              className="absolute right-3 z-10 flex h-12 w-12 items-center justify-center rounded-full text-white/80 transition hover:bg-white/10 hover:text-white md:right-8"
+            >
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+
+            {/* Contador */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[13px] font-light tracking-[0.2em] text-white/70">
+              {lightbox + 1} / {galeria.length}
+            </div>
+          </motion.div>
+        )}
     </main>
   );
 }

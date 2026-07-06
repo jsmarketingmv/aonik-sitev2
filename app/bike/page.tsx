@@ -21,7 +21,7 @@ const B = {
   texto:    "#1a2b28",   // dark Everglade text
 };
 
-const HERO_IMG = "/bike/costa-bike/costa-02.jpg";
+const HERO_IMG = "/bike/aldeias/g8.jpg";
 
 /* ── SVG: Rota Costa Portuguesa Porto → Santiago ─────────────── */
 function RotaBike() {
@@ -210,10 +210,10 @@ type ProdutoItem = {
 
 function ProdutoCard({ p, delay = 0 }: { p: ProdutoItem; delay?: number }) {
   return (
-    <Reveal delay={delay}>
+    <Reveal delay={delay} className="h-full">
       <a
         href={p.href}
-        className="group relative block overflow-hidden rounded-xl transition-transform duration-500 hover:scale-[1.02]"
+        className="group relative flex h-full flex-col overflow-hidden rounded-xl transition-transform duration-500 hover:scale-[1.02]"
         style={{ backgroundColor: B.asfalto }}
       >
         {/* image area: gradient always visible, photo loads on top */}
@@ -238,7 +238,7 @@ function ProdutoCard({ p, delay = 0 }: { p: ProdutoItem; delay?: number }) {
           />
           <div className="absolute right-4 top-4 text-lg">{p.bandeira}</div>
         </div>
-        <div className="px-6 pb-6 pt-4">
+        <div className="flex flex-1 flex-col px-6 pb-6 pt-4">
           <p className="text-xs font-semibold uppercase tracking-[0.15em]" style={{ color: B.pedal }}>
             {p.subtitulo}
           </p>
@@ -248,7 +248,7 @@ function ProdutoCard({ p, delay = 0 }: { p: ProdutoItem; delay?: number }) {
           <p className="mt-2 text-[13px] font-light leading-relaxed" style={{ color: B.granito }}>
             {p.desc}
           </p>
-          <div className="mt-5 flex items-end justify-between">
+          <div className="mt-auto flex items-end justify-between pt-5">
             <div className="flex gap-4">
               <span className="text-xs" style={{ color: `${B.areia}cc` }}>{p.km}</span>
               <span className="text-xs" style={{ color: `${B.areia}cc` }}>{p.dias}</span>
@@ -494,7 +494,7 @@ export default function BikePage() {
       </section>
 
       {/* ── DESTINOS BRASIL · VALE EUROPEU ────────────────────── */}
-      <section id="brasil" className="px-6 py-24 md:px-10 md:py-28" style={{ backgroundColor: B.asfalto }}>
+      <section id="brasil" className="px-6 py-24 md:px-10 md:py-28" style={{ backgroundColor: B.caminho }}>
         <div className="mx-auto max-w-[1180px]">
           <Reveal>
             <div className="mb-3 flex items-center gap-3">
