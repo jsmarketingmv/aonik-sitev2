@@ -66,10 +66,14 @@ const DATA: A2ZBikeData = {
     },
   ],
   galeria: [
-    "/bike/costa-bike/costa-02.jpg",
-    "/bike/costa-bike/costa-07.jpg",
-    "/bike/costa-bike/costa-11.jpg",
-    "/bike/costa-bike/costa-17.jpg",
+    "/bike/aldeias/g1.jpg",
+    "/bike/aldeias/g2.jpg",
+    "/bike/aldeias/g3.jpg",
+    "/bike/aldeias/g4.jpg",
+    "/bike/aldeias/g5.jpg",
+    "/bike/aldeias/g6.jpg",
+    "/bike/aldeias/g7.jpg",
+    "/bike/aldeias/g8.jpg",
   ],
   inclusos: [
     "6 noites em hoteis e pousadas 3*/4* selecionados",

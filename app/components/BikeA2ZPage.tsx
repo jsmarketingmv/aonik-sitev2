@@ -233,7 +233,7 @@ export default function BikeA2ZPage({ d }: { d: A2ZBikeData }) {
         <section className="px-6 pb-20 md:px-10" style={{ backgroundColor: d.pal.dark }}>
           <div className="mx-auto max-w-[1180px]">
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-              {d.galeria.slice(0, 4).map((img, i) => (
+              {d.galeria.slice(0, 8).map((img, i) => (
                 <Reveal key={img} delay={i * 0.06}>
                   <div
                     className="aspect-[3/2] overflow-hidden rounded-xl bg-cover bg-center"

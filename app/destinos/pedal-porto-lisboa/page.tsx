@@ -73,10 +73,14 @@ const DATA: A2ZBikeData = {
     },
   ],
   galeria: [
-    "/bike/costa-bike/costa-01.jpg",
-    "/bike/costa-bike/costa-05.jpg",
-    "/bike/costa-bike/costa-09.jpg",
-    "/bike/costa-bike/costa-13.jpg",
+    "/bike/porto-lisboa/g1.jpg",
+    "/bike/porto-lisboa/g2.jpg",
+    "/bike/porto-lisboa/g3.jpg",
+    "/bike/porto-lisboa/g4.jpg",
+    "/bike/porto-lisboa/g5.jpg",
+    "/bike/porto-lisboa/g6.jpg",
+    "/bike/porto-lisboa/g7.jpg",
+    "/bike/porto-lisboa/g8.jpg",
   ],
   inclusos: [
     "7 noites em hoteis 3*/4* selecionados (quarto duplo)",

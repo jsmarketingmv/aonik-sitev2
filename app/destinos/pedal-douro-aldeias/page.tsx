@@ -73,10 +73,14 @@ const DATA: A2ZBikeData = {
     },
   ],
   galeria: [
-    "/bike/costa-bike/costa-03.jpg",
-    "/bike/costa-bike/costa-08.jpg",
-    "/bike/costa-bike/costa-14.jpg",
-    "/bike/costa-bike/costa-20.jpg",
+    "/bike/douro/g1.jpg",
+    "/bike/douro/g2.jpg",
+    "/bike/douro/g3.jpg",
+    "/bike/douro/g4.jpg",
+    "/bike/douro/g5.jpg",
+    "/bike/douro/g6.jpg",
+    "/bike/douro/g7.jpg",
+    "/bike/douro/g8.jpg",
   ],
   inclusos: [
     "7 noites em hoteis e pousadas 3*/4* selecionados",
