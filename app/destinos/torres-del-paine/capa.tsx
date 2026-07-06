@@ -12,9 +12,9 @@ import { T, PROG, PHOTO, WMap, LocationMaps, HospModal, type HospModalData } fro
 /* ---------- dados da capa ---------- */
 const PROGRAMAS = [
   { key: "journey" as const, slug: "w-journey", selo: "Novo · Guiado", nome: "W Journey Circuit", dn: "5 dias · 4 noites", estilo: "Guiado", dist: "69,5 km", preco: "US$ 2.800", destaque: "Host bilíngue do início ao fim e traslado privativo. Confirmação imediata de vagas.", img: PHOTO.prodPlus },
-  { key: "express" as const, slug: "w-express", selo: "Menos dias", nome: "W Express", dn: "4 dias · 3 noites", estilo: "Autoguiado", dist: "69,5 km", preco: "US$ 1.491", destaque: "O W essencial em ritmo compacto: Base Torres, Cuernos, Vale do Francés e Glaciar Grey.", img: PHOTO.prodExpress },
-  { key: "plus" as const, slug: "w-plus", selo: "Conforto + hotel", nome: "W+ Express Plus", dn: "5 dias · 4 noites", estilo: "Autoguiado", dist: "69,5 km", preco: "US$ 1.913", destaque: "O W completo, fechando com uma noite de conforto no Hotel Las Torres.", img: "/lastorres/hero.jpg" },
-  { key: "tradicional" as const, slug: "w-tradicional", selo: "Clássico", nome: "W Tradicional", dn: "5 dias · 4 noites", estilo: "Autoguiado", dist: "75,5 km", preco: "US$ 1.687", destaque: "O circuito W mais clássico e completo, com a possibilidade de estender para 6 ou 7 dias.", img: PHOTO.prodTradicional },
+  { key: "express" as const, slug: "w-express", selo: "Menos dias", nome: "W Express", dn: "4 dias · 3 noites", estilo: "Autoguiado", dist: "69,5 km", preco: "US$ 1.657", destaque: "O W essencial em ritmo compacto: Base Torres, Cuernos, Vale do Francés e Glaciar Grey.", img: PHOTO.prodExpress },
+  { key: "plus" as const, slug: "w-plus", selo: "Conforto + hotel", nome: "W+ Express Plus", dn: "5 dias · 4 noites", estilo: "Autoguiado", dist: "69,5 km", preco: "US$ 2.126", destaque: "O W completo, fechando com uma noite de conforto no Hotel Las Torres.", img: "/lastorres/hero.jpg" },
+  { key: "tradicional" as const, slug: "w-tradicional", selo: "Clássico", nome: "W Tradicional", dn: "5 dias · 4 noites", estilo: "Autoguiado", dist: "75,5 km", preco: "US$ 1.874", destaque: "O circuito W mais clássico e completo, com a possibilidade de estender para 6 ou 7 dias.", img: PHOTO.prodTradicional },
 ];
 
 const SETORES = [
@@ -37,7 +37,7 @@ const TABELA_ROWS: { label: string; vals: string[] }[] = [
   { label: "Welcome kit", vals: ["✓", "✓", "✓", "✓"] },
   { label: "Temporada", vals: ["Out a Abr", "Out a Abr", "Out a Abr", "Out a Abr"] },
   { label: "Distância", vals: ["69,5 km", "69,5 km", "69,5 km", "75,5 km"] },
-  { label: "A partir de", vals: ["US$ 2.800", "US$ 1.491", "US$ 1.913", "US$ 1.687"] },
+  { label: "A partir de", vals: ["US$ 2.800", "US$ 1.657", "US$ 2.126", "US$ 1.874"] },
 ];
 
 const LT = "https://lastorres.com/content/uploads";
