@@ -176,54 +176,54 @@ function ElevationProfile({ labelColor = D.calcare, gridColor = D.line, legColor
 // ============================================================
 const GALERIA = [
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_73a074d88fab40bcb682832c94f4581d~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Um refúgio de pedra surge no meio da travessia",
-    tag: "Refúgios",
+    src: "/images/dolomitas-alta-via/tre-cime-panorama.jpg",
+    cap: "Os Tre Cime di Lavaredo, símbolo das Dolomitas",
+    tag: "Tre Cime",
   },
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_bad1e5d4f34a41109e523804f0216ae7~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Lagos turquesa vistos do alto da rota",
-    tag: "Paisagem",
-  },
-  {
-    src: "https://static.wixstatic.com/media/2d4f5b_b3c8cfbb80f345ce9d319902aadf6ed8~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "O branco do calcário, marca das Dolomitas",
+    src: "/images/dolomitas-alta-via/laghi-piani.jpg",
+    cap: "Os lagos de Piani aos pés das três torres",
     tag: "Alta Via",
   },
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_d449c156a7234f07b8c4f731b6606ea9~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Entre flores alpinas e as grandes paredes",
-    tag: "Trilha",
+    src: "/images/dolomitas-alta-via/rifugio-locatelli.jpg",
+    cap: "Rifugio Locatelli, o abrigo diante dos Tre Cime",
+    tag: "Refúgios",
   },
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_2c19dbc8a0ca4eab9c3f93e02a421779~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Jantar no refúgio, o fim de mais um dia",
-    tag: "Hospedagem",
+    src: "/images/dolomitas-alta-via/lago-di-braies.jpg",
+    cap: "Lago di Braies, o espelho das Dolomitas",
+    tag: "Lago di Braies",
   },
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_9cab2d161dda4035a92e2ab4bbece616~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Subida entre pinheiros e torres de pedra",
-    tag: "Travessia",
+    src: "/images/dolomitas-alta-via/braies-turquesa.jpg",
+    cap: "As águas turquesa do Lago di Braies",
+    tag: "Paisagem",
   },
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_f8ec805979db406598fafadad9c7b2f8~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Em grupo, no ritmo da montanha",
-    tag: "Comunidade",
-  },
-  {
-    src: "https://static.wixstatic.com/media/2d4f5b_3977985d33334389bba7406e75b42e65~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Os prados de Fanes, um cenário surreal",
+    src: "/images/dolomitas-alta-via/fanes-cavalos.jpg",
+    cap: "Cavalos selvagens no planalto de Fanes",
     tag: "Fanes",
   },
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_9949df77563e44849a30739cff4928d9~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Floresta a caminho do próximo refúgio",
-    tag: "Floresta",
+    src: "/images/dolomitas-alta-via/refugio-pedra.jpg",
+    cap: "Um refúgio de pedra no meio da travessia",
+    tag: "Travessia",
   },
   {
-    src: "https://static.wixstatic.com/media/2d4f5b_22579166c00b4c9aabcb71fb4565473e~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "O grupo AONIK nas Dolomitas",
-    tag: "Grupo",
+    src: "/images/dolomitas-alta-via/cadini-misurina.jpg",
+    cap: "As agulhas do Cadini di Misurina",
+    tag: "Cadini",
+  },
+  {
+    src: "/images/dolomitas-alta-via/lago-coldai.jpg",
+    cap: "Lago di Coldai, aos pés do Monte Civetta",
+    tag: "Coldai",
+  },
+  {
+    src: "/images/dolomitas-alta-via/cerveja-refugio.jpg",
+    cap: "Uma cerveja gelada ao fim da etapa",
+    tag: "Gastronomia",
   },
 ];
 
