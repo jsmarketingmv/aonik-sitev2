@@ -177,8 +177,8 @@ function ElevationProfile({ labelColor = D.calcare, gridColor = D.line, legColor
 const GALERIA = [
   {
     src: "https://static.wixstatic.com/media/2d4f5b_73a074d88fab40bcb682832c94f4581d~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Um rifugio de pedra surge no meio da travessia",
-    tag: "Rifugi",
+    cap: "Um refúgio de pedra surge no meio da travessia",
+    tag: "Refúgios",
   },
   {
     src: "https://static.wixstatic.com/media/2d4f5b_bad1e5d4f34a41109e523804f0216ae7~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
@@ -187,7 +187,7 @@ const GALERIA = [
   },
   {
     src: "https://static.wixstatic.com/media/2d4f5b_b3c8cfbb80f345ce9d319902aadf6ed8~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "O branco do calcario, marca das Dolomitas",
+    cap: "O branco do calcário, marca das Dolomitas",
     tag: "Alta Via",
   },
   {
@@ -197,7 +197,7 @@ const GALERIA = [
   },
   {
     src: "https://static.wixstatic.com/media/2d4f5b_2c19dbc8a0ca4eab9c3f93e02a421779~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Jantar no rifugio, o fim de mais um dia",
+    cap: "Jantar no refúgio, o fim de mais um dia",
     tag: "Hospedagem",
   },
   {
@@ -212,53 +212,69 @@ const GALERIA = [
   },
   {
     src: "https://static.wixstatic.com/media/2d4f5b_3977985d33334389bba7406e75b42e65~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Os prados de Fanes, um cenario surreal",
+    cap: "Os prados de Fanes, um cenário surreal",
     tag: "Fanes",
   },
   {
     src: "https://static.wixstatic.com/media/2d4f5b_9949df77563e44849a30739cff4928d9~mv2.jpg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "Floresta a caminho do proximo rifugio",
+    cap: "Floresta a caminho do próximo refúgio",
     tag: "Floresta",
   },
   {
     src: "https://static.wixstatic.com/media/2d4f5b_22579166c00b4c9aabcb71fb4565473e~mv2.jpeg/v1/fill/w_1280,h_853,al_c,q_82/file.jpg",
-    cap: "O grupo AONIK nos Dolomiti",
+    cap: "O grupo AONIK nas Dolomitas",
     tag: "Grupo",
   },
 ];
 
 function GaleriaInterativa() {
   const [idx, setIdx] = useState(0);
+  const prev = () => setIdx((i) => (i - 1 + GALERIA.length) % GALERIA.length);
+  const next = () => setIdx((i) => (i + 1) % GALERIA.length);
   const img = GALERIA[idx];
 
   return (
-    <div className="grid gap-3 md:grid-cols-[1fr_200px]">
-      <AnimatePresence mode="wait">
-        <motion.div key={idx}
-          initial={{ opacity: 0.5, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }} transition={{ duration: 0.45, ease: EASE }}
-          className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
-          <img src={img.src} alt={img.cap} className="absolute inset-0 h-full w-full object-cover" />
-          <div className="absolute inset-0"
-            style={{ background: `linear-gradient(to top, ${D.notte}bb 0%, transparent 55%)` }} />
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: D.rosso }}>{img.tag}</span>
-            <p className="mt-1 text-[14px] font-light" style={{ color: D.creme }}>{img.cap}</p>
-          </div>
-          <div className="absolute right-4 top-4">
-            <span className="text-[11px] font-medium" style={{ color: "rgba(232,221,208,0.5)" }}>
-              {idx + 1}/{GALERIA.length}
-            </span>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-      <div className="flex gap-2 overflow-x-auto md:flex-col md:overflow-visible">
+    <div className="flex flex-col gap-3">
+      {/* Imagem destacada */}
+      <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "16/10" }}>
+        <AnimatePresence mode="wait">
+          <motion.div key={idx}
+            initial={{ opacity: 0.6, scale: 1.02 }} animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }} transition={{ duration: 0.4, ease: EASE }}
+            className="absolute inset-0">
+            <img src={img.src} alt={img.cap} className="h-full w-full object-cover" />
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0"
+          style={{ background: `linear-gradient(to top, ${D.notte}cc 0%, transparent 55%)` }} />
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: D.rosso }}>{img.tag}</span>
+          <p className="mt-1 text-[14px] font-light" style={{ color: D.creme }}>{img.cap}</p>
+        </div>
+        <span className="absolute right-4 top-4 text-[11px] font-medium" style={{ color: "rgba(232,221,208,0.55)" }}>
+          {idx + 1} / {GALERIA.length}
+        </span>
+        <button onClick={prev} aria-label="Anterior"
+          className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base transition-all hover:scale-110"
+          style={{ background: `${D.notte}99`, color: D.creme }}>
+          ‹
+        </button>
+        <button onClick={next} aria-label="Próxima"
+          className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full text-base transition-all hover:scale-110"
+          style={{ background: `${D.notte}99`, color: D.creme }}>
+          ›
+        </button>
+      </div>
+
+      {/* Miniaturas — faixa horizontal abaixo */}
+      <div className="grid auto-cols-fr grid-flow-col gap-2">
         {GALERIA.map((g, i) => (
-          <button key={i} onClick={() => setIdx(i)}
-            className="relative shrink-0 overflow-hidden rounded-xl transition-all duration-300"
-            style={{ width: 200, height: 115, opacity: i === idx ? 1 : 0.45,
+          <button key={i} onClick={() => setIdx(i)} aria-label={g.cap}
+            className="relative overflow-hidden rounded-lg transition-all duration-300"
+            style={{ aspectRatio: "16/10",
               outline: i === idx ? `2px solid ${D.rosso}` : "2px solid transparent", outlineOffset: 2 }}>
-            <img src={g.src} alt={g.tag} className="h-full w-full object-cover transition-transform duration-300 hover:scale-[1.05]" />
+            <img src={g.src} alt={g.cap} className="h-full w-full object-cover transition-opacity duration-300"
+              style={{ opacity: i === idx ? 1 : 0.42 }} />
           </button>
         ))}
       </div>
@@ -301,10 +317,10 @@ const MARCOS = [
   },
   {
     id: "braies",
-    kicker: "Dia 3 · Inicio da travessia real",
+    kicker: "Dia 3 · Início da travessia real",
     titulo: ["Lago", "di Braies"],
     texto:
-      "Um dos lagos alpinos mais bonitos do mundo. Águas turquesas cercadas de picos rochosos. Daqui a Alta Via comeca de verdade: 12,60 km e +1.037 m de subida até o Rifugio Sennes, onde tudo muda de escala.",
+      "Um dos lagos alpinos mais bonitos do mundo. Águas turquesas cercadas de picos rochosos. Daqui a Alta Via começa de verdade: 12,60 km e +1.037 m de subida até o Rifugio Sennes, onde tudo muda de escala.",
     detalhe: "1.496 m · 12,60 km · +1.037 m",
     img: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg/v1/fill/w_1600,h_1280,al_c,q_82/file.jpg",
     bg: "#ffffff",
@@ -323,7 +339,7 @@ const MARCOS = [
     kicker: "Dias 8-9 · A grande parede",
     titulo: ["Monte", "Civetta"],
     texto:
-      "3.220 metros de altura, com uma das faces verticais mais longas dos Alpes Italianos. A Alta Via atravessa sua base por dois dias inteiros. Chegar ao Lago di Coldai e erguer os olhos para essa parede: não tem descricao.",
+      "3.220 metros de altura, com uma das faces verticais mais longas dos Alpes Italianos. A Alta Via atravessa sua base por dois dias inteiros. Chegar ao Lago di Coldai e erguer os olhos para essa parede: não tem descrição.",
     detalhe: "3.220 m · Parede NE com 1.000 m · Dias 8-9",
     img: "https://static.wixstatic.com/media/2d4f5b_d4a2d6fa4d424bf6bdbbb9f95f285d09~mv2.jpeg/v1/fill/w_1600,h_1280,al_c,q_82/file.jpg",
     bg: D.rosso,
@@ -343,7 +359,7 @@ const ROTEIRO = [
   {
     d: "01", icon: "✈",
     t: "Transfer Veneza · Cortina d'Ampezzo",
-    s: "Chegada ao Aeroporto Marco Polo e transfer privado até Cortina d'Ampezzo. Check-in em hotel no centro. Briefing da viagem as 19h. Café da manhã e jantar livre.",
+    s: "Chegada ao Aeroporto Marco Polo e transfer privado até Cortina d'Ampezzo. Check-in em hotel no centro. Briefing da viagem às 19h. Café da manhã e jantar livre.",
   },
   {
     d: "02", icon: "🗻",
@@ -353,12 +369,12 @@ const ROTEIRO = [
   {
     d: "03", icon: "💧",
     t: "Lago di Braies até Rifugio Sennes",
-    s: "12,60 km · +1.037 m. Transfer até o Lago di Braies, o cartao postal das Dolomitas. Subida exigente até 2.369 m. Inicio da travessia de verdade, de refugio em refugio.",
+    s: "12,60 km · +1.037 m. Transfer até o Lago di Braies, o cartão postal das Dolomitas. Subida exigente até 2.369 m. Início da travessia de verdade, de refúgio em refúgio.",
   },
   {
     d: "04", icon: "⛰",
     t: "Sennes até Fanes",
-    s: "12,90 km · +617 m. Descidas iniciais até o Rifugio Pederu, subida até o vale de Fanes. O grande platô de Fanes e um dos cenários mais surreais de toda a rota.",
+    s: "12,90 km · +617 m. Descidas iniciais até o Rifugio Pederu, subida até o vale de Fanes. O grande platô de Fanes é um dos cenários mais surreais de toda a rota.",
   },
   {
     d: "05", icon: "🏔",
@@ -373,22 +389,22 @@ const ROTEIRO = [
   {
     d: "07", icon: "🌿",
     t: "Lago Federa até Monte Pelmo",
-    s: "11,34 km · +386 m. O dia mais leve da travessia. Caminhada pela base do Monte Pelmo, montanha tradicional e icônica. Visuals impresionantes de campos de batalha da WWI.",
+    s: "11,34 km · +386 m. O dia mais leve da travessia. Caminhada pela base do Monte Pelmo, montanha tradicional e icônica. Visuais impressionantes de campos de batalha da Primeira Guerra.",
   },
   {
     d: "08", icon: "🧗",
     t: "Monte Pelmo até Monte Civetta",
-    s: "9,58 km · +733 m. Dia curto mas com substancial ganho altimétrico. Chegada antecipada ao refúgio com vista direta do Civetta. Caminhada opcional ao Lago di Coldai no final da tarde.",
+    s: "9,58 km · +733 m. Dia curto, mas com ganho altimétrico expressivo. Chegada antecipada ao refúgio com vista direta do Civetta. Caminhada opcional ao Lago di Coldai no fim da tarde.",
   },
   {
     d: "09", icon: "🌄",
     t: "Civetta até Capanna Alpina · Transfer para Cortina",
-    s: "14,39 km · +369 m. Penultimo dia ao lado do Monte Civetta. Descida ingreme até a Capanna Alpina. Transfer de retorno a Cortina d'Ampezzo passando pelo Passo Giau.",
+    s: "14,39 km · +369 m. Penúltimo dia ao lado do Monte Civetta. Descida íngreme até a Capanna Alpina. Transfer de retorno a Cortina d'Ampezzo passando pelo Passo Giau.",
   },
   {
     d: "10", icon: "🏁",
     t: "Transfer Cortina · Aeroporto Marco Polo",
-    s: "Café da manhã no hotel. Organizacao de bagagens. Transfer privado para o Aeroporto Marco Polo (Veneza) com chegada prevista as 14h. Fim dos servicos.",
+    s: "Café da manhã no hotel. Organização de bagagens. Transfer privado para o Aeroporto Marco Polo (Veneza) com chegada prevista às 14h. Fim dos serviços.",
   },
 ];
 
@@ -396,19 +412,19 @@ const INCLUSO = [
   "Transfer privado VAN Aeroporto Marco Polo → Cortina (ida e volta)",
   "3 noites em hotel duplo/triplo com café da manhã em Cortina",
   "6 noites em refúgios (jantar + café da manhã + banho)",
-  "1 condutor brasileiro com certificacao internacional (primeiros socorros)",
+  "1 condutor brasileiro com certificação internacional (primeiros socorros)",
   "Transfer privado Cortina ↔ Rifugio Auronzo (Tre Cime)",
-  "Transfer privado Cortina → Lago di Braies (inicio da travessia)",
+  "Transfer privado Cortina → Lago di Braies (início da travessia)",
   "2 transfers de bagagem para troca de roupas nos refúgios (Dias 5 e 7)",
   "Rastreador satelital SPOT com acompanhamento remoto",
-  "Apoio pre-viagem: orientações de equipamentos e mochila",
+  "Apoio pré-viagem: orientações de equipamentos e mochila",
 ];
 
 const NAO_INCLUSO = [
-  "Passagem aerea internacional",
+  "Passagem aérea internacional",
   "Seguro viagem para esportes de aventura (obrigatório)",
   "Jantares nos dias 1, 2, 9 e 10",
-  "Almoco em todos os dias",
+  "Almoço em todos os dias",
   "Bebidas durante toda a viagem",
   "Atividades opcionais (bondinhos, via ferrata)",
   "Despesas pessoais",
@@ -459,16 +475,16 @@ export default function DolomitasAltaViaPage() {
               transition={{ duration: 1, ease: EASE, delay: 0.48 }}
               className="mt-3 font-display font-light italic"
               style={{ fontSize: "clamp(1rem, 2vw, 1.5rem)", color: D.calcare, opacity: 0.6 }}>
-              Dez dias. Cem quilometros. Uma travessia.
+              Dez dias. Cem quilômetros. Uma travessia.
             </motion.p>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.55 }}
               className="mt-6 max-w-md text-[15px] font-light leading-relaxed md:text-base"
               style={{ color: "rgba(232,221,208,0.72)" }}>
-              A rota de trekking mais iconica dos Alpes Italianos conecta Veneza ao
+              A rota de trekking mais icônica dos Alpes Italianos conecta Veneza ao
               coração das Dolomitas, de refúgio em refúgio, passando por Tre Cime,
               Lago di Braies e Monte Civetta.{" "}
-              <span style={{ color: D.calcare }}>Italia vista de dentro.</span>
+              <span style={{ color: D.calcare }}>Itália vista de dentro.</span>
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: EASE, delay: 0.7 }}
@@ -533,7 +549,7 @@ export default function DolomitasAltaViaPage() {
         <div className="relative z-10 mx-auto max-w-[1000px] px-6 py-32 text-center md:py-44">
           <Reveal>
             <p className="text-[11px] font-semibold uppercase tracking-[0.4em]"
-              style={{ color: D.calcare, opacity: 0.55 }}>Fenomeno das Dolomitas</p>
+              style={{ color: D.calcare, opacity: 0.55 }}>Fenômeno das Dolomitas</p>
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-6 font-display font-light leading-[1.05]"
@@ -548,9 +564,9 @@ export default function DolomitasAltaViaPage() {
               style={{ color: "rgba(240,235,224,0.72)" }}>
               Em ladino antigo, &ldquo;enrosadüra&rdquo; descreve o instante em que
               as paredes de calcário das Dolomitas ficam rosadas. A rocha branca
-              reflete a luz do por do sol e, por alguns minutos, as montanhas inteiras
+              reflete a luz do pôr do sol e, por alguns minutos, as montanhas inteiras
               parecem em chamas.{" "}
-              <span style={{ color: D.creme, fontStyle: "italic" }}>Você tem que estar la.</span>
+              <span style={{ color: D.creme, fontStyle: "italic" }}>Você tem que estar lá.</span>
             </p>
           </Reveal>
         </div>
@@ -681,7 +697,7 @@ export default function DolomitasAltaViaPage() {
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <p className="text-[11px] font-semibold uppercase tracking-[0.35em]"
-              style={{ color: D.calcare, opacity: 0.55 }}>Saidas confirmadas</p>
+              style={{ color: D.calcare, opacity: 0.55 }}>Saídas confirmadas</p>
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className="mt-5 font-display font-light leading-[1.05]"
@@ -782,7 +798,7 @@ export default function DolomitasAltaViaPage() {
       <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: D.bosco }}>
         <div className="mx-auto grid max-w-[1280px] gap-12 md:grid-cols-2 md:gap-20">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: D.rosso }}>Esta incluso</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: D.rosso }}>Está incluso</p>
             <ul className="mt-8 space-y-4">
               {INCLUSO.map((item) => (
                 <li key={item} className="flex items-start gap-4 text-[14px] font-light leading-relaxed"
@@ -822,7 +838,7 @@ export default function DolomitasAltaViaPage() {
             </h2>
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed"
               style={{ color: "rgba(240,235,224,0.65)" }}>
-              O que levar, condicao fisica necessária, como chegar a Veneza, melhor
+              O que levar, condição física necessária, como chegar a Veneza, melhor
               equipamento para os refúgios. A AonikIA conhece esta travessia de ponta
               a ponta.
             </p>
