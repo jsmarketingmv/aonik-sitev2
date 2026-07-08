@@ -35,15 +35,15 @@ const S = {
 const wix = (id: string, w = 1920, h = 1080) =>
   `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},q_90,enc_avif,quality_auto/${id}`;
 
-const HERO = wix("2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg");
+const HERO = wix("2d4f5b_6f87c4d3ffd34c8b9113ab469579a1ca~mv2.jpg");
 
 const GALERIA = [
-  { src: wix("2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg", 900, 600), tag: "A Galiza", cap: "Na Galiza, o Caminho fica mais verde, mais íntimo. As aldeias de pedra aparecem a cada curva." },
-  { src: wix("2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg", 900, 600), tag: "A Seta Amarela", cap: "A seta amarela aponta. Você segue. Simples assim. Isso é o Caminho de Santiago." },
-  { src: wix("2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg", 900, 600), tag: "O Caminho", cap: "Pedra, granito, musgo e silêncio. A estrada medieval que sobreviveu a tudo." },
-  { src: wix("2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg", 900, 600), tag: "Santiago", cap: "A Catedral de Santiago. O destino. Depois de 112 km a pé, ela aparece e você entende tudo." },
-  { src: wix("2d4f5b_3405d40f96d84d289904dccd31fcba12~mv2.jpg", 900, 600), tag: "Portomarín", cap: "Portomarín, a cidade que foi submersa e reconstruída pedra por pedra. A história do Caminho em miniatura." },
-  { src: wix("2d4f5b_596f7144ab49417692221a0fa9dab404~mv2.jpg", 900, 600), tag: "A Chegada", cap: "Os últimos quilômetros são os mais silenciosos. Cada passo vale por todos." },
+  { src: wix("2d4f5b_b355e727711547209a925d7e53d1cae8~mv2.jpg", 900, 600), tag: "A Galiza", cap: "Na Galiza, o Caminho fica mais verde e mais íntimo. Peregrinos cruzam os campos rumo à próxima aldeia de pedra." },
+  { src: wix("2d4f5b_c7ee23942d2042ffa32446a8da03fc94~mv2.png", 900, 600), tag: "O Vale", cap: "Cada mirante abre um vale novo. A Galiza rural se revela devagar, a cada curva do percurso." },
+  { src: wix("2d4f5b_1f693ff5585242d4bb3416fee2cd4702~mv2.jpg", 900, 600), tag: "O Caminho", cap: "Séculos de história a céu aberto. Igrejas, mosteiros e pedra que sobreviveram a tudo ao longo da rota." },
+  { src: wix("2d4f5b_e3cc5834a71d448892473ab50c04c003~mv2.png", 900, 600), tag: "As Pontes", cap: "Pontes medievais de pedra atravessam rios e regatos. O mesmo traçado que os peregrinos cruzam há mil anos." },
+  { src: wix("2d4f5b_8e3fd8a7db3f40ea9e304b46db3599fe~mv2.png", 900, 600), tag: "As Vilas", cap: "Praças, fachadas e vida local. As vilas do Caminho recebem quem chega a pé com a hospitalidade de sempre." },
+  { src: wix("2d4f5b_6c3f9650f7aa4b80a57246f7ebaf37f2~mv2.jpg", 900, 600), tag: "Santiago", cap: "A Catedral de Santiago na Praça do Obradoiro. Depois de 112 km a pé, ela aparece e você entende tudo." },
 ];
 
 const ETAPAS = [
@@ -316,7 +316,7 @@ export default function Sarria7EtapasPage() {
             </Reveal>
             <Reveal delay={0.15}>
               <div className="mt-10 overflow-hidden rounded-2xl md:mt-0" style={{ aspectRatio: "4/3" }}>
-                <img src={wix("2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg", 800, 600)}
+                <img src={wix("2d4f5b_aa6cd12d6edd4c9a8fa81a0c7b2a3dab~mv2.png", 800, 600)}
                   alt="Caminho de Santiago, Galiza"
                   className="h-full w-full object-cover" />
               </div>

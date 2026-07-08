@@ -33,15 +33,15 @@ const S = {
 const wix = (id: string, w = 1920, h = 1080) =>
   `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},q_90,enc_avif,quality_auto/${id}`;
 
-const HERO = wix("2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg");
+const HERO = wix("2d4f5b_b355e727711547209a925d7e53d1cae8~mv2.jpg");
 
 const GALERIA = [
-  { src: wix("2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg", 900, 600), tag: "O Caminho", cap: "Pedra granítica, musgo e silêncio. A estrada medieval que guiou reis e poetas por mil anos." },
-  { src: wix("2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg", 900, 600), tag: "A Galiza", cap: "Aldeias de granito, hórreos e milheiras. A Galiza rural que o Caminho preservou intacta." },
-  { src: wix("2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg", 900, 600), tag: "A Seta", cap: "A seta amarela: o símbolo mais simples e mais confiável do Caminho. Ela nunca falha." },
-  { src: wix("2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg", 900, 600), tag: "Santiago", cap: "A Praça do Obradoiro. O fim. O começo do que você vai carregar para sempre." },
-  { src: wix("2d4f5b_3405d40f96d84d289904dccd31fcba12~mv2.jpg", 900, 600), tag: "Melide", cap: "Melide, capital do polvo à galega. Uma parada obrigatória no dia 4 desta versão do Caminho." },
-  { src: wix("2d4f5b_596f7144ab49417692221a0fa9dab404~mv2.jpg", 900, 600), tag: "Os Peregrinos", cap: "Estranhos no primeiro dia, amigos para a vida no terceiro. Isso é o Caminho." },
+  { src: wix("2d4f5b_c7ee23942d2042ffa32446a8da03fc94~mv2.png", 900, 600), tag: "A Galiza", cap: "O interior verde da Galiza, sem pressa. Com um dia a mais, cada vale ganha tempo para ser contemplado." },
+  { src: wix("2d4f5b_aa6cd12d6edd4c9a8fa81a0c7b2a3dab~mv2.png", 900, 600), tag: "As Aldeias", cap: "Aldeias de granito ao entardecer dourado. As torres de igreja marcam o horizonte do peregrino." },
+  { src: wix("2d4f5b_e3cc5834a71d448892473ab50c04c003~mv2.png", 900, 600), tag: "As Pontes", cap: "Pontes medievais de pedra, cobertas de verde. O Caminho preservou o traçado de séculos." },
+  { src: wix("2d4f5b_1f693ff5585242d4bb3416fee2cd4702~mv2.jpg", 900, 600), tag: "O Caminho", cap: "Patrimônio a cada etapa. A arquitetura histórica acompanha o peregrino rumo a Santiago." },
+  { src: wix("2d4f5b_f04778205bef403ab60359fee8095ba1~mv2.png", 900, 600), tag: "Pedra e Musgo", cap: "Musgo sobre a pedra antiga. O tempo passa devagar nos trechos mais silenciosos da rota." },
+  { src: wix("2d4f5b_6c3f9650f7aa4b80a57246f7ebaf37f2~mv2.jpg", 900, 600), tag: "Santiago", cap: "A chegada à Catedral de Santiago. O destino de todos os Caminhos, enfim aos seus pés." },
 ];
 
 const ETAPAS = [
@@ -287,7 +287,7 @@ export default function Sarria8EtapasPage() {
             </Reveal>
             <Reveal delay={0.15}>
               <div className="mt-10 overflow-hidden rounded-2xl md:mt-0" style={{ aspectRatio: "4/3" }}>
-                <img src={wix("2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg", 800, 600)}
+                <img src={wix("2d4f5b_6f87c4d3ffd34c8b9113ab469579a1ca~mv2.jpg", 800, 600)}
                   alt="Galiza, Caminho de Santiago" className="h-full w-full object-cover" />
               </div>
             </Reveal>
