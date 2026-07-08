@@ -967,9 +967,9 @@ export default function TirolPage() {
               levar na mochila semicargueira, como é setembro no Tirol. A AonikIA conhece este
               programa de ponta a ponta.
             </p>
-            <a href="#contato" className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:opacity-80" style={{ borderColor: T.sage, color: T.sage }}>
+            <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("open-aonikia"))} className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:opacity-80" style={{ borderColor: T.sage, color: T.sage }}>
               Conversar com a AonikIA <span>&#8594;</span>
-            </a>
+            </button>
           </Reveal>
         </div>
       </section>

@@ -871,13 +871,14 @@ export default function HotelLasTorresPage() {
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed" style={{ color: "rgba(242,237,227,0.65)" }}>
               Quantas noites, qual programa, quais trilhas, melhor época. A AonikIA conhece a estância e te conecta com um especialista.
             </p>
-            <a
-              href="#contato"
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-aonikia"))}
               className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300"
               style={{ borderColor: L.gold, color: L.gold }}
             >
               Conversar com a AonikIA <span>→</span>
-            </a>
+            </button>
           </Reveal>
         </div>
       </section>

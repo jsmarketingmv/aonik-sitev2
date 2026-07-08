@@ -397,9 +397,9 @@ export default function Capa() {
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed" style={{ color: T.cSoft }}>
               Guiado ou autoguiado, refúgio ou camping, 4 ou 5 dias. Conte seu perfil que a AonikIA ajuda a escolher e te conecta com um especialista.
             </p>
-            <a href="#contato" className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300" style={{ borderColor: T.gelo, color: T.gelo }}>
+            <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("open-aonikia"))} className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300" style={{ borderColor: T.gelo, color: T.gelo }}>
               Conversar com a AonikIA <span>→</span>
-            </a>
+            </button>
           </Reveal>
         </div>
       </section>

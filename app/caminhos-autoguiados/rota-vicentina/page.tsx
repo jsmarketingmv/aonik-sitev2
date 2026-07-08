@@ -775,9 +775,9 @@ export default function RotaVicentinaPage() {
               Qual a melhor época, como funciona o app de GPS, o que levar na mochila do dia e como
               são as etapas pela falésia. A AonikIA conhece a Rota Vicentina de ponta a ponta.
             </p>
-            <a href="#contato" className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:opacity-80" style={{ borderColor: V.agua, color: V.agua }}>
+            <button type="button" onClick={() => window.dispatchEvent(new CustomEvent("open-aonikia"))} className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:opacity-80" style={{ borderColor: V.agua, color: V.agua }}>
               Conversar com a AonikIA <span>&#8594;</span>
-            </a>
+            </button>
           </Reveal>
         </div>
       </section>

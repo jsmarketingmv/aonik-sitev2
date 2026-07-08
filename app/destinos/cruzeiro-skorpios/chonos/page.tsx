@@ -635,11 +635,12 @@ export default function ChonosPage() {
               Cabines, como chegar a Puerto Montt, o que incluir na mochila, melhor
               época. A AonikIA conhece esta rota e te conecta com um especialista.
             </p>
-            <a href="#contato"
+            <button type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-aonikia"))}
               className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300"
               style={{ borderColor: C.esm, color: C.esm }}>
               Conversar com a AonikIA <span>→</span>
-            </a>
+            </button>
           </Reveal>
         </div>
       </section>

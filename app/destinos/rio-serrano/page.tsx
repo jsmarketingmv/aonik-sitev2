@@ -719,13 +719,14 @@ export default function RioSerranoPage() {
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed" style={{ color: "rgba(243,239,230,0.65)" }}>
               Quantas noites, qual quarto, quais experiências, melhor época. A AonikIA conhece o Rio Serrano e te conecta com um especialista.
             </p>
-            <a
-              href="#contato"
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("open-aonikia"))}
               className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300"
               style={{ borderColor: R.amber, color: R.amber }}
             >
               Conversar com a AonikIA <span>→</span>
-            </a>
+            </button>
           </Reveal>
         </div>
       </section>
