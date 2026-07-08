@@ -497,7 +497,6 @@ function Icon({ name, size = 22, color = "currentColor" }: { name: string; size?
 // PAGE
 // ============================================================
 export default function DouroPage() {
-  const datas2026 = datasDoAno(GRUPO, 2026);
   const datas2027 = datasDoAno(GRUPO, 2027);
 
   return (
@@ -561,7 +560,7 @@ export default function DouroPage() {
               className="mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] uppercase tracking-[0.16em]"
               style={{ borderColor: D.sage, color: D.sage }}>
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: D.sage }} />
-              Próxima saída · 14 a 21 Set 2026
+              Próxima saída · 20 a 28 Set 2027
             </motion.div>
                       <div className="mt-7">
               <Breadcrumb tone="dark" items={[
@@ -898,23 +897,10 @@ export default function DouroPage() {
 
           <Reveal delay={0.1}>
             <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {datas2026.map((d) => (
+              {datas2027.map((d) => (
                 <div key={d} className="rounded-2xl p-7" style={{ background: "rgba(138,31,45,0.22)", border: `1px solid rgba(138,31,45,0.5)` }}>
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: D.vinho, color: D.creme }}>2026</span>
-                    <span className="text-[11px]" style={{ color: D.textSoft }}>8 dias</span>
-                  </div>
-                  <p className="mt-6 font-display font-light" style={{ fontSize: "clamp(1.6rem,3vw,2.4rem)", color: D.creme }}>{d}</p>
-                  <p className="mt-1 text-[12px] font-light" style={{ color: D.textSoft }}>Vale do Douro · Portugal · Setembro 2026</p>
-                  <a href="#contato" className="mt-6 inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em] transition-opacity hover:opacity-75" style={{ color: D.ouro }}>
-                    Reservar vaga &#8594;
-                  </a>
-                </div>
-              ))}
-              {datas2027.map((d) => (
-                <div key={d} className="rounded-2xl p-7" style={{ background: "rgba(138,31,45,0.12)", border: `1px solid rgba(138,31,45,0.3)` }}>
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ border: `1px solid ${D.vinho}`, color: D.vinho }}>2027</span>
+                    <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: D.vinho, color: D.creme }}>2027</span>
                     <span className="text-[11px]" style={{ color: D.textSoft }}>8 dias</span>
                   </div>
                   <p className="mt-6 font-display font-light" style={{ fontSize: "clamp(1.6rem,3vw,2.4rem)", color: D.creme }}>{d}</p>

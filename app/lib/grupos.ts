@@ -53,7 +53,6 @@ export const GRUPOS: Grupo[] = [
     title: "Douro Experience",
     flags: "🇵🇹",
     local: "Vale do Douro · Portugal",
-    dates2026: ["14 a 21/Set"],
     dates2027: ["20 a 28/Set"],
     distance: "58,7 km",
     altitude: "2.051 m+",
