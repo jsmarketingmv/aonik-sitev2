@@ -872,8 +872,8 @@ export default function TMBV2Page() {
               Da preparação física à melhor época
             </h2>
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed text-white/65">
-              Sentido horário ou anti-horário? Refúgios ou hotéis? A AonikIA
-              conhece cada col deste anel e já te conecta com um especialista.
+              A AonikIA (Nossa Agente / Inteligência Artificial) conhece cada detalhe
+              deste roteiro incrível. Clique abaixo e te conectamos à nossa especialista.
             </p>
             <a href="#contato"
               className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300"
