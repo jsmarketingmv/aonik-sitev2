@@ -409,8 +409,8 @@ const INCLUSO = [
   "Hospedagem em hotel em Amman e em Petra (quartos duplos)",
   "Acampamentos totalmente estruturados no deserto",
   "Todas as refeições da travessia (café, box lunch e jantar)",
-  "Guia local especializado da Experience Jordan (DMC parceira)",
-  "Liderança e acompanhamento de Juliano P. Sant'ana (TARGET)",
+  "Guia local especializado da região",
+  "Liderança e acompanhamento de Juliano P. Sant'Ana (TARGET)",
   "Transfer de bagagem entre os acampamentos",
   "Acesso à Reserva da Biosfera de Dana e áreas protegidas",
   "Mochila de ataque e suporte de segurança em campo",
@@ -696,8 +696,7 @@ export default function DanaPetraPage() {
                 <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${GUIA_FOTO}')` }} />
                 <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${D.pedra}ee 0%, transparent 55%)` }} />
                 <div className="absolute inset-x-0 bottom-0 p-7">
-                  <p className="font-display text-[1.6rem] font-light leading-tight" style={{ color: D.creme }}>Juliano P. Sant'ana</p>
-                  <p className="mt-1 text-[12px] uppercase tracking-[0.18em]" style={{ color: D.areia }}>Blumenau · Santa Catarina</p>
+                  <p className="font-display text-[1.6rem] font-light leading-tight" style={{ color: D.creme }}>Juliano P. Sant'Ana</p>
                 </div>
               </div>
             </Reveal>
@@ -705,7 +704,7 @@ export default function DanaPetraPage() {
             <Reveal delay={0.1}>
               <div>
                 <h2 className="font-display font-light leading-[1.05] tracking-[-0.01em]" style={{ fontSize: "clamp(2rem,3.8vw,3rem)", color: D.creme }}>
-                  Juliano P. Sant'ana
+                  Juliano P. Sant'Ana
                 </h2>
                 <p className="mt-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: D.areia }}>Sócio-fundador da TARGET Trekking</p>
                 <p className="mt-6 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: "rgba(242,233,218,0.74)" }}>
@@ -739,12 +738,6 @@ export default function DanaPetraPage() {
                   </div>
                 </div>
 
-                <div className="mt-8 rounded-2xl border px-5 py-4 text-[13px] font-light leading-relaxed"
-                  style={{ borderColor: D.line, color: "rgba(242,233,218,0.66)" }}>
-                  Em campo, a TARGET caminha ao lado da{" "}
-                  <span style={{ color: D.areia }}>Experience Jordan</span>, nossa parceira
-                  local (DMC) com guias beduínos e suporte completo de acampamento e logística.
-                </div>
               </div>
             </Reveal>
           </div>
