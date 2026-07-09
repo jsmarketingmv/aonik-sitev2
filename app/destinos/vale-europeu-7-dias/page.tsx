@@ -45,11 +45,11 @@ const DATA: ValeData = {
     titulo: "A subida mais longa termina nos campos do alto",
     texto:
       "Depois de Rodeio, o circuito ganha altitude pelo Caminho dos Anjos e não para mais de subir. A recompensa é o planalto: campos abertos, lagos espelhados, ar puro e o silêncio que só existe a quase mil metros de altura. É a parte do Vale que poucos conhecem.",
-    img: `${IMG}/way-circuito.jpg`,
+    img: `${IMG}/lagos.jpg`,
   },
   galeria: [
     { src: `${IMG}/fp-8.jpg`, cap: "Estrada de mata, ritmo de quem tem tempo", tag: "Rota" },
-    { src: `${IMG}/way-circuito.jpg`, cap: "Os campos altos vistos do alto", tag: "Parte alta" },
+    { src: `${IMG}/lagos.jpg`, cap: "A Região dos Lagos, espelho d'água no alto do circuito", tag: "Parte alta" },
     { src: `${IMG}/fp-33.jpg`, cap: "O dossel das araucárias e pinheiros", tag: "Mata" },
     { src: `${IMG}/fp-20.jpg`, cap: "Carro de apoio pronto na beira da estrada", tag: "Suporte" },
     { src: `${IMG}/fp-24.jpg`, cap: "Pausa sob as buganvílias", tag: "Paradas" },

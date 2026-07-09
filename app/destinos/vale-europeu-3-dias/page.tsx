@@ -51,7 +51,7 @@ const DATA: ValeData = {
     { src: `${IMG}/cover-circuito.jpeg`, cap: "O grupo reunido à beira do rio", tag: "Pedal em grupo" },
     { src: `${IMG}/fp-5.jpg`, cap: "Igreja enxaimel, raríssima fora da Europa", tag: "Arquitetura" },
     { src: `${IMG}/fp-1.jpg`, cap: "Charrete e bike dividindo a estrada rural", tag: "Vida no campo" },
-    { src: `${IMG}/fp-24.jpg`, cap: "Pausa sob as buganvílias, à sombra", tag: "Paradas" },
+    { src: `${IMG}/pomerode.jpg`, cap: "Ponte coberta sob as buganvílias, à beira do rio", tag: "Pontes cobertas" },
     { src: `${IMG}/fp-8.jpg`, cap: "Estrada de terra cortando a mata", tag: "Rota" },
     { src: `${IMG}/fp-22.jpg`, cap: "A paisagem do Vale Europeu", tag: "Paisagem" },
     { src: `${IMG}/fp-33.jpg`, cap: "O dossel dos pinheiros e araucárias", tag: "Mata" },
