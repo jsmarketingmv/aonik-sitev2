@@ -187,7 +187,7 @@ const GALERIA = [
   },
   {
     src: "/images/dolomitas-alta-via/rifugio-locatelli.jpg",
-    cap: "Rifugio Locatelli, o abrigo diante dos Tre Cime",
+    cap: "Refúgio Locatelli, o abrigo diante dos Tre Cime",
     tag: "Refúgios",
   },
   {
@@ -301,7 +301,7 @@ const MARCOS = [
     kicker: "Dia 2 · Marco das Dolomitas",
     titulo: ["Tre Cime", "di Lavaredo"],
     texto:
-      "As três torres de calcário mais fotografadas do mundo. O circuito completo revela a formação rochosa por todos os ângulos, com parada no Rifugio Locatelli. 15,43 km percorridos num dia que nenhum participante esquece.",
+      "As três torres de calcário mais fotografadas do mundo. O circuito completo revela a formação rochosa por todos os ângulos, com parada no Refúgio Locatelli. 15,43 km percorridos num dia que nenhum participante esquece.",
     detalhe: "3.003 m · Circuito 15 km · Dia 2",
     img: "https://static.wixstatic.com/media/2d4f5b_b5691cbefb4e4071afddcb67131f3af5~mv2.jpeg/v1/fill/w_1600,h_1280,al_c,q_82/file.jpg",
     bg: D.verde,
@@ -320,7 +320,7 @@ const MARCOS = [
     kicker: "Dia 3 · Início da travessia real",
     titulo: ["Lago", "di Braies"],
     texto:
-      "Um dos lagos alpinos mais bonitos do mundo. Águas turquesas cercadas de picos rochosos. Daqui a Alta Via começa de verdade: 12,60 km e +1.037 m de subida até o Rifugio Sennes, onde tudo muda de escala.",
+      "Um dos lagos alpinos mais bonitos do mundo. Águas turquesas cercadas de picos rochosos. Daqui a Alta Via começa de verdade: 12,60 km e +1.037 m de subida até o Refúgio Sennes, onde tudo muda de escala.",
     detalhe: "1.496 m · 12,60 km · +1.037 m",
     img: "https://static.wixstatic.com/media/2d4f5b_91e8c6992b55485b8b74754b98f1b67f~mv2.jpg/v1/fill/w_1600,h_1280,al_c,q_82/file.jpg",
     bg: "#ffffff",
@@ -364,22 +364,22 @@ const ROTEIRO = [
   {
     d: "02", icon: "🗻",
     t: "Circuito Tre Cime di Lavaredo e Cadini di Misurina",
-    s: "15,43 km · +695 m. Transfer até o Rifugio Auronzo. Circuito completo dos Tre Cime, as três torres mais icônicas dos Alpes, com parada no Rifugio Locatelli. Retorno por Lago di Misurina. Hotel em Cortina.",
+    s: "15,43 km · +695 m. Transfer até o Refúgio Auronzo. Circuito completo dos Tre Cime, as três torres mais icônicas dos Alpes, com parada no Refúgio Locatelli. Retorno por Lago di Misurina. Hotel em Cortina.",
   },
   {
     d: "03", icon: "💧",
-    t: "Lago di Braies até Rifugio Sennes",
+    t: "Lago di Braies até Refúgio Sennes",
     s: "12,60 km · +1.037 m. Transfer até o Lago di Braies, o cartão postal das Dolomitas. Subida exigente até 2.369 m. Início da travessia de verdade, de refúgio em refúgio.",
   },
   {
     d: "04", icon: "⛰",
     t: "Sennes até Fanes",
-    s: "12,90 km · +617 m. Descidas iniciais até o Rifugio Pederu, subida até o vale de Fanes. O grande platô de Fanes é um dos cenários mais surreais de toda a rota.",
+    s: "12,90 km · +617 m. Descidas iniciais até o Refúgio Pederu, subida até o vale de Fanes. O grande platô de Fanes é um dos cenários mais surreais de toda a rota.",
   },
   {
     d: "05", icon: "🏔",
     t: "Fanes até Passo Falzarego",
-    s: "18,98 km · +1.052 m. O dia mais longo e mais tecnicamente desafiador. Travessia pelo Lago de Lagazuoi e subida até o Rifugio Lagazuoi (2.752 m). Descida até o Passo Falzarego. Troca de bagagem no refúgio.",
+    s: "18,98 km · +1.052 m. O dia mais longo e mais tecnicamente desafiador. Travessia pelo Lago de Lagazuoi e subida até o Refúgio Lagazuoi (2.752 m). Descida até o Passo Falzarego. Troca de bagagem no refúgio.",
   },
   {
     d: "06", icon: "🪨",
@@ -413,7 +413,7 @@ const INCLUSO = [
   "3 noites em hotel duplo/triplo com café da manhã em Cortina",
   "6 noites em refúgios (jantar + café da manhã + banho)",
   "1 condutor brasileiro com certificação internacional (primeiros socorros)",
-  "Transfer privado Cortina ↔ Rifugio Auronzo (Tre Cime)",
+  "Transfer privado Cortina ↔ Refúgio Auronzo (Tre Cime)",
   "Transfer privado Cortina → Lago di Braies (início da travessia)",
   "2 transfers de bagagem para troca de roupas nos refúgios (Dias 5 e 7)",
   "Rastreador satelital SPOT com acompanhamento remoto",
