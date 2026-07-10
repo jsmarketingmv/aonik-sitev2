@@ -576,7 +576,7 @@ const INFO_AVISO =
   "Avisos de fechamento do parque ou alterações de datas na temporada podem ocorrer a qualquer momento e sem aviso prévio, sob responsabilidade da gestão do Parque Nacional, por variáveis climáticas e outras situações imprevistas, além do nosso controle e por força maior.";
 
 const PROMO = {
-  validade: "31 de julho de 2027",
+  validade: "31 de julho de 2026",
   formas: [
     { titulo: "À vista", badge: "10% OFF", destaque: true, desc: "Pagamento integral à vista, com 10% de desconto.", entrada: "PIX ou transferência", obs: "Quitação imediata." },
     { titulo: "Parcelado", badge: "5% OFF", destaque: true, desc: "Entrada de 30% + saldo em até 7x sem juros, com 5% de desconto.", entrada: "Entrada em PIX/transferência · parcelas no cartão", obs: "No cartão de crédito não há prazo de quitação antes da viagem." },

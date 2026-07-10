@@ -828,7 +828,7 @@ export default function TMBV2Page() {
               <div className="overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(217,140,74,0.28)`, backgroundColor: "rgba(217,140,74,0.04)" }}>
                 <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4" style={{ borderBottom: `1px solid rgba(217,140,74,0.18)` }}>
                   <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: C.wood }}>Tarifas · Temporada 2027</span>
-                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: "rgba(238,243,246,0.55)" }}>Promoção válida até 30 de setembro de 2027</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: "rgba(238,243,246,0.55)" }}>Promoção válida até 30 de setembro de 2026</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   <div className="p-6" style={{ borderRight: `1px solid rgba(217,140,74,0.14)`, borderBottom: `1px solid rgba(217,140,74,0.14)` }}>

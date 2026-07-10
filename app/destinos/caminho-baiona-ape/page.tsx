@@ -455,7 +455,7 @@ export default function CaminhoBaionaApePage() {
                 <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4"
                   style={{ borderBottom: `1px solid rgba(242,169,0,0.2)` }}>
                   <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: S.sun }}>Promoção Vigente</span>
-                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: S.onDarkSoft }}>Válida até 30 de Setembro de 2027</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: S.onDarkSoft }}>Válida até 30 de Setembro de 2026</span>
                 </div>
                 <div className="px-6 py-5">
                   <h3 className="font-display text-[1.6rem] font-light" style={{ color: S.white }}>

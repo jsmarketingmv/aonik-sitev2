@@ -30,7 +30,7 @@ Camping (base 2 pax): U$ 3.200 | Suplemento single: U$ 2.560 | Jantares festivos
 Refúgio (ocupação simples): U$ 3.315 | Sem suplemento single | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
 
-EARLY BOOKING (válido até 31/07/2027):
+EARLY BOOKING (válido até 31/07/2026):
 - À vista: 10% OFF — PIX/transferência, quitação imediata
 - Parcelado: 5% OFF — 30% entrada + até 7x sem juros no cartão
 - 10x sem juros — sem desconto adicional
@@ -79,7 +79,7 @@ Camping (base 2 pax): U$ 1.657 | Suplemento single: U$ 1.160 | Jantares festivos
 Refúgio (simples): U$ 2.000 | Sem suplemento single | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
 
-EARLY BOOKING (válido até 31/07/2027):
+EARLY BOOKING (válido até 31/07/2026):
 - À vista: 10% OFF — PIX/transferência, quitação imediata
 - Parcelado: 5% OFF — 30% entrada + até 7x sem juros no cartão
 - 10x sem juros — sem desconto adicional
@@ -130,7 +130,7 @@ Camping + Hotel (base 2 pax): U$ 2.126 | Suplemento single: U$ 1.490 | Jantares 
 Refúgio + Hotel (base 2 pax): U$ 2.594 | Suplemento single: U$ 1.800 | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
 
-EARLY BOOKING (válido até 31/07/2027):
+EARLY BOOKING (válido até 31/07/2026):
 - À vista: 10% OFF — PIX/transferência, quitação imediata
 - Parcelado: 5% OFF — 30% entrada + até 7x sem juros no cartão
 - 10x sem juros — sem desconto adicional
@@ -181,7 +181,7 @@ Refúgio (simples): U$ 2.366 | Jantares festivos: U$ 71
 Hotel + Refúgio (base 2 pax): U$ 3.006 | Suplemento single: U$ 3.000 | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
 
-EARLY BOOKING (válido até 31/07/2027):
+EARLY BOOKING (válido até 31/07/2026):
 - À vista: 10% OFF — PIX/transferência, quitação imediata
 - Parcelado: 5% OFF — 30% entrada + até 7x sem juros no cartão
 - 10x sem juros — sem desconto adicional
@@ -722,7 +722,7 @@ PROGRAMAS AONIK NO W:
 - W JOURNEY (GUIADO, 5 dias, 69,5 km): o unico programa com host bilingue do inicio ao fim, traslados privativos e jantar de despedida. A partir de US$ 3.200 (camping) ou US$ 3.315 (refugio).
 - HOTEL LAS TORRES: a base de hospedagem premium dentro do parque, sem necessidade de trekking. Tarifas sob consulta.
 
-EARLY BOOKING (valido ate 31/07/2027): 10% OFF a vista (PIX) ou 5% OFF parcelado (30% entrada + 7x cartao).
+EARLY BOOKING (valido ate 31/07/2026): 10% OFF a vista (PIX) ou 5% OFF parcelado (30% entrada + 7x cartao).
 
 FUNIL DE VENDAS:
 - Se perguntar qual programa escolher: perguntar o nivel de experiencia e disponibilidade de dias, depois indicar o mais adequado e: "Para fazer a escolha certa e garantir sua vaga, nosso time pode te ajudar agora! [Falar no WhatsApp do time AONIK →]"

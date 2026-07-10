@@ -930,7 +930,7 @@ export default function DouroPage() {
               <div className="overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(196,165,106,0.28)`, backgroundColor: "rgba(196,165,106,0.04)" }}>
                 <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4" style={{ borderBottom: `1px solid rgba(196,165,106,0.18)` }}>
                   <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: D.ouro }}>Tarifas · Temporada 2027</span>
-                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: D.textSoft }}>Promoção válida até 30 de setembro de 2027</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: D.textSoft }}>Promoção válida até 30 de setembro de 2026</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2">
                   <div className="p-6" style={{ borderRight: `1px solid rgba(196,165,106,0.14)`, borderBottom: `1px solid rgba(196,165,106,0.14)` }}>
