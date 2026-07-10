@@ -496,7 +496,7 @@ function Calendario() {
 
                   {/* CTA */}
                   <a
-                    href="#contato"
+                    href={g.href}
                     className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-forest px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-300 hover:bg-forest-soft"
                   >
                     Reservar vaga →
