@@ -46,7 +46,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada em Santiago de Compostela", km: "",      desc: "Recepção no hotel, credencial e briefing. Uma última noite em Santiago antes de seguir para o oeste e o oceano." },
+  { dia: "DIA 1", titulo: "Chegada em Santiago de Compostela", km: "",      desc: "Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Uma última noite em Santiago antes de seguir para o oeste e o oceano." },
   { dia: "DIA 2", titulo: "Santiago → Ponte Maceira",          km: "17 km", desc: "Saída da Catedral de Santiago em direção ao Atlântico. Bosques de carvalhos e eucaliptos. Chegada a Ponte Maceira, com sua ponte medieval sobre o Rio Tambre, uma das mais belas do Caminho." },
   { dia: "DIA 3", titulo: "Ponte Maceira → Santa Mariña",      km: "24 km", desc: "A etapa mais longa. Paisagem galega rural em seu estado mais puro: aldeias de granito, moinhos de vento, fontes d'água. Chegada a Santa Mariña de Brandomil." },
   { dia: "DIA 4", titulo: "Santa Mariña → Olveiroa",           km: "13 km", desc: "Etapa tranquila pelo interior galego. Olveiroa é o ponto de decisão: daqui o Caminho se divide entre Finisterre e Muxía. Você segue para o Fim do Mundo." },

@@ -45,7 +45,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1",  titulo: "Chegada ao Porto",                    km: "",      desc: "Recepção no hotel, entrega da credencial e briefing com a equipe AONIK." },
+  { dia: "DIA 1",  titulo: "Chegada ao Porto",                    km: "",      desc: "Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção." },
   { dia: "DIA 2",  titulo: "Labruje → Vila do Conde",            km: "16 km", desc: "Transfer do Porto até Labruje. Primeiro dia de caminhada pela costa, chegando a Vila do Conde e sua praia atlântica." },
   { dia: "DIA 3",  titulo: "Vila do Conde → Apúlia",             km: "17 km", desc: "Costa atlântica com praias desertas e dunas. Apúlia, aldeia piscatória onde o mar tem cheiro de história." },
   { dia: "DIA 4",  titulo: "Apúlia → Esposende",                 km: "8 km",  desc: "A etapa mais curta do Easy. Só 8 km para aproveitar Esposende com calma, o estuário do Cávado e as praias deste litoral." },

@@ -47,7 +47,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada em Sárria",             km: "",      desc: "Chegada na histórica cidade de Sárria, ponto de partida dos últimos 112 km do Caminho Francês. Check-in, credencial do peregrino e briefing sobre a rota. Uma noite para descansar antes de começar." },
+  { dia: "DIA 1", titulo: "Chegada em Sárria",             km: "",      desc: "Chegada na histórica cidade de Sárria, ponto de partida dos últimos 112 km do Caminho Francês. Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Uma noite para descansar antes de começar." },
   { dia: "DIA 2", titulo: "Sárria → Portomarín",           km: "22 km", desc: "A primeira etapa. Saída de Sárria pelas pedras milenares, cruzando pontes romanas e bosques de carvalhos. Chegada em Portomarín, cidade que foi submersa por um reservatório e reconstruída pedra por pedra nos anos 1960." },
   { dia: "DIA 3", titulo: "Portomarín → Palas de Rei",     km: "25 km", desc: "A etapa mais longa. Subidas suaves, campos de milho e as primeiras aldeias rurais da Galiza interior. Palas de Rei era parada obrigatória dos reis medievais que faziam o Caminho." },
   { dia: "DIA 4", titulo: "Palas de Rei → Arzúa",          km: "28 km", desc: "A etapa mais rica em aldeias históricas. Atravessa Melide, famosa pelo polvo à galega (pulpo) que os peregrinos param para comer. Chegada em Arzúa, no coração da Galiza queijeira." },

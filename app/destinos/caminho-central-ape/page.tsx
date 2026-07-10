@@ -45,7 +45,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada ao Porto",             km: "",      desc: "Recepção no hotel, entrega da credencial do peregrino e briefing completo com a equipe AONIK." },
+  { dia: "DIA 1", titulo: "Chegada ao Porto",             km: "",      desc: "Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção." },
   { dia: "DIA 2", titulo: "Mosteiró → Arcos",             km: "17 km", desc: "Transfer privado do Porto até Mosteiró. Primeiro dia de caminhada pelo interior rural do norte português, em hotel rural típico." },
   { dia: "DIA 3", titulo: "Arcos → Barcelos",             km: "20 km", desc: "Passagem pela Igreja de Rates e a lenda do galo de Barcelos. Vila medieval com mercado centenário às quintas-feiras." },
   { dia: "DIA 4", titulo: "Barcelos → Balugães",          km: "15 km", desc: "Torre Porta Nova, Igreja do Senhor Bom Jesus e a Ponte das Tábuas. Etapa tranquila por paisagem de vinhas e granito." },

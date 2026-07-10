@@ -45,7 +45,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada em Sárria",                 km: "",      desc: "Chegada em Sárria, a cidade que marca o início dos últimos 112 km. Recepção, credencial do peregrino e orientação sobre a rota. Uma boa noite de sono antes do primeiro passo." },
+  { dia: "DIA 1", titulo: "Chegada em Sárria",                 km: "",      desc: "Chegada em Sárria, a cidade que marca o início dos últimos 112 km. Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Uma boa noite de sono antes do primeiro passo." },
   { dia: "DIA 2", titulo: "Sárria → Portomarín",               km: "22 km", desc: "A estreia. Saída pelas ruas medievais de Sárria e descida para o Rio Miño. Travessia da ponte de Portomarín, a cidade que foi relocada pedra por pedra quando o reservatório foi construído nos anos 1960." },
   { dia: "DIA 3", titulo: "Portomarín → Palas de Rei",          km: "25 km", desc: "A etapa mais longa desta versão. Subidas suaves pelo interior galego, campos de milho e aldeias que parecem saídas de um conto medieval. Palas de Rei era parada obrigatória da realeza que fazia o Caminho." },
   { dia: "DIA 4", titulo: "Palas de Rei → Melide",              km: "16 km", desc: "Etapa curta e recuperadora, exclusiva desta versão de 8 etapas. Chegada cedo em Melide, capital galega do polvo. Tarde livre para explorar o mercado, provar o pulpo e descansar bem." },

@@ -45,7 +45,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1",  titulo: "Chegada ao Porto",               km: "",       desc: "Recepção no hotel, entrega da credencial e briefing completo com a equipe AONIK." },
+  { dia: "DIA 1",  titulo: "Chegada ao Porto",               km: "",       desc: "Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção." },
   { dia: "DIA 2",  titulo: "Porto (Matosinhos) → Vila do Conde", km: "20 km", desc: "Início na orla atlântica de Matosinhos. Transfer até a praia e caminhada pela costa com o mar ao lado o tempo todo." },
   { dia: "DIA 3",  titulo: "Vila do Conde → Esposende",      km: "25 km",  desc: "Passagem por Póvoa de Varzim e cruzamento do Rio Cávado. Dunas, praias e o primeiro sabor de liberdade costeira." },
   { dia: "DIA 4",  titulo: "Esposende → Viana do Castelo",   km: "23,5 km",desc: "Chegada a Viana do Castelo pela icônica Ponte de Gustave Eiffel sobre o Rio Lima. Cidade de arquitetura monumental e vistas para o estuário." },

@@ -46,7 +46,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada a Valença",          km: "",      desc: "Recepção no hotel, entrega da credencial do peregrino e briefing completo com a equipe AONIK. Tempo livre para conhecer a cidadela histórica." },
+  { dia: "DIA 1", titulo: "Chegada a Valença",          km: "",      desc: "Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Tempo livre para conhecer a cidadela histórica." },
   { dia: "DIA 2", titulo: "Valença → O Porriño",        km: "20 km", desc: "Travessia do Rio Minho pela Ponte Internacional. Chegada a Tui, com sua catedral medieval imponente. Descida pelo vale do Louro até O Porriño." },
   { dia: "DIA 3", titulo: "O Porriño → Arcade",         km: "22 km", desc: "Redondela e seus viadutos sobre a Ria de Vigo. Outeiro de Penas e chegada a Arcade, famosa pelas melhores ostras da Galiza." },
   { dia: "DIA 4", titulo: "Arcade → Pontevedra",        km: "13 km", desc: "Ponte medieval de Pontesampaio sobre o Rio Verdugo. Calçada histórica de Cacheiro. Chegada ao centro histórico de Pontevedra, cidade medieval sem carros." },

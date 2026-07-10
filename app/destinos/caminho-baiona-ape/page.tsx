@@ -46,7 +46,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada em Baiona",              km: "",       desc: "Recepção no hotel, entrega da credencial do peregrino e briefing completo. Tempo livre para explorar o Castelo de Monterreal e a orla histórica de Baiona." },
+  { dia: "DIA 1", titulo: "Chegada em Baiona",              km: "",       desc: "Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Tempo livre para explorar o Castelo de Monterreal e a orla histórica de Baiona." },
   { dia: "DIA 2", titulo: "Baiona → Vigo",                  km: "25,5 km",desc: "Início do Caminho pela costa galega. Vista das Ilhas Cíes e chegada a Vigo, a maior cidade da Galiza, às margens da Ria de Vigo." },
   { dia: "DIA 3", titulo: "Vigo → Arcade",                  km: "22 km",  desc: "Travessia pela Ponte de Rande sobre a Ria de Vigo. Redondela e seus viadutos. Chegada a Arcade, famosa pelas melhores ostras da Galiza." },
   { dia: "DIA 4", titulo: "Arcade → Pontevedra",            km: "13 km",  desc: "Ponte medieval de Pontesampaio sobre o Rio Verdugo. Chegada ao centro histórico de Pontevedra, cidade medieval sem carros e patrimônio indiscutível do Caminho." },

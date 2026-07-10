@@ -46,7 +46,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada em O Cebreiro",            km: "",      desc: "Chegada em O Cebreiro, a 1.300 metros de altitude no alto da Serra dos Ancares. Credencial do peregrino, briefing e uma noite num dos pontos mais bonitos e históricos de toda a rota." },
+  { dia: "DIA 1", titulo: "Chegada em O Cebreiro",            km: "",      desc: "Chegada em O Cebreiro, a 1.300 metros de altitude no alto da Serra dos Ancares. Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Uma noite num dos pontos mais bonitos e históricos de toda a rota." },
   { dia: "DIA 2", titulo: "O Cebreiro → Triacastela",         km: "21 km", desc: "A etapa mais épica do percurso. Saída do alto da montanha e descida dramática pela serra galega até Triacastela. Vistas panorâmicas da Galiza, do Bierzo e, em dias claros, do Atlântico ao longe. Uma das experiências mais marcantes de todo o Caminho." },
   { dia: "DIA 3", titulo: "Triacastela → Sárria",             km: "18 km", desc: "Etapa suave pelo vale do Rio Oribio. Aldeias de xisto e granito, hórreos perfeitos, vacas no caminho. Chegada em Sárria, onde começa o 'trecho mínimo' e o movimento de peregrinos aumenta visualmente." },
   { dia: "DIA 4", titulo: "Sárria → Portomarín",              km: "22 km", desc: "A rota desce para o Rio Miño e cruza a famosa ponte de Portomarín. A cidade foi literalmente desmontada e reconstruída num local mais alto quando o vale foi inundado pelo reservatório nos anos 1960." },

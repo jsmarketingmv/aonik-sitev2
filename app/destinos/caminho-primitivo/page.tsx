@@ -46,7 +46,7 @@ const GALERIA = [
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada em Sárria",            km: "",      desc: "Chegada em Sárria, ponto de partida do Primitivo. Credencial do peregrino, check-in e briefing. Cidade histórica com centro medieval bem preservado." },
+  { dia: "DIA 1", titulo: "Chegada em Sárria",            km: "",      desc: "Chegada em Sárria, ponto de partida do Primitivo. Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Cidade histórica com centro medieval bem preservado." },
   { dia: "DIA 2", titulo: "Sárria → Lugo",                km: "23 km", desc: "A etapa de abertura do Primitivo vai por caminhos completamente diferentes dos do Francês tradicional. Chegada em Lugo, a única cidade do mundo cujas muralhas romanas do século III estão intactas e são Patrimônio da Humanidade. Não deixe de caminhar sobre elas." },
   { dia: "DIA 3", titulo: "Lugo → O Burgo",               km: "25 km", desc: "Saída de Lugo pela muralha romana e entrada no interior galego mais profundo. O Burgo é um pequeno povo de granito com muito poucos peregrinos, muito silêncio e muito Caminho." },
   { dia: "DIA 4", titulo: "O Burgo → Melide",             km: "14 km", desc: "Etapa curta pelo interior galego. Chegada em Melide com tarde inteira livre. Capital do polvo à galega, onde a variante Primitiva encontra o Caminho Francês principal. A partir daqui, a rota se une às demais." },
