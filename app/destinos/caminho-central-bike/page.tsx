@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Nav from "../../components/Nav";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -51,7 +52,14 @@ const NAO_INCLUSOS = [
   "Gorjetas",
 ];
 
+const PRECOS = [
+  { duplo: "€ 1.262", alta: "€ 1.326" },
+  { duplo: "€ 1.514", alta: "€ 1.591" },
+];
+
 export default function CaminhoCentralBikePage() {
+  const [ano, setAno] = useState(0);
+  const p = PRECOS[ano];
   return (
     <main className="relative" style={{ backgroundColor: C.creme }}>
       <Nav />
@@ -282,7 +290,7 @@ export default function CaminhoCentralBikePage() {
           <Reveal>
             <Kicker color="" line="">
               <span style={{ color: C.pedal }}>—</span>
-              <span style={{ color: C.granito }}>Valores 2026</span>
+              <span style={{ color: C.granito }}>Valores {ano === 0 ? "2026" : "2027"}</span>
             </Kicker>
           </Reveal>
           <Reveal delay={0.06}>
@@ -292,6 +300,17 @@ export default function CaminhoCentralBikePage() {
             >
               Tarifas
             </h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="mt-6 inline-flex rounded-full p-1" style={{ backgroundColor: `${C.pedal}12`, border: `1px solid ${C.pedal}33` }}>
+              {["2026", "2027"].map((a, i) => (
+                <button key={a} onClick={() => setAno(i)}
+                  className="rounded-full px-6 py-2 text-[12px] font-semibold uppercase tracking-[0.12em] transition-all duration-200"
+                  style={{ backgroundColor: ano === i ? C.pedal : "transparent", color: ano === i ? C.creme : `${C.granito}` }}>
+                  {a}
+                </button>
+              ))}
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
             <div
@@ -305,13 +324,13 @@ export default function CaminhoCentralBikePage() {
                     className="font-display font-light"
                     style={{ fontSize: "clamp(2.2rem,5vw,3.5rem)", color: C.creme }}
                   >
-                    € 1.262
+                    {p.duplo}
                   </p>
                 </div>
                 <div>
                   <p className="mb-1 text-sm" style={{ color: C.granito }}>Alta Temporada</p>
                   <p className="font-display text-2xl font-light" style={{ color: C.creme }}>
-                    € 1.326
+                    {p.alta}
                   </p>
                 </div>
               </div>
@@ -335,6 +354,43 @@ export default function CaminhoCentralBikePage() {
               Precos por pessoa em quarto duplo. Bicicleta hibrida, bagagem transferida e credencial do peregrino inclusos.
             </p>
           </Reveal>
+          {ano === 1 && (
+            <Reveal delay={0.18}>
+              <div className="mt-8 overflow-hidden rounded-xl border" style={{ borderColor: `${C.pedal}33`, backgroundColor: `${C.pedal}09` }}>
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b px-6 py-4" style={{ borderColor: `${C.pedal}22` }}>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: C.pedal }}>Promocao Vigente</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.12em]" style={{ color: C.granito }}>Valida ate 30 de Setembro de 2027</span>
+                </div>
+                <div className="px-6 py-5">
+                  <h3 className="font-display text-[1.5rem] font-light" style={{ color: C.creme }}>
+                    Early Booking{" "}
+                    <span className="text-[0.95rem] font-normal" style={{ color: C.granito }}>(reserva antecipada)</span>
+                  </h3>
+                  <p className="mt-1 text-[13px] font-light" style={{ color: C.granito }}>
+                    Descontos por forma de pagamento. Escolha a que melhor combina com voce.
+                  </p>
+                  <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    {[
+                      { titulo: "A vista", badge: "10% OFF", desc: "Pagamento integral a vista, com 10% de desconto.", info: ["PIX ou transferencia", "Quitacao imediata."] },
+                      { titulo: "Parcelado", badge: "5% OFF", desc: "Entrada de 30% + saldo em ate 7x sem juros, com 5% de desconto.", info: ["Entrada em PIX/transferencia, parcelas no cartao.", "No cartao nao ha prazo de quitacao antes da viagem."] },
+                      { titulo: "Em 10x", badge: "Sem Juros", desc: "Saldo em ate 10x sem juros, sem desconto adicional.", info: ["Entrada em PIX/transferencia, parcelas no cartao.", "No cartao nao ha prazo de quitacao antes da viagem."] },
+                    ].map(({ titulo, badge, desc, info }) => (
+                      <div key={titulo} className="rounded-lg border p-4" style={{ backgroundColor: `${C.creme}08`, borderColor: `${C.pedal}22` }}>
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="text-[15px] font-semibold" style={{ color: C.creme }}>{titulo}</span>
+                          <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase" style={{ backgroundColor: `${C.pedal}22`, color: C.pedal }}>{badge}</span>
+                        </div>
+                        <p className="mt-2 text-[12px] font-light leading-relaxed" style={{ color: `${C.creme}cc` }}>{desc}</p>
+                        <ul className="mt-3 space-y-0.5">
+                          {info.map((item) => <li key={item} className="text-[11px] font-light italic" style={{ color: `${C.granito}` }}>{item}</li>)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          )}
           <Reveal delay={0.2}>
             <a
               href="#contato"
