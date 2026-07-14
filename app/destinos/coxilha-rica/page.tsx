@@ -441,8 +441,8 @@ const ROTEIRO = [
   {
     d: "05",
     t: "Café e despedida",
-    s: "Café incluído. Cavalgada opcional (1 h, valor à parte). Saída entre 9 e 10 h.",
-    icon: "🐎",
+    s: "Café incluído. Saída entre 9 e 10 h.",
+    icon: "☕",
   },
 ];
 
@@ -463,7 +463,6 @@ const NAO_INCLUSO = [
   "Equipamentos pessoais de trekking",
   "Almoço no dia 5",
   "Atividades fora do itinerário",
-  "Cavalgada (opcional, contratada à parte)",
   "Transfer aeroporto (Florianópolis/Navegantes): R$ 400 p.p.",
   "Day-use almoço dia 1: R$ 120 p.p.",
 ];

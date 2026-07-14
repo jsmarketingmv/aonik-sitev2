@@ -38,7 +38,7 @@ const D = {
 const wx = (id: string, w: number, h: number) =>
   `https://static.wixstatic.com/media/${id}~mv2.jpg/v1/fill/w_${w},h_${h},al_c,q_82,enc_avif,quality_auto/img.jpg`;
 
-// IDs reais das fotos da travessia (TARGET · Experience Jordan DMC)
+// IDs reais das fotos da travessia (AONIK · Experience Jordan DMC)
 const IMG = {
   hero:    "fe55bd_0280e88d2a6b41be8562852f23bb4ecb",
   petra:   "fe55bd_c77ec2412b624b559c583b1af35d0aa7",
@@ -410,7 +410,7 @@ const INCLUSO = [
   "Acampamentos totalmente estruturados no deserto",
   "Todas as refeições da travessia (café, box lunch e jantar)",
   "Guia local especializado da região",
-  "Liderança e acompanhamento de Juliano P. Sant'Ana (TARGET)",
+  "Liderança e acompanhamento de Juliano P. Sant'Ana (AONIK)",
   "Transfer de bagagem entre os acampamentos",
   "Acesso à Reserva da Biosfera de Dana e áreas protegidas",
   "Mochila de ataque e suporte de segurança em campo",
@@ -706,7 +706,7 @@ export default function DanaPetraPage() {
                 <h2 className="font-display font-light leading-[1.05] tracking-[-0.01em]" style={{ fontSize: "clamp(2rem,3.8vw,3rem)", color: D.creme }}>
                   Juliano P. Sant'Ana
                 </h2>
-                <p className="mt-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: D.areia }}>Sócio-fundador da TARGET Trekking</p>
+                <p className="mt-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: D.areia }}>Sócio-fundador da AONIK</p>
                 <p className="mt-6 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: "rgba(242,233,218,0.74)" }}>
                   Apaixonado pelos esportes de natureza, do salto de paraquedas ao
                   mergulho. Montanhista por paixão, peregrino e amante de trilhas e
@@ -783,7 +783,7 @@ export default function DanaPetraPage() {
                   Liderança brasileira
                 </p>
                 <p className="mt-1 text-[12px] font-light" style={{ color: D.textSoft }}>
-                  Juliano (TARGET) + guia local Experience Jordan
+                  Juliano (AONIK) + guia local Experience Jordan
                 </p>
               </div>
             </div>

@@ -949,7 +949,6 @@ A Serra Catarinense, no Planalto Serrano de Santa Catarina, e o lugar onde o Sul
 PRODUTO: Coxilha Rica · Trekking na Serra Catarinense · 5 dias / 4 noites
 NIVEL: Moderado
 REGIAO: Serra Catarinense, Santa Catarina, Brasil
-ATIVIDADE OPCIONAL: Cavalgada nos campos de altitude
 
 TARIFAS: A partir de R$ 5.800 por pessoa.
 

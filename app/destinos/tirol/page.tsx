@@ -359,7 +359,7 @@ const INCLUSO = [
   "Jantar nos 7 pernoites dos refúgios de montanha",
   "Box lanche para consumo nas caminhadas",
   "Passagens de trem entre Munique e Neustift im Stubaital",
-  "Kit boas-vindas TARGET by AONIK",
+  "Kit boas-vindas AONIK",
   "Suporte pré-viagem para preparação e compra de equipamentos",
   "Guia brasileiro com treinamento em primeiros socorros em áreas remotas e proficiente na língua local",
   "Rastreador via satélite individual para cada participante",

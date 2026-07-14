@@ -301,7 +301,7 @@ const ICONS: Record<string, React.JSX.Element> = {
 
 // ---------- INCLUÍDO ----------
 const INCLUIDO = [
-  { icon: "guide",    cat: "Guia especialista",     text: "Condutor TARGET certificado em expedições de alta montanha e primeiros socorros em áreas remotas. Ivo Léo Schmitz lidera cada etapa." },
+  { icon: "guide",    cat: "Guia especialista",     text: "Condutor AONIK certificado em expedições de alta montanha e primeiros socorros em áreas remotas. Ivo Léo Schmitz lidera cada etapa." },
   { icon: "hotel",    cat: "Hospedagem completa",    text: "Hotéis 2–3★ (quartos duplos), pousadas e refúgios alpinos durante toda a travessia." },
   { icon: "transfer", cat: "Transfer no dia 1",      text: "Transfer Genebra–Chamonix (ônibus regular). Você chega ao aeroporto e a gente resolve o restante." },
   { icon: "gps",      cat: "Segurança SPOT GPS",     text: "Monitoramento em tempo real com dispositivo SPOT GPS e acionamento de resgate se necessário." },
@@ -754,7 +754,7 @@ export default function TMBV2Page() {
                   </div>
                   <p className="mt-4 text-[11px] leading-relaxed"
                     style={{ color: "rgba(15,28,38,0.4)" }}>
-                    Cancelamentos por condições climáticas extremas ou força maior oferecem crédito total para outra data ou destino TARGET.
+                    Cancelamentos por condições climáticas extremas ou força maior oferecem crédito total para outra data ou destino AONIK.
                   </p>
                 </div>
 
@@ -762,7 +762,7 @@ export default function TMBV2Page() {
                 <div className="rounded-2xl border px-5 py-4 text-[12px] font-light leading-relaxed"
                   style={{ borderColor: C.wood, color: "rgba(15,28,38,0.6)" }}>
                   <span className="font-semibold" style={{ color: C.wood }}>Seguro viagem:</span>{" "}
-                  obrigatório para esportes de aventura. A TARGET orienta as melhores opções do mercado para este roteiro.
+                  obrigatório para esportes de aventura. A AONIK orienta as melhores opções do mercado para este roteiro.
                 </div>
               </div>
             </Reveal>
@@ -834,7 +834,7 @@ export default function TMBV2Page() {
                   <div className="p-6" style={{ borderRight: `1px solid rgba(217,140,74,0.14)`, borderBottom: `1px solid rgba(217,140,74,0.14)` }}>
                     <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: "rgba(238,243,246,0.55)" }}>Tarifa Temporada 2027</p>
                     <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: C.snow }}>€ 5.900</p>
-                    <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · habitação dupla</p>
+                    <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · dupla (cidades) e compartilhada (montanhas)</p>
                     <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: "rgba(238,243,246,0.55)" }}>30% de entrada + saldo em parcelas no cartão.</p>
                     <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(238,243,246,0.35)" }}>Valor em Euro, base Euro Turismo no fechamento.</p>
                   </div>
@@ -844,7 +844,7 @@ export default function TMBV2Page() {
                       <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase" style={{ backgroundColor: "rgba(217,140,74,0.18)", color: C.wood }}>reserva antecipada</span>
                     </div>
                     <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: C.snow }}>€ 5.450</p>
-                    <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · habitação dupla</p>
+                    <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · dupla (cidades) e compartilhada (montanhas)</p>
                     <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: "rgba(238,243,246,0.55)" }}>20% de entrada + saldo em 7 parcelas sem juros.</p>
                     <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(238,243,246,0.35)" }}>Entrada em Pix/transferência, parcelas no cartão.</p>
                   </div>

@@ -836,7 +836,7 @@ export default function DouroPage() {
                 <h2 className="font-display font-light leading-[1.05] tracking-[-0.01em]" style={{ fontSize: "clamp(2rem,3.8vw,3rem)", color: D.creme }}>
                   Juliano P. Sant'ana
                 </h2>
-                <p className="mt-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: D.ouro }}>Sócio-fundador da TARGET Trekking</p>
+                <p className="mt-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: D.ouro }}>Sócio-fundador da AONIK</p>
                 <p className="mt-6 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: "rgba(243,236,224,0.74)" }}>
                   Apaixonado pelos esportes de natureza, do salto de paraquedas ao mergulho.
                   Montanhista por paixão, peregrino e amante de trilhas e viagens de caminhada
@@ -919,7 +919,7 @@ export default function DouroPage() {
                   Liderança brasileira
                 </p>
                 <p className="mt-1 text-[12px] font-light" style={{ color: D.textSoft }}>
-                  Juliano (TARGET) + guias especializados no Douro
+                  Juliano (AONIK) + guias especializados no Douro
                 </p>
               </div>
             </div>

@@ -374,7 +374,7 @@ const INCLUSO = [
   "Ingressos e tickets de transporte para a visita ao Ninho da Águia",
   "Ticket de catamarã no Lago Königssee",
   "Ticket do funicular e ingresso para a Fortaleza Hohensalzburg",
-  "Kit boas-vindas TARGET by AONIK",
+  "Kit boas-vindas AONIK",
   "Suporte pré-viagem para preparação e compra de equipamentos",
   "Guia brasileiro com treinamento em primeiros socorros em áreas remotas",
   "Rastreador via satélite individual para cada participante",
