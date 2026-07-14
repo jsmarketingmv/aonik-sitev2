@@ -473,7 +473,7 @@ export default function JornadaPage() {
               Caminho Português
             </h2>
             <p className="mb-10 max-w-[520px] text-[14px] font-light leading-relaxed" style={{ color: S.onDarkSoft }}>
-              A rota mais procurada pelos brasileiros. Do Porto ou Lisboa, percorre o
+              A rota mais procurada pelos brasileiros. Do Porto, percorre o
               interior e a costa até cruzar para a Galiza.
             </p>
           </Reveal>
