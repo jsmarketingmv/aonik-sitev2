@@ -17,6 +17,54 @@ export type SaidaSite = {
   vagas_restantes: number | null;
 };
 
+export type SaidaSiteToda = {
+  slug: string;
+  data_inicio: string | null;
+  data_fim: string | null;
+  status: "formando" | "confirmado" | "lotado" | "em_viagem" | "concluido" | "cancelado";
+  selo: SaidaSite["selo"];
+};
+
+const MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+
+export function parseDataISO(d: string | null): { dia: number; mes: number; ano: number } | null {
+  if (!d) return null;
+  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d);
+  if (!m) return null;
+  return { ano: Number(m[1]), mes: Number(m[2]) - 1, dia: Number(m[3]) };
+}
+
+/** "18 a 31/Ago" (mesmo mês) ou "28/Ago a 04/Set" (meses diferentes). */
+export function faixaDatas(inicio: string | null, fim: string | null): string {
+  const i = parseDataISO(inicio);
+  const f = parseDataISO(fim);
+  if (!i) return "";
+  const dd = (n: number) => String(n).padStart(2, "0");
+  if (!f) return `${dd(i.dia)}/${MESES[i.mes]}`;
+  if (i.mes === f.mes) return `${dd(i.dia)} a ${dd(f.dia)}/${MESES[i.mes]}`;
+  return `${dd(i.dia)}/${MESES[i.mes]} a ${dd(f.dia)}/${MESES[f.mes]}`;
+}
+
+// Retorna [] em qualquer falha: o site cai no conteúdo estático.
+export async function buscarTodasSaidasSite(): Promise<SaidaSiteToda[]> {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_saidas_site_todas`, {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: "{}",
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
+}
+
 // Retorna [] em qualquer falha: a página cai no fallback estático.
 export async function buscarSaidasSite(slug: string): Promise<SaidaSite[]> {
   try {

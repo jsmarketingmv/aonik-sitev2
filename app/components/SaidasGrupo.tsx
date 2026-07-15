@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import { buscarSaidasSite, type SaidaSite } from "../lib/saidas";
+import { buscarSaidasSite, faixaDatas, parseDataISO, type SaidaSite } from "../lib/saidas";
 
 /*
   Saídas ao vivo, alimentadas pela gestão de Grupos do SaaS AONIK.
@@ -9,25 +9,6 @@ import { buscarSaidasSite, type SaidaSite } from "../lib/saidas";
   `fallback` — o bloco estático que a página sempre teve. Cores vêm
   da paleta de cada destino para preservar a identidade da página.
 */
-
-const MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
-
-function parseData(d: string | null): { dia: number; mes: number; ano: number } | null {
-  if (!d) return null;
-  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d);
-  if (!m) return null;
-  return { ano: Number(m[1]), mes: Number(m[2]) - 1, dia: Number(m[3]) };
-}
-
-/** "18 a 31/Ago" (mesmo mês) ou "28/Ago a 04/Set" (meses diferentes). */
-function faixaDatas(inicio: string | null, fim: string | null): string {
-  const i = parseData(inicio);
-  const f = parseData(fim);
-  if (!i) return "";
-  if (!f) return `${i.dia}/${MESES[i.mes]}`;
-  if (i.mes === f.mes) return `${i.dia} a ${f.dia}/${MESES[i.mes]}`;
-  return `${i.dia}/${MESES[i.mes]} a ${f.dia}/${MESES[f.mes]}`;
-}
 
 const SELO_LABEL: Record<SaidaSite["selo"], string> = {
   saida_confirmada: "Saída confirmada",
@@ -65,7 +46,7 @@ export default function SaidasGrupo({ slug, cores, fallback }: {
   return (
     <div className="mt-12 grid gap-6 sm:grid-cols-2">
       {saidas.map((s, idx) => {
-        const ano = parseData(s.data_inicio)?.ano;
+        const ano = parseDataISO(s.data_inicio)?.ano;
         const encerrada = s.selo === "vagas_encerradas";
         const ultimas = s.selo === "ultimas_vagas";
         const confirmada = s.selo === "saida_confirmada";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { GRUPOS, datasDoAno } from "../lib/grupos";
+import { GRUPOS, datasDoAno, type Grupo } from "../lib/grupos";
 
 // ─── Mapeamento de meses PT ───────────────────────────────────────────────────
 
@@ -43,9 +43,9 @@ function parseDeparture(
   return { month, startDay: parseInt(m[1]), endDay: parseInt(m[2]) };
 }
 
-function buildDepartures(year: 2026 | 2027): Departure[] {
+function buildDepartures(year: 2026 | 2027, grupos: Grupo[]): Departure[] {
   const result: Departure[] = [];
-  for (const g of GRUPOS) {
+  for (const g of grupos) {
     for (const d of datasDoAno(g, year)) {
       const p = parseDeparture(d);
       if (p)
@@ -79,10 +79,12 @@ function buildGrid(month: number, year: number): (number | null)[] {
 interface CalendarWidgetProps {
   yearFilter: 2026 | 2027;
   onYearChange?: (y: 2026 | 2027) => void;
+  /** Catálogo com overlay ao vivo; sem a prop usa o estático. */
+  grupos?: Grupo[];
 }
 
-export default function CalendarWidget({ yearFilter, onYearChange }: CalendarWidgetProps) {
-  const departures = buildDepartures(yearFilter);
+export default function CalendarWidget({ yearFilter, onYearChange, grupos = GRUPOS }: CalendarWidgetProps) {
+  const departures = buildDepartures(yearFilter, grupos);
   const activeMonths = [
     ...new Set(departures.map((d) => d.month)),
   ].sort((a, b) => a - b);

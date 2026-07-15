@@ -4,7 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import WorldMapAONIK from "./WorldMapAONIK";
 import CalendarWidget from "./CalendarWidget";
-import { GRUPOS, datasDoAno } from "../lib/grupos";
+import { datasDoAno } from "../lib/grupos";
+import { useGruposAoVivo } from "../lib/gruposAoVivo";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -32,12 +33,13 @@ const G4 = "#2A6F2B"; // GREEN 4 — acento verde médio-escuro
 
 export default function GruposHome({ variant = "amber" }: { variant?: "amber" | "green" }) {
   const [yearFilter, setYearFilter] = useState<2026 | 2027>(2026);
+  const grupos = useGruposAoVivo();
 
-  const proximas = GRUPOS.filter(
+  const proximas = grupos.filter(
     (g) => (datasDoAno(g, yearFilter).length) > 0,
   );
 
-  const total2027 = GRUPOS.filter((g) => (g.dates2027?.length ?? 0) > 0).length;
+  const total2027 = grupos.filter((g) => (g.dates2027?.length ?? 0) > 0).length;
 
   const GOLD = "#E55812"; // Cayenne — acento amber padrão AONIK
   const accent       = variant === "green" ? G4      : GOLD;
@@ -119,7 +121,7 @@ export default function GruposHome({ variant = "amber" }: { variant?: "amber" | 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
           {/* ── Calendário mini ─── */}
           <Reveal delay={0.05}>
-            <CalendarWidget yearFilter={yearFilter} />
+            <CalendarWidget yearFilter={yearFilter} grupos={grupos} />
           </Reveal>
 
           {/* ── Lista de saídas ─── */}
