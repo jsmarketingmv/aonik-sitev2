@@ -8,6 +8,7 @@ import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
 import { Reveal, EASE } from "../../components/ui";
+import SaidasGrupo from "../../components/SaidasGrupo";
 import { GRUPOS } from "../../lib/grupos";
 
 const TMB_GRUPO = GRUPOS.find((g) => g.id === "tour-du-mont-blanc")!;
@@ -796,32 +797,39 @@ export default function TMBV2Page() {
             </Reveal>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
-            {([2026, 2027] as const).map((ano) => {
-              const datas = ano === 2026 ? TMB_GRUPO.dates2026 : TMB_GRUPO.dates2027;
-              return (
-                <Reveal key={ano} delay={0.05}>
-                  <div className="rounded-xl border border-white/10 bg-white/5 p-7">
-                    <p className="font-display text-3xl font-light" style={{ color: C.fr }}>{ano}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {(datas ?? []).map((d) => (
-                        <span key={d}
-                          className="rounded-full border border-white/15 px-4 py-1.5 text-[13px] font-medium"
-                          style={{ color: C.snow }}>
-                          {d}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="mt-4 flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: C.ch }} />
-                      <p className="text-[12px] font-semibold uppercase tracking-[0.12em]"
-                        style={{ color: C.ch }}>Saída confirmada</p>
-                    </div>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
+          {/* Saídas ao vivo (gestão de Grupos do SaaS); o bloco estático é o fallback */}
+          <SaidasGrupo
+            slug="tour-du-mont-blanc"
+            cores={{ ano: C.fr, confirmada: C.ch, alerta: C.wood, texto: C.snow }}
+            fallback={
+              <div className="mt-12 grid gap-6 sm:grid-cols-2">
+                {([2026, 2027] as const).map((ano) => {
+                  const datas = ano === 2026 ? TMB_GRUPO.dates2026 : TMB_GRUPO.dates2027;
+                  return (
+                    <Reveal key={ano} delay={0.05}>
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-7">
+                        <p className="font-display text-3xl font-light" style={{ color: C.fr }}>{ano}</p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {(datas ?? []).map((d) => (
+                            <span key={d}
+                              className="rounded-full border border-white/15 px-4 py-1.5 text-[13px] font-medium"
+                              style={{ color: C.snow }}>
+                              {d}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="mt-4 flex items-center gap-2">
+                          <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: C.ch }} />
+                          <p className="text-[12px] font-semibold uppercase tracking-[0.12em]"
+                            style={{ color: C.ch }}>Saída confirmada</p>
+                        </div>
+                      </div>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            }
+          />
 
           <Reveal delay={0.15}>
             <div className="mt-10 border-t pt-10" style={{ borderColor: "rgba(217,140,74,0.3)" }}>
