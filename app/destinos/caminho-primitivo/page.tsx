@@ -34,25 +34,25 @@ const S = {
 const wix = (id: string, w = 1920, h = 1080) =>
   `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},q_90,enc_avif,quality_auto/${id}`;
 
-const HERO = wix("2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg");
+const HERO = wix("2d4f5b_02f5c17731ec480093e017c051a12770~mv2.png");
 
 const GALERIA = [
-  { src: wix("2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg", 900, 600), tag: "Santiago", cap: "O destino final. A Catedral de Santiago aparece depois de 102 km pelo interior mais selvagem da Galiza." },
-  { src: wix("2d4f5b_920e9f2265b149e69fcc012023b5026d~mv2.jpg", 900, 600), tag: "O Primitivo", cap: "A rota mais antiga. A mais solitária. Sem multidão. Só você, as setas e os bosques da Galiza profunda." },
-  { src: wix("2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg", 900, 600), tag: "A Galiza Interior", cap: "A Galiza longe do turismo. Granito escuro, carvalhos centenários, fontes de pedra. O Primitivo passa por tudo isso." },
-  { src: wix("2d4f5b_b673e91a63554b5e9fb4a39b74af2728~mv2.jpg", 900, 600), tag: "O Caminho", cap: "Pedra e musgo. O Caminho no seu estado mais primitivo, mais silencioso, mais verdadeiro." },
-  { src: wix("2d4f5b_3405d40f96d84d289904dccd31fcba12~mv2.jpg", 900, 600), tag: "Lugo", cap: "Lugo, a única cidade da Europa cercada pela muralha romana completa. Uma das mais belas surpresas do Primitivo." },
-  { src: wix("2d4f5b_596f7144ab49417692221a0fa9dab404~mv2.jpg", 900, 600), tag: "A Chegada", cap: "Chegar em Santiago pelo Primitivo tem um peso diferente. Você foi por onde quase ninguém vai." },
+  { src: wix("2d4f5b_a08d86447f204214be6507bd52c275de~mv2.png", 900, 600), tag: "A Montanha", cap: "O interior selvagem da Galiza. Vales verdes e montanha aberta, a paisagem que define o Primitivo e o separa das rotas mais movimentadas." },
+  { src: wix("2d4f5b_d2cdb56240dd4e88abd9841e868aa6f6~mv2.jpg", 900, 600), tag: "O Interior", cap: "Bosques fechados, trilhas de terra e silêncio. Longe do turismo, o Primitivo atravessa a Galiza mais profunda e verdadeira." },
+  { src: wix("2d4f5b_f0a47001718440f795c7d2ef27a40964~mv2.jpg", 900, 600), tag: "A Solidão", cap: "Uma fração dos peregrinos das outras rotas. No Primitivo, boa parte do caminho é só você, as setas amarelas e a estrada." },
+  { src: wix("2d4f5b_c7ee23942d2042ffa32446a8da03fc94~mv2.png", 900, 600), tag: "O Vale", cap: "Cada mirante abre um vale novo. A Galiza interior se revela devagar, sem pressa e sem multidão." },
+  { src: wix("2d4f5b_b355e727711547209a925d7e53d1cae8~mv2.jpg", 900, 600), tag: "Os Campos", cap: "Depois de Melide, a variante se une ao Francês. Campos abertos, aldeias de granito e a energia dos últimos quilômetros." },
+  { src: wix("2d4f5b_6c3f9650f7aa4b80a57246f7ebaf37f2~mv2.jpg", 900, 600), tag: "Santiago", cap: "Chegar em Santiago pelo Primitivo tem um peso diferente. Você foi por onde quase ninguém vai." },
 ];
 
 const ETAPAS = [
-  { dia: "DIA 1", titulo: "Chegada em Sárria",            km: "",      desc: "Chegada em Sárria, ponto de partida do Primitivo. Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Cidade histórica com centro medieval bem preservado." },
-  { dia: "DIA 2", titulo: "Sárria → Lugo",                km: "23 km", desc: "A etapa de abertura do Primitivo vai por caminhos completamente diferentes dos do Francês tradicional. Chegada em Lugo, a única cidade do mundo cujas muralhas romanas do século III estão intactas e são Patrimônio da Humanidade. Não deixe de caminhar sobre elas." },
-  { dia: "DIA 3", titulo: "Lugo → O Burgo",               km: "25 km", desc: "Saída de Lugo pela muralha romana e entrada no interior galego mais profundo. O Burgo é um pequeno povo de granito com muito poucos peregrinos, muito silêncio e muito Caminho." },
-  { dia: "DIA 4", titulo: "O Burgo → Melide",             km: "14 km", desc: "Etapa curta pelo interior galego. Chegada em Melide com tarde inteira livre. Capital do polvo à galega, onde a variante Primitiva encontra o Caminho Francês principal. A partir daqui, a rota se une às demais." },
-  { dia: "DIA 5", titulo: "Melide → Arzúa",               km: "19 km", desc: "A Galiza queijeira. Arzúa é famosa pelo queijo de tetilla e tem uma atmosfera de vila galega autêntica. Os peregrinos do Francês chegam em grande número, mas quem veio pelo Primitivo sente a diferença." },
-  { dia: "DIA 6", titulo: "Arzúa → Pedrouzo",             km: "19 km", desc: "O penúltimo dia. Bosques de eucaliptos e silêncio. O Caminho vai ficando mais denso de peregrinos, mas a proximidade com Santiago deixa tudo elétrico. Pedrouzo, a última parada." },
-  { dia: "DIA 7", titulo: "Pedrouzo → Santiago · Partida", km: "19 km", desc: "A última etapa. 19 km até a Praça do Obradoiro. Quem fez o Primitivo chega com uma consciência diferente: foi por onde os outros não foram. A Catedral te espera. A Compostela também. A viagem de retorno começa no fim da tarde." },
+  { dia: "DIA 1", titulo: "Chegada em Lugo",              km: "",      desc: "Chegada em Lugo, ponto de partida do Primitivo. Check-in no hotel e retirada do kit de documentação e credencial do peregrino na recepção. Lugo é a única cidade do mundo cujas muralhas romanas do século III seguem completamente intactas, Patrimônio da Humanidade. Caminhe sobre elas ao entardecer." },
+  { dia: "DIA 2", titulo: "Lugo → O Burgo",               km: "23 km", desc: "A etapa de abertura sai de Lugo pela muralha romana e entra no interior galego mais profundo. Trilhas silenciosas, aldeias de granito e pouquíssimos peregrinos. O Burgo é um povoado pequeno, com muito silêncio e muito Caminho." },
+  { dia: "DIA 3", titulo: "O Burgo → Melide",             km: "25 km", desc: "A etapa mais longa, por bosques e campos do interior galego. Chegada em Melide, capital do polvo à galega, onde a variante Primitiva encontra o Caminho Francês principal. A partir daqui, a rota se une às demais para os últimos quilômetros." },
+  { dia: "DIA 4", titulo: "Melide → Arzúa",               km: "14 km", desc: "Etapa curta pela Galiza queijeira, com a tarde inteira livre. Arzúa é famosa pelo queijo de tetilla e tem a atmosfera de vila galega autêntica. Quem veio pelo Primitivo sente a diferença no ritmo e no silêncio." },
+  { dia: "DIA 5", titulo: "Arzúa → Pedrouzo",             km: "19 km", desc: "O penúltimo dia. Bosques de eucaliptos e o Caminho ficando mais denso à medida que Santiago se aproxima. Pedrouzo é a última parada antes da chegada, com a emoção já no ar." },
+  { dia: "DIA 6", titulo: "Pedrouzo → Santiago de Compostela", km: "19 km", desc: "A última etapa. 19 km até a Praça do Obradoiro. Quem fez o Primitivo chega com uma consciência diferente: foi por onde os outros não foram. A Catedral te espera. A Compostela também." },
+  { dia: "DIA 7", titulo: "Partida",                      km: "",      desc: "Café da manhã em Santiago. Missa do Peregrino às 12h na Catedral. Tempo livre para explorar o centro histórico e a fachada barroca do Obradoiro antes do deslocamento de volta." },
 ];
 
 const INCLUSOS = [
@@ -67,7 +67,7 @@ const INCLUSOS = [
 
 const NAO_INCLUSOS = [
   "Passagens aéreas internacionais",
-  "Transfer de chegada até Sárria e de saída de Santiago",
+  "Transfer de chegada até Lugo e de saída de Santiago",
   "Seguro viagem completo",
   "Almoços e jantares",
   "Bebidas e gorjetas",
@@ -86,15 +86,15 @@ const TIERS_2027 = [
 
 /* ── SVG: Rota Primitivo — via Lugo (diagonal) ──────────── */
 function RotaPrimitivo({ size = 300 }: { size?: number }) {
-  /* Rota parte de Sárria (direita), sobe até Lugo (centro-alto),
-     desce para O Burgo e depois segue west para Santiago */
+  /* Rota parte de Lugo (direita-alto) e desce pelo interior galego
+     via O Burgo e Melide até Santiago (esquerda) */
   const pts: [number, number, string][] = [
-    [240, 115, "Sárria"],
-    [175,  50, "Lugo"],
-    [130,  75, "O Burgo"],
-    [90,   88, "Melide"],
-    [55,   98, "Arzúa"],
-    [18,  108, "Santiago"],
+    [232,  52, "Lugo"],
+    [186,  76, "O Burgo"],
+    [142,  90, "Melide"],
+    [100, 100, "Arzúa"],
+    [58,  107, "Pedrouzo"],
+    [18,  113, "Santiago"],
   ];
   const d = pts.map(([x, y], i) => (i === 0 ? `M ${x} ${y}` : `L ${x} ${y}`)).join(" ");
 
@@ -107,14 +107,14 @@ function RotaPrimitivo({ size = 300 }: { size?: number }) {
           initial={{ opacity: 0 }} animate={{ opacity: 1 }}
           transition={{ delay: 0.2 + i * 0.1, duration: 0.6, ease: EASE }} />
       ))}
-      {/* Muralha de Lugo — símbolo da cidade */}
-      <motion.rect x="162" y="36" width="24" height="14" rx="1"
+      {/* Muralha de Lugo — símbolo da cidade, junto ao ponto de partida */}
+      <motion.rect x="210" y="34" width="24" height="13" rx="1"
         fill="rgba(242,169,0,0.1)" stroke={S.sun} strokeWidth="0.8"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 0.4, duration: 0.6, ease: EASE }} />
       {/* Ameias da muralha */}
-      {[164, 168, 172, 176, 180].map(x => (
-        <rect key={x} x={x} y="33" width="2.5" height="4" rx="0.5"
+      {[212, 216, 220, 224, 228].map(x => (
+        <rect key={x} x={x} y="31" width="2.5" height="4" rx="0.5"
           fill="rgba(242,169,0,0.3)" stroke={S.sun} strokeWidth="0.4" />
       ))}
       {/* Rota */}
@@ -124,7 +124,7 @@ function RotaPrimitivo({ size = 300 }: { size?: number }) {
         transition={{ duration: 2.4, ease: EASE, delay: 0.5 }} />
       {/* Waypoints */}
       {pts.map(([x, y, label], i) => {
-        const isLugo = label === "Lugo";
+        const isOBurgo = label === "O Burgo";
         const isStart = i === 0;
         const isEnd = i === pts.length - 1;
         return (
@@ -132,20 +132,20 @@ function RotaPrimitivo({ size = 300 }: { size?: number }) {
             initial={{ opacity: 0, scale: 0.4 }} animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, ease: EASE, delay: 0.8 + i * 0.2 }}>
             <circle cx={x} cy={y}
-              r={isStart || isEnd ? 6 : isLugo ? 5.5 : 3.5}
-              fill={isEnd ? S.sun : isLugo ? "rgba(242,169,0,0.35)" : "rgba(242,169,0,0.18)"}
-              stroke={S.sun} strokeWidth={isLugo ? "2" : "1.5"} />
+              r={isStart ? 6.5 : isEnd ? 6 : 3.5}
+              fill={isEnd ? S.sun : isStart ? "rgba(242,169,0,0.35)" : "rgba(242,169,0,0.18)"}
+              stroke={S.sun} strokeWidth={isStart ? "2" : "1.5"} />
             {isStart && (
-              <text x={x + 8} y={y - 8} fontSize="7.5" fontWeight="700"
-                fill={S.white} fontFamily="sans-serif">Sárria</text>
+              <text x={x - 9} y={y - 6} fontSize="8" fontWeight="700"
+                fill={S.sand} fontFamily="sans-serif" textAnchor="end">Lugo</text>
+            )}
+            {isOBurgo && (
+              <text x={x} y={y + 16} fontSize="7" fontWeight="700"
+                fill={S.onDarkSoft} fontFamily="sans-serif" textAnchor="middle">O Burgo</text>
             )}
             {isEnd && (
-              <text x={x - 5} y={y - 10} fontSize="8" fontWeight="700"
-                fill={S.white} fontFamily="sans-serif" textAnchor="end">Santiago</text>
-            )}
-            {isLugo && (
-              <text x={x} y={y + 18} fontSize="7.5" fontWeight="700"
-                fill={S.sand} fontFamily="sans-serif" textAnchor="middle">Lugo</text>
+              <text x={x + 2} y={y - 10} fontSize="8" fontWeight="700"
+                fill={S.white} fontFamily="sans-serif" textAnchor="start">Santiago</text>
             )}
           </motion.g>
         );
@@ -292,10 +292,10 @@ export default function CaminhoPrimitivoPage() {
                 O Caminho que vai por onde os outros não vão.
               </h2>
               <p className="mt-5 text-[15px] font-light leading-relaxed" style={{ color: S.onLightSoft }}>
-                A variante Primitiva parte de Sárria mas segue para norte, passando por Lugo, antes de virar para Santiago. A diferença é radical: menos peregrinos, mais interior selvagem, e uma noite em Lugo, a cidade das muralhas romanas.
+                O Primitivo começa em Lugo, a única cidade da Europa com as muralhas romanas do século III completamente intactas, e desce pelo interior galego até Santiago. A diferença é radical: menos peregrinos, mais montanha e uma noite dentro da muralha milenar.
               </p>
               <p className="mt-4 text-[15px] font-light leading-relaxed" style={{ color: S.onLightSoft }}>
-                Em Melide, a variante se une ao Caminho Francês principal para os últimos 55 km. Mas até lá, você caminha por trilhas que veem uma fração dos peregrinos das outras rotas. O Primitivo é para quem quer o Caminho, mas prefere encontrar mais silence e menos selfies.
+                Em Melide, a variante se une ao Caminho Francês principal para os últimos quilômetros. Mas até lá, você caminha por trilhas que veem uma fração dos peregrinos das outras rotas. O Primitivo é para quem quer o Caminho, mas prefere mais silêncio e menos multidão.
               </p>
               <div className="mt-8 grid grid-cols-3 gap-6">
                 {[["Média", "Dificuldade"], ["O ano todo", "Época"], ["Via Lugo", "Diferencial"]].map(([v, l]) => (
@@ -308,7 +308,7 @@ export default function CaminhoPrimitivoPage() {
             </Reveal>
             <Reveal delay={0.15}>
               <div className="mt-10 overflow-hidden rounded-2xl md:mt-0" style={{ aspectRatio: "4/3" }}>
-                <img src={wix("2d4f5b_6fe79078b70b4c4398bd9e601646fcdd~mv2.jpeg", 800, 600)}
+                <img src={wix("2d4f5b_d2cdb56240dd4e88abd9841e868aa6f6~mv2.jpg", 800, 600)}
                   alt="Interior galego, Caminho Primitivo" className="h-full w-full object-cover" />
               </div>
             </Reveal>
@@ -348,7 +348,7 @@ export default function CaminhoPrimitivoPage() {
           <Reveal>
             <h2 className="font-display text-[2.4rem] font-light" style={{ color: S.midnight }}>Roteiro dia a dia</h2>
             <p className="mt-2 text-[14px]" style={{ color: "rgba(0,32,91,0.6)" }}>
-              7 dias · 5 etapas de caminhada · Sárria até Santiago via Lugo
+              7 dias · 5 etapas de caminhada · Lugo até Santiago
             </p>
           </Reveal>
           <div className="mt-10 flex flex-col gap-2">
