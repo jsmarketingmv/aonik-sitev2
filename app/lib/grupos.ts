@@ -19,6 +19,20 @@ export type Grupo = {
 
 export const GRUPOS: Grupo[] = [
   {
+    id: "torres-del-paine-o-circuit",
+    title: "Circuito O · Torres del Paine",
+    flags: "🇨🇱",
+    local: "Patagônia Chilena · Torres del Paine",
+    dates2027: ["27/Fev a 06/Mar"],
+    distance: "129 km",
+    altitude: "3.724 m+",
+    duration: "8 dias",
+    priceFrom: "a partir de US$ 5.950",
+    status: "confirmada",
+    href: "/destinos/torres-del-paine-o-circuit",
+    img: "/torres-del-paine/dsc08327.jpg",
+  },
+  {
     id: "tour-du-mont-blanc",
     title: "Tour du Mont Blanc",
     flags: "🇫🇷 🇮🇹 🇨🇭",

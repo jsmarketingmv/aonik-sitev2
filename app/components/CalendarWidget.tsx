@@ -29,18 +29,45 @@ interface Departure {
   endDay: number;
   href: string;
   status: "confirmada" | "a-confirmar";
+  /** Rótulo cru quando a saída cruza meses (ex.: "27 Fev – 06 Mar"). */
+  label?: string;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
+function cap(s: string): string {
+  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+}
+
 function parseDeparture(
   dateStr: string,
-): { month: number; startDay: number; endDay: number } | null {
-  const m = dateStr.match(/^(\d+)\s+a\s+(\d+)\/(\w{3})/i);
-  if (!m) return null;
-  const month = PT_MONTHS_MAP[m[3].toLowerCase()];
-  if (!month) return null;
-  return { month, startDay: parseInt(m[1]), endDay: parseInt(m[2]) };
+): { month: number; startDay: number; endDay: number; label?: string } | null {
+  // Formato A — mesmo mês: "03 a 12/Set"
+  const a = dateStr.match(/^(\d+)\s+a\s+(\d+)\/(\w{3})/i);
+  if (a) {
+    const month = PT_MONTHS_MAP[a[3].toLowerCase()];
+    if (!month) return null;
+    return { month, startDay: parseInt(a[1]), endDay: parseInt(a[2]) };
+  }
+  // Formato B — mês em cada ponta, pode cruzar meses: "27/Fev a 06/Mar"
+  const b = dateStr.match(/^(\d+)\/(\w{3})\s+a\s+(\d+)\/(\w{3})/i);
+  if (b) {
+    const sM = PT_MONTHS_MAP[b[2].toLowerCase()];
+    const eM = PT_MONTHS_MAP[b[4].toLowerCase()];
+    if (!sM || !eM) return null;
+    const sameMonth = sM === eM;
+    return {
+      month: sM,
+      startDay: parseInt(b[1]),
+      // cruzando meses, 31 vira sentinela: o grid nunca passa de 31, então
+      // destaca do dia de partida até o fim do mês de saída.
+      endDay: sameMonth ? parseInt(b[3]) : 31,
+      label: sameMonth
+        ? undefined
+        : `${parseInt(b[1])} ${cap(b[2])} – ${parseInt(b[3])} ${cap(b[4])}`,
+    };
+  }
+  return null;
 }
 
 function buildDepartures(year: 2026 | 2027, grupos: Grupo[]): Departure[] {
@@ -257,9 +284,15 @@ export default function CalendarWidget({ yearFilter, onYearChange, grupos = GRUP
                   {dep.groupTitle}
                 </p>
                 <p className="text-[10px] text-ink/35">
-                  {dep.startDay}–{dep.endDay}{" "}
-                  {PT_MONTH_NAMES[dep.month].slice(0, 3).toLowerCase()}{" "}
-                  {yearFilter}
+                  {dep.label ? (
+                    <>{dep.label} {yearFilter}</>
+                  ) : (
+                    <>
+                      {dep.startDay}–{dep.endDay}{" "}
+                      {PT_MONTH_NAMES[dep.month].slice(0, 3).toLowerCase()}{" "}
+                      {yearFilter}
+                    </>
+                  )}
                 </p>
               </div>
               {dep.status === "confirmada" && (
