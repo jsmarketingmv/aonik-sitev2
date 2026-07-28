@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const DESC =
-  "A volta completa ao maciço Paine em grupo guiado: 8 dias pela face oculta de Torres del Paine — Serón, Dickson, Los Perros, o Passo John Garner e o Glaciar Grey. Saída 27/Fev a 06/Mar 2027 com o guia Ivo Léo.";
+  "A volta completa ao maciço Paine em grupo guiado: 8 dias pela face oculta de Torres del Paine, de Serón e Dickson a Los Perros, o Passo John Garner e o Glaciar Grey. Saída 2027 com o guia Ivo Léo, datas em breve.";
 
 export const metadata: Metadata = {
   title: "Circuito O · grupo guiado 8D/7N | Torres del Paine | AONIK",

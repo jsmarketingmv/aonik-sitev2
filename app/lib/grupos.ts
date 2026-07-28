@@ -23,12 +23,14 @@ export const GRUPOS: Grupo[] = [
     title: "Circuito O · Torres del Paine",
     flags: "🇨🇱",
     local: "Patagônia Chilena · Torres del Paine",
-    dates2027: ["27/Fev a 06/Mar"],
+    // Datas em fechamento com o parque. Quando confirmar, voltar para o
+    // formato real (ex.: "27/Fev a 06/Mar") e status "confirmada".
+    dates2027: ["Em breve"],
     distance: "129 km",
     altitude: "3.724 m+",
     duration: "8 dias",
     priceFrom: "a partir de US$ 5.950",
-    status: "confirmada",
+    status: "a-confirmar",
     href: "/destinos/torres-del-paine-o-circuit",
     img: "/torres-del-paine/dsc08327.jpg",
   },

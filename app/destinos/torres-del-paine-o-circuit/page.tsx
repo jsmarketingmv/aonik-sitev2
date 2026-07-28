@@ -14,7 +14,7 @@ import { GRUPOS } from "../../lib/grupos";
    CIRCUITO O · TORRES DEL PAINE — grupo guiado 8D/7N
    Identidade Patagônia Chilena (granito · gelo · ouro do amanhecer,
    o mesmo dourado da capa do catálogo). Assinatura: a VOLTA COMPLETA
-   ao maciço (o "O"), com o guia Ivo Léo. Saída 27/Fev a 06/Mar 2027.
+   ao maciço (o "O"), com o guia Ivo Léo. Saída 2027, datas em fechamento.
    ============================================================ */
 const O = {
   ink: "#0c1219",
@@ -32,7 +32,10 @@ const O = {
 };
 
 const GRUPO = GRUPOS.find((g) => g.id === "torres-del-paine-o-circuit")!;
-const DATA_SAIDA = "27 de fevereiro a 06 de março de 2027";
+/* Datas em ajuste com o parque: publicamos "Em breve" até fechar. */
+const DATA_SAIDA = "Em breve";
+const OBS_ITINERARIO =
+  "Itinerário em fase de confirmação, passível de ajustes no modelo de hospedagem.";
 
 const PHOTO = {
   hero: "/torres-del-paine/dsc08327.jpg",
@@ -128,7 +131,7 @@ const STATS = [
   { label: "Elevação", value: "3.724 m+" },
   { label: "Nível", value: "Alto" },
   { label: "Formato", value: "Grupo guiado" },
-  { label: "Saída 2027", value: "27/Fev" },
+  { label: "Saída 2027", value: "Em breve" },
 ];
 
 const MARCOS = [
@@ -486,7 +489,7 @@ export default function OCircuitPage() {
       {/* ===== RESERVE SUA VAGA ===== */}
       <section id="reservar" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-28" style={{ background: O.granito, color: O.creme }}>
         <div className="mx-auto max-w-[980px]">
-          <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroSoft }}>Saída confirmada</p></Reveal>
+          <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroSoft }}>Próxima saída</p></Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-5 font-display font-light leading-[1.05]" style={{ fontSize: "clamp(2rem,4.5vw,3.4rem)", color: O.creme }}>
               Uma única saída em <span className="italic" style={{ color: O.ouroSoft }}>2027</span>
@@ -497,7 +500,7 @@ export default function OCircuitPage() {
           <Reveal delay={0.1}>
             <div className="mt-10 rounded-2xl border p-7 md:p-9" style={{ borderColor: O.line, background: O.granitoSoft }}>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: O.ouro, color: O.ink }}>Confirmada</span>
+                <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ border: `1px solid ${O.ouro}`, color: O.ouroSoft }}>Datas em definição</span>
                 <span className="text-[11px] uppercase tracking-[0.16em]" style={{ color: O.cFaint }}>8 dias · 7 noites · grupo guiado</span>
               </div>
               <p className="mt-5 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-light" style={{ color: O.creme }}>{DATA_SAIDA}</p>
@@ -530,6 +533,11 @@ export default function OCircuitPage() {
                   </ul>
                 </div>
               </div>
+            </div>
+            {/* Datas e hospedagem ainda em fechamento com o parque */}
+            <div className="mt-4 flex items-start gap-3 rounded-xl border p-4" style={{ borderColor: O.line, background: "rgba(156,195,212,0.04)" }}>
+              <span className="mt-0.5 shrink-0 text-[13px]" style={{ color: O.ouroSoft }}>!</span>
+              <p className="text-[12.5px] font-light leading-relaxed" style={{ color: O.cSoft }}>{OBS_ITINERARIO}</p>
             </div>
           </Reveal>
 
@@ -612,7 +620,14 @@ export default function OCircuitPage() {
         </div>
       </section>
 
-      <Contato destino="GRUPOS DE TREKKING - Circuito O · Torres del Paine" />
+      <Contato
+        destino="GRUPOS DE TREKKING - Circuito O · Torres del Paine"
+        nota={{
+          titulo: "Pré-lista do Circuito O",
+          texto:
+            "As datas desta saída ainda estão em ajuste com o parque. Se você tem interesse em fazer parte deste grupo, deixe seus dados aqui: quem está na pré-lista recebe a confirmação das datas e a abertura das vagas com prioridade, antes de irmos ao público.",
+        }}
+      />
       <Footer />
       <FloatingActions />
     </main>

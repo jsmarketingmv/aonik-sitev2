@@ -8,7 +8,14 @@ import { useLang } from "./LanguageProvider";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export default function Contato({ destino = "" }: { destino?: string }) {
+export default function Contato({
+  destino = "",
+  nota,
+}: {
+  destino?: string;
+  /** Aviso opcional acima do formulário (ex.: pré-lista de um grupo com datas em ajuste). */
+  nota?: { titulo: string; texto: string };
+}) {
   const { t } = useLang();
   const c = t.contato;
 
@@ -67,6 +74,23 @@ export default function Contato({ destino = "" }: { destino?: string }) {
             {c.intro}
           </p>
         </motion.div>
+
+        {nota && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: EASE }}
+            className="mx-auto mb-10 max-w-[640px] rounded-2xl border border-gold/35 bg-gold/[7%] p-6 text-center md:p-7"
+          >
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
+              {nota.titulo}
+            </p>
+            <p className="mt-3 text-[14px] font-light leading-relaxed text-ink/70">
+              {nota.texto}
+            </p>
+          </motion.div>
+        )}
 
         {status === "done" ? (
           <motion.div

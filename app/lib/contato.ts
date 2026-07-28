@@ -15,7 +15,7 @@ const WA_MSGS: Record<string, string> = {
   "w-express":        "Olá! Gostaria de mais informações sobre o Circuito W Express em Torres del Paine.",
   "w-plus":           "Olá! Gostaria de mais informações sobre o W+ Express Plus em Torres del Paine.",
   "w-journey":        "Olá! Gostaria de mais informações sobre o W Journey em Torres del Paine.",
-  "torres-del-paine-o-circuit": "Olá! Gostaria de mais informações sobre o Circuito O em grupo guiado, em Torres del Paine (saída 27/Fev a 06/Mar 2027).",
+  "torres-del-paine-o-circuit": "Olá! Gostaria de entrar na pré-lista do Circuito O em grupo guiado, em Torres del Paine, e receber as datas assim que forem confirmadas.",
   "skorpios":         "Olá! Gostaria de mais informações sobre o Cruzeiro Skorpios na Patagônia.",
   "rio-serrano":      "Olá! Gostaria de mais informações sobre o Hotel Rio Serrano na Patagônia.",
   "compostela":       "Olá! Gostaria de mais informações sobre o Caminho de Santiago de Compostela.",

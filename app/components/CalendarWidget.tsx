@@ -91,6 +91,15 @@ function buildDepartures(year: 2026 | 2027, grupos: Grupo[]): Departure[] {
   );
 }
 
+/** Grupos do ano cujas datas ainda não têm dia/mês (ex.: "Em breve").
+ *  Não cabem no grid mensal, então são listados à parte para não sumirem. */
+function buildSemData(year: 2026 | 2027, grupos: Grupo[]): Grupo[] {
+  return grupos.filter((g) => {
+    const ds = datasDoAno(g, year);
+    return ds.length > 0 && ds.every((d) => parseDeparture(d) === null);
+  });
+}
+
 function buildGrid(month: number, year: number): (number | null)[] {
   const firstDay = new Date(year, month - 1, 1).getDay();
   const days = new Date(year, month, 0).getDate();
@@ -125,6 +134,7 @@ export default function CalendarWidget({ yearFilter, onYearChange, grupos = GRUP
 
   const grid = buildGrid(viewMonth, yearFilter);
   const monthDeps = departures.filter((d) => d.month === viewMonth);
+  const semData = buildSemData(yearFilter, grupos);
   const prevActives = activeMonths.filter((m) => m < viewMonth);
   const nextActives = activeMonths.filter((m) => m > viewMonth);
 
@@ -312,6 +322,35 @@ export default function CalendarWidget({ yearFilter, onYearChange, grupos = GRUP
             Nenhuma saída em{" "}
             {PT_MONTH_NAMES[viewMonth].toLowerCase()} {yearFilter}.
           </p>
+        </div>
+      )}
+
+      {/* ── Saídas com data ainda em definição ─── */}
+      {semData.length > 0 && (
+        <div className="mt-4 border-t border-forest/[8%] pt-4">
+          <p className="mb-1.5 px-2 text-[9px] font-medium uppercase tracking-[0.26em] text-gold/60">
+            Datas em definição
+          </p>
+          {semData.map((g) => (
+            <a
+              key={g.id}
+              href={g.href}
+              className="group flex items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-forest/[4%]"
+            >
+              <span className="text-base leading-none">{g.flags.split(" ")[0]}</span>
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-[12px] font-medium leading-tight text-forest">
+                  {g.title}
+                </p>
+                <p className="text-[10px] text-ink/35">
+                  Em breve · {g.duration} · {yearFilter}
+                </p>
+              </div>
+              <span className="shrink-0 text-[12px] text-gold opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100">
+                →
+              </span>
+            </a>
+          ))}
         </div>
       )}
 
