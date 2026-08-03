@@ -40,8 +40,10 @@ const OBS_ITINERARIO =
 const PHOTO = {
   hero: "/torres-del-paine/dsc08327.jpg",
   baseTorres: "/torres-del-paine/hero.jpg",
-  cuernos: "/torres-del-paine/IMG_2157.JPEG",
-  frances: "/torres-del-paine/dsc09305.jpg",
+  // Cards dos marcos pedem foto horizontal: vertical recortada em 16/9 vira
+  // um pedaço do meio sem contexto (foi o que aconteceu com Cuernos/Francés).
+  cuernos: "/torres-del-paine/patagonia.jpg",
+  frances: "/torres-del-paine/prod-w-plus.jpg",
   grey: "/torres-del-paine/dsc09030.jpg",
   dickson: "/torres-del-paine/IMG_2169.JPEG",
   celebracao: "/torres-del-paine/dsc08952.jpg",
@@ -53,31 +55,42 @@ const PHOTO = {
    ============================================================ */
 function OSignature() {
   const cx = 220, cy = 216, rx = 150, ry = 162;
+  /* Sentido ANTI-HORÁRIO, na ordem real do circuito: Serón (topo) segue
+     pela esquerda até Base Torres. Ângulos decrescentes = anti-horário
+     em coordenadas SVG (eixo y para baixo). */
   const nodes = [
     { label: "Serón", ang: -90 },
-    { label: "Dickson", ang: -50 },
-    { label: "Los Perros", ang: -12 },
-    { label: "J. Garner", ang: 28 },
-    { label: "Grey", ang: 74 },
-    { label: "Paine Grande", ang: 116 },
-    { label: "Francés", ang: 152 },
-    { label: "Central", ang: 192 },
-    { label: "Base Torres", ang: 232 },
+    { label: "Dickson", ang: -130 },
+    { label: "Los Perros", ang: -170 },
+    { label: "J. Gardner", ang: -210 },
+    { label: "Grey", ang: -250 },
+    { label: "Paine Grande", ang: -290 },
+    { label: "Francés", ang: -330 },
+    { label: "Central", ang: -370 },
+    { label: "Base Torres", ang: -410 },
   ];
   const pos = (a: number) => {
     const r = (a * Math.PI) / 180;
     return { x: cx + rx * Math.cos(r), y: cy + ry * Math.sin(r) };
   };
+  /* Seta do sentido: tangente da elipse percorrida no anti-horário. */
+  const AA = -150;
+  const ap = pos(AA);
+  const ar = (AA * Math.PI) / 180;
+  const aDeg = (Math.atan2(-ry * Math.cos(ar), rx * Math.sin(ar)) * 180) / Math.PI;
+  /* Loop anti-horário: sweep-flag 0 desenha no sentido negativo. */
+  const loop = `M ${cx},${cy - ry} A ${rx},${ry} 0 1 0 ${cx},${cy + ry} A ${rx},${ry} 0 1 0 ${cx},${cy - ry}`;
+
   return (
     <svg viewBox="0 0 440 440" className="h-full w-full" fill="none" role="img">
-      <title>Circuito O — a volta completa ao maciço Paine, Torres del Paine</title>
+      <title>Circuito O — a volta completa ao maciço Paine, no sentido anti-horário, com o circuito W na parte sul</title>
 
       {/* glow central */}
       <motion.circle cx={cx} cy={cy} r="96" fill={O.ouro} opacity="0"
         animate={{ opacity: 0.06 }} transition={{ duration: 2, ease: EASE, delay: 1.6 }} />
 
-      {/* o loop — desenhado */}
-      <motion.ellipse cx={cx} cy={cy} rx={rx} ry={ry}
+      {/* o loop — desenhado no sentido anti-horário */}
+      <motion.path d={loop}
         stroke={O.ouroSoft} strokeWidth="2" strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }}
         transition={{ duration: 3.2, ease: EASE, delay: 0.3 }} />
@@ -86,6 +99,13 @@ function OSignature() {
       <motion.ellipse cx={cx} cy={cy} rx={rx - 9} ry={ry - 9}
         stroke={O.gelo} strokeWidth="1" strokeDasharray="2 6" opacity="0"
         animate={{ opacity: 0.28 }} transition={{ duration: 1.4, ease: EASE, delay: 2.6 }} />
+
+      {/* seta do sentido anti-horário */}
+      <motion.path d="M -6,-5 L 5,0 L -6,5"
+        stroke={O.ouroSoft} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"
+        transform={`translate(${ap.x} ${ap.y}) rotate(${aDeg})`}
+        initial={{ opacity: 0 }} animate={{ opacity: 0.95 }}
+        transition={{ duration: 0.6, ease: EASE, delay: 3.3 }} />
 
       {/* nós de pernoite */}
       {nodes.map((n, i) => {
@@ -106,18 +126,33 @@ function OSignature() {
       })}
 
       {/* centro — o maciço encerrado pelo circuito */}
-      <motion.text x={cx} y={cy - 4} fontSize="13" fill={O.creme} textAnchor="middle"
+      <motion.text x={cx} y={170} fontSize="13" fill={O.creme} textAnchor="middle"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: EASE, delay: 2.9 }}
         style={{ fontWeight: 300, letterSpacing: "3px" }}>MACIÇO</motion.text>
-      <motion.text x={cx} y={cy + 16} fontSize="13" fill={O.creme} textAnchor="middle"
+      <motion.text x={cx} y={190} fontSize="13" fill={O.creme} textAnchor="middle"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: EASE, delay: 3.05 }}
         style={{ fontWeight: 300, letterSpacing: "3px" }}>PAINE</motion.text>
-      <motion.text x={cx} y={cy + 40} fontSize="8.5" fill={O.ouroSoft} textAnchor="middle"
+      <motion.text x={cx} y={212} fontSize="8.5" fill={O.ouroSoft} textAnchor="middle"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: EASE, delay: 3.2 }}
         style={{ letterSpacing: "2px", textTransform: "uppercase" }}>a volta completa</motion.text>
+
+      {/* O W dentro do O — quem faz o Circuito O percorre também o W */}
+      <motion.path d="M 148,258 L 178,306 L 220,264 L 262,306 L 292,258"
+        stroke={O.gelo} strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 0.75 }}
+        transition={{ duration: 1.8, ease: EASE, delay: 3.5 }} />
+      {([[148, 258], [220, 264], [292, 258]] as [number, number][]).map(([x, y], i) => (
+        <motion.circle key={i} cx={x} cy={y} r="2.6" fill={O.gelo}
+          initial={{ opacity: 0 }} animate={{ opacity: 0.85 }}
+          transition={{ duration: 0.4, ease: EASE, delay: 5 + i * 0.12 }} />
+      ))}
+      <motion.text x={cx} y={332} fontSize="8" fill={O.gelo} textAnchor="middle"
+        initial={{ opacity: 0 }} animate={{ opacity: 0.75 }}
+        transition={{ duration: 0.9, ease: EASE, delay: 5.3 }}
+        style={{ letterSpacing: "2.4px", textTransform: "uppercase" }}>inclui o circuito W</motion.text>
     </svg>
   );
 }
@@ -138,10 +173,10 @@ const MARCOS = [
   { n: "01", nome: "Base Torres", tag: "O ícone", desc: "As três torres de granito erguidas sobre a lagoa glacial, o cartão-postal do parque.", img: PHOTO.baseTorres },
   { n: "02", nome: "Setor Cuernos", tag: "Lago Nordenskjöld", desc: "Os chifres de rocha do Paine sobre o turquesa intenso do lago.", img: PHOTO.cuernos },
   { n: "03", nome: "Vale do Francés", tag: "O circo glacial", desc: "Anfiteatro de gelo entre o Paine Grande e os Cuernos, uma das vistas mais impressionantes do circuito.", img: PHOTO.frances },
-  { n: "04", nome: "Glaciar Grey", tag: "Face oculta", desc: "A parede de gelo azul e o Campo de Hielo Sul, vistos do alto do Passo John Garner.", img: PHOTO.grey },
+  { n: "04", nome: "Glaciar Grey", tag: "Face oculta", desc: "A parede de gelo azul e o Campo de Hielo Sul, vistos do alto do Passo John Gardner.", img: PHOTO.grey },
 ];
 
-type Dia = { dia: string; titulo: string; desc: string; km: string; horas: string; desnivel: string; nivel: string; pernoite: string };
+type Dia = { dia: string; titulo: string; desc: string; km: string; horas: string; desnivel: string; nivel: string; pernoite: string; ultimoDia?: boolean };
 const ROTEIRO: Dia[] = [
   {
     dia: "Dia 1", titulo: "Puerto Natales a Torres del Paine · Serón",
@@ -150,8 +185,8 @@ const ROTEIRO: Dia[] = [
   },
   {
     dia: "Dia 2", titulo: "Trekking a Dickson",
-    desc: "Um dia longo e inesquecível, subindo e descendo as encostas do maciço. Depois da subida mais íngreme, a vista do vale parece um sonho. O acampamento é quase surreal: barracas e refúgio numa ampla área verde à beira de um lago imenso, aos pés das montanhas. Você desce revigorado rumo às margens do Lago Paine.",
-    km: "19,5 km", horas: "8 a 10h", desnivel: "+200 m", nivel: "Alto", pernoite: "Refúgio Dickson ou Camping Dickson",
+    desc: "Um dia longo e inesquecível, subindo e descendo as encostas do maciço. Depois da subida mais íngreme, a vista do vale parece um sonho. A chegada é quase surreal: o refúgio numa ampla área verde à beira de um lago imenso, aos pés das montanhas. Você desce revigorado rumo às margens do Lago Paine, onde passa a noite no Refúgio Dickson.",
+    km: "19,5 km", horas: "8 a 10h", desnivel: "+200 m", nivel: "Alto", pernoite: "Refúgio Dickson",
   },
   {
     dia: "Dia 3", titulo: "Trekking a Los Perros",
@@ -159,8 +194,8 @@ const ROTEIRO: Dia[] = [
     km: "13,5 km", horas: "4,5 a 6,5h", desnivel: "+340 m", nivel: "Alto", pernoite: "Camping Los Perros",
   },
   {
-    dia: "Dia 4", titulo: "Passo John Garner e Lago Grey",
-    desc: "Provavelmente o dia mais desafiador e também um dos mais espetaculares. Saída cedo de Los Perros, atravessando floresta úmida antes de emergir acima da linha das árvores. A metade superior é uma subida íngreme, rochosa e muitas vezes com neve até o Passo John Garner. No alto, a recompensa: o Campo de Hielo Sul, com picos afiados e fendas de gelo de cores intensas. Na descida, o Glaciar Grey, uma paisagem de outro planeta.",
+    dia: "Dia 4", titulo: "Passo John Gardner e Lago Grey",
+    desc: "Provavelmente o dia mais desafiador e também um dos mais espetaculares. Saída cedo de Los Perros, atravessando floresta úmida antes de emergir acima da linha das árvores. A metade superior é uma subida íngreme, rochosa e muitas vezes com neve até o Passo John Gardner. No alto, a recompensa: o Campo de Hielo Sul, com picos afiados e fendas de gelo de cores intensas. Na descida, o Glaciar Grey, uma paisagem de outro planeta.",
     km: "18 km", horas: "9 a 12h", desnivel: "+600 m", nivel: "Alto", pernoite: "Refúgio Grey",
   },
   {
@@ -181,7 +216,7 @@ const ROTEIRO: Dia[] = [
   {
     dia: "Dia 8", titulo: "Base Torres e retorno a Puerto Natales",
     desc: "O dia começa com uma subida pela planície patagônica, que fica mais íngreme ao entrar no Vale do Ascencio rumo ao Paso Los Vientos. Você passa pelo Setor Chileno e cruza uma floresta de lengas antes do trecho final, cerca de 1h sobre terreno rochoso. No fim, a vista mais icônica do parque: as três torres sobre a lagoa glacial. Depois, retorno pelo mesmo caminho para pegar o ônibus à tarde de volta a Puerto Natales.",
-    km: "19,5 km", horas: "7 a 9h", desnivel: "+750 m", nivel: "Alto", pernoite: "Retorno a Puerto Natales",
+    km: "19,5 km", horas: "7 a 9h", desnivel: "+750 m", nivel: "Alto", pernoite: "Retorno a Puerto Natales", ultimoDia: true,
   },
 ];
 
@@ -203,7 +238,7 @@ const INCLUSO = [
   "Ônibus regular Puerto Natales ↔ Torres del Paine, ida e volta",
   "Entrada do Parque Nacional Torres del Paine",
   "Welcome kit: garrafa d'água, liner e toalha",
-  "Trekking por Base Torres, Cuernos, Vale do Francés, Glaciar Grey, Passo John Garner, Glaciar Los Perros e Glaciar Dickson",
+  "Trekking por Base Torres, Cuernos, Vale do Francés, Glaciar Grey, Passo John Gardner, Glaciar Los Perros e Glaciar Dickson",
 ];
 const NAO_INCLUSO = [
   "Voos nacionais e internacionais",
@@ -234,7 +269,6 @@ const GUIA = {
 };
 
 const PROMO = [
-  { titulo: "À vista", badge: "10% OFF", destaque: true, desc: "Pagamento integral à vista, com 10% de desconto.", obs: "PIX ou transferência · quitação imediata." },
   { titulo: "Parcelado", badge: "5% OFF", destaque: true, desc: "Entrada de 30% + saldo em até 7x sem juros, com 5% de desconto.", obs: "Entrada em PIX/transferência · parcelas no cartão." },
   { titulo: "Em 10x", badge: "sem juros", destaque: false, desc: "Saldo em até 10x sem juros, sem desconto adicional.", obs: "No cartão de crédito." },
 ];
@@ -316,7 +350,7 @@ export default function OCircuitPage() {
           <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.34em]" style={{ color: O.ouroDeep }}>8 dias · 7 noites · grupo guiado</p></Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 font-display text-[clamp(1.4rem,3vw,2.3rem)] font-light leading-[1.3] tracking-[-0.01em]" style={{ color: O.granito }}>
-              Ouse viver uma experiência única e apaixone-se pela Patagônia extrema. Em 8 dias intensos, você dá a volta inteira no maciço Paine, das torres de granito ao Vale do Francés, até o Glaciar Grey visto do Passo John Garner, onde o gelo se funde com as nuvens no horizonte.
+              Ouse viver uma experiência única e apaixone-se pela Patagônia extrema. Em 8 dias intensos, você dá a volta inteira no maciço Paine, das torres de granito ao Vale do Francés, até o Glaciar Grey visto do Passo John Gardner, onde o gelo se funde com as nuvens no horizonte.
             </p>
           </Reveal>
         </div>
@@ -340,7 +374,7 @@ export default function OCircuitPage() {
             {[
               { t: "Serón e Dickson", d: "Os vales verdes do norte, com o refúgio à beira de um lago imenso aos pés das montanhas." },
               { t: "Los Perros", d: "A floresta de lengas e o glaciar suspenso sobre uma lagoa cinza e calma." },
-              { t: "Passo John Garner", d: "O dia mais épico: a travessia acima da linha das árvores até o Campo de Hielo Sul." },
+              { t: "Passo John Gardner", d: "O dia mais épico: a travessia acima da linha das árvores até o Campo de Hielo Sul." },
               { t: "Glaciar Grey do alto", d: "A parede de gelo azul vista de cima, uma paisagem que parece de outro planeta." },
             ].map((c, i) => (
               <Reveal key={c.t} delay={i * 0.06}>
@@ -393,11 +427,21 @@ export default function OCircuitPage() {
                     <h3 className="font-display text-xl font-light md:text-2xl">{r.titulo}</h3>
                     <p className="mt-2 text-[14px] font-light leading-relaxed" style={{ color: O.cSoft }}>{r.desc}</p>
                   </div>
-                  <div className="flex flex-col gap-1 text-[12px] font-light md:text-right" style={{ color: O.cFaint }}>
+                  <div className="flex flex-col gap-1 text-[12px] font-light md:items-end md:text-right" style={{ color: O.cFaint }}>
                     <span className="text-[14px] font-bold" style={{ color: O.creme }}>{r.km}</span>
                     <span>{r.horas} · {r.desnivel}</span>
                     <span style={{ color: nivelColor(r.nivel) }}>Nível {r.nivel}</span>
-                    <span className="mt-1" style={{ color: O.ouroSoft }}>{r.pernoite}</span>
+                    {/* a noite de cada etapa, em destaque */}
+                    <span className="mt-2 inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
+                      style={{ borderColor: O.line, background: "rgba(156,195,212,0.05)" }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={O.ouroSoft} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M3 10.5 12 4l9 6.5" /><path d="M5 10v10h14V10" />
+                      </svg>
+                      <span className="text-[11.5px]" style={{ color: O.ouroSoft }}>
+                        <span style={{ color: O.cFaint }}>{r.ultimoDia ? "Encerramento · " : "Pernoite · "}</span>
+                        {r.pernoite}
+                      </span>
+                    </span>
                   </div>
                 </div>
               </Reveal>
@@ -549,7 +593,7 @@ export default function OCircuitPage() {
                 <p className="text-[11px] uppercase tracking-[0.16em]" style={{ color: O.cFaint }}>vagas limitadas</p>
               </div>
               <p className="mt-2 text-[13px] font-light" style={{ color: O.cSoft }}>Descontos por forma de pagamento para quem garante cedo. Escolha a que melhor combina com você.</p>
-              <div className="mt-6 grid gap-4 md:grid-cols-3">
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
                 {PROMO.map((f) => (
                   <div key={f.titulo} className="rounded-xl border p-5" style={{ borderColor: f.destaque ? O.ouro : O.line, background: f.destaque ? "rgba(201,154,82,0.07)" : "transparent" }}>
                     <div className="flex items-center justify-between">
@@ -610,7 +654,7 @@ export default function OCircuitPage() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: O.ouroSoft }}>Aonik <strong className="font-bold">IA</strong> · especialista neste circuito</p>
             <h2 className="mt-5 font-display text-[clamp(1.8rem,3.5vw,2.8rem)] font-light leading-[1.15]" style={{ color: O.creme }}>Pergunte tudo sobre o Circuito O</h2>
             <p className="mx-auto mt-4 max-w-md text-[15px] font-light leading-relaxed" style={{ color: O.cSoft }}>
-              Nível da trilha, o Passo John Garner, preparo físico, o que levar, como chegar a Puerto Natales. A Aonik <strong className="font-semibold" style={{ color: O.creme }}>IA</strong> conhece esta volta de ponta a ponta. Para outros assuntos, te levamos ao WhatsApp do time AONIK.
+              Nível da trilha, o Passo John Gardner, preparo físico, o que levar, como chegar a Puerto Natales. A Aonik <strong className="font-semibold" style={{ color: O.creme }}>IA</strong> conhece esta volta de ponta a ponta. Para outros assuntos, te levamos ao WhatsApp do time AONIK.
             </p>
             <button type="button" onClick={() => { if (typeof window !== "undefined") window.dispatchEvent(new Event("open-aonikia")); }}
               className="mt-7 inline-flex items-center gap-3 rounded-full border px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition-all duration-300 hover:scale-[1.03]" style={{ borderColor: O.ouroSoft, color: O.ouroSoft }}>
