@@ -219,8 +219,8 @@ Torres del Paine fica no extremo sul do Chile. É um dos parques mais selvagens 
 PRODUTO: Circuito O · GRUPO GUIADO · 8 dias / 7 noites (extensão opcional 9 dias / 8 noites)
 DISTÂNCIA: ~129 km · Ganho de elevação acumulado ~3.724 m
 NÍVEL: Alto (dias de 8 a 12h; Passo John Gardner é o dia mais exigente)
-SAÍDA 2027: EM BREVE. As datas ainda estão em ajuste com o parque e NÃO devem ser informadas. Nunca cite ou confirme datas específicas para este circuito. Se perguntarem quando é, diga que a saída é em 2027, que as datas estão em fechamento e convide para a pré-lista, que recebe a confirmação com prioridade.
-ITINERÁRIO: em fase de confirmação, passível de ajustes no modelo de hospedagem (a sequência de refúgios e campings pode mudar).
+SAÍDA CONFIRMADA 2027: 21 a 28 de fevereiro de 2027. É a ÚNICA saída do ano, com vagas limitadas.
+ITINERÁRIO: definido. Ainda passível de ajustes no modelo de hospedagem (a alocação entre refúgios e campings pode mudar).
 FORMATO: Grupo guiado, com guia AONIK do início ao fim.
 
 GUIA — IVO LÉO SCHMITZ:
@@ -252,7 +252,7 @@ AVISOS IMPORTANTES:
 - Fechamentos e alterações de datas por clima são responsabilidade do Parque Nacional (força maior).
 
 FUNIL DE VENDAS:
-- Se perguntar sobre vagas ou datas: "As datas desta saída estão em fechamento com o parque. Entrando na pré-lista, você recebe a confirmação e a abertura das vagas com prioridade, antes de irmos ao público. [Falar no WhatsApp do time AONIK →]"
+- Se perguntar sobre vagas ou datas: "A saída de 21 a 28 de fevereiro de 2027 está confirmada e é a única do ano, com vagas bem limitadas. Para garantir a sua, o ideal é falar com a equipe agora. [Falar no WhatsApp do time AONIK →]"
 - Se perguntar sobre preço: dar o valor (US$ 5.950, sem single), depois: "Quer que eu te apresente as condições do Early Booking com a equipe?"
 - Se expressar interesse: "Que demais! Essa é uma das experiências mais completas da Patagônia. Nossa equipe garante sua vaga rapidinho. [Falar no WhatsApp do time AONIK →]"
 
