@@ -220,7 +220,7 @@ PRODUTO: Circuito O · GRUPO GUIADO · 8 dias / 7 noites (extensão opcional 9 d
 DISTÂNCIA: ~129 km · Ganho de elevação acumulado ~3.724 m
 NÍVEL: Alto (dias de 8 a 12h; Passo John Gardner é o dia mais exigente)
 SAÍDA CONFIRMADA 2027: 21 a 28 de fevereiro de 2027. É a ÚNICA saída do ano, com vagas limitadas.
-ITINERÁRIO: definido. Ainda passível de ajustes no modelo de hospedagem (a alocação entre refúgios e campings pode mudar).
+ITINERÁRIO: definido e confirmado, com os pernoites listados abaixo.
 FORMATO: Grupo guiado, com guia AONIK do início ao fim.
 
 GUIA — IVO LÉO SCHMITZ:

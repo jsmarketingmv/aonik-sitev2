@@ -33,8 +33,6 @@ const O = {
 
 const GRUPO = GRUPOS.find((g) => g.id === "torres-del-paine-o-circuit")!;
 const DATA_SAIDA = "21 a 28 de fevereiro de 2027";
-const OBS_ITINERARIO =
-  "Itinerário em fase de confirmação, passível de ajustes no modelo de hospedagem.";
 
 const PHOTO = {
   hero: "/torres-del-paine/dsc08327.jpg",
@@ -576,11 +574,6 @@ export default function OCircuitPage() {
                   </ul>
                 </div>
               </div>
-            </div>
-            {/* Modelo de hospedagem ainda pode ser ajustado pelo parque */}
-            <div className="mt-4 flex items-start gap-3 rounded-xl border p-4" style={{ borderColor: O.line, background: "rgba(156,195,212,0.04)" }}>
-              <span className="mt-0.5 shrink-0 text-[13px]" style={{ color: O.ouroSoft }}>!</span>
-              <p className="text-[12.5px] font-light leading-relaxed" style={{ color: O.cSoft }}>{OBS_ITINERARIO}</p>
             </div>
           </Reveal>
 
