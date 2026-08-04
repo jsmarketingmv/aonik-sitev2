@@ -12,7 +12,9 @@ export type Grupo = {
   altitude: string;
   duration: string;
   priceFrom: string;
-  status: "confirmada" | "a-confirmar";
+  /** confirmada = saída garantida · em-formacao = data definida, grupo fechando
+   *  vagas · a-confirmar = data ainda não fechada. */
+  status: "confirmada" | "em-formacao" | "a-confirmar";
   href: string; // página individual (ou #contato enquanto não existir)
   img: string;
 };
@@ -28,7 +30,7 @@ export const GRUPOS: Grupo[] = [
     altitude: "3.724 m+",
     duration: "8 dias",
     priceFrom: "a partir de US$ 5.950",
-    status: "confirmada",
+    status: "em-formacao",
     href: "/destinos/torres-del-paine-o-circuit",
     img: "/torres-del-paine/dsc08327.jpg",
   },

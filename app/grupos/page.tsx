@@ -487,10 +487,14 @@ function Calendario() {
                     <p className="text-[14px] font-light text-ink/70">{g.priceFrom}</p>
                     <span
                       className={`mt-1 inline-block text-[11px] font-semibold uppercase tracking-[0.12em] ${
-                        g.status === "confirmada" ? "text-forest" : "text-ink/40"
+                        g.status === "a-confirmar" ? "text-ink/40" : "text-forest"
                       }`}
                     >
-                      {g.status === "confirmada" ? "● Saída confirmada" : "○ A confirmar"}
+                      {g.status === "confirmada"
+                        ? "● Saída confirmada"
+                        : g.status === "em-formacao"
+                          ? "● Grupo em formação"
+                          : "○ A confirmar"}
                     </span>
                   </div>
 

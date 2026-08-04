@@ -182,9 +182,9 @@ export default function GruposHome({ variant = "amber" }: { variant?: "amber" | 
                           <span className="font-display text-[1.05rem] font-light leading-tight text-forest">
                             {g.title}
                           </span>
-                          {g.status === "confirmada" && (
+                          {g.status !== "a-confirmar" && (
                             <span className="hidden rounded-full bg-forest/[8%] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-forest/60 sm:inline-block">
-                              Confirmada
+                              {g.status === "em-formacao" ? "Grupo em formação" : "Confirmada"}
                             </span>
                           )}
                         </div>
@@ -199,7 +199,7 @@ export default function GruposHome({ variant = "amber" }: { variant?: "amber" | 
                           <span
                             key={d}
                             className="rounded-full px-3 py-1 text-[11px] font-medium"
-                            style={g.status === "confirmada"
+                            style={g.status !== "a-confirmar"
                               ? { backgroundColor: accentLight, color: accentText }
                               : { border: "1px solid rgba(26,23,20,0.12)", color: "rgba(26,23,20,0.4)" }}
                           >

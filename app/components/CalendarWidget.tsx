@@ -28,7 +28,7 @@ interface Departure {
   startDay: number;
   endDay: number;
   href: string;
-  status: "confirmada" | "a-confirmar";
+  status: Grupo["status"];
   /** Rótulo cru quando a saída cruza meses (ex.: "27 Fev – 06 Mar"). */
   label?: string;
 }
@@ -305,9 +305,12 @@ export default function CalendarWidget({ yearFilter, onYearChange, grupos = GRUP
                   )}
                 </p>
               </div>
-              {dep.status === "confirmada" && (
-                <span className="shrink-0 rounded-full bg-gold/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-gold">
-                  ✓
+              {dep.status !== "a-confirmar" && (
+                <span
+                  className="shrink-0 rounded-full bg-gold/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-gold"
+                  title={dep.status === "em-formacao" ? "Grupo em formação" : "Saída confirmada"}
+                >
+                  {dep.status === "em-formacao" ? "em formação" : "✓"}
                 </span>
               )}
               <span className="shrink-0 text-[12px] text-gold opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100">

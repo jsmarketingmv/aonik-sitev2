@@ -530,7 +530,7 @@ export default function OCircuitPage() {
       {/* ===== RESERVE SUA VAGA ===== */}
       <section id="reservar" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-28" style={{ background: O.granito, color: O.creme }}>
         <div className="mx-auto max-w-[980px]">
-          <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroSoft }}>Saída confirmada</p></Reveal>
+          <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroSoft }}>Grupo em formação</p></Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-5 font-display font-light leading-[1.05]" style={{ fontSize: "clamp(2rem,4.5vw,3.4rem)", color: O.creme }}>
               Uma única saída em <span className="italic" style={{ color: O.ouroSoft }}>2027</span>
@@ -541,7 +541,7 @@ export default function OCircuitPage() {
           <Reveal delay={0.1}>
             <div className="mt-10 rounded-2xl border p-7 md:p-9" style={{ borderColor: O.line, background: O.granitoSoft }}>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: O.ouro, color: O.ink }}>Confirmada</span>
+                <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: O.ouro, color: O.ink }}>Grupo em formação</span>
                 <span className="text-[11px] uppercase tracking-[0.16em]" style={{ color: O.cFaint }}>8 dias · 7 noites · grupo guiado</span>
               </div>
               <p className="mt-5 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-light" style={{ color: O.creme }}>{DATA_SAIDA}</p>
@@ -659,9 +659,9 @@ export default function OCircuitPage() {
       <Contato
         destino="GRUPOS DE TREKKING - Circuito O · Torres del Paine"
         nota={{
-          titulo: "Saída confirmada · vagas limitadas",
+          titulo: "Grupo em formação · vagas limitadas",
           texto:
-            "A saída de 21 a 28 de fevereiro de 2027 está confirmada e é a única do ano. O grupo é pequeno e o Circuito O tem controle de acesso restrito no parque, então as vagas acabam cedo. Deixe seus dados aqui e nosso time fala com você para garantir a sua.",
+            "A saída de 21 a 28 de fevereiro de 2027 é a única do ano e o grupo está em formação agora. O grupo é pequeno e o Circuito O tem controle de acesso restrito no parque, então as vagas acabam cedo. Deixe seus dados aqui e nosso time fala com você para garantir a sua.",
         }}
       />
       <Footer />
