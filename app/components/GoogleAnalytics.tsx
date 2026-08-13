@@ -12,6 +12,13 @@ import Script from "next/script";
  */
 export const GA4_MEASUREMENT_ID = "G-MX71PJ86TB";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
+  }
+}
+
 export default function GoogleAnalytics() {
   return (
     <>
