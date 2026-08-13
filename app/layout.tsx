@@ -4,6 +4,7 @@ import { Fraunces, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import { LanguageProvider } from "./components/LanguageProvider";
+import MetaPixel from "./components/MetaPixel";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -59,6 +60,12 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "L4RrmkObtGNjhnahE6koZCfkRhd_BPgKoV0VjTiF49k",
+    other: {
+      // Verificação do domínio aonik.com.br no Meta Business Manager.
+      // Sem ela não dá pra configurar a Agregação de Eventos, que é o que
+      // permite otimizar campanha por conversão depois do iOS 14.5.
+      "facebook-domain-verification": "kgjfjdxcpdzj1j7vk6vn3br7jbrrtt",
+    },
   },
 };
 
@@ -81,6 +88,7 @@ export default function RootLayout({
         }} />
       </head>
       <body>
+        <MetaPixel />
         <LanguageProvider>
           <SmoothScroll>{children}</SmoothScroll>
         </LanguageProvider>
