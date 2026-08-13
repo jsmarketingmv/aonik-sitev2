@@ -61,7 +61,17 @@ export const metadata: Metadata = {
     images: ["/images/tmb/hero.jpg"],
   },
   verification: {
-    google: "L4RrmkObtGNjhnahE6koZCfkRhd_BPgKoV0VjTiF49k",
+    // O primeiro código é antigo e não corresponde a nenhuma propriedade da
+    // conta marketing@julianosantana.com.br, deve ser de outra conta. Fica
+    // por precaução. O segundo é o do Search Console da AONIK.
+    //
+    // Precisou ser meta tag em vez de verificar pelo Google Analytics: o
+    // next/script injeta o gtag só depois da hidratação e deixa apenas um
+    // preload no <head>, e o Search Console exige o snippet no HTML servido.
+    google: [
+      "L4RrmkObtGNjhnahE6koZCfkRhd_BPgKoV0VjTiF49k",
+      "UNbIPlOOCpuSiTyZseTYgCzTyNCQKIYuJ_vCg4bwH0Q",
+    ],
     other: {
       // Verificação do domínio aonik.com.br no Meta Business Manager.
       // Sem ela não dá pra configurar a Agregação de Eventos, que é o que
