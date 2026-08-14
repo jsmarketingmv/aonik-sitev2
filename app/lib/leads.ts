@@ -9,6 +9,8 @@ const SUPABASE_ANON_KEY =
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhiaWFtY3NibGZvdW1yeHd6cnlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1NzQxODUsImV4cCI6MjA5MzE1MDE4NX0.VWLYoDqa7AjTB6HMtkJkKi1eMZsaUUZYOlxqso8Yyms";
 
+import { origemComoTags } from "./utm";
+
 export type LeadInput = {
   nome: string;
   email: string;
@@ -16,6 +18,13 @@ export type LeadInput = {
   destino?: string;
   mensagem?: string;
 };
+
+/** Página onde o lead foi preenchido, ex.: "destinos/torres-del-paine-o-circuit". */
+function paginaDeOrigem(): string | null {
+  if (typeof window === "undefined") return null;
+  const p = window.location.pathname.replace(/^\/+|\/+$/g, "");
+  return p || "home";
+}
 
 // Insere o lead no CRM (kanban) do SaaS. Lança erro se a API recusar,
 // para o formulário decidir o que mostrar ao usuário.
@@ -39,6 +48,12 @@ export async function gravarLead(lead: LeadInput): Promise<void> {
       source: "site-b2c-form",
       origin: "site-b2c",
       kanban_status: "novo",
+      // Campanha de origem e página onde converteu. Sem isso não dá pra saber
+      // qual anúncio trouxe o lead, só que ele veio do site.
+      // `origin` é enum validado por trigger no banco, então não serve pra isso;
+      // `tags` é livre e o kanban já mostra no card.
+      tags: origemComoTags(),
+      program_slug: paginaDeOrigem(),
     }),
   });
 

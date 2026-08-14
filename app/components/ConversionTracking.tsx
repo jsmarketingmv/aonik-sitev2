@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { capturarOrigem } from "../lib/utm";
 
 /**
  * Eventos de conversão para Meta e GA4.
@@ -34,6 +35,13 @@ function paginaAtual() {
 }
 
 export default function ConversionTracking() {
+  // Guarda a campanha de origem logo na chegada. Precisa ser antes de qualquer
+  // navegação, senão os parâmetros da URL já se perderam quando a pessoa
+  // chega no formulário.
+  useEffect(() => {
+    capturarOrigem();
+  }, []);
+
   useEffect(() => {
     function aoClicar(evento: MouseEvent) {
       const alvo = evento.target as HTMLElement | null;
