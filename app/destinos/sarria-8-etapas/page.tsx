@@ -236,7 +236,7 @@ export default function Sarria8EtapasPage() {
                 style={{ backgroundColor: S.sun, color: S.midnight }}>
                 Reservar Minha Vaga
               </a>
-              <a href="https://wa.me/5548988160000" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/5547988047422" target="_blank" rel="noopener noreferrer"
                 className="rounded-full px-7 py-3 text-[14px] font-medium"
                 style={{ backgroundColor: "rgba(255,255,255,0.1)", color: S.white, border: `1px solid ${S.wLine}` }}>
                 Falar no WhatsApp
