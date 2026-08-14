@@ -6,6 +6,7 @@ import Nav from "../../components/Nav";
 import Breadcrumb from "../../components/Breadcrumb";
 import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
+import CtaInline from "../../components/CtaInline";
 import FloatingActions from "../../components/FloatingActions";
 import { Reveal, EASE } from "../../components/ui";
 import { GRUPOS } from "../../lib/grupos";
@@ -386,6 +387,13 @@ export default function OCircuitPage() {
         </div>
       </section>
 
+      <CtaInline
+        chamada="Ficou com vontade de conhecer a face oculta do Paine?"
+        botao="Falar com especialista"
+        href="#reservar"
+        cores={{ fundo: O.ink, texto: O.creme, acento: O.ouro, acentoTexto: O.ink, suave: O.line }}
+      />
+
       {/* ===== MARCOS ===== */}
       <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: O.granito, color: O.creme }}>
         <div className="mx-auto max-w-[1280px]">
@@ -446,6 +454,15 @@ export default function OCircuitPage() {
           </div>
         </div>
       </section>
+
+      {/* Pico de desejo da página: quem leu os 8 dias já se imaginou lá. */}
+      <CtaInline
+        chamada="Oito dias assim combinam com você?"
+        apoio={`Saída única · ${DATA_SAIDA}`}
+        botao="Quero as datas"
+        href="#reservar"
+        cores={{ fundo: O.ink, texto: O.creme, acento: O.ouro, acentoTexto: O.ink, suave: O.line }}
+      />
 
       {/* ===== GUIA — IVO LÉO ===== */}
       <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: O.creme, color: O.ink }}>
@@ -638,6 +655,22 @@ export default function OCircuitPage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Última objeção acabou de ser respondida (incluso/não incluso).
+          Texto diferente do CTA da tarifa de propósito: ali o convite já é
+          "garantir a vaga", aqui é um passo menor pra quem ainda hesita. */}
+      <CtaInline
+        chamada="Alguma dúvida ainda de pé?"
+        botao="Falar com quem guia"
+        href="#contato"
+        cores={{
+          fundo: O.creme,
+          texto: O.ink,
+          acento: O.granito,
+          acentoTexto: O.creme,
+          suave: "rgba(12,18,25,0.12)",
+        }}
+      />
 
       {/* ===== AONIK IA ===== */}
       <section className="px-6 py-20 md:px-10 md:py-24" style={{ background: O.ink }}>
