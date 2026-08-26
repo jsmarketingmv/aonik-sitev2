@@ -7,6 +7,7 @@ import { LanguageProvider } from "./components/LanguageProvider";
 import MetaPixel from "./components/MetaPixel";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import ConversionTracking from "./components/ConversionTracking";
+import OpenAIPixel from "./components/OpenAIPixel";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -102,6 +103,7 @@ export default function RootLayout({
       <body>
         <MetaPixel />
         <GoogleAnalytics />
+        <OpenAIPixel />
         <ConversionTracking />
         <LanguageProvider>
           <SmoothScroll>{children}</SmoothScroll>

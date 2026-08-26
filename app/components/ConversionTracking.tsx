@@ -17,8 +17,8 @@ import { capturarOrigem } from "../lib/utm";
  * um botão novo.
  *
  * Mapa dos eventos:
- *   clique em WhatsApp  -> Meta "Contact" + GA4 "generate_lead" (method: whatsapp)
- *   envio de formulário -> Meta "Lead"    + GA4 "generate_lead" (method: formulario)
+ *   clique em WhatsApp  -> Meta "Contact" + GA4 "generate_lead" + OpenAI "lead_created"
+ *   envio de formulário -> Meta "Lead"    + GA4 "generate_lead" + OpenAI "lead_created"
  *
  * "Contact" e "Lead" são eventos padrão da Meta, não personalizados. Isso
  * importa: só os padrão servem de objetivo de otimização e entram na
@@ -63,6 +63,8 @@ export default function ConversionTracking() {
         pagina,
         titulo,
       });
+
+      window.oaiq?.("measure", "lead_created", { type: "customer_action" });
     }
 
     function aoEnviarFormulario() {
@@ -78,6 +80,8 @@ export default function ConversionTracking() {
         pagina,
         titulo,
       });
+
+      window.oaiq?.("measure", "lead_created", { type: "customer_action" });
     }
 
     // Captura na fase de captura para pegar o clique antes que algum
