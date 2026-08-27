@@ -175,7 +175,6 @@ const CREAM  = "#f5f1e8";
 
 interface WorldMapAONIKProps {
   yearFilter?: 2026 | 2027;
-  onYearChange?: (y: 2026 | 2027) => void;
   bgColor?: string;
 }
 
@@ -183,7 +182,6 @@ interface WorldMapAONIKProps {
 
 export default function WorldMapAONIK({
   yearFilter: extYear,
-  onYearChange,
   bgColor,
 }: WorldMapAONIKProps = {}) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -196,13 +194,8 @@ export default function WorldMapAONIK({
   const [selected,  setSelected]  = useState<Destination | null>(null);
   const [filter,    setFilter]    = useState("todos");
 
-  // Estado de ano: externo (controlado) ou interno (standalone)
-  const [localYear, setLocalYear] = useState<2026 | 2027>(2026);
-  const yearFilter  = extYear ?? localYear;
-  const setYear = (y: 2026 | 2027) => {
-    setLocalYear(y);
-    onYearChange?.(y);
-  };
+  // Temporada 2026 encerrada — mapa trava em 2027.
+  const yearFilter = extYear ?? 2027;
 
   // Carrega TopoJSON → GeoJSON
   useEffect(() => {
@@ -295,22 +288,9 @@ export default function WorldMapAONIK({
         className="relative w-full overflow-hidden rounded-2xl"
         style={{ height: dims.h || 480, backgroundColor: bgColor ?? CREAM }}
       >
-        {/* ── FIX 3: Toggle de ano — overlay top-right ─── */}
-        <div className="absolute right-4 top-4 z-10 flex overflow-hidden rounded-full border border-forest/15 bg-cream/90 shadow-sm backdrop-blur-sm">
-          {([2026, 2027] as const).map((y) => (
-            <button
-              key={y}
-              onClick={() => setYear(y)}
-              aria-pressed={yearFilter === y}
-              className={`px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] transition-colors duration-200 ${
-                yearFilter === y
-                  ? "bg-gold text-[#17150f]"
-                  : "text-forest/50 hover:text-forest"
-              }`}
-            >
-              {y}
-            </button>
-          ))}
+        {/* ── Selo do ano ativo (temporada 2027) ─── */}
+        <div className="absolute right-4 top-4 z-10 rounded-full border border-forest/15 bg-cream/90 px-4 py-1.5 text-[12px] font-semibold uppercase tracking-[0.12em] text-forest shadow-sm backdrop-blur-sm">
+          {yearFilter}
         </div>
 
         {/* Estado de loading */}

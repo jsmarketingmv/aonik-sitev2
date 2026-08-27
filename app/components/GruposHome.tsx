@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import WorldMapAONIK from "./WorldMapAONIK";
 import CalendarWidget from "./CalendarWidget";
@@ -32,7 +31,8 @@ function Reveal({
 const G4 = "#2A6F2B"; // GREEN 4 — acento verde médio-escuro
 
 export default function GruposHome({ variant = "amber" }: { variant?: "amber" | "green" }) {
-  const [yearFilter, setYearFilter] = useState<2026 | 2027>(2026);
+  // Temporada 2026 encerrada — calendário trava em 2027.
+  const yearFilter: 2027 = 2027;
   const grupos = useGruposAoVivo();
 
   const proximas = grupos.filter(
@@ -110,7 +110,6 @@ export default function GruposHome({ variant = "amber" }: { variant?: "amber" | 
       <div className="w-full px-4 md:px-8">
         <WorldMapAONIK
           yearFilter={yearFilter}
-          onYearChange={setYearFilter}
           bgColor={variant === "green" ? "#EEF2E3" : undefined}
         />
       </div>
@@ -139,19 +138,11 @@ export default function GruposHome({ variant = "amber" }: { variant?: "amber" | 
                   </h3>
                 </div>
 
-                <div className="flex shrink-0 rounded-full border border-forest/15 bg-cream p-1">
-                  {([2026, 2027] as const).map((y) => (
-                    <button
-                      key={y}
-                      onClick={() => setYearFilter(y)}
-                      className="rounded-full px-5 py-2 text-[13px] font-semibold tracking-[0.04em] transition-all duration-200"
-                      style={y === yearFilter
-                        ? { backgroundColor: accent, color: variant === "green" ? "#fff" : "#17150f" }
-                        : { color: "rgba(26,23,20,0.35)" }}
-                    >
-                      {y}
-                    </button>
-                  ))}
+                <div
+                  className="shrink-0 rounded-full px-5 py-2 text-[13px] font-semibold tracking-[0.04em]"
+                  style={{ backgroundColor: accent, color: variant === "green" ? "#fff" : "#17150f" }}
+                >
+                  2027
                 </div>
               </div>
             </Reveal>

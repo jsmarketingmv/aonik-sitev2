@@ -6,6 +6,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import Contato from "../components/Contato";
 import FloatingActions from "../components/FloatingActions";
+import WorldMapAONIK from "../components/WorldMapAONIK";
 import { Reveal, Kicker, EASE } from "../components/ui";
 import { GRUPOS, EM_BREVE, datasDoAno } from "../lib/grupos";
 import { AONIK } from "../lib/contato";
@@ -412,7 +413,8 @@ export default function GruposPage() {
 }
 
 function Calendario() {
-  const [ano, setAno] = useState<2026 | 2027>(2026);
+  // Temporada 2026 encerrada — calendário trava em 2027.
+  const ano = 2027 as const;
   const lista = GRUPOS.filter((g) => datasDoAno(g, ano).length > 0);
 
   return (
@@ -427,24 +429,22 @@ function Calendario() {
               Escolha sua data
             </h2>
           </Reveal>
-          {/* Toggle de ano */}
           <Reveal delay={0.1}>
-            <div className="inline-flex rounded-full border border-forest/15 bg-cream p-1">
-              {([2026, 2027] as const).map((y) => (
-                <button
-                  key={y}
-                  onClick={() => setAno(y)}
-                  className={`rounded-full px-6 py-2.5 text-[14px] font-semibold tracking-[0.05em] transition-all ${
-                    ano === y ? "text-forest" : "text-ink/45 hover:text-ink/70"
-                  }`}
-                  style={ano === y ? { background: EMBER } : undefined}
-                >
-                  {y}
-                </button>
-              ))}
+            <div
+              className="inline-flex rounded-full px-6 py-2.5 text-[14px] font-semibold tracking-[0.05em] text-forest"
+              style={{ background: EMBER }}
+            >
+              2027
             </div>
           </Reveal>
         </div>
+
+        {/* Mapa mundi */}
+        <Reveal delay={0.05}>
+          <div className="mb-14">
+            <WorldMapAONIK />
+          </div>
+        </Reveal>
 
         {/* Linhas */}
         <div className="border-t border-forest/15">
