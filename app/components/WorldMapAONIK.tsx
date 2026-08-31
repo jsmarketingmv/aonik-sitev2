@@ -35,8 +35,8 @@ const DESTINATIONS: Destination[] = [
     years: [2026, 2027],
     lat: 45.83,
     lng: 6.86,
-    labelOffsetX: -55,
-    labelOffsetY: -68,
+    labelOffsetX: -25,
+    labelOffsetY: -155,
     type: "aventura",
     description:
       "Trilha icônica que atravessa França, Itália e Suíça em 170 km pelos Alpes. 14 dias, 8.823 m de desnível. Saída confirmada.",
@@ -51,8 +51,8 @@ const DESTINATIONS: Destination[] = [
     years: [2026, 2027],
     lat: 46.5,
     lng: 12.0,
-    labelOffsetX: -98,
-    labelOffsetY: -10,
+    labelOffsetX: -195,
+    labelOffsetY: -35,
     type: "aventura",
     description:
       "Alta Via 1 pelos Dolomitas italianos: 100 km e 5.116 m+ entre as montanhas mais cênicas dos Alpes. 10 dias.",
@@ -67,8 +67,8 @@ const DESTINATIONS: Destination[] = [
     years: [2027],
     lat: 47.6,
     lng: 13.0,
-    labelOffsetX: 100,
-    labelOffsetY: -52,
+    labelOffsetX: 155,
+    labelOffsetY: -125,
     type: "aventura",
     description:
       "Travessia de Salzburg pelos Alpes Bávaros: Ninho da Águia, Lago Königssee e refúgios de montanha. 65,4 km, 9 dias.",
@@ -83,8 +83,8 @@ const DESTINATIONS: Destination[] = [
     years: [2027],
     lat: 47.12,
     lng: 11.31,
-    labelOffsetX: 95,
-    labelOffsetY: 32,
+    labelOffsetX: 45,
+    labelOffsetY: 155,
     type: "aventura",
     description:
       "Stubaier Höhenweg pelo Tirol austríaco: travessia de cabana em cabana entre glaciares e lagos de gelo. 90 km, 5.930 m+, 10 dias.",
@@ -99,8 +99,8 @@ const DESTINATIONS: Destination[] = [
     years: [2026, 2027],
     lat: 41.1,
     lng: -7.8,
-    labelOffsetX: -95,
-    labelOffsetY: -24,
+    labelOffsetX: -175,
+    labelOffsetY: 105,
     type: "cultural",
     description:
       "8 dias de caminhada pelo Vale do Douro, entre quintas históricas, vinhas e aldeias de xisto. 58,7 km, 2.051 m+.",
@@ -115,8 +115,8 @@ const DESTINATIONS: Destination[] = [
     years: [2026, 2027],
     lat: -28.4,
     lng: -50.8,
-    labelOffsetX: 64,
-    labelOffsetY: -18,
+    labelOffsetX: 85,
+    labelOffsetY: -25,
     type: "aventura",
     description:
       "55 km pela Serra Catarinense, um dos trekkings mais bonitos do Brasil. Abril, Junho e Setembro. Saída confirmada.",
@@ -130,8 +130,8 @@ const DESTINATIONS: Destination[] = [
     years: [2027],
     lat: 30.7,
     lng: 35.5,
-    labelOffsetX: 62,
-    labelOffsetY: -18,
+    labelOffsetX: 195,
+    labelOffsetY: 20,
     type: "aventura",
     description:
       "77 km pelo deserto da Jordânia, da Reserva de Dana até a cidade rosa de Petra. 10 dias de expedição.",
@@ -362,8 +362,11 @@ export default function WorldMapAONIK({
               const [x, y] = coords;
               const isVis  = isVisible(dest, filter, yearFilter);
               const isHov  = hovered === dest.id;
-              const lx     = x + dest.labelOffsetX;
-              const ly     = y + dest.labelOffsetY;
+              // Pino visível fica deslocado do ponto geográfico real, evitando
+              // que destinos próximos (ex.: Alpes) se sobreponham no zoom mundi.
+              const hasOffset = dest.labelOffsetX !== 0 || dest.labelOffsetY !== 0;
+              const px    = x + dest.labelOffsetX;
+              const py    = y + dest.labelOffsetY;
               const tag    = dest.taglines[yearFilter] ?? dest.tagline;
 
               return (
@@ -376,7 +379,7 @@ export default function WorldMapAONIK({
                   }}
                   transition={{ duration: 0.38, delay: 0.8 + i * 0.12 }}
                   style={{
-                    transformOrigin: `${x}px ${y}px`,
+                    transformOrigin: `${px}px ${py}px`,
                     cursor: isVis ? "pointer" : "default",
                   }}
                   onMouseEnter={() => isVis && setHovered(dest.id)}
@@ -389,23 +392,28 @@ export default function WorldMapAONIK({
                     e.key === "Enter" && isVis && setSelected(dest)
                   }
                 >
-                  {/* Conector — FIX 2: strokeWidth 1.5 */}
-                  {(dest.labelOffsetX !== 0 || dest.labelOffsetY !== 0) && (
+                  {/* Linha-guia até o ponto geográfico real */}
+                  {hasOffset && (
                     <line
                       x1={x}
                       y1={y}
-                      x2={lx}
-                      y2={ly + 16}
+                      x2={px}
+                      y2={py}
                       stroke={GOLD}
-                      strokeWidth="1.5"
-                      strokeDasharray={isHov ? undefined : "4,3"}
-                      opacity={isHov ? 0.8 : 0.5}
+                      strokeWidth="1.25"
+                      strokeDasharray={isHov ? undefined : "3,3.5"}
+                      opacity={isHov ? 0.75 : 0.4}
                     />
+                  )}
+
+                  {/* Ponto geográfico real — discreto, sem interação */}
+                  {hasOffset && (
+                    <circle cx={x} cy={y} r={2.5} fill={GOLD} opacity={0.5} pointerEvents="none" />
                   )}
 
                   {/* Pulso hover — SMIL nativo, sem Framer Motion */}
                   {isHov && (
-                    <circle cx={x} cy={y} r={10} fill="none" stroke={GOLD} strokeWidth="1.2">
+                    <circle cx={px} cy={py} r={10} fill="none" stroke={GOLD} strokeWidth="1.2">
                       <animate attributeName="r" from="10" to="32" dur="1.8s" repeatCount="indefinite" />
                       <animate attributeName="opacity" from="0.85" to="0" dur="1.8s" repeatCount="indefinite" />
                     </circle>
@@ -413,16 +421,16 @@ export default function WorldMapAONIK({
 
                   {/* Pin — FIX 2: r 10/14, CSS transition em atributo SVG */}
                   <circle
-                    cx={x} cy={y}
+                    cx={px} cy={py}
                     r={isHov ? 14 : 10}
                     fill={GOLD}
                     filter={isHov ? "url(#aon-glow)" : undefined}
                     style={{ transition: "r 0.18s ease" }}
                   />
-                  <circle cx={x} cy={y} r={3.5} fill={CREAM} pointerEvents="none" />
+                  <circle cx={px} cy={py} r={3.5} fill={CREAM} pointerEvents="none" />
 
                   {/* Label — FIX 2: fontSize 13/14 + tagline 10 */}
-                  <g transform={`translate(${lx}, ${ly})`}>
+                  <g transform={`translate(${px}, ${py + 26})`}>
                     <text
                       textAnchor="middle"
                       fill={FOREST}
@@ -459,8 +467,10 @@ export default function WorldMapAONIK({
               if (!d || !isVisible(d, filter, yearFilter)) return null;
               const c = proj([d.lng, d.lat]);
               if (!c) return null;
-              const [x, y] = c;
-              const rightSide = x / dims.w > 0.65;
+              // Ancora no pino deslocado (px,py), não no ponto geográfico real.
+              const px = c[0] + d.labelOffsetX;
+              const py = c[1] + d.labelOffsetY;
+              const rightSide = px / dims.w > 0.65;
               return (
                 <motion.div
                   key={hovered}
@@ -470,10 +480,10 @@ export default function WorldMapAONIK({
                   transition={{ duration: 0.14 }}
                   className="pointer-events-none absolute z-20 max-w-[200px] rounded-xl bg-forest px-4 py-3 shadow-xl"
                   style={{
-                    top: y - 12,
+                    top: py - 12,
                     ...(rightSide
-                      ? { right: dims.w - x + 18 }
-                      : { left: x + 18 }),
+                      ? { right: dims.w - px + 18 }
+                      : { left: px + 18 }),
                   }}
                 >
                   <p className="text-[12px] font-semibold leading-snug text-cream">
