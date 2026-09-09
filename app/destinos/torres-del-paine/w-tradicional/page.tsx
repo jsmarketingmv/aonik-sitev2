@@ -91,7 +91,8 @@ const DATA: Programa = {
       key: "camping", label: "Camping", tarifa: 1874, base2pax: true, single: 1874, jantar: 71,
       nota: "Valores por pessoa, em ocupação dupla. Possível estender o roteiro para 6 ou 7 dias. Para 1 Pax, aplica-se suplemento single.",
       inclui: [
-        "Welcome drink em cada setor e todas as refeições (jantar incluído no Dia 1)",
+        "Welcome drink em cada setor (ao chegar da caminhada)",
+        "Refeições inclusas: Jantar (Noite 1) / Café da Manhã, Box Lunch, Jantar (Demais dias) / Café da Manhã, Box Lunch (Último Dia)",
         "Camping full equipado: barraca em plataforma, saco de dormir, colchão de alta densidade, travesseiro e banheiros com chuveiro quente",
         "Welcome kit: garrafa d'água, liner* e toalha",
         "Catamarã no Lago Pehoé*",
@@ -102,7 +103,8 @@ const DATA: Programa = {
       key: "refugio", label: "Refúgio", tarifa: 2366, base2pax: false, single: null, jantar: 71,
       nota: "Valores por pessoa, em ocupação simples. Possível estender o roteiro para 6 ou 7 dias.",
       inclui: [
-        "Welcome drink em cada setor e todas as refeições (jantar incluído a partir do Dia 1)",
+        "Welcome drink em cada setor (ao chegar da caminhada)",
+        "Refeições inclusas: Jantar (Noite 1) / Café da Manhã, Box Lunch, Jantar (Demais dias) / Café da Manhã, Box Lunch (Último Dia)",
         "Cama em quarto compartilhado de 6 a 8 camas, saco de dormir e banheiros com água quente",
         "Welcome kit: garrafa d'água, liner* e toalha",
         "Catamarã no Lago Pehoé*",
@@ -113,8 +115,10 @@ const DATA: Programa = {
       key: "hotel", label: "Hotel + Refúgio", tarifa: 3006, base2pax: true, single: 3000, jantar: 71,
       nota: "Valores por pessoa, em ocupação dupla. Possível estender o roteiro para 6 ou 7 dias. Para 1 Pax, aplica-se suplemento single.",
       inclui: [
-        "Welcome drink em cada setor; acomodação para 2 hóspedes: 2 noites em quarto Superior no Hotel Las Torres + noites em quarto compartilhado (6 a 8 camas) nos refúgios da rota",
-        "Saco de dormir, banheiros com chuveiro quente e todas as refeições",
+        "Welcome drink em cada setor (ao chegar da caminhada)",
+        "Refeições inclusas: Jantar (Noite 1) / Café da Manhã, Box Lunch, Jantar (Demais dias) / Café da Manhã, Box Lunch (Último Dia)",
+        "Acomodação para 2 hóspedes: 2 noites em quarto Superior no Hotel Las Torres + noites em quarto compartilhado (6 a 8 camas) nos refúgios da rota",
+        "Saco de dormir e banheiros com chuveiro quente",
         "Welcome kit: garrafa d'água, liner* e toalha",
         "Catamarã no Lago Pehoé*",
         "Taxa de entrada do Parque Nacional e ônibus regular Puerto Natales ↔ Torres del Paine (ida e volta)",

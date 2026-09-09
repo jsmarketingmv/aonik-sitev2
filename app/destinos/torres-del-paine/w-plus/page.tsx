@@ -98,7 +98,8 @@ const DATA: Programa = {
       key: "camping", label: "Camping + Hotel", tarifa: 2126, base2pax: true, single: 2126, jantar: 71,
       nota: "Valores por pessoa, em ocupação dupla. A noite no hotel é em meia pensão. Para 1 Pax, aplica-se suplemento single.",
       inclui: [
-        "Welcome drink em cada setor e todas as refeições (jantar incluído no Dia 1 e meia pensão no hotel)",
+        "Welcome drink em cada setor (ao chegar da caminhada)",
+        "Refeições inclusas: Jantar (Noite 1) / Café da Manhã, Box Lunch, Jantar (Demais dias) / Café da Manhã, Box Lunch (Último Dia)",
         "Camping full equipado por 3 noites: barraca em plataforma, saco de dormir, colchão de alta densidade, travesseiro e banheiros com chuveiro quente",
         "1 noite em Quarto Superior do Hotel Las Torres (meia pensão incluída)",
         "Welcome kit: garrafa d'água, liner* e toalha",
@@ -110,7 +111,8 @@ const DATA: Programa = {
       key: "refugio", label: "Refúgio + Hotel", tarifa: 2594, base2pax: true, single: 2594, jantar: 71,
       nota: "Valores por pessoa, em ocupação dupla. A noite no hotel é em meia pensão. Para 1 Pax, aplica-se suplemento single.",
       inclui: [
-        "Welcome drink em cada setor e todas as refeições (meia pensão no hotel)",
+        "Welcome drink em cada setor (ao chegar da caminhada)",
+        "Refeições inclusas: Jantar (Noite 1) / Café da Manhã, Box Lunch, Jantar (Demais dias) / Café da Manhã, Box Lunch (Último Dia)",
         "Cama em quarto compartilhado de 6 a 8 camas, saco de dormir e banheiros com água quente por 3 noites",
         "1 noite em Quarto Superior do Hotel Las Torres (meia pensão incluída)",
         "Welcome kit: garrafa d'água, liner* e toalha",
