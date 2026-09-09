@@ -10,6 +10,9 @@ const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/ho
 // Login do SaaS Operadora (mesmo destino para agente/operador e equipe AONIK).
 // Ativa quando o domínio aonik.com.br for conectado (path /reservas → SaaS).
 const SAAS_LOGIN = "https://reservas.aonik.com.br/reservas/login";
+// Agência parceira tem portal proprio, com login proprio. Mandar o agente para
+// /reservas/login era mandar para a porta da equipe, onde ele nao entra.
+const PORTAL_AGENCIA = "https://reservas.aonik.com.br/agencia";
 
 export default function Nav() {
   const { t } = useLang();
@@ -101,7 +104,7 @@ export default function Nav() {
                     {t.nav.loginTitle}
                   </p>
                   <a
-                    href={SAAS_LOGIN}
+                    href={PORTAL_AGENCIA}
                     className="block px-4 py-3 text-[13px] text-cream/80 transition-colors hover:bg-cream/[0.05] hover:text-cream"
                   >
                     {t.nav.loginAgente}
@@ -183,7 +186,7 @@ export default function Nav() {
                   <p className="text-[10px] uppercase tracking-[0.2em] text-cream/40">
                     {t.nav.loginTitle}
                   </p>
-                  <a href={SAAS_LOGIN} className="text-[13px] text-cream/70 hover:text-cream">
+                  <a href={PORTAL_AGENCIA} className="text-[13px] text-cream/70 hover:text-cream">
                     {t.nav.loginAgente}
                   </a>
                   <a href={SAAS_LOGIN} className="text-[13px] text-cream/70 hover:text-cream">
