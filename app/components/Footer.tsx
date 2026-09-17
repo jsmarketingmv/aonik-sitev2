@@ -55,14 +55,26 @@ export default function Footer() {
                   </li>
                 ))}
                 {colIdx === 0 && (
-                  <li>
-                    <a
-                      href="/news"
-                      className="text-[14px] font-light text-neon transition-colors hover:text-cream"
-                    >
-                      News AONIK
-                    </a>
-                  </li>
+                  <>
+                    <li>
+                      <a
+                        href="/news"
+                        className="text-[14px] font-light text-neon transition-colors hover:text-cream"
+                      >
+                        News AONIK
+                      </a>
+                    </li>
+                    {/* Porta comercial B2B. Discreta de propósito: a página é
+                        oculta do Google e serve o canal de agências. */}
+                    <li>
+                      <a
+                        href="/parceiros"
+                        className="text-[14px] font-light text-gold/80 transition-colors hover:text-gold"
+                      >
+                        Para agências
+                      </a>
+                    </li>
+                  </>
                 )}
               </ul>
             </div>

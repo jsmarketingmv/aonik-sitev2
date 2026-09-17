@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLang } from "./LanguageProvider";
+import { PORTAL_AGENCIA } from "../lib/contato";
 
 // Peregrinação → /jornada; Hotéis → /hoteis
 const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/hoteis"];
@@ -10,9 +11,8 @@ const HREFS = ["/caminhadas", "/jornada", "/grupos", "/bike", "/navegacao", "/ho
 // Login do SaaS Operadora (mesmo destino para agente/operador e equipe AONIK).
 // Ativa quando o domínio aonik.com.br for conectado (path /reservas → SaaS).
 const SAAS_LOGIN = "https://reservas.aonik.com.br/reservas/login";
-// Agência parceira tem portal proprio, com login proprio. Mandar o agente para
-// /reservas/login era mandar para a porta da equipe, onde ele nao entra.
-const PORTAL_AGENCIA = "https://reservas.aonik.com.br/agencia";
+// PORTAL_AGENCIA vive em lib/contato.ts: a pagina /parceiros usa a mesma
+// constante, e duas copias do mesmo link viram divergencia na primeira mudanca.
 
 export default function Nav() {
   const { t } = useLang();
@@ -83,6 +83,17 @@ export default function Nav() {
                 </a>
               </li>
             ))}
+            {/* Porta comercial B2B. Fica junto das categorias, e não dentro do
+                dropdown de Login, porque serve quem AINDA NÃO é parceiro. */}
+            <li>
+              <a
+                href="/parceiros"
+                className="group relative whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.18em] text-gold/80 transition-colors hover:text-gold"
+              >
+                {t.nav.paraAgencias}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
+              </a>
+            </li>
           </ul>
 
           {/* Ações à direita */}
@@ -176,6 +187,15 @@ export default function Nav() {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href="/parceiros"
+                    onClick={() => setMenuOpen(false)}
+                    className="block py-3 text-[14px] font-medium uppercase tracking-[0.18em] text-gold/80 transition-colors hover:text-gold"
+                  >
+                    {t.nav.paraAgencias}
+                  </a>
+                </li>
               </ul>
 
               <div className="mt-6 flex flex-col gap-4">

@@ -9,6 +9,11 @@ export const AONIK = {
   cidade: "Blumenau, Santa Catarina, SC, Brasil",
 } as const;
 
+/** Portal da agência parceira no SaaS (login próprio, papel `agencia`).
+ *  Não confundir com /reservas/login, que é a porta da equipe interna. */
+export const PORTAL_AGENCIA = "https://reservas.aonik.com.br/agencia";
+
+
 /* Mensagens pré-preenchidas por slug de produto */
 const WA_MSGS: Record<string, string> = {
   "w-tradicional":    "Olá! Gostaria de mais informações sobre o Circuito W Tradicional em Torres del Paine.",

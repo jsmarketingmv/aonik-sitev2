@@ -10,6 +10,7 @@ export interface Dict {
     login: string;
     loginTitle: string;
     loginAgente: string;
+    paraAgencias: string;
     loginEquipe: string;
     cta: string;
   };
@@ -85,6 +86,7 @@ export const translations: Record<Lang, Dict> = {
       login: "Login",
       loginTitle: "Acessar o sistema AONIK",
       loginAgente: "Sou agente / operador",
+      paraAgencias: "Para agências",
       loginEquipe: "Sou equipe AONIK",
       cta: "Falar com especialista",
     },
@@ -229,6 +231,7 @@ export const translations: Record<Lang, Dict> = {
       login: "Acceso",
       loginTitle: "Acceder al sistema AONIK",
       loginAgente: "Soy agente / operador",
+      paraAgencias: "Para agencias",
       loginEquipe: "Soy equipo AONIK",
       cta: "Hablar con un experto",
     },
@@ -372,6 +375,7 @@ export const translations: Record<Lang, Dict> = {
       login: "Login",
       loginTitle: "Access the AONIK system",
       loginAgente: "I'm an agent / operator",
+      paraAgencias: "For agencies",
       loginEquipe: "I'm AONIK team",
       cta: "Talk to a specialist",
     },

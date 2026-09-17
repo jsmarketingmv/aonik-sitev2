@@ -62,3 +62,53 @@ export async function gravarLead(lead: LeadInput): Promise<void> {
     throw new Error(`Supabase leads insert falhou: ${res.status} ${txt}`);
   }
 }
+
+export type LeadAgenciaInput = {
+  nome: string;
+  agencia: string;
+  email: string;
+  telefone: string;
+};
+
+/**
+ * Lead de agência parceira, vindo da porta B2B do site (/parceiros).
+ *
+ * Cai na MESMA tabela e no mesmo kanban dos leads de viajante, mas marcado
+ * com `is_b2b: true` e `origin: "site-b2b"`, que já existiam no banco do SaaS
+ * e são valores aceitos pelo trigger `validate_lead_enums`.
+ *
+ * A tabela não tem coluna para nome da agência, então ele vai em dois lugares
+ * de propósito: em `message`, para o vendedor ler no card sem abrir nada, e em
+ * `tags`, para dar pra filtrar e agrupar depois.
+ */
+export async function gravarLeadAgencia(lead: LeadAgenciaInput): Promise<void> {
+  const agencia = lead.agencia.trim();
+
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+    method: "POST",
+    headers: {
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify({
+      full_name: lead.nome.trim(),
+      email: lead.email.trim(),
+      phone: lead.telefone.trim(),
+      message: `Agência: ${agencia}`,
+      travel_intent: "PARCERIA B2B · quer revender produtos AONIK",
+      is_b2b: true,
+      source: "site-b2b-parceiros",
+      origin: "site-b2b",
+      kanban_status: "novo",
+      tags: [`agencia:${agencia}`, ...origemComoTags()],
+      program_slug: paginaDeOrigem(),
+    }),
+  });
+
+  if (!res.ok) {
+    const txt = await res.text().catch(() => "");
+    throw new Error(`Supabase lead B2B insert falhou: ${res.status} ${txt}`);
+  }
+}
