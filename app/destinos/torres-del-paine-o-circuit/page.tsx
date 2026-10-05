@@ -266,11 +266,6 @@ const GUIA = {
   ],
 };
 
-const PROMO = [
-  { titulo: "Parcelado", badge: "5% OFF", destaque: true, desc: "Entrada de 30% + saldo em até 7x sem juros, com 5% de desconto.", obs: "Entrada em PIX/transferência · parcelas no cartão." },
-  { titulo: "Em 10x", badge: "sem juros", destaque: false, desc: "Saldo em até 10x sem juros, sem desconto adicional.", obs: "No cartão de crédito." },
-];
-
 const nivelColor = (n: string) => (n === "Alto" ? O.ouroSoft : O.gelo);
 
 /* ============================================================
@@ -566,7 +561,7 @@ export default function OCircuitPage() {
             </div>
           </Reveal>
 
-          {/* tarifa + early booking */}
+          {/* tarifa */}
           <Reveal delay={0.14}>
             <div className="mt-6 overflow-hidden rounded-2xl border" style={{ borderColor: O.line }}>
               <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4" style={{ background: O.ouro }}>
@@ -591,30 +586,6 @@ export default function OCircuitPage() {
                   </ul>
                 </div>
               </div>
-            </div>
-          </Reveal>
-
-          {/* early booking */}
-          <Reveal delay={0.18}>
-            <div className="mt-6 rounded-2xl border p-6 md:p-8" style={{ borderColor: O.ouro, background: "rgba(201,154,82,0.06)" }}>
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.28em]" style={{ color: O.ouroSoft }}>Early Booking <span style={{ color: O.cFaint }}>· reserva antecipada</span></p>
-                <p className="text-[11px] uppercase tracking-[0.16em]" style={{ color: O.cFaint }}>vagas limitadas</p>
-              </div>
-              <p className="mt-2 text-[13px] font-light" style={{ color: O.cSoft }}>Descontos por forma de pagamento para quem garante cedo. Escolha a que melhor combina com você.</p>
-              <div className="mt-6 grid gap-4 md:grid-cols-2">
-                {PROMO.map((f) => (
-                  <div key={f.titulo} className="rounded-xl border p-5" style={{ borderColor: f.destaque ? O.ouro : O.line, background: f.destaque ? "rgba(201,154,82,0.07)" : "transparent" }}>
-                    <div className="flex items-center justify-between">
-                      <span className="font-display text-lg font-light" style={{ color: O.creme }}>{f.titulo}</span>
-                      <span className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em]" style={{ background: f.destaque ? O.ouro : O.line, color: f.destaque ? O.ink : O.cSoft }}>{f.badge}</span>
-                    </div>
-                    <p className="mt-2 text-[12.5px] font-light leading-relaxed" style={{ color: O.cSoft }}>{f.desc}</p>
-                    <p className="mt-3 text-[11px] font-light italic" style={{ color: O.cFaint }}>{f.obs}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-5 text-[11px] font-light italic" style={{ color: O.cFaint }}>Valores em dólar; conversão para real pelo dólar turismo na cotação do dia do fechamento. Consulte com a equipe a data-limite vigente da promoção.</p>
             </div>
           </Reveal>
 

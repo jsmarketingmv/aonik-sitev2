@@ -554,7 +554,7 @@ export function Galeria({ images, accent = T.ouro }: { images: GalImg[]; accent?
    TARIFAS — Temporada 2026/2027
    Badges = PERFIL DE HOSPEDAGEM (Camping / Refúgio / Hotel + Refúgio).
    Linhas = tarifa por pessoa, suplemento single, jantares especiais.
-   + Informações importantes + Promoção vigente (Early Booking).
+   + Informações importantes.
    ============================================================ */
 export type TarifaPerfil = {
   key: string;
@@ -574,15 +574,6 @@ const INFO_IMPORTANTES = [
 ];
 const INFO_AVISO =
   "Avisos de fechamento do parque ou alterações de datas na temporada podem ocorrer a qualquer momento e sem aviso prévio, sob responsabilidade da gestão do Parque Nacional, por variáveis climáticas e outras situações imprevistas, além do nosso controle e por força maior.";
-
-const PROMO = {
-  validade: "31 de julho de 2026",
-  formas: [
-    { titulo: "À vista", badge: "10% OFF", destaque: true, desc: "Pagamento integral à vista, com 10% de desconto.", entrada: "PIX ou transferência", obs: "Quitação imediata." },
-    { titulo: "Parcelado", badge: "5% OFF", destaque: true, desc: "Entrada de 30% + saldo em até 7x sem juros, com 5% de desconto.", entrada: "Entrada em PIX/transferência · parcelas no cartão", obs: "No cartão de crédito não há prazo de quitação antes da viagem." },
-    { titulo: "Em 10x", badge: "sem juros", destaque: false, desc: "Saldo em até 10x sem juros, sem desconto adicional.", entrada: "Entrada em PIX/transferência · parcelas no cartão", obs: "No cartão de crédito não há prazo de quitação antes da viagem." },
-  ],
-};
 
 export function Tarifas({ accent, perfis, naoInclui }: { accent: string; perfis: TarifaPerfil[]; naoInclui?: string[] }) {
   const [sel, setSel] = useState(0);
@@ -678,33 +669,6 @@ export function Tarifas({ accent, perfis, naoInclui }: { accent: string; perfis:
             <span className="mt-0.5 shrink-0" style={{ color: T.creme }}>·</span>{INFO_AVISO}
           </li>
         </ul>
-      </div>
-
-      {/* PROMOÇÃO VIGENTE — Early Booking */}
-      <div className="mt-10 rounded-2xl border p-6 md:p-8" style={{ borderColor: accent, background: "rgba(156,195,212,0.04)" }}>
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em]" style={{ color: accent }}>Promoção vigente</p>
-          <p className="text-[11px] uppercase tracking-[0.16em]" style={{ color: T.cFaint }}>válida até {PROMO.validade}</p>
-        </div>
-        <h3 className="mt-2 font-display text-2xl font-light" style={{ color: T.creme }}>
-          Early Booking <span className="text-lg" style={{ color: T.cSoft }}>(reserva antecipada)</span>
-        </h3>
-        <p className="mt-1 text-[13px] font-light" style={{ color: T.cSoft }}>Descontos por forma de pagamento. Escolha a que melhor combina com você.</p>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {PROMO.formas.map((f) => (
-            <div key={f.titulo} className="rounded-xl border p-5"
-              style={{ borderColor: f.destaque ? accent : T.line, background: f.destaque ? "rgba(207,154,78,0.06)" : "transparent" }}>
-              <div className="flex items-center justify-between">
-                <span className="font-display text-lg font-light" style={{ color: T.creme }}>{f.titulo}</span>
-                <span className="rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em]"
-                  style={{ background: f.destaque ? accent : T.line, color: f.destaque ? T.ink : T.cSoft }}>{f.badge}</span>
-              </div>
-              <p className="mt-2 text-[12.5px] font-light leading-relaxed" style={{ color: T.cSoft }}>{f.desc}</p>
-              <p className="mt-3 text-[11px] font-light" style={{ color: T.cFaint }}>{f.entrada}</p>
-              <p className="mt-1 text-[11px] font-light italic" style={{ color: T.cFaint }}>{f.obs}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

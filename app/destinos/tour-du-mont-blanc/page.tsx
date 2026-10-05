@@ -379,7 +379,7 @@ export default function TMBV2Page() {
               </a>
               <span className="text-white/85">
                 <span className="text-[12px] uppercase tracking-[0.16em] text-white/50">a partir de</span>{" "}
-                <span className="font-display text-2xl" style={{ color: C.snow }}>€ 5.450</span>
+                <span className="font-display text-2xl" style={{ color: C.snow }}>€ 5.900</span>
               </span>
             </motion.div>
             {/* badge saída confirmada */}
@@ -836,25 +836,14 @@ export default function TMBV2Page() {
               <div className="overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(217,140,74,0.28)`, backgroundColor: "rgba(217,140,74,0.04)" }}>
                 <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4" style={{ borderBottom: `1px solid rgba(217,140,74,0.18)` }}>
                   <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: C.wood }}>Tarifas · Temporada 2027</span>
-                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: "rgba(238,243,246,0.55)" }}>Promoção válida até 30 de setembro de 2026</span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  <div className="p-6" style={{ borderRight: `1px solid rgba(217,140,74,0.14)`, borderBottom: `1px solid rgba(217,140,74,0.14)` }}>
+                <div className="grid grid-cols-1">
+                  <div className="p-6">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: "rgba(238,243,246,0.55)" }}>Tarifa Temporada 2027</p>
                     <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: C.snow }}>€ 5.900</p>
                     <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · dupla (cidades) e compartilhada (montanhas)</p>
                     <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: "rgba(238,243,246,0.55)" }}>30% de entrada + saldo em parcelas no cartão.</p>
                     <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(238,243,246,0.35)" }}>Valor em Euro, base Euro Turismo no fechamento.</p>
-                  </div>
-                  <div className="p-6" style={{ backgroundColor: "rgba(217,140,74,0.08)" }}>
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: C.wood }}>Early Booking</p>
-                      <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase" style={{ backgroundColor: "rgba(217,140,74,0.18)", color: C.wood }}>reserva antecipada</span>
-                    </div>
-                    <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: C.snow }}>€ 5.450</p>
-                    <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · dupla (cidades) e compartilhada (montanhas)</p>
-                    <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: "rgba(238,243,246,0.55)" }}>20% de entrada + saldo em 7 parcelas sem juros.</p>
-                    <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(238,243,246,0.35)" }}>Entrada em Pix/transferência, parcelas no cartão.</p>
                   </div>
                 </div>
               </div>

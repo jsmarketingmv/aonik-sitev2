@@ -402,8 +402,7 @@ DESTAQUES DO ROTEIRO:
 - Grupo pequeno, saídas guiadas
 
 TARIFAS (por pessoa):
-Opção 1: € 5.900
-Opção 2: € 5.450
+€ 5.900 (dupla nas cidades e compartilhada nas montanhas)
 Planejamento exclusivo, grupo pequeno e privado, roteiro adaptado ao perfil.
 
 CANCELAMENTO:
@@ -486,8 +485,7 @@ ROTEIRO RESUMIDO (10 dias):
 - Dias 9-10: Capanna Alpina + retorno a Cortina
 
 TARIFAS (por pessoa):
-Opção 1: € 5.700
-Opção 2: € 5.450
+€ 5.700 (base dupla)
 Grupo pequeno, programa exclusivo.
 
 INCLUI: 3 noites em hotel duplo/triplo com café da manhã em Cortina, 6 noites em refúgios (jantar + café da manhã + banho), almoço em todos os dias de caminhada, transfers internos.
@@ -574,8 +572,7 @@ ROTEIRO RESUMIDO (9 dias):
 - Dias 8-9: Retorno a Salzburg (hotel) + partida
 
 TARIFAS (por pessoa):
-€ 4.950 (parcelado: 30% entrada + saldo no cartão)
-€ 4.550 (à vista: PIX/transferência)
+€ 4.830 (base dupla · 30% de entrada + saldo em parcelas no cartão)
 Saídas: 14 a 24 de Setembro de 2027 (próxima saída confirmada). Consulte sobre outras datas.
 
 CANCELAMENTO:
@@ -952,7 +949,7 @@ NIVEL: Moderado a desafiador (terreno desertico e variado)
 REGIAO: Reserva de Dana → Wadi Feid → Wadi Araba → Petra, Jordania
 SAIDA CONFIRMADA: 18 a 27 de outubro de 2027
 
-TARIFAS: A partir de US$ 5.250 por pessoa.
+TARIFAS: A partir de US$ 5.750 por pessoa.
 
 FUNIL DE VENDAS:
 - Se perguntar sobre disponibilidade: "A saida de outubro de 2027 esta confirmada e as vagas sao limitadas. Para garantir sua vaga, e fundamental entrar em contato com a equipe o quanto antes! [Falar no WhatsApp do time AONIK →]"
@@ -1563,9 +1560,7 @@ DESTAQUES:
 - Transfer de saída para o aeroporto incluído (trem Pinhão → Porto)
 
 TARIFAS (por pessoa):
-€ 5.100 (tarifa padrão, base dupla)
-À vista: € 4.800 (10% desconto via PIX/transferência)
-À vista antecipado: € 4.300 (consulte condições)
+€ 4.800 (base dupla · 30% de entrada + saldo em parcelas no cartão)
 
 CANCELAMENTO:
 - 31+ dias antes: 10% · 30 a 21 dias: 20% · 20 a 8 dias: 50% · 7 dias ou menos: 100%
@@ -1700,9 +1695,9 @@ Você é a Aonik IA, a guia do segmento GRUPOS DE TREKKING da AONIK, travessias 
 ${GUIA_TONE}
 
 PRODUTOS DESTE SEGMENTO:
-- Tour du Mont Blanc, 14 dias, a volta completa ao Mont Blanc por França, Itália e Suíça. A partir de € 5.450. [IR:/destinos/tour-du-mont-blanc|Ver o Tour du Mont Blanc]
-- Dolomitas Alta Via, 10 dias pelas torres de calcário UNESCO da Itália, de refúgio em refúgio. A partir de € 5.450. [IR:/destinos/dolomitas-alta-via|Ver as Dolomitas]
-- Bavária Alemã, 9 dias pelo Berchtesgadener Land com o guia Hendrik Fendel, do Königssee ao Ninho da Águia. A partir de € 4.550. [IR:/destinos/bavaria|Ver a Bavária]
+- Tour du Mont Blanc, 14 dias, a volta completa ao Mont Blanc por França, Itália e Suíça. A partir de € 5.900. [IR:/destinos/tour-du-mont-blanc|Ver o Tour du Mont Blanc]
+- Dolomitas Alta Via, 10 dias pelas torres de calcário UNESCO da Itália, de refúgio em refúgio. A partir de € 5.700. [IR:/destinos/dolomitas-alta-via|Ver as Dolomitas]
+- Bavária Alemã, 9 dias pelo Berchtesgadener Land com o guia Hendrik Fendel, do Königssee ao Ninho da Águia. A partir de € 4.830. [IR:/destinos/bavaria|Ver a Bavária]
 - Tirol Austríaco, 10 dias no Stubaier Höhenweg, travessia técnica pelos Alpes austríacos. A partir de € 4.200. [IR:/destinos/tirol|Ver o Tirol]
 - Dana até Petra, a travessia lendária pelo deserto da Jordânia até a cidade escavada na rocha. [IR:/destinos/dana-ate-petra|Ver Dana até Petra]
 - Douro Experience Grupos, 8 dias caminhando entre as vinhas do Douro com guia, Portugal UNESCO. [IR:/destinos/douro|Ver o Douro Experience]

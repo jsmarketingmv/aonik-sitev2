@@ -553,7 +553,7 @@ export default function DouroPage() {
               </a>
               <span>
                 <span className="text-[12px] uppercase tracking-[0.16em]" style={{ color: "rgba(243,236,224,0.5)" }}>a partir de</span>{" "}
-                <span className="font-display text-2xl" style={{ color: D.creme }}>€ 5.100</span>
+                <span className="font-display text-2xl" style={{ color: D.creme }}>€ 4.800</span>
               </span>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.95 }}
@@ -930,25 +930,14 @@ export default function DouroPage() {
               <div className="overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(196,165,106,0.28)`, backgroundColor: "rgba(196,165,106,0.04)" }}>
                 <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4" style={{ borderBottom: `1px solid rgba(196,165,106,0.18)` }}>
                   <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: D.ouro }}>Tarifas · Temporada 2027</span>
-                  <span className="text-[10px] font-medium uppercase tracking-[0.14em]" style={{ color: D.textSoft }}>Promoção válida até 30 de setembro de 2026</span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2">
-                  <div className="p-6" style={{ borderRight: `1px solid rgba(196,165,106,0.14)`, borderBottom: `1px solid rgba(196,165,106,0.14)` }}>
+                <div className="grid grid-cols-1">
+                  <div className="p-6">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: D.textSoft }}>Tarifa Temporada 2027</p>
                     <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: D.creme }}>€ 4.800</p>
                     <p className="text-[12px]" style={{ color: D.textSoft }}>por pessoa · quarto duplo</p>
                     <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: D.textSoft }}>30% de entrada + saldo em parcelas no cartão. Vagas limitadas.</p>
                     <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(237,230,221,0.4)" }}>Valor em Euro, base câmbio no fechamento.</p>
-                  </div>
-                  <div className="p-6" style={{ backgroundColor: "rgba(196,165,106,0.07)" }}>
-                    <div className="flex flex-wrap items-center justify-between gap-2">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: D.ouro }}>Early Booking</p>
-                      <span className="rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase" style={{ backgroundColor: "rgba(196,165,106,0.18)", color: D.ouro }}>reserva antecipada</span>
-                    </div>
-                    <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: D.creme }}>€ 4.300</p>
-                    <p className="text-[12px]" style={{ color: D.textSoft }}>por pessoa · quarto duplo</p>
-                    <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: D.textSoft }}>20% de entrada + saldo em 7 parcelas sem juros.</p>
-                    <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(237,230,221,0.4)" }}>Entrada em Pix/transferência, parcelas no cartão.</p>
                   </div>
                 </div>
               </div>
