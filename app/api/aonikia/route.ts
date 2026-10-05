@@ -30,11 +30,6 @@ Camping (base 2 pax): U$ 3.200 | Suplemento single: U$ 2.560 | Jantares festivos
 Refúgio (ocupação simples): U$ 3.315 | Sem suplemento single | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
 
-EARLY BOOKING (válido até 31/07/2026):
-- À vista: 10% OFF — PIX/transferência, quitação imediata
-- Parcelado: 5% OFF — 30% entrada + até 7x sem juros no cartão
-- 10x sem juros — sem desconto adicional
-
 INCLUI (por perfil):
 Camping: host bilíngue 5 dias, traslados privativos ida e volta, camping full equipado por 4 noites (barraca em plataforma, saco de dormir, colchão de alta densidade, travesseiro, banheiros com chuveiro quente), todas as refeições (café da manhã, box lunch e jantar), catamarã Pehoé, entrada do parque, welcome kit, bastões e crampons quando necessário, Rito do Explorador, after trek em cada marco, jantar de despedida e certificado de conclusão.
 Refúgio: host bilíngue 5 dias, traslados privativos ida e volta, 4 noites em quarto compartilhado 6-8 camas com saco de dormir e banheiros com água quente, todas as refeições, catamarã, entrada, welcome kit, bastões e crampons, Rito do Explorador, after trek, jantar de despedida e certificado.
@@ -78,11 +73,6 @@ TARIFAS (Temporada 2026/2027 · por pessoa · USD):
 Camping (base 2 pax): U$ 1.657 | Suplemento single: U$ 1.160 | Jantares festivos: U$ 71
 Refúgio (simples): U$ 2.000 | Sem suplemento single | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
-
-EARLY BOOKING (válido até 31/07/2026):
-- À vista: 10% OFF — PIX/transferência, quitação imediata
-- Parcelado: 5% OFF — 30% entrada + até 7x sem juros no cartão
-- 10x sem juros — sem desconto adicional
 
 INCLUI (por perfil):
 Camping: welcome drink/setor, todas as refeições (jantar incluído no Dia 1), camping full equipado (barraca em plataforma, saco de dormir, colchão alta densidade, travesseiro, banheiros com chuveiro quente), welcome kit (garrafa, liner, toalha), catamarã Pehoé, entrada do parque, ônibus regular Puerto Natales ↔ parque ida e volta.
@@ -130,11 +120,6 @@ Camping + Hotel (base 2 pax): U$ 2.126 | Suplemento single: U$ 1.490 | Jantares 
 Refúgio + Hotel (base 2 pax): U$ 2.594 | Suplemento single: U$ 1.800 | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
 
-EARLY BOOKING (válido até 31/07/2026):
-- À vista: 10% OFF — PIX/transferência, quitação imediata
-- Parcelado: 5% OFF — 30% entrada + até 7x sem juros no cartão
-- 10x sem juros — sem desconto adicional
-
 INCLUI (por perfil):
 Camping + Hotel: welcome drink/setor, todas as refeições (jantar Dia 1 e meia pensão no hotel), camping full equipado por 3 noites (barraca em plataforma, saco de dormir, colchão alta densidade, travesseiro, banheiros com chuveiro quente), 1 noite Quarto Superior Hotel Las Torres (meia pensão incluída), welcome kit (garrafa, liner, toalha), catamarã Pehoé, entrada do parque, ônibus regular na ida e van privativa no retorno.
 Refúgio + Hotel: welcome drink/setor, todas as refeições (meia pensão no hotel), cama quarto compartilhado 6-8 camas por 3 noites, saco de dormir, banheiros água quente, 1 noite Quarto Superior Hotel Las Torres (meia pensão incluída), welcome kit, catamarã, entrada, ônibus regular ida e van privativa retorno.
@@ -180,11 +165,6 @@ Camping (base 2 pax): U$ 1.874 | Suplemento single: U$ 1.874 | Jantares festivos
 Refúgio (simples): U$ 2.366 | Jantares festivos: U$ 71
 Hotel + Refúgio (base 2 pax): U$ 3.006 | Suplemento single: U$ 3.000 | Jantares festivos: U$ 71
 Jantares festivos: períodos 24/12 e 31/12
-
-EARLY BOOKING (válido até 31/07/2026):
-- À vista: 10% OFF — PIX/transferência, quitação imediata
-- Parcelado: 5% OFF — 30% entrada + até 7x sem juros no cartão
-- 10x sem juros — sem desconto adicional
 
 INCLUI (por perfil):
 Camping: welcome drink/setor, todas as refeições (jantar no Dia 1), camping full equipado (barraca, saco de dormir, colchão alta densidade, travesseiro, banheiros com chuveiro quente), welcome kit (garrafa, liner, toalha), catamarã Pehoé, entrada do parque, ônibus regular Puerto Natales ↔ parque ida e volta.
@@ -237,10 +217,6 @@ ROTEIRO (locais de pernoite):
 - Dia 8: Base Torres e retorno a Puerto Natales (19,5 km, +750 m, 7-9h, alto)
 
 TARIFA (por pessoa · USD): US$ 5.950. NÃO há suplemento single.
-EARLY BOOKING (reserva antecipada) — SOMENTE estas duas condições, NÃO existe desconto à vista neste circuito:
-- Parcelado: 5% OFF — 30% de entrada + até 7x sem juros no cartão
-- 10x sem juros — sem desconto adicional
-(Consulte a equipe a data-limite vigente da promoção.)
 
 INCLUI: guia AONIK (Ivo Léo Schmitz) do início ao fim; 7 noites em refúgios de montanha ou camping full equipado; todas as refeições (café, box lunch e jantar); ônibus regular Puerto Natales ↔ Torres del Paine ida e volta; entrada do Parque Nacional; welcome kit; trekking por Base Torres, Cuernos, Vale do Francés, Glaciar Grey, Passo John Gardner, Glaciar Los Perros e Glaciar Dickson.
 NÃO INCLUI: voos nacionais e internacionais; seguro de viagem e assistência médica; serviços ou equipamento não mencionados; bebidas e gorjetas; jantares especiais de 24/12 e 31/12 (US$ 50 por pessoa quando aplicável).
@@ -253,7 +229,7 @@ AVISOS IMPORTANTES:
 
 FUNIL DE VENDAS:
 - Se perguntar sobre vagas ou datas: "A saída de 21 a 28 de fevereiro de 2027 é a única do ano e o grupo está em formação agora, com vagas bem limitadas. Para garantir a sua, o ideal é falar com a equipe agora. [Falar no WhatsApp do time AONIK →]"
-- Se perguntar sobre preço: dar o valor (US$ 5.950, sem single), depois: "Quer que eu te apresente as condições do Early Booking com a equipe?"
+- Se perguntar sobre preço: dar o valor (US$ 5.950, sem single), depois: "Quer que eu te conecte com a equipe para garantir sua vaga nessa saída única?"
 - Se expressar interesse: "Que demais! Essa é uma das experiências mais completas da Patagônia. Nossa equipe garante sua vaga rapidinho. [Falar no WhatsApp do time AONIK →]"
 
 Responda em português brasileiro, de forma amigável, calorosa e sensorial. Máximo 3 parágrafos.
@@ -773,8 +749,6 @@ PROGRAMAS AONIK NO W:
 - W PLUS (autoguiado, 5 dias, 76,2 km): W mais extenso com Monte Ferrier. A partir de US$ 2.126 (camping) ou US$ 2.594 (refugio).
 - W JOURNEY (GUIADO, 5 dias, 69,5 km): o unico programa com host bilingue do inicio ao fim, traslados privativos e jantar de despedida. A partir de US$ 3.200 (camping) ou US$ 3.315 (refugio).
 - HOTEL LAS TORRES: a base de hospedagem premium dentro do parque, sem necessidade de trekking. Tarifas sob consulta.
-
-EARLY BOOKING (valido ate 31/07/2026): 10% OFF a vista (PIX) ou 5% OFF parcelado (30% entrada + 7x cartao).
 
 FUNIL DE VENDAS:
 - Se perguntar qual programa escolher: perguntar o nivel de experiencia e disponibilidade de dias, depois indicar o mais adequado e: "Para fazer a escolha certa e garantir sua vaga, nosso time pode te ajudar agora! [Falar no WhatsApp do time AONIK →]"
@@ -1666,7 +1640,6 @@ const GUIA_CLOSE = "Responda em português brasileiro. Nunca use travessões. Te
 
 /* Calendário de saídas em grupo REALMENTE PUBLICADO em /grupos (fonte: app/lib/grupos.ts) */
 const CALENDARIO_GRUPOS = `CALENDÁRIO DE SAÍDAS EM GRUPO (JÁ PUBLICADO no site, na página de grupos; nunca diga que está "sendo montado"):
-2026: Tour du Mont Blanc 18 a 31/Ago · Dolomitas Alta Via 03 a 12/Set · Douro Experience 14 a 21/Set · Coxilha Rica 12 a 16/Abr, 14 a 18/Jun e 13 a 17/Set
 2027: Tour du Mont Blanc 17 a 30/Ago · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set · Tirol Austríaco 03 a 12/Set · Dana até Petra 18 a 27/Out
 Se perguntarem sobre o calendário, informe as datas e leve à página: [IR:/grupos|Ver o calendário completo]`;
 
