@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProgramaPage, type Programa, type WPin } from "../_shared";
+import { ProgramaPage, VIDEO_CIRCUITO_W, type Programa, type WPin } from "../_shared";
 
 export const metadata: Metadata = {
   title: "W+ Express Plus · 5D/4N com Hotel Las Torres | Torres del Paine | AONIK",
@@ -122,6 +122,7 @@ const DATA: Programa = {
     },
   ],
   galeria: GAL,
+  video: VIDEO_CIRCUITO_W,
   wmapPins: WMAP_PLUS,
 };
 

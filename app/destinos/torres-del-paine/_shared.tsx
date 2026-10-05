@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { geoMercator, geoPath } from "d3-geo";
 import { feature } from "topojson-client";
@@ -803,6 +803,188 @@ export function HospModal({
    ============================================================ */
 export type RoteiroDia = { dia: string; titulo: string; desc: string; km?: string; horas?: string; desnivel?: string; pernoite?: string };
 export type Hospedagem = { nome: string; tipo: string; desc: string; img: string; imgs?: string[] };
+/* ============================================================
+   VÍDEO — player encapsulado (sem marca, sem saída pro YouTube)
+   Os parâmetros oficiais não resolvem: modestbranding foi
+   descontinuado e rel=0 não remove mais os relacionados.
+   A solução real é em três camadas:
+   1) controls:0 → não existe barra do YouTube, logo não há logo;
+   2) um overlay por cima captura todo clique E todo hover, então
+      o iframe nunca reage (sem título, sem "assistir no YouTube");
+   3) cortamos 0,4s antes do fim: a grade de vídeos relacionados
+      só renderiza no estado ENDED, que nunca chega a acontecer.
+   ============================================================ */
+export type VideoData = { id: string; titulo: string; legenda?: string; poster?: string; fim?: number };
+
+export const VIDEO_CIRCUITO_W: VideoData = {
+  id: "BDFXl-34xpw",
+  titulo: "Como é o percurso do Circuito W",
+  legenda:
+    "Um sobrevoo pelo traçado do W: os três vales, cada setor e os marcos que você vai conquistar no caminho.",
+  /* corta antes do encerramento da Las Torres (logo + site + selos).
+     Ajustar aqui se o frame final mudar. Vídeo tem ~91s. */
+  fim: 76,
+};
+
+const mmss = (n: number) => {
+  if (!isFinite(n) || n < 0) n = 0;
+  return `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, "0")}`;
+};
+
+let ytApi: Promise<void> | null = null;
+function loadYT(): Promise<void> {
+  if (typeof window === "undefined") return Promise.resolve();
+  if (ytApi) return ytApi;
+  ytApi = new Promise((resolve) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((window as any).YT?.Player) return resolve();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).onYouTubeIframeAPIReady = () => resolve();
+    const s = document.createElement("script");
+    s.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(s);
+  });
+  return ytApi;
+}
+
+export function VideoPlayer({ data, poster, accent = T.ouro }: { data: VideoData; poster: string; accent?: string }) {
+  const holder = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const player = useRef<any>(null);
+  const [started, setStarted] = useState(false);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const [pct, setPct] = useState(0);
+  const [cur, setCur] = useState(0);
+  const [dur, setDur] = useState(0);
+
+  /* volta ao estado de capa — usado no corte antes do fim */
+  const reset = useCallback(() => {
+    const p = player.current;
+    if (!p) return;
+    p.pauseVideo?.();
+    p.seekTo?.(0, true);
+    setPlaying(false);
+    setStarted(false);
+    setPct(0);
+    setCur(0);
+  }, []);
+
+  useEffect(() => {
+    let dead = false;
+    loadYT().then(() => {
+      if (dead || !holder.current) return;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      player.current = new (window as any).YT.Player(holder.current, {
+        videoId: data.id,
+        host: "https://www.youtube-nocookie.com",
+        playerVars: {
+          controls: 0, rel: 0, modestbranding: 1, iv_load_policy: 3,
+          playsinline: 1, fs: 0, disablekb: 1, cc_load_policy: 0,
+          origin: window.location.origin,
+        },
+        events: {
+          onStateChange: (e: { data: number }) => {
+            setPlaying(e.data === 1);
+            if (e.data === 0) reset(); // rede de segurança
+          },
+        },
+      });
+    });
+    const iv = window.setInterval(() => {
+      const p = player.current;
+      if (!p?.getDuration) return;
+      const d = p.getDuration() || 0;
+      const t = p.getCurrentTime() || 0;
+      if (d <= 0) return;
+      /* o corte manda: nunca deixa chegar no ENDED (grade de relacionados) */
+      const corte = data.fim && data.fim > 0 ? Math.min(data.fim, d - 0.4) : d - 0.4;
+      setDur(corte);
+      setCur(Math.min(t, corte));
+      setPct(Math.min(100, (t / corte) * 100));
+      if (t >= corte) reset();
+    }, 200);
+    return () => { dead = true; window.clearInterval(iv); player.current?.destroy?.(); };
+  }, [data.id, data.fim, reset]);
+
+  const toggle = () => {
+    const p = player.current;
+    if (!p) return;
+    if (playing) p.pauseVideo();
+    else { p.playVideo(); setStarted(true); }
+  };
+  const toggleMute = () => {
+    const p = player.current;
+    if (!p) return;
+    if (muted) { p.unMute(); setMuted(false); } else { p.mute(); setMuted(true); }
+  };
+  const seek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const p = player.current;
+    if (!p?.seekTo || dur <= 0) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const frac = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+    p.seekTo(Math.min(dur - 0.5, dur * frac), true);
+  };
+
+  return (
+    <div className="relative overflow-hidden rounded-2xl border" style={{ borderColor: T.line, background: T.ink, aspectRatio: "16/9" }}>
+      <div className="absolute inset-0 [&>iframe]:h-full [&>iframe]:w-full [&_iframe]:h-full [&_iframe]:w-full">
+        <div ref={holder} className="h-full w-full" />
+      </div>
+
+      {/* camada que intercepta clique e hover: o iframe nunca reage */}
+      <button onClick={toggle} aria-label={playing ? "Pausar vídeo" : "Reproduzir vídeo"}
+        className="absolute inset-0 z-10 h-full w-full cursor-pointer" style={{ background: "transparent" }} />
+
+      {/* CAPA OPACA sempre que não está tocando.
+          É isto que elimina a marca: pausado, o YouTube desenha
+          barra de título, logo e "Mais vídeos" dentro do iframe.
+          Como ele só faz isso parado, nós cobrimos o parado. */}
+      {!playing && (
+        <div className="pointer-events-none absolute inset-0 z-20 bg-cover bg-center" style={{ backgroundImage: `url('${poster}')`, backgroundColor: T.ink }}>
+          <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${T.ink}e6, ${T.ink}59 55%, ${T.ink}8c)` }} />
+        </div>
+      )}
+      {!playing && (
+        <div className="pointer-events-none absolute inset-0 z-30 flex flex-col items-center justify-center gap-4 px-6 text-center">
+          <span className="flex h-[74px] w-[74px] items-center justify-center rounded-full" style={{ background: accent }}>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill={T.ink}><path d="M8 5v14l11-7L8 5Z" /></svg>
+          </span>
+          {!started && <p className="font-display text-lg font-light md:text-xl" style={{ color: T.creme }}>{data.titulo}</p>}
+        </div>
+      )}
+
+      {/* controles próprios */}
+      {started && (
+        <div className="absolute bottom-0 left-0 right-0 z-30 flex items-center gap-3 px-4 py-3 md:px-5"
+          style={{ background: `linear-gradient(to top, ${T.ink}e6, transparent)` }}>
+          <button onClick={toggle} aria-label={playing ? "Pausar" : "Reproduzir"}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-transform hover:scale-105"
+            style={{ background: accent }}>
+            {playing
+              ? <svg width="14" height="14" viewBox="0 0 24 24" fill={T.ink}><path d="M6 4h4v16H6zM14 4h4v16h-4z" /></svg>
+              : <svg width="14" height="14" viewBox="0 0 24 24" fill={T.ink}><path d="M8 5v14l11-7L8 5Z" /></svg>}
+          </button>
+          <div onClick={seek} className="h-1.5 flex-1 cursor-pointer rounded-full"
+            style={{ background: "rgba(241,236,226,0.22)" }}>
+            <div className="h-full rounded-full" style={{ width: `${pct}%`, background: accent }} />
+          </div>
+          <span className="shrink-0 text-[11px] font-light tabular-nums" style={{ color: T.cSoft }}>
+            {mmss(cur)} / {mmss(dur)}
+          </span>
+          <button onClick={toggleMute} aria-label={muted ? "Ativar som" : "Silenciar"}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-opacity hover:opacity-80"
+            style={{ background: "rgba(12,18,25,0.6)", color: T.creme }}>
+            {muted
+              ? <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3Zm13.6 3 2.7-2.7-1.4-1.4L15.2 10.6 12.5 7.9l-1.4 1.4 2.7 2.7-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4L16.6 12Z" /></svg>
+              : <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3Zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4Zm-2.5-8.7v2.1a7 7 0 0 1 0 13.2v2.1a9 9 0 0 0 0-17.4Z" /></svg>}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export type Programa = {
   slug: string;
   accentKey: AccentKey;
@@ -824,6 +1006,7 @@ export type Programa = {
   tarifaPerfis: TarifaPerfil[];
   galeria: GalImg[];
   wmapPins?: WPin[];
+  video?: VideoData;
 };
 
 export function ProgramaPage({ data }: { data: Programa }) {
@@ -940,6 +1123,28 @@ export function ProgramaPage({ data }: { data: Programa }) {
           <Reveal delay={0.1}><WMap accent={A} pins={data.wmapPins ?? WMAP_HL} /></Reveal>
         </div>
       </section>
+
+      {/* VÍDEO */}
+      {data.video && (
+        <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: T.granito }}>
+          <div className="mx-auto max-w-[1100px]">
+            <Reveal><p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: AS }}>Veja o caminho</p></Reveal>
+            <Reveal delay={0.05}>
+              <h2 className="mb-3 max-w-2xl font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]" style={{ color: T.creme }}>
+                {data.video.titulo}
+              </h2>
+            </Reveal>
+            {data.video.legenda && (
+              <Reveal delay={0.08}>
+                <p className="mb-10 max-w-xl text-[14px] font-light leading-relaxed" style={{ color: T.cSoft }}>{data.video.legenda}</p>
+              </Reveal>
+            )}
+            <Reveal delay={0.1}>
+              <VideoPlayer data={data.video} poster={data.video.poster ?? data.heroImg} accent={A} />
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* HOSPEDAGENS */}
       <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: T.creme, color: T.ink }}>

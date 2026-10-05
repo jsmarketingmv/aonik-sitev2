@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ProgramaPage, type Programa } from "../_shared";
+import { ProgramaPage, VIDEO_CIRCUITO_W, type Programa } from "../_shared";
 
 export const metadata: Metadata = {
   title: "W Express · autoguiado 4D/3N | Torres del Paine | AONIK",
@@ -113,6 +113,7 @@ const DATA: Programa = {
     },
   ],
   galeria: GAL,
+  video: VIDEO_CIRCUITO_W,
 };
 
 export default function Page() {
