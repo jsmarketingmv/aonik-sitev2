@@ -6,7 +6,6 @@ export type Grupo = {
   title: string;
   flags: string;
   local: string;
-  dates2026?: string[];
   dates2027?: string[];
   distance: string;
   altitude: string;
@@ -39,7 +38,6 @@ export const GRUPOS: Grupo[] = [
     title: "Tour du Mont Blanc",
     flags: "🇫🇷 🇮🇹 🇨🇭",
     local: "Alpes · França · Itália · Suíça",
-    dates2026: ["18 a 31/Ago"],
     dates2027: ["17 a 30/Ago"],
     distance: "170 km",
     altitude: "8.823 m+",
@@ -54,7 +52,6 @@ export const GRUPOS: Grupo[] = [
     title: "Dolomitas Alta Via 1",
     flags: "🇮🇹",
     local: "Alpes Italianos",
-    dates2026: ["03 a 12/Set"],
     dates2027: ["02 a 11/Set"],
     distance: "100 km",
     altitude: "5.116 m+",
@@ -83,7 +80,6 @@ export const GRUPOS: Grupo[] = [
     title: "Coxilha Rica",
     flags: "🇧🇷",
     local: "Serra Catarinense · Brasil",
-    dates2026: ["12 a 16/Abr", "14 a 18/Jun", "13 a 17/Set"],
     dates2027: ["11 a 15/Abr", "13 a 17/Jun", "01 a 05/Ago"],
     distance: "55,4 km",
     altitude: "1.367 m+",
@@ -148,7 +144,7 @@ export const EM_BREVE = [
   { title: "Pireneus", flag: "🇪🇸" },
 ];
 
-// Helper: datas de um grupo por ano
-export function datasDoAno(g: Grupo, ano: 2026 | 2027): string[] {
-  return (ano === 2026 ? g.dates2026 : g.dates2027) ?? [];
+// Helper: datas de um grupo por ano. O site vende só a temporada 2027.
+export function datasDoAno(g: Grupo, _ano: 2027 = 2027): string[] {
+  return g.dates2027 ?? [];
 }

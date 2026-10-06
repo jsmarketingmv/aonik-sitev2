@@ -401,6 +401,8 @@ DESTAQUES DO ROTEIRO:
 - Acomodação em refúgios alpinos históricos ao longo da rota
 - Grupo pequeno, saídas guiadas
 
+SAÍDA 2027: 17 a 30 de agosto de 2027 (saída confirmada). É a única saída vendida; a temporada 2026 já encerrou.
+
 TARIFAS (por pessoa):
 € 5.900 (dupla nas cidades e compartilhada nas montanhas)
 Planejamento exclusivo, grupo pequeno e privado, roteiro adaptado ao perfil.
@@ -484,6 +486,8 @@ ROTEIRO RESUMIDO (10 dias):
 - Dias 3-8: Travessia de refúgio em refúgio (Braies → Sennes → Fanes → Lagazuoi → Cinque Torri → Pelmo → Civetta)
 - Dias 9-10: Capanna Alpina + retorno a Cortina
 
+SAÍDA 2027: 02 a 11 de setembro de 2027 (saída confirmada). É a única saída vendida; a temporada 2026 já encerrou.
+
 TARIFAS (por pessoa):
 € 5.700 (base dupla)
 Grupo pequeno, programa exclusivo.
@@ -527,6 +531,8 @@ ROTEIRO RESUMIDO (10 dias):
 - Dias 1-2: Chegada a Munique + Neustift (hotel)
 - Dias 3-9: Travessia de refúgio em refúgio pelo Stubaier Höhenweg
 - Dia 10: Descida a Neustift e partida
+
+SAÍDA 2027: 03 a 12 de setembro de 2027 (saída ainda A CONFIRMAR: a data está prevista, o grupo está sendo formado). Nunca diga "saída confirmada".
 
 TARIFAS (por pessoa):
 € 4.200 (base dupla)
@@ -972,6 +978,8 @@ A Serra Catarinense, no Planalto Serrano de Santa Catarina, e o lugar onde o Sul
 PRODUTO: Coxilha Rica · Trekking na Serra Catarinense · 5 dias / 4 noites
 NIVEL: Moderado
 REGIAO: Serra Catarinense, Santa Catarina, Brasil
+
+SAÍDAS 2027 (confirmadas): 11 a 15 de abril · 13 a 17 de junho · 01 a 05 de agosto de 2027. A temporada 2026 já encerrou.
 
 TARIFAS: A partir de R$ 5.800 por pessoa.
 
@@ -1559,6 +1567,8 @@ DESTAQUES:
 - Miradouro dos socalcos em terraços com vista panorâmica para o Douro
 - Transfer de saída para o aeroporto incluído (trem Pinhão → Porto)
 
+SAÍDA 2027: 20 a 28 de setembro de 2027 (saída confirmada). É a única saída vendida; a temporada 2026 já encerrou.
+
 TARIFAS (por pessoa):
 € 4.800 (base dupla · 30% de entrada + saldo em parcelas no cartão)
 
@@ -1635,7 +1645,7 @@ const GUIA_CLOSE = "Responda em português brasileiro. Nunca use travessões. Te
 
 /* Calendário de saídas em grupo REALMENTE PUBLICADO em /grupos (fonte: app/lib/grupos.ts) */
 const CALENDARIO_GRUPOS = `CALENDÁRIO DE SAÍDAS EM GRUPO (JÁ PUBLICADO no site, na página de grupos; nunca diga que está "sendo montado"):
-2027: Tour du Mont Blanc 17 a 30/Ago · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set · Tirol Austríaco 03 a 12/Set · Dana até Petra 18 a 27/Out
+2027: Circuito O em Torres del Paine 21 a 28/Fev (grupo em formação) · Tour du Mont Blanc 17 a 30/Ago · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set · Tirol Austríaco 03 a 12/Set (a confirmar) · Dana até Petra 18 a 27/Out
 Se perguntarem sobre o calendário, informe as datas e leve à página: [IR:/grupos|Ver o calendário completo]`;
 
 const KB_GUIA: Record<string, string> = {
@@ -1834,6 +1844,18 @@ IDIOMA (esta regra prevalece sobre qualquer instrução anterior de responder em
 - Se o visitante escrever em ES/EN, mencione UMA única vez, de forma natural, que o navegador pode traduzir as páginas do site automaticamente (no Chrome: clique com o botão direito na página e escolha "Traduzir", ou use o ícone de tradução na barra de endereço), já que o site está em português.
 `.trim();
 
+/* Regra global de temporada, anexada a TODOS os system prompts junto da LANG_RULE.
+   A AONIK vende SÓ a temporada 2027 (Europa, Caminhos, grupos). A de 2026 e as
+   promoções acabaram; a IA não pode oferecer nem comparar nada disso. */
+const TEMPORADA_RULE = `
+TEMPORADA (esta regra prevalece sobre qualquer trecho anterior):
+- Estamos vendendo SOMENTE a temporada 2027. Datas, saídas e tarifas citadas ao visitante são SEMPRE as de 2027.
+- A temporada 2026 de Europa, Caminhos de Santiago, Portugal, Brasil e dos grupos JÁ ENCERROU. Nunca ofereça, cite ou compare datas ou tarifas de 2026. Se o visitante perguntar por 2026, explique com leveza que a temporada 2026 já passou e apresente a saída e a tarifa de 2027.
+- Não existe mais promoção, Early Booking, reserva antecipada com desconto nem desconto por forma de pagamento. Nunca prometa, sugira ou invente desconto. Se perguntarem por desconto ou promoção, diga que a tarifa de 2027 publicada na página é a vigente e leve a equipe para condições de pagamento.
+- EXCEÇÃO: Torres del Paine, Patagônia, Chile, cruzeiros Skorpios, Antarctica21 e hotéis da Patagônia seguem o verão austral (out/2026 a abr/2027), que está em vendas agora; para eles use as datas e tarifas do briefing, sem inventar.
+- Use somente as datas e os valores deste briefing. Se a data de 2027 de um produto não estiver aqui, diga que a página do produto traz o calendário e leve até ela.
+`.trim();
+
 export async function POST(req: NextRequest) {
   try {
     const { message, slug, pathname, history } = (await req.json()) as {
@@ -1892,7 +1914,7 @@ export async function POST(req: NextRequest) {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 512,
-      system: `${system}\n\n${LANG_RULE}`,
+      system: `${system}\n\n${TEMPORADA_RULE}\n\n${LANG_RULE}`,
       messages: [...priorMessages, { role: "user", content: message }],
     });
 

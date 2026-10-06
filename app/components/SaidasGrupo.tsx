@@ -44,7 +44,7 @@ export default function SaidasGrupo({ slug, cores, fallback }: {
   if (!saidas || saidas.length === 0) return <>{fallback}</>;
 
   return (
-    <div className="mt-12 grid gap-6 sm:grid-cols-2">
+    <div className={`mt-12 grid gap-6 ${saidas.length > 1 ? "sm:grid-cols-2" : ""}`}>
       {saidas.map((s, idx) => {
         const ano = parseDataISO(s.data_inicio)?.ano;
         const encerrada = s.selo === "vagas_encerradas";

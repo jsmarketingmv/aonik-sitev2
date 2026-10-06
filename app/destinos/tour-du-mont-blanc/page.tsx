@@ -388,7 +388,7 @@ export default function TMBV2Page() {
               className="mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] uppercase tracking-[0.16em]"
               style={{ borderColor: C.ch, color: C.ch }}>
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: C.ch }} />
-              Saída confirmada · 18–31 Ago 2026
+              Saída confirmada · 17–30 Ago 2027
             </motion.div>
             <div className="mt-7">
               <Breadcrumb tone="dark" accent={C.ch} items={[
@@ -802,14 +802,14 @@ export default function TMBV2Page() {
             slug="tour-du-mont-blanc"
             cores={{ ano: C.fr, confirmada: C.ch, alerta: C.wood, texto: C.snow }}
             fallback={
-              <div className="mt-12 grid gap-6 sm:grid-cols-2">
-                {([2026, 2027] as const).map((ano) => {
-                  const datas = ano === 2026 ? TMB_GRUPO.dates2026 : TMB_GRUPO.dates2027;
+              <div className="mt-12 grid gap-6">
+                {([2027] as const).map((ano) => {
+                  const datas = TMB_GRUPO.dates2027;
                   return (
                     <Reveal key={ano} delay={0.05}>
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-7">
+                      <div className="rounded-xl border border-white/10 bg-white/5 p-7 sm:flex sm:items-center sm:gap-10">
                         <p className="font-display text-3xl font-light" style={{ color: C.fr }}>{ano}</p>
-                        <div className="mt-4 flex flex-wrap gap-2">
+                        <div className="mt-4 flex flex-wrap gap-2 sm:mt-0 sm:flex-1">
                           {(datas ?? []).map((d) => (
                             <span key={d}
                               className="rounded-full border border-white/15 px-4 py-1.5 text-[13px] font-medium"
@@ -818,7 +818,7 @@ export default function TMBV2Page() {
                             </span>
                           ))}
                         </div>
-                        <div className="mt-4 flex items-center gap-2">
+                        <div className="mt-4 flex items-center gap-2 sm:mt-0">
                           <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: C.ch }} />
                           <p className="text-[12px] font-semibold uppercase tracking-[0.12em]"
                             style={{ color: C.ch }}>Saída confirmada</p>

@@ -70,7 +70,7 @@ function parseDeparture(
   return null;
 }
 
-function buildDepartures(year: 2026 | 2027, grupos: Grupo[]): Departure[] {
+function buildDepartures(year: 2027, grupos: Grupo[]): Departure[] {
   const result: Departure[] = [];
   for (const g of grupos) {
     for (const d of datasDoAno(g, year)) {
@@ -93,7 +93,7 @@ function buildDepartures(year: 2026 | 2027, grupos: Grupo[]): Departure[] {
 
 /** Grupos do ano cujas datas ainda não têm dia/mês (ex.: "Em breve").
  *  Não cabem no grid mensal, então são listados à parte para não sumirem. */
-function buildSemData(year: 2026 | 2027, grupos: Grupo[]): Grupo[] {
+function buildSemData(year: 2027, grupos: Grupo[]): Grupo[] {
   return grupos.filter((g) => {
     const ds = datasDoAno(g, year);
     return ds.length > 0 && ds.every((d) => parseDeparture(d) === null);
@@ -113,13 +113,12 @@ function buildGrid(month: number, year: number): (number | null)[] {
 // ─── Componente ───────────────────────────────────────────────────────────────
 
 interface CalendarWidgetProps {
-  yearFilter: 2026 | 2027;
-  onYearChange?: (y: 2026 | 2027) => void;
+  yearFilter: 2027;
   /** Catálogo com overlay ao vivo; sem a prop usa o estático. */
   grupos?: Grupo[];
 }
 
-export default function CalendarWidget({ yearFilter, onYearChange, grupos = GRUPOS }: CalendarWidgetProps) {
+export default function CalendarWidget({ yearFilter, grupos = GRUPOS }: CalendarWidgetProps) {
   const departures = buildDepartures(yearFilter, grupos);
   const activeMonths = [
     ...new Set(departures.map((d) => d.month)),
@@ -203,23 +202,6 @@ export default function CalendarWidget({ yearFilter, onYearChange, grupos = GRUP
           ))}
         </div>
 
-        {onYearChange && (
-          <div className="flex shrink-0 rounded-full border border-forest/12 bg-cream p-0.5">
-            {([2026, 2027] as const).map((y) => (
-              <button
-                key={y}
-                onClick={() => onYearChange(y)}
-                className={`rounded-full px-3 py-1 text-[11px] font-semibold tracking-[0.04em] transition-all duration-200 ${
-                  y === yearFilter
-                    ? "bg-gold text-[#17150f]"
-                    : "text-ink/35 hover:text-ink/60"
-                }`}
-              >
-                {y}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* ── Grid do calendário ─── */}

@@ -25,6 +25,13 @@ export type SaidaSiteToda = {
   selo: SaidaSite["selo"];
 };
 
+/** O site vende só a temporada 2027: saídas de anos anteriores nunca aparecem. */
+const ANO_MINIMO = 2027;
+function daTemporada(data_inicio: string | null): boolean {
+  const ano = parseDataISO(data_inicio)?.ano;
+  return !ano || ano >= ANO_MINIMO; // sem data ainda (a confirmar) fica
+}
+
 const MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
 export function parseDataISO(d: string | null): { dia: number; mes: number; ano: number } | null {
@@ -59,7 +66,7 @@ export async function buscarTodasSaidasSite(): Promise<SaidaSiteToda[]> {
     });
     if (!res.ok) return [];
     const data = await res.json();
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data) ? (data as SaidaSiteToda[]).filter((s) => daTemporada(s.data_inicio)) : [];
   } catch {
     return [];
   }
@@ -79,7 +86,7 @@ export async function buscarSaidasSite(slug: string): Promise<SaidaSite[]> {
     });
     if (!res.ok) return [];
     const data = await res.json();
-    return Array.isArray(data) ? data : [];
+    return Array.isArray(data) ? (data as SaidaSite[]).filter((s) => daTemporada(s.data_inicio)) : [];
   } catch {
     return [];
   }

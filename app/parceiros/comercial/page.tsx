@@ -241,7 +241,6 @@ function Titulo({ eyebrow, titulo }: { eyebrow: string; titulo: string }) {
  *  para vender. */
 function Datas({ g }: { g: Grupo }) {
   const linhas: string[] = [];
-  if (g.dates2026?.length) linhas.push(`2026 · ${g.dates2026.join(" · ")}`);
   if (g.dates2027?.length) linhas.push(`2027 · ${g.dates2027.join(" · ")}`);
 
   return (

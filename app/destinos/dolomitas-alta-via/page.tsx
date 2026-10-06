@@ -434,7 +434,6 @@ const NAO_INCLUSO = [
 // PAGE
 // ============================================================
 export default function DolomitasAltaViaPage() {
-  const datas2026 = datasDoAno(GRUPO, 2026);
   const datas2027 = datasDoAno(GRUPO, 2027);
 
   return (
@@ -708,38 +707,15 @@ export default function DolomitasAltaViaPage() {
             </h2>
           </Reveal>
 
-          {/* Cards 2026 e 2027 lado a lado */}
+          {/* Saída 2027 */}
           <Reveal delay={0.1}>
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {/* 2026 */}
-              {datas2026.map((d) => (
+            <div className={`mt-10 grid gap-5 ${datas2027.length > 1 ? "md:grid-cols-2" : ""}`}>
+              {datas2027.map((d) => (
                 <div key={d} className="rounded-2xl p-7"
                   style={{ background: "rgba(174,28,44,0.22)", border: `1px solid rgba(174,28,44,0.35)` }}>
                   <div className="flex items-center justify-between">
                     <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]"
-                      style={{ background: D.rosso, color: D.creme }}>confirmada</span>
-                    <span className="text-[11px]" style={{ color: D.textSoft }}>10 dias</span>
-                  </div>
-                  <p className="mt-6 font-display font-light"
-                    style={{ fontSize: "clamp(1.6rem,3vw,2.4rem)", color: D.creme }}>{d}</p>
-                  <p className="mt-1 text-[12px] font-light" style={{ color: D.textSoft }}>
-                    Alpes Italianos · Setembro 2026
-                  </p>
-                  <a href="#contato"
-                    className="mt-6 inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em] transition-opacity hover:opacity-75"
-                    style={{ color: D.calcare }}>
-                    Reservar vaga &#8594;
-                  </a>
-                </div>
-              ))}
-
-              {/* 2027 */}
-              {datas2027.map((d) => (
-                <div key={d} className="rounded-2xl p-7"
-                  style={{ background: "rgba(174,28,44,0.08)", border: `1px solid rgba(174,28,44,0.2)` }}>
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]"
-                      style={{ border: `1px solid ${D.rosso}`, color: D.rosso }}>2027</span>
+                      style={{ background: D.rosso, color: D.creme }}>2027 · confirmada</span>
                     <span className="text-[11px]" style={{ color: D.textSoft }}>10 dias</span>
                   </div>
                   <p className="mt-6 font-display font-light"

@@ -33,19 +33,16 @@ export function aplicarSaidasAoVivo(catalogo: Grupo[], saidas: SaidaSiteToda[]):
     const doProduto = porSlug.get(slugDoGrupo(g));
     if (!doProduto) return g; // sem grupos no SaaS → estático
     const visiveis = doProduto.filter((s) => VISIVEIS.has(s.status));
-    const dates2026: string[] = [];
     const dates2027: string[] = [];
     for (const s of visiveis) {
       const ano = parseDataISO(s.data_inicio)?.ano;
       const faixa = faixaDatas(s.data_inicio, s.data_fim);
       if (!ano || !faixa) continue;
-      if (ano === 2026) dates2026.push(faixa);
-      else if (ano === 2027) dates2027.push(faixa);
+      if (ano === 2027) dates2027.push(faixa);
     }
     const confirmada = visiveis.some((s) => s.selo !== "saida_a_confirmar");
     return {
       ...g,
-      dates2026,
       dates2027,
       status: confirmada ? "confirmada" : "a-confirmar",
     };

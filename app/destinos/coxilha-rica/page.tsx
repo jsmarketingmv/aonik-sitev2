@@ -471,7 +471,6 @@ const NAO_INCLUSO = [
 // PAGE
 // ============================================================
 export default function CoxilhaRicaPage() {
-  const datas2026 = datasDoAno(GRUPO, 2026);
   const datas2027 = datasDoAno(GRUPO, 2027);
 
   return (
@@ -874,45 +873,20 @@ export default function CoxilhaRicaPage() {
             </h2>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <p className="mt-10 text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: "rgba(241,232,216,0.5)" }}>
-              Saídas 2026
-            </p>
-          </Reveal>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-            {datas2026.map((d, i) => (
-              <Reveal key={d} delay={i * 0.06}>
-                <div className="rounded-xl p-6" style={{ background: "rgba(196,144,74,0.12)", border: `1px solid ${C.line}` }}>
-                  <div className="flex items-center justify-between">
-                    <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: C.campo, color: C.terra }}>
-                      confirmada
-                    </span>
-                    <span className="text-[11px]" style={{ color: C.textSoft }}>5 dias</span>
-                  </div>
-                  <p className="mt-5 font-display font-light" style={{ fontSize: "clamp(1.3rem,2.5vw,1.9rem)", color: C.creme }}>{d}</p>
-                  <p className="mt-1 text-[12px] font-light" style={{ color: C.textSoft }}>Serra Catarinense · 2026</p>
-                  <a href="#contato" className="mt-5 inline-flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em] transition-opacity hover:opacity-75" style={{ color: C.campo }}>
-                    Reservar vaga <span>→</span>
-                  </a>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
           {datas2027.length > 0 && (
             <>
               <Reveal delay={0.1}>
-                <p className="mt-12 text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: "rgba(241,232,216,0.5)" }}>
+                <p className="mt-10 text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: "rgba(241,232,216,0.5)" }}>
                   Saídas 2027
                 </p>
               </Reveal>
               <div className="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {datas2027.map((d, i) => (
                   <Reveal key={d} delay={i * 0.06}>
-                    <div className="rounded-xl p-6" style={{ background: "rgba(196,144,74,0.07)", border: `1px solid rgba(196,144,74,0.12)` }}>
+                    <div className="rounded-xl p-6" style={{ background: "rgba(196,144,74,0.12)", border: `1px solid ${C.line}` }}>
                       <div className="flex items-center justify-between">
-                        <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ border: `1px solid ${C.campo}`, color: C.campo }}>
-                          2027
+                        <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: C.campo, color: C.terra }}>
+                          confirmada
                         </span>
                         <span className="text-[11px]" style={{ color: C.textSoft }}>5 dias</span>
                       </div>

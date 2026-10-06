@@ -30,9 +30,9 @@ const DESTINATIONS: Destination[] = [
     id: "tour-mont-blanc",
     name: "Tour du Mont Blanc",
     region: "Alpes · 3 países",
-    tagline: "18–31 Ago 2026",
-    taglines: { 2026: "18–31 Ago 2026", 2027: "17–30 Ago 2027" },
-    years: [2026, 2027],
+    tagline: "17–30 Ago 2027",
+    taglines: { 2027: "17–30 Ago 2027" },
+    years: [2027],
     lat: 45.83,
     lng: 6.86,
     labelOffsetX: -25,
@@ -46,9 +46,9 @@ const DESTINATIONS: Destination[] = [
     id: "dolomitas-alta-via",
     name: "Dolomitas Alta Via 1",
     region: "Alpes Italianos",
-    tagline: "Set 2026 + Set 2027",
-    taglines: { 2026: "03–12 Set 2026", 2027: "02–11 Set 2027" },
-    years: [2026, 2027],
+    tagline: "02–11 Set 2027",
+    taglines: { 2027: "02–11 Set 2027" },
+    years: [2027],
     lat: 46.5,
     lng: 12.0,
     labelOffsetX: -195,
@@ -94,9 +94,9 @@ const DESTINATIONS: Destination[] = [
     id: "douro-experience",
     name: "Douro Experience",
     region: "Vale do Douro · Portugal",
-    tagline: "14–21 Set 2026",
-    taglines: { 2026: "14–21 Set 2026", 2027: "20–28 Set 2027" },
-    years: [2026, 2027],
+    tagline: "20–28 Set 2027",
+    taglines: { 2027: "20–28 Set 2027" },
+    years: [2027],
     lat: 41.1,
     lng: -7.8,
     labelOffsetX: -175,
@@ -110,16 +110,16 @@ const DESTINATIONS: Destination[] = [
     id: "coxilha-rica",
     name: "Coxilha Rica",
     region: "Serra Catarinense · Brasil",
-    tagline: "3 saídas em 2026",
-    taglines: { 2026: "3 saídas · Abr/Jun/Set", 2027: "3 saídas · Abr/Jun/Ago" },
-    years: [2026, 2027],
+    tagline: "3 saídas · Abr/Jun/Ago",
+    taglines: { 2027: "3 saídas · Abr/Jun/Ago" },
+    years: [2027],
     lat: -28.4,
     lng: -50.8,
     labelOffsetX: 85,
     labelOffsetY: -25,
     type: "aventura",
     description:
-      "55 km pela Serra Catarinense, um dos trekkings mais bonitos do Brasil. Abril, Junho e Setembro. Saída confirmada.",
+      "55 km pela Serra Catarinense, um dos trekkings mais bonitos do Brasil. Abril, Junho e Agosto de 2027. Saídas confirmadas.",
   },
   {
     id: "dana-petra",
@@ -174,7 +174,7 @@ const CREAM  = "#f5f1e8";
 // ─── Props ────────────────────────────────────────────────────────────────────
 
 interface WorldMapAONIKProps {
-  yearFilter?: 2026 | 2027;
+  yearFilter?: 2027;
   bgColor?: string;
 }
 
@@ -194,7 +194,7 @@ export default function WorldMapAONIK({
   const [selected,  setSelected]  = useState<Destination | null>(null);
   const [filter,    setFilter]    = useState("todos");
 
-  // Temporada 2026 encerrada — mapa trava em 2027.
+  // O site vende só a temporada 2027.
   const yearFilter = extYear ?? 2027;
 
   // Carrega TopoJSON → GeoJSON
