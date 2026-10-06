@@ -75,6 +75,8 @@ export default function ParceirosGate() {
               <Campo label="Seu nome" required>
                 <input
                   required
+                  minLength={2}
+                  maxLength={120}
                   value={form.nome}
                   onChange={(e) => set("nome", e.target.value)}
                   placeholder="Nome e sobrenome"
@@ -85,6 +87,7 @@ export default function ParceirosGate() {
               <Campo label="Nome da agência" required>
                 <input
                   required
+                  maxLength={150}
                   value={form.agencia}
                   onChange={(e) => set("agencia", e.target.value)}
                   placeholder="Razão social ou nome fantasia"
@@ -96,6 +99,7 @@ export default function ParceirosGate() {
                 <input
                   required
                   type="email"
+                  maxLength={200}
                   value={form.email}
                   onChange={(e) => set("email", e.target.value)}
                   placeholder="voce@agencia.com.br"
@@ -106,6 +110,7 @@ export default function ParceirosGate() {
               <Campo label="WhatsApp" required>
                 <input
                   required
+                  maxLength={40}
                   value={form.telefone}
                   onChange={(e) => set("telefone", e.target.value)}
                   placeholder="(47) 99999-9999"

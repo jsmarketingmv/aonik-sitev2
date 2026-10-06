@@ -151,6 +151,8 @@ export default function Contato({
             <Field label={c.f.nome} required>
               <input
                 required
+                minLength={2}
+                maxLength={120}
                 value={form.nome}
                 onChange={(e) => set("nome", e.target.value)}
                 placeholder={c.ph.nome}
@@ -180,6 +182,7 @@ export default function Contato({
               <input
                 required
                 type="email"
+                maxLength={200}
                 value={form.email}
                 onChange={(e) => set("email", e.target.value)}
                 placeholder={c.ph.email}
@@ -190,6 +193,7 @@ export default function Contato({
             <Field label={c.f.telefone} required>
               <input
                 required
+                maxLength={40}
                 value={form.telefone}
                 onChange={(e) => set("telefone", e.target.value)}
                 placeholder={c.ph.telefone}
@@ -202,6 +206,7 @@ export default function Contato({
           <div className="mt-6">
             <Field label={c.f.mensagem}>
               <textarea
+                maxLength={2000}
                 value={form.mensagem}
                 onChange={(e) => set("mensagem", e.target.value)}
                 rows={4}
