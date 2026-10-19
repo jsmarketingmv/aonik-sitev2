@@ -320,7 +320,6 @@ export default function RioSerranoPage() {
             <div className="mt-7">
               <Breadcrumb tone="dark" accent={R.amber} items={[
                 { label: "Home", href: "/" },
-                { label: "Hotéis", href: "/hoteis" },
                 { label: "Rio Serrano" },
               ]} />
             </div>

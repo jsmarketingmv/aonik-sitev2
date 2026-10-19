@@ -211,7 +211,6 @@ const GALLERY_IMGS = [
   "/images/tmb/grupo.jpg",
   "/images/tmb/gallery-selfie.jpg",
   "/images/tmb/gallery-group-forest.jpg",
-  "/images/tmb/gallery-00024.jpg",
 ];
 
 // ---------- HOSPEDAGENS ----------
@@ -231,26 +230,136 @@ const REFUGIO_IMGS = [
 ];
 const HOSPEDAGENS_IMGS = [...ROCKY_POP_IMGS, ...REFUGIO_IMGS];
 
+// ---------- ROTEIRO, DIA A DIA ----------
+const PROPOSTA_ASSETS = "https://hbiamcsblfoumrxwzryd.supabase.co/storage/v1/object/public/proposta-assets/roteiro";
+const ROTEIRO = [
+  {
+    dia: "01", pais: "🇨🇭",
+    titulo: "Chegada em Genebra e transfer para Les Houches/Chamonix",
+    desc: "Chegada em Genebra antes das 10h30, com encontro às 11h no aeroporto para embarcar no transfer até Les Houches, cerca de 1h40 de viagem. Check-in, tarde livre em Chamonix e, às 19h, jantar no hotel para o grupo se conhecer e o briefing geral da travessia.",
+    stats: null,
+    itens: ["Transfer do aeroporto de Genebra até Les Houches", "Hospedagem em hotel, quarto duplo com WC privado", "Ticket de transporte público na cidade"],
+    img: `${PROPOSTA_ASSETS}/dia1/39adb30e-cbc5-4bcf-b523-e5699b3cf04f.jpg`,
+  },
+  {
+    dia: "02", pais: "🇫🇷",
+    titulo: "Les Houches até Les Contamines",
+    desc: "Saída do hotel a pé: em 3 km já se encontra o portal de início do Tour du Mont Blanc. Teleférico até os 1.780 m e 19 km de caminhada, grande parte em descida, por florestas, vilarejos e casas de campo até Les Contamines, primeira noite em refúgio.",
+    stats: { km: "19,1 km", sobe: "+320 m", desce: "-852 m" },
+    itens: ["Café da manhã", "Caminhada com mochila de ataque", "Hospedagem em refúgio, quarto duplo/triplo com WC privado", "Transfer de bagagem", "Jantar na hospedagem"],
+    img: `${PROPOSTA_ASSETS}/dia2/b3c815d9-bf59-4f9f-b7b6-124af317eaaf.jpg`,
+  },
+  {
+    dia: "03", pais: "🇫🇷",
+    titulo: "Les Contamines até Les Chapieux",
+    desc: "Dia longo e exigente, com muita subida no início e descida no final — e visual recompensador. Duas paradas estratégicas de descanso, no Refúgio de La Balme (km 8) e no Refúgio du Col de la Croix du Bonhomme (km 14), até Les Chapieux.",
+    stats: { km: "17,1 km", sobe: "+1.397 m", desce: "-916 m" },
+    itens: ["Café da manhã", "Caminhada com mochila de ataque", "Transfer ao final da caminhada para a hospedagem", "Hospedagem em quartos duplos com WC privado", "Transfer de bagagem", "Jantar na hospedagem"],
+    img: `${PROPOSTA_ASSETS}/dia3/dc0febe9-f417-4df3-9106-5d4cd35f782e.jpg`,
+  },
+  {
+    dia: "04", pais: "🇫🇷 → 🇮🇹",
+    titulo: "Les Chapieux até Lex Blanche",
+    desc: "Deslocamento até o ponto de partida, no Estacionamento do Les Mottets, rumo à primeira fronteira: o Col de la Seigne, a 2.420 m, divisa entre França e Itália.",
+    stats: { km: "9,2 km", sobe: "+747 m", desce: "-357 m" },
+    itens: ["Café da manhã", "Transfer da hospedagem até o ponto inicial da caminhada", "Caminhada com mochila com itens de pernoite/higiene", "Hospedagem em refúgio de montanha, quarto e WC compartilhados", "Jantar na hospedagem"],
+    img: `${PROPOSTA_ASSETS}/dia4/4af9d9a8-54f6-4014-a14a-8b8628d34167.jpg`,
+  },
+  {
+    dia: "05", pais: "🇮🇹",
+    titulo: "Lex Blanche até Courmayeur",
+    desc: "Dia mais leve fisicamente, que permite chegar cedo à charmosa Courmayeur e aproveitar a tarde inteira para passear pela cidade, visitar as lojas e saborear um jantar à parte, não incluso neste dia.",
+    stats: { km: "10,4 km", sobe: "+462 m", desce: "-673 m" },
+    itens: ["Café da manhã", "Caminhada com mochila com itens de pernoite/higiene", "Descida para Courmayeur de teleférico", "Hospedagem em hotel 5★ com piscina térmica", "Transfer de bagagem"],
+    img: `${PROPOSTA_ASSETS}/dia5/9d088dd5-997b-44cb-9af9-2d2bfb22d8ad.jpg`,
+  },
+  {
+    dia: "06", pais: "🇮🇹",
+    titulo: "Courmayeur até Val Ferret",
+    desc: "Um dos dias mais belos da travessia: saída do centro de Courmayeur subindo o vale entre casas de campo e estradas estreitas, floresta e um zigue-zague de 5 km até o Refúgio Bertone, seguindo por um falso plano com o Grand Jorasses sempre à esquerda. Retorno de transfer para pernoite em Courmayeur.",
+    stats: { km: "19,4 km", sobe: "+1.348 m", desce: "-563 m" },
+    itens: ["Café da manhã", "Caminhada com mochila leve", "Hospedagem em refúgio de montanha, quarto e WC compartilhados", "Transfer de bagagem", "Jantar incluso"],
+    img: `${PROPOSTA_ASSETS}/dia6/58642d30-9164-4ce0-af62-9d69170d0e4d.jpg`,
+  },
+  {
+    dia: "07", pais: "🇮🇹 → 🇨🇭",
+    titulo: "Val Ferret até La Fouly",
+    desc: "Transfer privado de Courmayeur até Val Ferret, onde começa a caminhada. Os primeiros 3 km aquecem o corpo até o Refúgio Elena; a subida fica mais exigente até o Grand Col de Ferret, divisa entre França e Suíça, seguida de 11 km de descida com parada no Alpage de la Peule.",
+    stats: { km: "13,2 km", sobe: "+476 m", desce: "-926 m" },
+    itens: ["Café da manhã", "Caminhada com mochila leve", "Hospedagem em hotel 4★, quartos duplos/triplos com WC privado", "Transfer de bagagem", "Jantar incluso"],
+    img: `${PROPOSTA_ASSETS}/dia7/6f2230aa-5564-41bf-9f05-bca6d94fc90e.jpg`,
+  },
+  {
+    dia: "08", pais: "🇨🇭",
+    titulo: "La Fouly até Champex Lac",
+    desc: "Dia totalmente em solo suíço: bosques, campos verdes e montanhas ao fundo, com o charme das casas de campo floridas até o Lago de Champex. A parte final é de subida, de volta à floresta, acompanhando um córrego de águas límpidas até Arpette.",
+    stats: { km: "15,2 km", sobe: "+505 m", desce: "-620 m" },
+    itens: ["Café da manhã", "Caminhada com mochila leve", "Hospedagem em refúgio na cidade, quartos de 8 pessoas com WC compartilhado", "Transfer de bagagem", "Jantar incluso"],
+    img: `${PROPOSTA_ASSETS}/dia8/55a54e18-db44-4d87-a7a3-ac07248752ed.jpg`,
+  },
+  {
+    dia: "09", pais: "🇨🇭",
+    titulo: "Champex Lac até Trient",
+    desc: "Descida de Arpette até Champex e 6 km de subida até o Alpage du Bovine, parada de montanha com vista espetacular. Logo depois, o Col de Portalo e uma descida de 7,5 km por passarelas e vegetação intensa até Trient, tradicional vila suíça.",
+    stats: { km: "15 km", sobe: "+738 m", desce: "-941 m" },
+    itens: ["Café da manhã", "Caminhada com mochila leve", "Hospedagem em refúgio na vila, quartos e WC compartilhados", "Transfer de bagagem", "Jantar incluso"],
+    img: `${PROPOSTA_ASSETS}/dia9/8f6420bb-e5d1-4972-ae6c-598daa40be63.jpg`,
+  },
+  {
+    dia: "10", pais: "🇨🇭 → 🇫🇷",
+    titulo: "Trient até Le Tour",
+    desc: "De volta à França: início curto e plano por Trient, seguido de subida contínua de 8 km até o Col de Balme, bem na divisa dos dois países, e descida até Le Tour — com opção de teleférico para poupar os joelhos.",
+    stats: { km: "11,5 km", sobe: "+1.203 m", desce: "-724 m" },
+    itens: ["Café da manhã", "Caminhada com mochila leve", "Opção de descer o trecho final de teleférico", "Hospedagem em refúgio, quartos de 6 camas com WC compartilhado", "Transfer de bagagem", "Jantar incluso"],
+    img: `${PROPOSTA_ASSETS}/dia10/e58f0f3e-9bf9-41e6-bb43-a67ad1e41233.jpg`,
+  },
+  {
+    dia: "11", pais: "🇫🇷",
+    titulo: "Le Tour até La Flégère",
+    desc: "1,5 km de asfalto até Montroc e entrada na trilha até Tré-le-Champ, de onde começa a subida até o ponto mais alto do dia, no km 7. Depois, falso plano entre vegetação rasteira e riachos até o refúgio.",
+    stats: { km: "10,4 km", sobe: "+794 m", desce: "-405 m" },
+    itens: ["Café da manhã", "Caminhada com mochila com itens de pernoite e higiene", "Hospedagem em refúgio de montanha, quartos grandes com WC compartilhado", "Jantar incluso"],
+    img: `${PROPOSTA_ASSETS}/dia11/da4f53d4-8cec-4c83-8da4-61347215bef5.jpg`,
+  },
+  {
+    dia: "12", pais: "🇫🇷",
+    titulo: "La Flégère até Chamonix / Les Houches",
+    desc: "Descida de teleférico até Les Praz de Chamonix e caminhada até o centro de Chamonix — com chance de acompanhar a chegada dos primeiros colocados da UTMB, se a data coincidir. Trecho final até Les Houches, o portal de término do Tour du Mont Blanc.",
+    stats: { km: "11,7 km", sobe: "+140 m", desce: "-206 m" },
+    itens: ["Café da manhã", "Caminhada com mochila com itens de pernoite e higiene", "Descida de teleférico no início do dia", "Hospedagem em hotel, quartos duplos com WC privado", "Transfer de bagagem"],
+    img: `${PROPOSTA_ASSETS}/dia12/9fd705cd-8120-4b73-8d93-5e0ea14277ff.jpg`,
+  },
+  {
+    dia: "13", pais: "🇫🇷",
+    titulo: "Dia livre em Les Houches / Chamonix",
+    desc: "Depois de 11 dias de caminhada, um dia livre para descansar ou aproveitar Chamonix: rafting pelo centro urbano, voo duplo de parapente, a Aiguille du Midi — o guia AONIK segue disponível para ajudar no que for preciso.",
+    stats: null,
+    itens: ["Café da manhã incluso", "Ticket de ônibus urbano incluso", "Hospedagem em hotel, quartos duplos com WC privado"],
+    img: `${PROPOSTA_ASSETS}/dia13/61ad4d03-85ff-4a68-b07d-51a755f732d5.jpeg`,
+  },
+  {
+    dia: "14", pais: "🇨🇭",
+    titulo: "Translado para Genebra e fim das operações",
+    desc: "Manhã tranquila para o café da manhã com calma e o checkout, antes do transfer às 10h rumo ao Aeroporto de Genebra.",
+    stats: null,
+    itens: ["Café da manhã incluso", "Transfer para o Aeroporto de Genebra"],
+    img: `${PROPOSTA_ASSETS}/dia14/7e05274e-7567-4ccb-8325-a3bc1617471f.jpg`,
+  },
+];
+
 // ---------- GUIA ----------
 const GUIA = {
-  nome: "Ivo Léo Schmitz",
-  origem: "Brusque, Santa Catarina",
+  nome: "Hendrik Fendel",
+  origem: "Urubici, Santa Catarina",
   photo: "/images/tmb/guia.jpg",
-  bio: "Montanhista, peregrino, remador e ciclista. Natural de Brusque (SC), Ivo Leonardo Schmitz transforma trilhas em expedições de vida, desenvolvendo roteiros pelo mundo com segurança, técnica e presença de espírito.",
-  credentials: [
-    "Certificações Internacionais de Primeiros Socorros e Resgate em Áreas Remotas",
-    "Formação em Desenvolvimento de Condutor ao Ar Livre",
-    "Formação Técnica em Guia de Turismo",
-    "Presidente da FEMESC (Federação de Montanhismo e Escalada de SC)",
-    "Co-coordenador do Caminho da Mata Atlântica (trilha de longo curso nacional)",
-  ],
-  expeditions: [
-    { place: "Cerro Plata 5.968m", flag: "🇦🇷" },
-    { place: "Circuito Huayhuash", flag: "🇵🇪" },
-    { place: "Tour du Mont Blanc", flag: "🇫🇷" },
-    { place: "Alta Via 1, Dolomitas", flag: "🇮🇹" },
-    { place: "Caminho de Santiago", flag: "🇪🇸" },
-    { place: "Cânions do Sul / Lagamar", flag: "🇧🇷" },
+  bio: "Radicado em Urubici, na Serra Catarinense, Hendrik construiu sua trajetória profundamente conectada às montanhas, trilhas e paisagens do sul do Brasil. Ao longo dos anos, transformou essa vivência em profissão e propósito de vida. Seu estilo de condução é marcado pela atenção aos detalhes, pela leitura cuidadosa do clima e do terreno e pela capacidade de criar experiências autênticas e humanas, sempre com foco na segurança e no respeito ao ritmo do grupo.",
+  marcas: [
+    "Urubici · Serra Catarinense",
+    "Travessias e caminhadas guiadas",
+    "Leitura de clima e terreno",
+    "Primeiros socorros em áreas remotas",
+    "Consciência e educação ambiental",
+    "Ritmo do grupo e segurança",
   ],
 };
 
@@ -302,7 +411,7 @@ const ICONS: Record<string, React.JSX.Element> = {
 
 // ---------- INCLUÍDO ----------
 const INCLUIDO = [
-  { icon: "guide",    cat: "Guia especialista",     text: "Condutor AONIK certificado em expedições de alta montanha e primeiros socorros em áreas remotas. Ivo Léo Schmitz lidera cada etapa." },
+  { icon: "guide",    cat: "Guia especialista",     text: "Condutor AONIK certificado em expedições de alta montanha e primeiros socorros em áreas remotas. Hendrik Fendel lidera cada etapa." },
   { icon: "hotel",    cat: "Hospedagem completa",    text: "Hotéis 2–3★ (quartos duplos), pousadas e refúgios alpinos durante toda a travessia." },
   { icon: "transfer", cat: "Transfer no dia 1",      text: "Transfer Genebra–Chamonix (ônibus regular). Você chega ao aeroporto e a gente resolve o restante." },
   { icon: "gps",      cat: "Segurança SPOT GPS",     text: "Monitoramento em tempo real com dispositivo SPOT GPS e acionamento de resgate se necessário." },
@@ -567,6 +676,66 @@ export default function TMBV2Page() {
         </div>
       </section>
 
+      {/* ===== ROTEIRO, DIA A DIA ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: C.cool, color: C.night }}>
+        <div className="mx-auto max-w-[1100px]">
+          <Reveal>
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
+              style={{ color: C.frRed }}>
+              <span className="h-px w-8" style={{ background: C.frRed }} />
+              O roteiro, dia a dia
+            </p>
+            <h2 className="mt-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]">
+              14 dias ao redor do teto da Europa
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 space-y-10">
+            {ROTEIRO.map((r, i) => (
+              <Reveal key={r.dia} delay={Math.min(i * 0.03, 0.3)}>
+                <div className="grid gap-6 border-t pt-8 md:grid-cols-[280px_1fr]" style={{ borderColor: "rgba(15,28,38,0.12)" }}>
+                  <div className="relative h-52 overflow-hidden rounded-xl md:h-full">
+                    <img src={r.img} alt={`Dia ${r.dia} — ${r.titulo}`} className="h-full w-full object-cover" />
+                    <span className="absolute left-3 top-3 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]"
+                      style={{ background: "rgba(9,21,32,0.75)", color: C.snow }}>
+                      Dia {r.dia} · {r.pais}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-[1.3rem] font-light leading-tight">{r.titulo}</h3>
+                    <p className="mt-3 text-[14px] font-light leading-relaxed" style={{ color: "rgba(15,28,38,0.68)" }}>
+                      {r.desc}
+                    </p>
+                    {r.stats && (
+                      <div className="mt-4 flex flex-wrap gap-4 text-[12px] font-medium" style={{ color: C.night }}>
+                        <span>{r.stats.km}</span>
+                        <span style={{ color: C.ch }}>{r.stats.sobe}</span>
+                        <span style={{ color: C.chRed }}>{r.stats.desce}</span>
+                      </div>
+                    )}
+                    <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
+                      {r.itens.map((it) => (
+                        <li key={it} className="text-[12.5px] font-light" style={{ color: "rgba(15,28,38,0.55)" }}>
+                          · {it}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.1}>
+            <p className="mt-12 rounded-xl border px-5 py-4 text-[13px] font-light leading-relaxed"
+              style={{ borderColor: "rgba(15,28,38,0.14)", color: "rgba(15,28,38,0.6)" }}>
+              Este roteiro é uma referência da última temporada operada. Nas validações de reserva para a
+              próxima saída, hospedagens e pequenos detalhes do dia a dia podem sofrer alterações.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===== GALERIA ===== */}
       <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: "#091520" }}>
         <div className="mx-auto max-w-[1400px]">
@@ -613,14 +782,14 @@ export default function TMBV2Page() {
         </div>
       </section>
 
-      {/* ===== GUIA — IVO LÉO SCHMITZ ===== */}
+      {/* ===== O GUIA DA JORNADA · HENDRIK ===== */}
       <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: "#091520", color: C.snow }}>
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
             <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]"
               style={{ color: C.frRed }}>
               <span className="h-px w-8" style={{ background: C.frRed }} />
-              O guia da aventura
+              O guia da jornada
             </p>
           </Reveal>
 
@@ -641,48 +810,40 @@ export default function TMBV2Page() {
               </div>
             </Reveal>
 
-            {/* bio + credentials */}
+            {/* bio + marcas */}
             <Reveal delay={0.1}>
               <div>
                 <h2 className="font-display text-[clamp(2rem,3.8vw,3rem)] font-light leading-[1.05] tracking-[-0.01em]">
                   {GUIA.nome}
                 </h2>
                 <p className="mt-2 text-[12px] uppercase tracking-[0.2em]"
-                  style={{ color: C.wood }}>{GUIA.origem}</p>
+                  style={{ color: C.wood }}>Condutor de turismo de natureza</p>
                 <p className="mt-6 text-[15px] font-light leading-relaxed text-white/70 max-w-xl">
                   {GUIA.bio}
                 </p>
 
-                {/* credenciais */}
+                {/* marcas da condução */}
                 <div className="mt-8">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40 mb-4">
-                    Formação & Certificações
-                  </p>
-                  <ul className="space-y-3">
-                    {GUIA.credentials.map((c) => (
-                      <li key={c} className="flex items-start gap-3 text-[14px] font-light text-white/75">
-                        <span className="mt-0.5 h-4 w-4 shrink-0 rounded-full border flex items-center justify-center text-[9px]"
-                          style={{ borderColor: C.ch, color: C.ch }}>✓</span>
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* expedições */}
-                <div className="mt-8">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40 mb-4">
-                    Expedições de referência
+                    Marcas da condução
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {GUIA.expeditions.map((exp) => (
-                      <span key={exp.place}
-                        className="rounded-full border px-4 py-1.5 text-[12px] font-light"
-                        style={{ borderColor: C.line, color: "rgba(238,243,246,0.65)" }}>
-                        {exp.flag} {exp.place}
+                    {GUIA.marcas.map((p) => (
+                      <span key={p}
+                        className="flex items-center gap-2 rounded-full border px-4 py-1.5 text-[12px] font-light"
+                        style={{ borderColor: C.line, color: "rgba(238,243,246,0.7)" }}>
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: C.wood }} />
+                        {p}
                       </span>
                     ))}
                   </div>
+                </div>
+
+                <div className="mt-8 rounded-2xl border px-5 py-4 text-[13px] font-light leading-relaxed"
+                  style={{ borderColor: C.line, color: "rgba(238,243,246,0.66)" }}>
+                  Em campo, o grupo conta com suporte completo de logística entre Chamonix e os
+                  refúgios alpinos, rastreador via satélite individual e{" "}
+                  <span style={{ color: C.wood }}>guia brasileiro com treinamento em primeiros socorros em áreas remotas e proficiente na língua local.</span>
                 </div>
               </div>
             </Reveal>

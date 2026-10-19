@@ -27,6 +27,22 @@ interface Destination {
 
 const DESTINATIONS: Destination[] = [
   {
+    id: "torres-del-paine-o-circuit",
+    name: "Circuito O · Torres del Paine",
+    region: "Patagônia Chilena",
+    tagline: "21–29 Fev 2027",
+    taglines: { 2027: "21–29 Fev 2027" },
+    years: [2027],
+    lat: -50.98,
+    lng: -73.03,
+    labelOffsetX: -60,
+    labelOffsetY: 140,
+    type: "aventura",
+    description:
+      "A volta completa ao maciço Paine: 129 km e 3.724 m+ pela face oculta de Torres del Paine. 8 dias. Saída confirmada.",
+    href: "/destinos/torres-del-paine-o-circuit",
+  },
+  {
     id: "tour-mont-blanc",
     name: "Tour du Mont Blanc",
     region: "Alpes · 3 países",

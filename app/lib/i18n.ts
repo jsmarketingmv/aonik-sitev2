@@ -6,7 +6,7 @@ export const LANGS: Lang[] = ["pt", "es", "en"];
 
 export interface Dict {
   nav: {
-    links: string[]; // Caminhadas, Peregrinação, Grupos, Navegação, Hotéis
+    links: string[]; // Caminhadas, Peregrinação, Grupos, Bike
     login: string;
     loginTitle: string;
     loginAgente: string;
@@ -18,11 +18,12 @@ export interface Dict {
     eyebrow: string;
     line1: string;
     connector: string;
-    rotating: string[]; // 6 palavras
+    rotating: string[]; // 3 palavras (caminhada, pedalada, peregrinação)
+    portugal: { line1: string; em: string }; // 4º slide, headline própria
     subhead: string;
     ctaPrimary: string;
     ctaSecondary: string;
-    categorias: string[]; // 5 (Caminhadas, Tours de Bike, Navegação, Refúgios, Neve)
+    categorias: string[]; // 4 (Caminhadas, Tours de Bike, Peregrinação, Portugal)
     soon: string;
   };
   universos: {
@@ -82,7 +83,7 @@ export interface Dict {
 export const translations: Record<Lang, Dict> = {
   pt: {
     nav: {
-      links: ["Caminhadas", "Peregrinação", "Grupos", "Bike", "Navegação", "Hotéis"],
+      links: ["Caminhadas", "Peregrinação", "Grupos", "Bike"],
       login: "Login",
       loginTitle: "Acessar o sistema AONIK",
       loginAgente: "Sou agente / operador",
@@ -97,30 +98,26 @@ export const translations: Record<Lang, Dict> = {
       rotating: [
         "caminhada",
         "pedalada",
-        "navegação",
-        "luxo",
-        "travessia",
-        "jornada",
+        "peregrinação",
       ],
+      portugal: { line1: "Descubra os", em: "Caminhos de Portugal" },
       subhead:
-        "Caminhadas, bike, navegação e refúgios selecionados para quem viaja atrás de algo que não cabe num roteiro comum.",
+        "Caminhadas, bike e peregrinações selecionadas para quem viaja atrás de algo que não cabe num roteiro comum.",
       ctaPrimary: "Descubra sua experiência",
       ctaSecondary: "Ver experiências",
       categorias: [
         "Caminhadas",
         "Tours de Bike",
-        "Navegação",
-        "Refúgios",
-        "Grupos",
-        "Neve",
+        "Peregrinação",
+        "Portugal",
       ],
       soon: "Em breve",
     },
     universos: {
-      headingPre: "Escolha por onde",
-      headingEm: "viver a natureza",
+      headingPre: "Escolha por qual caminho quer",
+      headingEm: "descobrir o mundo",
       intro:
-        "Não somos só de caminhadas. Somos de turismo de natureza: a pé, de bike, sobre a água ou em um refúgio. Comece por um universo.",
+        "Nossa essência é caminhar: na montanha, na trilha, na peregrinação. De bike também, no seu ritmo. Escolha o caminho que quer descobrir.",
       segmentos: [
         {
           kicker: "A pé",
@@ -131,16 +128,6 @@ export const translations: Record<Lang, Dict> = {
           kicker: "Sobre duas rodas",
           nome: "Tours de Bike",
           desc: "Cicloturismo por estradas e trilhas que ligam vilarejos, vinhas e paisagens vivas, no seu tempo, no seu ritmo.",
-        },
-        {
-          kicker: "Sobre a água",
-          nome: "Navegação",
-          desc: "Expedições por fiordes, geleiras e canais. A natureza vista da linha-d'água, onde o próprio barco vira refúgio.",
-        },
-        {
-          kicker: "Para ficar",
-          nome: "Hotéis",
-          desc: "Hotéis e lodges de natureza onde ficar já é o destino. Conforto imerso no silêncio das paisagens mais bonitas do mundo.",
         },
       ],
       explorar: "Explorar",
@@ -213,7 +200,7 @@ export const translations: Record<Lang, Dict> = {
         "Nossos Grupos",
       ],
       colExp: "Experiências",
-      colExpLinks: ["Caminhadas", "Peregrinação", "Bike", "Navegação", "Hotéis"],
+      colExpLinks: ["Caminhadas", "Peregrinação", "Bike"],
       contato: "Contato",
       copyright: "Turismo de Natureza. Todos os direitos reservados.",
       tagline: "Feito para quem busca o mundo natural",
@@ -227,7 +214,7 @@ export const translations: Record<Lang, Dict> = {
 
   es: {
     nav: {
-      links: ["Caminatas", "Peregrinación", "Grupos", "Bike", "Navegación", "Hoteles"],
+      links: ["Caminatas", "Peregrinación", "Grupos", "Bike"],
       login: "Acceso",
       loginTitle: "Acceder al sistema AONIK",
       loginAgente: "Soy agente / operador",
@@ -242,30 +229,26 @@ export const translations: Record<Lang, Dict> = {
       rotating: [
         "caminata",
         "pedaleo",
-        "navegación",
-        "lujo",
-        "travesía",
-        "jornada",
+        "peregrinación",
       ],
+      portugal: { line1: "Descubre los", em: "Caminos de Portugal" },
       subhead:
-        "Caminatas, bici, navegación y refugios seleccionados para quien viaja en busca de algo que no cabe en un itinerario común.",
+        "Caminatas, bici y peregrinaciones seleccionadas para quien viaja en busca de algo que no cabe en un itinerario común.",
       ctaPrimary: "Descubre tu experiência",
       ctaSecondary: "Ver experiências",
       categorias: [
         "Caminatas",
         "Tours en Bici",
-        "Navegación",
-        "Refugios",
-        "Grupos",
-        "Nieve",
+        "Peregrinación",
+        "Portugal",
       ],
       soon: "Próximamente",
     },
     universos: {
-      headingPre: "Elige por dónde",
-      headingEm: "vivir la naturaleza",
+      headingPre: "Elige por qué camino quieres",
+      headingEm: "descubrir el mundo",
       intro:
-        "No somos solo de caminatas. Somos de turismo de naturaleza: a pie, en bici, sobre el água o en un refugio. Empieza por un universo.",
+        "Nuestra esencia es caminar: en la montaña, en el sendero, en la peregrinación. En bici también, a tu ritmo. Elige el camino que quieres descubrir.",
       segmentos: [
         {
           kicker: "A pie",
@@ -276,16 +259,6 @@ export const translations: Record<Lang, Dict> = {
           kicker: "Sobre dos ruedas",
           nome: "Tours en Bici",
           desc: "Cicloturismo por rutas y senderos que unen pueblos, viñedos y paisajes vivos, a tu tiempo, a tu ritmo.",
-        },
-        {
-          kicker: "Sobre el água",
-          nome: "Navegación",
-          desc: "Expediciones por fiordos, glaciares y canales. La naturaleza vista desde el água, donde el propio barco es refugio.",
-        },
-        {
-          kicker: "Para quedarse",
-          nome: "Hoteles",
-          desc: "Hoteles y lodges de naturaleza donde quedarse ya es el destino. Confort inmerso en el silencio de los paisajes más bellos.",
         },
       ],
       explorar: "Explorar",
@@ -357,7 +330,7 @@ export const translations: Record<Lang, Dict> = {
         "Nuestros Grupos",
       ],
       colExp: "Experiências",
-      colExpLinks: ["Caminatas", "Peregrinación", "Bike", "Navegación", "Hoteles"],
+      colExpLinks: ["Caminatas", "Peregrinación", "Bike"],
       contato: "Contacto",
       copyright: "Turismo de Naturaleza. Todos los derechos reservados.",
       tagline: "Hecho para quien busca el mundo natural",
@@ -371,7 +344,7 @@ export const translations: Record<Lang, Dict> = {
 
   en: {
     nav: {
-      links: ["Hiking", "Pilgrimage", "Groups", "Bike", "Sailing", "Hotels"],
+      links: ["Hiking", "Pilgrimage", "Groups", "Bike"],
       login: "Login",
       loginTitle: "Access the AONIK system",
       loginAgente: "I'm an agent / operator",
@@ -386,30 +359,26 @@ export const translations: Record<Lang, Dict> = {
       rotating: [
         "a hike",
         "a ride",
-        "sailing",
-        "luxury",
-        "a crossing",
-        "a journey",
+        "a pilgrimage",
       ],
+      portugal: { line1: "Discover the", em: "Paths of Portugal" },
       subhead:
-        "Hiking, biking, sailing and nature lodges, curated for travelers chasing something that doesn't fit an ordinary itinerary.",
+        "Hiking, biking and pilgrimages, curated for travelers chasing something that doesn't fit an ordinary itinerary.",
       ctaPrimary: "Discover Your Experience",
       ctaSecondary: "See experiences",
       categorias: [
         "Hiking",
         "Bike Tours",
-        "Sailing",
-        "Lodges",
-        "Groups",
-        "Snow",
+        "Pilgrimage",
+        "Portugal",
       ],
       soon: "Coming soon",
     },
     universos: {
-      headingPre: "Choose where to",
-      headingEm: "live nature",
+      headingPre: "Choose which path you want to",
+      headingEm: "discover the world",
       intro:
-        "We're not only about hiking. We're about nature travel: on foot, by bike, on the water or in a refuge. Start with one world.",
+        "Walking is in our essence — on the mountain, on the trail, on pilgrimage. By bike too, at your own pace. Choose the path you want to discover.",
       segmentos: [
         {
           kicker: "On foot",
@@ -420,16 +389,6 @@ export const translations: Record<Lang, Dict> = {
           kicker: "On two wheels",
           nome: "Bike Tours",
           desc: "Cycle touring along roads and trails linking villages, vineyards and living landscapes, at your own pace.",
-        },
-        {
-          kicker: "On the water",
-          nome: "Sailing",
-          desc: "Expeditions through fjords, glaciers and channels. Nature seen from the waterline, where the boat itself becomes a refuge.",
-        },
-        {
-          kicker: "To stay",
-          nome: "Hotels",
-          desc: "Nature hotels and lodges where staying is already the destination. Comfort immersed in the silence of the world's finest landscapes.",
         },
       ],
       explorar: "Explore",
@@ -496,7 +455,7 @@ export const translations: Record<Lang, Dict> = {
       colNav: "Navigation",
       colNavLinks: ["About Us", "Our Story", "Our Passion", "Our Groups"],
       colExp: "Experiences",
-      colExpLinks: ["Hiking", "Pilgrimage", "Bike", "Sailing", "Hotels"],
+      colExpLinks: ["Hiking", "Pilgrimage", "Bike"],
       contato: "Contact",
       copyright: "Nature Travel. All rights reserved.",
       tagline: "Made for those who seek the natural world",

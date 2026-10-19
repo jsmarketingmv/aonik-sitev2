@@ -553,7 +553,7 @@ export default function BavariaPage() {
               className="mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] uppercase tracking-[0.16em]"
               style={{ borderColor: B.sage, color: B.sage }}>
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: B.sage }} />
-              Próxima saída · 14 a 24 Set 2027
+              Próxima saída · 14 a 24 Set 2027 · grupo em formação
             </motion.div>
                       <div className="mt-7">
               <Breadcrumb tone="dark" items={[

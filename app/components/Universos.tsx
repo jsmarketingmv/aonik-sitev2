@@ -16,16 +16,6 @@ const SEG_META = [
     n: "02",
     img: "/bike/costa-bike/costa-07.jpg",
   },
-  {
-    id: "navegacao",
-    n: "03",
-    img: "/skorpios/DSC_0020.JPG",
-  },
-  {
-    id: "refugios",
-    n: "04",
-    img: "https://lastorres.com/content/uploads/01-6.jpg",
-  },
 ];
 
 export default function Universos() {

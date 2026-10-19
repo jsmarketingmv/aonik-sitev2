@@ -392,7 +392,6 @@ export default function HotelLasTorresPage() {
             <div className="mt-7">
               <Breadcrumb tone="dark" accent={L.gold} items={[
                 { label: "Home", href: "/" },
-                { label: "Hotéis", href: "/hoteis" },
                 { label: "Hotel Las Torres" },
               ]} />
             </div>

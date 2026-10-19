@@ -353,7 +353,6 @@ export function ExpeditionPage({ data }: { data: Expedition }) {
                 accent={A.glacial}
                 items={[
                   { label: "Home", href: "/" },
-                  { label: "Navegação", href: "/navegacao" },
                   { label: "Antarctica21", href: "/destinos/antarctica21" },
                   { label: data.title.join(" ") },
                 ]}

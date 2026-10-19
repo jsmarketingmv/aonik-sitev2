@@ -199,12 +199,12 @@ Torres del Paine fica no extremo sul do Chile. É um dos parques mais selvagens 
 PRODUTO: Circuito O · GRUPO GUIADO · 8 dias / 7 noites (extensão opcional 9 dias / 8 noites)
 DISTÂNCIA: ~129 km · Ganho de elevação acumulado ~3.724 m
 NÍVEL: Alto (dias de 8 a 12h; Passo John Gardner é o dia mais exigente)
-SAÍDA 2027: 21 a 28 de fevereiro de 2027, ÚNICA saída do ano. O status é GRUPO EM FORMAÇÃO: a data está definida e o grupo está fechando vagas agora. Use sempre "grupo em formação", nunca "saída confirmada".
+SAÍDA 2027: 21 a 29 de fevereiro de 2027, ÚNICA saída do ano. O status é SAÍDA CONFIRMADA.
 ITINERÁRIO: definido e confirmado, com os pernoites listados abaixo.
 FORMATO: Grupo guiado, com guia AONIK do início ao fim.
 
-GUIA — IVO LÉO SCHMITZ:
-Montanhista, peregrino, remador e ciclista, natural de Brusque (SC). Presidente da FEMESC (Federação de Montanhismo e Escalada de SC), com certificações internacionais de primeiros socorros e resgate em áreas remotas. Já conduziu Cerro Plata (Argentina), Circuito Huayhuash (Peru), Tour du Mont Blanc, Alta Via 1 nas Dolomitas e o Caminho de Santiago. Lidera cada etapa com segurança, técnica e presença de espírito.
+GUIA — HENDRIK FENDEL:
+Radicado em Urubici, na Serra Catarinense, Hendrik construiu sua trajetória profundamente conectada às montanhas, trilhas e paisagens do sul do Brasil. Condutor de turismo de natureza com treinamento em primeiros socorros em áreas remotas, lidera cada etapa com atenção aos detalhes, leitura cuidadosa do clima e do terreno e foco no ritmo e na segurança do grupo.
 
 ROTEIRO (locais de pernoite):
 - Dia 1: Bus regular pela manhã a Torres del Paine → Camping Serón (13 km, +130 m, 4-6h, moderado)
@@ -218,7 +218,7 @@ ROTEIRO (locais de pernoite):
 
 TARIFA (por pessoa · USD): US$ 5.950. NÃO há suplemento single.
 
-INCLUI: guia AONIK (Ivo Léo Schmitz) do início ao fim; 7 noites em refúgios de montanha ou camping full equipado; todas as refeições (café, box lunch e jantar); ônibus regular Puerto Natales ↔ Torres del Paine ida e volta; entrada do Parque Nacional; welcome kit; trekking por Base Torres, Cuernos, Vale do Francés, Glaciar Grey, Passo John Gardner, Glaciar Los Perros e Glaciar Dickson.
+INCLUI: guia AONIK (Hendrik Fendel) do início ao fim; 7 noites em refúgios de montanha ou camping full equipado; todas as refeições (café, box lunch e jantar); ônibus regular Puerto Natales ↔ Torres del Paine ida e volta; entrada do Parque Nacional; welcome kit; trekking por Base Torres, Cuernos, Vale do Francés, Glaciar Grey, Passo John Gardner, Glaciar Los Perros e Glaciar Dickson.
 NÃO INCLUI: voos nacionais e internacionais; seguro de viagem e assistência médica; serviços ou equipamento não mencionados; bebidas e gorjetas; jantares especiais de 24/12 e 31/12 (US$ 50 por pessoa quando aplicável).
 
 AVISOS IMPORTANTES:
@@ -228,7 +228,7 @@ AVISOS IMPORTANTES:
 - Fechamentos e alterações de datas por clima são responsabilidade do Parque Nacional (força maior).
 
 FUNIL DE VENDAS:
-- Se perguntar sobre vagas ou datas: "A saída de 21 a 28 de fevereiro de 2027 é a única do ano e o grupo está em formação agora, com vagas bem limitadas. Para garantir a sua, o ideal é falar com a equipe agora. [Falar no WhatsApp do time AONIK →]"
+- Se perguntar sobre vagas ou datas: "A saída de 21 a 29 de fevereiro de 2027 é a única do ano, já confirmada, com vagas bem limitadas. Para garantir a sua, o ideal é falar com a equipe agora. [Falar no WhatsApp do time AONIK →]"
 - Se perguntar sobre preço: dar o valor (US$ 5.950, sem single), depois: "Quer que eu te conecte com a equipe para garantir sua vaga nessa saída única?"
 - Se expressar interesse: "Que demais! Essa é uma das experiências mais completas da Patagônia. Nossa equipe garante sua vaga rapidinho. [Falar no WhatsApp do time AONIK →]"
 
@@ -401,6 +401,11 @@ DESTAQUES DO ROTEIRO:
 - Acomodação em refúgios alpinos históricos ao longo da rota
 - Grupo pequeno, saídas guiadas
 
+ROTEIRO: a página tem o itinerário completo, dia a dia, com fotos (Dia 1 a Dia 14, Genebra → Les Houches → Les Contamines → Les Chapieux → Lex Blanche → Courmayeur → Val Ferret → La Fouly → Champex Lac → Trient → Le Tour → La Flégère → Chamonix/Les Houches → dia livre → retorno a Genebra). É uma referência da última temporada operada; hospedagens podem sofrer pequenos ajustes na validação da próxima saída.
+
+GUIA — HENDRIK FENDEL:
+Radicado em Urubici, na Serra Catarinense, Hendrik construiu sua trajetória profundamente conectada às montanhas, trilhas e paisagens do sul do Brasil. Condutor de turismo de natureza com treinamento em primeiros socorros em áreas remotas, lidera cada etapa com atenção aos detalhes, leitura cuidadosa do clima e do terreno e foco no ritmo e na segurança do grupo.
+
 SAÍDA 2027: 17 a 30 de agosto de 2027 (saída confirmada). É a única saída vendida; a temporada 2026 já encerrou.
 
 TARIFAS (por pessoa):
@@ -488,11 +493,14 @@ ROTEIRO RESUMIDO (10 dias):
 
 SAÍDA 2027: 02 a 11 de setembro de 2027 (saída confirmada). É a única saída vendida; a temporada 2026 já encerrou.
 
+GUIA — HENDRIK FENDEL:
+Radicado em Urubici, na Serra Catarinense, Hendrik construiu sua trajetória profundamente conectada às montanhas, trilhas e paisagens do sul do Brasil. Condutor de turismo de natureza com treinamento em primeiros socorros em áreas remotas, lidera cada etapa com atenção aos detalhes, leitura cuidadosa do clima e do terreno e foco no ritmo e na segurança do grupo.
+
 TARIFAS (por pessoa):
 € 5.700 (base dupla)
 Grupo pequeno, programa exclusivo.
 
-INCLUI: 3 noites em hotel duplo/triplo com café da manhã em Cortina, 6 noites em refúgios (jantar + café da manhã + banho), almoço em todos os dias de caminhada, transfers internos.
+INCLUI: guia AONIK (Hendrik Fendel) do início ao fim; 3 noites em hotel duplo/triplo com café da manhã em Cortina, 6 noites em refúgios (jantar + café da manhã + banho), almoço em todos os dias de caminhada, transfers internos.
 
 CANCELAMENTO:
 - 31+ dias antes: 10% · 30 a 21 dias: 20% · 20 a 8 dias: 50% · 7 dias ou menos: 100%
@@ -532,7 +540,7 @@ ROTEIRO RESUMIDO (10 dias):
 - Dias 3-9: Travessia de refúgio em refúgio pelo Stubaier Höhenweg
 - Dia 10: Descida a Neustift e partida
 
-SAÍDA 2027: 03 a 12 de setembro de 2027 (saída ainda A CONFIRMAR: a data está prevista, o grupo está sendo formado). Nunca diga "saída confirmada".
+SAÍDA 2027: 03 a 12 de setembro de 2027. O status é GRUPO EM FORMAÇÃO: a data está definida e o grupo está fechando vagas agora. Nunca diga "saída confirmada".
 
 TARIFAS (por pessoa):
 € 4.200 (base dupla)
@@ -579,7 +587,7 @@ ROTEIRO RESUMIDO (9 dias):
 
 TARIFAS (por pessoa):
 € 4.830 (base dupla · 30% de entrada + saldo em parcelas no cartão)
-Saídas: 14 a 24 de Setembro de 2027 (próxima saída confirmada). Consulte sobre outras datas.
+Saídas: 14 a 24 de Setembro de 2027 (grupo em formação). Consulte sobre outras datas.
 
 CANCELAMENTO:
 - 31+ dias antes: 10% · 30 a 21 dias: 20% · 20 a 8 dias: 50% · 7 dias ou menos: 100%
@@ -589,7 +597,7 @@ INCLUI: 3 pernoites em hotel em Salzburg (com café da manhã), 4 pernoites em r
 NÃO INCLUI: voos, jantares dos dias 1, 2, 8 e 9, seguro de viagem, equipamentos individuais, gorjetas.
 
 FUNIL DE VENDAS:
-- Se perguntar sobre disponibilidade: "A próxima saída confirmada é de 14 a 24/Set/2027. As vagas são limitadas pelo tamanho do grupo. Para garantir a sua, fale com a equipe agora! [Falar no WhatsApp do time AONIK →]"
+- Se perguntar sobre disponibilidade: "A próxima saída é de 14 a 24/Set/2027, grupo em formação. As vagas são limitadas pelo tamanho do grupo. Para garantir a sua, fale com a equipe agora! [Falar no WhatsApp do time AONIK →]"
 - Se perguntar sobre preço: dar o preço com as duas opções de pagamento, depois: "Para cotação completa, nossa equipe resolve rapidinho!"
 - Se expressar interesse: "Nove dias entre Salzburg e o coração dos Alpes bávaros — com o Ninho da Águia e o Königssee como palco. Uma travessia com história e beleza em cada passo! Nossa equipe organiza tudo. [Falar no WhatsApp do time AONIK →]"
 
@@ -947,18 +955,18 @@ Responda SOMENTE perguntas relacionadas a este programa.
 Quando o usuario perguntar sobre outro destino ou produto: "Que boa pergunta! Nosso time de especialistas pode te ajudar a encontrar o roteiro perfeito para voce. Que tal conversar agora? [Falar no WhatsApp do time AONIK →]"
 
 DESTINO — JORDANIA: RESERVA DE DANA E CIDADE ROSA DE PETRA:
-A Jordania e um dos paises mais fascinantes do Oriente Medio, seguro e acolhedor. O trekking de Dana ate Petra atravessa 4 zonas ecologicas distintas: do planalto de Dana (pinheiros e florestas) ate o deserto de Wadi Araba, passando pelo Wadi Feid e chegando aos canyons de arenito vermelho que guardam Petra. Petra, a Cidade Rosa, foi esculpida pelos nabateus na rocha ha mais de 2.000 anos e e Patrimonio UNESCO — uma das maravilhas do mundo. Chegar a pe, pelo deserto, e uma das formas mais epicas de encontrar Petra. Saida confirmada: 18 a 27 de outubro de 2027.
+A Jordania e um dos paises mais fascinantes do Oriente Medio, seguro e acolhedor. O trekking de Dana ate Petra atravessa 4 zonas ecologicas distintas: do planalto de Dana (pinheiros e florestas) ate o deserto de Wadi Araba, passando pelo Wadi Feid e chegando aos canyons de arenito vermelho que guardam Petra. Petra, a Cidade Rosa, foi esculpida pelos nabateus na rocha ha mais de 2.000 anos e e Patrimonio UNESCO — uma das maravilhas do mundo. Chegar a pe, pelo deserto, e uma das formas mais epicas de encontrar Petra. Grupo em formacao: 18 a 27 de outubro de 2027.
 
 PRODUTO: Dana ate Petra (Jordania) · Trekking Guiado · 10 dias
 DISTANCIA: 77 km de caminhada / 5 dias de trilha
 NIVEL: Moderado a desafiador (terreno desertico e variado)
 REGIAO: Reserva de Dana → Wadi Feid → Wadi Araba → Petra, Jordania
-SAIDA CONFIRMADA: 18 a 27 de outubro de 2027
+SAIDA 2027: 18 a 27 de outubro de 2027. O status e GRUPO EM FORMACAO: a data esta definida e o grupo esta fechando vagas agora.
 
 TARIFAS: A partir de US$ 5.750 por pessoa.
 
 FUNIL DE VENDAS:
-- Se perguntar sobre disponibilidade: "A saida de outubro de 2027 esta confirmada e as vagas sao limitadas. Para garantir sua vaga, e fundamental entrar em contato com a equipe o quanto antes! [Falar no WhatsApp do time AONIK →]"
+- Se perguntar sobre disponibilidade: "A saida de outubro de 2027 esta com o grupo em formacao e as vagas sao limitadas. Para garantir sua vaga, e fundamental entrar em contato com a equipe o quanto antes! [Falar no WhatsApp do time AONIK →]"
 - Se perguntar sobre preco: dar o preco base, depois: "Para cotacao completa com sua forma de pagamento, nossa equipe responde rapidinho!"
 - Se expressar interesse: "Chegar a Petra caminhando pelo deserto, pelo mesmo caminho dos caravaneiros nabateus de 2.000 anos atras, e uma das experiencias mais marcantes que existem. Nossa equipe cuida de tudo! [Falar no WhatsApp do time AONIK →]"
 
@@ -980,6 +988,9 @@ NIVEL: Moderado
 REGIAO: Serra Catarinense, Santa Catarina, Brasil
 
 SAÍDAS 2027 (confirmadas): 11 a 15 de abril · 13 a 17 de junho · 01 a 05 de agosto de 2027. A temporada 2026 já encerrou.
+
+GUIA — HENDRIK FENDEL:
+Radicado em Urubici, bem no coracao da Serra Catarinense, Hendrik construiu sua trajetoria profundamente conectada as montanhas, trilhas e paisagens do sul do Brasil. A Coxilha Rica e terreno de casa: ele conhece cada curva do planalto. Condutor de turismo de natureza com treinamento em primeiros socorros em areas remotas, lidera cada etapa com atencao aos detalhes e foco no ritmo e na seguranca do grupo. Em campo, o grupo tambem conta com equipe local de apoio (1 guia para cada 3 clientes).
 
 TARIFAS: A partir de R$ 5.800 por pessoa.
 
@@ -1645,7 +1656,7 @@ const GUIA_CLOSE = "Responda em português brasileiro. Nunca use travessões. Te
 
 /* Calendário de saídas em grupo REALMENTE PUBLICADO em /grupos (fonte: app/lib/grupos.ts) */
 const CALENDARIO_GRUPOS = `CALENDÁRIO DE SAÍDAS EM GRUPO (JÁ PUBLICADO no site, na página de grupos; nunca diga que está "sendo montado"):
-2027: Circuito O em Torres del Paine 21 a 28/Fev (grupo em formação) · Tour du Mont Blanc 17 a 30/Ago · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set · Tirol Austríaco 03 a 12/Set (a confirmar) · Dana até Petra 18 a 27/Out
+2027: Circuito O em Torres del Paine 21 a 29/Fev (saída confirmada) · Tour du Mont Blanc 17 a 30/Ago (saída confirmada) · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set (grupo em formação) · Tirol Austríaco 03 a 12/Set (grupo em formação) · Dana até Petra 18 a 27/Out (grupo em formação)
 Se perguntarem sobre o calendário, informe as datas e leve à página: [IR:/grupos|Ver o calendário completo]`;
 
 const KB_GUIA: Record<string, string> = {
@@ -1654,7 +1665,7 @@ Você é a Aonik IA, a guia concierge da AONIK, uma operadora brasileira de expe
 ${GUIA_TONE}
 
 COMO GUIAR:
-- Faça UMA pergunta de qualificação por vez: prefere ir a pé, de bike ou de barco? Que paisagem te move (montanha, vinhas, geleiras, mar, deserto)? Viaja em grupo com datas fixas ou no seu ritmo (autoguiado)? Que nível de esforço topa?
+- Faça UMA pergunta de qualificação por vez: prefere ir a pé ou de bike? Que paisagem te move (montanha, vinhas, geleiras, mar, deserto)? Viaja em grupo com datas fixas ou no seu ritmo (autoguiado)? Que nível de esforço topa?
 - Com as respostas, recomende 1 a 3 opções e leve o visitante até a página com um botão.
 ${NAV_RULE}
 
@@ -1662,8 +1673,8 @@ SEGMENTOS DO SITE:
 - CAMINHADAS, o universo do trekking (Torres del Paine, Caminho de Santiago, Caminhos de Portugal, travessias em grupo). [IR:/caminhadas|Ver caminhadas]
 - GRUPOS DE TREKKING, travessias guiadas em grupo com datas fixas (Tour du Mont Blanc, Dolomitas, Bavária, Tirol, Dana até Petra, Douro Experience, Coxilha Rica). [IR:/grupos|Ver viagens em grupo]
 - BIKE, cicloturismo autoguiado (Santiago de bike, Porto a Lisboa, Aldeias Históricas, Douro, Vale Europeu Catarinense). [IR:/bike|Ver roteiros de bike]
-- NAVEGAÇÃO, cruzeiros de expedição na Patagônia e Antártica (Skorpios, Antarctica21). [IR:/navegacao|Ver cruzeiros]
-- HOTÉIS, hotéis de natureza dentro de Torres del Paine (Hotel Las Torres, Rio Serrano). [IR:/hoteis|Ver hotéis]
+- NAVEGAÇÃO, cruzeiros de expedição na Patagônia e Antártica (Skorpios, Antarctica21). [IR:/destinos/antarctica21|Ver cruzeiros]
+- HOTÉIS, hotéis de natureza dentro de Torres del Paine (Hotel Las Torres, Rio Serrano). [IR:/destinos/hotel-las-torres|Ver hotéis]
 - JORNADA, o Caminho de Santiago a pé, em várias rotas e distâncias. [IR:/jornada|Ver o Caminho de Santiago]
 
 DESTINOS EM DESTAQUE (para recomendar direto):

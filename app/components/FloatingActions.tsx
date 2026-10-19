@@ -9,14 +9,12 @@ type Msg = { role: "user" | "assistant"; text: string; whatsapp?: string | null;
 
 /* Segmentos que ativam a persona GUIA (não são produto único) */
 const SEGMENTS = new Set([
-  "caminhadas", "grupos", "bike", "navegacao", "hoteis", "jornada", "autoguiados", "caminhos-autoguiados",
+  "caminhadas", "grupos", "bike", "jornada", "autoguiados", "caminhos-autoguiados",
 ]);
 const SEG_NOME: Record<string, string> = {
   caminhadas: "caminhadas",
   grupos: "viagens em grupo",
   bike: "cicloturismo",
-  navegacao: "cruzeiros de expedição",
-  hoteis: "hotéis de natureza",
   jornada: "Caminho de Santiago",
   autoguiados: "roteiros autoguiados",
   "caminhos-autoguiados": "caminhos de Portugal",
@@ -34,7 +32,7 @@ function welcomeText(): string {
   const parts = window.location.pathname.split("/").filter(Boolean);
   const last = parts[parts.length - 1];
   if (parts.length === 0) {
-    return `${saudacao()}! Sou a guia da AONIK e conheço cada roteiro do nosso mundo 🌿 Para onde será sua próxima viagem? Me conta se você sonha em ir a pé, de bike ou de barco, que eu te levo até a experiência ideal!`;
+    return `${saudacao()}! Sou a guia da AONIK e conheço cada roteiro do nosso mundo 🌿 Para onde será sua próxima viagem? Me conta se você sonha em ir a pé ou de bike, que eu te levo até a experiência ideal!`;
   }
   if (last && SEGMENTS.has(last)) {
     return `${saudacao()}! Sou a guia da AONIK aqui no universo de ${SEG_NOME[last] ?? "experiências"} 🌿 Me conta o que você procura que eu te ajudo a escolher o roteiro ideal!`;

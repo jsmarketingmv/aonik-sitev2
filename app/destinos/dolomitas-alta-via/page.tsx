@@ -412,7 +412,7 @@ const INCLUSO = [
   "Transfer privado VAN Aeroporto Marco Polo → Cortina (ida e volta)",
   "3 noites em hotel duplo/triplo com café da manhã em Cortina",
   "6 noites em refúgios (jantar + café da manhã + banho)",
-  "1 condutor brasileiro com certificação internacional (primeiros socorros)",
+  "Guia AONIK Hendrik Fendel, certificação internacional em primeiros socorros",
   "Transfer privado Cortina ↔ Refúgio Auronzo (Tre Cime)",
   "Transfer privado Cortina → Lago di Braies (início da travessia)",
   "2 transfers de bagagem para troca de roupas nos refúgios (Dias 5 e 7)",
@@ -687,6 +687,79 @@ export default function DolomitasAltaViaPage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== O GUIA DA JORNADA · HENDRIK ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: D.bosco, color: D.creme }}>
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal>
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: D.rosso }}>
+              <span className="h-px w-8" style={{ background: D.rosso }} />
+              O guia da jornada
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid items-start gap-10 md:grid-cols-[420px_1fr] md:gap-16">
+            <Reveal>
+              <div className="relative overflow-hidden rounded-2xl" style={{ height: 540 }}>
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/tmb/guia.jpg')` }} />
+                <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${D.bosco}ee 0%, transparent 55%)` }} />
+                <div className="absolute inset-x-0 bottom-0 p-7">
+                  <p className="font-display text-[1.6rem] font-light leading-tight" style={{ color: D.creme }}>Hendrik Fendel</p>
+                  <p className="mt-1 text-[12px] uppercase tracking-[0.18em]" style={{ color: D.rosso }}>Urubici · Santa Catarina</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div>
+                <h2 className="font-display font-light leading-[1.05] tracking-[-0.01em]" style={{ fontSize: "clamp(2rem,3.8vw,3rem)", color: D.creme }}>
+                  Hendrik Fendel
+                </h2>
+                <p className="mt-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: D.rosso }}>Condutor de turismo de natureza</p>
+                <p className="mt-6 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: D.textSoft }}>
+                  Radicado em Urubici, na Serra Catarinense, Hendrik construiu sua trajetória
+                  profundamente conectada às montanhas, trilhas e paisagens do sul do Brasil. Ao
+                  longo dos anos, transformou essa vivência em profissão e propósito de vida.
+                </p>
+                <p className="mt-4 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: D.textSoft }}>
+                  Seu estilo de condução é marcado pela atenção aos detalhes, pela leitura cuidadosa
+                  do clima e do terreno e pela capacidade de criar experiências autênticas e
+                  humanas, sempre com foco na segurança e no respeito ao ritmo do grupo.
+                </p>
+
+                <div className="mt-8">
+                  <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "rgba(243,237,228,0.4)" }}>
+                    Marcas da condução
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Urubici · Serra Catarinense",
+                      "Travessias e caminhadas guiadas",
+                      "Leitura de clima e terreno",
+                      "Primeiros socorros em áreas remotas",
+                      "Consciência e educação ambiental",
+                      "Ritmo do grupo e segurança",
+                    ].map((p) => (
+                      <span key={p} className="flex items-center gap-2 rounded-full border px-4 py-1.5 text-[12px] font-light"
+                        style={{ borderColor: D.line, color: "rgba(243,237,228,0.7)" }}>
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: D.rosso }} />
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8 rounded-2xl border px-5 py-4 text-[13px] font-light leading-relaxed"
+                  style={{ borderColor: D.line, color: "rgba(243,237,228,0.66)" }}>
+                  Em campo, o grupo conta com suporte completo de logística entre Cortina d&apos;Ampezzo
+                  e os refúgios da travessia, rastreador via satélite individual e{" "}
+                  <span style={{ color: D.rosso }}>guia brasileiro com treinamento em primeiros socorros em áreas remotas e proficiente na língua local.</span>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

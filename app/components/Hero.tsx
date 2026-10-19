@@ -8,20 +8,19 @@ import { useLang } from "./LanguageProvider";
 const ROTATING_IMGS = [
   "/images/hero/IMG_3490.JPG", // caminhada
   "/bike/costa-bike/costa-05.jpg", // pedalada
-  "https://cdn.prod.website-files.com/66f12032b3f2015fa639ef3e/684c66f504adcb4c0296f6b9_Nicola%CC%81s%20Gildemeister%20-%20image%20(10).jpg", // navegação
-  "https://lastorres.com/content/uploads/01-6.jpg", // luxo (Las Torres)
-  "/images/hero/IMG_1704.JPG", // travessia
-  "/images/hero/IMG_3775.JPG", // jornada
+  "https://static.wixstatic.com/media/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg/v1/fit/w_1920,h_1539,q_90,enc_avif,quality_auto/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg", // peregrinação (Caminho de Santiago)
+  "https://static.wixstatic.com/media/2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg/v1/fill/w_2000,h_1200,al_c,q_85,enc_avif,quality_auto/img.jpg", // Portugal (Douro)
 ];
 
-// Estrutura das categorias (href/soon); rótulos vêm do dicionário
-const CAT_META = [
+// Slide com headline própria (não entra na frase "Viva a natureza em forma de ___")
+const PORTUGAL_INDEX = 3;
+
+// Estrutura das categorias (href); rótulos vêm do dicionário
+const CAT_META: { n: string; href: string; soon?: boolean }[] = [
   { n: "01", href: "#caminhadas" },
   { n: "02", href: "#bike" },
-  { n: "03", href: "#navegacao" },
-  { n: "04", href: "#refugios" },
-  { n: "05", href: "/grupos" },
-  { n: "06", href: "#neve", soon: true },
+  { n: "03", href: "/jornada" },
+  { n: "04", href: "/caminhos-autoguiados" },
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -91,29 +90,50 @@ export default function Hero() {
         <h1 className="font-display text-cream">
           <Line delay={0.65}>
             <span className="block text-[clamp(2.6rem,8.5vw,7.5rem)] font-light leading-[0.95] tracking-[-0.02em]">
-              {t.hero.line1}
+              {index === PORTUGAL_INDEX ? t.hero.portugal.line1 : t.hero.line1}
             </span>
           </Line>
 
-          <Line delay={0.8}>
-            <span className="mt-1 flex flex-wrap items-baseline justify-center gap-x-[0.35em] text-[clamp(2.6rem,8.5vw,7.5rem)] font-light leading-[0.95] tracking-[-0.02em]">
-              <span className="text-cream/80">{t.hero.connector}</span>
-              <span className="relative inline-block min-w-[4ch] text-left italic text-gold">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0, filter: "blur(10px)" }}
-                    animate={{ opacity: 1, filter: "blur(0px)" }}
-                    exit={{ opacity: 0, filter: "blur(10px)" }}
-                    transition={{ duration: 0.55, ease: EASE }}
-                    className="inline-block"
-                  >
-                    {palavra}
-                  </motion.span>
-                </AnimatePresence>
+          {index === PORTUGAL_INDEX ? (
+            <Line delay={0.8}>
+              <span className="mt-1 flex flex-wrap items-baseline justify-center gap-x-[0.35em] text-[clamp(2.6rem,8.5vw,7.5rem)] font-light leading-[0.95] tracking-[-0.02em]">
+                <span className="relative inline-block text-left italic text-gold">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, filter: "blur(10px)" }}
+                      animate={{ opacity: 1, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, filter: "blur(10px)" }}
+                      transition={{ duration: 0.55, ease: EASE }}
+                      className="inline-block"
+                    >
+                      {t.hero.portugal.em}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
               </span>
-            </span>
-          </Line>
+            </Line>
+          ) : (
+            <Line delay={0.8}>
+              <span className="mt-1 flex flex-wrap items-baseline justify-center gap-x-[0.35em] text-[clamp(2.6rem,8.5vw,7.5rem)] font-light leading-[0.95] tracking-[-0.02em]">
+                <span className="text-cream/80">{t.hero.connector}</span>
+                <span className="relative inline-block min-w-[4ch] text-left italic text-gold">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, filter: "blur(10px)" }}
+                      animate={{ opacity: 1, filter: "blur(0px)" }}
+                      exit={{ opacity: 0, filter: "blur(10px)" }}
+                      transition={{ duration: 0.55, ease: EASE }}
+                      className="inline-block"
+                    >
+                      {palavra}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
+              </span>
+            </Line>
+          )}
         </h1>
 
         <motion.p

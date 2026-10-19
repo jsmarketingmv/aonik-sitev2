@@ -216,9 +216,9 @@ export default function Antarctica21HubPage() {
                 style={{ background: A.parka, color: A.gelo }}>
                 Ver as expedições <span>↓</span>
               </a>
-              <a href="/navegacao" className="text-[12px] uppercase tracking-[0.16em] transition-colors hover:text-[#6fa8c9]"
+              <a href="/destinos/cruzeiro-skorpios" className="text-[12px] uppercase tracking-[0.16em] transition-colors hover:text-[#6fa8c9]"
                 style={{ color: A.geloFaint }}>
-                Navegação AONIK
+                Conheça o Skorpios
               </a>
             </motion.div>
           </div>

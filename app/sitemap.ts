@@ -11,11 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Seções principais
     { url: `${base}/caminhadas`, lastModified: today, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/grupos`, lastModified: today, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/navegacao`, lastModified: today, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/bike`, lastModified: today, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/autoguiados`, lastModified: today, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/caminhos-autoguiados`, lastModified: today, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${base}/hoteis`, lastModified: today, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/jornada`, lastModified: today, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/quem-somos`, lastModified: today, changeFrequency: "monthly", priority: 0.5 },
 

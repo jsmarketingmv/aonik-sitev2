@@ -142,7 +142,7 @@ export default function ExpressPage() {
               className="mt-6">
               <Breadcrumb
                 items={[
-                  { label: "Navegação", href: "/navegacao" },
+                  { label: "Home", href: "/" },
                   { label: "Antarctica21", href: "/destinos/antarctica21" },
                   { label: "Antarctica Express" },
                 ]}

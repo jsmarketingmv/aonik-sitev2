@@ -6,7 +6,10 @@ export const AONIK = {
   email: "contato@aonik.com.br",
   instagram: "aonik.experiences",
   instagramUrl: "https://instagram.com/aonik.experiences",
-  cidade: "Blumenau, Santa Catarina, SC, Brasil",
+  cidades: [
+    { pais: "Brasil", local: "Brusque, Santa Catarina" },
+    { pais: "Portugal", local: "Mirandela, Bragança" },
+  ],
 } as const;
 
 /** Portal da agência parceira no SaaS (login próprio, papel `agencia`).
@@ -20,7 +23,7 @@ const WA_MSGS: Record<string, string> = {
   "w-express":        "Olá! Gostaria de mais informações sobre o Circuito W Express em Torres del Paine.",
   "w-plus":           "Olá! Gostaria de mais informações sobre o W+ Express Plus em Torres del Paine.",
   "w-journey":        "Olá! Gostaria de mais informações sobre o W Journey em Torres del Paine.",
-  "torres-del-paine-o-circuit": "Olá! Gostaria de mais informações sobre o Circuito O em grupo guiado, em Torres del Paine (saída 21 a 28 de fevereiro de 2027).",
+  "torres-del-paine-o-circuit": "Olá! Gostaria de mais informações sobre o Circuito O em grupo guiado, em Torres del Paine (saída 21 a 29 de fevereiro de 2027).",
   "skorpios":         "Olá! Gostaria de mais informações sobre o Cruzeiro Skorpios na Patagônia.",
   "rio-serrano":      "Olá! Gostaria de mais informações sobre o Hotel Rio Serrano na Patagônia.",
   "compostela":       "Olá! Gostaria de mais informações sobre o Caminho de Santiago de Compostela.",

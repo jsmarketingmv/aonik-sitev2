@@ -452,7 +452,7 @@ const INCLUSO = [
   "Taxas de ingresso nas propriedades",
   "Lancheiras e suporte em campo",
   "Carro suporte com transporte de bagagem",
-  "Guias especializados (1 para cada 3 clientes)",
+  "Guia AONIK Hendrik Fendel + equipe local (1 guia para cada 3 clientes)",
   "Equipamento GPS e rastreamento SPOT",
   "Seguro aventura (cobertura trekking)",
   "Kit boas-vindas com camisa exclusiva AONIK",
@@ -850,6 +850,80 @@ export default function CoxilhaRicaPage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== O GUIA DA JORNADA · HENDRIK ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-32" style={{ background: C.stone, color: C.creme }}>
+        <div className="mx-auto max-w-[1280px]">
+          <Reveal>
+            <p className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: C.campo }}>
+              <span className="h-px w-8" style={{ background: C.campo }} />
+              O guia da jornada
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid items-start gap-10 md:grid-cols-[420px_1fr] md:gap-16">
+            <Reveal>
+              <div className="relative overflow-hidden rounded-2xl" style={{ height: 540 }}>
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/tmb/guia.jpg')` }} />
+                <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${C.stone}ee 0%, transparent 55%)` }} />
+                <div className="absolute inset-x-0 bottom-0 p-7">
+                  <p className="font-display text-[1.6rem] font-light leading-tight" style={{ color: C.creme }}>Hendrik Fendel</p>
+                  <p className="mt-1 text-[12px] uppercase tracking-[0.18em]" style={{ color: C.campo }}>Urubici · Santa Catarina</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div>
+                <h2 className="font-display font-light leading-[1.05] tracking-[-0.01em]" style={{ fontSize: "clamp(2rem,3.8vw,3rem)", color: C.creme }}>
+                  Hendrik Fendel
+                </h2>
+                <p className="mt-2 text-[12px] uppercase tracking-[0.2em]" style={{ color: C.campo }}>Condutor de turismo de natureza</p>
+                <p className="mt-6 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: C.textSoft }}>
+                  Radicado em Urubici, bem no coração da Serra Catarinense, Hendrik construiu sua
+                  trajetória profundamente conectada às montanhas, trilhas e paisagens do sul do
+                  Brasil. A Coxilha Rica é terreno de casa: ele conhece cada curva do planalto.
+                </p>
+                <p className="mt-4 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: C.textSoft }}>
+                  Seu estilo de condução é marcado pela atenção aos detalhes, pela leitura cuidadosa
+                  do clima e do terreno e pela capacidade de criar experiências autênticas e
+                  humanas, sempre com foco na segurança e no respeito ao ritmo do grupo. Nas horas
+                  livres, é artesão de móveis rústicos feitos a partir de resíduos florestais.
+                </p>
+
+                <div className="mt-8">
+                  <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: "rgba(241,232,216,0.4)" }}>
+                    Marcas da condução
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Urubici · Serra Catarinense",
+                      "Travessias e caminhadas guiadas",
+                      "Leitura de clima e terreno",
+                      "Primeiros socorros em áreas remotas",
+                      "Consciência e educação ambiental",
+                      "Ritmo do grupo e segurança",
+                    ].map((p) => (
+                      <span key={p} className="flex items-center gap-2 rounded-full border px-4 py-1.5 text-[12px] font-light"
+                        style={{ borderColor: C.line, color: "rgba(241,232,216,0.7)" }}>
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: C.campo }} />
+                        {p}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-8 rounded-2xl border px-5 py-4 text-[13px] font-light leading-relaxed"
+                  style={{ borderColor: C.line, color: "rgba(241,232,216,0.66)" }}>
+                  Em campo, o grupo conta com suporte completo de logística entre as fazendas do
+                  percurso, carro de apoio com transporte de bagagem e{" "}
+                  <span style={{ color: C.campo }}>guia local com treinamento em primeiros socorros em áreas remotas.</span>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>

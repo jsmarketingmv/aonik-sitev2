@@ -16,7 +16,7 @@ export default function Footer() {
     {
       titulo: f.colExp,
       links: f.colExpLinks,
-      hrefs: ["/caminhadas", "/#bike", "/navegacao", "/hoteis"],
+      hrefs: ["/caminhadas", "/jornada", "/bike"],
     },
   ];
 
@@ -95,7 +95,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>{AONIK.whatsappLabel}</li>
-              <li>{AONIK.cidade}</li>
+              {AONIK.cidades.map((c) => (
+                <li key={c.pais}>{c.pais}: {c.local}</li>
+              ))}
             </ul>
 
             <div className="mt-6">

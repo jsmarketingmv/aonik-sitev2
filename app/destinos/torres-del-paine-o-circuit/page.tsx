@@ -15,7 +15,7 @@ import { GRUPOS } from "../../lib/grupos";
    CIRCUITO O · TORRES DEL PAINE — grupo guiado 8D/7N
    Identidade Patagônia Chilena (granito · gelo · ouro do amanhecer,
    o mesmo dourado da capa do catálogo). Assinatura: a VOLTA COMPLETA
-   ao maciço (o "O"), com o guia Ivo Léo. Saída 21 a 28/Fev/2027, confirmada.
+   ao maciço (o "O"), com o guia Hendrik Fendel. Saída 21 a 29/Fev/2027, confirmada.
    ============================================================ */
 const O = {
   ink: "#0c1219",
@@ -33,7 +33,7 @@ const O = {
 };
 
 const GRUPO = GRUPOS.find((g) => g.id === "torres-del-paine-o-circuit")!;
-const DATA_SAIDA = "21 a 28 de fevereiro de 2027";
+const DATA_SAIDA = "21 a 29 de fevereiro de 2027";
 
 const PHOTO = {
   hero: "/torres-del-paine/dsc08327.jpg",
@@ -230,7 +230,7 @@ const GALERIA = [
 ];
 
 const INCLUSO = [
-  "Guia AONIK Ivo Léo Schmitz, do início ao fim da travessia",
+  "Guia AONIK Hendrik Fendel, do início ao fim da travessia",
   "7 noites em refúgios de montanha ou camping full equipado",
   "Todas as refeições: café da manhã, box lunch e jantar",
   "Ônibus regular Puerto Natales ↔ Torres del Paine, ida e volta",
@@ -247,22 +247,17 @@ const NAO_INCLUSO = [
 ];
 
 const GUIA = {
-  nome: "Ivo Léo Schmitz",
-  origem: "Brusque, Santa Catarina",
+  nome: "Hendrik Fendel",
+  origem: "Urubici, Santa Catarina",
   photo: "/images/tmb/guia.jpg",
-  bio: "Montanhista, peregrino, remador e ciclista. Natural de Brusque (SC), Ivo Leonardo Schmitz transforma trilhas em expedições de vida, conduzindo roteiros pelo mundo com segurança, técnica e presença de espírito.",
-  credentials: [
-    "Certificações Internacionais de Primeiros Socorros e Resgate em Áreas Remotas",
-    "Formação em Desenvolvimento de Condutor ao Ar Livre",
-    "Formação Técnica em Guia de Turismo",
-    "Presidente da FEMESC (Federação de Montanhismo e Escalada de SC)",
-  ],
-  expeditions: [
-    { place: "Cerro Plata 5.968m", flag: "🇦🇷" },
-    { place: "Circuito Huayhuash", flag: "🇵🇪" },
-    { place: "Tour du Mont Blanc", flag: "🇫🇷" },
-    { place: "Alta Via 1, Dolomitas", flag: "🇮🇹" },
-    { place: "Caminho de Santiago", flag: "🇪🇸" },
+  bio: "Radicado em Urubici, na Serra Catarinense, Hendrik construiu sua trajetória profundamente conectada às montanhas, trilhas e paisagens do sul do Brasil. Ao longo dos anos, transformou essa vivência em profissão e propósito de vida. Seu estilo de condução é marcado pela atenção aos detalhes, pela leitura cuidadosa do clima e do terreno e pela capacidade de criar experiências autênticas e humanas, sempre com foco na segurança e no respeito ao ritmo do grupo.",
+  marcas: [
+    "Urubici · Serra Catarinense",
+    "Travessias e caminhadas guiadas",
+    "Leitura de clima e terreno",
+    "Primeiros socorros em áreas remotas",
+    "Consciência e educação ambiental",
+    "Ritmo do grupo e segurança",
   ],
 };
 
@@ -298,7 +293,7 @@ export default function OCircuitPage() {
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: EASE, delay: 0.5 }}
               className="mt-6 max-w-md text-[15px] font-light leading-relaxed md:text-base" style={{ color: O.cSoft }}>
-              A volta completa ao maciço Paine em 8 dias. <span style={{ color: O.creme }}>A face oculta e mais selvagem de Torres del Paine, em grupo guiado, com o Ivo Léo.</span>
+              A volta completa ao maciço Paine em 8 dias. <span style={{ color: O.creme }}>A face oculta e mais selvagem de Torres del Paine, em grupo guiado, com o Hendrik Fendel.</span>
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: EASE, delay: 0.65 }}
               className="mt-8 flex flex-wrap items-center gap-5">
@@ -459,10 +454,10 @@ export default function OCircuitPage() {
         cores={{ fundo: O.ink, texto: O.creme, acento: O.ouro, acentoTexto: O.ink, suave: O.line }}
       />
 
-      {/* ===== GUIA — IVO LÉO ===== */}
+      {/* ===== O GUIA DA JORNADA · HENDRIK ===== */}
       <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: O.creme, color: O.ink }}>
         <div className="mx-auto max-w-[1100px]">
-          <Reveal><p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroDeep }}>O guia da aventura</p></Reveal>
+          <Reveal><p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroDeep }}>O guia da jornada</p></Reveal>
           <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
             <Reveal>
               <div className="relative overflow-hidden rounded-2xl" style={{ aspectRatio: "4/5", background: O.granito }}>
@@ -476,27 +471,25 @@ export default function OCircuitPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <div>
-                <p className="font-display text-[clamp(1.3rem,2.6vw,1.9rem)] font-light leading-[1.35]" style={{ color: O.granito }}>{GUIA.bio}</p>
+                <p className="text-[12px] uppercase tracking-[0.2em]" style={{ color: O.ouroDeep }}>Condutor de turismo de natureza</p>
+                <p className="mt-4 max-w-xl text-[15px] font-light leading-relaxed" style={{ color: "rgba(12,18,25,0.68)" }}>{GUIA.bio}</p>
                 <div className="mt-8">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em]" style={{ color: O.ouroDeep }}>Formação e certificações</p>
-                  <ul className="mt-4 space-y-2.5">
-                    {GUIA.credentials.map((c) => (
-                      <li key={c} className="flex items-start gap-3 text-[14px] font-light leading-relaxed" style={{ color: "rgba(12,18,25,0.7)" }}>
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: O.ouro }} />{c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mt-8">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.24em]" style={{ color: O.ouroDeep }}>Expedições que já conduziu</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {GUIA.expeditions.map((e) => (
-                      <span key={e.place} className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-[12px] font-light"
+                  <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em]" style={{ color: O.ouroDeep }}>Marcas da condução</p>
+                  <div className="flex flex-wrap gap-2">
+                    {GUIA.marcas.map((p) => (
+                      <span key={p} className="flex items-center gap-2 rounded-full border px-4 py-1.5 text-[12px] font-light"
                         style={{ borderColor: "rgba(27,39,51,0.15)", color: "rgba(12,18,25,0.72)" }}>
-                        <span>{e.flag}</span>{e.place}
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: O.ouro }} />
+                        {p}
                       </span>
                     ))}
                   </div>
+                </div>
+                <div className="mt-8 rounded-2xl border px-5 py-4 text-[13px] font-light leading-relaxed"
+                  style={{ borderColor: O.line, color: "rgba(12,18,25,0.68)" }}>
+                  Em campo, o grupo conta com suporte completo de logística entre Puerto Natales e os
+                  refúgios do parque, rastreador via satélite individual e{" "}
+                  <span style={{ color: O.ouroDeep }}>guia brasileiro com treinamento em primeiros socorros em áreas remotas.</span>
                 </div>
               </div>
             </Reveal>
@@ -542,7 +535,7 @@ export default function OCircuitPage() {
       {/* ===== RESERVE SUA VAGA ===== */}
       <section id="reservar" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-28" style={{ background: O.granito, color: O.creme }}>
         <div className="mx-auto max-w-[980px]">
-          <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroSoft }}>Grupo em formação</p></Reveal>
+          <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroSoft }}>Saída confirmada</p></Reveal>
           <Reveal delay={0.06}>
             <h2 className="mt-5 font-display font-light leading-[1.05]" style={{ fontSize: "clamp(2rem,4.5vw,3.4rem)", color: O.creme }}>
               Uma única saída em <span className="italic" style={{ color: O.ouroSoft }}>2027</span>
@@ -553,11 +546,11 @@ export default function OCircuitPage() {
           <Reveal delay={0.1}>
             <div className="mt-10 rounded-2xl border p-7 md:p-9" style={{ borderColor: O.line, background: O.granitoSoft }}>
               <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: O.ouro, color: O.ink }}>Grupo em formação</span>
+                <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: O.ouro, color: O.ink }}>Saída confirmada</span>
                 <span className="text-[11px] uppercase tracking-[0.16em]" style={{ color: O.cFaint }}>8 dias · 7 noites · grupo guiado</span>
               </div>
               <p className="mt-5 font-display text-[clamp(1.7rem,3.4vw,2.6rem)] font-light" style={{ color: O.creme }}>{DATA_SAIDA}</p>
-              <p className="mt-1 text-[13px] font-light" style={{ color: O.cSoft }}>Patagônia Chilena · Torres del Paine · com o guia Ivo Léo Schmitz</p>
+              <p className="mt-1 text-[13px] font-light" style={{ color: O.cSoft }}>Patagônia Chilena · Torres del Paine · com o guia Hendrik Fendel</p>
             </div>
           </Reveal>
 
@@ -660,14 +653,7 @@ export default function OCircuitPage() {
         </div>
       </section>
 
-      <Contato
-        destino="GRUPOS DE TREKKING - Circuito O · Torres del Paine"
-        nota={{
-          titulo: "Grupo em formação · vagas limitadas",
-          texto:
-            "A saída de 21 a 28 de fevereiro de 2027 é a única do ano e o grupo está em formação agora. O grupo é pequeno e o Circuito O tem controle de acesso restrito no parque, então as vagas acabam cedo. Deixe seus dados aqui e nosso time fala com você para garantir a sua.",
-        }}
-      />
+      <Contato destino="GRUPOS DE TREKKING - Circuito O · Torres del Paine" />
       <Footer />
       <FloatingActions />
     </main>

@@ -493,7 +493,7 @@ export default function DanaPetraPage() {
               className="mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[11px] uppercase tracking-[0.16em]"
               style={{ borderColor: D.petra, color: D.areia }}>
               <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: D.petra }} />
-              Saída confirmada · 18 a 27 Out 2027
+              Grupo em formação · 18 a 27 Out 2027
             </motion.div>
                       <div className="mt-7">
               <Breadcrumb tone="dark" items={[
@@ -748,7 +748,7 @@ export default function DanaPetraPage() {
       <section id="reservar" className="px-6 py-24 md:px-10 md:py-32" style={{ background: D.petraDeep }}>
         <div className="mx-auto max-w-[1280px]">
           <Reveal>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: D.creme, opacity: 0.6 }}>Saída confirmada</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: D.creme, opacity: 0.6 }}>Saídas disponíveis</p>
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className="mt-5 font-display font-light leading-[1.05]" style={{ fontSize: "clamp(2rem,4.5vw,3.6rem)", color: D.creme }}>
@@ -763,7 +763,7 @@ export default function DanaPetraPage() {
               {datas2027.map((d) => (
                 <div key={d} className="rounded-2xl p-7" style={{ background: "rgba(193,68,14,0.18)", border: `1px solid rgba(193,68,14,0.4)` }}>
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: D.petra, color: D.creme }}>confirmada</span>
+                    <span className="rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em]" style={{ background: D.petra, color: D.creme }}>em formação</span>
                     <span className="text-[11px]" style={{ color: D.textSoft }}>10 dias</span>
                   </div>
                   <p className="mt-6 font-display font-light" style={{ fontSize: "clamp(1.6rem,3vw,2.4rem)", color: D.creme }}>{d}</p>
