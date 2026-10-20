@@ -1,262 +1,368 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useLang } from "./LanguageProvider";
+import { HERO_PRODUTOS, HERO_LABELS, type HeroProduto } from "../lib/heroProdutos";
+import { useGruposAoVivo } from "../lib/gruposAoVivo";
+import type { Grupo } from "../lib/grupos";
 
-// Imagens por palavra-chave (independentes de idioma) — mesma ordem do dicionário
-const ROTATING_IMGS = [
-  "/images/hero/IMG_3490.JPG", // caminhada
-  "/bike/costa-bike/costa-15.jpg", // pedalada (Caminho da Costa rumo a Santiago)
-  "https://static.wixstatic.com/media/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg/v1/fit/w_1920,h_1539,q_90,enc_avif,quality_auto/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg", // peregrinação (Caminho de Santiago)
-  "https://static.wixstatic.com/media/2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg/v1/fill/w_2000,h_1200,al_c,q_85,enc_avif,quality_auto/img.jpg", // Portugal (Douro)
-];
+const EASE = [0.16, 1, 0.3, 1] as const;
+const DURACAO = 7000; // ms por produto
 
-// Slide com headline própria (não entra na frase "Viva a natureza em forma de ___")
-const PORTUGAL_INDEX = 3;
-
-// Estrutura das categorias (href); rótulos vêm do dicionário
-const CAT_META: { n: string; href: string; soon?: boolean }[] = [
+// Menu da base do hero (preservado da versão anterior); rótulos vêm do dicionário
+const CAT_META = [
   { n: "01", href: "#caminhadas" },
   { n: "02", href: "#bike" },
   { n: "03", href: "/jornada" },
   { n: "04", href: "/caminhos-autoguiados" },
 ];
 
-const EASE = [0.16, 1, 0.3, 1] as const;
+const MESES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+
+function listaMeses(datas: string[]): string {
+  const meses = datas.map((d) => d.split("/").pop() ?? "").filter((m) => MESES.includes(m));
+  if (meses.length <= 1) return meses.join("");
+  return `${meses.slice(0, -1).join(", ")} e ${meses[meses.length - 1]}`;
+}
+
+function Foto({ p, eager }: { p: HeroProduto; eager: boolean }) {
+  return (
+    <Image
+      src={p.img}
+      alt=""
+      fill
+      sizes="100vw"
+      preload={eager}
+      unoptimized={p.remota}
+      className="object-cover"
+      style={{ objectPosition: p.foco ?? "50% 50%" }}
+    />
+  );
+}
 
 export default function Hero() {
-  const { t } = useLang();
-  const ref = useRef<HTMLElement>(null);
+  const { t, lang } = useLang();
+  const L = HERO_LABELS[lang];
+  const reduzir = useReducedMotion();
+  const grupos = useGruposAoVivo();
+
   const [index, setIndex] = useState(0);
+  const [pausado, setPausado] = useState(false);
+  const [pausadoTeclado, setPausadoTeclado] = useState(false);
+  const decorrido = useRef(0);
+  const barraCard = useRef<HTMLSpanElement | null>(null);
+  const barraStory = useRef<HTMLSpanElement | null>(null);
+  const total = HERO_PRODUTOS.length;
+  const p = HERO_PRODUTOS[index];
+  const proximo = HERO_PRODUTOS[(index + 1) % total];
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.18]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const ir = useCallback((i: number) => {
+    decorrido.current = 0;
+    setIndex(((i % total) + total) % total);
+  }, [total]);
 
+  // Autoplay com barra de progresso, sem re-render por quadro.
   useEffect(() => {
-    const id = setInterval(
-      () => setIndex((i) => (i + 1) % ROTATING_IMGS.length),
-      4400
-    );
-    return () => clearInterval(id);
-  }, []);
+    const pinta = () => {
+      const s = `scaleX(${Math.min(decorrido.current / DURACAO, 1)})`;
+      if (barraCard.current) barraCard.current.style.transform = s;
+      if (barraStory.current) barraStory.current.style.transform = s;
+    };
+    pinta();
+    if (pausado || pausadoTeclado || reduzir) return;
+    let raf = 0;
+    let ultimo = performance.now();
+    const passo = (agora: number) => {
+      decorrido.current += agora - ultimo;
+      ultimo = agora;
+      pinta();
+      if (decorrido.current >= DURACAO) ir(index + 1);
+      else raf = requestAnimationFrame(passo);
+    };
+    raf = requestAnimationFrame(passo);
+    return () => cancelAnimationFrame(raf);
+  }, [index, pausado, pausadoTeclado, reduzir, ir]);
 
-  const palavra = t.hero.rotating[index] ?? t.hero.rotating[0];
+  // Swipe no celular
+  const toqueX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => { toqueX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (toqueX.current === null) return;
+    const dx = e.changedTouches[0].clientX - toqueX.current;
+    toqueX.current = null;
+    if (Math.abs(dx) > 50) ir(index + (dx < 0 ? 1 : -1));
+  };
+
+  const grupo: Grupo | undefined = p.grupoId ? grupos.find((g) => g.id === p.grupoId) : undefined;
+  const datas = grupo?.dates2027 ?? [];
+  const saidaTexto = grupo
+    ? datas.length > 1
+      ? `${L.saidas(datas.length)}: ${listaMeses(datas)}`
+      : datas.length === 1 ? `${L.saida}: ${datas[0]}` : L.aConfirmar
+    : p.saida?.[lang] ?? "";
+  const status = grupo
+    ? grupo.status === "confirmada"
+      ? { label: L.confirmada, cor: "var(--color-neon)" }
+      : grupo.status === "em-formacao"
+        ? { label: L.formacao, cor: "var(--color-gold-soft)" }
+        : { label: L.aConfirmar, cor: "rgba(239,231,218,0.6)" }
+    : null;
+  const num = String(index + 1).padStart(2, "0");
 
   return (
     <section
-      ref={ref}
-      className="grain relative flex h-[100svh] min-h-[680px] w-full items-center justify-center overflow-hidden pb-24"
+      className="grain relative h-[100svh] min-h-[700px] w-full overflow-hidden bg-forest text-cream"
+      aria-roledescription="carrossel"
+      aria-label={L.destaque}
+      onMouseEnter={() => setPausado(true)}
+      onMouseLeave={() => setPausado(false)}
+      onFocus={(e) => { if ((e.target as HTMLElement).matches(":focus-visible")) setPausadoTeclado(true); }}
+      onBlur={() => setPausadoTeclado(false)}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
-      {/* Fundo com parallax + crossfade conforme a palavra-chave */}
-      <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0 z-0">
-        <AnimatePresence>
+      <h1 className="sr-only">AONIK · {t.hero.eyebrow}: caminhadas, peregrinações, bike e grupos guiados pelo mundo</h1>
+
+      {/* ── Fundo: foto do produto (crossfade + zoom lento) ── */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence initial={false}>
           <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            key={p.id}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 1.04 }}
+            animate={{ opacity: 1, scale: reduzir ? 1.04 : 1.12 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.8, ease: "easeInOut" }}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('${ROTATING_IMGS[index]}')` }}
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-forest/70 via-forest/40 to-forest" />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-forest/25" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(11,23,17,0.6)_100%)]" />
-      </motion.div>
-
-      {/* Conteúdo */}
-      <motion.div
-        style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto max-w-[1100px] px-6 text-center"
-      >
-        <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: EASE, delay: 0.5 }}
-          className="mb-7 text-[12px] font-medium uppercase tracking-[0.45em] text-gold-soft"
-        >
-          {t.hero.eyebrow}
-        </motion.p>
-
-        <h1 className="font-display text-cream">
-          <Line delay={0.65}>
-            <span className="block text-[clamp(2.6rem,8.5vw,7.5rem)] font-light leading-[0.95] tracking-[-0.02em]">
-              {index === PORTUGAL_INDEX ? t.hero.portugal.line1 : t.hero.line1}
-            </span>
-          </Line>
-
-          {index === PORTUGAL_INDEX ? (
-            <Line delay={0.8}>
-              <span className="mt-1 flex flex-wrap items-baseline justify-center gap-x-[0.35em] text-[clamp(2.6rem,8.5vw,7.5rem)] font-light leading-[0.95] tracking-[-0.02em]">
-                <span className="relative inline-block text-left italic text-gold">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={index}
-                      initial={{ opacity: 0, filter: "blur(10px)" }}
-                      animate={{ opacity: 1, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, filter: "blur(10px)" }}
-                      transition={{ duration: 0.55, ease: EASE }}
-                      className="inline-block"
-                    >
-                      {t.hero.portugal.em}
-                    </motion.span>
-                  </AnimatePresence>
-                </span>
-              </span>
-            </Line>
-          ) : (
-            <Line delay={0.8}>
-              <span className="mt-1 flex flex-wrap items-baseline justify-center gap-x-[0.35em] text-[clamp(2.6rem,8.5vw,7.5rem)] font-light leading-[0.95] tracking-[-0.02em]">
-                <span className="text-cream/80">{t.hero.connector}</span>
-                <span className="relative inline-block min-w-[4ch] text-left italic text-gold">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={index}
-                      initial={{ opacity: 0, filter: "blur(10px)" }}
-                      animate={{ opacity: 1, filter: "blur(0px)" }}
-                      exit={{ opacity: 0, filter: "blur(10px)" }}
-                      transition={{ duration: 0.55, ease: EASE }}
-                      className="inline-block"
-                    >
-                      {palavra}
-                    </motion.span>
-                  </AnimatePresence>
-                </span>
-              </span>
-            </Line>
-          )}
-        </h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: EASE, delay: 1 }}
-          className="mx-auto mt-9 max-w-xl text-base font-light leading-relaxed text-cream/70 md:text-lg"
-        >
-          {t.hero.subhead}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: EASE, delay: 1.15 }}
-          className="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
-          <a
-            href="#universos"
-            className="group inline-flex items-center gap-3 rounded-full bg-gold px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] text-ink transition-transform duration-300 hover:scale-[1.03]"
+            transition={{
+              opacity: { duration: 1.4, ease: "easeInOut" },
+              scale: { duration: DURACAO / 1000 + 2, ease: "linear" },
+            }}
           >
-            {t.hero.ctaPrimary}
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </a>
-        </motion.div>
-      </motion.div>
+            <Foto p={p} eager={index === 0} />
+          </motion.div>
+        </AnimatePresence>
+        {/* próxima foto já carregando, invisível */}
+        <div className="pointer-events-none absolute inset-0 opacity-0" aria-hidden>
+          <Foto p={proximo} eager={false} />
+        </div>
+        {/* leitura: escurece à esquerda e na base, preserva a foto à direita */}
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,38,38,0.92)_0%,rgba(0,38,38,0.72)_38%,rgba(0,38,38,0.15)_72%,rgba(0,38,38,0.05)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/20 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-forest/70 to-transparent" />
+        {/* celular: texto ocupa a largura toda, então reforça a metade de baixo */}
+        <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-forest via-forest/75 to-transparent lg:hidden" />
+      </div>
 
-      {/* Navegação de categorias — minimalista, dentro do hero */}
-      <motion.nav
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: EASE, delay: 1.4 }}
-        className="absolute bottom-0 left-0 z-10 w-full"
-      >
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col px-6 pt-24 md:px-10 md:pt-28">
+        {/* Progresso estilo stories (celular e tablet) */}
+        <div className="flex gap-1.5 lg:hidden" role="tablist" aria-label={L.destaque}>
+          {HERO_PRODUTOS.map((x, i) => (
+            <button
+              key={x.id}
+              type="button"
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`${x.titulo} ${x.tituloEm}`}
+              onClick={() => ir(i)}
+              className="relative h-6 flex-1"
+            >
+              <span className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 overflow-hidden rounded-full bg-cream/20">
+                {i === index ? (
+                  <span key={`ativo-${index}`} ref={barraStory} className="block h-full origin-left bg-gold" style={{ transform: "scaleX(0)" }} />
+                ) : (
+                  <span className="block h-full origin-left bg-gold" style={{ transform: `scaleX(${i < index ? 1 : 0})` }} />
+                )}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* ── Conteúdo do produto ── */}
+        <div className="flex flex-1 items-end pb-8 lg:items-center lg:pb-0">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={p.id}
+              className="max-w-[720px]"
+              initial="in"
+              animate="show"
+              exit="out"
+              variants={{ in: {}, show: { transition: { staggerChildren: 0.07 } }, out: {} }}
+            >
+              <motion.div
+                className="flex items-center gap-5"
+                variants={{ in: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 }, out: { opacity: 0, y: -10 } }}
+                transition={{ duration: 0.6, ease: EASE }}
+              >
+                <span
+                  aria-hidden
+                  className="font-display font-light leading-[0.8] text-transparent"
+                  style={{ fontSize: "clamp(3.2rem, min(7vw, 11vh), 6.2rem)", WebkitTextStroke: "1px rgba(239,231,218,0.55)" }}
+                >
+                  {num}
+                </span>
+                <span className="flex flex-col gap-2">
+                  <span className="w-fit rounded-full border border-gold-soft/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-soft">
+                    {p.formato[lang]}
+                  </span>
+                  <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-cream/70">
+                    {p.regiao[lang]}
+                  </span>
+                </span>
+              </motion.div>
+
+              <motion.h2
+                className="mt-5 font-display font-light leading-[0.95] tracking-[-0.02em]"
+                style={{ fontSize: "clamp(2.7rem, min(6.4vw, 10.5vh), 6rem)" }}
+                variants={{ in: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 }, out: { opacity: 0, y: -12 } }}
+                transition={{ duration: 0.7, ease: EASE }}
+              >
+                {p.titulo}
+                <br />
+                <span className="italic text-gold">{p.tituloEm}</span>
+              </motion.h2>
+
+              <motion.p
+                className="mt-5 max-w-[31rem] text-[15px] font-light leading-relaxed text-cream/80 md:text-[17px]"
+                variants={{ in: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
+                transition={{ duration: 0.6, ease: EASE }}
+              >
+                {p.pitch[lang]}
+              </motion.p>
+
+              <motion.ul
+                className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-cream/85"
+                variants={{ in: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
+                transition={{ duration: 0.6, ease: EASE }}
+              >
+                {p.fatos.map((f) => (
+                  <li key={f.pt} className="flex items-center gap-4">
+                    {f[lang]}
+                    <span aria-hidden className="h-3 w-px bg-cream/25" />
+                  </li>
+                ))}
+                <li>{saidaTexto}</li>
+                {status && (
+                  <li className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: status.cor }}>
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full" style={{ background: status.cor }} />
+                    {status.label}
+                  </li>
+                )}
+              </motion.ul>
+
+              <motion.div
+                className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7"
+                variants={{ in: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
+                transition={{ duration: 0.6, ease: EASE }}
+              >
+                <div className="shrink-0 leading-none">
+                  <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-cream/60">{L.aPartirDe}</span>
+                  <span className="mt-1.5 block whitespace-nowrap font-display text-[2.1rem] font-light">{p.preco}</span>
+                  <span className="mt-1 block text-[11px] text-cream/55">{L.porPessoa}</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href={p.href}
+                    className="group inline-flex items-center gap-3 rounded-full bg-gold px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-ink transition-transform duration-300 hover:scale-[1.03]"
+                  >
+                    {L.verRoteiro}
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </a>
+                  <a
+                    href="#contato"
+                    className="inline-flex items-center rounded-full border border-cream/35 px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-cream transition-colors duration-300 hover:border-cream hover:bg-cream/10"
+                  >
+                    {L.especialista}
+                  </a>
+                </div>
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* ── Vitrine: 5 cards com miniatura (desktop) ── */}
+        <div className="mb-6 hidden items-end gap-4 lg:flex">
+          <div className="flex items-center gap-2 pb-3 pr-2">
+            <button type="button" onClick={() => ir(index - 1)} aria-label={L.anterior}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/25 text-cream/80 transition-colors hover:border-cream hover:text-cream">
+              ←
+            </button>
+            <button type="button" onClick={() => ir(index + 1)} aria-label={L.proxima}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/25 text-cream/80 transition-colors hover:border-cream hover:text-cream">
+              →
+            </button>
+          </div>
+          <div className="grid flex-1 grid-cols-5 gap-3" role="tablist" aria-label={L.destaque}>
+            {HERO_PRODUTOS.map((x, i) => {
+              const ativo = i === index;
+              return (
+                <button
+                  key={x.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={ativo}
+                  onClick={() => ir(i)}
+                  className={`group relative flex items-center gap-3 overflow-hidden rounded-xl border p-2.5 text-left backdrop-blur-md transition-all duration-500 ${
+                    ativo ? "border-cream/35 bg-cream/[0.14]" : "border-cream/10 bg-forest/30 hover:border-cream/25 hover:bg-cream/[0.07]"
+                  }`}
+                >
+                  <span className="relative h-12 w-16 shrink-0 overflow-hidden rounded-lg">
+                    <Image
+                      src={x.thumb}
+                      alt=""
+                      fill
+                      sizes="64px"
+                      unoptimized={x.remota}
+                      className={`object-cover transition-transform duration-700 ${ativo ? "scale-110" : "group-hover:scale-105"}`}
+                    />
+                  </span>
+                  <span className="min-w-0">
+                    <span className={`block text-[9px] font-semibold uppercase tracking-[0.2em] ${ativo ? "text-gold-soft" : "text-cream/50"}`}>
+                      {x.formato[lang]}
+                    </span>
+                    <span className={`mt-0.5 line-clamp-2 font-display text-[15px] leading-[1.15] ${ativo ? "text-cream" : "text-cream/75"}`}>
+                      {x.titulo} {x.tituloEm}
+                    </span>
+                  </span>
+                  <span className="absolute inset-x-0 bottom-0 h-[2px] bg-cream/10">
+                    {ativo && (
+                      <span ref={barraCard} className="block h-full origin-left bg-gold" style={{ transform: "scaleX(0)" }} />
+                    )}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ── Menu de categorias da base (preservado) ── */}
+        <nav className="-mx-6 md:-mx-10" aria-label="Categorias">
           <div className="rule mb-0" />
           <ul className="flex items-stretch divide-x divide-cream/10 overflow-x-auto">
             {CAT_META.map((c, i) => {
-              const isActive = index === i;
+              const ativo = p.categoria === i;
               return (
                 <li key={c.n} className="relative min-w-fit flex-1">
-                  {isActive && (
-                    <motion.div
-                      layoutId="hero-tab-bar"
-                      className="absolute top-0 left-0 right-0 h-[2px] bg-gold"
-                      transition={{ duration: 0.5, ease: EASE }}
-                    />
+                  {ativo && (
+                    <motion.div layoutId="hero-tab-bar" className="absolute left-0 right-0 top-0 h-[2px] bg-gold"
+                      transition={{ duration: 0.5, ease: EASE }} />
                   )}
                   <a
-                    href={c.soon ? undefined : c.href}
-                    aria-disabled={c.soon}
-                    className={`group flex h-full items-center gap-3 px-5 py-5 transition-colors ${
-                      c.soon
-                        ? "cursor-default"
-                        : isActive
-                          ? "bg-cream/[0.05]"
-                          : "hover:bg-cream/[0.04]"
-                    }`}
+                    href={c.href}
+                    className={`group flex h-full items-center gap-3 px-5 py-5 transition-colors ${ativo ? "bg-cream/[0.05]" : "hover:bg-cream/[0.04]"}`}
                   >
-                    <span
-                      className={`font-display text-[11px] transition-colors ${
-                        isActive ? "text-gold" : "text-gold/60"
-                      }`}
-                    >
-                      {c.n}
-                    </span>
-                    <span
-                      className={`whitespace-nowrap text-[12px] font-medium uppercase tracking-[0.16em] transition-colors ${
-                        c.soon
-                          ? "text-cream/35"
-                          : isActive
-                            ? "text-cream"
-                            : "text-cream/75 group-hover:text-gold"
-                      }`}
-                    >
+                    <span className={`font-display text-[11px] transition-colors ${ativo ? "text-gold" : "text-gold/60"}`}>{c.n}</span>
+                    <span className={`whitespace-nowrap text-[12px] font-medium uppercase tracking-[0.16em] transition-colors ${ativo ? "text-cream" : "text-cream/75 group-hover:text-gold"}`}>
                       {t.hero.categorias[i]}
                     </span>
-                    {c.soon ? (
-                      <span className="ml-1 rounded-full border border-cream/15 px-2 py-0.5 text-[8px] uppercase tracking-[0.18em] text-cream/40">
-                        {t.hero.soon}
-                      </span>
-                    ) : (
-                      <span
-                        className={`ml-auto hidden transition-all duration-300 group-hover:translate-x-1 md:inline ${
-                          isActive ? "text-gold" : "text-cream/30 group-hover:text-gold"
-                        }`}
-                      >
-                        ↗
-                      </span>
-                    )}
+                    <span className={`ml-auto hidden transition-all duration-300 group-hover:translate-x-1 md:inline ${ativo ? "text-gold" : "text-cream/30 group-hover:text-gold"}`}>↗</span>
                   </a>
                 </li>
               );
             })}
           </ul>
-        </div>
-      </motion.nav>
+        </nav>
+      </div>
     </section>
-  );
-}
-
-function Line({
-  children,
-  delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) {
-  return (
-    // Padding generoso em todos os lados (com margem negativa p/ não afetar o
-    // layout) dá folga para itálico, acentos (ã/ç) e descenders (g/j) — evita
-    // o "cortezinho" das letras dentro da máscara de revelação.
-    <span className="block overflow-hidden px-[0.12em] pt-[0.14em] pb-[0.34em] -mx-[0.12em] -mt-[0.14em] -mb-[0.34em]">
-      <motion.span
-        initial={{ y: "110%" }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1.1, ease: EASE, delay }}
-        className="block"
-      >
-        {children}
-      </motion.span>
-    </span>
   );
 }
