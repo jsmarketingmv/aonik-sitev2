@@ -30,16 +30,16 @@ const DESTINATIONS: Destination[] = [
     id: "torres-del-paine-o-circuit",
     name: "Circuito O · Torres del Paine",
     region: "Patagônia Chilena",
-    tagline: "21–29 Fev 2027",
-    taglines: { 2027: "21–29 Fev 2027" },
+    tagline: "20 Fev – 01 Mar 2027",
+    taglines: { 2027: "20 Fev – 01 Mar 2027" },
     years: [2027],
     lat: -50.98,
     lng: -73.03,
-    labelOffsetX: -60,
-    labelOffsetY: 140,
+    labelOffsetX: -58,
+    labelOffsetY: 34,
     type: "aventura",
     description:
-      "A volta completa ao maciço Paine: 129 km e 3.724 m+ pela face oculta de Torres del Paine. 8 dias. Saída confirmada.",
+      "A volta completa ao maciço Paine: 137,3 km e 5.284 m+ pela face oculta de Torres del Paine, com 8 dias de caminhada. Programa de 10 dias, de Punta Arenas a Punta Arenas.",
     href: "/destinos/torres-del-paine-o-circuit",
   },
   {
@@ -237,12 +237,28 @@ export default function WorldMapAONIK({
     return () => ro.disconnect();
   }, []);
 
-  // Projeção Mercator — FIX 1: escala reduzida + centro mais ao sul
+  /* Projeção Mercator enquadrada PELOS PRÓPRIOS DESTINOS.
+     Antes era escala + centro fixos, e qualquer destino fora daquele
+     recorte sumia do mapa (era o caso de Torres del Paine, a -51° de
+     latitude). Com fitExtent, incluir um destino novo reenquadra sozinho. */
   const { proj, pathGen } = useMemo(() => {
-    const p = geoMercator()
-      .scale(dims.w / 7.0)          // era /6.6 → zoom out ligeiro
-      .center([10, 8])               // era [12, 22] → centro mais equatorial
-      .translate([dims.w / 2, dims.h / 2]);
+    const pontos: GeoJSON.Feature = {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "MultiPoint",
+        coordinates: DESTINATIONS.map((d) => [d.lng, d.lat] as [number, number]),
+      },
+    };
+    /* Folga maior embaixo: os rótulos ficam ABAIXO do ponto, e o destino
+       mais ao sul (Patagônia) encostava na borda. */
+    const padX = dims.w * 0.09;
+    const padTop = dims.h * 0.10;
+    const padBottom = dims.h * 0.22;
+    const p = geoMercator().fitExtent(
+      [[padX, padTop], [dims.w - padX, dims.h - padBottom]],
+      pontos,
+    );
     return { proj: p, pathGen: geoPath(p) };
   }, [dims]);
 
