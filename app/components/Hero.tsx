@@ -44,7 +44,7 @@ function Foto({ p, eager, sizes = "100vw" }: { p: HeroProduto; eager?: boolean; 
       preload={eager}
       unoptimized={p.remota}
       className="object-cover"
-      style={{ objectPosition: p.foco ?? "50% 50%" }}
+      style={{ objectPosition: p.foco ?? "50% 50%", transform: p.espelhar ? "scaleX(-1)" : undefined }}
     />
   );
 }
@@ -274,9 +274,17 @@ export default function Hero() {
                   variants={{ in: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 }, out: { opacity: 0, y: -12 } }}
                   transition={{ duration: 0.7, ease: EASE }}
                 >
-                  {p.titulo}
-                  <br />
-                  <span className="italic text-gold">{p.tituloEm}</span>
+                  {p.umaLinha ? (
+                    <span data-linha="unica" className="inline-block whitespace-nowrap">
+                      {p.titulo} <span className="italic text-gold">{p.tituloEm}</span>
+                    </span>
+                  ) : (
+                    <>
+                      <span data-linha="cima" className="inline-block whitespace-nowrap">{p.titulo}</span>
+                      <br />
+                      <span data-linha="baixo" className="inline-block whitespace-nowrap italic text-gold">{p.tituloEm}</span>
+                    </>
+                  )}
                 </motion.h2>
 
                 <motion.p

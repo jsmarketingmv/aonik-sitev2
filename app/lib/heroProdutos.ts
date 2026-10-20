@@ -15,10 +15,15 @@ export type HeroProduto = {
   thumb: string;
   /** posição do foco da foto (object-position) */
   foco?: string;
+  /** espelha a foto no fundo, para tirar o assunto de baixo do título */
+  espelhar?: boolean;
   formato: T3;
   regiao: T3;
+  /** Título em 2 linhas: a de baixo (tituloEm, itálico) precisa ser mais larga que a de cima.
+   *  Quando o nome não permite, usar umaLinha. */
   titulo: string;
   tituloEm: string;
+  umaLinha?: boolean;
   pitch: T3;
   fatos: T3[];
   preco: string;
@@ -55,7 +60,7 @@ export const HERO_LABELS: Record<Lang, {
 const WIX = (id: string, w: number, h: number) =>
   `https://static.wixstatic.com/media/${id}/v1/fill/w_${w},h_${h},al_c,q_80,enc_avif,quality_auto/img.jpg`;
 
-const SARRIA = "2d4f5b_6f87c4d3ffd34c8b9113ab469579a1ca~mv2.jpg";
+const CATEDRAL = "2d4f5b_6c3f9650f7aa4b80a57246f7ebaf37f2~mv2.jpg"; // Catedral de Santiago (6000px)
 const DOURO = "2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg";
 
 export const HERO_PRODUTOS: HeroProduto[] = [
@@ -85,14 +90,14 @@ export const HERO_PRODUTOS: HeroProduto[] = [
   {
     id: "compostela",
     href: "/destinos/sarria-7-etapas",
-    img: WIX(SARRIA, 1920, 1080),
-    thumb: WIX(SARRIA, 360, 240),
+    img: WIX(CATEDRAL, 1920, 1080),
+    thumb: WIX(CATEDRAL, 420, 560),
     remota: true,
-    foco: "50% 45%",
+    foco: "50% 35%",
     formato: { pt: "Autoguiado", es: "Autoguiado", en: "Self-guided" },
     regiao: { pt: "Caminho Francês · Sarria a Santiago", es: "Camino Francés · Sarria a Santiago", en: "French Way · Sarria to Santiago" },
-    titulo: "Caminho de",
-    tituloEm: "Santiago",
+    titulo: "Caminho",
+    tituloEm: "de Santiago",
     pitch: {
       pt: "Os últimos 112 km do Caminho Francês até a Catedral de Santiago. Hospedagem, bagagem e credencial resolvidas, você só caminha.",
       es: "Los últimos 112 km del Camino Francés hasta la Catedral de Santiago. Alojamiento, equipaje y credencial resueltos, solo caminas.",
@@ -138,8 +143,8 @@ export const HERO_PRODUTOS: HeroProduto[] = [
     foco: "50% 35%",
     formato: { pt: "4 formatos", es: "4 formatos", en: "4 formats" },
     regiao: { pt: "Patagônia Chilena · Circuito W", es: "Patagonia Chilena · Circuito W", en: "Chilean Patagonia · W Trek" },
-    titulo: "Torres del",
-    tituloEm: "Paine",
+    titulo: "Torres",
+    tituloEm: "del Paine",
     pitch: {
       pt: "O Circuito W, o trekking mais icônico da Patagônia, do refúgio de montanha ao conforto do Hotel Las Torres.",
       es: "El Circuito W, el trekking más icónico de la Patagonia, del refugio de montaña al confort del Hotel Las Torres.",
@@ -156,13 +161,15 @@ export const HERO_PRODUTOS: HeroProduto[] = [
   {
     id: "coxilha",
     href: "/destinos/coxilha-rica",
-    img: "/images/coxilha-rica/campo-grupo-araucaria.jpg",
-    thumb: "/images/coxilha-rica/campo-grupo-araucaria.jpg",
-    foco: "50% 40%",
+    img: "/images/coxilha-rica/campo-trilha-grupo.jpg",
+    thumb: "/images/coxilha-rica/campo-trilha-grupo.jpg",
+    foco: "50% 45%",
+    espelhar: true,
     formato: { pt: "Grupo guiado", es: "Grupo guiado", en: "Guided group" },
     regiao: { pt: "Serra Catarinense · Brasil", es: "Sierra Catarinense · Brasil", en: "Santa Catarina Highlands · Brazil" },
     titulo: "Coxilha",
     tituloEm: "Rica",
+    umaLinha: true,
     pitch: {
       pt: "Cinco dias pelos campos de altitude, de fazenda em fazenda, no caminho dos antigos tropeiros. Aqui no Brasil.",
       es: "Cinco días por los campos de altura, de hacienda en hacienda, por el camino de los antiguos troperos. En Brasil.",
