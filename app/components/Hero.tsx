@@ -10,8 +10,10 @@ import type { Grupo } from "../lib/grupos";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const DURACAO = 7000; // ms por produto
+const EXPANSAO = 1.15; // s: card crescendo até virar o fundo
+const TOTAL = HERO_PRODUTOS.length;
 
-// Menu da base do hero (preservado da versão anterior); rótulos vêm do dicionário
+// Menu da base do hero (preservado); rótulos vêm do dicionário
 const CAT_META = [
   { n: "01", href: "#caminhadas" },
   { n: "02", href: "#bike" },
@@ -27,18 +29,70 @@ function listaMeses(datas: string[]): string {
   return `${meses.slice(0, -1).join(", ")} e ${meses[meses.length - 1]}`;
 }
 
-function Foto({ p, eager }: { p: HeroProduto; eager: boolean }) {
+/** Retângulo do card de origem, relativo à seção, para a expansão. */
+type Origem = { t: number; l: number; w: number; h: number; W: number; H: number };
+
+type Estado = { i: number; anterior: number | null; origem: Origem | null; n: number };
+
+function Foto({ p, eager, sizes = "100vw" }: { p: HeroProduto; eager?: boolean; sizes?: string }) {
   return (
     <Image
       src={p.img}
       alt=""
       fill
-      sizes="100vw"
+      sizes={sizes}
       preload={eager}
       unoptimized={p.remota}
       className="object-cover"
       style={{ objectPosition: p.foco ?? "50% 50%" }}
     />
+  );
+}
+
+/** Fundo do produto ativo. Com origem, nasce do card e cresce até cobrir a seção. */
+function Fundo({ p, origem, eager, reduzir, onPronto }: {
+  p: HeroProduto; origem: Origem | null; eager: boolean; reduzir: boolean | null; onPronto: () => void;
+}) {
+  let inicio: { clipPath: string; x: number; y: number; scale: number; opacity: number };
+  if (origem && !reduzir) {
+    const { t, l, w, h, W, H } = origem;
+    const k = Math.max(w / W, h / H);
+    inicio = {
+      clipPath: `inset(${t}px ${W - l - w}px ${H - t - h}px ${l}px round 18px)`,
+      x: l + w / 2 - (W * k) / 2,
+      y: t + h / 2 - (H * k) / 2,
+      scale: k,
+      opacity: 1,
+    };
+  } else {
+    inicio = { clipPath: "inset(0px 0px 0px 0px round 0px)", x: 0, y: 0, scale: 1, opacity: 0 };
+  }
+  return (
+    <motion.div
+      className="absolute inset-0 overflow-hidden"
+      initial={{ clipPath: inicio.clipPath, opacity: inicio.opacity }}
+      animate={{ clipPath: "inset(0px 0px 0px 0px round 0px)", opacity: 1 }}
+      transition={{ duration: origem ? EXPANSAO : 1.2, ease: origem ? EASE : "easeInOut" }}
+      onAnimationComplete={onPronto}
+    >
+      <motion.div
+        className="absolute inset-0"
+        style={{ originX: 0, originY: 0 }}
+        initial={{ x: inicio.x, y: inicio.y, scale: inicio.scale }}
+        animate={{ x: 0, y: 0, scale: 1 }}
+        transition={{ duration: origem ? EXPANSAO : 0, ease: EASE }}
+      >
+        {/* zoom lento contínuo enquanto o produto está em cartaz */}
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1 }}
+          animate={{ scale: reduzir ? 1 : 1.07 }}
+          transition={{ duration: DURACAO / 1000 + 2, ease: "linear" }}
+        >
+          <Foto p={p} eager={eager} />
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -48,26 +102,38 @@ export default function Hero() {
   const reduzir = useReducedMotion();
   const grupos = useGruposAoVivo();
 
-  const [index, setIndex] = useState(0);
+  const [estado, setEstado] = useState<Estado>({ i: 0, anterior: null, origem: null, n: 0 });
   const [pausado, setPausado] = useState(false);
   const [pausadoTeclado, setPausadoTeclado] = useState(false);
   const decorrido = useRef(0);
-  const barraCard = useRef<HTMLSpanElement | null>(null);
+  const secao = useRef<HTMLElement>(null);
+  const cards = useRef<Record<string, HTMLButtonElement | null>>({});
+  const barraDeck = useRef<HTMLSpanElement | null>(null);
   const barraStory = useRef<HTMLSpanElement | null>(null);
-  const total = HERO_PRODUTOS.length;
-  const p = HERO_PRODUTOS[index];
-  const proximo = HERO_PRODUTOS[(index + 1) % total];
 
-  const ir = useCallback((i: number) => {
+  const index = estado.i;
+  const p = HERO_PRODUTOS[index];
+  const fila = Array.from({ length: TOTAL - 1 }, (_, k) => HERO_PRODUTOS[(index + 1 + k) % TOTAL]);
+
+  const ir = useCallback((alvo: number) => {
+    const destino = ((alvo % TOTAL) + TOTAL) % TOTAL;
+    let origem: Origem | null = null;
+    const el = cards.current[HERO_PRODUTOS[destino].id];
+    const sec = secao.current;
+    if (el && sec) {
+      const r = el.getBoundingClientRect();
+      const S = sec.getBoundingClientRect();
+      if (r.width > 0) origem = { t: r.top - S.top, l: r.left - S.left, w: r.width, h: r.height, W: S.width, H: S.height };
+    }
     decorrido.current = 0;
-    setIndex(((i % total) + total) % total);
-  }, [total]);
+    setEstado((s) => (destino === s.i ? s : { i: destino, anterior: s.i, origem, n: s.n + 1 }));
+  }, []);
 
   // Autoplay com barra de progresso, sem re-render por quadro.
   useEffect(() => {
     const pinta = () => {
       const s = `scaleX(${Math.min(decorrido.current / DURACAO, 1)})`;
-      if (barraCard.current) barraCard.current.style.transform = s;
+      if (barraDeck.current) barraDeck.current.style.transform = s;
       if (barraStory.current) barraStory.current.style.transform = s;
     };
     pinta();
@@ -110,9 +176,11 @@ export default function Hero() {
         : { label: L.aConfirmar, cor: "rgba(239,231,218,0.6)" }
     : null;
   const num = String(index + 1).padStart(2, "0");
+  const anterior = estado.anterior !== null ? HERO_PRODUTOS[estado.anterior] : null;
 
   return (
     <section
+      ref={secao}
       className="grain relative h-[100svh] min-h-[700px] w-full overflow-hidden bg-forest text-cream"
       aria-roledescription="carrossel"
       aria-label={L.destaque}
@@ -125,32 +193,29 @@ export default function Hero() {
     >
       <h1 className="sr-only">AONIK · {t.hero.eyebrow}: caminhadas, peregrinações, bike e grupos guiados pelo mundo</h1>
 
-      {/* ── Fundo: foto do produto (crossfade + zoom lento) ── */}
+      {/* ── Fundo: o produto anterior fica por baixo enquanto o novo cresce ── */}
       <div className="absolute inset-0 z-0">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={p.id}
-            className="absolute inset-0"
-            initial={{ opacity: 0, scale: 1.04 }}
-            animate={{ opacity: 1, scale: reduzir ? 1.04 : 1.12 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              opacity: { duration: 1.4, ease: "easeInOut" },
-              scale: { duration: DURACAO / 1000 + 2, ease: "linear" },
-            }}
-          >
-            <Foto p={p} eager={index === 0} />
-          </motion.div>
-        </AnimatePresence>
-        {/* próxima foto já carregando, invisível */}
+        {anterior && (
+          <div key={`base-${anterior.id}`} className="absolute inset-0" style={{ transform: reduzir ? undefined : "scale(1.07)", transformOrigin: "50% 50%" }}>
+            <Foto p={anterior} />
+          </div>
+        )}
+        <Fundo
+          key={`fundo-${estado.n}`}
+          p={p}
+          origem={estado.origem}
+          eager={estado.n === 0}
+          reduzir={reduzir}
+          onPronto={() => setEstado((s) => (s.anterior === null ? s : { ...s, anterior: null }))}
+        />
+        {/* próxima foto já carregando, invisível, para a expansão não piscar */}
         <div className="pointer-events-none absolute inset-0 opacity-0" aria-hidden>
-          <Foto p={proximo} eager={false} />
+          <Foto p={fila[0]} />
         </div>
-        {/* leitura: escurece à esquerda e na base, preserva a foto à direita */}
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,38,38,0.92)_0%,rgba(0,38,38,0.72)_38%,rgba(0,38,38,0.15)_72%,rgba(0,38,38,0.05)_100%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/20 to-transparent" />
+        {/* leitura: escurece à esquerda e na base */}
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,38,38,0.92)_0%,rgba(0,38,38,0.7)_36%,rgba(0,38,38,0.18)_64%,rgba(0,38,38,0.08)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/15 to-transparent" />
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-forest/70 to-transparent" />
-        {/* celular: texto ocupa a largura toda, então reforça a metade de baixo */}
         <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-forest via-forest/75 to-transparent lg:hidden" />
       </div>
 
@@ -169,7 +234,7 @@ export default function Hero() {
             >
               <span className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 overflow-hidden rounded-full bg-cream/20">
                 {i === index ? (
-                  <span key={`ativo-${index}`} ref={barraStory} className="block h-full origin-left bg-gold" style={{ transform: "scaleX(0)" }} />
+                  <span key={`ativo-${estado.n}`} ref={barraStory} className="block h-full origin-left bg-gold" style={{ transform: "scaleX(0)" }} />
                 ) : (
                   <span className="block h-full origin-left bg-gold" style={{ transform: `scaleX(${i < index ? 1 : 0})` }} />
                 )}
@@ -178,160 +243,176 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* ── Conteúdo do produto ── */}
-        <div className="flex flex-1 items-end pb-8 lg:items-center lg:pb-0">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={p.id}
-              className="max-w-[720px]"
-              initial="in"
-              animate="show"
-              exit="out"
-              variants={{ in: {}, show: { transition: { staggerChildren: 0.07 } }, out: {} }}
-            >
+        <div className="flex flex-1 items-end pb-8 lg:items-center lg:gap-10 lg:pb-6">
+          {/* ── Texto do produto ── */}
+          <div className="w-full lg:w-[48%] lg:shrink-0">
+            <AnimatePresence mode="wait">
               <motion.div
-                className="flex items-center gap-5"
-                variants={{ in: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 }, out: { opacity: 0, y: -10 } }}
-                transition={{ duration: 0.6, ease: EASE }}
+                key={p.id}
+                initial="in"
+                animate="show"
+                exit="out"
+                variants={{ in: {}, show: { transition: { staggerChildren: 0.07, delayChildren: 0.15 } }, out: {} }}
               >
-                <span
-                  aria-hidden
-                  className="font-display font-light leading-[0.8] text-transparent"
-                  style={{ fontSize: "clamp(3.2rem, min(7vw, 11vh), 6.2rem)", WebkitTextStroke: "1px rgba(239,231,218,0.55)" }}
+                <motion.div
+                  className="flex flex-wrap items-center gap-x-4 gap-y-2"
+                  variants={{ in: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 }, out: { opacity: 0, y: -10 } }}
+                  transition={{ duration: 0.6, ease: EASE }}
                 >
-                  {num}
-                </span>
-                <span className="flex flex-col gap-2">
-                  <span className="w-fit rounded-full border border-gold-soft/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-soft">
+                  <span className="rounded-full border border-gold-soft/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-gold-soft">
                     {p.formato[lang]}
                   </span>
-                  <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-cream/70">
+                  <span className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.24em] text-cream/75">
+                    <span aria-hidden className="h-px w-6 bg-cream/40" />
                     {p.regiao[lang]}
                   </span>
-                </span>
-              </motion.div>
+                </motion.div>
 
-              <motion.h2
-                className="mt-5 font-display font-light leading-[0.95] tracking-[-0.02em]"
-                style={{ fontSize: "clamp(2.7rem, min(6.4vw, 10.5vh), 6rem)" }}
-                variants={{ in: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 }, out: { opacity: 0, y: -12 } }}
-                transition={{ duration: 0.7, ease: EASE }}
-              >
-                {p.titulo}
-                <br />
-                <span className="italic text-gold">{p.tituloEm}</span>
-              </motion.h2>
-
-              <motion.p
-                className="mt-5 max-w-[31rem] text-[15px] font-light leading-relaxed text-cream/80 md:text-[17px]"
-                variants={{ in: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
-                transition={{ duration: 0.6, ease: EASE }}
-              >
-                {p.pitch[lang]}
-              </motion.p>
-
-              <motion.ul
-                className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-cream/85"
-                variants={{ in: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
-                transition={{ duration: 0.6, ease: EASE }}
-              >
-                {p.fatos.map((f) => (
-                  <li key={f.pt} className="flex items-center gap-4">
-                    {f[lang]}
-                    <span aria-hidden className="h-3 w-px bg-cream/25" />
-                  </li>
-                ))}
-                <li>{saidaTexto}</li>
-                {status && (
-                  <li className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: status.cor }}>
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full" style={{ background: status.cor }} />
-                    {status.label}
-                  </li>
-                )}
-              </motion.ul>
-
-              <motion.div
-                className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7"
-                variants={{ in: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
-                transition={{ duration: 0.6, ease: EASE }}
-              >
-                <div className="shrink-0 leading-none">
-                  <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-cream/60">{L.aPartirDe}</span>
-                  <span className="mt-1.5 block whitespace-nowrap font-display text-[2.1rem] font-light">{p.preco}</span>
-                  <span className="mt-1 block text-[11px] text-cream/55">{L.porPessoa}</span>
-                </div>
-                <div className="flex flex-wrap items-center gap-3">
-                  <a
-                    href={p.href}
-                    className="group inline-flex items-center gap-3 rounded-full bg-gold px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-ink transition-transform duration-300 hover:scale-[1.03]"
-                  >
-                    {L.verRoteiro}
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </a>
-                  <a
-                    href="#contato"
-                    className="inline-flex items-center rounded-full border border-cream/35 px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-cream transition-colors duration-300 hover:border-cream hover:bg-cream/10"
-                  >
-                    {L.especialista}
-                  </a>
-                </div>
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* ── Vitrine: 5 cards com miniatura (desktop) ── */}
-        <div className="mb-6 hidden items-end gap-4 lg:flex">
-          <div className="flex items-center gap-2 pb-3 pr-2">
-            <button type="button" onClick={() => ir(index - 1)} aria-label={L.anterior}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/25 text-cream/80 transition-colors hover:border-cream hover:text-cream">
-              ←
-            </button>
-            <button type="button" onClick={() => ir(index + 1)} aria-label={L.proxima}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/25 text-cream/80 transition-colors hover:border-cream hover:text-cream">
-              →
-            </button>
-          </div>
-          <div className="grid flex-1 grid-cols-5 gap-3" role="tablist" aria-label={L.destaque}>
-            {HERO_PRODUTOS.map((x, i) => {
-              const ativo = i === index;
-              return (
-                <button
-                  key={x.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={ativo}
-                  onClick={() => ir(i)}
-                  className={`group relative flex items-center gap-3 overflow-hidden rounded-xl border p-2.5 text-left backdrop-blur-md transition-all duration-500 ${
-                    ativo ? "border-cream/35 bg-cream/[0.14]" : "border-cream/10 bg-forest/30 hover:border-cream/25 hover:bg-cream/[0.07]"
-                  }`}
+                <motion.h2
+                  className="mt-6 font-display font-light leading-[0.95] tracking-[-0.02em]"
+                  style={{ fontSize: "clamp(2.7rem, min(6vw, 10.5vh), 5.8rem)" }}
+                  variants={{ in: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 }, out: { opacity: 0, y: -12 } }}
+                  transition={{ duration: 0.7, ease: EASE }}
                 >
-                  <span className="relative h-12 w-16 shrink-0 overflow-hidden rounded-lg">
-                    <Image
-                      src={x.thumb}
-                      alt=""
-                      fill
-                      sizes="64px"
-                      unoptimized={x.remota}
-                      className={`object-cover transition-transform duration-700 ${ativo ? "scale-110" : "group-hover:scale-105"}`}
-                    />
-                  </span>
-                  <span className="min-w-0">
-                    <span className={`block text-[9px] font-semibold uppercase tracking-[0.2em] ${ativo ? "text-gold-soft" : "text-cream/50"}`}>
-                      {x.formato[lang]}
+                  {p.titulo}
+                  <br />
+                  <span className="italic text-gold">{p.tituloEm}</span>
+                </motion.h2>
+
+                <motion.p
+                  className="mt-5 max-w-[31rem] text-[15px] font-light leading-relaxed text-cream/80 md:text-[17px]"
+                  variants={{ in: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
+                  transition={{ duration: 0.6, ease: EASE }}
+                >
+                  {p.pitch[lang]}
+                </motion.p>
+
+                <motion.ul
+                  className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-cream/85"
+                  variants={{ in: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
+                  transition={{ duration: 0.6, ease: EASE }}
+                >
+                  {p.fatos.map((f) => (
+                    <li key={f.pt} className="flex items-center gap-4">
+                      {f[lang]}
+                      <span aria-hidden className="h-3 w-px bg-cream/25" />
+                    </li>
+                  ))}
+                  <li>{saidaTexto}</li>
+                  {status && (
+                    <li className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em]" style={{ color: status.cor }}>
+                      <span className="h-1.5 w-1.5 animate-pulse rounded-full" style={{ background: status.cor }} />
+                      {status.label}
+                    </li>
+                  )}
+                </motion.ul>
+
+                <motion.div
+                  className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7"
+                  variants={{ in: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 }, out: { opacity: 0 } }}
+                  transition={{ duration: 0.6, ease: EASE }}
+                >
+                  <div className="shrink-0 leading-none">
+                    <span className="block text-[10px] font-medium uppercase tracking-[0.22em] text-cream/60">{L.aPartirDe}</span>
+                    <span className="mt-1.5 block whitespace-nowrap font-display text-[2.1rem] font-light">{p.preco}</span>
+                    <span className="mt-1 block text-[11px] text-cream/55">{L.porPessoa}</span>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <a
+                      href={p.href}
+                      className="group inline-flex items-center gap-3 rounded-full bg-gold px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-ink transition-transform duration-300 hover:scale-[1.03]"
+                    >
+                      {L.verRoteiro}
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </a>
+                    <a
+                      href="#contato"
+                      className="inline-flex items-center rounded-full border border-cream/35 px-7 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-cream transition-colors duration-300 hover:border-cream hover:bg-cream/10"
+                    >
+                      {L.especialista}
+                    </a>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* ── Fila de próximos produtos (desktop): o primeiro cresce e vira o fundo ── */}
+          <div className="hidden min-w-0 flex-1 self-end pb-2 lg:block">
+            <div className="flex gap-5" role="tablist" aria-label={L.destaque}>
+              <AnimatePresence initial={false}>
+                {fila.map((x, k) => (
+                  <motion.button
+                    key={x.id}
+                    layout
+                    ref={(el) => { cards.current[x.id] = el; }}
+                    type="button"
+                    role="tab"
+                    aria-selected={false}
+                    aria-label={`${x.titulo} ${x.tituloEm}`}
+                    onClick={() => ir(HERO_PRODUTOS.indexOf(x))}
+                    initial={{ opacity: 0, x: 60 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, transition: { duration: 0 } }}
+                    transition={{ layout: { duration: 0.9, ease: EASE }, opacity: { duration: 0.6, delay: 0.3 }, x: { duration: 0.7, ease: EASE } }}
+                    className="group relative h-[clamp(220px,34vh,310px)] w-[clamp(150px,14vw,210px)] shrink-0 overflow-hidden rounded-[18px] text-left shadow-[0_24px_50px_-20px_rgba(0,0,0,0.65)] ring-1 ring-cream/15"
+                  >
+                    <span className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+                      <Image
+                        src={x.thumb}
+                        alt=""
+                        fill
+                        sizes="210px"
+                        unoptimized={x.remota}
+                        className="object-cover"
+                        style={{ objectPosition: x.foco ?? "50% 50%" }}
+                      />
                     </span>
-                    <span className={`mt-0.5 line-clamp-2 font-display text-[15px] leading-[1.15] ${ativo ? "text-cream" : "text-cream/75"}`}>
-                      {x.titulo} {x.tituloEm}
+                    <span className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
+                    <span className="absolute inset-x-0 bottom-0 p-4">
+                      <span aria-hidden className="mb-2 block h-px w-5 bg-gold-soft" />
+                      <span className="block text-[9px] font-semibold uppercase tracking-[0.2em] text-cream/70">{x.regiao[lang].split(" · ")[0]}</span>
+                      <span className="mt-1 block font-display text-[19px] leading-[1.1] text-cream">
+                        {x.titulo} {x.tituloEm}
+                      </span>
+                      {k === 0 && (
+                        <span className="mt-2 block text-[10px] uppercase tracking-[0.18em] text-gold-soft">{L.proxima}</span>
+                      )}
                     </span>
-                  </span>
-                  <span className="absolute inset-x-0 bottom-0 h-[2px] bg-cream/10">
-                    {ativo && (
-                      <span ref={barraCard} className="block h-full origin-left bg-gold" style={{ transform: "scaleX(0)" }} />
-                    )}
-                  </span>
-                </button>
-              );
-            })}
+                  </motion.button>
+                ))}
+              </AnimatePresence>
+            </div>
+
+            {/* controles: setas, linha de progresso e número */}
+            <div className="mt-6 flex items-center gap-5 pr-2">
+              <button type="button" onClick={() => ir(index - 1)} aria-label={L.anterior}
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cream/30 text-cream/80 transition-colors hover:border-cream hover:text-cream">
+                ←
+              </button>
+              <button type="button" onClick={() => ir(index + 1)} aria-label={L.proxima}
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-cream/30 text-cream/80 transition-colors hover:border-cream hover:text-cream">
+                →
+              </button>
+              <span className="relative h-[2px] max-w-[340px] flex-1 overflow-hidden rounded-full bg-cream/15">
+                <span key={`deck-${estado.n}`} ref={barraDeck} className="absolute inset-y-0 left-0 w-full origin-left bg-gold" style={{ transform: "scaleX(0)" }} />
+              </span>
+              <span className="flex items-baseline gap-1.5 font-display font-light leading-none">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={num}
+                    className="text-[3.2rem] text-cream"
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -18 }}
+                    transition={{ duration: 0.45, ease: EASE }}
+                  >
+                    {num}
+                  </motion.span>
+                </AnimatePresence>
+                <span className="text-[13px] text-cream/45">/ {String(TOTAL).padStart(2, "0")}</span>
+              </span>
+            </div>
           </div>
         </div>
 
