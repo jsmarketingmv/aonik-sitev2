@@ -7,7 +7,7 @@ import { useLang } from "./LanguageProvider";
 // Imagens por palavra-chave (independentes de idioma) — mesma ordem do dicionário
 const ROTATING_IMGS = [
   "/images/hero/IMG_3490.JPG", // caminhada
-  "/bike/costa-bike/costa-05.jpg", // pedalada
+  "/bike/costa-bike/costa-15.jpg", // pedalada (Caminho da Costa rumo a Santiago)
   "https://static.wixstatic.com/media/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg/v1/fit/w_1920,h_1539,q_90,enc_avif,quality_auto/2d4f5b_80e678e6de65425f90c4b56c6f998776~mv2.jpg", // peregrinação (Caminho de Santiago)
   "https://static.wixstatic.com/media/2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg/v1/fill/w_2000,h_1200,al_c,q_85,enc_avif,quality_auto/img.jpg", // Portugal (Douro)
 ];

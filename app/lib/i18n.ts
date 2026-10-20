@@ -27,7 +27,8 @@ export interface Dict {
     soon: string;
   };
   universos: {
-    headingPre: string;
+    headingPre: string; // 1ª linha
+    headingPost: string; // 2ª linha, antes do trecho em destaque
     headingEm: string;
     intro: string;
     segmentos: { kicker: string; nome: string; desc: string }[];
@@ -114,10 +115,11 @@ export const translations: Record<Lang, Dict> = {
       soon: "Em breve",
     },
     universos: {
-      headingPre: "Escolha por qual caminho quer",
+      headingPre: "Escolha por qual caminho",
+      headingPost: "quer",
       headingEm: "descobrir o mundo",
       intro:
-        "Nossa essência é caminhar: na montanha, na trilha, na peregrinação. De bike também, no seu ritmo. Escolha o caminho que quer descobrir.",
+        "Nossa essência é caminhar: na montanha, na trilha, na peregrinação. E muitos dos caminhos que percorremos a pé também se fazem sobre duas rodas, no seu ritmo, com a mesma paisagem passando devagar.",
       segmentos: [
         {
           kicker: "A pé",
@@ -245,10 +247,11 @@ export const translations: Record<Lang, Dict> = {
       soon: "Próximamente",
     },
     universos: {
-      headingPre: "Elige por qué camino quieres",
+      headingPre: "Elige por qué camino",
+      headingPost: "quieres",
       headingEm: "descubrir el mundo",
       intro:
-        "Nuestra esencia es caminar: en la montaña, en el sendero, en la peregrinación. En bici también, a tu ritmo. Elige el camino que quieres descubrir.",
+        "Nuestra esencia es caminar: en la montaña, en el sendero, en la peregrinación. Y muchos de los caminos que recorremos a pie también se hacen sobre dos ruedas, a tu ritmo, con el mismo paisaje pasando despacio.",
       segmentos: [
         {
           kicker: "A pie",
@@ -375,10 +378,11 @@ export const translations: Record<Lang, Dict> = {
       soon: "Coming soon",
     },
     universos: {
-      headingPre: "Choose which path you want to",
+      headingPre: "Choose the path",
+      headingPost: "to",
       headingEm: "discover the world",
       intro:
-        "Walking is in our essence — on the mountain, on the trail, on pilgrimage. By bike too, at your own pace. Choose the path you want to discover.",
+        "Walking is our essence: on the mountain, on the trail, on pilgrimage. And many of the paths we walk can also be ridden on two wheels, at your own pace, with the same landscape drifting slowly by.",
       segmentos: [
         {
           kicker: "On foot",

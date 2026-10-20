@@ -30,7 +30,9 @@ export default function Universos() {
         <div className="mb-16 flex flex-col gap-5 md:mb-24 md:flex-row md:items-end md:justify-between">
           <Reveal>
             <h2 className="font-display text-[clamp(1.7rem,3.4vw,2.75rem)] font-light leading-[1.1] tracking-[-0.01em] text-forest">
-              {t.universos.headingPre}{" "}
+              {t.universos.headingPre}
+              <br />
+              {t.universos.headingPost}{" "}
               <span className="italic text-gold">{t.universos.headingEm}</span>
             </h2>
           </Reveal>

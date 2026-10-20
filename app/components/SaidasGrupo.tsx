@@ -28,10 +28,11 @@ export type SaidasGrupoCores = {
   texto: string;
 };
 
-export default function SaidasGrupo({ slug, cores, fallback }: {
+export default function SaidasGrupo({ slug, cores, fallback, className = "mt-12" }: {
   slug: string;
   cores: SaidasGrupoCores;
   fallback: ReactNode;
+  className?: string;
 }) {
   const [saidas, setSaidas] = useState<SaidaSite[] | null>(null);
 
@@ -44,7 +45,7 @@ export default function SaidasGrupo({ slug, cores, fallback }: {
   if (!saidas || saidas.length === 0) return <>{fallback}</>;
 
   return (
-    <div className={`mt-12 grid gap-6 ${saidas.length > 1 ? "sm:grid-cols-2" : ""}`}>
+    <div className={`${className} grid h-full gap-6 ${saidas.length > 1 ? "sm:grid-cols-2" : ""}`}>
       {saidas.map((s, idx) => {
         const ano = parseDataISO(s.data_inicio)?.ano;
         const encerrada = s.selo === "vagas_encerradas";
@@ -61,7 +62,7 @@ export default function SaidasGrupo({ slug, cores, fallback }: {
         const barraCor = encerrada ? "rgba(238,243,246,0.35)" : pctOcupada >= 75 ? cores.alerta : cores.confirmada;
 
         return (
-          <div key={idx} className="rounded-xl border border-white/10 bg-white/5 p-7" style={{ opacity: encerrada ? 0.75 : 1 }}>
+          <div key={idx} className="h-full rounded-xl border border-white/10 bg-white/5 p-7" style={{ opacity: encerrada ? 0.75 : 1 }}>
             <p className="font-display text-3xl font-light" style={{ color: cores.ano }}>{ano ?? s.nome}</p>
             <div className="mt-4 flex flex-wrap gap-2">
               <span

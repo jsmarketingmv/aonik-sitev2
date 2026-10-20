@@ -211,6 +211,7 @@ const GALLERY_IMGS = [
   "/images/tmb/grupo.jpg",
   "/images/tmb/gallery-selfie.jpg",
   "/images/tmb/gallery-group-forest.jpg",
+  "/images/tmb/refugio-edelweiss-la-fouly.webp",
 ];
 
 // ---------- HOSPEDAGENS ----------
@@ -351,7 +352,7 @@ const ROTEIRO = [
 const GUIA = {
   nome: "Hendrik Fendel",
   origem: "Urubici, Santa Catarina",
-  photo: "/images/tmb/guia.jpg",
+  photo: "https://static.wixstatic.com/media/fe55bd_56f62fc99b7c42e6a4a5b0d81ef835c9~mv2.jpg/v1/fill/w_900,h_1200,al_c,q_82,enc_avif,quality_auto/img.jpg",
   bio: "Radicado em Urubici, na Serra Catarinense, Hendrik construiu sua trajetória profundamente conectada às montanhas, trilhas e paisagens do sul do Brasil. Ao longo dos anos, transformou essa vivência em profissão e propósito de vida. Seu estilo de condução é marcado pela atenção aos detalhes, pela leitura cuidadosa do clima e do terreno e pela capacidade de criar experiências autênticas e humanas, sempre com foco na segurança e no respeito ao ritmo do grupo.",
   marcas: [
     "Urubici · Serra Catarinense",
@@ -958,63 +959,52 @@ export default function TMBV2Page() {
             </Reveal>
           </div>
 
-          {/* Saídas ao vivo (gestão de Grupos do SaaS); o bloco estático é o fallback */}
-          <SaidasGrupo
-            slug="tour-du-mont-blanc"
-            cores={{ ano: C.fr, confirmada: C.ch, alerta: C.wood, texto: C.snow }}
-            fallback={
-              <div className="mt-12 grid gap-6">
-                {([2027] as const).map((ano) => {
-                  const datas = TMB_GRUPO.dates2027;
-                  return (
-                    <Reveal key={ano} delay={0.05}>
-                      <div className="rounded-xl border border-white/10 bg-white/5 p-7 sm:flex sm:items-center sm:gap-10">
-                        <p className="font-display text-3xl font-light" style={{ color: C.fr }}>{ano}</p>
-                        <div className="mt-4 flex flex-wrap gap-2 sm:mt-0 sm:flex-1">
-                          {(datas ?? []).map((d) => (
-                            <span key={d}
-                              className="rounded-full border border-white/15 px-4 py-1.5 text-[13px] font-medium"
-                              style={{ color: C.snow }}>
-                              {d}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="mt-4 flex items-center gap-2 sm:mt-0">
-                          <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: C.ch }} />
-                          <p className="text-[12px] font-semibold uppercase tracking-[0.12em]"
-                            style={{ color: C.ch }}>Saída confirmada</p>
-                        </div>
-                      </div>
-                    </Reveal>
-                  );
-                })}
-              </div>
-            }
-          />
-
-          <Reveal delay={0.15}>
-            <div className="mt-10 border-t pt-10" style={{ borderColor: "rgba(217,140,74,0.3)" }}>
-              <div className="overflow-hidden rounded-2xl" style={{ border: `1px solid rgba(217,140,74,0.28)`, backgroundColor: "rgba(217,140,74,0.04)" }}>
-                <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-4" style={{ borderBottom: `1px solid rgba(217,140,74,0.18)` }}>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: C.wood }}>Tarifas · Temporada 2027</span>
-                </div>
-                <div className="grid grid-cols-1">
-                  <div className="p-6">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: "rgba(238,243,246,0.55)" }}>Tarifa Temporada 2027</p>
-                    <p className="mt-4 font-display font-light" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: C.snow }}>€ 5.900</p>
-                    <p className="text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · dupla (cidades) e compartilhada (montanhas)</p>
-                    <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: "rgba(238,243,246,0.55)" }}>30% de entrada + saldo em parcelas no cartão.</p>
-                    <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(238,243,246,0.35)" }}>Valor em Euro, base Euro Turismo no fechamento.</p>
+          {/* Data (esquerda) e tarifa (direita) na mesma linha, mesma altura */}
+          <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2">
+            {/* Saídas ao vivo (gestão de Grupos do SaaS); o bloco estático é o fallback */}
+            <SaidasGrupo
+              slug="tour-du-mont-blanc"
+              className=""
+              cores={{ ano: C.fr, confirmada: C.ch, alerta: C.wood, texto: C.snow }}
+              fallback={
+                <div className="h-full rounded-xl border border-white/10 bg-white/5 p-7">
+                  <p className="font-display text-3xl font-light" style={{ color: C.fr }}>2027</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {(TMB_GRUPO.dates2027 ?? []).map((d) => (
+                      <span key={d}
+                        className="rounded-full border border-white/15 px-4 py-1.5 text-[13px] font-medium"
+                        style={{ color: C.snow }}>
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: C.ch }} />
+                    <p className="text-[12px] font-semibold uppercase tracking-[0.12em]"
+                      style={{ color: C.ch }}>Saída confirmada</p>
                   </div>
                 </div>
+              }
+            />
+
+            <div className="h-full overflow-hidden rounded-xl" style={{ border: `1px solid rgba(217,140,74,0.28)`, backgroundColor: "rgba(217,140,74,0.04)" }}>
+              <div className="px-7 py-4" style={{ borderBottom: `1px solid rgba(217,140,74,0.18)` }}>
+                <span className="text-[10px] font-bold uppercase tracking-[0.22em]" style={{ color: C.wood }}>Tarifa · Temporada 2027</span>
               </div>
-              <div className="mt-6 flex justify-center sm:justify-end">
-                <a href="#contato" className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]" style={{ background: C.wood, color: C.night }}>
-                  Falar com a equipe &#8594;
-                </a>
+              <div className="p-7">
+                <p className="font-display font-light leading-none" style={{ fontSize: "clamp(1.8rem,3vw,2.4rem)", color: C.snow }}>€ 5.900</p>
+                <p className="mt-2 text-[12px]" style={{ color: "rgba(238,243,246,0.55)" }}>por pessoa · dupla (cidades) e compartilhada (montanhas)</p>
+                <p className="mt-3 text-[12px] font-light leading-relaxed" style={{ color: "rgba(238,243,246,0.55)" }}>30% de entrada + saldo em parcelas no cartão.</p>
+                <p className="mt-1 text-[11px] font-light italic" style={{ color: "rgba(238,243,246,0.35)" }}>Valor em Euro, base Euro Turismo no fechamento.</p>
               </div>
             </div>
-          </Reveal>
+          </div>
+
+          <div className="mt-8 flex justify-center sm:justify-end">
+            <a href="#contato" className="inline-flex items-center gap-3 rounded-full px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.16em] transition-transform duration-300 hover:scale-[1.03]" style={{ background: C.wood, color: C.night }}>
+              Falar com a equipe &#8594;
+            </a>
+          </div>
         </div>
       </section>
 

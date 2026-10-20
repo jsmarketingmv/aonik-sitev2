@@ -867,7 +867,7 @@ export default function CoxilhaRicaPage() {
           <div className="mt-10 grid items-start gap-10 md:grid-cols-[420px_1fr] md:gap-16">
             <Reveal>
               <div className="relative overflow-hidden rounded-2xl" style={{ height: 540 }}>
-                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/tmb/guia.jpg')` }} />
+                <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://static.wixstatic.com/media/fe55bd_56f62fc99b7c42e6a4a5b0d81ef835c9~mv2.jpg/v1/fill/w_900,h_1200,al_c,q_82,enc_avif,quality_auto/img.jpg')` }} />
                 <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${C.stone}ee 0%, transparent 55%)` }} />
                 <div className="absolute inset-x-0 bottom-0 p-7">
                   <p className="font-display text-[1.6rem] font-light leading-tight" style={{ color: C.creme }}>Hendrik Fendel</p>

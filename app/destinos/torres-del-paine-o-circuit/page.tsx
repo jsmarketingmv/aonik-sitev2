@@ -249,7 +249,7 @@ const NAO_INCLUSO = [
 const GUIA = {
   nome: "Hendrik Fendel",
   origem: "Urubici, Santa Catarina",
-  photo: "/images/tmb/guia.jpg",
+  photo: "https://static.wixstatic.com/media/fe55bd_56f62fc99b7c42e6a4a5b0d81ef835c9~mv2.jpg/v1/fill/w_900,h_1200,al_c,q_82,enc_avif,quality_auto/img.jpg",
   bio: "Radicado em Urubici, na Serra Catarinense, Hendrik construiu sua trajetória profundamente conectada às montanhas, trilhas e paisagens do sul do Brasil. Ao longo dos anos, transformou essa vivência em profissão e propósito de vida. Seu estilo de condução é marcado pela atenção aos detalhes, pela leitura cuidadosa do clima e do terreno e pela capacidade de criar experiências autênticas e humanas, sempre com foco na segurança e no respeito ao ritmo do grupo.",
   marcas: [
     "Urubici · Serra Catarinense",
