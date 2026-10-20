@@ -33,7 +33,7 @@ const O = {
 };
 
 const GRUPO = GRUPOS.find((g) => g.id === "torres-del-paine-o-circuit")!;
-const DATA_SAIDA = "21 a 29 de fevereiro de 2027";
+const DATA_SAIDA = "20 de fevereiro a 01 de março de 2027";
 
 const PHOTO = {
   hero: "/torres-del-paine/dsc08327.jpg",
@@ -159,12 +159,12 @@ function OSignature() {
    DADOS
    ============================================================ */
 const STATS = [
-  { label: "Duração", value: "8d · 7n" },
-  { label: "Distância", value: "129 km" },
-  { label: "Elevação", value: "3.724 m+" },
+  { label: "Programa", value: "10d · 9n" },
+  { label: "Caminhada", value: "8 dias" },
+  { label: "Distância", value: "137,3 km" },
+  { label: "Elevação", value: "+5.284 m" },
   { label: "Nível", value: "Alto" },
-  { label: "Formato", value: "Grupo guiado" },
-  { label: "Saída 2027", value: "21/Fev" },
+  { label: "Saída 2027", value: "20/Fev" },
 ];
 
 const MARCOS = [
@@ -174,47 +174,98 @@ const MARCOS = [
   { n: "04", nome: "Glaciar Grey", tag: "Face oculta", desc: "A parede de gelo azul e o Campo de Hielo Sul, vistos do alto do Passo John Gardner.", img: PHOTO.grey },
 ];
 
-type Dia = { dia: string; titulo: string; desc: string; km: string; horas: string; desnivel: string; nivel: string; pernoite: string; ultimoDia?: boolean };
+/* Assets da proposta ANK150 (mesmo bucket usado pelo Tour du Mont Blanc) */
+const ASSETS = "https://hbiamcsblfoumrxwzryd.supabase.co/storage/v1/object/public/proposta-assets";
+
+type Dia = {
+  dia: string;
+  data: string;
+  titulo: string;
+  desc: string;
+  stats: { km: string; sobe: string; desce: string } | null;
+  itens: string[];
+  img: string;
+};
 const ROTEIRO: Dia[] = [
   {
-    dia: "Dia 1", titulo: "Puerto Natales a Torres del Paine · Serón",
-    desc: "Antes de tudo começar, você recebe por e-mail as orientações técnicas e a equipe coordena a entrega do welcome kit. No dia da saída, o ônibus parte às 07h de Puerto Natales, cerca de 2h30 de viagem. Ao chegar, caminhe pelo Vale Encantado e uma floresta nativa de lengas centenárias, cobertas pela barba de velho, um líquen que só cresce nos ambientes mais puros. Ao som dos pássaros, já surgem as primeiras vistas do maciço.",
-    km: "13 km", horas: "4 a 6h", desnivel: "+130 m", nivel: "Moderado", pernoite: "Camping Serón",
+    dia: "01", data: "20/02",
+    titulo: "Chegada em Punta Arenas",
+    desc: "Seu voo chega em Punta Arenas e o grupo se reúne ainda no aeroporto para seguirmos juntos de ônibus até Puerto Natales, a cidade base de acesso ao parque. Se o seu horário não permitir, enviamos o ticket e orientamos você a encontrar o grupo lá. À noite temos a reunião de briefing, revisão de mochilas e os alinhamentos finais para o dia seguinte.",
+    stats: null,
+    itens: ["Transfer regular do aeroporto de Punta Arenas até Puerto Natales", "Hospedagem em hotel, quarto duplo, em Puerto Natales"],
+    img: `${ASSETS}/produto/roteiro/dia1/64ccd73f-9397-41bf-89d1-3923c0fd31e1.jpg`,
   },
   {
-    dia: "Dia 2", titulo: "Trekking a Dickson",
-    desc: "Um dia longo e inesquecível, subindo e descendo as encostas do maciço. Depois da subida mais íngreme, a vista do vale parece um sonho. A chegada é quase surreal: o refúgio numa ampla área verde à beira de um lago imenso, aos pés das montanhas. Você desce revigorado rumo às margens do Lago Paine, onde passa a noite no Refúgio Dickson.",
-    km: "19,5 km", horas: "8 a 10h", desnivel: "+200 m", nivel: "Alto", pernoite: "Refúgio Dickson",
+    dia: "02", data: "21/02",
+    titulo: "Centro de Boas-Vindas até o Setor Serón",
+    desc: "Encontro no terminal de Puerto Natales entre 6h30 e 6h45, sem atrasos: às 7h seguimos para o parque, cerca de 2h de estrada. Paramos na Laguna Amarga para o check-in no parque e fazemos um segundo check-in no Centro de Boas-Vindas da Las Torres. Dali começa o primeiro dia de caminhada, até o Acampamento Serón.",
+    stats: { km: "14,2 km", sobe: "+299 m", desce: "-129 m" },
+    itens: ["Café da manhã na hospedagem", "Ônibus da rodoviária de Puerto Natales até o parque", "Pernoite em barracas altas no Acampamento Serón", "Jantar no acampamento"],
+    img: `${ASSETS}/roteiro/dia2/9c665320-894c-40dd-b866-054716913e89.png`,
   },
   {
-    dia: "Dia 3", titulo: "Trekking a Los Perros",
-    desc: "Dia mais curto, para aproveitar o entorno. Acorde cedo e sinta a paz perto do rio, com as nuvens revelando por instantes os picos nevados. O caminho entra numa floresta de lengas, onde você começa a ouvir o bater característico dos pica-paus-magalhânicos. O trecho final surpreende com a vista do Glaciar Los Perros sobre uma lagoa cinza e calma.",
-    km: "13,5 km", horas: "4,5 a 6,5h", desnivel: "+340 m", nivel: "Alto", pernoite: "Camping Los Perros",
+    dia: "03", data: "22/02",
+    titulo: "Trekking ao Setor Dickson",
+    desc: "Saímos depois do café, pegamos o box lanche e por volta das 8h30 começamos a caminhar rumo ao Setor Dickson. É o dia de acostumar o corpo com mais subida e distância, aproveitando um visual que poucas pessoas têm a oportunidade de conhecer. Paramos na metade do caminho para o lanche e o registro junto aos guarda-parques, e por volta das 15h chegamos ao Dickson.",
+    stats: { km: "19,7 km", sobe: "+539 m", desce: "-566 m" },
+    itens: ["Café da manhã", "Box lanche de caminhada", "Pernoite em refúgio, quarto compartilhado", "Welcome drink", "Jantar no refúgio"],
+    img: `${ASSETS}/produto/roteiro/dia3/e0b5b3b0-38fe-4123-b793-a1e23d5cd2ff.jpg`,
   },
   {
-    dia: "Dia 4", titulo: "Passo John Gardner e Lago Grey",
-    desc: "Provavelmente o dia mais desafiador e também um dos mais espetaculares. Saída cedo de Los Perros, atravessando floresta úmida antes de emergir acima da linha das árvores. A metade superior é uma subida íngreme, rochosa e muitas vezes com neve até o Passo John Gardner. No alto, a recompensa: o Campo de Hielo Sul, com picos afiados e fendas de gelo de cores intensas. Na descida, o Glaciar Grey, uma paisagem de outro planeta.",
-    km: "18 km", horas: "9 a 12h", desnivel: "+600 m", nivel: "Alto", pernoite: "Refúgio Grey",
+    dia: "04", data: "23/02",
+    titulo: "Caminhada até o Acampamento Los Perros",
+    desc: "Dia curto em distância e de altimetria média, com pequenos trechos agudos e praticamente todo dentro da floresta. Saímos por volta das 9h, por um trajeto pouco movimentado, com trechos de deck sobre a vegetação e um final junto a uma bela geleira. Los Perros é o setor de estrutura mais simples do circuito: banho gelado e sem internet, mas com tudo montado esperando o grupo.",
+    stats: { km: "13,2 km", sobe: "+533 m", desce: "-531 m" },
+    itens: ["Café da manhã no refúgio", "Box lanche de caminhada", "Pernoite em barracas duplas em Los Perros", "Welcome drink", "Jantar no refeitório"],
+    img: `${ASSETS}/roteiro/dia4/9f3ed518-eae4-441f-8090-a17d96f55b2a.png`,
   },
   {
-    dia: "Dia 5", titulo: "Trekking a Paine Grande",
-    desc: "Aqui começa oficialmente o Circuito W, e você passa a explorar os cenários mais icônicos do parque. Depois de dias intensos, hoje a caminhada é mais leve. Você anda por encostas e florestas de ñirre, coigüe e notro, com a presença do Paine Grande, o pico mais alto da região (3.050 m), e suas geleiras suspensas. Ao chegar, descanse ao sol ou caminhe à beira do turquesa Lago Pehoé.",
-    km: "11 km", horas: "4h", desnivel: "+280 m", nivel: "Moderado", pernoite: "Refúgio Paine Grande",
+    dia: "05", data: "24/02",
+    titulo: "Passo John Gardner até o Setor Grey",
+    desc: "Um dos dias mais longos, menos pela distância e mais pela percepção. É a maior altimetria do Circuito O, com terreno instável, vistas absurdamente bonitas e um percurso fisicamente desafiador, já que boa parte da trilha não fica visível à frente. A saída é programada por volta das 6h30 para garantir segurança e que o grupo chegue bem ao destino.",
+    stats: { km: "16,7 km", sobe: "+1.002 m", desce: "-1.490 m" },
+    itens: ["Café da manhã no refúgio", "Box lanche de caminhada", "Pernoite em refúgio, quarto compartilhado", "Welcome drink", "Jantar no refúgio"],
+    img: `${ASSETS}/produto/roteiro/dia5/d9fd5aee-a284-41b1-a1be-e99bfd1fccd1.jpg`,
   },
   {
-    dia: "Dia 6", titulo: "Vale do Francés",
-    desc: "Comece a manhã com uma caminhada leve e magnífica até o Campamento Italiano. Cercado de montanhas, você sente uma calma profunda enquanto os sons do lago e da paisagem vibram em meio à vegetação. Passe por uma cachoeira de água pura e gelada. No mirante do Vale do Francés, um dos panoramas mais impressionantes de todo o circuito.",
-    km: "20,5 km", horas: "8 a 9h", desnivel: "+712 m", nivel: "Alto", pernoite: "Camping Francés",
+    dia: "06", data: "25/02",
+    titulo: "Setor Grey até Paine Grande",
+    desc: "Praticamente um dia regenerativo depois do cansaço da véspera. Antes de sair, fazemos uma caminhada rápida até a península do Glaciar Grey para ver a geleira de frente. Partimos por volta das 10h rumo ao Paine Grande, um dos refúgios de maior estrutura do parque, com quartos de 6 pessoas, galerias de banheiros, áreas de descanso e um grande bar.",
+    stats: { km: "11,1 km", sobe: "+419 m", desce: "-418 m" },
+    itens: ["Café da manhã no refúgio", "Box lanche de caminhada", "Pernoite em refúgio, quarto compartilhado", "Welcome drink", "Jantar no refúgio"],
+    img: `${ASSETS}/roteiro/dia6/56ff032f-44d0-478f-8a8e-9947d4889c6d.png`,
   },
   {
-    dia: "Dia 7", titulo: "Trekking ao Setor Central",
-    desc: "Caminhe pela margem tranquila do Lago Nordenskjöld, sob o imponente Cerro Almirante Nieto e suas geleiras suspensas. O silêncio dos picos sobre o lago turquesa convida a desacelerar; fique de olho nos condores. No mirante mais alto, a vista do lago inteiro e, ao fim do dia, o Glaciar Francés no Cerro Paine Grande. À noite, celebre com uma cerveja bem merecida.",
-    km: "14 km", horas: "4 a 5h", desnivel: "+712 m", nivel: "Moderado", pernoite: "Refúgio Central",
+    dia: "07", data: "26/02",
+    titulo: "Paine Grande até o Setor Francés",
+    desc: "Novo dia longo e com seus desafios: mais de 20 km com altimetria considerável, incluindo a passagem pelo Vale do Francés. Saímos por volta das 8h e, pouco antes do destino, paramos no Setor Italiano para deixar a cargueira guardada e atacar o Mirador Británico. Quem preferir pode seguir só até o Mirador Francés. A noite é em camping de barracas altas, numa das áreas de maior avistamento de pumas do circuito.",
+    stats: { km: "21,5 km", sobe: "+780 m", desce: "-682 m" },
+    itens: ["Café da manhã", "Box lanche de caminhada", "Pernoite em barracas altas, em duplas", "Welcome drink", "Jantar no refúgio"],
+    img: `${ASSETS}/roteiro/dia7/a5c05d6d-158a-407f-9198-6980f64f182b.png`,
   },
   {
-    dia: "Dia 8", titulo: "Base Torres e retorno a Puerto Natales",
-    desc: "O dia começa com uma subida pela planície patagônica, que fica mais íngreme ao entrar no Vale do Ascencio rumo ao Paso Los Vientos. Você passa pelo Setor Chileno e cruza uma floresta de lengas antes do trecho final, cerca de 1h sobre terreno rochoso. No fim, a vista mais icônica do parque: as três torres sobre a lagoa glacial. Depois, retorno pelo mesmo caminho para pegar o ônibus à tarde de volta a Puerto Natales.",
-    km: "19,5 km", horas: "7 a 9h", desnivel: "+750 m", nivel: "Alto", pernoite: "Retorno a Puerto Natales", ultimoDia: true,
+    dia: "08", data: "27/02",
+    titulo: "Setor Francés até o Setor Central",
+    desc: "Dia também longo, mas sem tanta altimetria: apenas alguns trechos agudos e curtos. Saímos por volta das 8h30, com paradas frequentes, porque é um dia de belas visões e também de bastante vento. A pernoite é no Refúgio Central, que leva esse nome por ser o ponto de partida dos circuitos O e W. Dia de dormir cedo e preparar a aventura seguinte.",
+    stats: { km: "18,8 km", sobe: "+583 m", desce: "-576 m" },
+    itens: ["Café da manhã", "Box lanche de caminhada", "Pernoite no Refúgio Central", "Welcome drink", "Jantar no refúgio"],
+    img: `${ASSETS}/produto/roteiro/dia8/aa1fed91-7e6f-4ce3-b553-b40649f8aa54.jpeg`,
+  },
+  {
+    dia: "09", data: "28/02",
+    titulo: "Ataque ao Mirador Las Torres",
+    desc: "O horário de despertar e de início da caminhada é definido pela previsão do tempo, para estarmos no topo no melhor momento possível. Não se engane: é longa, com a dificuldade técnica de caminhar sobre pedras, grande altimetria e vento que, em alguns trechos, pode ser o maior desafio de todos. A previsão é estar de volta até as 17h para pegar o transfer a Puerto Natales, chegando por volta das 22h.",
+    stats: { km: "22,1 km", sobe: "+1.129 m", desce: "-1.151 m" },
+    itens: ["Café da manhã", "Box lanche de caminhada", "Transfer do parque até Puerto Natales", "Hospedagem em hotel, quarto duplo, em Puerto Natales"],
+    img: `${ASSETS}/roteiro/dia9/65f12fed-fae8-4096-a613-9083ee72fa54.png`,
+  },
+  {
+    dia: "10", data: "01/03",
+    titulo: "Transfer para Punta Arenas · fim dos serviços",
+    desc: "Dia de voltar para casa. Depois do café da manhã, seguimos até a rodoviária e pegamos o transfer regular até o aeroporto de Punta Arenas.",
+    stats: null,
+    itens: ["Café da manhã", "Transfer regular de Puerto Natales até o aeroporto de Punta Arenas"],
+    img: `${ASSETS}/roteiro/dia10/e863de5f-b2d7-4889-982b-f11a33cfcb93.png`,
   },
 ];
 
@@ -230,20 +281,45 @@ const GALERIA = [
 ];
 
 const INCLUSO = [
-  "Guia AONIK Hendrik Fendel, do início ao fim da travessia",
-  "7 noites em refúgios de montanha ou camping full equipado",
-  "Todas as refeições: café da manhã, box lunch e jantar",
-  "Ônibus regular Puerto Natales ↔ Torres del Paine, ida e volta",
-  "Entrada do Parque Nacional Torres del Paine",
-  "Welcome kit: garrafa d'água, liner e toalha",
-  "Trekking por Base Torres, Cuernos, Vale do Francés, Glaciar Grey, Passo John Gardner, Glaciar Los Perros e Glaciar Dickson",
+  "Café da manhã todos os dias, do 2º dia ao último da viagem",
+  "Box lanche em todos os dias de caminhada",
+  "Jantar em todos os dias dentro do Parque Nacional Torres del Paine",
+  "Kit boas-vindas Torres del Paine",
+  "LeaderTrip brasileiro AONIK com treinamento em primeiros socorros em áreas remotas",
+  "Monitoramento por rastreador satelital individual para cada integrante do grupo",
 ];
 const NAO_INCLUSO = [
-  "Voos nacionais e internacionais",
-  "Seguro de viagem e assistência médica",
-  "Serviços ou equipamento não mencionados",
-  "Bebidas e gorjetas",
-  "Jantares especiais de 24/12 e 31/12 (US$ 50 por pessoa, quando aplicável)",
+  "Passagem aérea",
+  "Bebidas durante as refeições",
+  "Serviços de transfer não descritos",
+  "Seguro saúde internacional",
+];
+
+/* Hospedagem, transporte e condições, conforme a proposta */
+const HOSPEDAGEM = [
+  "02 noites em hotel em Puerto Natales",
+  "03 noites em camping dentro do Parque Nacional Torres del Paine",
+  "04 noites em refúgios dentro do Parque Nacional Torres del Paine",
+];
+const TRANSPORTE = [
+  "Transfer regular do aeroporto de Punta Arenas até a rodoviária de Puerto Natales",
+  "Transfer de Puerto Natales até o Parque Nacional Torres del Paine",
+  "Transfer regular de Puerto Natales até o aeroporto de Punta Arenas",
+];
+const PAGAMENTO = [
+  "Entrada de 30% do valor total, em PIX ou transferência.",
+  "Saldo em até 7 vezes sem juros, no cartão.",
+];
+const OBSERVACOES = [
+  "As tarifas em dólar valem exclusivamente para estrangeiros, mediante apresentação do passaporte e do cartão migratório PDI (documento original) no check-in.",
+  "Para a isenção de impostos no Chile é preciso apresentar passaporte e cartão de imigração no check-in, pagar em dólares americanos e residir fora do Chile.",
+  "A conexão de internet dentro de Torres del Paine é limitada.",
+  "No Chile a gorjeta é regulamentada por lei: não é obrigatória, mas é sugerida pelo estabelecimento, com recomendação de no mínimo 10% do valor consumido.",
+];
+const CANCELAMENTO = [
+  "60 dias ou mais antes do início dos serviços: penalidade de 10% do valor total.",
+  "Entre 60 e 31 dias antes do início dos serviços: penalidade de 50% do valor total.",
+  "30 dias ou menos antes do início dos serviços: penalidade de 100% do valor total.",
 ];
 
 const GUIA = {
@@ -411,32 +487,35 @@ export default function OCircuitPage() {
       <section id="roteiro" className="scroll-mt-20 px-6 py-24 md:px-10 md:py-28" style={{ background: O.ink, color: O.creme }}>
         <div className="mx-auto max-w-[1100px]">
           <Reveal><p className="text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroSoft }}>O roteiro, dia a dia</p></Reveal>
-          <Reveal delay={0.06}><h2 className="mt-4 mb-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]" style={{ color: O.creme }}>8 dias · 7 noites pela volta completa</h2></Reveal>
-          <Reveal delay={0.08}><p className="mb-12 max-w-xl text-[14px] font-light leading-relaxed" style={{ color: O.cSoft }}>Com extensão opcional para 9 dias / 8 noites. A cada dia, o refúgio ou camping da noite e a exigência da etapa.</p></Reveal>
-          <div>
+          <Reveal delay={0.06}><h2 className="mt-4 mb-4 font-display text-[clamp(1.8rem,3.6vw,3rem)] font-light leading-[1.1]" style={{ color: O.creme }}>10 dias dando a volta no maciço</h2></Reveal>
+          <Reveal delay={0.08}><p className="mb-12 max-w-xl text-[14px] font-light leading-relaxed" style={{ color: O.cSoft }}>De Punta Arenas a Punta Arenas, com 8 dias de caminhada. A cada etapa, a distância, o desnível e o que está incluído na diária.</p></Reveal>
+
+          <div className="space-y-10">
             {ROTEIRO.map((r, i) => (
-              <Reveal key={r.dia} delay={i * 0.03}>
-                <div className="grid gap-4 border-t py-7 md:grid-cols-[110px_1fr_210px] md:gap-8" style={{ borderColor: O.line }}>
-                  <span className="font-display text-sm uppercase tracking-[0.1em]" style={{ color: O.ouroSoft }}>{r.dia}</span>
-                  <div>
-                    <h3 className="font-display text-xl font-light md:text-2xl">{r.titulo}</h3>
-                    <p className="mt-2 text-[14px] font-light leading-relaxed" style={{ color: O.cSoft }}>{r.desc}</p>
-                  </div>
-                  <div className="flex flex-col gap-1 text-[12px] font-light md:items-end md:text-right" style={{ color: O.cFaint }}>
-                    <span className="text-[14px] font-bold" style={{ color: O.creme }}>{r.km}</span>
-                    <span>{r.horas} · {r.desnivel}</span>
-                    <span style={{ color: nivelColor(r.nivel) }}>Nível {r.nivel}</span>
-                    {/* a noite de cada etapa, em destaque */}
-                    <span className="mt-2 inline-flex items-center gap-2 rounded-full border px-3 py-1.5"
-                      style={{ borderColor: O.line, background: "rgba(156,195,212,0.05)" }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={O.ouroSoft} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M3 10.5 12 4l9 6.5" /><path d="M5 10v10h14V10" />
-                      </svg>
-                      <span className="text-[11.5px]" style={{ color: O.ouroSoft }}>
-                        <span style={{ color: O.cFaint }}>{r.ultimoDia ? "Encerramento · " : "Pernoite · "}</span>
-                        {r.pernoite}
-                      </span>
+              <Reveal key={r.dia} delay={Math.min(i * 0.03, 0.3)}>
+                <div className="grid gap-6 border-t pt-8 md:grid-cols-[280px_1fr]" style={{ borderColor: O.line }}>
+                  <div className="relative h-52 overflow-hidden rounded-xl md:h-full">
+                    <img src={r.img} alt={`Dia ${r.dia} — ${r.titulo}`} className="h-full w-full object-cover" loading="lazy" />
+                    <span className="absolute left-3 top-3 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]"
+                      style={{ background: "rgba(12,18,25,0.78)", color: O.creme }}>
+                      Dia {r.dia} · {r.data}
                     </span>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-[1.3rem] font-light leading-tight" style={{ color: O.creme }}>{r.titulo}</h3>
+                    <p className="mt-3 text-[14px] font-light leading-relaxed" style={{ color: O.cSoft }}>{r.desc}</p>
+                    {r.stats && (
+                      <div className="mt-4 flex flex-wrap gap-4 text-[12px] font-medium">
+                        <span style={{ color: O.creme }}>{r.stats.km}</span>
+                        <span style={{ color: O.ouroSoft }}>{r.stats.sobe}</span>
+                        <span style={{ color: O.gelo }}>{r.stats.desce}</span>
+                      </div>
+                    )}
+                    <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
+                      {r.itens.map((it) => (
+                        <li key={it} className="text-[12.5px] font-light" style={{ color: O.cFaint }}>· {it}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </Reveal>
@@ -571,7 +650,7 @@ export default function OCircuitPage() {
                 <div className="p-7" style={{ background: O.granitoSoft }}>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.22em]" style={{ color: O.ouroSoft }}>O que define a tarifa</p>
                   <ul className="mt-3 space-y-2">
-                    {["Guia AONIK do início ao fim", "7 noites em refúgio ou camping", "Todas as refeições e transfers regulares", "Entrada do parque e welcome kit"].map((x) => (
+                    {["LeaderTrip AONIK do início ao fim", "9 noites: hotel, camping e refúgios", "Todas as refeições dentro do parque", "Transfers e rastreador satelital individual"].map((x) => (
                       <li key={x} className="flex items-start gap-2 text-[12.5px] font-light leading-relaxed" style={{ color: O.cSoft }}>
                         <span className="mt-0.5 shrink-0" style={{ color: O.ouroSoft }}>✦</span>{x}
                       </li>
@@ -617,6 +696,77 @@ export default function OCircuitPage() {
               ))}
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ===== HOSPEDAGEM, TRANSPORTE E CONDIÇÕES (da proposta) ===== */}
+      <section className="px-6 py-24 md:px-10 md:py-28" style={{ background: O.granito, color: O.creme }}>
+        <div className="mx-auto max-w-[1100px]">
+          <Reveal><p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.32em]" style={{ color: O.ouroSoft }}>Como você dorme e se desloca</p></Reveal>
+          <Reveal delay={0.05}><h2 className="mb-10 max-w-2xl font-display text-[clamp(1.8rem,3.6vw,2.6rem)] font-light leading-[1.15]">Nove noites, três tipos de abrigo</h2></Reveal>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <Reveal>
+              <div className="h-full rounded-2xl border p-6" style={{ borderColor: O.line, background: O.granitoSoft }}>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em]" style={{ color: O.ouroSoft }}>Hospedagem</p>
+                <ul className="mt-4 space-y-2.5">
+                  {HOSPEDAGEM.map((h) => (
+                    <li key={h} className="flex items-start gap-3 text-[13.5px] font-light leading-relaxed" style={{ color: O.cSoft }}>
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: O.ouro }} />{h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <div className="h-full rounded-2xl border p-6" style={{ borderColor: O.line, background: O.granitoSoft }}>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em]" style={{ color: O.ouroSoft }}>Transporte</p>
+                <ul className="mt-4 space-y-2.5">
+                  {TRANSPORTE.map((x) => (
+                    <li key={x} className="flex items-start gap-3 text-[13.5px] font-light leading-relaxed" style={{ color: O.cSoft }}>
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: O.gelo }} />{x}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="mt-6 grid gap-6 md:grid-cols-3">
+            <Reveal>
+              <div className="h-full rounded-2xl border p-6" style={{ borderColor: O.line }}>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em]" style={{ color: O.ouroSoft }}>Formas de pagamento</p>
+                <ul className="mt-4 space-y-2.5">
+                  {PAGAMENTO.map((p) => (
+                    <li key={p} className="text-[13px] font-light leading-relaxed" style={{ color: O.cSoft }}>· {p}</li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-[11.5px] font-light italic" style={{ color: O.cFaint }}>
+                  Valor em dólar; no fechamento vale o dólar turismo na cotação do dia.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <div className="h-full rounded-2xl border p-6" style={{ borderColor: O.line }}>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em]" style={{ color: O.ouroSoft }}>Cancelamento</p>
+                <ul className="mt-4 space-y-2.5">
+                  {CANCELAMENTO.map((c) => (
+                    <li key={c} className="text-[13px] font-light leading-relaxed" style={{ color: O.cSoft }}>· {c}</li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <div className="h-full rounded-2xl border p-6" style={{ borderColor: O.line }}>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em]" style={{ color: O.ouroSoft }}>Bom saber</p>
+                <ul className="mt-4 space-y-2.5">
+                  {OBSERVACOES.map((o) => (
+                    <li key={o} className="text-[12.5px] font-light leading-relaxed" style={{ color: O.cSoft }}>· {o}</li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
