@@ -8,9 +8,9 @@ import Footer from "../../components/Footer";
 import Contato from "../../components/Contato";
 import FloatingActions from "../../components/FloatingActions";
 import { Reveal, EASE } from "../../components/ui";
-import { GRUPOS, datasDoAno } from "../../lib/grupos";
+import { CATALOGO_GRUPOS, datasDoAno } from "../../lib/grupos";
 
-const GRUPO = GRUPOS.find((g) => g.id === "douro")!;
+const GRUPO = CATALOGO_GRUPOS.find((g) => g.id === "douro")!;
 
 const D = {
   noite:     "#130c0e",   // escuro quente

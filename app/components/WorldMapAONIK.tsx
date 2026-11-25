@@ -107,22 +107,6 @@ const DESTINATIONS: Destination[] = [
     href: "/destinos/tirol",
   },
   {
-    id: "douro-experience",
-    name: "Douro Experience",
-    region: "Vale do Douro · Portugal",
-    tagline: "20–28 Set 2027",
-    taglines: { 2027: "20–28 Set 2027" },
-    years: [2027],
-    lat: 41.1,
-    lng: -7.8,
-    labelOffsetX: -175,
-    labelOffsetY: 105,
-    type: "cultural",
-    description:
-      "8 dias de caminhada pelo Vale do Douro, entre quintas históricas, vinhas e aldeias de xisto. 58,7 km, 2.051 m+.",
-    href: "/destinos/douro",
-  },
-  {
     id: "caminho-interior-vila-pouca",
     name: "Caminho Português Interior",
     region: "Portugal e Galiza",

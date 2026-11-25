@@ -65,28 +65,6 @@ export const HERO_LABELS: Record<Lang, {
 
 export const HERO_PRODUTOS: HeroProduto[] = [
   {
-    id: "bike",
-    href: "/destinos/pedal-porto-lisboa",
-    palavra: "ATLÂNTICO",
-    foco: { d: "100% 60%", m: "86% 60%" },
-    formato: { pt: "Bike autoguiado", es: "Bici autoguiada", en: "Self-guided bike" },
-    regiao: { pt: "Costa atlântica de Portugal", es: "Costa atlántica de Portugal", en: "Portugal's Atlantic coast" },
-    titulo: "Porto a Lisboa",
-    pitch: {
-      pt: "Seis etapas de bike entre dunas, lagoas e pinhais, com a bagagem seguindo de pousada em pousada.",
-      es: "Seis etapas en bici entre dunas, lagunas y pinares, con el equipaje de posada en posada.",
-      en: "Six bike stages through dunes, lagoons and pine forests, with luggage moved inn to inn.",
-    },
-    fatos: [
-      { pt: "8 dias", es: "8 días", en: "8 days" },
-      { pt: "306 km", es: "306 km", en: "306 km" },
-    ],
-    preco: "€ 1.207",
-    saida: { pt: "Saídas de sexta a segunda", es: "Salidas de viernes a lunes", en: "Departures Friday to Monday" },
-    rota: { de: "Porto", para: "Óbidos", km: "306 km", etapas: 6 },
-    categoria: 1,
-  },
-  {
     id: "douro",
     href: "/caminhos-autoguiados/douro",
     palavra: "DOURO",
@@ -107,6 +85,28 @@ export const HERO_PRODUTOS: HeroProduto[] = [
     saida: { pt: "Ano todo, a partir de 2 pessoas", es: "Todo el año, desde 2 personas", en: "Year-round, from 2 people" },
     rota: { de: "Peso da Régua", para: "Favaios", km: "58,7 km", etapas: 4 },
     categoria: 3,
+  },
+  {
+    id: "bike",
+    href: "/destinos/pedal-porto-lisboa",
+    palavra: "ATLÂNTICO",
+    foco: { d: "100% 60%", m: "86% 60%" },
+    formato: { pt: "Bike autoguiado", es: "Bici autoguiada", en: "Self-guided bike" },
+    regiao: { pt: "Costa atlântica de Portugal", es: "Costa atlántica de Portugal", en: "Portugal's Atlantic coast" },
+    titulo: "Porto a Lisboa",
+    pitch: {
+      pt: "Seis etapas de bike entre dunas, lagoas e pinhais, com a bagagem seguindo de pousada em pousada.",
+      es: "Seis etapas en bici entre dunas, lagunas y pinares, con el equipaje de posada en posada.",
+      en: "Six bike stages through dunes, lagoons and pine forests, with luggage moved inn to inn.",
+    },
+    fatos: [
+      { pt: "8 dias", es: "8 días", en: "8 days" },
+      { pt: "306 km", es: "306 km", en: "306 km" },
+    ],
+    preco: "€ 1.207",
+    saida: { pt: "Saídas de sexta a segunda", es: "Salidas de viernes a lunes", en: "Departures Friday to Monday" },
+    rota: { de: "Porto", para: "Óbidos", km: "306 km", etapas: 6 },
+    categoria: 1,
   },
   {
     id: "dolomitas",
@@ -148,7 +148,7 @@ export const HERO_PRODUTOS: HeroProduto[] = [
       { pt: "13 dias", es: "13 días", en: "13 days" },
       { pt: "252 km", es: "252 km", en: "252 km" },
     ],
-    preco: "€ 1.550",
+    preco: "€ 1.755",
     precoNota: { pt: "autoguiado, o ano todo", es: "autoguiado, todo el año", en: "self-guided, year-round" },
     grupoId: "caminho-interior-vila-pouca",
     rota: { de: "Vila Pouca de Aguiar", para: "Santiago", km: "252 km", etapas: 12 },

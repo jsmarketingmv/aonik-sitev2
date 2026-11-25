@@ -16,9 +16,14 @@ export type Grupo = {
   status: "confirmada" | "em-formacao" | "a-confirmar";
   href: string; // página individual (ou #contato enquanto não existir)
   img: string;
+  /** true = o produto continua com página própria, mas a saída não entra em
+   *  nenhum calendário ou listagem de grupos do site. */
+  foraDoCalendario?: boolean;
 };
 
-export const GRUPOS: Grupo[] = [
+/** Catálogo completo, inclusive saídas retiradas do calendário. Use só em
+ *  página de produto que precisa dos próprios dados (ex.: /destinos/douro). */
+export const CATALOGO_GRUPOS: Grupo[] = [
   {
     id: "torres-del-paine-o-circuit",
     title: "Circuito O · Torres del Paine",
@@ -72,6 +77,7 @@ export const GRUPOS: Grupo[] = [
     duration: "8 dias",
     priceFrom: "a partir de € 4.800",
     status: "confirmada",
+    foraDoCalendario: true, // retirado do calendário em 25/11/2026, a pedido do Juliano
     href: "/destinos/douro",
     img: "https://static.wixstatic.com/media/2d4f5b_edfea84f57b54f589aff44727039c42e~mv2.jpg/v1/fill/w_600,h_400,al_c,q_82,enc_avif,quality_auto/img.jpg",
   },
@@ -147,6 +153,10 @@ export const GRUPOS: Grupo[] = [
     img: "/images/caminho-interior/capa.jpg",
   },
 ];
+
+/** Grupos visíveis em calendários e listagens do site. */
+export const GRUPOS: Grupo[] = CATALOGO_GRUPOS.filter((g) => !g.foraDoCalendario);
+
 
 // Próximas saídas em estudo (spoilers do site)
 export const EM_BREVE = [

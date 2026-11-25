@@ -154,7 +154,7 @@ export const VILA_POUCA: ProgramaInterior = {
     "Suplemento de quarto individual",
     "Jantares nas hospedagens onde houver",
   ],
-  preco: "€ 1.550",
+  preco: "€ 1.755",
   single: "€ 436",
   grupo: {
     periodo: "Outubro de 2027",
@@ -197,7 +197,7 @@ export const CHAVES: ProgramaInterior = {
     "Suplemento de quarto individual",
     "Jantares nas hospedagens onde houver",
   ],
-  preco: "€ 1.326",
+  preco: "€ 1.505",
   single: "€ 334",
   interesse: "PORTUGAL - Caminho Português Interior (Chaves)",
   galeria: ["dia-02-1", "dia-02-3", "dia-03-1", "dia-03-2", "dia-04-1", "dia-05-2", "dia-06-2", "dia-07-1", "dia-07-2", "dia-08-1", "dia-10-1", "dia-12-1", "dia-12-2", "dia-12-3"].map(F),

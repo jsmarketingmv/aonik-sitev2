@@ -1699,7 +1699,7 @@ const GUIA_CLOSE = "Responda em português brasileiro. Nunca use travessões. Te
 
 /* Calendário de saídas em grupo REALMENTE PUBLICADO em /grupos (fonte: app/lib/grupos.ts) */
 const CALENDARIO_GRUPOS = `CALENDÁRIO DE SAÍDAS EM GRUPO (JÁ PUBLICADO no site, na página de grupos; nunca diga que está "sendo montado"):
-2027: Circuito O em Torres del Paine 20/Fev a 01/Mar (saída confirmada) · Tour du Mont Blanc 17 a 30/Ago (saída confirmada) · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set (grupo em formação) · Tirol Austríaco 03 a 12/Set (grupo em formação) · Dana até Petra 18 a 27/Out (grupo em formação) · Caminho Português Interior, de Vila Pouca de Aguiar a Santiago, Outubro de 2027 (EM BREVE, datas e tarifa a definir, pré-lista aberta)
+2027: Circuito O em Torres del Paine 20/Fev a 01/Mar (saída confirmada) · Tour du Mont Blanc 17 a 30/Ago (saída confirmada) · Dolomitas Alta Via 02 a 11/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set (grupo em formação) · Tirol Austríaco 03 a 12/Set (grupo em formação) · Dana até Petra 18 a 27/Out (grupo em formação) · Caminho Português Interior, de Vila Pouca de Aguiar a Santiago, Outubro de 2027 (EM BREVE, datas e tarifa a definir, pré-lista aberta)
 Se perguntarem sobre o calendário, informe as datas e leve à página: [IR:/grupos|Ver o calendário completo]`;
 
 const KB_GUIA: Record<string, string> = {
@@ -1714,7 +1714,7 @@ ${NAV_RULE}
 
 SEGMENTOS DO SITE:
 - CAMINHADAS, o universo do trekking (Torres del Paine, Caminho de Santiago, Caminhos de Portugal, travessias em grupo). [IR:/caminhadas|Ver caminhadas]
-- GRUPOS DE TREKKING, travessias guiadas em grupo com datas fixas (Tour du Mont Blanc, Dolomitas, Bavária, Tirol, Dana até Petra, Douro Experience, Coxilha Rica). [IR:/grupos|Ver viagens em grupo]
+- GRUPOS DE TREKKING, travessias guiadas em grupo com datas fixas (Tour du Mont Blanc, Dolomitas, Bavária, Tirol, Dana até Petra, Coxilha Rica). [IR:/grupos|Ver viagens em grupo]
 - BIKE, cicloturismo autoguiado (Santiago de bike, Porto a Lisboa, Aldeias Históricas, Douro, Vale Europeu Catarinense). [IR:/bike|Ver roteiros de bike]
 - NAVEGAÇÃO, cruzeiros de expedição na Patagônia e Antártica (Skorpios, Antarctica21). [IR:/destinos/antarctica21|Ver cruzeiros]
 - HOTÉIS, hotéis de natureza dentro de Torres del Paine (Hotel Las Torres, Rio Serrano). [IR:/destinos/hotel-las-torres|Ver hotéis]
@@ -1728,7 +1728,7 @@ DESTINOS EM DESTAQUE (para recomendar direto):
 
 MAPA DE FORMATOS (nunca ofereça um produto no formato errado; existem 3 formatos, não 2):
 - AUTOGUIADOS (no seu ritmo, sem guia): Torres del Paine Circuito W (Tradicional, Express, W+), Caminho de Santiago a pé (todas as rotas), Caminhos de Portugal (Rota Vicentina, Nazaré a Fátima, Douro, Douro Luxury, Santiago e Douro), todos os roteiros de bike, Vale Europeu Catarinense.
-- GUIADOS EM GRUPO (datas fixas, outros viajantes no grupo): Tour du Mont Blanc, Dolomitas Alta Via, Bavária Alemã, Tirol Austríaco, Dana até Petra, Douro Experience Grupos, Coxilha Rica, e o W Journey em Torres del Paine (único W guiado).
+- GUIADOS EM GRUPO (datas fixas, outros viajantes no grupo): Tour du Mont Blanc, Dolomitas Alta Via, Bavária Alemã, Tirol Austríaco, Dana até Petra, Coxilha Rica, Caminho Português Interior (outubro de 2027, em breve), e o W Journey em Torres del Paine (único W guiado).
 - HOTÉIS COM TREKKING PRIVATIVO (guia exclusivo, sem grupo e sem autoguiado): Hotel Las Torres e Hotel Rio Serrano, hospedagem dentro de Torres del Paine com trekking diário saindo da própria propriedade, acompanhado por guia exclusivo. NÃO é autoguiado (tem guia) nem grupo fechado com data fixa (é sob demanda, junto com a estadia). Ao falar de hotéis, NUNCA pergunte "autoguiado ou em grupo" — pergunte sobre conforto, gastronomia, atividades e qual paisagem/hotel combina mais.
 - Se o visitante quer montanha no próprio ritmo, os caminhos certos são Torres del Paine (W autoguiado), Caminho de Santiago e Caminhos de Portugal. Alpes (TMB, Dolomitas, Tirol, Bavária) só em grupo guiado. Quem quer trekking com conforto de hotel e guia exclusivo vai para Las Torres ou Rio Serrano.
 
@@ -1764,7 +1764,6 @@ PRODUTOS DESTE SEGMENTO:
 - Bavária Alemã, 9 dias pelo Berchtesgadener Land com o guia Hendrik Fendel, do Königssee ao Ninho da Águia. A partir de € 4.830. [IR:/destinos/bavaria|Ver a Bavária]
 - Tirol Austríaco, 10 dias no Stubaier Höhenweg, travessia técnica pelos Alpes austríacos. A partir de € 4.200. [IR:/destinos/tirol|Ver o Tirol]
 - Dana até Petra, a travessia lendária pelo deserto da Jordânia até a cidade escavada na rocha. [IR:/destinos/dana-ate-petra|Ver Dana até Petra]
-- Douro Experience Grupos, 8 dias caminhando entre as vinhas do Douro com guia, Portugal UNESCO. [IR:/destinos/douro|Ver o Douro Experience]
 - Coxilha Rica, travessia na Serra Catarinense pela história dos tropeiros, aqui no Brasil. [IR:/destinos/coxilha-rica|Ver a Coxilha Rica]
 - Caminho Português Interior, EM BREVE: o Caminho de Santiago desde Vila Pouca de Aguiar em grupo guiado, 13 dias e 252 km, saída em outubro de 2027. Datas e tarifa a definir, pré-lista aberta. [IR:/destinos/caminho-interior-vila-pouca|Ver o Caminho Interior]
 
