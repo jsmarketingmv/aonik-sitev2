@@ -131,6 +131,21 @@ export const GRUPOS: Grupo[] = [
     href: "/destinos/dana-ate-petra",
     img: "https://static.wixstatic.com/media/fe55bd_0280e88d2a6b41be8562852f23bb4ecb~mv2.jpg/v1/fill/w_600,h_400,al_c,q_82,enc_avif,quality_auto/img.jpg",
   },
+  {
+    // Grupo novo: mês definido, dias a confirmar (o calendário lista à parte)
+    id: "caminho-interior-vila-pouca",
+    title: "Caminho Português Interior",
+    flags: "🇵🇹 🇪🇸",
+    local: "Vila Pouca de Aguiar a Santiago de Compostela",
+    dates2027: ["Outubro 2027"],
+    distance: "252,4 km",
+    altitude: "3.854 m+",
+    duration: "13 dias",
+    priceFrom: "Em breve",
+    status: "a-confirmar",
+    href: "/destinos/caminho-interior-vila-pouca",
+    img: "/images/caminho-interior/capa.jpg",
+  },
 ];
 
 // Próximas saídas em estudo (spoilers do site)

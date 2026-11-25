@@ -80,7 +80,8 @@ function MapaPortugal() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: EASE, delay: 1.6 + i * 0.25 }}>
           <motion.circle cx={p.x} cy={p.y} r="5" fill="none" stroke={p.c} strokeWidth="1"
-            animate={{ r: [5, 13, 5], opacity: [0.6, 0, 0.6] }}
+            style={{ transformBox: "fill-box", transformOrigin: "center" }}
+            animate={{ scale: [1, 2.6, 1], opacity: [0.6, 0, 0.6] }}
             transition={{ duration: 2.8, repeat: Infinity, ease: "easeOut", delay: i * 0.5 }} />
           <circle cx={p.x} cy={p.y} r={p.star ? 3.4 : 3} fill={p.c} />
           <text x={p.x + 10} y={p.y + 3.5} fill={C.creme} fontSize="9.5" letterSpacing="0.4"

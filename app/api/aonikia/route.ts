@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
 import { waUrl } from "../../lib/contato";
+import { VILA_POUCA, CHAVES, DISPONIBILIDADE, type ProgramaInterior } from "../../lib/caminhoInterior";
 
 /* Base de conhecimento por slug de produto */
 const KB: Record<string, string> = {
@@ -1558,6 +1559,46 @@ Se nao souber algo especifico, diga que vai confirmar com a equipe AONIK.
 `.trim(),
 };
 
+/* Caminho Português Interior: a KB nasce dos mesmos dados da página (app/lib/caminhoInterior.ts),
+   então preço, etapas e serviços nunca divergem do que o visitante está vendo. */
+function kbInterior(p: ProgramaInterior): string {
+  const etapas = p.etapas.map((e, i) => `Dia ${i + 1}: ${e.de} a ${e.para}, ${e.km} km, subida ${e.sobe} m, ${e.horas}`).join("\n");
+  const grupo = p.grupo
+    ? `\nGRUPO GUIADO AONIK: saída prevista em ${p.grupo.periodo}, EM BREVE. Datas exatas, tarifa e guia ainda não foram definidos, então NUNCA invente data, preço ou nome de guia do grupo. Ofereça a pré-lista na própria página (o botão "Entrar na pré-lista" preenche o formulário de contato).\n`
+    : "\nEste programa é só autoguiado. Quem quiser o Caminho Interior em GRUPO guiado (outubro de 2027) deve ir à versão desde Vila Pouca de Aguiar. [IR:/destinos/caminho-interior-vila-pouca|Ver a versão com grupo]\n";
+  return `
+Você é a Aonik IA, especialista EXCLUSIVA no ${p.nome} ${p.desde}, um Caminho de Santiago pelo interior de Portugal e da Galiza.
+Responda SOMENTE perguntas relacionadas a este programa.
+Quando o usuário perguntar sobre outro caminho ou produto: "Que boa pergunta! Nosso time de especialistas pode te ajudar a escolher o roteiro perfeito para você. Que tal conversar agora? [Falar no WhatsApp do time AONIK →]"
+
+O CAMINHO:
+${p.sobre.join("\n")}
+
+PRODUTO: ${p.nome} ${p.desde} · ${p.dias} dias / ${p.noites} noites · ${p.km} · ${p.etapas.length} etapas a pé
+NÍVEL: moderado a exigente. ${p.nivel}
+
+ETAPAS:
+${etapas}
+Dia ${p.etapas.length + 1}: ${p.diaFinal.titulo}, fim do programa após o café da manhã.
+
+AUTOGUIADO: a partir de ${p.preco} por pessoa em quarto duplo, suplemento de quarto individual ${p.single}. Mínimo 2 pessoas, máximo 6. Disponibilidade: ${DISPONIBILIDADE}
+${grupo}
+INCLUI: ${p.inclui.join("; ")}.
+NÃO INCLUI: ${p.naoInclui.join("; ")}.
+EXTRAS SOB CONSULTA: ${p.extras.join("; ")}.
+
+FUNIL DE VENDAS:
+- Disponibilidade: informe a disponibilidade e convide: "Para garantir as hospedagens na sua data, nossa equipe monta a proposta rapidinho! [Falar no WhatsApp do time AONIK →]"
+- Preço: dê o valor do autoguiado e o suplemento individual, depois ofereça a cotação com data e número de pessoas.
+- Interesse: "É o Caminho de Santiago como ele era antes das multidões: termas, castelos de fronteira, carvalhais e o silêncio dos próprios passos. Nossa equipe cuida de tudo! [Falar no WhatsApp do time AONIK →]"
+
+Responda em português brasileiro, de forma amigável, calorosa e sensorial. Máximo 3 parágrafos. Nunca use travessões.
+Se não souber algo específico, diga que vai confirmar com a equipe AONIK.
+`.trim();
+}
+KB[VILA_POUCA.slug] = kbInterior(VILA_POUCA);
+KB[CHAVES.slug] = kbInterior(CHAVES);
+
 /* KBs indexados por segmento de pathname para resolver conflitos de slug (ex: "douro") */
 const KB_PATH: Record<string, string> = {
   "destinos/douro": `
@@ -1658,7 +1699,7 @@ const GUIA_CLOSE = "Responda em português brasileiro. Nunca use travessões. Te
 
 /* Calendário de saídas em grupo REALMENTE PUBLICADO em /grupos (fonte: app/lib/grupos.ts) */
 const CALENDARIO_GRUPOS = `CALENDÁRIO DE SAÍDAS EM GRUPO (JÁ PUBLICADO no site, na página de grupos; nunca diga que está "sendo montado"):
-2027: Circuito O em Torres del Paine 21 a 29/Fev (saída confirmada) · Tour du Mont Blanc 17 a 30/Ago (saída confirmada) · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set (grupo em formação) · Tirol Austríaco 03 a 12/Set (grupo em formação) · Dana até Petra 18 a 27/Out (grupo em formação)
+2027: Circuito O em Torres del Paine 20/Fev a 01/Mar (saída confirmada) · Tour du Mont Blanc 17 a 30/Ago (saída confirmada) · Dolomitas Alta Via 02 a 11/Set · Douro Experience 20 a 28/Set · Coxilha Rica 11 a 15/Abr, 13 a 17/Jun e 01 a 05/Ago · Bavária Alemã 14 a 24/Set (grupo em formação) · Tirol Austríaco 03 a 12/Set (grupo em formação) · Dana até Petra 18 a 27/Out (grupo em formação) · Caminho Português Interior, de Vila Pouca de Aguiar a Santiago, Outubro de 2027 (EM BREVE, datas e tarifa a definir, pré-lista aberta)
 Se perguntarem sobre o calendário, informe as datas e leve à página: [IR:/grupos|Ver o calendário completo]`;
 
 const KB_GUIA: Record<string, string> = {
@@ -1725,6 +1766,7 @@ PRODUTOS DESTE SEGMENTO:
 - Dana até Petra, a travessia lendária pelo deserto da Jordânia até a cidade escavada na rocha. [IR:/destinos/dana-ate-petra|Ver Dana até Petra]
 - Douro Experience Grupos, 8 dias caminhando entre as vinhas do Douro com guia, Portugal UNESCO. [IR:/destinos/douro|Ver o Douro Experience]
 - Coxilha Rica, travessia na Serra Catarinense pela história dos tropeiros, aqui no Brasil. [IR:/destinos/coxilha-rica|Ver a Coxilha Rica]
+- Caminho Português Interior, EM BREVE: o Caminho de Santiago desde Vila Pouca de Aguiar em grupo guiado, 13 dias e 252 km, saída em outubro de 2027. Datas e tarifa a definir, pré-lista aberta. [IR:/destinos/caminho-interior-vila-pouca|Ver o Caminho Interior]
 
 ${CALENDARIO_GRUPOS}
 
@@ -1793,6 +1835,8 @@ ROTAS DISPONÍVEIS:
 - Caminho da Costa a pé, o Português pela costa atlântica. [IR:/destinos/caminho-costa-ape|Ver o Caminho da Costa]
 - Caminho Fácil a pé, etapas mais curtas e suaves para quem quer tranquilidade. [IR:/destinos/caminho-easy-ape|Ver o Caminho Fácil]
 - Caminho de Baiona a pé, a variante costeira espanhola. [IR:/destinos/caminho-baiona-ape|Ver o Caminho de Baiona]
+- Caminho Português Interior desde Vila Pouca de Aguiar, 13 dias e 252 km pelo interior de Portugal e da Galiza, longe das multidões. Autoguiado ou em grupo (outubro de 2027). [IR:/destinos/caminho-interior-vila-pouca|Ver desde Vila Pouca de Aguiar]
+- Caminho Português Interior desde Chaves, a versão de 11 dias e 214 km. [IR:/destinos/caminho-interior-chaves|Ver desde Chaves]
 - Caminho Primitivo, o mais antigo e selvagem, por Astúrias. [IR:/destinos/caminho-primitivo|Ver o Caminho Primitivo]
 - Via O Cebreiro (Caminho Francês), entrada na Galiza pela montanha. [IR:/destinos/caminho-cebreiro|Ver a Via O Cebreiro]
 - Santiago a Finisterre, a extensão até o "fim do mundo" e o mar. [IR:/destinos/santiago-finisterre|Ver Santiago a Finisterre]

@@ -15,7 +15,7 @@ import { GRUPOS } from "../../lib/grupos";
    CIRCUITO O · TORRES DEL PAINE — grupo guiado 8D/7N
    Identidade Patagônia Chilena (granito · gelo · ouro do amanhecer,
    o mesmo dourado da capa do catálogo). Assinatura: a VOLTA COMPLETA
-   ao maciço (o "O"), com o guia Hendrik Fendel. Saída 21 a 29/Fev/2027, confirmada.
+   ao maciço (o "O"), com o guia Hendrik Fendel. Saída 20/Fev a 01/Mar/2027, confirmada.
    ============================================================ */
 const O = {
   ink: "#0c1219",

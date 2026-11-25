@@ -494,7 +494,9 @@ function Calendario() {
                         ? "● Saída confirmada"
                         : g.status === "em-formacao"
                           ? "● Grupo em formação"
-                          : "○ A confirmar"}
+                          : g.priceFrom === "Em breve"
+                            ? "○ Pré-lista aberta"
+                            : "○ A confirmar"}
                     </span>
                   </div>
 
@@ -503,7 +505,7 @@ function Calendario() {
                     href={g.href}
                     className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-forest px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-300 hover:bg-forest-soft"
                   >
-                    Reservar vaga →
+                    {g.priceFrom === "Em breve" ? "Entrar na pré-lista →" : "Reservar vaga →"}
                   </a>
                 </div>
               </Reveal>

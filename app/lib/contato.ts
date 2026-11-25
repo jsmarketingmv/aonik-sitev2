@@ -23,7 +23,7 @@ const WA_MSGS: Record<string, string> = {
   "w-express":        "Olá! Gostaria de mais informações sobre o Circuito W Express em Torres del Paine.",
   "w-plus":           "Olá! Gostaria de mais informações sobre o W+ Express Plus em Torres del Paine.",
   "w-journey":        "Olá! Gostaria de mais informações sobre o W Journey em Torres del Paine.",
-  "torres-del-paine-o-circuit": "Olá! Gostaria de mais informações sobre o Circuito O em grupo guiado, em Torres del Paine (saída 21 a 29 de fevereiro de 2027).",
+  "torres-del-paine-o-circuit": "Olá! Gostaria de mais informações sobre o Circuito O em grupo guiado, em Torres del Paine (saída de 20 de fevereiro a 01 de março de 2027).",
   "skorpios":         "Olá! Gostaria de mais informações sobre o Cruzeiro Skorpios na Patagônia.",
   "rio-serrano":      "Olá! Gostaria de mais informações sobre o Hotel Rio Serrano na Patagônia.",
   "compostela":       "Olá! Gostaria de mais informações sobre o Caminho de Santiago de Compostela.",
@@ -34,6 +34,8 @@ const WA_MSGS: Record<string, string> = {
   "dana-ate-petra":   "Olá! Gostaria de mais informações sobre o roteiro Dana até Petra.",
   "douro":            "Olá! Gostaria de mais informações sobre o Douro Experience Autoguiado.",
   "douro-luxury":     "Olá! Gostaria de mais informações sobre o Douro Luxury.",
+  "caminho-interior-vila-pouca": "Olá! Gostaria de mais informações sobre o Caminho Português Interior desde Vila Pouca de Aguiar (autoguiado ou o grupo de outubro de 2027).",
+  "caminho-interior-chaves": "Olá! Gostaria de mais informações sobre o Caminho Português Interior desde Chaves.",
   "santiago-e-douro": "Olá! Gostaria de mais informações sobre o roteiro Santiago e Douro.",
 };
 const WA_DEFAULT = "Olá! Gostaria de mais informações sobre os roteiros da AONIK.";
@@ -49,6 +51,8 @@ export function waUrl(slug?: string): string {
 export const DESTINOS_CURADOS = [
   "PORTUGAL - Caminho de Santiago A PÉ",
   "PORTUGAL - Caminho de Santiago DE BIKE",
+  "PORTUGAL - Caminho Português Interior (Vila Pouca de Aguiar)",
+  "PORTUGAL - Caminho Português Interior (Chaves)",
   "PORTUGAL - Região do Douro",
   "PORTUGAL - Douro Experience (Autoguiado)",
   "PORTUGAL - Douro Luxury (Guiado)",
@@ -85,6 +89,7 @@ export const DESTINOS_CURADOS = [
   "GRUPOS DE TREKKING - Liechtenstein",
   "GRUPOS DE TREKKING - Santiago de Compostela",
   "GRUPOS DE TREKKING - Douro Experience (Grupos)",
+  "GRUPOS DE TREKKING - Caminho Português Interior · Outubro 2027",
   "OUTRAS EXPERIÊNCIAS - Safáris na África",
   "OUTRAS EXPERIÊNCIAS - Cruzeiros Expedição",
   "OUTRAS EXPERIÊNCIAS - Roteiros de Bike",

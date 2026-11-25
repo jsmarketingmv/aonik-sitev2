@@ -123,6 +123,22 @@ const DESTINATIONS: Destination[] = [
     href: "/destinos/douro",
   },
   {
+    id: "caminho-interior-vila-pouca",
+    name: "Caminho Português Interior",
+    region: "Portugal e Galiza",
+    tagline: "Outubro 2027 · em breve",
+    taglines: { 2027: "Outubro 2027 · em breve" },
+    years: [2027],
+    lat: 41.5,
+    lng: -7.64,
+    labelOffsetX: -205,
+    labelOffsetY: 40,
+    type: "cultural",
+    description:
+      "O Caminho de Santiago desde Vila Pouca de Aguiar, pelo interior de Portugal e da Galiza: 252 km e 12 etapas, 13 dias. Datas e tarifa do grupo em breve, pré-lista aberta.",
+    href: "/destinos/caminho-interior-vila-pouca",
+  },
+  {
     id: "coxilha-rica",
     name: "Coxilha Rica",
     region: "Serra Catarinense · Brasil",
@@ -171,6 +187,7 @@ const EUROPE_REGIONS = [
   "Alpes Bávaros",
   "Alpes de Stubai",
   "Vale do Douro · Portugal",
+  "Portugal e Galiza",
 ];
 
 function isVisible(dest: Destination, filter: string, yearFilter: number): boolean {

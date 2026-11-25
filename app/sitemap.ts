@@ -57,6 +57,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/destinos/caminho-valenca-ape`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/destinos/caminho-easy-ape`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/destinos/caminho-cebreiro`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/destinos/caminho-interior-vila-pouca`, lastModified: today, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/destinos/caminho-interior-chaves`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/destinos/caminho-primitivo`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/destinos/santiago-finisterre`, lastModified: today, changeFrequency: "monthly", priority: 0.7 },
 

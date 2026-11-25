@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Fraunces, Inter, Caveat } from "next/font/google";
+import { Fraunces, Inter, Caveat, Anton } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 import { LanguageProvider } from "./components/LanguageProvider";
@@ -20,6 +20,14 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+});
+
+// Palavra gigante do hero: condensada e pesada, para presença
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  display: "swap",
+  weight: "400",
 });
 
 const caveat = Caveat({
@@ -88,7 +96,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${fraunces.variable} ${inter.variable} ${caveat.variable}`}>
+    <html lang="pt-BR" className={`${fraunces.variable} ${inter.variable} ${caveat.variable} ${anton.variable}`}>
       <head>
         <Script id="clarity-script" strategy="afterInteractive" dangerouslySetInnerHTML={{
           __html: `

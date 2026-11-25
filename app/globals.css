@@ -23,6 +23,7 @@
 
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
+  --font-impact: var(--font-anton);
 
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
 }

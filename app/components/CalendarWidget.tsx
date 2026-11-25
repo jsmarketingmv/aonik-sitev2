@@ -328,7 +328,7 @@ export default function CalendarWidget({ yearFilter, grupos = GRUPOS }: Calendar
                   {g.title}
                 </p>
                 <p className="text-[10px] text-ink/35">
-                  Em breve · {g.duration} · {yearFilter}
+                  Em breve · {datasDoAno(g, yearFilter)[0]} · {g.duration}
                 </p>
               </div>
               <span className="shrink-0 text-[12px] text-gold opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100">

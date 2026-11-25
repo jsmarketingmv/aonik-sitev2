@@ -107,6 +107,8 @@ type Produto = { nome: string; tipo: TipoProduto; km: string; dias: string; prec
 
 const PORTUGUES_APE: Produto[] = [
   { nome: "Central",              tipo: "A Pe", km: "226 km",   dias: "14 dias", preco: "a partir de € 1.466", desc: "Porto para Santiago. A rota histórica clássica pelo interior de Portugal.", href: "/destinos/caminho-central-ape" },
+  { nome: "Interior · Vila Pouca", tipo: "A Pe", km: "252 km",   dias: "13 dias", preco: "a partir de € 1.550", desc: "Pelo interior de Portugal e da Galiza, longe das multidões. Grupo guiado em outubro de 2027.", href: "/destinos/caminho-interior-vila-pouca" },
+  { nome: "Interior · Chaves",    tipo: "A Pe", km: "214 km",   dias: "11 dias", preco: "a partir de € 1.326", desc: "Da cidade termal de Chaves a Santiago, pela Vía da Prata e os carvalhais de Allariz.", href: "/destinos/caminho-interior-chaves" },
   { nome: "Costa",                tipo: "A Pe", km: "260 km",   dias: "15 dias", preco: "a partir de € 1.498", desc: "À beira do Atlântico. Praias, dunas e aldeias piscatórias de Portugal.", href: "/destinos/caminho-costa-ape" },
   { nome: "Valença",              tipo: "A Pe", km: "121 km",   dias: "8 dias",  preco: "a partir de € 810",   desc: "Começa na fronteira do Rio Minho. Mais curto e acessível para iniciantes.", href: "/destinos/caminho-valenca-ape" },
   { nome: "Baiona",               tipo: "A Pe", km: "126,5 km", dias: "8 dias",  preco: "a partir de € 886",   desc: "Variante espanhola. Vila medieval como ponto de partida na Galiza.", href: "/destinos/caminho-baiona-ape" },
